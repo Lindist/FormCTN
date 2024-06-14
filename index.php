@@ -8,6 +8,10 @@ unset($_SESSION['show_register']); // Clear the session flag after use
 $loginClass = isset($_SESSION['show_login']) && $_SESSION['show_login'] ? '' : 'hidden';
 unset($_SESSION['show_login']); // Clear the session flag after use
 
+if (isset($_SESSION['user_id'])) {
+    header("Location: form.php");
+}
+
 ?>
 
 <!DOCTYPE html>
