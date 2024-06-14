@@ -1,14 +1,22 @@
-const add = document.querySelector('.adds');
+const formRange = document.querySelector('#check-edit');
 
-add.addEventListener('click',addForm);
+formRange.addEventListener('click',showformRange);
 
-function addForm(){
+function showformRange(){
 
     const showform = document.querySelector('#adddata');
-
-
+    showform.classList.toggle('columnData');
+    const changeform = document.querySelectorAll('.subform');
+    changeform.forEach((e) => {
+        e.classList.toggle('columnData');
+    });
+    if(showform.classList.contains('columnData')){
+        formRange.innerHTML = `<img class='disimg' style='width: 25px;' src="picture/remove.png">`;
+    }else{
+        formRange.innerHTML = `ตรวจสอบและแก้ไข`;
+    }
     // showform.style.displasy="flex";
-    // showform.style.flexDirection="row";
+    // showform.style.flexDirection="column";
     // showform.style.justifyContent = "flex-start";
     // showform.style.alignItems = "flex-start";
     // showform.style.flexWrap="wrap";
