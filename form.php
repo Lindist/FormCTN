@@ -50,7 +50,7 @@
                 );
             </script>
         <?php }else{ ?>
-            <img class='disimg' src="empty-folder.png">
+            <img class='disimg' src="picture/empty-folder.png">
             <h3 class='disimg'>ไม่มีข้อมูลแบบสอบถาม</h3>
         <?php } ?>
     </div>
