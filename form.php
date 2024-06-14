@@ -18,7 +18,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/formstyle.css">
+    <link rel="stylesheet" href="style/formstyle1.css">
     <title>From</title>
 </head>
 <body>
@@ -29,7 +29,10 @@
     </div>
     </header>
     <div class="container"> 
-    <a href="insertform.php" class="adds">เพิ่มแบบสอบถาม</a>  
+        <div class="btnshow">
+            <a href="insertform.php" class="adds">เพิ่มแบบสอบถาม</a>  
+            <a href="insertform.php" class="adds">เพิ่มแบบสอบถาม</a>  
+        </div>
     <div class="form-box" id= "adddata"> 
     <?php if($count > 0){ ?>
             <script type="text/javascript">
