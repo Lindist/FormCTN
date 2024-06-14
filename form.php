@@ -7,6 +7,10 @@
         header("Location: index.php");
     }
 
+    $result = $conn->query("SELECT * FROM tb_efficiercy_form");
+    $count = count($result->fetchAll());
+    $result->execute();
+
 ?>
 
 <!DOCTYPE html>
@@ -27,8 +31,28 @@
     <div class="container"> 
     <a href="insertform.php" class="adds">เพิ่มแบบสอบถาม</a>  
     <div class="form-box" id= "adddata"> 
-        <img class='disimg' src="picture/empty-folder.png">
-        <h3 class='disimg'>ไม่มีข้อมูลแบบสอบถาม</h3>
+    <?php if($count > 0){ ?>
+            <script type="text/javascript">
+                const showform = document.querySelector('#adddata');
+                showform.classList.remove('form-box');
+                showform.classList.add('grid');
+                showform.insertAdjacentHTML("beforeend",`
+                <?php for($c = 1;$c <= $count;$c++){ ?>
+                        <?php $row = $result->fetch(PDO::FETCH_ASSOC); ?>
+                        <div class='container120'>
+                        <div class='subform'>
+                        <h2>แบบฟอร์มที่ <?php echo $c; ?></h2>
+                        <div class='text'><?php echo $row['form_name']; ?></div>
+                        <a href='#' id='btn'>ข้อมูล</a>
+                        </div>
+                        </div>
+                <?php } ?>`
+                );
+            </script>
+        <?php }else{ ?>
+            <img class='disimg' src="empty-folder.png">
+            <h3 class='disimg'>ไม่มีข้อมูลแบบสอบถาม</h3>
+        <?php } ?>
     </div>
     </div>
     <style>
@@ -68,6 +92,6 @@
         border-radius: 5px;
     }
         </style>
-    <script src="script/script_add_data.js"></script>
+    <script src="script/script_add_data1.js"></script>
 </body>
 </html>

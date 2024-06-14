@@ -1,3 +1,14 @@
+<?php
+
+    session_start();
+    require 'config.php';
+
+    if (!isset($_SESSION['user_id'])) {
+        header("Location: index.php");
+    }
+
+?>
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -38,12 +49,12 @@
     </head>
     <body>
         <div class="main container col-11 bg-white py-1 my-3 rounded">
-            <form>
+            <form action= "insertData.php" method="post">
                 <h1 class="text-center my-5">แบบฟอร์มประเมินประสิทธิภาพ</h1>
                     <!-- Title_Content -->
                     <div class="head_content mt-5 mb-2">
                         <label class="form-label">ชื่อแบบฟอร์ม</label>
-                        <input type="text" class="rad form-control">
+                        <input type="text" name="formname" id="formname" class="rad form-control">
 
                         <label class="form-label mt-2">คำชี้แจง</label>
                         <textarea class="rad form-control" rows="5"></textarea>
