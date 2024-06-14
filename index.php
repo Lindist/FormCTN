@@ -44,7 +44,7 @@ unset($_SESSION['show_login']); // Clear the session flag after use
             <div class="text-3xl font-bold">CTN Phrae</div>
             <ul class="flex space-x-6">
                 <li>
-                    <a href="#" class="flex items-center" onclick="openPopup()">
+                    <a href="#" class="flex items-center " onclick="openPopup()">
                         เข้าสู่ระบบ <i class="fa-solid fa-right-to-bracket ml-2"></i>
                     </a>
                 </li>

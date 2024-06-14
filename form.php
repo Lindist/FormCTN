@@ -25,7 +25,7 @@
     </div>
     </header>
     <div class="container"> 
-    <a href="#" class="adds">เพิ่มแบบสอบถาม</a>  
+    <a href="insertform.php" class="adds">เพิ่มแบบสอบถาม</a>  
     <div class="form-box" id= "adddata"> 
         <img class='disimg' src="picture/empty-folder.png">
         <h3 class='disimg'>ไม่มีข้อมูลแบบสอบถาม</h3>
