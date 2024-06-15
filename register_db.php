@@ -12,23 +12,23 @@
         $std_id = $_POST['std_id'];
     }
 
+    $_SESSION['show_register'] = true; // Flag to show the register element
+    $_SESSION['title'] = $title;
+    $_SESSION['fname'] = $fname;
+    $_SESSION['lname'] = $lname;
+    $_SESSION['std_id'] = $std_id;
+
     if (empty($fname)) {
-        // $_SESSION['register_error'] = "Please enter your fname";
-        // header("location: index.php");
         $_SESSION['register_error'] = "กรุณากรอกชื่อจริงของคุณ";
-        $_SESSION['show_register'] = true; // Flag to show the register element
         header("Location: index.php");
     } else if (empty($lname)) {
         $_SESSION['register_error'] = "กรุณากรอกนามสกุลของคุณ";
-        $_SESSION['show_register'] = true; // Flag to show the register element
         header("location: index.php");
     } else if (empty($std_id)) {
         $_SESSION['register_error'] = "กรุณากรอกรหัสนักศึกษาของคุณ";
-        $_SESSION['show_register'] = true; // Flag to show the register element
         header("location: index.php");
     } else if (strlen($std_id) !== $Length) {
         $_SESSION['register_error'] = "จำนวนรหัสนักศึกษาของคุณไม่กูกต้อง";
-        $_SESSION['show_register'] = true; // Flag to show the register element
         header("location: index.php");
     } else {
 
@@ -38,7 +38,6 @@
 
         if ($std_idExists) {
             $_SESSION['register_error'] = "รหัสนักศึกษานี้อยู่ในฐานข้อมูลแล้ว";
-            $_SESSION['show_register'] = true; // Flag to show the register element
             header("location: index.php");
         } else {
 
@@ -51,7 +50,6 @@
                 $stmt -> execute([$title, $fname, $lname, $std_id]);
 
                 $_SESSION['register_success'] = "<p>สมัครสมาชิกสำเร็จ</p><a href='#' class='mx-1 hover:underline underline-offset-1' onclick='openPopup()'>คลิกที่นี่</a><p>เพื่อเข้าสู่ระบบ</p>";
-                $_SESSION['show_register'] = true; // Flag to show the register element
                 // echo $title;
                 // echo $fname;
                 // echo $lname;
@@ -60,7 +58,6 @@
 
             } catch (PDOException $e) {
                 $_SESSION['register_error'] = "มีบางอย่างผิดพลาดกรุณาลองใหม่อักครั้ง";
-                $_SESSION['show_register'] = true; // Flag to show the register element
                 echo "Registration failed: " . $e->getMessage();
                 header("location: index.php");
             }

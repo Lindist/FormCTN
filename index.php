@@ -1,6 +1,10 @@
 <?php
 
 session_start();
+
+if (isset($_SESSION['user_id'])) {
+    header("Location: form.php");
+}
     
 $registerClass = isset($_SESSION['show_register']) && $_SESSION['show_register'] ? '' : 'hidden';
 unset($_SESSION['show_register']); // Clear the session flag after use
@@ -8,9 +12,8 @@ unset($_SESSION['show_register']); // Clear the session flag after use
 $loginClass = isset($_SESSION['show_login']) && $_SESSION['show_login'] ? '' : 'hidden';
 unset($_SESSION['show_login']); // Clear the session flag after use
 
-if (isset($_SESSION['user_id'])) {
-    header("Location: form.php");
-}
+$fname = isset($_SESSION['fname']) && $_SESSION['fname'] ? $_SESSION['fname'] : '';
+unset($_SESSION['fname']); // Clear the session flag after use
 
 ?>
 
@@ -139,7 +142,7 @@ if (isset($_SESSION['user_id'])) {
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="fname">
                         ชื่อ
                     </label>
-                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="fname" type="text" placeholder="ชื่อ">
+                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" value="<?= $fname ?>" name="fname" type="text" placeholder="ชื่อ">
                 </div>
                 <div class="mb-4">
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="lname">
