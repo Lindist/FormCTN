@@ -60,8 +60,8 @@
                         <div class='text'><?php echo $row['form_name']; ?></div>
                         <div class="btns">
                         <a href='ShowallData.php?id=<?php echo $row['form_id']; ?>&id_input=<?php echo $row1['Input_id']; ?>&id_process=<?php echo $row2['process_id']; ?>&id_report=<?php echo $row3['report_id']; ?>&id_senrity=<?php echo $row4['senrity_id']; ?>' id='btn'>ดูข้อมูล</a>
-                        <a href='#?id=<?php echo $row['form_id']; ?>' id='btnedit'>แก้ไข</a>
-                        <a href='#?id=<?php echo $row['form_id']; ?>' id='btndelete'>ลบ</a>
+                        <a href='#?id=<?php echo $row['form_id']; ?>&id_input=<?php echo $row1['Input_id']; ?>&id_process=<?php echo $row2['process_id']; ?>&id_report=<?php echo $row3['report_id']; ?>&id_senrity=<?php echo $row4['senrity_id']; ?>' id='btnedit'>แก้ไข</a>
+                        <a href='#?id=<?php echo $row['form_id']; ?>&id_input=<?php echo $row1['Input_id']; ?>&id_process=<?php echo $row2['process_id']; ?>&id_report=<?php echo $row3['report_id']; ?>&id_senrity=<?php echo $row4['senrity_id']; ?>' id='btndelete'>ลบ</a>
                         </div>
                         </div>
                         </div>
