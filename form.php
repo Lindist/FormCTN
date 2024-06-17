@@ -47,7 +47,7 @@
                         <h2>แบบฟอร์มที่ <?php echo $c; ?></h2>
                         <div class='text'><?php echo $row['form_name']; ?></div>
                         <div class="btns">
-                        <a href='#' id='btn'>ดูข้อมูล</a>
+                        <a href='ShowallData.php?id=<?php echo $row['form_id'] ?>' id='btn'>ดูข้อมูล</a>
                         <a href='#' id='btnedit'>แก้ไข</a>
                         <a href='#' id='btndelete'>ลบ</a>
                         </div>
