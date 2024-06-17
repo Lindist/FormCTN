@@ -73,6 +73,7 @@ if (isset($_GET['id_senrity'])) {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
 
@@ -123,6 +124,9 @@ if (isset($_GET['id_senrity'])) {
 
 <body>
     <div class="main container col-11 bg-white py-1 my-3 rounded">
+    <button type="button" onclick="window.location.href='form.php';" style="display:flex; background-color:#1a75ff; color:#fff; font-weight:bold; border-radius:10px; padding: 10px; border-color: #444; transition:all .3s ease-in-out;" onmouseover="this.style.backgroundColor='#00f';" onmouseout="this.style.backgroundColor='#1a75ff';">
+            Back to Index
+    </button>
         <form action="form.php">
             <h1 class="text-center my-5">แบบฟอร์มประเมินประสิทธิภาพ</h1>
 
