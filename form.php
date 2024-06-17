@@ -12,6 +12,12 @@
     $result->execute();
     $input = $conn->query("SELECT * FROM tb_input");
     $input->execute();
+    $process = $conn->query("SELECT * FROM tb_process");
+    $process->execute();
+    $report = $conn->query("SELECT * FROM tb_report");
+    $report->execute();
+    $senrity = $conn->query("SELECT * FROM tb_senrity");
+    $senrity->execute();
 
 ?>
 
@@ -45,12 +51,15 @@
                 <?php for($c = 1;$c <= $count;$c++){ ?>
                         <?php $row = $result->fetch(PDO::FETCH_ASSOC); ?>
                         <?php $row1 = $input->fetch(PDO::FETCH_ASSOC); ?>
+                        <?php $row2 = $process->fetch(PDO::FETCH_ASSOC); ?>
+                        <?php $row3 = $report->fetch(PDO::FETCH_ASSOC); ?>
+                        <?php $row4 = $senrity->fetch(PDO::FETCH_ASSOC); ?>
                         <div class='container120'>
                         <div class='subform'>
                         <h2>แบบฟอร์มที่ <?php echo $c; ?></h2>
                         <div class='text'><?php echo $row['form_name']; ?></div>
                         <div class="btns">
-                        <a href='ShowallData.php?id=<?php echo $row['form_id']; ?>&id_input=<?php echo $row1['Input_id']; ?>' id='btn'>ดูข้อมูล</a>
+                        <a href='ShowallData.php?id=<?php echo $row['form_id']; ?>&id_input=<?php echo $row1['Input_id']; ?>&id_process=<?php echo $row2['process_id']; ?>&id_report=<?php echo $row3['report_id']; ?>&id_senrity=<?php echo $row4['senrity_id']; ?>' id='btn'>ดูข้อมูล</a>
                         <a href='#?id=<?php echo $row['form_id']; ?>' id='btnedit'>แก้ไข</a>
                         <a href='#?id=<?php echo $row['form_id']; ?>' id='btndelete'>ลบ</a>
                         </div>
