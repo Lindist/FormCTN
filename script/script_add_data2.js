@@ -1,7 +1,23 @@
 const formRange = document.querySelector('#check-edit');
 
 formRange.addEventListener('click',showformRange);
-
+/*------------- */
+window.onload = function() {
+const urlParams = new URLSearchParams(window.location.search);
+const classToAdd = urlParams.get('class');
+if (classToAdd === 'columnData') {
+    document.getElementById('adddata').classList.add(classToAdd);
+    document.querySelectorAll('.subform').forEach((e) => {
+        e.classList.add(classToAdd);
+    });
+    if(showform.classList.contains('columnData')){
+        formRange.innerHTML = `<img class='disimg' style='width: 25px;' src="picture/remove.png">`;
+    }else{
+        formRange.innerHTML = `ตรวจสอบและแก้ไข`;
+    }
+}
+};
+/*------------- */
 function confirmdel(ids){
     let discon = confirm(`ยืนยันที่จะลบฟอร์มที่${ids[0]}หรือไม่`);
     if(discon === true){

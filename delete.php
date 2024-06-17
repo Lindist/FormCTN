@@ -40,7 +40,7 @@ if (isset($_GET['id_senrity'])) {
 }
 
 
-header("location: form.php");
+header("location: form.php?class=columnData");
 } catch (PDOException $e) {
     echo "Registrati3on failed: " . $e->getMessage();
 }
