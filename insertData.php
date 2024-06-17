@@ -15,28 +15,28 @@ if (isset($_POST['save'])) {
     $edu = $_POST['edu'];
 
     $input_name = $_POST['input_name'];
-    $input_feature = $_POST['input_feature'];
-    $input_setfeature = $_POST['input_setfeature'];
-    $input_result = $_POST['input_result'];
-    $input_compare = $_POST['input_compare'];
+    $input_feature = implode("@", $_POST['input_feature']);
+    $input_setfeature = implode("@", $_POST['input_setfeature']);
+    $input_result = implode("@", $_POST['input_result']);
+    $input_compare = implode("@", $_POST['input_compare']);
 
     $process_name = $_POST['process_name'];
-    $process_feature = $_POST['process_feature'];
-    $process_setfeature = $_POST['process_setfeature'];
-    $process_result = $_POST['process_result'];
-    $process_compare = $_POST['process_compare'];
+    $process_feature = implode("@", $_POST['process_feature']);
+    $process_setfeature = implode("@", $_POST['process_setfeature']);
+    $process_result = implode("@", $_POST['process_result']);
+    $process_compare = implode("@", $_POST['process_compare']);
 
     $report_name = $_POST['report_name'];
-    $report_feature = $_POST['report_feature'];
-    $report_setfeature = $_POST['report_setfeature'];
-    $report_result = $_POST['report_result'];
-    $report_compare = $_POST['report_compare'];
+    $report_feature = implode("@", $_POST['report_feature']);
+    $report_setfeature = implode("@", $_POST['report_setfeature']);
+    $report_result = implode("@", $_POST['report_result']);
+    $report_compare = implode("@", $_POST['report_compare']);
 
     $senrity_name = $_POST['senrity_name'];
-    $senrity_feature = $_POST['senrity_feature'];
-    $senrity_setfeature = $_POST['senrity_setfeature'];
-    $senrity_result = $_POST['senrity_result'];
-    $senrity_compare = $_POST['senrity_compare'];
+    $senrity_feature = implode("@", $_POST['senrity_feature']);
+    $senrity_setfeature = implode("@", $_POST['senrity_setfeature']);
+    $senrity_result = implode("@", $_POST['senrity_result']);
+    $senrity_compare = implode("@", $_POST['senrity_compare']);
 }
 
     $_SESSION['formname'] = $formname;
@@ -79,6 +79,9 @@ if (empty($formname)) {
             unset($_SESSION['ad']);
 
             header("location: form.php");
+
+            // echo $input_feature;
+            // print_r($_POST['input_feature']);
         }
     } catch (PDOException $e) {
         echo "Registrati3on failed: " . $e->getMessage();
