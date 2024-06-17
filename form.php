@@ -10,6 +10,8 @@
     $result = $conn->query("SELECT * FROM tb_efficiercy_form");
     $count = count($result->fetchAll());
     $result->execute();
+    $input = $conn->query("SELECT * FROM tb_input");
+    $input->execute();
 
 ?>
 
@@ -42,12 +44,13 @@
                 showform.insertAdjacentHTML("beforeend",`
                 <?php for($c = 1;$c <= $count;$c++){ ?>
                         <?php $row = $result->fetch(PDO::FETCH_ASSOC); ?>
+                        <?php $row1 = $input->fetch(PDO::FETCH_ASSOC); ?>
                         <div class='container120'>
                         <div class='subform'>
                         <h2>แบบฟอร์มที่ <?php echo $c; ?></h2>
                         <div class='text'><?php echo $row['form_name']; ?></div>
                         <div class="btns">
-                        <a href='ShowallData.php?id=<?php echo $row['form_id']; ?>' id='btn'>ดูข้อมูล</a>
+                        <a href='ShowallData.php?id=<?php echo $row['form_id']; ?>&id_input=<?php echo $row1['Input_id']; ?>' id='btn'>ดูข้อมูล</a>
                         <a href='#?id=<?php echo $row['form_id']; ?>' id='btnedit'>แก้ไข</a>
                         <a href='#?id=<?php echo $row['form_id']; ?>' id='btndelete'>ลบ</a>
                         </div>

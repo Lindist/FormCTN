@@ -175,7 +175,7 @@ if (isset($_GET['id'])) {
                 <label for="">โปรดบันทึกความคิดเห็นของท่านลงในช่องว่างในแต่ละข้อ</label> <br>
                 <!-- Start table -->
                 <label class="form-label mt-2">ด้านที่ 1</label>
-                <input type="text" name="input_name" class="rad form-control mb-2">
+                <div class="rad form-control mb-2"></div>
                 <table class="table table-bordered table-striped text-center mt-3">
                     <thead>
                         <tr>
@@ -189,36 +189,36 @@ if (isset($_GET['id'])) {
                     <tbody>
                         <tr>
                             <th scope="row">1</th>
-                            <td><textarea name="input_feature" class="form-control" rows="3"></textarea></td>
-                            <td><textarea name="input_setfeature" class="form-control" rows="3"></textarea></td>
-                            <td><textarea name="input_result" class="form-control" rows="3"></textarea></td>
-                            <td><textarea name="input_compare" class="form-control" rows="3"></textarea></td>
+                            <td><div class="form-control" rows="3"></div></td>
+                            <td><div class="form-control" rows="3"></div></td>
+                            <td><div class="form-control" rows="3"></div></td>
+                            <td><div class="form-control" rows="3"></div></td>
                         </tr>
                         <tr>
                             <th scope="row">2</th>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
+                            <td><div class="form-control" rows="3"></div></td>
+                            <td><div class="form-control" rows="3"></div></td>
+                            <td><div class="form-control" rows="3"></div></td>
+                            <td><div class="form-control" rows="3"></div></td>
                         </tr>
                         <tr>
                             <th scope="row">3</th>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
+                            <td><div class="form-control" rows="3"></div></td>
+                            <td><div class="form-control" rows="3"></div></td>
+                            <td><div class="form-control" rows="3"></div></td>
+                            <td><div class="form-control" rows="3"></div></td>
                         </tr>
                         <tr>
                             <th scope="row">4</th>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
+                            <td><div class="form-control" rows="3"></div></td>
+                            <td><div class="form-control" rows="3"></div></td>
+                            <td><div class="form-control" rows="3"></div></td>
+                            <td><div class="form-control" rows="3"></div></td>
                         </tr>
                     </tbody>
                 </table>
                 <label class="form-label">ด้านที่ 2</label>
-                <input type="text" name="process_name" class="rad form-control mb-2">
+                <div class="rad form-control mb-2"></div>
                 <table class="table table-bordered table-striped text-center mt-3">
                     <thead>
                         <tr>
@@ -232,36 +232,36 @@ if (isset($_GET['id'])) {
                     <tbody>
                         <tr>
                             <th scope="row">1</th>
-                            <td><textarea name="process_feature" class="form-control" rows="3"></textarea></td>
-                            <td><textarea name="process_setfeature" class="form-control" rows="3"></textarea></td>
-                            <td><textarea name="process_result" class="form-control" rows="3"></textarea></td>
-                            <td><textarea name="process_compare" class="form-control" rows="3"></textarea></td>
+                            <td><div class="form-control" rows="3"></div></td>
+                            <td><div class="form-control" rows="3"></div></td>
+                            <td><div class="form-control" rows="3"></div></td>
+                            <td><div class="form-control" rows="3"></div></td>
                         </tr>
                         <tr>
                             <th scope="row">2</th>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
+                            <td><div class="form-control" rows="3"></div></td>
+                            <td><div class="form-control" rows="3"></div></td>
+                            <td><div class="form-control" rows="3"></div></td>
+                            <td><div class="form-control" rows="3"></div></td>
                         </tr>
                         <tr>
                             <th scope="row">3</th>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
+                            <td><div class="form-control" rows="3"></div></td>
+                            <td><div class="form-control" rows="3"></div></td>
+                            <td><div class="form-control" rows="3"></div></td>
+                            <td><div class="form-control" rows="3"></div></td>
                         </tr>
                         <tr>
                             <th scope="row">4</th>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
+                            <td><div class="form-control" rows="3"></div></td>
+                            <td><div class="form-control" rows="3"></div></td>
+                            <td><div class="form-control" rows="3"></div></td>
+                            <td><div class="form-control" rows="3"></div></td>
                         </tr>
                     </tbody>
                 </table>
                 <label class="form-label">ด้านที่ 3</label>
-                <input type="text" name="report_name" class="rad form-control mb-2">
+                <div class="rad form-control mb-2"></div>
                 <table class="table table-bordered table-striped text-center mt-3">
                     <thead>
                         <tr>
@@ -275,36 +275,36 @@ if (isset($_GET['id'])) {
                     <tbody>
                         <tr>
                             <th scope="row">1</th>
-                            <td><textarea name="report_feature" class="form-control" rows="3"></textarea></td>
-                            <td><textarea name="report_setfeature" class="form-control" rows="3"></textarea></td>
-                            <td><textarea name="report_result" class="form-control" rows="3"></textarea></td>
-                            <td><textarea name="report_compare" class="form-control" rows="3"></textarea></td>
+                            <td><div class="form-control" rows="3"></div></td>
+                            <td><div class="form-control" rows="3"></div></td>
+                            <td><div class="form-control" rows="3"></div></td>
+                            <td><div class="form-control" rows="3"></div></td>
                         </tr>
                         <tr>
                             <th scope="row">2</th>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
+                            <td><div class="form-control" rows="3"></div></td>
+                            <td><div class="form-control" rows="3"></div></td>
+                            <td><div class="form-control" rows="3"></div></td>
+                            <td><div class="form-control" rows="3"></div></td>
                         </tr>
                         <tr>
                             <th scope="row">3</th>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
+                            <td><div class="form-control" rows="3"></div></td>
+                            <td><div class="form-control" rows="3"></div></td>
+                            <td><div class="form-control" rows="3"></div></td>
+                            <td><div class="form-control" rows="3"></div></td>
                         </tr>
                         <tr>
                             <th scope="row">4</th>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
+                            <td><div class="form-control" rows="3"></div></td>
+                            <td><div class="form-control" rows="3"></div></td>
+                            <td><div class="form-control" rows="3"></div></td>
+                            <td><div class="form-control" rows="3"></div></td>
                         </tr>
                     </tbody>
                 </table>
                 <label class="form-label">ด้านที่ 4</label>
-                <input type="text" name="senrity_name" class="rad form-control mb-2">
+                <div class="rad form-control mb-2"></div>
                 <table class="table table-bordered table-striped text-center mt-3">
                     <thead>
                         <tr>
@@ -318,31 +318,31 @@ if (isset($_GET['id'])) {
                     <tbody>
                         <tr>
                             <th scope="row">1</th>
-                            <td><textarea name="senrity_feature" class="form-control" rows="3"></textarea></td>
-                            <td><textarea name="senrity_setfeature" class="form-control" rows="3"></textarea></td>
-                            <td><textarea name="senrity_result" class="form-control" rows="3"></textarea></td>
-                            <td><textarea name="senrity_compare" class="form-control" rows="3"></textarea></td>
+                            <td><div class="form-control" rows="3"></div></td>
+                            <td><div class="form-control" rows="3"></div></td>
+                            <td><div class="form-control" rows="3"></div></td>
+                            <td><div class="form-control" rows="3"></div></td>
                         </tr>
                         <tr>
                             <th scope="row">2</th>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
+                            <td><div class="form-control" rows="3"></div></td>
+                            <td><div class="form-control" rows="3"></div></td>
+                            <td><div class="form-control" rows="3"></div></td>
+                            <td><div class="form-control" rows="3"></div></td>
                         </tr>
                         <tr>
                             <th scope="row">3</th>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
+                            <td><div class="form-control" rows="3"></div></td>
+                            <td><div class="form-control" rows="3"></div></td>
+                            <td><div class="form-control" rows="3"></div></td>
+                            <td><div class="form-control" rows="3"></div></td>
                         </tr>
                         <tr>
                             <th scope="row">4</th>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
+                            <td><div class="form-control" rows="3"></div></td>
+                            <td><div class="form-control" rows="3"></div></td>
+                            <td><div class="form-control" rows="3"></div></td>
+                            <td><div class="form-control" rows="3"></div></td>
                         </tr>
                     </tbody>
                 </table>
