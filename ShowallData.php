@@ -101,8 +101,8 @@ if (isset($_GET['id'])) {
                 <div class="group-row mt-3">
                     <div class="mb-3 row">
                         <label class="col-3 col-form-label w-50 text-center">เพศ</label>
-                        <?php if($row['form_gender'] == "ชาย" ) { ?>
                         <div class="col mt-2">
+                            <?php if($row['form_gender'] == "ชาย" ) { ?>
                             <input class="rad form-check-input" type="radio" value="ชาย" name="gender" checked>
                             <label class="form-check-label">
                                 ชาย

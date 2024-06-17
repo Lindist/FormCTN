@@ -174,31 +174,31 @@ unset($_SESSION['ad']); // Clear the session flag after use
                     <tbody>
                         <tr>
                             <th scope="row">1</th>
-                            <td><textarea name="input_feature" class="form-control" rows="3"></textarea></td>
-                            <td><textarea name="input_setfeature" class="form-control" rows="3"></textarea></td>
-                            <td><textarea name="input_result" class="form-control" rows="3"></textarea></td>
-                            <td><textarea name="input_compare" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="input_feature[]" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="input_setfeature[]" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="input_result[]" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="input_compare[]" class="form-control" rows="3"></textarea></td>
                         </tr>
                         <tr>
                             <th scope="row">2</th>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="input_feature[]" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="input_setfeature[]" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="input_result[]" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="input_compare[]" class="form-control" rows="3"></textarea></td>
                         </tr>
                         <tr>
                             <th scope="row">3</th>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="input_feature[]" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="input_setfeature[]" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="input_result[]" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="input_compare[]" class="form-control" rows="3"></textarea></td>
                         </tr>
                         <tr>
                             <th scope="row">4</th>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="input_feature[]" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="input_setfeature[]" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="input_result[]" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="input_compare[]" class="form-control" rows="3"></textarea></td>
                         </tr>
                     </tbody>
                 </table>
@@ -217,31 +217,31 @@ unset($_SESSION['ad']); // Clear the session flag after use
                     <tbody>
                         <tr>
                             <th scope="row">1</th>
-                            <td><textarea name="process_feature" class="form-control" rows="3"></textarea></td>
-                            <td><textarea name="process_setfeature" class="form-control" rows="3"></textarea></td>
-                            <td><textarea name="process_result" class="form-control" rows="3"></textarea></td>
-                            <td><textarea name="process_compare" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="process_feature[]" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="process_setfeature[]" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="process_result[]" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="process_compare[]" class="form-control" rows="3"></textarea></td>
                         </tr>
                         <tr>
                             <th scope="row">2</th>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="process_feature[]" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="process_setfeature[]" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="process_result[]" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="process_compare[]" class="form-control" rows="3"></textarea></td>
                         </tr>
                         <tr>
                             <th scope="row">3</th>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="process_feature[]" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="process_setfeature[]" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="process_result[]" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="process_compare[]" class="form-control" rows="3"></textarea></td>
                         </tr>
                         <tr>
                             <th scope="row">4</th>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="process_feature[]" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="process_setfeature[]" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="process_result[]" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="process_compare[]" class="form-control" rows="3"></textarea></td>
                         </tr>
                     </tbody>
                 </table>
@@ -260,31 +260,31 @@ unset($_SESSION['ad']); // Clear the session flag after use
                     <tbody>
                         <tr>
                             <th scope="row">1</th>
-                            <td><textarea name="report_feature" class="form-control" rows="3"></textarea></td>
-                            <td><textarea name="report_setfeature" class="form-control" rows="3"></textarea></td>
-                            <td><textarea name="report_result" class="form-control" rows="3"></textarea></td>
-                            <td><textarea name="report_compare" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="report_feature[]" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="report_setfeature[]" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="report_result[]" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="report_compare[]" class="form-control" rows="3"></textarea></td>
                         </tr>
                         <tr>
                             <th scope="row">2</th>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="report_feature[]" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="report_setfeature[]" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="report_result[]" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="report_compare[]" class="form-control" rows="3"></textarea></td>
                         </tr>
                         <tr>
                             <th scope="row">3</th>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="report_feature[]" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="report_setfeature[]" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="report_result[]" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="report_compare[]" class="form-control" rows="3"></textarea></td>
                         </tr>
                         <tr>
                             <th scope="row">4</th>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="report_feature[]" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="report_setfeature[]" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="report_result[]" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="report_compare[]" class="form-control" rows="3"></textarea></td>
                         </tr>
                     </tbody>
                 </table>
@@ -303,31 +303,31 @@ unset($_SESSION['ad']); // Clear the session flag after use
                     <tbody>
                         <tr>
                             <th scope="row">1</th>
-                            <td><textarea name="senrity_feature" class="form-control" rows="3"></textarea></td>
-                            <td><textarea name="senrity_setfeature" class="form-control" rows="3"></textarea></td>
-                            <td><textarea name="senrity_result" class="form-control" rows="3"></textarea></td>
-                            <td><textarea name="senrity_compare" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="senrity_feature[]" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="senrity_setfeature[]" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="senrity_result[]" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="senrity_compare[]" class="form-control" rows="3"></textarea></td>
                         </tr>
                         <tr>
                             <th scope="row">2</th>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="senrity_feature[]" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="senrity_setfeature[]" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="senrity_result[]" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="senrity_compare[]" class="form-control" rows="3"></textarea></td>
                         </tr>
                         <tr>
                             <th scope="row">3</th>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="senrity_feature[]" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="senrity_setfeature[]" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="senrity_result[]" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="senrity_compare[]" class="form-control" rows="3"></textarea></td>
                         </tr>
                         <tr>
                             <th scope="row">4</th>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
-                            <td><textarea class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="senrity_feature[]" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="senrity_setfeature[]" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="senrity_result[]" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="senrity_compare[]" class="form-control" rows="3"></textarea></td>
                         </tr>
                     </tbody>
                 </table>
