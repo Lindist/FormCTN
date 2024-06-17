@@ -18,6 +18,17 @@ if (isset($_GET['id'])) {
     // echo "</script>";
     // print_r($row);
 }
+if (isset($_GET['id_input'])) {
+    $input_id = $_GET['id_input'];
+    $result1 = $conn->query("SELECT * FROM tb_input  WHERE Input_id = '$input_id'"); 
+    $result1->execute();
+    $row1 = $result1->fetch(PDO::FETCH_ASSOC);
+    $input_feature = preg_split("/@/", $row1["Input_feature"]);
+    $input_setfeature = preg_split("/@/", $row1["Input_setfeature"]);
+    $input_result = preg_split("/@/", $row1["Input_result"]);
+    $input_compare = preg_split("/@/", $row1["Input_compare"]);
+    // print_r($input_feature);
+}
 
 ?>
 
@@ -175,7 +186,7 @@ if (isset($_GET['id'])) {
                 <label for="">โปรดบันทึกความคิดเห็นของท่านลงในช่องว่างในแต่ละข้อ</label> <br>
                 <!-- Start table -->
                 <label class="form-label mt-2">ด้านที่ 1</label>
-                <div class="rad form-control mb-2"></div>
+                <div class="rad form-control mb-2"><?php echo $row1["Input_name"]; ?></div>
                 <table class="table table-bordered table-striped text-center mt-3">
                     <thead>
                         <tr>
@@ -189,31 +200,31 @@ if (isset($_GET['id'])) {
                     <tbody>
                         <tr>
                             <th scope="row">1</th>
-                            <td><div class="form-control" rows="3"></div></td>
-                            <td><div class="form-control" rows="3"></div></td>
-                            <td><div class="form-control" rows="3"></div></td>
-                            <td><div class="form-control" rows="3"></div></td>
+                            <td><div class="form-control" rows="3"><?php echo $input_feature[0]; ?></div></td>
+                            <td><div class="form-control" rows="3"><?php echo $input_setfeature[0]; ?></div></td>
+                            <td><div class="form-control" rows="3"><?php echo $input_result[0]; ?></div></td>
+                            <td><div class="form-control" rows="3"><?php echo $input_compare[0]; ?></div></td>
                         </tr>
                         <tr>
                             <th scope="row">2</th>
-                            <td><div class="form-control" rows="3"></div></td>
-                            <td><div class="form-control" rows="3"></div></td>
-                            <td><div class="form-control" rows="3"></div></td>
-                            <td><div class="form-control" rows="3"></div></td>
+                            <td><div class="form-control" rows="3"><?php echo $input_feature[1]; ?></div></td>
+                            <td><div class="form-control" rows="3"><?php echo $input_setfeature[1]; ?></div></td>
+                            <td><div class="form-control" rows="3"><?php echo $input_result[1]; ?></div></td>
+                            <td><div class="form-control" rows="3"><?php echo $input_compare[1]; ?></div></td>
                         </tr>
                         <tr>
                             <th scope="row">3</th>
-                            <td><div class="form-control" rows="3"></div></td>
-                            <td><div class="form-control" rows="3"></div></td>
-                            <td><div class="form-control" rows="3"></div></td>
-                            <td><div class="form-control" rows="3"></div></td>
+                            <td><div class="form-control" rows="3"><?php echo $input_feature[2]; ?></div></td>
+                            <td><div class="form-control" rows="3"><?php echo $input_setfeature[2]; ?></div></td>
+                            <td><div class="form-control" rows="3"><?php echo $input_result[2]; ?></div></td>
+                            <td><div class="form-control" rows="3"><?php echo $input_compare[2]; ?></div></td>
                         </tr>
                         <tr>
                             <th scope="row">4</th>
-                            <td><div class="form-control" rows="3"></div></td>
-                            <td><div class="form-control" rows="3"></div></td>
-                            <td><div class="form-control" rows="3"></div></td>
-                            <td><div class="form-control" rows="3"></div></td>
+                            <td><div class="form-control" rows="3"><?php echo $input_feature[3]; ?></div></td>
+                            <td><div class="form-control" rows="3"><?php echo $input_setfeature[3]; ?></div></td>
+                            <td><div class="form-control" rows="3"><?php echo $input_result[3]; ?></div></td>
+                            <td><div class="form-control" rows="3"><?php echo $input_compare[3]; ?></div></td>
                         </tr>
                     </tbody>
                 </table>
