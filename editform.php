@@ -7,12 +7,6 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: index.php");
 }
 
-$formname = isset($_SESSION['formname']) && $_SESSION['formname'] ? $_SESSION['formname'] : '';
-unset($_SESSION['formname']); // Clear the session flag after use
-
-$ad = isset($_SESSION['ad']) && $_SESSION['ad'] ? $_SESSION['ad'] : '';
-unset($_SESSION['ad']); // Clear the session flag after use
-
 ?>
 
 <!doctype html>
