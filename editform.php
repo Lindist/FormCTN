@@ -7,6 +7,8 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: index.php");
 }
 
+
+
 ?>
 
 <!doctype html>
@@ -35,7 +37,7 @@ if (!isset($_SESSION['user_id'])) {
             Back to Index
         </button>
         <form action="insertData.php" method="POST">
-            <h1 class="text-center text-2xl mb-5">แบบฟอร์มประเมินประสิทธิภาพ</h1>
+            <h1 class="text-center text-2xl mb-5">แก้ไขแบบฟอร์มประเมินประสิทธิภาพ</h1>
 
             <?php if (isset($_SESSION['error'])) { ?>
                 <div class="alert bg-yellow-200 text-center py-2 mb-4 rounded">

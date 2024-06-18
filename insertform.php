@@ -13,6 +13,27 @@ unset($_SESSION['formname']); // Clear the session flag after use
 $ad = isset($_SESSION['ad']) && $_SESSION['ad'] ? $_SESSION['ad'] : '';
 unset($_SESSION['ad']); // Clear the session flag after use
 
+$gender = isset($_SESSION['gender']) && $_SESSION['gender'] ? $_SESSION['gender'] : '';
+unset($_SESSION['gender']); // Clear the session flag after use
+
+$type_m = isset($_SESSION['type_m']) && $_SESSION['type_m'] ? $_SESSION['type_m'] : '';
+unset($_SESSION['type_m']); // Clear the session flag after use
+
+$edu = isset($_SESSION['edu']) && $_SESSION['edu'] ? $_SESSION['edu'] : '';
+unset($_SESSION['edu']); // Clear the session flag after use
+
+$input_name = isset($_SESSION['input_name']) && $_SESSION['input_name'] ? $_SESSION['input_name'] : '';
+unset($_SESSION['input_name']); // Clear the session flag after use
+
+$process_name = isset($_SESSION['process_name']) && $_SESSION['process_name'] ? $_SESSION['process_name'] : '';
+unset($_SESSION['process_name']); // Clear the session flag after use
+
+$report_name = isset($_SESSION['report_name']) && $_SESSION['report_name'] ? $_SESSION['report_name'] : '';
+unset($_SESSION['report_name']); // Clear the session flag after use
+
+$senrity_name = isset($_SESSION['senrity_name']) && $_SESSION['senrity_name'] ? $_SESSION['senrity_name'] : '';
+unset($_SESSION['senrity_name']); // Clear the session flag after use
+
 ?>
 
 <!doctype html>
@@ -44,7 +65,7 @@ unset($_SESSION['ad']); // Clear the session flag after use
             <h1 class="text-center text-2xl mb-5">แบบฟอร์มประเมินประสิทธิภาพ</h1>
 
             <?php if (isset($_SESSION['error'])) { ?>
-                <div class="alert bg-yellow-200 text-center py-2 mb-4 rounded">
+                <div class="text-center mb-4 p-3 mt-10 bg-yellow-100 text-yellow-800 border border-yellow-300 rounded">
                     <?php
                     echo $_SESSION['error'];
                     unset($_SESSION['error']);
@@ -67,65 +88,283 @@ unset($_SESSION['ad']); // Clear the session flag after use
                 <label class="block mb-6">ข้อมูลพื้นฐานของผู้กรอกแบบสอบถาม</label>
 
                 <!-- Gender -->
-                <div class="grid grid-cols-2 mb-4">
-                    <label class="block text-center mb-1">เพศ</label>
-                    <div class="mx-2">
-                        <div class="flex items-center">
-                            <input class="my-2 h-6 w-6" type="radio" value="ชาย" name="gender" checked>
-                            <label class="ml-2">ชาย</label>
-                        </div>
-                        <div class="flex items-center">
-                            <input class="my-2 h-6 w-6" type="radio" value="หญิง" name="gender">
-                            <label class="ml-2">หญิง</label>
+                <?php if (empty($gender)) { ?>
+                    <div class="grid grid-cols-2 mb-4">
+                        <label class="block text-center mb-1">เพศ</label>
+                        <div class="mx-2">
+                            <div class="flex items-center">
+                                <input class="my-2 h-6 w-6" type="radio" value="ชาย" name="gender">
+                                <label class="ml-2">ชาย</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input class="my-2 h-6 w-6" type="radio" value="หญิง" name="gender">
+                                <label class="ml-2">หญิง</label>
+                            </div>
                         </div>
                     </div>
-                </div>
+                <?php } else if ($gender == "ชาย") { ?>
+                    <div class="grid grid-cols-2 mb-4">
+                        <label class="block text-center mb-1">เพศ</label>
+                        <div class="mx-2">
+                            <div class="flex items-center">
+                                <input class="my-2 h-6 w-6" type="radio" value="ชาย" name="gender" checked>
+                                <label class="ml-2">ชาย</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input class="my-2 h-6 w-6" type="radio" value="หญิง" name="gender">
+                                <label class="ml-2">หญิง</label>
+                            </div>
+                        </div>
+                    </div>
+                <?php } else if ($gender == "หญิง") { ?>
+                    <div class="grid grid-cols-2 mb-4">
+                        <label class="block text-center mb-1">เพศ</label>
+                        <div class="mx-2">
+                            <div class="flex items-center">
+                                <input class="my-2 h-6 w-6" type="radio" value="ชาย" name="gender">
+                                <label class="ml-2">ชาย</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input class="my-2 h-6 w-6" type="radio" value="หญิง" name="gender" checked>
+                                <label class="ml-2">หญิง</label>
+                            </div>
+                        </div>
+                    </div>
+                <?php } ?>
 
                 <!-- User Type -->
-                <div class="grid grid-cols-2 mb-4">
-                    <label class="block text-center mb-1">ประเภทผู้ใช้</label>
-                    <div class="mx-2">
-                        <div class="flex items-center">
-                            <input class="my-2 h-6 w-6" type="radio" value="อาจารย์" name="type_m">
-                            <label class="ml-2">อาจารย์</label>
-                        </div>
-                        <div class="flex items-center">
-                            <input class="my-2 h-6 w-6" type="radio" value="นักเรียน/นักศึกษา" name="type_m" checked>
-                            <label class="ml-2">นักเรียน/นักศึกษา</label>
-                        </div>
-                        <div class="flex items-center">
-                            <input class="my-2 h-6 w-6" type="radio" value="บุคคลภายนอก" name="type_m">
-                            <label class="ml-2">บุคคลภายนอก</label>
+                <?php if (empty($type_m)) { ?>
+                    <div class="grid grid-cols-2 mb-4">
+                        <label class="block text-center mb-1">ประเภทผู้ใช้</label>
+                        <div class="mx-2">
+                            <div class="flex items-center">
+                                <input class="my-2 h-6 w-6" type="radio" value="อาจารย์" name="type_m">
+                                <label class="ml-2">อาจารย์</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input class="my-2 h-6 w-6" type="radio" value="นักเรียน/นักศึกษา" name="type_m">
+                                <label class="ml-2">นักเรียน/นักศึกษา</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input class="my-2 h-6 w-6" type="radio" value="บุคคลภายนอก" name="type_m">
+                                <label class="ml-2">บุคคลภายนอก</label>
+                            </div>
                         </div>
                     </div>
-                </div>
+                <?php } else if ($type_m == "อาจารย์") { ?>
+                    <div class="grid grid-cols-2 mb-4">
+                        <label class="block text-center mb-1">ประเภทผู้ใช้</label>
+                        <div class="mx-2">
+                            <div class="flex items-center">
+                                <input class="my-2 h-6 w-6" type="radio" value="อาจารย์" name="type_m" checked>
+                                <label class="ml-2">อาจารย์</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input class="my-2 h-6 w-6" type="radio" value="นักเรียน/นักศึกษา" name="type_m">
+                                <label class="ml-2">นักเรียน/นักศึกษา</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input class="my-2 h-6 w-6" type="radio" value="บุคคลภายนอก" name="type_m">
+                                <label class="ml-2">บุคคลภายนอก</label>
+                            </div>
+                        </div>
+                    </div>
+                <?php } else if ($type_m == "นักเรียน/นักศึกษา") { ?>
+                    <div class="grid grid-cols-2 mb-4">
+                        <label class="block text-center mb-1">ประเภทผู้ใช้</label>
+                        <div class="mx-2">
+                            <div class="flex items-center">
+                                <input class="my-2 h-6 w-6" type="radio" value="อาจารย์" name="type_m">
+                                <label class="ml-2">อาจารย์</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input class="my-2 h-6 w-6" type="radio" value="นักเรียน/นักศึกษา" name="type_m" checked>
+                                <label class="ml-2">นักเรียน/นักศึกษา</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input class="my-2 h-6 w-6" type="radio" value="บุคคลภายนอก" name="type_m">
+                                <label class="ml-2">บุคคลภายนอก</label>
+                            </div>
+                        </div>
+                    </div>
+                <?php } else if ($type_m == "บุคคลภายนอก") { ?>
+                    <div class="grid grid-cols-2 mb-4">
+                        <label class="block text-center mb-1">ประเภทผู้ใช้</label>
+                        <div class="mx-2">
+                            <div class="flex items-center">
+                                <input class="my-2 h-6 w-6" type="radio" value="อาจารย์" name="type_m">
+                                <label class="ml-2">อาจารย์</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input class="my-2 h-6 w-6" type="radio" value="นักเรียน/นักศึกษา" name="type_m">
+                                <label class="ml-2">นักเรียน/นักศึกษา</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input class="my-2 h-6 w-6" type="radio" value="บุคคลภายนอก" name="type_m" checked>
+                                <label class="ml-2">บุคคลภายนอก</label>
+                            </div>
+                        </div>
+                    </div>
+                <?php }?>
 
                 <!-- Education Level -->
-                <div class="grid grid-cols-2 mb-4">
-                    <label class="block text-center mb-1">ระดับการศึกษา</label>
-                    <div class="mx-2">
-                        <div class="flex items-center">
-                            <input class="my-2 h-6 w-6" type="radio" value="มัธยมต้น" name="edu">
-                            <label class="ml-2">มัธยมต้น</label>
-                        </div>
-                        <div class="flex items-center">
-                            <input class="my-2 h-6 w-6" type="radio" value="มัธยมปลาย/ปวช." name="edu" checked>
-                            <label class="ml-2">มัธยมปลาย/ปวช.</label>
-                        </div>
-                        <div class="flex items-center">
-                            <input class="my-2 h-6 w-6" type="radio" value="อนุปริญญา/ปวส." name="edu">
-                            <label class="ml-2">อนุปริญญา/ปวส.</label>
-                        </div>
-                        <div class="flex items-center">
-                            <input class="my-2 h-6 w-6" type="radio" value="ป.ตรี" name="edu">
-                            <label class="ml-2">ป.ตรี</label>
-                        </div>
-                        <div class="flex items-center">
-                            <input class="my-2 h-6 w-6" type="radio" value="สูงกว่า ป.ตรี" name="edu">
-                            <label class="ml-2">สูงกว่า ป.ตรี</label>
+                <?php if (empty($edu)) { ?>
+                    <div class="grid grid-cols-2 mb-4">
+                        <label class="block text-center mb-1">ระดับการศึกษา</label>
+                        <div class="mx-2">
+                            <div class="flex items-center">
+                                <input class="my-2 h-6 w-6" type="radio" value="มัธยมต้น" name="edu">
+                                <label class="ml-2">มัธยมต้น</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input class="my-2 h-6 w-6" type="radio" value="มัธยมปลาย/ปวช." name="edu">
+                                <label class="ml-2">มัธยมปลาย/ปวช.</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input class="my-2 h-6 w-6" type="radio" value="อนุปริญญา/ปวส." name="edu">
+                                <label class="ml-2">อนุปริญญา/ปวส.</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input class="my-2 h-6 w-6" type="radio" value="ป.ตรี" name="edu">
+                                <label class="ml-2">ป.ตรี</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input class="my-2 h-6 w-6" type="radio" value="สูงกว่า ป.ตรี" name="edu">
+                                <label class="ml-2">สูงกว่า ป.ตรี</label>
+                            </div>
                         </div>
                     </div>
-                </div>
+                <?php } else if ($edu == "มัธยมต้น") { ?>
+                    <div class="grid grid-cols-2 mb-4">
+                        <label class="block text-center mb-1">ระดับการศึกษา</label>
+                        <div class="mx-2">
+                            <div class="flex items-center">
+                                <input class="my-2 h-6 w-6" type="radio" value="มัธยมต้น" name="edu" checked>
+                                <label class="ml-2">มัธยมต้น</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input class="my-2 h-6 w-6" type="radio" value="มัธยมปลาย/ปวช." name="edu">
+                                <label class="ml-2">มัธยมปลาย/ปวช.</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input class="my-2 h-6 w-6" type="radio" value="อนุปริญญา/ปวส." name="edu">
+                                <label class="ml-2">อนุปริญญา/ปวส.</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input class="my-2 h-6 w-6" type="radio" value="ป.ตรี" name="edu">
+                                <label class="ml-2">ป.ตรี</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input class="my-2 h-6 w-6" type="radio" value="สูงกว่า ป.ตรี" name="edu">
+                                <label class="ml-2">สูงกว่า ป.ตรี</label>
+                            </div>
+                        </div>
+                    </div>
+                <?php } else if ($edu == "มัธยมปลาย/ปวช.") { ?>
+                    <div class="grid grid-cols-2 mb-4">
+                        <label class="block text-center mb-1">ระดับการศึกษา</label>
+                        <div class="mx-2">
+                            <div class="flex items-center">
+                                <input class="my-2 h-6 w-6" type="radio" value="มัธยมต้น" name="edu">
+                                <label class="ml-2">มัธยมต้น</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input class="my-2 h-6 w-6" type="radio" value="มัธยมปลาย/ปวช." name="edu" checked>
+                                <label class="ml-2">มัธยมปลาย/ปวช.</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input class="my-2 h-6 w-6" type="radio" value="อนุปริญญา/ปวส." name="edu">
+                                <label class="ml-2">อนุปริญญา/ปวส.</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input class="my-2 h-6 w-6" type="radio" value="ป.ตรี" name="edu">
+                                <label class="ml-2">ป.ตรี</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input class="my-2 h-6 w-6" type="radio" value="สูงกว่า ป.ตรี" name="edu">
+                                <label class="ml-2">สูงกว่า ป.ตรี</label>
+                            </div>
+                        </div>
+                    </div>
+                <?php } else if ($edu == "อนุปริญญา/ปวส.") { ?>
+                    <div class="grid grid-cols-2 mb-4">
+                        <label class="block text-center mb-1">ระดับการศึกษา</label>
+                        <div class="mx-2">
+                            <div class="flex items-center">
+                                <input class="my-2 h-6 w-6" type="radio" value="มัธยมต้น" name="edu">
+                                <label class="ml-2">มัธยมต้น</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input class="my-2 h-6 w-6" type="radio" value="มัธยมปลาย/ปวช." name="edu">
+                                <label class="ml-2">มัธยมปลาย/ปวช.</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input class="my-2 h-6 w-6" type="radio" value="อนุปริญญา/ปวส." name="edu" checked>
+                                <label class="ml-2">อนุปริญญา/ปวส.</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input class="my-2 h-6 w-6" type="radio" value="ป.ตรี" name="edu">
+                                <label class="ml-2">ป.ตรี</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input class="my-2 h-6 w-6" type="radio" value="สูงกว่า ป.ตรี" name="edu">
+                                <label class="ml-2">สูงกว่า ป.ตรี</label>
+                            </div>
+                        </div>
+                    </div>
+                <?php } else if ($edu == "ป.ตรี") { ?>
+                    <div class="grid grid-cols-2 mb-4">
+                        <label class="block text-center mb-1">ระดับการศึกษา</label>
+                        <div class="mx-2">
+                            <div class="flex items-center">
+                                <input class="my-2 h-6 w-6" type="radio" value="มัธยมต้น" name="edu">
+                                <label class="ml-2">มัธยมต้น</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input class="my-2 h-6 w-6" type="radio" value="มัธยมปลาย/ปวช." name="edu">
+                                <label class="ml-2">มัธยมปลาย/ปวช.</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input class="my-2 h-6 w-6" type="radio" value="อนุปริญญา/ปวส." name="edu">
+                                <label class="ml-2">อนุปริญญา/ปวส.</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input class="my-2 h-6 w-6" type="radio" value="ป.ตรี" name="edu" checked>
+                                <label class="ml-2">ป.ตรี</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input class="my-2 h-6 w-6" type="radio" value="สูงกว่า ป.ตรี" name="edu">
+                                <label class="ml-2">สูงกว่า ป.ตรี</label>
+                            </div>
+                        </div>
+                    </div>
+                <?php } else if ($edu == "สูงกว่า ป.ตรี") { ?>
+                    <div class="grid grid-cols-2 mb-4">
+                        <label class="block text-center mb-1">ระดับการศึกษา</label>
+                        <div class="mx-2">
+                            <div class="flex items-center">
+                                <input class="my-2 h-6 w-6" type="radio" value="มัธยมต้น" name="edu">
+                                <label class="ml-2">มัธยมต้น</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input class="my-2 h-6 w-6" type="radio" value="มัธยมปลาย/ปวช." name="edu">
+                                <label class="ml-2">มัธยมปลาย/ปวช.</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input class="my-2 h-6 w-6" type="radio" value="อนุปริญญา/ปวส." name="edu">
+                                <label class="ml-2">อนุปริญญา/ปวส.</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input class="my-2 h-6 w-6" type="radio" value="ป.ตรี" name="edu">
+                                <label class="ml-2">ป.ตรี</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input class="my-2 h-6 w-6" type="radio" value="สูงกว่า ป.ตรี" name="edu" checked>
+                                <label class="ml-2">สูงกว่า ป.ตรี</label>
+                            </div>
+                        </div>
+                    </div>
+                <?php } ?>
 
                 <!-- Survey Section 2 -->
                 <div class="mb-4">
@@ -136,7 +375,7 @@ unset($_SESSION['ad']); // Clear the session flag after use
 
                     <!-- Section 1 -->
                     <label class="block text-lg font-bold my-2">ด้านที่ 1</label>
-                    <input type="text" name="input_name" class="block w-full border border-gray-300 rounded px-3 py-2 mb-2">
+                    <input type="text" name="input_name" class="block w-full border border-gray-300 rounded px-3 py-2 mb-2" value="<?= $input_name ?>">
 
                     <table class="w-full border border-gray-300 text-center mt-3">
                         <thead>
@@ -182,7 +421,7 @@ unset($_SESSION['ad']); // Clear the session flag after use
 
                     <!-- Section 2 -->
                     <label class="block text-lg font-bold my-2">ด้านที่ 2</label>
-                    <input type="text" name="process_name" class="block w-full border border-gray-300 rounded px-3 py-2 mb-2">
+                    <input type="text" name="process_name" class="block w-full border border-gray-300 rounded px-3 py-2 mb-2" value="<?= $process_name ?>">
 
                     <table class="w-full border border-gray-300 text-center mt-3">
                         <thead>
@@ -228,7 +467,7 @@ unset($_SESSION['ad']); // Clear the session flag after use
 
                     <!-- Section 3 -->
                     <label class="block text-lg font-bold my-2">ด้านที่ 3</label>
-                    <input type="text" name="report_name" class="block w-full border border-gray-300 rounded px-3 py-2 mb-2">
+                    <input type="text" name="report_name" class="block w-full border border-gray-300 rounded px-3 py-2 mb-2" value="<?= $report_name ?>">
 
                     <table class="w-full border border-gray-300 text-center mt-3">
                         <thead>
@@ -274,7 +513,7 @@ unset($_SESSION['ad']); // Clear the session flag after use
 
                     <!-- Section 4 -->
                     <label class="block text-lg font-bold my-2">ด้านที่ 4</label>
-                    <input type="text" name="senrity_name" class="block w-full border border-gray-300 rounded px-3 py-2 mb-2">
+                    <input type="text" name="senrity_name" class="block w-full border border-gray-300 rounded px-3 py-2 mb-2" value="<?= $senrity_name ?>">
 
                     <table class="w-full border border-gray-300 text-center mt-3">
                         <thead>

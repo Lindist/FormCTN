@@ -38,7 +38,7 @@
     </header>
     <div class="container"> 
         <div class="btnshow">
-            <a href="insertform.php" class="adds">เพิ่มแบบสอบถาม</a>  
+            <a href="insertform.php" class="adds">เพิ่มแบบสอบถาม</a>
             <a href="#" class="adds" id="check-edit">ตรวจสอบและแก้ไข</a>  
         </div>
     <div class="form-box" id="adddata"> 
