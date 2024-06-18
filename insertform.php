@@ -34,6 +34,54 @@ unset($_SESSION['report_name']); // Clear the session flag after use
 $senrity_name = isset($_SESSION['senrity_name']) && $_SESSION['senrity_name'] ? $_SESSION['senrity_name'] : '';
 unset($_SESSION['senrity_name']); // Clear the session flag after use
 
+$senrity_name = isset($_SESSION['senrity_name']) && $_SESSION['senrity_name'] ? $_SESSION['senrity_name'] : '';
+unset($_SESSION['senrity_name']); // Clear the session flag after use
+
+$input_feature = isset($_SESSION['input_feature']) && $_SESSION['input_feature'] ? $_SESSION['input_feature'] : '';
+unset($_SESSION['input_feature']); // Clear the session flag after use
+
+$senrity_name = isset($_SESSION['senrity_name']) && $_SESSION['senrity_name'] ? $_SESSION['senrity_name'] : '';
+unset($_SESSION['senrity_name']); // Clear the session flag after use
+
+$senrity_name = isset($_SESSION['senrity_name']) && $_SESSION['senrity_name'] ? $_SESSION['senrity_name'] : '';
+unset($_SESSION['senrity_name']); // Clear the session flag after use
+
+$senrity_name = isset($_SESSION['senrity_name']) && $_SESSION['senrity_name'] ? $_SESSION['senrity_name'] : '';
+unset($_SESSION['senrity_name']); // Clear the session flag after use
+
+$senrity_name = isset($_SESSION['senrity_name']) && $_SESSION['senrity_name'] ? $_SESSION['senrity_name'] : '';
+unset($_SESSION['senrity_name']); // Clear the session flag after use
+
+$senrity_name = isset($_SESSION['senrity_name']) && $_SESSION['senrity_name'] ? $_SESSION['senrity_name'] : '';
+unset($_SESSION['senrity_name']); // Clear the session flag after use
+
+$senrity_name = isset($_SESSION['senrity_name']) && $_SESSION['senrity_name'] ? $_SESSION['senrity_name'] : '';
+unset($_SESSION['senrity_name']); // Clear the session flag after use
+
+$senrity_name = isset($_SESSION['senrity_name']) && $_SESSION['senrity_name'] ? $_SESSION['senrity_name'] : '';
+unset($_SESSION['senrity_name']); // Clear the session flag after use
+
+$senrity_name = isset($_SESSION['senrity_name']) && $_SESSION['senrity_name'] ? $_SESSION['senrity_name'] : '';
+unset($_SESSION['senrity_name']); // Clear the session flag after use
+
+$senrity_name = isset($_SESSION['senrity_name']) && $_SESSION['senrity_name'] ? $_SESSION['senrity_name'] : '';
+unset($_SESSION['senrity_name']); // Clear the session flag after use
+
+$senrity_name = isset($_SESSION['senrity_name']) && $_SESSION['senrity_name'] ? $_SESSION['senrity_name'] : '';
+unset($_SESSION['senrity_name']); // Clear the session flag after use
+
+$senrity_name = isset($_SESSION['senrity_name']) && $_SESSION['senrity_name'] ? $_SESSION['senrity_name'] : '';
+unset($_SESSION['senrity_name']); // Clear the session flag after use
+
+$senrity_name = isset($_SESSION['senrity_name']) && $_SESSION['senrity_name'] ? $_SESSION['senrity_name'] : '';
+unset($_SESSION['senrity_name']); // Clear the session flag after use
+
+$senrity_name = isset($_SESSION['senrity_name']) && $_SESSION['senrity_name'] ? $_SESSION['senrity_name'] : '';
+unset($_SESSION['senrity_name']); // Clear the session flag after use
+
+$senrity_name = isset($_SESSION['senrity_name']) && $_SESSION['senrity_name'] ? $_SESSION['senrity_name'] : '';
+unset($_SESSION['senrity_name']); // Clear the session flag after use
+
 ?>
 
 <!doctype html>
