@@ -7,6 +7,12 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: index.php");
 }
 
+$keys = [];
+
+for ($i = 0; $i < 20; $i++) { // Replace 10 with any large number or condition
+    $keys[$i] = null;
+}
+
 $formname = isset($_SESSION['formname']) && $_SESSION['formname'] ? $_SESSION['formname'] : '';
 unset($_SESSION['formname']); // Clear the session flag after use
 
@@ -34,53 +40,54 @@ unset($_SESSION['report_name']); // Clear the session flag after use
 $senrity_name = isset($_SESSION['senrity_name']) && $_SESSION['senrity_name'] ? $_SESSION['senrity_name'] : '';
 unset($_SESSION['senrity_name']); // Clear the session flag after use
 
-$senrity_name = isset($_SESSION['senrity_name']) && $_SESSION['senrity_name'] ? $_SESSION['senrity_name'] : '';
-unset($_SESSION['senrity_name']); // Clear the session flag after use
-
-$input_feature = isset($_SESSION['input_feature']) && $_SESSION['input_feature'] ? $_SESSION['input_feature'] : '';
+$input_feature = isset($_SESSION['input_feature']) && $_SESSION['input_feature'] ? $_SESSION['input_feature'] : $keys;
 unset($_SESSION['input_feature']); // Clear the session flag after use
 
-$senrity_name = isset($_SESSION['senrity_name']) && $_SESSION['senrity_name'] ? $_SESSION['senrity_name'] : '';
-unset($_SESSION['senrity_name']); // Clear the session flag after use
+$input_setfeature = isset($_SESSION['input_setfeature']) && $_SESSION['input_setfeature'] ? $_SESSION['input_setfeature'] : $keys;
+unset($_SESSION['input_setfeature']); // Clear the session flag after use
 
-$senrity_name = isset($_SESSION['senrity_name']) && $_SESSION['senrity_name'] ? $_SESSION['senrity_name'] : '';
-unset($_SESSION['senrity_name']); // Clear the session flag after use
+$input_result = isset($_SESSION['input_result']) && $_SESSION['input_result'] ? $_SESSION['input_result'] : $keys;
+unset($_SESSION['input_result']); // Clear the session flag after use
 
-$senrity_name = isset($_SESSION['senrity_name']) && $_SESSION['senrity_name'] ? $_SESSION['senrity_name'] : '';
-unset($_SESSION['senrity_name']); // Clear the session flag after use
+$input_compare = isset($_SESSION['input_compare']) && $_SESSION['input_compare'] ? $_SESSION['input_compare'] : $keys;
+unset($_SESSION['input_compare']); // Clear the session flag after use
 
-$senrity_name = isset($_SESSION['senrity_name']) && $_SESSION['senrity_name'] ? $_SESSION['senrity_name'] : '';
-unset($_SESSION['senrity_name']); // Clear the session flag after use
+$process_feature = isset($_SESSION['process_feature']) && $_SESSION['process_feature'] ? $_SESSION['process_feature'] : $keys;
+unset($_SESSION['process_feature']); // Clear the session flag after use
 
-$senrity_name = isset($_SESSION['senrity_name']) && $_SESSION['senrity_name'] ? $_SESSION['senrity_name'] : '';
-unset($_SESSION['senrity_name']); // Clear the session flag after use
+$process_setfeature = isset($_SESSION['process_setfeature']) && $_SESSION['process_setfeature'] ? $_SESSION['process_setfeature'] : $keys;
+unset($_SESSION['process_setfeature']); // Clear the session flag after use
 
-$senrity_name = isset($_SESSION['senrity_name']) && $_SESSION['senrity_name'] ? $_SESSION['senrity_name'] : '';
-unset($_SESSION['senrity_name']); // Clear the session flag after use
+$process_result = isset($_SESSION['process_result']) && $_SESSION['process_result'] ? $_SESSION['process_result'] : $keys;
+unset($_SESSION['process_result']); // Clear the session flag after use
 
-$senrity_name = isset($_SESSION['senrity_name']) && $_SESSION['senrity_name'] ? $_SESSION['senrity_name'] : '';
-unset($_SESSION['senrity_name']); // Clear the session flag after use
+$process_compare = isset($_SESSION['process_compare']) && $_SESSION['process_compare'] ? $_SESSION['process_compare'] : $keys;
+unset($_SESSION['process_compare']); // Clear the session flag after use
 
-$senrity_name = isset($_SESSION['senrity_name']) && $_SESSION['senrity_name'] ? $_SESSION['senrity_name'] : '';
-unset($_SESSION['senrity_name']); // Clear the session flag after use
+$report_feature = isset($_SESSION['report_feature']) && $_SESSION['report_feature'] ? $_SESSION['report_feature'] : $keys;
+unset($_SESSION['report_feature']); // Clear the session flag after use
 
-$senrity_name = isset($_SESSION['senrity_name']) && $_SESSION['senrity_name'] ? $_SESSION['senrity_name'] : '';
-unset($_SESSION['senrity_name']); // Clear the session flag after use
+$report_setfeature = isset($_SESSION['report_setfeature']) && $_SESSION['report_setfeature'] ? $_SESSION['report_setfeature'] : $keys;
+unset($_SESSION['report_setfeature']); // Clear the session flag after use
 
-$senrity_name = isset($_SESSION['senrity_name']) && $_SESSION['senrity_name'] ? $_SESSION['senrity_name'] : '';
-unset($_SESSION['senrity_name']); // Clear the session flag after use
+$report_result = isset($_SESSION['report_result']) && $_SESSION['report_result'] ? $_SESSION['report_result'] : $keys;
+unset($_SESSION['report_result']); // Clear the session flag after use
 
-$senrity_name = isset($_SESSION['senrity_name']) && $_SESSION['senrity_name'] ? $_SESSION['senrity_name'] : '';
-unset($_SESSION['senrity_name']); // Clear the session flag after use
+$report_compare = isset($_SESSION['report_compare']) && $_SESSION['report_compare'] ? $_SESSION['report_compare'] : $keys;
+unset($_SESSION['report_compare']); // Clear the session flag after use
 
-$senrity_name = isset($_SESSION['senrity_name']) && $_SESSION['senrity_name'] ? $_SESSION['senrity_name'] : '';
-unset($_SESSION['senrity_name']); // Clear the session flag after use
+$senrity_feature = isset($_SESSION['senrity_feature']) && $_SESSION['senrity_feature'] ? $_SESSION['senrity_feature'] : $keys;
+unset($_SESSION['senrity_feature']); // Clear the session flag after use
 
-$senrity_name = isset($_SESSION['senrity_name']) && $_SESSION['senrity_name'] ? $_SESSION['senrity_name'] : '';
-unset($_SESSION['senrity_name']); // Clear the session flag after use
+$senrity_setfeature = isset($_SESSION['senrity_setfeature']) && $_SESSION['senrity_setfeature'] ? $_SESSION['senrity_setfeature'] : $keys;
+unset($_SESSION['senrity_setfeature']); // Clear the session flag after use
 
-$senrity_name = isset($_SESSION['senrity_name']) && $_SESSION['senrity_name'] ? $_SESSION['senrity_name'] : '';
-unset($_SESSION['senrity_name']); // Clear the session flag after use
+$senrity_result = isset($_SESSION['senrity_result']) && $_SESSION['senrity_result'] ? $_SESSION['senrity_result'] : $keys;
+unset($_SESSION['senrity_result']); // Clear the session flag after use
+
+$senrity_compare = isset($_SESSION['senrity_compare']) && $_SESSION['senrity_compare'] ? $_SESSION['senrity_compare'] : $keys;
+unset($_SESSION['senrity_compare']); // Clear the session flag after use
+
 
 ?>
 
@@ -438,31 +445,31 @@ unset($_SESSION['senrity_name']); // Clear the session flag after use
                         <tbody>
                             <tr class="odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
                                 <td class="border border-gray-300 py-2">1</td>
-                                <td class="border border-gray-300 py-2"><textarea name="input_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="input_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="input_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="input_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="input_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_feature[0] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="input_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_setfeature[0] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="input_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_result[0] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="input_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_compare[0] ?></textarea></td>
                             </tr>
                             <tr class="odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
                                 <td class="border border-gray-300 py-2">2</td>
-                                <td class="border border-gray-300 py-2"><textarea name="input_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="input_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="input_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="input_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="input_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_feature[1] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="input_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_setfeature[1] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="input_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_result[1] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="input_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_compare[1] ?></textarea></td>
                             </tr>
                             <tr class="odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
                                 <td class="border border-gray-300 py-2">3</td>
-                                <td class="border border-gray-300 py-2"><textarea name="input_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="input_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="input_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="input_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="input_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_feature[2] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="input_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_setfeature[2] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="input_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_result[2] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="input_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_compare[2] ?></textarea></td>
                             </tr>
                             <tr class="odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
                                 <td class="border border-gray-300 py-2">4</td>
-                                <td class="border border-gray-300 py-2"><textarea name="input_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="input_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="input_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="input_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="input_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_feature[3] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="input_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_setfeature[3] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="input_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_result[3] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="input_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_compare[3] ?></textarea></td>
                             </tr>
                         </tbody>
                     </table>
@@ -484,31 +491,31 @@ unset($_SESSION['senrity_name']); // Clear the session flag after use
                         <tbody>
                             <tr class="odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
                                 <td class="border border-gray-300 py-2">1</td>
-                                <td class="border border-gray-300 py-2"><textarea name="process_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="process_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="process_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="process_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="process_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $process_feature[0] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="process_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $process_setfeature[0] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="process_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $process_result[0] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="process_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $process_compare[0] ?></textarea></td>
                             </tr>
                             <tr class="odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
                                 <td class="border border-gray-300 py-2">2</td>
-                                <td class="border border-gray-300 py-2"><textarea name="process_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="process_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="process_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="process_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="process_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $process_feature[1] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="process_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $process_setfeature[1] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="process_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $process_result[1] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="process_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $process_compare[1] ?></textarea></td>
                             </tr>
                             <tr class="odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
                                 <td class="border border-gray-300 py-2">3</td>
-                                <td class="border border-gray-300 py-2"><textarea name="process_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="process_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="process_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="process_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="process_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $process_feature[2] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="process_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $process_setfeature[2] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="process_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $process_result[2] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="process_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $process_compare[2] ?></textarea></td>
                             </tr>
                             <tr class="odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
                                 <td class="border border-gray-300 py-2">4</td>
-                                <td class="border border-gray-300 py-2"><textarea name="process_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="process_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="process_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="process_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="process_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $process_feature[3] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="process_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $process_setfeature[3] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="process_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $process_result[3] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="process_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $process_compare[3] ?></textarea></td>
                             </tr>
                         </tbody>
                     </table>
@@ -530,31 +537,31 @@ unset($_SESSION['senrity_name']); // Clear the session flag after use
                         <tbody>
                             <tr class="">
                                 <td class="border border-gray-300 py-2">1</td>
-                                <td class="border border-gray-300 py-2"><textarea name="report_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="report_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="report_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="report_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="report_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $report_feature[0] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="report_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $report_setfeature[0] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="report_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $report_result[0] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="report_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $report_compare[0] ?></textarea></td>
                             </tr>
                             <tr class="odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
                                 <td class="border border-gray-300 py-2">2</td>
-                                <td class="border border-gray-300 py-2"><textarea name="report_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="report_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="report_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="report_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="report_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $report_feature[1] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="report_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $report_setfeature[1] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="report_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $report_result[1] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="report_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $report_compare[1] ?></textarea></td>
                             </tr>
                             <tr class="odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
                                 <td class="border border-gray-300 py-2">3</td>
-                                <td class="border border-gray-300 py-2"><textarea name="report_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="report_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="report_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="report_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="report_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $report_feature[2] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="report_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $report_setfeature[2] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="report_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $report_result[2] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="report_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $report_compare[2] ?></textarea></td>
                             </tr>
                             <tr class="odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
                                 <td class="border border-gray-300 py-2">4</td>
-                                <td class="border border-gray-300 py-2"><textarea name="report_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="report_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="report_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="report_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="report_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $report_feature[3] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="report_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $report_setfeature[3] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="report_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $report_result[3] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="report_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $report_compare[3] ?></textarea></td>
                             </tr>
                         </tbody>
                     </table>
@@ -576,31 +583,31 @@ unset($_SESSION['senrity_name']); // Clear the session flag after use
                         <tbody>
                             <tr class="odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
                                 <td class="border border-gray-300 py-2">1</td>
-                                <td class="border border-gray-300 py-2"><textarea name="senrity_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="senrity_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="senrity_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="senrity_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="senrity_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $senrity_feature[0] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="senrity_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $senrity_setfeature[0] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="senrity_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $senrity_result[0] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="senrity_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $senrity_compare[0] ?></textarea></td>
                             </tr>
                             <tr class="odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
                                 <td class="border border-gray-300 py-2">2</td>
-                                <td class="border border-gray-300 py-2"><textarea name="senrity_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="senrity_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="senrity_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="senrity_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="senrity_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $senrity_feature[1] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="senrity_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $senrity_setfeature[1] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="senrity_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $senrity_result[1] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="senrity_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $senrity_compare[1] ?></textarea></td>
                             </tr>
                             <tr class="odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
                                 <td class="border border-gray-300 py-2">3</td>
-                                <td class="border border-gray-300 py-2"><textarea name="senrity_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="senrity_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="senrity_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="senrity_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="senrity_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $senrity_feature[2] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="senrity_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $senrity_setfeature[2] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="senrity_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $senrity_result[2] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="senrity_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $senrity_compare[2] ?></textarea></td>
                             </tr>
                             <tr class="odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
                                 <td class="border border-gray-300 py-2">4</td>
-                                <td class="border border-gray-300 py-2"><textarea name="senrity_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="senrity_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="senrity_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="senrity_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="senrity_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $senrity_feature[3] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="senrity_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $senrity_setfeature[3] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="senrity_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $senrity_result[3] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="senrity_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $senrity_compare[3] ?></textarea></td>
                             </tr>
                         </tbody>
                     </table>
