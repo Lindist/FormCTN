@@ -62,6 +62,11 @@ if (isset($_GET['id_senrity'])) {
     $senrity_compare = preg_split("/@/", $row4["senrity_compare"]);
     // print_r($input_feature);
 }
+if (isset($_GET['class'])) {
+    $class = $_GET['class'];
+}else{
+    $class = 'nohave';
+}
 
 ?>
 
@@ -124,10 +129,10 @@ if (isset($_GET['id_senrity'])) {
 
 <body>
     <div class="main container col-11 bg-white py-1 my-3 rounded">
-    <button type="button" onclick="window.location.href='form.php';" style="display:flex; background-color:#1a75ff; color:#fff; font-weight:bold; border-radius:10px; padding: 10px; border-color: #444; transition:all .3s ease-in-out;" onmouseover="this.style.backgroundColor='#00f';" onmouseout="this.style.backgroundColor='#1a75ff';">
+    <button type="button" onclick="isClass('<?php echo $class; ?>')" style="display:flex; background-color:#1a75ff; color:#fff; font-weight:bold; border-radius:10px; padding: 10px; border-color: #444; transition:all .3s ease-in-out;" onmouseover="this.style.backgroundColor='#00f';" onmouseout="this.style.backgroundColor='#1a75ff';">
             Back to Index
     </button>
-        <form action="form.php">
+        <form>
             <h1 class="text-center my-5">แบบฟอร์มประเมินประสิทธิภาพ</h1>
 
             <!-- Title_Content -->
@@ -395,12 +400,10 @@ if (isset($_GET['id_senrity'])) {
                     </tbody>
                 </table>
             </div>
-            <button type="submit" name="save" class="btn btn-primary w-100 mt-2 mb-4">กลับหน้าแรก</button>
         </form>
+        <button type="button" class="btn btn-primary w-100 mt-2 mb-4" onclick="isClass('<?php echo $class; ?>')">กลับหน้าแรก</button>
     </div>
-    <script>
-
-    </>
+    <script src="script/changeclass.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 </body>
