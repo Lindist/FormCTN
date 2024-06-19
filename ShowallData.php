@@ -97,10 +97,6 @@ if (isset($_GET['class'])) {
             font-weight: bold;
         }
 
-        textarea {
-            resize: none;
-        }
-
         h1 {
             font-weight: bold;
         }
@@ -228,6 +224,7 @@ if (isset($_GET['class'])) {
                 <!-- Start table -->
                 <label class="form-label mt-2">ด้านที่ 1</label>
                 <div class="rad form-control mb-2"><?php echo $row1["Input_name"]; ?></div>
+                <div  id="widthfix">
                 <table class="table table-bordered table-striped text-center mt-3">
                     <thead>
                         <tr>
@@ -269,8 +266,11 @@ if (isset($_GET['class'])) {
                         </tr>
                     </tbody>
                 </table>
+                </div>
+                
                 <label class="form-label">ด้านที่ 2</label>
                 <div class="rad form-control mb-2"><?php echo $row2['process_name']; ?></div>
+                <div  id="widthfix">
                 <table class="table table-bordered table-striped text-center mt-3">
                     <thead>
                         <tr>
@@ -312,8 +312,10 @@ if (isset($_GET['class'])) {
                         </tr>
                     </tbody>
                 </table>
+                </div>
                 <label class="form-label">ด้านที่ 3</label>
                 <div class="rad form-control mb-2"><?php echo $row3['report_name']; ?></div>
+                <div  id="widthfix">
                 <table class="table table-bordered table-striped text-center mt-3">
                     <thead>
                         <tr>
@@ -355,8 +357,10 @@ if (isset($_GET['class'])) {
                         </tr>
                     </tbody>
                 </table>
+                </div>
                 <label class="form-label">ด้านที่ 4</label>
                 <div class="rad form-control mb-2"><?php echo $row4['senrity_name']; ?></div>
+                <div  id="widthfix">
                 <table class="table table-bordered table-striped text-center mt-3">
                     <thead>
                         <tr>
@@ -398,6 +402,7 @@ if (isset($_GET['class'])) {
                         </tr>
                     </tbody>
                 </table>
+                </div>
             </div>
         </form>
         <button type="button" class="btn btn-primary w-100 mt-2 mb-4" onclick="isClass('<?php echo $class; ?>')">กลับหน้าแรก</button>
@@ -412,6 +417,9 @@ if (isset($_GET['class'])) {
         }
         .form-control1{
             width: 10em;
+        }
+        #widthfix{
+            overflow-x: scroll;
         }
     </style>
     <script src="script/changeclass.js"></script>
