@@ -97,7 +97,7 @@ if (empty($formname)) {
             $tb_efficiercy_form = $conn->prepare("UPDATE tb_efficiercy_form SET form_ad = ?, form_gender = ?, form_type = ?, form_education = ?, form_name = ? WHERE form_id = ?");
             $tb_efficiercy_form->execute([$ad, $gender, $type_m, $edu, $formname, $form_id]);
 
-            header("location: form.php");
+            header("location: form.php?class=columnData");
         }
     } catch (PDOException $e) {
         echo "Registrati3on failed: " . $e->getMessage();
