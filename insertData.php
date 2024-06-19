@@ -100,53 +100,80 @@ if (empty($formname)) {
     header("location: insertform.php");
 } else {
     try {
-        // if (!isset($_SESSION['error'])) {
-        //     $tb_input = $conn->prepare("INSERT INTO tb_input(input_name, input_feature, input_setfeature, input_result, input_compare) VALUES(?, ?, ?, ?, ?)");
-        //     $tb_input->execute([$input_name, $input_feature, $input_setfeature, $input_result, $input_compare]);
+        if (!isset($_SESSION['error'])) {
+            $tb_input = $conn->prepare("INSERT INTO tb_input(input_name, input_feature, input_setfeature, input_result, input_compare) VALUES(?, ?, ?, ?, ?)");
+            $tb_input->execute([$input_name, $input_feature, $input_setfeature, $input_result, $input_compare]);
 
-        //     $tb_process = $conn->prepare("INSERT INTO tb_process(process_name, process_feature, process_setfeature, process_result, process_compare) VALUES(?, ?, ?, ?, ?)");
-        //     $tb_process->execute([$process_name, $process_feature, $process_setfeature, $process_result, $process_compare]);
+            $tb_process = $conn->prepare("INSERT INTO tb_process(process_name, process_feature, process_setfeature, process_result, process_compare) VALUES(?, ?, ?, ?, ?)");
+            $tb_process->execute([$process_name, $process_feature, $process_setfeature, $process_result, $process_compare]);
 
-        //     $tb_report = $conn->prepare("INSERT INTO tb_report(report_name, report_feature, report_setfeature, report_result, report_compare) VALUES(?, ?, ?, ?, ?)");
-        //     $tb_report->execute([$report_name, $report_feature, $report_setfeature, $report_result, $report_compare]);
+            $tb_report = $conn->prepare("INSERT INTO tb_report(report_name, report_feature, report_setfeature, report_result, report_compare) VALUES(?, ?, ?, ?, ?)");
+            $tb_report->execute([$report_name, $report_feature, $report_setfeature, $report_result, $report_compare]);
 
-        //     $tb_senrity = $conn->prepare("INSERT INTO tb_senrity(senrity_name, senrity_feature, senrity_setfeature, senrity_result, senrity_compare) VALUES(?, ?, ?, ?, ?)");
-        //     $tb_senrity->execute([$senrity_name, $senrity_feature, $senrity_setfeature, $senrity_result, $senrity_compare]);
+            $tb_senrity = $conn->prepare("INSERT INTO tb_senrity(senrity_name, senrity_feature, senrity_setfeature, senrity_result, senrity_compare) VALUES(?, ?, ?, ?, ?)");
+            $tb_senrity->execute([$senrity_name, $senrity_feature, $senrity_setfeature, $senrity_result, $senrity_compare]);
 
 
-        //     $sql_tb_input = $conn->prepare("SELECT * FROM tb_input WHERE Input_name = :input_name");
-        //     $sql_tb_input->bindParam(":input_name", $input_name);
-        //     $sql_tb_input->execute();
-        //     $tb_input = $sql_tb_input->fetch();
+            $sql_tb_input = $conn->prepare("SELECT * FROM tb_input WHERE Input_name = :input_name");
+            $sql_tb_input->bindParam(":input_name", $input_name);
+            $sql_tb_input->execute();
+            $tb_input = $sql_tb_input->fetch();
 
-        //     $sql_tb_process = $conn->prepare("SELECT * FROM tb_process WHERE process_name = :process_name");
-        //     $sql_tb_process->bindParam(":process_name", $process_name);
-        //     $sql_tb_process->execute();
-        //     $tb_process = $sql_tb_process->fetch();
+            $sql_tb_process = $conn->prepare("SELECT * FROM tb_process WHERE process_name = :process_name");
+            $sql_tb_process->bindParam(":process_name", $process_name);
+            $sql_tb_process->execute();
+            $tb_process = $sql_tb_process->fetch();
 
-        //     $sql_tb_report = $conn->prepare("SELECT * FROM tb_report WHERE report_name = :report_name");
-        //     $sql_tb_report->bindParam(":report_name", $report_name);
-        //     $sql_tb_report->execute();
-        //     $tb_report = $sql_tb_report->fetch();
+            $sql_tb_report = $conn->prepare("SELECT * FROM tb_report WHERE report_name = :report_name");
+            $sql_tb_report->bindParam(":report_name", $report_name);
+            $sql_tb_report->execute();
+            $tb_report = $sql_tb_report->fetch();
 
-        //     $sql_tb_senrity = $conn->prepare("SELECT * FROM tb_senrity WHERE senrity_name = :senrity_name");
-        //     $sql_tb_senrity->bindParam(":senrity_name", $senrity_name);
-        //     $sql_tb_senrity->execute();
-        //     $tb_senrity = $sql_tb_senrity->fetch();
+            $sql_tb_senrity = $conn->prepare("SELECT * FROM tb_senrity WHERE senrity_name = :senrity_name");
+            $sql_tb_senrity->bindParam(":senrity_name", $senrity_name);
+            $sql_tb_senrity->execute();
+            $tb_senrity = $sql_tb_senrity->fetch();
 
-        //     $sql_tb_member = $conn->prepare("SELECT * FROM tb_member WHERE member_id = :user_id");
-        //     $sql_tb_member->bindParam(":user_id", $user_id);
-        //     $sql_tb_member->execute();
-        //     $tb_member = $sql_tb_member->fetch();
+            $sql_tb_member = $conn->prepare("SELECT * FROM tb_member WHERE member_id = :user_id");
+            $sql_tb_member->bindParam(":user_id", $user_id);
+            $sql_tb_member->execute();
+            $tb_member = $sql_tb_member->fetch();
 
-        //     $tb_efficiercy_form = $conn->prepare("INSERT INTO tb_efficiercy_form(form_name, form_ad, form_gender, form_type, form_education, input_id, process_id, report_id, senrity_id, member_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        //     $tb_efficiercy_form->execute([$formname, $ad, $gender, $type_m, $edu, $tb_input['Input_id'], $tb_process['process_id'], $tb_report['report_id'], $tb_senrity['senrity_id'], $tb_member['member_id']]);
+            $tb_efficiercy_form = $conn->prepare("INSERT INTO tb_efficiercy_form(form_name, form_ad, form_gender, form_type, form_education, input_id, process_id, report_id, senrity_id, member_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $tb_efficiercy_form->execute([$formname, $ad, $gender, $type_m, $edu, $tb_input['Input_id'], $tb_process['process_id'], $tb_report['report_id'], $tb_senrity['senrity_id'], $tb_member['member_id']]);
 
-        //     unset($_SESSION['formname']);
-        //     unset($_SESSION['ad']);
+            unset($_SESSION['formname']);
+            unset($_SESSION['ad']);
+            unset($_SESSION['gender']);
+            unset($_SESSION['type_m']);
+            unset($_SESSION['edu']);
+            unset($_SESSION['input_name']);
+            unset($_SESSION['process_name']);
+            unset($_SESSION['report_name']);
+            unset($_SESSION['senrity_name']);
 
-        //     header("location: form.php");
-        // }
+            unset($_SESSION['input_feature']);
+            unset($_SESSION['input_setfeature']);
+            unset($_SESSION['input_result']);
+            unset($_SESSION['input_compare']);
+
+            unset($_SESSION['process_feature']);
+            unset($_SESSION['process_setfeature']);
+            unset($_SESSION['process_result']);
+            unset($_SESSION['process_compare']);
+
+            unset($_SESSION['report_feature']);
+            unset($_SESSION['report_setfeature']);
+            unset($_SESSION['report_result']);
+            unset($_SESSION['report_compare']);
+
+            unset($_SESSION['senrity_feature']);
+            unset($_SESSION['senrity_setfeature']);
+            unset($_SESSION['senrity_result']);
+            unset($_SESSION['senrity_compare']);
+
+            header("location: form.php");
+        }
     } catch (PDOException $e) {
         echo "Registrati3on failed: " . $e->getMessage();
     }

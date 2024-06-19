@@ -60,7 +60,7 @@
                         <div class='text'><?php echo $row['form_name']; ?></div>
                         <div class="btns">
                         <a id='btn' onclick="isaddClass(['<?php echo $row['form_id']; ?>','<?php echo $row1['Input_id']; ?>','<?php echo $row2['process_id']; ?>','<?php echo $row3['report_id']; ?>','<?php echo $row4['senrity_id']; ?>'])" >ดูข้อมูล</a>
-                        <a href='#?id=<?php echo $row['form_id']; ?>&id_input=<?php echo $row1['Input_id']; ?>&id_process=<?php echo $row2['process_id']; ?>&id_report=<?php echo $row3['report_id']; ?>&id_senrity=<?php echo $row4['senrity_id']; ?>' id='btnedit'>แก้ไข</a>
+                        <a href='editform.php?id=<?php echo $row['form_id']; ?>' id='btnedit'>แก้ไข</a>
                         <a id='btndelete' onclick="confirmdel(['<?php echo $c; ?>','<?php echo $row['form_id']; ?>','<?php echo $row1['Input_id']; ?>','<?php echo $row2['process_id']; ?>','<?php echo $row3['report_id']; ?>','<?php echo $row4['senrity_id']; ?>'])" >ลบ</a>
                         </div>
                         </div>
