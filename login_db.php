@@ -5,6 +5,8 @@
 
     $Length = 11;
 
+    // $query 
+
     if (isset($_POST['login'])) {
         $std_id = $_POST['std_id'];
         $password = $_POST['password'];
