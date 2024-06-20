@@ -169,14 +169,14 @@ unset($_SESSION['fname']); // Clear the session flag after use
         </div>
     </div>
 
-    <div class="block md:grid items-center mx-6 md:mx-16 my-8 md:my-52 grid-cols-2 gap-8">
+    <div class="block lg:grid items-center mx-6 md:mx-16 my-8 md:my-52 grid-cols-2 gap-8">
         <div class="w-auto lg:inline xl:w-[600px] mx-auto">
             <p class="text-white text-6xl">ระบบแบบสอบถามออนไลน์</p>
             <p class="text-white text-2xl mt-2 mb-10">ระบบแบบสอบถามนี้เป็นส่วนช่วยในการกรอกแบบสอบถามของ วิชาโครงการ บทที่ 3 ช่วยให้ผู้ใช้งานสามาถสร้างแบบสอบถามเพื่อนำไปใช้ในรายวิชาพร้อมผลสรุป</p>
             <a class="text-white text-2xl p-2 px-4 border border-white rounded-full" href="#">วิชาโครงการ</a>
         </div>
         <div>
-            <img class="hidden lg:inline xl:w-[500px]" src="https://i.imgur.com/CdoHEKs.png">
+            <img class="hidden lg:mt-0 lg:col-span-5 lg:flex w-[500px]" src="https://i.imgur.com/CdoHEKs.png">
         </div>
     </div>
 
