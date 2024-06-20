@@ -26,22 +26,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/formstyle2.css">
+    <link rel="stylesheet" href="style/formstyle6.css">
+    <link rel="stylesheet" href="style/tabstyle1.css">
     <title>From</title>
 </head>
 <body>
     <header>
     <h1>CTN Phrae</h1>
+    <div class="tab_box">
+    <button class="tab_btn active"><h3>แบบฟอร์มประเมินประสิทธิภาพ</h3></button>
+    <button class="tab_btn"><h3>แบบฟอร์มประเมินความพึงพอใจ</h3></button>
+    <div class="line"></div>
+    </div>
     <div>
         <a href="logout.php" class="logout">ออกจากระบบ <img src="picture/logout.png"></a>
     </div>
     </header>
+    <div class="content_box active">
     <div class="container"> 
         <div class="btnshow">
             <a href="insertform.php" class="adds">เพิ่มแบบสอบถาม</a>
             <a href="#" class="adds" id="check-edit">ตรวจสอบและแก้ไข</a>  
         </div>
-    <div class="form-box" id="adddata"> 
+        <div class="form-box" id="adddata"> 
     <?php if($count > 0){ ?>
             <script type="text/javascript">
                 const showform = document.querySelector('#adddata');
@@ -72,8 +79,52 @@
             <img class='disimg' src="picture/empty-folder.png">
             <h3 class='disimg'>ไม่มีข้อมูลแบบสอบถาม</h3>
         <?php } ?>
+        </div>          
+        </div>
+
     </div>
+    <div class="content_box">
+    <div class="container"> 
+        <div class="btnshow">
+            <a href="insertform.php" class="adds">เพิ่มแบบสอบถาม</a>
+            <a href="#" class="adds" id="check-edit">ตรวจสอบและแก้ไข</a>  
+        </div>
+        <div class="form-box" id="adddata"> 
+    <?php if(!($count > 0)){ ?>
+            <script type="text/javascript">
+                const showform = document.querySelector('#adddata');
+                showform.classList.remove('form-box');
+                showform.classList.add('grid');
+                showform.insertAdjacentHTML("beforeend",`
+                <?php for($c = 1;$c <= $count;$c++){ ?>
+                        <?php $row = $result->fetch(PDO::FETCH_ASSOC); ?>
+                        <?php $row1 = $input->fetch(PDO::FETCH_ASSOC); ?>
+                        <?php $row2 = $process->fetch(PDO::FETCH_ASSOC); ?>
+                        <?php $row3 = $report->fetch(PDO::FETCH_ASSOC); ?>
+                        <?php $row4 = $senrity->fetch(PDO::FETCH_ASSOC); ?>
+                        <div class='container120'>
+                        <div class='subform'>
+                        <h2>แบบฟอร์มที่ <?php echo $c; ?></h2>
+                        <div class='text'><?php echo $row['form_name']; ?></div>
+                        <div class="btns">
+                        <a id='btn' onclick="isaddClass(['<?php echo $row['form_id']; ?>','<?php echo $row1['Input_id']; ?>','<?php echo $row2['process_id']; ?>','<?php echo $row3['report_id']; ?>','<?php echo $row4['senrity_id']; ?>'])" >ดูข้อมูล</a>
+                        <a href='editform.php?id=<?php echo $row['form_id']; ?>' id='btnedit'>แก้ไข</a>
+                        <a id='btndelete' onclick="confirmdel(['<?php echo $c; ?>','<?php echo $row['form_id']; ?>','<?php echo $row1['Input_id']; ?>','<?php echo $row2['process_id']; ?>','<?php echo $row3['report_id']; ?>','<?php echo $row4['senrity_id']; ?>'])" >ลบ</a>
+                        </div>
+                        </div>
+                        </div>
+                <?php } ?>`
+                );
+            </script>
+        <?php }else{ ?>
+            <img class='disimg' src="picture/empty-folder.png">
+            <h3 class='disimg'>ไม่มีข้อมูลแบบสอบถาม</h3>
+        <?php } ?>
+        </div>          
+        </div>
+
     </div>
-    <script src="script/script_add_data3.js"></script>
+
+    <script src="script/script_add_data6.js"></script>
 </body>
 </html>
