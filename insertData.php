@@ -12,33 +12,35 @@ $user_id = $_SESSION['user_id'];
 if (isset($_POST['save'])) {
     $formname = $_POST['formname'];
     $ad = $_POST['ad'];
-    $gender = $_POST['gender'];
-    $type_m = $_POST['type_m'];
-    $edu = $_POST['edu'];
+
+    $gender = implode(",", $_POST['genders']);
+    $type_m = implode(",", $_POST['kinduser']);
+    $edu = implode(",", $_POST['le_education']);
+
 
     $input_name = $_POST['input_name'];
-    $input_feature = implode("@", $_POST['input_feature']);
-    $input_setfeature = implode("@", $_POST['input_setfeature']);
-    $input_result = implode("@", $_POST['input_result']);
-    $input_compare = implode("@", $_POST['input_compare']);
+    $input_feature = " ";//implode("@", $_POST['input_feature']);
+    $input_setfeature = " ";//implode("@", $_POST['input_setfeature']);
+    $input_result = " ";//implode("@", $_POST['input_result']);
+    $input_compare = " ";//implode("@", $_POST['input_compare']);
 
     $process_name = $_POST['process_name'];
-    $process_feature = implode("@", $_POST['process_feature']);
-    $process_setfeature = implode("@", $_POST['process_setfeature']);
-    $process_result = implode("@", $_POST['process_result']);
-    $process_compare = implode("@", $_POST['process_compare']);
+    $process_feature = " ";//implode("@", $_POST['process_feature']);
+    $process_setfeature = " ";//implode("@", $_POST['process_setfeature']);
+    $process_result = " ";//implode("@", $_POST['process_result']);
+    $process_compare = " ";//implode("@", $_POST['process_compare']);
 
     $report_name = $_POST['report_name'];
-    $report_feature = implode("@", $_POST['report_feature']);
-    $report_setfeature = implode("@", $_POST['report_setfeature']);
-    $report_result = implode("@", $_POST['report_result']);
-    $report_compare = implode("@", $_POST['report_compare']);
+    $report_feature = " ";//implode("@", $_POST['report_feature']);
+    $report_setfeature = " ";//implode("@", $_POST['report_setfeature']);
+    $report_result = " ";//implode("@", $_POST['report_result']);
+    $report_compare = " ";//implode("@", $_POST['report_compare']);
 
     $senrity_name = $_POST['senrity_name'];
-    $senrity_feature = implode("@", $_POST['senrity_feature']);
-    $senrity_setfeature = implode("@", $_POST['senrity_setfeature']);
-    $senrity_result = implode("@", $_POST['senrity_result']);
-    $senrity_compare = implode("@", $_POST['senrity_compare']);
+    $senrity_feature = " ";//implode("@", $_POST['senrity_feature']);
+    $senrity_setfeature = " ";//implode("@", $_POST['senrity_setfeature']);
+    $senrity_result = " ";//implode("@", $_POST['senrity_result']);
+    $senrity_compare = " ";//implode("@", $_POST['senrity_compare']);
 }
 
 $_SESSION['formname'] = $formname;

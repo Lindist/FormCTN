@@ -155,13 +155,13 @@ unset($_SESSION['senrity_compare']); // Clear the session flag after use
                     <label class="block text-center mb-1">เพศ</label>
                     <div class="mx-2">
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="" id="">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="genders[]" id="">
                         </div>
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="" id="">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="genders[]" id="">
                         </div>
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="" id="">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="genders[]" id="">
                         </div>
                         <div class="flex items-center">
                             <p class="text-gray-400">***ไม่จำเป็นต้องกรอกครบ***</p>
@@ -178,19 +178,19 @@ unset($_SESSION['senrity_compare']); // Clear the session flag after use
                     <label class="block text-center mb-1">ประเภทผู้ใช้</label>
                     <div class="mx-2">
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="" id="">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="kinduser[]" id="">
                         </div>
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="" id="">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="kinduser[]" id="">
                         </div>
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="" id="">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="kinduser[]" id="">
                         </div>
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="" id="">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="kinduser[]" id="">
                         </div>
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="" id="">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="kinduser[]" id="">
                         </div>
                         <div class="flex items-center">
                             <p class="text-gray-400">***ไม่จำเป็นต้องกรอกครบ***</p>
@@ -206,25 +206,25 @@ unset($_SESSION['senrity_compare']); // Clear the session flag after use
                     <label class="block text-center mb-1">ระดับการศึกษา</label>
                     <div class="mx-2">
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="" id="">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="le_education[]" id="">
                         </div>
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="" id="">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="le_education[]" id="">
                         </div>
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="" id="">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="le_education[]" id="">
                         </div>
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="" id="">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="le_education[]" id="">
                         </div>
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="" id="">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="le_education[]" id="">
                         </div>
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="" id="">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="le_education[]" id="">
                         </div>
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="" id="">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="le_education[]" id="">
                         </div>
                         <div class="flex items-center">
                             <p class="text-gray-400">***ไม่จำเป็นต้องกรอกครบ***</p>
@@ -244,7 +244,7 @@ unset($_SESSION['senrity_compare']); // Clear the session flag after use
                 <!-- Section 1 -->
 
                 <label for="" class="block text-lg my-5"><label class="text-lg font-bold mb-2">ด้านที่ 1 </label>ด้านการนำเข้าข้อมูลระบบ</label>
-
+                <input type="hidden" name="input_name" value="ด้านการนำเข้าข้อมูลระบบ">
                 <table class="w-full border border-gray-300 text-center mt-3">
                     <thead>
                         <tr class="bg-gray-200">
@@ -290,7 +290,7 @@ unset($_SESSION['senrity_compare']); // Clear the session flag after use
                 <!-- Section 2 -->
 
                 <label for="" class="block text-lg my-5"><label class="text-lg font-bold mb-2">ด้านที่ 2 </label>ด้านการประมวลผล</label>
-
+                <input type="hidden" name="process_name" value="ด้านการประมวลผล">
 
                 <table class="w-full border border-gray-300 text-center mt-3">
                     <thead>
@@ -338,7 +338,7 @@ unset($_SESSION['senrity_compare']); // Clear the session flag after use
 
 
                 <label for="" class="block text-lg my-5"><label class="text-lg font-bold mb-2">ด้านที่ 3 </label>ด้านการรายงานข้อมูล</label>
-
+                <input type="hidden" name="report_name" value="ด้านการรายงานข้อมูล">
 
                 <table class="w-full border border-gray-300 text-center mt-3">
                     <thead>
@@ -385,7 +385,7 @@ unset($_SESSION['senrity_compare']); // Clear the session flag after use
                 <!-- Section 4 -->
 
                 <label for="" class="block text-lg my-5"><label class="text-lg font-bold mb-2">ด้านที่ 4 </label>ด้านความปลอดภัย</label>
-
+                <input type="hidden" name="senrity_name" value="ด้านความปลอดภัย">
                 <table class="w-full border border-gray-300 text-center mt-3">
                     <thead>
                         <tr class="bg-gray-200">
