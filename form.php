@@ -86,7 +86,7 @@
     <div class="content_box">
     <div class="container"> 
         <div class="btnshow">
-            <a href="insertform2.php" class="adds">เพิ่มแบบสอบถาม</a>
+            <a href="#" class="adds" id="addFormsatisfy">เพิ่มแบบสอบถาม</a>
             <a href="#" class="adds" id="check-edit">ตรวจสอบและแก้ไข</a>  
         </div>
         <div class="form-box" id="adddata"> 
@@ -125,6 +125,6 @@
 
     </div>
 
-    <script src="script/script_add_data8.js"></script>
+    <script src="script/script_add_data9.js"></script>
 </body>
 </html>

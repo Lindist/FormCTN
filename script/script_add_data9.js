@@ -13,6 +13,15 @@ document.getElementById('addFormperformance').addEventListener('click', () => {
         }
     });
 });
+document.getElementById('addFormsatisfy').addEventListener('click', () => {
+    showformout.forEach((e) => {
+        if(e.classList.contains('columnData')){
+            window.location.href = `insertform2.php?class=have`;
+        }else{
+            window.location.href = `insertform2.php`;
+        }
+    });
+});
 /*------------- */
 
 /*------------- */

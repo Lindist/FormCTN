@@ -7,6 +7,11 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: index.php");
 }
 
+if (isset($_GET['class'])) {
+    $class = $_GET['class'];
+}else{
+    $class = 'nohave';
+}
 ?>
 
 <!doctype html>
@@ -31,7 +36,7 @@ if (!isset($_SESSION['user_id'])) {
 
 <body>
     <div class="container mx-auto bg-white p-4 my-4 rounded shadow">
-        <button type="button" onclick="window.location.href='form.php';" class="flex bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        <button type="button" onclick="isClass('<?php echo $class; ?>')" class="flex bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             Back to Index
         </button>
         <form action="insertData2.php" method="POST">
@@ -352,6 +357,7 @@ if (!isset($_SESSION['user_id'])) {
                 </div>
         </form>
     </div>
+    <script src="script/changeclass.js"></script>
 </body>
 
 </html>
