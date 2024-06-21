@@ -16,7 +16,10 @@ if (isset($_GET['id'])) {
     // echo "<script>";
     // echo "alert('$row');";
     // echo "</script>";
-    // print_r($row);
+    $genders = preg_split("/,/", $row["form_gender"]);
+    $form_type = preg_split("/,/", $row["form_type"]);
+    $form_education = preg_split("/,/", $row["form_education"]);
+    // print_r($genders);
 }
 if (isset($_GET['id_input'])) {
     $input_id = $_GET['id_input'];
@@ -150,71 +153,42 @@ if (isset($_GET['class'])) {
                     <div class="mb-3 row">
                         <label class="col-3 col-form-label w-50 text-center">เพศ</label>
                         <div class="col mt-2">
-                            <?php if($row['form_gender'] == "ชาย" ) { ?>
-                            <input class="rad form-check-input" type="radio" value="ชาย" name="gender" checked>
-                            <label class="form-check-label">
-                                ชาย
+                            <?php foreach ($genders as $value) { ?>
+                            <?php if(!($value == null)){ ?>
+                            <input class="rad form-check-input" type="radio" value="" disabled name="" >
+                            <label>
+                            <?php echo $value; ?>
                             </label><br>
-                            <?php }else if($row['form_gender'] == "หญิง" ) { ?>
-                            <input class="rad form-check-input" type="radio" value="หญิง" name="gender" checked>
-                            <label class="form-check-label">
-                                หญิง
-                            </label>
+                            <?php } ?>
+                            <?php } ?>
                         </div>
-                        <?php } ?>
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <label class="col-3 col-form-label w-50 text-center">ประเภทผู้ใช้</label>
 
                     <div class="col mt-2">
-                    <?php if($row['form_type'] == "อาจารย์" ) { ?>
-                        <input class="rad form-check-input" type="radio" value="อาจารย์" name="type_m" checked>
-                        <label class="form-check-label">
-                            อาจารย์
-                        </label><br>
-                    <?php }else if($row['form_type'] == "นักเรียน/นักศึกษา" ) { ?>
-                        <input class="rad form-check-input" type="radio" value="นักเรียน/นักศึกษา" name="type_m" checked>
-                        <label class="form-check-label">
-                            นักเรียน/นักศึกษา
-                        </label><br>
-                        <?php }else if($row['form_type'] == "บุคคลภายนอก" ) { ?>
-                        <input class="rad form-check-input" type="radio" value="บุคคลภายนอก" name="type_m" checked>
-                        <label class="form-check-label">
-                            บุคคลภายนอก
-                        </label>
-                        <?php } ?>
+                            <?php foreach ($form_type as $value) { ?>
+                            <?php if(!($value == null)){ ?>
+                            <input class="rad form-check-input" type="radio" value="" disabled name="" >
+                            <label>
+                            <?php echo $value; ?>
+                            </label><br>
+                            <?php } ?>
+                            <?php } ?>
                     </div>
                 </div>
                 <div class="mb-2 row">
                     <label class="col-3 col-form-label w-50 text-center">ระดับการศึกษา</label>
                     <div class="col mt-2">
-                    <?php if($row['form_education'] == "มัธยมต้น" ) { ?>
-                        <input class="rad form-check-input" type="radio" value="มัธยมต้น" name="edu" checked>
-                        <label class="form-check-label">
-                            มัธยมต้น
-                        </label><br>
-                    <?php }else if($row['form_education'] == "มัธยมปลาย/ปวช." ) { ?>
-                        <input class="rad form-check-input" type="radio" value="มัธยมปลาย/ปวช." name="edu" checked>
-                        <label class="form-check-label">
-                            มัธยมปลาย/ปวช.
-                        </label><br>
-                    <?php } else if($row['form_education'] == "อนุปริญญา/ปวส." ) { ?>
-                        <input class="rad form-check-input" type="radio" value="อนุปริญญา/ปวส." name="edu" checked>
-                        <label class="form-check-label">
-                            อนุปริญญา/ปวส.
-                        </label><br>
-                    <?php } else if($row['form_education'] == "ป.ตรี" ) { ?>
-                        <input class="rad form-check-input" type="radio" value="ป.ตรี" name="edu" checked>
-                        <label class="form-check-label">
-                            ป.ตรี
-                        </label><br>
-                    <?php } else if($row['form_education'] == "สูงกว่า ป.ตรี" ) { ?>
-                        <input class="rad form-check-input" type="radio" value="สูงกว่า ป.ตรี" name="edu" checked>
-                        <label class="form-check-label">
-                            สูงกว่า ป.ตรี
-                        </label>
-                    <?php } ?>
+                        <?php foreach ($form_education as $value) { ?>
+                            <?php if(!($value == null)){ ?>
+                            <input class="rad form-check-input" type="radio" value="" disabled name="" >
+                            <label>
+                            <?php echo $value; ?>
+                            </label><br>
+                        <?php } ?>
+                        <?php } ?>
                     </div>
                 </div>
                 <label class="form-label">ตอนที่ 2</label>
