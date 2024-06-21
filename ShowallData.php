@@ -20,51 +20,30 @@ if (isset($_GET['id'])) {
     $form_type = preg_split("/,/", $row["form_type"]);
     $form_education = preg_split("/,/", $row["form_education"]);
     // print_r($genders);
-}
-if (isset($_GET['id_input'])) {
-    $input_id = $_GET['id_input'];
-    $result1 = $conn->query("SELECT * FROM tb_input  WHERE Input_id = '$input_id'"); 
+
+    $result1 = $conn->query("SELECT * FROM tb_input  WHERE Input_id = '$row['input_id']'"); 
     $result1->execute();
     $row1 = $result1->fetch(PDO::FETCH_ASSOC);
     $input_feature = preg_split("/@/", $row1["Input_feature"]);
-    // $input_setfeature = preg_split("/@/", $row1["Input_setfeature"]);
-    // $input_result = preg_split("/@/", $row1["Input_result"]);
-    // $input_compare = preg_split("/@/", $row1["Input_compare"]);
     
-}
-if (isset($_GET['id_process'])) {
-    $id_process = $_GET['id_process'];
-    $result2 = $conn->query("SELECT * FROM tb_process WHERE process_id = '$id_process'"); 
+    $result2 = $conn->query("SELECT * FROM tb_process WHERE process_id = '$row['process_id']'"); 
     $result2->execute();
     $row2 = $result2->fetch(PDO::FETCH_ASSOC);
     $process_feature = preg_split("/@/", $row2["process_feature"]);
-    // $process_setfeature = preg_split("/@/", $row2["process_setfeature"]);
-    // $process_result = preg_split("/@/", $row2["process_result"]);
-    // $process_compare = preg_split("/@/", $row2["process_compare"]);
     
-}
-if (isset($_GET['id_report'])) {
-    $id_report = $_GET['id_report'];
-    $result3 = $conn->query("SELECT * FROM tb_report WHERE report_id = '$id_report'"); 
+    $result3 = $conn->query("SELECT * FROM tb_report WHERE report_id = '$row['report_id']'"); 
     $result3->execute();
     $row3 = $result3->fetch(PDO::FETCH_ASSOC);
     $report_feature = preg_split("/@/", $row3["report_feature"]);
-    // $report_setfeature = preg_split("/@/", $row3["report_setfeature"]);
-    // $report_result = preg_split("/@/", $row3["report_result"]);
-    // $report_compare = preg_split("/@/", $row3["report_compare"]);
     
-}
-if (isset($_GET['id_senrity'])) {
-    $id_senrity = $_GET['id_senrity'];
-    $result4 = $conn->query("SELECT * FROM tb_senrity WHERE senrity_id = '$id_senrity'"); 
+    $result4 = $conn->query("SELECT * FROM tb_senrity WHERE senrity_id = '$row['senrity_id']'"); 
     $result4->execute();
     $row4 = $result4->fetch(PDO::FETCH_ASSOC);
     $senrity_feature = preg_split("/@/", $row4["senrity_feature"]);
-    // $senrity_setfeature = preg_split("/@/", $row4["senrity_setfeature"]);
-    // $senrity_result = preg_split("/@/", $row4["senrity_result"]);
-    // $senrity_compare = preg_split("/@/", $row4["senrity_compare"]);
-    
+
 }
+
+
 if (isset($_GET['class'])) {
     $class = $_GET['class'];
 }else{

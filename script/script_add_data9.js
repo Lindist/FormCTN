@@ -36,9 +36,9 @@ function confirmdel(ids){
 function isaddClass(ids){
     showformout.forEach((e) => {
         if(e.classList.contains('columnData')){
-            window.location.href = `ShowallData.php?id=${ids[0]}&id_input=${ids[1]}&id_process=${ids[2]}&id_report=${ids[3]}&id_senrity=${ids[4]}&class=have`;
+            window.location.href = `ShowallData.php?id=${ids}&class=have`;
         }else{
-            window.location.href = `ShowallData.php?id=${ids[0]}&id_input=${ids[1]}&id_process=${ids[2]}&id_report=${ids[3]}&id_senrity=${ids[4]}`;
+            window.location.href = `ShowallData.php?id=${ids}`;
         }
     });
     
