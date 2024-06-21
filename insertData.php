@@ -12,9 +12,11 @@ $user_id = $_SESSION['user_id'];
 if (isset($_POST['save'])) {
     $formname = $_POST['formname'];
     $ad = $_POST['ad'];
-    $gender = $_POST['gender'];
-    $type_m = $_POST['type_m'];
-    $edu = $_POST['edu'];
+
+    $gender = implode(",", $_POST['genders']);
+    $type_m = implode(",", $_POST['kinduser']);
+    $edu = implode(",", $_POST['le_education']);
+
 
     // $input_name = $_POST['input_name'];
     $input_feature = implode("@", $_POST['input_feature']);

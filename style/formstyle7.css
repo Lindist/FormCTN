@@ -38,10 +38,25 @@ header> div >a{
     text-decoration: none;
     color: #333;
 }
+header > .tab_box > button{
+    width: 20vw;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    border-style: none;
+    background-color: #FFF;
+    
+}
+header > .tab_box > button > h3{
+    color: #000;
+
+}
 
 
 header div{
-    width: 80vw;
+    width: 40vw;
     padding: 0 2rem;
     display: flex;
     justify-content: flex-end;
@@ -186,6 +201,7 @@ header div img{
     border-radius: 5px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
     transition: all .2s ease-in-out;
+    cursor: pointer;
 }
 .subform .btns #btnedit,
 .subform .btns #btndelete{
@@ -239,6 +255,7 @@ header div img{
     border-radius: 5px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
     transition: all .2s ease-in-out;
+    cursor: pointer;
 }
 .subform.columnData > .btns > a:hover{
     background-color: rgb(3, 3, 159);
@@ -268,8 +285,6 @@ header div img{
 
 
 @media all and (max-width:800px) {
-    @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
     *{
         margin: 0;
         padding: 0;
@@ -311,6 +326,22 @@ header div img{
     header> div >a{
         text-decoration: none;
         color: #333;
+    }
+    header > .tab_box{
+        display: flex;
+        flex-direction: column;
+    }
+    header > .tab_box > button{
+        width: 100vw;
+        font-size: 16px;
+        padding: 10px 0;
+        border-style: none;
+        background-color: #FFF;
+        
+    }
+    header > .tab_box > button > h3{
+        color: #000;
+    
     }
     header div{
         width: 100%;

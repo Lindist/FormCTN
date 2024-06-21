@@ -16,7 +16,10 @@ if (isset($_GET['id'])) {
     // echo "<script>";
     // echo "alert('$row');";
     // echo "</script>";
-    // print_r($row);
+    $genders = preg_split("/,/", $row["form_gender"]);
+    $form_type = preg_split("/,/", $row["form_type"]);
+    $form_education = preg_split("/,/", $row["form_education"]);
+    // print_r($genders);
 }
 if (isset($_GET['id_input'])) {
     $input_id = $_GET['id_input'];
@@ -27,7 +30,7 @@ if (isset($_GET['id_input'])) {
     $input_setfeature = preg_split("/@/", $row1["Input_setfeature"]);
     $input_result = preg_split("/@/", $row1["Input_result"]);
     $input_compare = preg_split("/@/", $row1["Input_compare"]);
-    // print_r($input_feature);
+    
 }
 if (isset($_GET['id_process'])) {
     $id_process = $_GET['id_process'];
@@ -38,7 +41,7 @@ if (isset($_GET['id_process'])) {
     $process_setfeature = preg_split("/@/", $row2["process_setfeature"]);
     $process_result = preg_split("/@/", $row2["process_result"]);
     $process_compare = preg_split("/@/", $row2["process_compare"]);
-    // print_r($input_feature);
+    
 }
 if (isset($_GET['id_report'])) {
     $id_report = $_GET['id_report'];
@@ -49,7 +52,7 @@ if (isset($_GET['id_report'])) {
     $report_setfeature = preg_split("/@/", $row3["report_setfeature"]);
     $report_result = preg_split("/@/", $row3["report_result"]);
     $report_compare = preg_split("/@/", $row3["report_compare"]);
-    // print_r($input_feature);
+    
 }
 if (isset($_GET['id_senrity'])) {
     $id_senrity = $_GET['id_senrity'];
@@ -60,7 +63,7 @@ if (isset($_GET['id_senrity'])) {
     $senrity_setfeature = preg_split("/@/", $row4["senrity_setfeature"]);
     $senrity_result = preg_split("/@/", $row4["senrity_result"]);
     $senrity_compare = preg_split("/@/", $row4["senrity_compare"]);
-    // print_r($input_feature);
+    
 }
 if (isset($_GET['class'])) {
     $class = $_GET['class'];
@@ -150,71 +153,42 @@ if (isset($_GET['class'])) {
                     <div class="mb-3 row">
                         <label class="col-3 col-form-label w-50 text-center">เพศ</label>
                         <div class="col mt-2">
-                            <?php if($row['form_gender'] == "ชาย" ) { ?>
-                            <input class="rad form-check-input" type="radio" value="ชาย" name="gender" checked>
-                            <label class="form-check-label">
-                                ชาย
+                            <?php foreach ($genders as $value) { ?>
+                            <?php if(!($value == null)){ ?>
+                            <input class="rad form-check-input" type="radio" value="" disabled name="" >
+                            <label>
+                            <?php echo $value; ?>
                             </label><br>
-                            <?php }else if($row['form_gender'] == "หญิง" ) { ?>
-                            <input class="rad form-check-input" type="radio" value="หญิง" name="gender" checked>
-                            <label class="form-check-label">
-                                หญิง
-                            </label>
+                            <?php } ?>
+                            <?php } ?>
                         </div>
-                        <?php } ?>
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <label class="col-3 col-form-label w-50 text-center">ประเภทผู้ใช้</label>
 
                     <div class="col mt-2">
-                    <?php if($row['form_type'] == "อาจารย์" ) { ?>
-                        <input class="rad form-check-input" type="radio" value="อาจารย์" name="type_m" checked>
-                        <label class="form-check-label">
-                            อาจารย์
-                        </label><br>
-                    <?php }else if($row['form_type'] == "นักเรียน/นักศึกษา" ) { ?>
-                        <input class="rad form-check-input" type="radio" value="นักเรียน/นักศึกษา" name="type_m" checked>
-                        <label class="form-check-label">
-                            นักเรียน/นักศึกษา
-                        </label><br>
-                        <?php }else if($row['form_type'] == "บุคคลภายนอก" ) { ?>
-                        <input class="rad form-check-input" type="radio" value="บุคคลภายนอก" name="type_m" checked>
-                        <label class="form-check-label">
-                            บุคคลภายนอก
-                        </label>
-                        <?php } ?>
+                            <?php foreach ($form_type as $value) { ?>
+                            <?php if(!($value == null)){ ?>
+                            <input class="rad form-check-input" type="radio" value="" disabled name="" >
+                            <label>
+                            <?php echo $value; ?>
+                            </label><br>
+                            <?php } ?>
+                            <?php } ?>
                     </div>
                 </div>
                 <div class="mb-2 row">
                     <label class="col-3 col-form-label w-50 text-center">ระดับการศึกษา</label>
                     <div class="col mt-2">
-                    <?php if($row['form_education'] == "มัธยมต้น" ) { ?>
-                        <input class="rad form-check-input" type="radio" value="มัธยมต้น" name="edu" checked>
-                        <label class="form-check-label">
-                            มัธยมต้น
-                        </label><br>
-                    <?php }else if($row['form_education'] == "มัธยมปลาย/ปวช." ) { ?>
-                        <input class="rad form-check-input" type="radio" value="มัธยมปลาย/ปวช." name="edu" checked>
-                        <label class="form-check-label">
-                            มัธยมปลาย/ปวช.
-                        </label><br>
-                    <?php } else if($row['form_education'] == "อนุปริญญา/ปวส." ) { ?>
-                        <input class="rad form-check-input" type="radio" value="อนุปริญญา/ปวส." name="edu" checked>
-                        <label class="form-check-label">
-                            อนุปริญญา/ปวส.
-                        </label><br>
-                    <?php } else if($row['form_education'] == "ป.ตรี" ) { ?>
-                        <input class="rad form-check-input" type="radio" value="ป.ตรี" name="edu" checked>
-                        <label class="form-check-label">
-                            ป.ตรี
-                        </label><br>
-                    <?php } else if($row['form_education'] == "สูงกว่า ป.ตรี" ) { ?>
-                        <input class="rad form-check-input" type="radio" value="สูงกว่า ป.ตรี" name="edu" checked>
-                        <label class="form-check-label">
-                            สูงกว่า ป.ตรี
-                        </label>
-                    <?php } ?>
+                        <?php foreach ($form_education as $value) { ?>
+                            <?php if(!($value == null)){ ?>
+                            <input class="rad form-check-input" type="radio" value="" disabled name="" >
+                            <label>
+                            <?php echo $value; ?>
+                            </label><br>
+                        <?php } ?>
+                        <?php } ?>
                     </div>
                 </div>
                 <label class="form-label">ตอนที่ 2</label>
@@ -243,7 +217,7 @@ if (isset($_GET['class'])) {
                             <td><div class="form-control1" id="format" rows="3"><?php echo $input_result[0]; ?></div></td>
                             <td><div class="form-control1" id="format" rows="3"><?php echo $input_compare[0]; ?></div></td>
                         </tr>
-                        <tr>
+                        <!-- <tr>
                             <th scope="row">2</th>
                             <td><div class="form-control1" id="format" rows="3"><?php echo $input_feature[1]; ?></div></td>
                             <td><div class="form-control1" id="format" rows="3"><?php echo $input_setfeature[1]; ?></div></td>
@@ -263,7 +237,7 @@ if (isset($_GET['class'])) {
                             <td><div class="form-control1" id="format" rows="3"><?php echo $input_setfeature[3]; ?></div></td>
                             <td><div class="form-control1" id="format" rows="3"><?php echo $input_result[3]; ?></div></td>
                             <td><div class="form-control1" id="format" rows="3"><?php echo $input_compare[3]; ?></div></td>
-                        </tr>
+                        </tr> -->
                     </tbody>
                 </table>
                 </div>
@@ -289,7 +263,7 @@ if (isset($_GET['class'])) {
                             <td><div class="form-control1" id="format" rows="3"><?php echo $process_result[0]; ?></div></td>
                             <td><div class="form-control1" id="format" rows="3"><?php echo $process_compare[0]; ?></div></td>
                         </tr>
-                        <tr>
+                        <!-- <tr>
                             <th scope="row">2</th>
                             <td><div class="form-control1" id="format" rows="3"><?php echo $process_feature[1]; ?></div></td>
                             <td><div class="form-control1" id="format" rows="3"><?php echo $process_setfeature[1]; ?></div></td>
@@ -309,7 +283,7 @@ if (isset($_GET['class'])) {
                             <td><div class="form-control1" id="format" rows="3"><?php echo $process_setfeature[3]; ?></div></td>
                             <td><div class="form-control1" id="format" rows="3"><?php echo $process_result[3]; ?></div></td>
                             <td><div class="form-control1" id="format" rows="3"><?php echo $process_compare[3]; ?></div></td>
-                        </tr>
+                        </tr> -->
                     </tbody>
                 </table>
                 </div>
@@ -334,7 +308,7 @@ if (isset($_GET['class'])) {
                             <td><div class="form-control1" id="format" rows="3"><?php echo $report_result[0]; ?></div></td>
                             <td><div class="form-control1" id="format" rows="3"><?php echo $report_compare[0]; ?></div></td>
                         </tr>
-                        <tr>
+                        <!-- <tr>
                             <th scope="row">2</th>
                             <td><div class="form-control1" id="format" rows="3"><?php echo $report_feature[1]; ?></div></td>
                             <td><div class="form-control1" id="format" rows="3"><?php echo $report_setfeature[1]; ?></div></td>
@@ -354,7 +328,7 @@ if (isset($_GET['class'])) {
                             <td><div class="form-control1" id="format" rows="3"><?php echo $report_setfeature[3]; ?></div></td>
                             <td><div class="form-control1" id="format" rows="3"><?php echo $report_result[3]; ?></div></td>
                             <td><div class="form-control1" id="format" rows="3"><?php echo $report_compare[3]; ?></div></td>
-                        </tr>
+                        </tr> -->
                     </tbody>
                 </table>
                 </div>
@@ -379,7 +353,7 @@ if (isset($_GET['class'])) {
                             <td><div class="form-control1" id="format" rows="3"><?php echo $senrity_result[0]; ?></div></td>
                             <td><div class="form-control1" id="format" rows="3"><?php echo $senrity_compare[0]; ?></div></td>
                         </tr>
-                        <tr>
+                        <!-- <tr>
                             <th scope="row">2</th>
                             <td><div class="form-control1" id="format" rows="3"><?php echo $senrity_feature[1]; ?></div></td>
                             <td><div class="form-control1" id="format" rows="3"><?php echo $senrity_setfeature[1]; ?></div></td>
@@ -399,7 +373,7 @@ if (isset($_GET['class'])) {
                             <td><div class="form-control1" id="format" rows="3"><?php echo $senrity_setfeature[3]; ?></div></td>
                             <td><div class="form-control1" id="format" rows="3"><?php echo $senrity_result[3]; ?></div></td>
                             <td><div class="form-control1" id="format" rows="3"><?php echo $senrity_compare[3]; ?></div></td>
-                        </tr>
+                        </tr> -->
                     </tbody>
                 </table>
                 </div>
