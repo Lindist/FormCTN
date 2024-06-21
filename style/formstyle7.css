@@ -201,6 +201,7 @@ header div img{
     border-radius: 5px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
     transition: all .2s ease-in-out;
+    cursor: pointer;
 }
 .subform .btns #btnedit,
 .subform .btns #btndelete{
@@ -254,6 +255,7 @@ header div img{
     border-radius: 5px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
     transition: all .2s ease-in-out;
+    cursor: pointer;
 }
 .subform.columnData > .btns > a:hover{
     background-color: rgb(3, 3, 159);
