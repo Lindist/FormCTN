@@ -45,7 +45,7 @@
     <div class="content_box active">
     <div class="container"> 
         <div class="btnshow">
-            <a href="insertform.php" class="adds">เพิ่มแบบสอบถาม</a>
+            <a href="#" class="adds" id="addFormperformance">เพิ่มแบบสอบถาม</a>
             <a href="#" class="adds" id="check-edit">ตรวจสอบและแก้ไข</a>  
         </div>
         <div class="form-box" id="adddata"> 
@@ -86,7 +86,7 @@
     <div class="content_box">
     <div class="container"> 
         <div class="btnshow">
-            <a href="insertform.php" class="adds">เพิ่มแบบสอบถาม</a>
+            <a href="insertform2.php" class="adds">เพิ่มแบบสอบถาม</a>
             <a href="#" class="adds" id="check-edit">ตรวจสอบและแก้ไข</a>  
         </div>
         <div class="form-box" id="adddata"> 
@@ -125,6 +125,6 @@
 
     </div>
 
-    <script src="script/script_add_data7.js"></script>
+    <script src="script/script_add_data8.js"></script>
 </body>
 </html>
