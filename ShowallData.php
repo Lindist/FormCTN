@@ -20,23 +20,27 @@ if (isset($_GET['id'])) {
     $form_type = preg_split("/,/", $row["form_type"]);
     $form_education = preg_split("/,/", $row["form_education"]);
     // print_r($genders);
-
-    $result1 = $conn->query("SELECT * FROM tb_input  WHERE Input_id = '$row['input_id']'"); 
+    $in = $row['input_id'];
+    $pr = $row['process_id'];
+    $re = $row['report_id'];
+    $se = $row['senrity_id'];
+    
+    $result1 = $conn->query("SELECT * FROM tb_input  WHERE Input_id = '$in'"); 
     $result1->execute();
     $row1 = $result1->fetch(PDO::FETCH_ASSOC);
     $input_feature = preg_split("/@/", $row1["Input_feature"]);
     
-    $result2 = $conn->query("SELECT * FROM tb_process WHERE process_id = '$row['process_id']'"); 
+    $result2 = $conn->query("SELECT * FROM tb_process WHERE process_id = '$pr'"); 
     $result2->execute();
     $row2 = $result2->fetch(PDO::FETCH_ASSOC);
     $process_feature = preg_split("/@/", $row2["process_feature"]);
     
-    $result3 = $conn->query("SELECT * FROM tb_report WHERE report_id = '$row['report_id']'"); 
+    $result3 = $conn->query("SELECT * FROM tb_report WHERE report_id = '$re'"); 
     $result3->execute();
     $row3 = $result3->fetch(PDO::FETCH_ASSOC);
     $report_feature = preg_split("/@/", $row3["report_feature"]);
     
-    $result4 = $conn->query("SELECT * FROM tb_senrity WHERE senrity_id = '$row['senrity_id']'"); 
+    $result4 = $conn->query("SELECT * FROM tb_senrity WHERE senrity_id = '$se'"); 
     $result4->execute();
     $row4 = $result4->fetch(PDO::FETCH_ASSOC);
     $senrity_feature = preg_split("/@/", $row4["senrity_feature"]);
