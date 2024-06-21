@@ -34,8 +34,8 @@
     <header>
     <h1>CTN Phrae</h1>
     <div class="tab_box">
-    <button class="tab_btn active"><h3>แบบฟอร์มประเมินประสิทธิภาพ</h3></button>
-    <button class="tab_btn"><h3>แบบฟอร์มประเมินความพึงพอใจ</h3></button>
+    <button class="tab_btn active" id="tab1"><h3>แบบฟอร์มประเมินประสิทธิภาพ</h3></button>
+    <button class="tab_btn" id="tab2"><h3>แบบฟอร์มประเมินความพึงพอใจ</h3></button>
     <div class="line"></div>
     </div>
     <div>
@@ -86,7 +86,7 @@
     <div class="content_box">
     <div class="container"> 
         <div class="btnshow">
-            <a href="insertform2.php" class="adds">เพิ่มแบบสอบถาม</a>
+            <a href="#" class="adds" id="addFormsatisfy">เพิ่มแบบสอบถาม</a>
             <a href="#" class="adds" id="check-edit">ตรวจสอบและแก้ไข</a>  
         </div>
         <div class="form-box" id="adddata"> 
@@ -120,11 +120,11 @@
             <img class='disimg' src="picture/empty-folder.png">
             <h3 class='disimg'>ไม่มีข้อมูลแบบสอบถาม</h3>
         <?php } ?>
-        </div>          
+        </div>
         </div>
 
     </div>
-
-    <script src="script/script_add_data8.js"></script>
+    <script src="script/active2.js" type="module"></script>
+    <script src="script/script_add_data9.js"></script>
 </body>
 </html>
