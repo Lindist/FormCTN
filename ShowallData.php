@@ -217,27 +217,6 @@ if (isset($_GET['class'])) {
                             <td><div class="form-control1" id="format" rows="3"><?php echo $input_result[0]; ?></div></td>
                             <td><div class="form-control1" id="format" rows="3"><?php echo $input_compare[0]; ?></div></td>
                         </tr>
-                        <!-- <tr>
-                            <th scope="row">2</th>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $input_feature[1]; ?></div></td>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $input_setfeature[1]; ?></div></td>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $input_result[1]; ?></div></td>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $input_compare[1]; ?></div></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $input_feature[2]; ?></div></td>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $input_setfeature[2]; ?></div></td>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $input_result[2]; ?></div></td>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $input_compare[2]; ?></div></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">4</th>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $input_feature[3]; ?></div></td>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $input_setfeature[3]; ?></div></td>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $input_result[3]; ?></div></td>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $input_compare[3]; ?></div></td>
-                        </tr> -->
                     </tbody>
                 </table>
                 </div>
@@ -263,27 +242,6 @@ if (isset($_GET['class'])) {
                             <td><div class="form-control1" id="format" rows="3"><?php echo $process_result[0]; ?></div></td>
                             <td><div class="form-control1" id="format" rows="3"><?php echo $process_compare[0]; ?></div></td>
                         </tr>
-                        <!-- <tr>
-                            <th scope="row">2</th>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $process_feature[1]; ?></div></td>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $process_setfeature[1]; ?></div></td>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $process_result[1]; ?></div></td>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $process_compare[1]; ?></div></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $process_feature[2]; ?></div></td>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $process_setfeature[2]; ?></div></td>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $process_result[2]; ?></div></td>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $process_compare[2]; ?></div></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">4</th>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $process_feature[3]; ?></div></td>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $process_setfeature[3]; ?></div></td>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $process_result[3]; ?></div></td>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $process_compare[3]; ?></div></td>
-                        </tr> -->
                     </tbody>
                 </table>
                 </div>
@@ -308,27 +266,6 @@ if (isset($_GET['class'])) {
                             <td><div class="form-control1" id="format" rows="3"><?php echo $report_result[0]; ?></div></td>
                             <td><div class="form-control1" id="format" rows="3"><?php echo $report_compare[0]; ?></div></td>
                         </tr>
-                        <!-- <tr>
-                            <th scope="row">2</th>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $report_feature[1]; ?></div></td>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $report_setfeature[1]; ?></div></td>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $report_result[1]; ?></div></td>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $report_compare[1]; ?></div></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $report_feature[2]; ?></div></td>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $report_setfeature[2]; ?></div></td>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $report_result[2]; ?></div></td>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $report_compare[2]; ?></div></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">4</th>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $report_feature[3]; ?></div></td>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $report_setfeature[3]; ?></div></td>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $report_result[3]; ?></div></td>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $report_compare[3]; ?></div></td>
-                        </tr> -->
                     </tbody>
                 </table>
                 </div>
@@ -353,27 +290,6 @@ if (isset($_GET['class'])) {
                             <td><div class="form-control1" id="format" rows="3"><?php echo $senrity_result[0]; ?></div></td>
                             <td><div class="form-control1" id="format" rows="3"><?php echo $senrity_compare[0]; ?></div></td>
                         </tr>
-                        <!-- <tr>
-                            <th scope="row">2</th>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $senrity_feature[1]; ?></div></td>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $senrity_setfeature[1]; ?></div></td>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $senrity_result[1]; ?></div></td>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $senrity_compare[1]; ?></div></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $senrity_feature[2]; ?></div></td>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $senrity_setfeature[2]; ?></div></td>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $senrity_result[2]; ?></div></td>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $senrity_compare[2]; ?></div></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">4</th>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $senrity_feature[3]; ?></div></td>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $senrity_setfeature[3]; ?></div></td>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $senrity_result[3]; ?></div></td>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $senrity_compare[3]; ?></div></td>
-                        </tr> -->
                     </tbody>
                 </table>
                 </div>
