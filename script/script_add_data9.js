@@ -16,9 +16,9 @@ document.getElementById('addFormperformance').addEventListener('click', () => {
 document.getElementById('addFormsatisfy').addEventListener('click', () => {
     showformout.forEach((e) => {
         if(e.classList.contains('columnData')){
-            window.location.href = `insertform2.php?class=have`;
+            window.location.href = `insertform2.php?class1=firstshow&class=have`;
         }else{
-            window.location.href = `insertform2.php`;
+            window.location.href = `insertform2.php?class1=firstshow`;
         }
     });
 });
@@ -72,7 +72,7 @@ function showformRange(){
 /*--------------------------------------------- */
 const tabs = document.querySelectorAll('.tab_btn');
 const all_content = document.querySelectorAll('.content_box');
-const lineclass = document.querySelector('.tab_btn.active h3');
+const lineclass = document.querySelector('.tab_btn.active > h3');
 var line=document.querySelector('.line');
 tabs.forEach((tab, index) => {
     tab.addEventListener('click', (e)=>{
@@ -92,6 +92,20 @@ window.onload = function() {
 
     const urlParams = new URLSearchParams(window.location.search);
     const classToAdd = urlParams.get('class');
+    const classToAdd1 = urlParams.get('class1');
+
+    if (classToAdd1 === 'firstshow') {
+
+    const istab2 = document.getElementById('tab2');
+
+        tabs.forEach(tab=>{tab.classList.remove('active')})
+        istab2.classList.add('active');
+
+        all_content.forEach(content=>{content.classList.remove('active')});
+        all_content[1].classList.add('active');
+        line.style.width = istab2.offsetWidth + 'px';
+        line.style.left = istab2.offsetLeft + 'px';
+    }
     if (classToAdd === 'columnData') {
 
         document.querySelectorAll('#adddata').forEach((e) => {
@@ -113,6 +127,9 @@ window.onload = function() {
             } 
         });
     }
+
+
+
 };
 /*--------------------------------------------- */
 

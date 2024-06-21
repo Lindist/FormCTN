@@ -34,8 +34,8 @@
     <header>
     <h1>CTN Phrae</h1>
     <div class="tab_box">
-    <button class="tab_btn active"><h3>แบบฟอร์มประเมินประสิทธิภาพ</h3></button>
-    <button class="tab_btn"><h3>แบบฟอร์มประเมินความพึงพอใจ</h3></button>
+    <button class="tab_btn active" id="tab1"><h3>แบบฟอร์มประเมินประสิทธิภาพ</h3></button>
+    <button class="tab_btn" id="tab2"><h3>แบบฟอร์มประเมินความพึงพอใจ</h3></button>
     <div class="line"></div>
     </div>
     <div>
@@ -120,11 +120,11 @@
             <img class='disimg' src="picture/empty-folder.png">
             <h3 class='disimg'>ไม่มีข้อมูลแบบสอบถาม</h3>
         <?php } ?>
-        </div>          
+        </div>
         </div>
 
     </div>
-
+    <script src="script/active2.js" type="module"></script>
     <script src="script/script_add_data9.js"></script>
 </body>
 </html>
