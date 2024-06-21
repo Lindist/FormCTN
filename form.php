@@ -125,6 +125,6 @@
 
     </div>
 
-    <script src="script/script_add_data6.js"></script>
+    <script src="script/script_add_data7.js"></script>
 </body>
 </html>
