@@ -83,7 +83,6 @@ window.onload = function() {
 
     const urlParams = new URLSearchParams(window.location.search);
     const classToAdd = urlParams.get('class');
-    console.log(classToAdd);
     if (classToAdd === 'columnData') {
 
         document.querySelectorAll('#adddata').forEach((e) => {
@@ -107,3 +106,4 @@ window.onload = function() {
     }
 };
 /*--------------------------------------------- */
+
