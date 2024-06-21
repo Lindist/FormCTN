@@ -17,7 +17,6 @@ if (isset($_POST['save'])) {
     $type_m = implode(",", $_POST['kinduser']);
     $edu = implode(",", $_POST['le_education']);
 
-
     // $input_name = $_POST['input_name'];
     $input_feature = implode("@", $_POST['input_feature']);
     // $input_setfeature = implode("@", $_POST['input_setfeature']);
@@ -115,23 +114,23 @@ if (empty($formname)) {
             $tb_senrity = $conn->prepare("INSERT INTO tb_senrity(senrity_feature) VALUES(?)");
             $tb_senrity->execute([$senrity_feature]);
 
-            $sql_tb_input = $conn->prepare("SELECT * FROM tb_input WHERE Input_name = :input_name");
-            $sql_tb_input->bindParam(":input_name", $input_name);
+            $sql_tb_input = $conn->prepare("SELECT * FROM tb_input WHERE Input_feature = :input_feature");
+            $sql_tb_input->bindParam(":input_feature", $input_feature);
             $sql_tb_input->execute();
             $tb_input = $sql_tb_input->fetch();
 
-            $sql_tb_process = $conn->prepare("SELECT * FROM tb_process WHERE process_name = :process_name");
-            $sql_tb_process->bindParam(":process_name", $process_name);
+            $sql_tb_process = $conn->prepare("SELECT * FROM tb_process WHERE process_feature = :process_feature");
+            $sql_tb_process->bindParam(":process_feature", $process_feature);
             $sql_tb_process->execute();
             $tb_process = $sql_tb_process->fetch();
 
-            $sql_tb_report = $conn->prepare("SELECT * FROM tb_report WHERE report_name = :report_name");
-            $sql_tb_report->bindParam(":report_name", $report_name);
+            $sql_tb_report = $conn->prepare("SELECT * FROM tb_report WHERE report_feature = :report_feature");
+            $sql_tb_report->bindParam(":report_feature", $report_feature);
             $sql_tb_report->execute();
             $tb_report = $sql_tb_report->fetch();
 
-            $sql_tb_senrity = $conn->prepare("SELECT * FROM tb_senrity WHERE senrity_name = :senrity_name");
-            $sql_tb_senrity->bindParam(":senrity_name", $senrity_name);
+            $sql_tb_senrity = $conn->prepare("SELECT * FROM tb_senrity WHERE senrity_feature = :senrity_feature");
+            $sql_tb_senrity->bindParam(":senrity_feature", $senrity_feature);
             $sql_tb_senrity->execute();
             $tb_senrity = $sql_tb_senrity->fetch();
 
@@ -142,36 +141,37 @@ if (empty($formname)) {
 
             $tb_efficiercy_form = $conn->prepare("INSERT INTO tb_efficiercy_form(form_name, form_ad, form_gender, form_type, form_education, input_id, process_id, report_id, senrity_id, member_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             $tb_efficiercy_form->execute([$formname, $ad, $gender, $type_m, $edu, $tb_input['Input_id'], $tb_process['process_id'], $tb_report['report_id'], $tb_senrity['senrity_id'], $tb_member['member_id']]);
+            // print_r([$formname, $ad, $gender, $type_m, $edu, $tb_input['Input_id'], $tb_process['process_id'], $tb_report['report_id'], $tb_senrity['senrity_id'], $tb_member['member_id']]);
 
             unset($_SESSION['formname']);
             unset($_SESSION['ad']);
             unset($_SESSION['gender']);
             unset($_SESSION['type_m']);
             unset($_SESSION['edu']);
-            unset($_SESSION['input_name']);
-            unset($_SESSION['process_name']);
-            unset($_SESSION['report_name']);
-            unset($_SESSION['senrity_name']);
+            // unset($_SESSION['input_name']);
+            // unset($_SESSION['process_name']);
+            // unset($_SESSION['report_name']);
+            // unset($_SESSION['senrity_name']);
 
             unset($_SESSION['input_feature']);
-            unset($_SESSION['input_setfeature']);
-            unset($_SESSION['input_result']);
-            unset($_SESSION['input_compare']);
+            // unset($_SESSION['input_setfeature']);
+            // unset($_SESSION['input_result']);
+            // unset($_SESSION['input_compare']);
 
             unset($_SESSION['process_feature']);
-            unset($_SESSION['process_setfeature']);
-            unset($_SESSION['process_result']);
-            unset($_SESSION['process_compare']);
+            // unset($_SESSION['process_setfeature']);
+            // unset($_SESSION['process_result']);
+            // unset($_SESSION['process_compare']);
 
             unset($_SESSION['report_feature']);
-            unset($_SESSION['report_setfeature']);
-            unset($_SESSION['report_result']);
-            unset($_SESSION['report_compare']);
+            // unset($_SESSION['report_setfeature']);
+            // unset($_SESSION['report_result']);
+            // unset($_SESSION['report_compare']);
 
             unset($_SESSION['senrity_feature']);
-            unset($_SESSION['senrity_setfeature']);
-            unset($_SESSION['senrity_result']);
-            unset($_SESSION['senrity_compare']);
+            // unset($_SESSION['senrity_setfeature']);
+            // unset($_SESSION['senrity_result']);
+            // unset($_SESSION['senrity_compare']);
 
             header("location: form.php");
         }

@@ -10,45 +10,47 @@ if (!isset($_SESSION['user_id'])) {
 if (isset($_GET['id'])) {
     $form_id = $_GET['id'];
 
-    $query = $conn -> prepare("SELECT * FROM tb_efficiercy_form WHERE form_id = :form_id");
-    $query -> bindParam(":form_id", $form_id);
-    $query -> execute();
-    $row = $query -> fetch();
+    $query = $conn->prepare("SELECT * FROM tb_efficiercy_form WHERE form_id = :form_id");
+    $query->bindParam(":form_id", $form_id);
+    $query->execute();
+    $row = $query->fetch();
 
-    $tb_input = $conn -> prepare("SELECT * FROM tb_input WHERE Input_id = :input_id");
-    $tb_input -> bindParam(":input_id", $row['input_id']);
-    $tb_input -> execute();
-    $row1 = $tb_input -> fetch();
+    $tb_input = $conn->prepare("SELECT * FROM tb_input WHERE Input_id = :input_id");
+    $tb_input->bindParam(":input_id", $row['input_id']);
+    $tb_input->execute();
+    $row1 = $tb_input->fetch();
     $input_name = $row1['Input_name'];
     $input_feature = preg_split("/@/", $row1["Input_feature"]);
     $input_setfeature = preg_split("/@/", $row1["Input_setfeature"]);
     $input_result = preg_split("/@/", $row1["Input_result"]);
     $input_compare = preg_split("/@/", $row1["Input_compare"]);
 
-    $tb_process = $conn -> prepare("SELECT * FROM tb_process WHERE process_id = :process_id");
-    $tb_process -> bindParam(":process_id", $row['process_id']);
-    $tb_process -> execute();
-    $row2 = $tb_process -> fetch();
+    $tb_process = $conn->prepare("SELECT * FROM tb_process WHERE process_id = :process_id");
+    $tb_process->bindParam(":process_id", $row['process_id']);
+    $tb_process->execute();
+    $row2 = $tb_process->fetch();
     $process_name = $row2['process_name'];
     $process_feature = preg_split("/@/", $row2["process_feature"]);
     $process_setfeature = preg_split("/@/", $row2["process_setfeature"]);
     $process_result = preg_split("/@/", $row2["process_result"]);
     $process_compare = preg_split("/@/", $row2["process_compare"]);
 
-    $tb_report = $conn -> prepare("SELECT * FROM tb_report WHERE report_id = :report_id");
-    $tb_report -> bindParam(":report_id", $row['report_id']);
-    $tb_report -> execute();
-    $row3 = $tb_report -> fetch();
+    print_r($input_feature);
+
+    $tb_report = $conn->prepare("SELECT * FROM tb_report WHERE report_id = :report_id");
+    $tb_report->bindParam(":report_id", $row['report_id']);
+    $tb_report->execute();
+    $row3 = $tb_report->fetch();
     $report_name = $row3['report_name'];
     $report_feature = preg_split("/@/", $row3["report_feature"]);
     $report_setfeature = preg_split("/@/", $row3["report_setfeature"]);
     $report_result = preg_split("/@/", $row3["report_result"]);
     $report_compare = preg_split("/@/", $row3["report_compare"]);
 
-    $tb_senrity = $conn -> prepare("SELECT * FROM tb_senrity WHERE senrity_id = :senrity_id");
-    $tb_senrity -> bindParam(":senrity_id", $row['senrity_id']);
-    $tb_senrity -> execute();
-    $row4 = $tb_senrity -> fetch();
+    $tb_senrity = $conn->prepare("SELECT * FROM tb_senrity WHERE senrity_id = :senrity_id");
+    $tb_senrity->bindParam(":senrity_id", $row['senrity_id']);
+    $tb_senrity->execute();
+    $row4 = $tb_senrity->fetch();
     $senrity_name = $row4['senrity_name'];
     $senrity_feature = preg_split("/@/", $row4["senrity_feature"]);
     $senrity_setfeature = preg_split("/@/", $row4["senrity_setfeature"]);
@@ -78,6 +80,7 @@ if (isset($_GET['id'])) {
             background-color: rgb(180, 180, 180);
         }
     </style>
+    <script src="js/addtable.js"></script>
 </head>
 
 <body>
@@ -235,7 +238,7 @@ if (isset($_GET['id'])) {
                             </div>
                         </div>
                     </div>
-                <?php }?>
+                <?php } ?>
 
                 <!-- Education Level -->
                 <?php if (empty($row['form_education'])) { ?>
