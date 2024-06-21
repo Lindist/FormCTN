@@ -17,25 +17,25 @@ if (isset($_POST['save'])) {
     $type_m = implode(",", $_POST['kinduser']);
     $edu = implode(",", $_POST['le_education']);
 
-    // $input_name = $_POST['input_name'];
+    $input_name = $_POST['input_name'];
     $input_feature = implode("@", $_POST['input_feature']);
     // $input_setfeature = implode("@", $_POST['input_setfeature']);
     // $input_result = implode("@", $_POST['input_result']);
     // $input_compare = implode("@", $_POST['input_compare']);
 
-    // $process_name = $_POST['process_name'];
+    $process_name = $_POST['process_name'];
     $process_feature = implode("@", $_POST['process_feature']);
     // $process_setfeature = implode("@", $_POST['process_setfeature']);
     // $process_result = implode("@", $_POST['process_result']);
     // $process_compare = implode("@", $_POST['process_compare']);
 
-    // $report_name = $_POST['report_name'];
+    $report_name = $_POST['report_name'];
     $report_feature = implode("@", $_POST['report_feature']);
     // $report_setfeature = implode("@", $_POST['report_setfeature']);
     // $report_result = implode("@", $_POST['report_result']);
     // $report_compare = implode("@", $_POST['report_compare']);
 
-    // $senrity_name = $_POST['senrity_name'];
+    $senrity_name = $_POST['senrity_name'];
     $senrity_feature = implode("@", $_POST['senrity_feature']);
     // $senrity_setfeature = implode("@", $_POST['senrity_setfeature']);
     // $senrity_result = implode("@", $_POST['senrity_result']);
@@ -102,17 +102,17 @@ if (empty($formname)) {
 } else {
     try {
         if (!isset($_SESSION['error'])) {
-            $tb_input = $conn->prepare("INSERT INTO tb_input(input_feature) VALUES(?)");
-            $tb_input->execute([$input_feature]);
+            $tb_input = $conn->prepare("INSERT INTO tb_input(Input_name,input_feature) VALUES(?,?)");
+            $tb_input->execute([$input_name,$input_feature]);
 
-            $tb_process = $conn->prepare("INSERT INTO tb_process(process_feature) VALUES(?)");
-            $tb_process->execute([$process_feature]);
+            $tb_process = $conn->prepare("INSERT INTO tb_process(process_name,process_feature) VALUES(?,?)");
+            $tb_process->execute([$process_name,$process_feature]);
 
-            $tb_report = $conn->prepare("INSERT INTO tb_report(report_feature) VALUES(?)");
-            $tb_report->execute([$report_feature]);
-
-            $tb_senrity = $conn->prepare("INSERT INTO tb_senrity(senrity_feature) VALUES(?)");
-            $tb_senrity->execute([$senrity_feature]);
+            $tb_report = $conn->prepare("INSERT INTO tb_report(report_name,report_feature) VALUES(?,?)");
+            $tb_report->execute([$report_name,$report_feature]);
+            
+            $tb_senrity = $conn->prepare("INSERT INTO tb_senrity(senrity_name,senrity_feature) VALUES(?,?)");
+            $tb_senrity->execute([$senrity_name,$senrity_feature]);
 
             $sql_tb_input = $conn->prepare("SELECT * FROM tb_input WHERE Input_feature = :input_feature");
             $sql_tb_input->bindParam(":input_feature", $input_feature);
