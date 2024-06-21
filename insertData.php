@@ -16,29 +16,29 @@ if (isset($_POST['save'])) {
     $type_m = $_POST['type_m'];
     $edu = $_POST['edu'];
 
-    $input_name = $_POST['input_name'];
+    // $input_name = $_POST['input_name'];
     $input_feature = implode("@", $_POST['input_feature']);
-    $input_setfeature = implode("@", $_POST['input_setfeature']);
-    $input_result = implode("@", $_POST['input_result']);
-    $input_compare = implode("@", $_POST['input_compare']);
+    // $input_setfeature = implode("@", $_POST['input_setfeature']);
+    // $input_result = implode("@", $_POST['input_result']);
+    // $input_compare = implode("@", $_POST['input_compare']);
 
-    $process_name = $_POST['process_name'];
+    // $process_name = $_POST['process_name'];
     $process_feature = implode("@", $_POST['process_feature']);
-    $process_setfeature = implode("@", $_POST['process_setfeature']);
-    $process_result = implode("@", $_POST['process_result']);
-    $process_compare = implode("@", $_POST['process_compare']);
+    // $process_setfeature = implode("@", $_POST['process_setfeature']);
+    // $process_result = implode("@", $_POST['process_result']);
+    // $process_compare = implode("@", $_POST['process_compare']);
 
-    $report_name = $_POST['report_name'];
+    // $report_name = $_POST['report_name'];
     $report_feature = implode("@", $_POST['report_feature']);
-    $report_setfeature = implode("@", $_POST['report_setfeature']);
-    $report_result = implode("@", $_POST['report_result']);
-    $report_compare = implode("@", $_POST['report_compare']);
+    // $report_setfeature = implode("@", $_POST['report_setfeature']);
+    // $report_result = implode("@", $_POST['report_result']);
+    // $report_compare = implode("@", $_POST['report_compare']);
 
-    $senrity_name = $_POST['senrity_name'];
+    // $senrity_name = $_POST['senrity_name'];
     $senrity_feature = implode("@", $_POST['senrity_feature']);
-    $senrity_setfeature = implode("@", $_POST['senrity_setfeature']);
-    $senrity_result = implode("@", $_POST['senrity_result']);
-    $senrity_compare = implode("@", $_POST['senrity_compare']);
+    // $senrity_setfeature = implode("@", $_POST['senrity_setfeature']);
+    // $senrity_result = implode("@", $_POST['senrity_result']);
+    // $senrity_compare = implode("@", $_POST['senrity_compare']);
 }
 
 $_SESSION['formname'] = $formname;
@@ -46,30 +46,30 @@ $_SESSION['ad'] = $ad;
 $_SESSION['gender'] = $gender;
 $_SESSION['type_m'] = $type_m;
 $_SESSION['edu'] = $edu;
-$_SESSION['input_name'] = $input_name;
-$_SESSION['process_name'] = $process_name;
-$_SESSION['report_name'] = $report_name;
-$_SESSION['senrity_name'] = $senrity_name;
+// $_SESSION['input_name'] = $input_name;
+// $_SESSION['process_name'] = $process_name;
+// $_SESSION['report_name'] = $report_name;
+// $_SESSION['senrity_name'] = $senrity_name;
 
-$_SESSION['input_feature'] = $_POST['input_feature'];
-$_SESSION['input_setfeature'] = $_POST['input_setfeature'];
-$_SESSION['input_result'] = $_POST['input_result'];
-$_SESSION['input_compare'] = $_POST['input_compare'];
+// $_SESSION['input_feature'] = $_POST['input_feature'];
+// $_SESSION['input_setfeature'] = $_POST['input_setfeature'];
+// $_SESSION['input_result'] = $_POST['input_result'];
+// $_SESSION['input_compare'] = $_POST['input_compare'];
 
-$_SESSION['process_feature'] = $_POST['process_feature'];
-$_SESSION['process_setfeature'] = $_POST['process_setfeature'];
-$_SESSION['process_result'] = $_POST['process_result'];
-$_SESSION['process_compare'] = $_POST['process_compare'];
+// $_SESSION['process_feature'] = $_POST['process_feature'];
+// $_SESSION['process_setfeature'] = $_POST['process_setfeature'];
+// $_SESSION['process_result'] = $_POST['process_result'];
+// $_SESSION['process_compare'] = $_POST['process_compare'];
 
-$_SESSION['report_feature'] = $_POST['report_feature'];
-$_SESSION['report_setfeature'] = $_POST['report_setfeature'];
-$_SESSION['report_result'] = $_POST['report_result'];
-$_SESSION['report_compare'] = $_POST['report_compare'];
+// $_SESSION['report_feature'] = $_POST['report_feature'];
+// $_SESSION['report_setfeature'] = $_POST['report_setfeature'];
+// $_SESSION['report_result'] = $_POST['report_result'];
+// $_SESSION['report_compare'] = $_POST['report_compare'];
 
-$_SESSION['senrity_feature'] = $_POST['senrity_feature'];
-$_SESSION['senrity_setfeature'] = $_POST['senrity_setfeature'];
-$_SESSION['senrity_result'] = $_POST['senrity_result'];
-$_SESSION['senrity_compare'] = $_POST['senrity_compare'];
+// $_SESSION['senrity_feature'] = $_POST['senrity_feature'];
+// $_SESSION['senrity_setfeature'] = $_POST['senrity_setfeature'];
+// $_SESSION['senrity_result'] = $_POST['senrity_result'];
+// $_SESSION['senrity_compare'] = $_POST['senrity_compare'];
 
 if (empty($formname)) {
     $_SESSION['error'] = "กรุณากรอกชื่อฟอร์ม";
@@ -86,33 +86,32 @@ if (empty($formname)) {
 } else if (empty($edu)) {
     $_SESSION['error'] = "กรุณาเลือก ระดับการศึกษา";
     header("location: insertform.php");
-} else if (empty($input_name)) {
-    $_SESSION['error'] = "กรุณากรอกด้านที่ 1";
-    header("location: insertform.php");
-} else if (empty($process_name)) {
-    $_SESSION['error'] = "กรุณากรอกด้านที่ 2";
-    header("location: insertform.php");
-} else if (empty($report_name)) {
-    $_SESSION['error'] = "กรุณากรอกด้านที่ 3";
-    header("location: insertform.php");
-} else if (empty($senrity_name)) {
-    $_SESSION['error'] = "กรุณากรอกด้านที่ 4";
-    header("location: insertform.php");
+// } else if (empty($input_name)) {
+//     $_SESSION['error'] = "กรุณากรอกด้านที่ 1";
+//     header("location: insertform.php");
+// } else if (empty($process_name)) {
+//     $_SESSION['error'] = "กรุณากรอกด้านที่ 2";
+//     header("location: insertform.php");
+// } else if (empty($report_name)) {
+//     $_SESSION['error'] = "กรุณากรอกด้านที่ 3";
+//     header("location: insertform.php");
+// } else if (empty($senrity_name)) {
+//     $_SESSION['error'] = "กรุณากรอกด้านที่ 4";
+//     header("location: insertform.php");
 } else {
     try {
         if (!isset($_SESSION['error'])) {
-            $tb_input = $conn->prepare("INSERT INTO tb_input(input_name, input_feature, input_setfeature, input_result, input_compare) VALUES(?, ?, ?, ?, ?)");
-            $tb_input->execute([$input_name, $input_feature, $input_setfeature, $input_result, $input_compare]);
+            $tb_input = $conn->prepare("INSERT INTO tb_input(input_feature) VALUES(?)");
+            $tb_input->execute([$input_feature]);
 
-            $tb_process = $conn->prepare("INSERT INTO tb_process(process_name, process_feature, process_setfeature, process_result, process_compare) VALUES(?, ?, ?, ?, ?)");
-            $tb_process->execute([$process_name, $process_feature, $process_setfeature, $process_result, $process_compare]);
+            $tb_process = $conn->prepare("INSERT INTO tb_process(process_feature) VALUES(?)");
+            $tb_process->execute([$process_feature]);
 
-            $tb_report = $conn->prepare("INSERT INTO tb_report(report_name, report_feature, report_setfeature, report_result, report_compare) VALUES(?, ?, ?, ?, ?)");
-            $tb_report->execute([$report_name, $report_feature, $report_setfeature, $report_result, $report_compare]);
+            $tb_report = $conn->prepare("INSERT INTO tb_report(report_feature) VALUES(?)");
+            $tb_report->execute([$report_feature]);
 
-            $tb_senrity = $conn->prepare("INSERT INTO tb_senrity(senrity_name, senrity_feature, senrity_setfeature, senrity_result, senrity_compare) VALUES(?, ?, ?, ?, ?)");
-            $tb_senrity->execute([$senrity_name, $senrity_feature, $senrity_setfeature, $senrity_result, $senrity_compare]);
-
+            $tb_senrity = $conn->prepare("INSERT INTO tb_senrity(senrity_feature) VALUES(?)");
+            $tb_senrity->execute([$senrity_feature]);
 
             $sql_tb_input = $conn->prepare("SELECT * FROM tb_input WHERE Input_name = :input_name");
             $sql_tb_input->bindParam(":input_name", $input_name);

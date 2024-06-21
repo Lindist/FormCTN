@@ -109,6 +109,76 @@ unset($_SESSION['senrity_compare']); // Clear the session flag after use
             background-color: rgb(180, 180, 180);
         }
     </style>
+    <script>
+        const section1add = () => {
+            var section1tr1 = document.getElementById('section1tr1');
+            var section1tr2 = document.getElementById('section1tr2');
+            var section1tr3 = document.getElementById('section1tr3');
+            var section1addbtn = document.getElementById('section1addbtn');
+            var section1removebtn = document.getElementById('section1removebtn');
+
+            if (section1tr1.classList.contains('hidden')) {
+                section1tr1.classList.remove('hidden');
+            } else if (section1tr2.classList.contains('hidden')) {
+                section1tr2.classList.remove('hidden');
+            } else if (section1tr3.classList.contains('hidden')) {
+                section1tr3.classList.remove('hidden');
+            }
+
+            if (!section1tr1.classList.contains('hidden')) {
+                section1removebtn.classList.remove('hidden');
+            }
+
+            if (!section1tr3.classList.contains('hidden')) {
+                section1addbtn.classList.add('hidden');
+            }
+        }
+
+        const section1remove = () => {
+            var section1tr1 = document.getElementById('section1tr1');
+            var section1tr2 = document.getElementById('section1tr2');
+            var section1tr3 = document.getElementById('section1tr3');
+            var section1addbtn = document.getElementById('section1addbtn');
+            var section1removebtn = document.getElementById('section1removebtn');
+
+            if (!section1tr3.classList.contains('hidden')) {
+                section1tr3.classList.add('hidden');
+                var textarea3 = section1tr3.querySelectorAll('textarea');
+                textarea3.forEach(textarea => {
+                    if (!textarea.disabled) {
+                        textarea.disabled = true;
+                        return; // Exit forEach loop after disabling the first enabled textarea
+                    }
+                });
+            } else if (!section1tr2.classList.contains('hidden')) {
+                section1tr2.classList.add('hidden');
+                var textarea2 = section1tr2.querySelectorall('textarea');
+                textarea2.forEach(textarea => {
+                    if (!textarea.disabled) {
+                        textarea.disabled = true;
+                        return; // Exit forEach loop after disabling the first enabled textarea
+                    }
+                });
+            } else if (!section1tr1.classList.contains('hidden')) {
+                section1tr1.classList.add('hidden');
+                var textarea1 = section1tr1.querySelectorall('textarea');
+                textarea1.forEach(textarea => {
+                    if (!textarea.disabled) {
+                        textarea.disabled = true;
+                        return; // Exit forEach loop after disabling the first enabled textarea
+                    }
+                });
+            }
+
+            if (!section1tr1.classList.contains('hidden')) {
+                section1removebtn.classList.add('hidden');
+            }
+
+            if (section1tr3.classList.contains('hidden')) {
+                section1addbtn.classList.remove('hidden');
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -149,13 +219,13 @@ unset($_SESSION['senrity_compare']); // Clear the session flag after use
                     <label class="block text-center mb-1">เพศ</label>
                     <div class="mx-2">
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="" id="">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="gender" id="">
                         </div>
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="" id="">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="gender" id="">
                         </div>
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="" id="">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="gender" id="">
                         </div>
                         <div class="flex items-center">
                             <p class="text-gray-400">***ไม่จำเป็นต้องกรอกครบ***</p>
@@ -172,19 +242,19 @@ unset($_SESSION['senrity_compare']); // Clear the session flag after use
                     <label class="block text-center mb-1">ประเภทผู้ใช้</label>
                     <div class="mx-2">
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="" id="">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="type_m" id="">
                         </div>
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="" id="">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="type_m" id="">
                         </div>
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="" id="">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="type_m" id="">
                         </div>
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="" id="">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="type_m" id="">
                         </div>
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="" id="">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="type_m" id="">
                         </div>
                         <div class="flex items-center">
                             <p class="text-gray-400">***ไม่จำเป็นต้องกรอกครบ***</p>
@@ -200,25 +270,25 @@ unset($_SESSION['senrity_compare']); // Clear the session flag after use
                     <label class="block text-center mb-1">ระดับการศึกษา</label>
                     <div class="mx-2">
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="" id="">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="edu" id="">
                         </div>
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="" id="">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="edu" id="">
                         </div>
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="" id="">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="edu" id="">
                         </div>
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="" id="">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="edu" id="">
                         </div>
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="" id="">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="edu" id="">
                         </div>
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="" id="">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="edu" id="">
                         </div>
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="" id="">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="edu" id="">
                         </div>
                         <div class="flex items-center">
                             <p class="text-gray-400">***ไม่จำเป็นต้องกรอกครบ***</p>
@@ -227,9 +297,9 @@ unset($_SESSION['senrity_compare']); // Clear the session flag after use
                 </div>
             </div>
 
-
-
             <!-- Survey Section 2 -->
+            <hr class="my-3">
+
             <div class="mb-4">
                 <label for="" class="text-lg"><label class="text-lg font-bold mb-2">ตอนที่ 2 </label>แบบสอบถามความคิดเห็น</label>
 
@@ -239,7 +309,7 @@ unset($_SESSION['senrity_compare']); // Clear the session flag after use
 
                 <label for="" class="block text-lg my-5"><label class="text-lg font-bold mb-2">ด้านที่ 1 </label>ด้านการนำเข้าข้อมูลระบบ</label>
 
-                <table class="w-full border border-gray-300 text-center mt-3">
+                <table class="w-full border border-gray-300 text-center my-3">
                     <thead>
                         <tr class="bg-gray-200">
                             <th scope="col" class="border border-gray-300 py-2">ที่</th>
@@ -257,36 +327,38 @@ unset($_SESSION['senrity_compare']); // Clear the session flag after use
                             <td class="border border-gray-300 py-2"><textarea disabled name="input_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_result[0] ?></textarea></td>
                             <td class="border border-gray-300 py-2"><textarea disabled name="input_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_compare[0] ?></textarea></td>
                         </tr>
-                        <!-- <tr class="odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
-                                <td class="border border-gray-300 py-2">2</td>
-                                <td class="border border-gray-300 py-2"><textarea name="input_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_feature[1] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="input_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_setfeature[1] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="input_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_result[1] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="input_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_compare[1] ?></textarea></td>
-                            </tr>
-                            <tr class="odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
-                                <td class="border border-gray-300 py-2">3</td>
-                                <td class="border border-gray-300 py-2"><textarea name="input_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_feature[2] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="input_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_setfeature[2] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="input_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_result[2] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="input_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_compare[2] ?></textarea></td>
-                            </tr>
-                            <tr class="odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
-                                <td class="border border-gray-300 py-2">4</td>
-                                <td class="border border-gray-300 py-2"><textarea name="input_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_feature[3] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="input_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_setfeature[3] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="input_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_result[3] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="input_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_compare[3] ?></textarea></td>
-                            </tr> -->
+                        <tr class="hidden odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700" id="section1tr1">
+                            <td class="border border-gray-300 py-2">2</td>
+                            <td class="border border-gray-300 py-2"><textarea name="input_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_feature[1] ?></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="input_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_setfeature[1] ?></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="input_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_result[1] ?></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="input_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_compare[1] ?></textarea></td>
+                        </tr>
+                        <tr class="hidden odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700" id="section1tr2">
+                            <td class="border border-gray-300 py-2">3</td>
+                            <td class="border border-gray-300 py-2"><textarea name="input_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_feature[2] ?></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="input_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_setfeature[2] ?></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="input_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_result[2] ?></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="input_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_compare[2] ?></textarea></td>
+                        </tr>
+                        <tr class="hidden odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700" id="section1tr3">
+                            <td class="border border-gray-300 py-2">4</td>
+                            <td class="border border-gray-300 py-2"><textarea name="input_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_feature[3] ?></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="input_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_setfeature[3] ?></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="input_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_result[3] ?></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="input_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_compare[3] ?></textarea></td>
+                        </tr>
                     </tbody>
                 </table>
+                <button type="button" id="section1addbtn" onclick="section1add()" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">เพิ่ม</button>
+                <button type="button" id="section1removebtn" onclick="section1remove()" class="hidden bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">ลบ</button>
 
                 <!-- Section 2 -->
 
                 <label for="" class="block text-lg my-5"><label class="text-lg font-bold mb-2">ด้านที่ 2 </label>ด้านการประมวลผล</label>
 
 
-                <table class="w-full border border-gray-300 text-center mt-3">
+                <table class="w-full border border-gray-300 text-center my-3">
                     <thead>
                         <tr class="bg-gray-200">
                             <th scope="col" class="border border-gray-300 py-2">ที่</th>
@@ -334,7 +406,7 @@ unset($_SESSION['senrity_compare']); // Clear the session flag after use
                 <label for="" class="block text-lg my-5"><label class="text-lg font-bold mb-2">ด้านที่ 3 </label>ด้านการรายงานข้อมูล</label>
 
 
-                <table class="w-full border border-gray-300 text-center mt-3">
+                <table class="w-full border border-gray-300 text-center my-3">
                     <thead>
                         <tr class="bg-gray-200">
                             <th scope="col" class="border border-gray-300 py-2">ที่</th>
@@ -380,7 +452,7 @@ unset($_SESSION['senrity_compare']); // Clear the session flag after use
 
                 <label for="" class="block text-lg my-5"><label class="text-lg font-bold mb-2">ด้านที่ 4 </label>ด้านความปลอดภัย</label>
 
-                <table class="w-full border border-gray-300 text-center mt-3">
+                <table class="w-full border border-gray-300 text-center my-3">
                     <thead>
                         <tr class="bg-gray-200">
                             <th scope="col" class="border border-gray-300 py-2">ที่</th>
