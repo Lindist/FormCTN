@@ -102,17 +102,17 @@ if (empty($formname)) {
 } else {
     try {
         if (!isset($_SESSION['error'])) {
-            $tb_input = $conn->prepare("INSERT INTO tb_input(Input_name,input_feature) VALUES(?,?)");
-            $tb_input->execute([$input_name,$input_feature]);
+            $tb_input = $conn->prepare("INSERT INTO tb_input(Input_name, input_feature) VALUES(?,?)");
+            $tb_input->execute([$input_name, $input_feature]);
 
-            $tb_process = $conn->prepare("INSERT INTO tb_process(process_name,process_feature) VALUES(?,?)");
-            $tb_process->execute([$process_name,$process_feature]);
+            $tb_process = $conn->prepare("INSERT INTO tb_process(process_name, process_feature) VALUES(?,?)");
+            $tb_process->execute([$process_name, $process_feature]);
 
-            $tb_report = $conn->prepare("INSERT INTO tb_report(report_name,report_feature) VALUES(?,?)");
-            $tb_report->execute([$report_name,$report_feature]);
+            $tb_report = $conn->prepare("INSERT INTO tb_report(report_name, report_feature) VALUES(?,?)");
+            $tb_report->execute([$report_name, $report_feature]);
             
-            $tb_senrity = $conn->prepare("INSERT INTO tb_senrity(senrity_name,senrity_feature) VALUES(?,?)");
-            $tb_senrity->execute([$senrity_name,$senrity_feature]);
+            $tb_senrity = $conn->prepare("INSERT INTO tb_senrity(senrity_name, senrity_feature) VALUES(?,?)");
+            $tb_senrity->execute([$senrity_name, $senrity_feature]);
 
             $sql_tb_input = $conn->prepare("SELECT * FROM tb_input WHERE Input_feature = :input_feature");
             $sql_tb_input->bindParam(":input_feature", $input_feature);

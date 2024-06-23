@@ -6,31 +6,19 @@ const section1add = () => {
     const section1tr3 = document.getElementById('section1tr3');
     const section1addbtn = document.getElementById('section1addbtn');
     const section1removebtn = document.getElementById('section1removebtn');
+    const textarea1 = document.getElementById('section1tr1td');
+    const textarea2 = document.getElementById('section1tr2td');
+    const textarea3 = document.getElementById('section1tr3td');
 
     if (section1tr1.classList.contains('hidden')) {
         section1tr1.classList.remove('hidden');
-        section1tr1.querySelectorAll('textarea').forEach(textarea => {
-            if (textarea.disabled) {
-                textarea.disabled = false;
-                return; // Exit forEach loop after disabling the first enabled textarea
-            }
-        });
+        textarea1.disabled = true;
     } else if (section1tr2.classList.contains('hidden')) {
         section1tr2.classList.remove('hidden');
-        section1tr2.querySelectorAll('textarea').forEach(textarea => {
-            if (textarea.disabled) {
-                textarea.disabled = false;
-                return; // Exit forEach loop after disabling the first enabled textarea
-            }
-        });
+        textarea2.disabled = true;
     } else if (section1tr3.classList.contains('hidden')) {
         section1tr3.classList.remove('hidden');
-        section1tr3.querySelectorAll('textarea').forEach(textarea => {
-            if (textarea.disabled) {
-                textarea.disabled = false;
-                return; // Exit forEach loop after disabling the first enabled textarea
-            }
-        });
+        textarea3.disabled = true;
     }
 
     if (!section1tr1.classList.contains('hidden')) {

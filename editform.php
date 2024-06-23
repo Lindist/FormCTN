@@ -15,10 +15,15 @@ if (isset($_GET['id'])) {
     $query->execute();
     $row = $query->fetch();
 
+    $gender = preg_split("/,/" , $row['form_gender']);
+    $type_m = preg_split("/,/", $row['form_type']);
+    $edu = preg_split("/,/", $row['form_education']);
+
     $tb_input = $conn->prepare("SELECT * FROM tb_input WHERE Input_id = :input_id");
     $tb_input->bindParam(":input_id", $row['input_id']);
     $tb_input->execute();
     $row1 = $tb_input->fetch();
+
     $input_name = $row1['Input_name'];
     $input_feature = preg_split("/@/", $row1["Input_feature"]);
     $input_setfeature = preg_split("/@/", $row1["Input_setfeature"]);
@@ -29,18 +34,18 @@ if (isset($_GET['id'])) {
     $tb_process->bindParam(":process_id", $row['process_id']);
     $tb_process->execute();
     $row2 = $tb_process->fetch();
+
     $process_name = $row2['process_name'];
     $process_feature = preg_split("/@/", $row2["process_feature"]);
     $process_setfeature = preg_split("/@/", $row2["process_setfeature"]);
     $process_result = preg_split("/@/", $row2["process_result"]);
     $process_compare = preg_split("/@/", $row2["process_compare"]);
 
-    print_r($input_feature);
-
     $tb_report = $conn->prepare("SELECT * FROM tb_report WHERE report_id = :report_id");
     $tb_report->bindParam(":report_id", $row['report_id']);
     $tb_report->execute();
     $row3 = $tb_report->fetch();
+
     $report_name = $row3['report_name'];
     $report_feature = preg_split("/@/", $row3["report_feature"]);
     $report_setfeature = preg_split("/@/", $row3["report_setfeature"]);
@@ -51,14 +56,15 @@ if (isset($_GET['id'])) {
     $tb_senrity->bindParam(":senrity_id", $row['senrity_id']);
     $tb_senrity->execute();
     $row4 = $tb_senrity->fetch();
+    
     $senrity_name = $row4['senrity_name'];
     $senrity_feature = preg_split("/@/", $row4["senrity_feature"]);
     $senrity_setfeature = preg_split("/@/", $row4["senrity_setfeature"]);
     $senrity_result = preg_split("/@/", $row4["senrity_result"]);
     $senrity_compare = preg_split("/@/", $row4["senrity_compare"]);
+
+    // print_r($edu);
 }
-
-
 
 ?>
 
@@ -80,7 +86,7 @@ if (isset($_GET['id'])) {
             background-color: rgb(180, 180, 180);
         }
     </style>
-    <script src="js/addtable.js"></script>
+    <script src="js/edittable.js"></script>
 </head>
 
 <body>
@@ -117,486 +123,293 @@ if (isset($_GET['id'])) {
 
             <!-- Body_Content -->
             <div class="mb-4">
-                <label class="block text-lg font-bold mb-2">ตอนที่ 1</label>
-                <label class="block mb-6">ข้อมูลพื้นฐานของผู้กรอกแบบสอบถาม</label>
+                <label class="block text-lg font-bold mb-2">ตอนที่ 1 ข้อมูลพื้นฐานของผู้กรอกแบบสอบถาม</label>
 
                 <!-- Gender -->
-                <?php if (empty($row['form_gender'])) { ?>
-                    <div class="grid grid-cols-2 mb-4">
-                        <label class="block text-center mb-1">เพศ</label>
-                        <div class="mx-2">
-                            <div class="flex items-center">
-                                <input class="my-2 h-6 w-6" type="radio" value="ชาย" name="gender">
-                                <label class="ml-2">ชาย</label>
-                            </div>
-                            <div class="flex items-center">
-                                <input class="my-2 h-6 w-6" type="radio" value="หญิง" name="gender">
-                                <label class="ml-2">หญิง</label>
-                            </div>
+                <hr class="my-3">
+
+                <div class="grid grid-cols-2 mb-4">
+                    <label class="block text-center mb-1">เพศ</label>
+                    <div class="mx-2">
+                        <div class="flex items-center">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="genders[]" id="" value="<?= $gender[0] ?>">
+                        </div>
+                        <div class="flex items-center">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="genders[]" id="" value="<?= $gender[1] ?>">
+                        </div>
+                        <div class="flex items-center">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="genders[]" id="" value="<?= $gender[2] ?>">
+                        </div>
+                        <div class="flex items-center">
+                            <p class="text-gray-400">***ไม่จำเป็นต้องกรอกครบ***</p>
                         </div>
                     </div>
-                <?php } else if ($row['form_gender'] == "ชาย") { ?>
-                    <div class="grid grid-cols-2 mb-4">
-                        <label class="block text-center mb-1">เพศ</label>
-                        <div class="mx-2">
-                            <div class="flex items-center">
-                                <input class="my-2 h-6 w-6" type="radio" value="ชาย" name="gender" checked>
-                                <label class="ml-2">ชาย</label>
-                            </div>
-                            <div class="flex items-center">
-                                <input class="my-2 h-6 w-6" type="radio" value="หญิง" name="gender">
-                                <label class="ml-2">หญิง</label>
-                            </div>
-                        </div>
-                    </div>
-                <?php } else if ($row['form_gender'] == "หญิง") { ?>
-                    <div class="grid grid-cols-2 mb-4">
-                        <label class="block text-center mb-1">เพศ</label>
-                        <div class="mx-2">
-                            <div class="flex items-center">
-                                <input class="my-2 h-6 w-6" type="radio" value="ชาย" name="gender">
-                                <label class="ml-2">ชาย</label>
-                            </div>
-                            <div class="flex items-center">
-                                <input class="my-2 h-6 w-6" type="radio" value="หญิง" name="gender" checked>
-                                <label class="ml-2">หญิง</label>
-                            </div>
-                        </div>
-                    </div>
-                <?php } ?>
+                </div>
+
 
                 <!-- User Type -->
-                <?php if (empty($row['form_type'])) { ?>
-                    <div class="grid grid-cols-2 mb-4">
-                        <label class="block text-center mb-1">ประเภทผู้ใช้</label>
-                        <div class="mx-2">
-                            <div class="flex items-center">
-                                <input class="my-2 h-6 w-6" type="radio" value="อาจารย์" name="type_m">
-                                <label class="ml-2">อาจารย์</label>
-                            </div>
-                            <div class="flex items-center">
-                                <input class="my-2 h-6 w-6" type="radio" value="นักเรียน/นักศึกษา" name="type_m">
-                                <label class="ml-2">นักเรียน/นักศึกษา</label>
-                            </div>
-                            <div class="flex items-center">
-                                <input class="my-2 h-6 w-6" type="radio" value="บุคคลภายนอก" name="type_m">
-                                <label class="ml-2">บุคคลภายนอก</label>
-                            </div>
+
+                <hr class="my-3">
+
+                <div class="grid grid-cols-2 mb-4">
+                    <label class="block text-center mb-1">ประเภทผู้ใช้</label>
+                    <div class="mx-2">
+                        <div class="flex items-center">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="kinduser[]" id="" value="<?= $type_m[0] ?>">
+                        </div>
+                        <div class="flex items-center">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="kinduser[]" id="" value="<?= $type_m[1] ?>">
+                        </div>
+                        <div class="flex items-center">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="kinduser[]" id="" value="<?= $type_m[2] ?>">
+                        </div>
+                        <div class="flex items-center">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="kinduser[]" id="" value="<?= $type_m[3] ?>">
+                        </div>
+                        <div class="flex items-center">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="kinduser[]" id="" value="<?= $type_m[4] ?>">
+                        </div>
+                        <div class="flex items-center">
+                            <p class="text-gray-400">***ไม่จำเป็นต้องกรอกครบ***</p>
                         </div>
                     </div>
-                <?php } else if ($row['form_type'] == "อาจารย์") { ?>
-                    <div class="grid grid-cols-2 mb-4">
-                        <label class="block text-center mb-1">ประเภทผู้ใช้</label>
-                        <div class="mx-2">
-                            <div class="flex items-center">
-                                <input class="my-2 h-6 w-6" type="radio" value="อาจารย์" name="type_m" checked>
-                                <label class="ml-2">อาจารย์</label>
-                            </div>
-                            <div class="flex items-center">
-                                <input class="my-2 h-6 w-6" type="radio" value="นักเรียน/นักศึกษา" name="type_m">
-                                <label class="ml-2">นักเรียน/นักศึกษา</label>
-                            </div>
-                            <div class="flex items-center">
-                                <input class="my-2 h-6 w-6" type="radio" value="บุคคลภายนอก" name="type_m">
-                                <label class="ml-2">บุคคลภายนอก</label>
-                            </div>
-                        </div>
-                    </div>
-                <?php } else if ($row['form_type'] == "นักเรียน/นักศึกษา") { ?>
-                    <div class="grid grid-cols-2 mb-4">
-                        <label class="block text-center mb-1">ประเภทผู้ใช้</label>
-                        <div class="mx-2">
-                            <div class="flex items-center">
-                                <input class="my-2 h-6 w-6" type="radio" value="อาจารย์" name="type_m">
-                                <label class="ml-2">อาจารย์</label>
-                            </div>
-                            <div class="flex items-center">
-                                <input class="my-2 h-6 w-6" type="radio" value="นักเรียน/นักศึกษา" name="type_m" checked>
-                                <label class="ml-2">นักเรียน/นักศึกษา</label>
-                            </div>
-                            <div class="flex items-center">
-                                <input class="my-2 h-6 w-6" type="radio" value="บุคคลภายนอก" name="type_m">
-                                <label class="ml-2">บุคคลภายนอก</label>
-                            </div>
-                        </div>
-                    </div>
-                <?php } else if ($row['form_type'] == "บุคคลภายนอก") { ?>
-                    <div class="grid grid-cols-2 mb-4">
-                        <label class="block text-center mb-1">ประเภทผู้ใช้</label>
-                        <div class="mx-2">
-                            <div class="flex items-center">
-                                <input class="my-2 h-6 w-6" type="radio" value="อาจารย์" name="type_m">
-                                <label class="ml-2">อาจารย์</label>
-                            </div>
-                            <div class="flex items-center">
-                                <input class="my-2 h-6 w-6" type="radio" value="นักเรียน/นักศึกษา" name="type_m">
-                                <label class="ml-2">นักเรียน/นักศึกษา</label>
-                            </div>
-                            <div class="flex items-center">
-                                <input class="my-2 h-6 w-6" type="radio" value="บุคคลภายนอก" name="type_m" checked>
-                                <label class="ml-2">บุคคลภายนอก</label>
-                            </div>
-                        </div>
-                    </div>
-                <?php } ?>
+                </div>
+
 
                 <!-- Education Level -->
-                <?php if (empty($row['form_education'])) { ?>
-                    <div class="grid grid-cols-2 mb-4">
-                        <label class="block text-center mb-1">ระดับการศึกษา</label>
-                        <div class="mx-2">
-                            <div class="flex items-center">
-                                <input class="my-2 h-6 w-6" type="radio" value="มัธยมต้น" name="edu">
-                                <label class="ml-2">มัธยมต้น</label>
-                            </div>
-                            <div class="flex items-center">
-                                <input class="my-2 h-6 w-6" type="radio" value="มัธยมปลาย/ปวช." name="edu">
-                                <label class="ml-2">มัธยมปลาย/ปวช.</label>
-                            </div>
-                            <div class="flex items-center">
-                                <input class="my-2 h-6 w-6" type="radio" value="อนุปริญญา/ปวส." name="edu">
-                                <label class="ml-2">อนุปริญญา/ปวส.</label>
-                            </div>
-                            <div class="flex items-center">
-                                <input class="my-2 h-6 w-6" type="radio" value="ป.ตรี" name="edu">
-                                <label class="ml-2">ป.ตรี</label>
-                            </div>
-                            <div class="flex items-center">
-                                <input class="my-2 h-6 w-6" type="radio" value="สูงกว่า ป.ตรี" name="edu">
-                                <label class="ml-2">สูงกว่า ป.ตรี</label>
-                            </div>
+                <hr class="my-3">
+
+                <div class="grid grid-cols-2 mb-4">
+                    <label class="block text-center mb-1">ระดับการศึกษา</label>
+                    <div class="mx-2">
+                        <div class="flex items-center">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="le_education[]" id="" value="<?= $edu[0] ?>">
+                        </div>
+                        <div class="flex items-center">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="le_education[]" id="" value="<?= $edu[1] ?>">
+                        </div>
+                        <div class="flex items-center">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="le_education[]" id="" value="<?= $edu[2] ?>">
+                        </div>
+                        <div class="flex items-center">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="le_education[]" id="" value="<?= $edu[3] ?>">
+                        </div>
+                        <div class="flex items-center">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="le_education[]" id="" value="<?= $edu[4] ?>">
+                        </div>
+                        <div class="flex items-center">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="le_education[]" id="" value="<?= $edu[5] ?>">
+                        </div>
+                        <div class="flex items-center">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="le_education[]" id="" value="<?= $edu[6] ?>">
+                        </div>
+                        <div class="flex items-center">
+                            <p class="text-gray-400">***ไม่จำเป็นต้องกรอกครบ***</p>
                         </div>
                     </div>
-                <?php } else if ($row['form_education'] == "มัธยมต้น") { ?>
-                    <div class="grid grid-cols-2 mb-4">
-                        <label class="block text-center mb-1">ระดับการศึกษา</label>
-                        <div class="mx-2">
-                            <div class="flex items-center">
-                                <input class="my-2 h-6 w-6" type="radio" value="มัธยมต้น" name="edu" checked>
-                                <label class="ml-2">มัธยมต้น</label>
-                            </div>
-                            <div class="flex items-center">
-                                <input class="my-2 h-6 w-6" type="radio" value="มัธยมปลาย/ปวช." name="edu">
-                                <label class="ml-2">มัธยมปลาย/ปวช.</label>
-                            </div>
-                            <div class="flex items-center">
-                                <input class="my-2 h-6 w-6" type="radio" value="อนุปริญญา/ปวส." name="edu">
-                                <label class="ml-2">อนุปริญญา/ปวส.</label>
-                            </div>
-                            <div class="flex items-center">
-                                <input class="my-2 h-6 w-6" type="radio" value="ป.ตรี" name="edu">
-                                <label class="ml-2">ป.ตรี</label>
-                            </div>
-                            <div class="flex items-center">
-                                <input class="my-2 h-6 w-6" type="radio" value="สูงกว่า ป.ตรี" name="edu">
-                                <label class="ml-2">สูงกว่า ป.ตรี</label>
-                            </div>
-                        </div>
-                    </div>
-                <?php } else if ($row['form_education'] == "มัธยมปลาย/ปวช.") { ?>
-                    <div class="grid grid-cols-2 mb-4">
-                        <label class="block text-center mb-1">ระดับการศึกษา</label>
-                        <div class="mx-2">
-                            <div class="flex items-center">
-                                <input class="my-2 h-6 w-6" type="radio" value="มัธยมต้น" name="edu">
-                                <label class="ml-2">มัธยมต้น</label>
-                            </div>
-                            <div class="flex items-center">
-                                <input class="my-2 h-6 w-6" type="radio" value="มัธยมปลาย/ปวช." name="edu" checked>
-                                <label class="ml-2">มัธยมปลาย/ปวช.</label>
-                            </div>
-                            <div class="flex items-center">
-                                <input class="my-2 h-6 w-6" type="radio" value="อนุปริญญา/ปวส." name="edu">
-                                <label class="ml-2">อนุปริญญา/ปวส.</label>
-                            </div>
-                            <div class="flex items-center">
-                                <input class="my-2 h-6 w-6" type="radio" value="ป.ตรี" name="edu">
-                                <label class="ml-2">ป.ตรี</label>
-                            </div>
-                            <div class="flex items-center">
-                                <input class="my-2 h-6 w-6" type="radio" value="สูงกว่า ป.ตรี" name="edu">
-                                <label class="ml-2">สูงกว่า ป.ตรี</label>
-                            </div>
-                        </div>
-                    </div>
-                <?php } else if ($row['form_education'] == "อนุปริญญา/ปวส.") { ?>
-                    <div class="grid grid-cols-2 mb-4">
-                        <label class="block text-center mb-1">ระดับการศึกษา</label>
-                        <div class="mx-2">
-                            <div class="flex items-center">
-                                <input class="my-2 h-6 w-6" type="radio" value="มัธยมต้น" name="edu">
-                                <label class="ml-2">มัธยมต้น</label>
-                            </div>
-                            <div class="flex items-center">
-                                <input class="my-2 h-6 w-6" type="radio" value="มัธยมปลาย/ปวช." name="edu">
-                                <label class="ml-2">มัธยมปลาย/ปวช.</label>
-                            </div>
-                            <div class="flex items-center">
-                                <input class="my-2 h-6 w-6" type="radio" value="อนุปริญญา/ปวส." name="edu" checked>
-                                <label class="ml-2">อนุปริญญา/ปวส.</label>
-                            </div>
-                            <div class="flex items-center">
-                                <input class="my-2 h-6 w-6" type="radio" value="ป.ตรี" name="edu">
-                                <label class="ml-2">ป.ตรี</label>
-                            </div>
-                            <div class="flex items-center">
-                                <input class="my-2 h-6 w-6" type="radio" value="สูงกว่า ป.ตรี" name="edu">
-                                <label class="ml-2">สูงกว่า ป.ตรี</label>
-                            </div>
-                        </div>
-                    </div>
-                <?php } else if ($row['form_education'] == "ป.ตรี") { ?>
-                    <div class="grid grid-cols-2 mb-4">
-                        <label class="block text-center mb-1">ระดับการศึกษา</label>
-                        <div class="mx-2">
-                            <div class="flex items-center">
-                                <input class="my-2 h-6 w-6" type="radio" value="มัธยมต้น" name="edu">
-                                <label class="ml-2">มัธยมต้น</label>
-                            </div>
-                            <div class="flex items-center">
-                                <input class="my-2 h-6 w-6" type="radio" value="มัธยมปลาย/ปวช." name="edu">
-                                <label class="ml-2">มัธยมปลาย/ปวช.</label>
-                            </div>
-                            <div class="flex items-center">
-                                <input class="my-2 h-6 w-6" type="radio" value="อนุปริญญา/ปวส." name="edu">
-                                <label class="ml-2">อนุปริญญา/ปวส.</label>
-                            </div>
-                            <div class="flex items-center">
-                                <input class="my-2 h-6 w-6" type="radio" value="ป.ตรี" name="edu" checked>
-                                <label class="ml-2">ป.ตรี</label>
-                            </div>
-                            <div class="flex items-center">
-                                <input class="my-2 h-6 w-6" type="radio" value="สูงกว่า ป.ตรี" name="edu">
-                                <label class="ml-2">สูงกว่า ป.ตรี</label>
-                            </div>
-                        </div>
-                    </div>
-                <?php } else if ($row['form_education'] == "สูงกว่า ป.ตรี") { ?>
-                    <div class="grid grid-cols-2 mb-4">
-                        <label class="block text-center mb-1">ระดับการศึกษา</label>
-                        <div class="mx-2">
-                            <div class="flex items-center">
-                                <input class="my-2 h-6 w-6" type="radio" value="มัธยมต้น" name="edu">
-                                <label class="ml-2">มัธยมต้น</label>
-                            </div>
-                            <div class="flex items-center">
-                                <input class="my-2 h-6 w-6" type="radio" value="มัธยมปลาย/ปวช." name="edu">
-                                <label class="ml-2">มัธยมปลาย/ปวช.</label>
-                            </div>
-                            <div class="flex items-center">
-                                <input class="my-2 h-6 w-6" type="radio" value="อนุปริญญา/ปวส." name="edu">
-                                <label class="ml-2">อนุปริญญา/ปวส.</label>
-                            </div>
-                            <div class="flex items-center">
-                                <input class="my-2 h-6 w-6" type="radio" value="ป.ตรี" name="edu">
-                                <label class="ml-2">ป.ตรี</label>
-                            </div>
-                            <div class="flex items-center">
-                                <input class="my-2 h-6 w-6" type="radio" value="สูงกว่า ป.ตรี" name="edu" checked>
-                                <label class="ml-2">สูงกว่า ป.ตรี</label>
-                            </div>
-                        </div>
-                    </div>
-                <?php } ?>
-
-                <!-- Survey Section 2 -->
-                <div class="mb-4">
-
-                    <label class="block text-lg font-bold mb-2">ตอนที่ 2</label>
-                    <label class="block mb-2">แบบสอบถามความคิดเห็น</label>
-                    <label class="block mb-2">โปรดบันทึกความคิดเห็นของท่านลงในช่องว่างในแต่ละข้อ</label>
-
-                    <!-- Section 1 -->
-                    <label class="block text-lg font-bold my-2">ด้านที่ 1</label>
-                    <input type="text" name="input_name" class="block w-full border border-gray-300 rounded px-3 py-2 mb-2" value="<?= $input_name ?>">
-
-                    <table class="w-full border border-gray-300 text-center mt-3">
-                        <thead>
-                            <tr class="bg-gray-200">
-                                <th scope="col" class="border border-gray-300 py-2">ที่</th>
-                                <th scope="col" class="border border-gray-300 py-2">คุณสมบัติด้านเทคนิค</th>
-                                <th scope="col" class="border border-gray-300 py-2">คุณสมบัติที่ตั้งไว้</th>
-                                <th scope="col" class="border border-gray-300 py-2">คุณสมบัติที่ทำได้</th>
-                                <th scope="col" class="border border-gray-300 py-2">ผลการเปรียบเทียบ</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
-                                <td class="border border-gray-300 py-2">1</td>
-                                <td class="border border-gray-300 py-2"><textarea name="input_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_feature[0] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="input_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_setfeature[0] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="input_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_result[0] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="input_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_compare[0] ?></textarea></td>
-                            </tr>
-                            <tr class="odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
-                                <td class="border border-gray-300 py-2">2</td>
-                                <td class="border border-gray-300 py-2"><textarea name="input_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_feature[1] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="input_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_setfeature[1] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="input_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_result[1] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="input_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_compare[1] ?></textarea></td>
-                            </tr>
-                            <tr class="odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
-                                <td class="border border-gray-300 py-2">3</td>
-                                <td class="border border-gray-300 py-2"><textarea name="input_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_feature[2] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="input_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_setfeature[2] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="input_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_result[2] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="input_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_compare[2] ?></textarea></td>
-                            </tr>
-                            <tr class="odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
-                                <td class="border border-gray-300 py-2">4</td>
-                                <td class="border border-gray-300 py-2"><textarea name="input_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_feature[3] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="input_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_setfeature[3] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="input_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_result[3] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="input_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_compare[3] ?></textarea></td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <!-- Section 2 -->
-                    <label class="block text-lg font-bold my-2">ด้านที่ 2</label>
-                    <input type="text" name="process_name" class="block w-full border border-gray-300 rounded px-3 py-2 mb-2" value="<?= $process_name ?>">
-
-                    <table class="w-full border border-gray-300 text-center mt-3">
-                        <thead>
-                            <tr class="bg-gray-200">
-                                <th scope="col" class="border border-gray-300 py-2">ที่</th>
-                                <th scope="col" class="border border-gray-300 py-2">คุณสมบัติด้านเทคนิค</th>
-                                <th scope="col" class="border border-gray-300 py-2">คุณสมบัติที่ตั้งไว้</th>
-                                <th scope="col" class="border border-gray-300 py-2">คุณสมบัติที่ทำได้</th>
-                                <th scope="col" class="border border-gray-300 py-2">ผลการเปรียบเทียบ</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
-                                <td class="border border-gray-300 py-2">1</td>
-                                <td class="border border-gray-300 py-2"><textarea name="process_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $process_feature[0] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="process_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $process_setfeature[0] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="process_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $process_result[0] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="process_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $process_compare[0] ?></textarea></td>
-                            </tr>
-                            <tr class="odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
-                                <td class="border border-gray-300 py-2">2</td>
-                                <td class="border border-gray-300 py-2"><textarea name="process_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $process_feature[1] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="process_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $process_setfeature[1] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="process_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $process_result[1] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="process_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $process_compare[1] ?></textarea></td>
-                            </tr>
-                            <tr class="odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
-                                <td class="border border-gray-300 py-2">3</td>
-                                <td class="border border-gray-300 py-2"><textarea name="process_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $process_feature[2] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="process_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $process_setfeature[2] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="process_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $process_result[2] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="process_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $process_compare[2] ?></textarea></td>
-                            </tr>
-                            <tr class="odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
-                                <td class="border border-gray-300 py-2">4</td>
-                                <td class="border border-gray-300 py-2"><textarea name="process_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $process_feature[3] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="process_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $process_setfeature[3] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="process_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $process_result[3] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="process_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $process_compare[3] ?></textarea></td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <!-- Section 3 -->
-                    <label class="block text-lg font-bold my-2">ด้านที่ 3</label>
-                    <input type="text" name="report_name" class="block w-full border border-gray-300 rounded px-3 py-2 mb-2" value="<?= $report_name ?>">
-
-                    <table class="w-full border border-gray-300 text-center mt-3">
-                        <thead>
-                            <tr class="bg-gray-200">
-                                <th scope="col" class="border border-gray-300 py-2">ที่</th>
-                                <th scope="col" class="border border-gray-300 py-2">คุณสมบัติด้านเทคนิค</th>
-                                <th scope="col" class="border border-gray-300 py-2">คุณสมบัติที่ตั้งไว้</th>
-                                <th scope="col" class="border border-gray-300 py-2">คุณสมบัติที่ทำได้</th>
-                                <th scope="col" class="border border-gray-300 py-2">ผลการเปรียบเทียบ</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="">
-                                <td class="border border-gray-300 py-2">1</td>
-                                <td class="border border-gray-300 py-2"><textarea name="report_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $report_feature[0] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="report_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $report_setfeature[0] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="report_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $report_result[0] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="report_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $report_compare[0] ?></textarea></td>
-                            </tr>
-                            <tr class="odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
-                                <td class="border border-gray-300 py-2">2</td>
-                                <td class="border border-gray-300 py-2"><textarea name="report_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $report_feature[1] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="report_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $report_setfeature[1] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="report_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $report_result[1] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="report_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $report_compare[1] ?></textarea></td>
-                            </tr>
-                            <tr class="odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
-                                <td class="border border-gray-300 py-2">3</td>
-                                <td class="border border-gray-300 py-2"><textarea name="report_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $report_feature[2] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="report_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $report_setfeature[2] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="report_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $report_result[2] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="report_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $report_compare[2] ?></textarea></td>
-                            </tr>
-                            <tr class="odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
-                                <td class="border border-gray-300 py-2">4</td>
-                                <td class="border border-gray-300 py-2"><textarea name="report_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $report_feature[3] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="report_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $report_setfeature[3] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="report_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $report_result[3] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="report_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $report_compare[3] ?></textarea></td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <!-- Section 4 -->
-                    <label class="block text-lg font-bold my-2">ด้านที่ 4</label>
-                    <input type="text" name="senrity_name" class="block w-full border border-gray-300 rounded px-3 py-2 mb-2" value="<?= $senrity_name ?>">
-
-                    <table class="w-full border border-gray-300 text-center mt-3">
-                        <thead>
-                            <tr class="bg-gray-200">
-                                <th scope="col" class="border border-gray-300 py-2">ที่</th>
-                                <th scope="col" class="border border-gray-300 py-2">คุณสมบัติด้านเทคนิค</th>
-                                <th scope="col" class="border border-gray-300 py-2">คุณสมบัติที่ตั้งไว้</th>
-                                <th scope="col" class="border border-gray-300 py-2">คุณสมบัติที่ทำได้</th>
-                                <th scope="col" class="border border-gray-300 py-2">ผลการเปรียบเทียบ</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
-                                <td class="border border-gray-300 py-2">1</td>
-                                <td class="border border-gray-300 py-2"><textarea name="senrity_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $senrity_feature[0] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="senrity_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $senrity_setfeature[0] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="senrity_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $senrity_result[0] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="senrity_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $senrity_compare[0] ?></textarea></td>
-                            </tr>
-                            <tr class="odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
-                                <td class="border border-gray-300 py-2">2</td>
-                                <td class="border border-gray-300 py-2"><textarea name="senrity_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $senrity_feature[1] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="senrity_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $senrity_setfeature[1] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="senrity_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $senrity_result[1] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="senrity_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $senrity_compare[1] ?></textarea></td>
-                            </tr>
-                            <tr class="odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
-                                <td class="border border-gray-300 py-2">3</td>
-                                <td class="border border-gray-300 py-2"><textarea name="senrity_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $senrity_feature[2] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="senrity_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $senrity_setfeature[2] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="senrity_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $senrity_result[2] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="senrity_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $senrity_compare[2] ?></textarea></td>
-                            </tr>
-                            <tr class="odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
-                                <td class="border border-gray-300 py-2">4</td>
-                                <td class="border border-gray-300 py-2"><textarea name="senrity_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $senrity_feature[3] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="senrity_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $senrity_setfeature[3] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="senrity_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $senrity_result[3] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="senrity_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $senrity_compare[3] ?></textarea></td>
-                            </tr>
-                        </tbody>
-                    </table>
-
                 </div>
             </div>
 
-            <div class="text-center mt-5">
-                <button type="submit" name="update" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">บันทึกข้อมูล</button>
+            <!-- Survey Section 2 -->
+            <hr class="my-3">
+
+                <label class="block text-lg font-bold mb-2">ตอนที่ 2</label>
+                <label class="block mb-2">แบบสอบถามความคิดเห็น</label>
+                <label class="block mb-2">โปรดบันทึกความคิดเห็นของท่านลงในช่องว่างในแต่ละข้อ</label>
+
+                <!-- Section 1 -->
+                <label for="" class="block text-lg my-5"><label class="text-lg font-bold mb-2">ด้านที่ 1 </label>ด้านการนำเข้าข้อมูลระบบ</label>
+                <input type="hidden" name="input_name" value="ด้านการนำเข้าข้อมูลระบบ">
+
+                <table class="w-full border border-gray-300 text-center my-3">
+                    <thead>
+                        <tr class="bg-gray-200">
+                            <th scope="col" class="border border-gray-300 py-2">ที่</th>
+                            <th scope="col" class="border border-gray-300 py-2">คุณสมบัติด้านเทคนิค</th>
+                            <th scope="col" class="border border-gray-300 py-2">คุณสมบัติที่ตั้งไว้</th>
+                            <th scope="col" class="border border-gray-300 py-2">คุณสมบัติที่ทำได้</th>
+                            <th scope="col" class="border border-gray-300 py-2">ผลการเปรียบเทียบ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
+                            <td class="border border-gray-300 py-2">1</td>
+                            <td class="border border-gray-300 py-2"><textarea name="input_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_feature[0] ?></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="input_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="input_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="input_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                        </tr>
+                        <tr class="odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
+                            <td class="border border-gray-300 py-2">2</td>
+                            <td class="border border-gray-300 py-2"><textarea name="input_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_feature[1] ?></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="input_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="input_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="input_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                        </tr>
+                        <tr class="odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
+                            <td class="border border-gray-300 py-2">3</td>
+                            <td class="border border-gray-300 py-2"><textarea name="input_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_feature[2] ?></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="input_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="input_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="input_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                        </tr>
+                        <tr class="odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
+                            <td class="border border-gray-300 py-2">4</td>
+                            <td class="border border-gray-300 py-2"><textarea name="input_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_feature[3] ?></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="input_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="input_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="input_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button type="button" id="section1addbtn" onclick="section1add()" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">เพิ่ม</button>
+                <button type="button" id="section1removebtn" onclick="section1remove()" class="hidden bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">ลบ</button>
+
+                <!-- Section 2 -->
+                <label for="" class="block text-lg my-5"><label class="text-lg font-bold mb-2">ด้านที่ 2 </label>ด้านการประมวลผล</label>
+                <input type="hidden" name="process_name" value="ด้านการประมวลผล">
+
+                <table class="w-full border border-gray-300 text-center my-3">
+                    <thead>
+                        <tr class="bg-gray-200">
+                            <th scope="col" class="border border-gray-300 py-2">ที่</th>
+                            <th scope="col" class="border border-gray-300 py-2">คุณสมบัติด้านเทคนิค</th>
+                            <th scope="col" class="border border-gray-300 py-2">คุณสมบัติที่ตั้งไว้</th>
+                            <th scope="col" class="border border-gray-300 py-2">คุณสมบัติที่ทำได้</th>
+                            <th scope="col" class="border border-gray-300 py-2">ผลการเปรียบเทียบ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
+                            <td class="border border-gray-300 py-2">1</td>
+                            <td class="border border-gray-300 py-2"><textarea name="process_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $process_feature[0] ?></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="process_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="process_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="process_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                        </tr>
+                        <tr class="odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
+                            <td class="border border-gray-300 py-2">2</td>
+                            <td class="border border-gray-300 py-2"><textarea name="process_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $process_feature[1] ?></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="process_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="process_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="process_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                        </tr>
+                        <tr class="odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
+                            <td class="border border-gray-300 py-2">3</td>
+                            <td class="border border-gray-300 py-2"><textarea name="process_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $process_feature[2] ?></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="process_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="process_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="process_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                        </tr>
+                        <tr class="odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
+                            <td class="border border-gray-300 py-2">4</td>
+                            <td class="border border-gray-300 py-2"><textarea name="process_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $process_feature[3] ?></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="process_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="process_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="process_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Section 3 -->
+                <label for="" class="block text-lg my-5"><label class="text-lg font-bold mb-2">ด้านที่ 3 </label>ด้านการรายงานข้อมูล</label>
+                <input type="hidden" name="report_name" value="ด้านการรายงานข้อมูล">
+
+                <table class="w-full border border-gray-300 text-center my-3">
+                    <thead>
+                        <tr class="bg-gray-200">
+                            <th scope="col" class="border border-gray-300 py-2">ที่</th>
+                            <th scope="col" class="border border-gray-300 py-2">คุณสมบัติด้านเทคนิค</th>
+                            <th scope="col" class="border border-gray-300 py-2">คุณสมบัติที่ตั้งไว้</th>
+                            <th scope="col" class="border border-gray-300 py-2">คุณสมบัติที่ทำได้</th>
+                            <th scope="col" class="border border-gray-300 py-2">ผลการเปรียบเทียบ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="">
+                            <td class="border border-gray-300 py-2">1</td>
+                            <td class="border border-gray-300 py-2"><textarea name="report_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $report_feature[0] ?></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="report_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="report_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="report_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                        </tr>
+                        <tr class="odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
+                            <td class="border border-gray-300 py-2">2</td>
+                            <td class="border border-gray-300 py-2"><textarea name="report_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $report_feature[1] ?></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="report_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="report_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="report_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                        </tr>
+                        <tr class="odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
+                            <td class="border border-gray-300 py-2">3</td>
+                            <td class="border border-gray-300 py-2"><textarea name="report_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $report_feature[2] ?></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="report_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="report_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="report_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                        </tr>
+                        <tr class="odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
+                            <td class="border border-gray-300 py-2">4</td>
+                            <td class="border border-gray-300 py-2"><textarea name="report_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $report_feature[3] ?></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="report_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="report_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="report_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Section 4 -->
+                <label for="" class="block text-lg my-5"><label class="text-lg font-bold mb-2">ด้านที่ 4 </label>ด้านความปลอดภัย</label>
+                <input type="hidden" name="senrity_name" value="ด้านความปลอดภัย">
+
+                <table class="w-full border border-gray-300 text-center my-3">
+                    <thead>
+                        <tr class="bg-gray-200">
+                            <th scope="col" class="border border-gray-300 py-2">ที่</th>
+                            <th scope="col" class="border border-gray-300 py-2">คุณสมบัติด้านเทคนิค</th>
+                            <th scope="col" class="border border-gray-300 py-2">คุณสมบัติที่ตั้งไว้</th>
+                            <th scope="col" class="border border-gray-300 py-2">คุณสมบัติที่ทำได้</th>
+                            <th scope="col" class="border border-gray-300 py-2">ผลการเปรียบเทียบ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
+                            <td class="border border-gray-300 py-2">1</td>
+                            <td class="border border-gray-300 py-2"><textarea name="senrity_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $senrity_feature[0] ?></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="senrity_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="senrity_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="senrity_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                        </tr>
+                        <tr class="odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
+                            <td class="border border-gray-300 py-2">2</td>
+                            <td class="border border-gray-300 py-2"><textarea name="senrity_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $senrity_feature[1] ?></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="senrity_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="senrity_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="senrity_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                        </tr>
+                        <tr class="odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
+                            <td class="border border-gray-300 py-2">3</td>
+                            <td class="border border-gray-300 py-2"><textarea name="senrity_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $senrity_feature[2] ?></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="senrity_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="senrity_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="senrity_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                        </tr>
+                        <tr class="odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
+                            <td class="border border-gray-300 py-2">4</td>
+                            <td class="border border-gray-300 py-2"><textarea name="senrity_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $senrity_feature[3] ?></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="senrity_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="senrity_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="senrity_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                        </tr>
+                    </tbody>
+                </table>
+
             </div>
-        </form>
+    </div>
+
+    <div class="text-center mt-5">
+        <button type="submit" name="update" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">บันทึกข้อมูล</button>
+    </div>
+    </form>
     </div>
 </body>
 
