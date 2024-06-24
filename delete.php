@@ -10,36 +10,28 @@ try {
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $result = $conn->query("DELETE FROM tb_efficiercy_form  WHERE form_id = '$id'"); 
+    $result = $conn->query("SELECT * FROM tb_efficiercy_form  WHERE form_id = '$id'"); 
     $result->execute();
+    $row = $result->fetch(PDO::FETCH_ASSOC);
+    
+    $in = $row['input_id'];
+    $pr = $row['process_id'];
+    $re = $row['report_id'];
+    $se = $row['senrity_id'];
+    
+    $conn->query("DELETE FROM tb_efficiercy_form  WHERE form_id = '$id'")->execute(); 
 
+    $conn->query("DELETE FROM tb_input  WHERE Input_id = '$in'")->execute();
+    
+    $conn->query("DELETE FROM tb_process WHERE process_id = '$pr'")->execute();
+    
+    $conn->query("DELETE FROM tb_report WHERE report_id = '$re'")->execute();
+    
+    $conn->query("DELETE FROM tb_senrity WHERE senrity_id = '$se'")->execute(); 
 }
-if (isset($_GET['id_input'])) {
-    $input_id = $_GET['id_input'];
-    $result1 = $conn->query("DELETE FROM tb_input  WHERE Input_id = '$input_id'"); 
-    $result1->execute();
-
+else{
+    echo "Delete Error undefine is id of parameter";
 }
-if (isset($_GET['id_process'])) {
-    $id_process = $_GET['id_process'];
-    $result2 = $conn->query("DELETE FROM tb_process WHERE process_id = '$id_process'"); 
-    $result2->execute();
-
-}
-if (isset($_GET['id_report'])) {
-    $id_report = $_GET['id_report'];
-    $result3 = $conn->query("DELETE FROM tb_report WHERE report_id = '$id_report'"); 
-    $result3->execute();
-
-}
-if (isset($_GET['id_senrity'])) {
-    $id_senrity = $_GET['id_senrity'];
-    $result4 = $conn->query("DELETE FROM tb_senrity WHERE senrity_id = '$id_senrity'"); 
-    $result4->execute();
-
-}
-
-
 header("location: form.php?class=columnData");
 } catch (PDOException $e) {
     echo "Registrati3on failed: " . $e->getMessage();
