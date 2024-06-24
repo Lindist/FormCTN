@@ -195,6 +195,7 @@ unset($_SESSION['senrity_feature']); // Clear the session flag after use
                 <!-- Section 1 -->
 
                 <label for="" class="block text-lg my-5"><label class="text-lg font-bold mb-2">ด้านที่ 1 </label>ด้านการนำเข้าข้อมูลระบบ</label>
+                <input type="hidden" name="input_name" value="ด้านการนำเข้าข้อมูลระบบ">
 
                 <table class="w-full border border-gray-300 text-center my-3">
                     <thead>
@@ -217,7 +218,7 @@ unset($_SESSION['senrity_feature']); // Clear the session flag after use
                         <tr class="hidden odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700" id="section1tr1">
                             <td class="border border-gray-300 py-2">2</td>
                             <td class="border border-gray-300 py-2"><textarea disabled name="input_feature[]" id="section1tr1td" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_feature[1] ?></textarea></td>
-                            <td class="border border-gray-300 py-2"><textarea disabled name="input_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $input_setfeature[1] ?></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea disabled name="input_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
                             <td class="border border-gray-300 py-2"><textarea disabled name="input_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
                             <td class="border border-gray-300 py-2"><textarea disabled name="input_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
                         </tr>
@@ -243,6 +244,7 @@ unset($_SESSION['senrity_feature']); // Clear the session flag after use
                 <!-- Section 2 -->
 
                 <label for="" class="block text-lg my-5"><label class="text-lg font-bold mb-2">ด้านที่ 2 </label>ด้านการประมวลผล</label>
+                <input type="hidden" name="process_name" value="ด้านการประมวลผล">
 
                 <table class="w-full border border-gray-300 text-center my-3">
                     <thead>
@@ -292,6 +294,7 @@ unset($_SESSION['senrity_feature']); // Clear the session flag after use
 
 
                 <label for="" class="block text-lg my-5"><label class="text-lg font-bold mb-2">ด้านที่ 3 </label>ด้านการรายงานข้อมูล</label>
+                <input type="hidden" name="report_name" value="ด้านการรายงานข้อมูล">
 
                 <table class="w-full border border-gray-300 text-center my-3">
                     <thead>
@@ -340,6 +343,7 @@ unset($_SESSION['senrity_feature']); // Clear the session flag after use
                 <!-- Section 4 -->
 
                 <label for="" class="block text-lg my-5"><label class="text-lg font-bold mb-2">ด้านที่ 4 </label>ด้านความปลอดภัย</label>
+                <input type="hidden" name="senrity_name" value="ด้านความปลอดภัย">
 
                 <table class="w-full border border-gray-300 text-center my-3">
                     <thead>

@@ -221,6 +221,7 @@ if (isset($_GET['id'])) {
                 <!-- Section 1 -->
                 <label for="" class="block text-lg my-5"><label class="text-lg font-bold mb-2">ด้านที่ 1 </label><?= $input_name ?></label>
 
+
                 <table class="w-full border border-gray-300 text-center my-3">
                     <thead>
                         <tr class="bg-gray-200">
@@ -234,8 +235,8 @@ if (isset($_GET['id'])) {
                     <tbody>
                         <?php
                         for ($i = 0; $i < 4; $i++) {
-                            $class = ($i == 0 || (!empty($input_feature[$i]))) ? '' : 'hidden';
-                            echo "<tr id='section2tr$i' class='$class'>
+                            $class = ($i == 0 || (!empty($input_feature[$i]) || !empty($input_setfeature[$i]))) ? '' : 'hidden';
+                            echo "<tr id='section1tr$i' class='$class'>
                                 <td class='border border-gray-300 py-2'>" . ($i + 1) . "</td>
                                 <td class='border border-gray-300 py-2'><textarea name='input_feature[]' id='section1tr{$i}td' class='w-full h-40 border border-gray-300 rounded px-2 py-1' rows='3'>" . htmlspecialchars($input_feature[$i] ?? '') . "</textarea></td>
                                 <td class='border border-gray-300 py-2'><textarea disabled name='input_setfeature[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1' rows='3'></textarea></td>
@@ -266,7 +267,7 @@ if (isset($_GET['id'])) {
                         <?php
                         for ($i = 0; $i < 4; $i++) {
                             $class = ($i == 0 || (!empty($process_feature[$i]))) ? '' : 'hidden';
-                            echo "<tr id='section1tr$i' class='$class odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700'>
+                            echo "<tr id='section2tr$i' class='$class odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700'>
                                 <td class='border border-gray-300 py-2'>" . ($i + 1) . "</td>
                                 <td class='border border-gray-300 py-2'><textarea name='process_feature[]' id='section2tr{$i}td' class='w-full h-40 border border-gray-300 rounded px-2 py-1' rows='3'>" . htmlspecialchars($process_feature[$i] ?? '') . "</textarea></td>
                                 <td class='border border-gray-300 py-2'><textarea disabled name='process_setfeature[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1' rows='3'></textarea></td>
@@ -294,34 +295,18 @@ if (isset($_GET['id'])) {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="">
-                            <td class="border border-gray-300 py-2">1</td>
-                            <td class="border border-gray-300 py-2"><textarea name="report_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $report_feature[0] ?></textarea></td>
-                            <td class="border border-gray-300 py-2"><textarea disabled name="report_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                            <td class="border border-gray-300 py-2"><textarea disabled name="report_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                            <td class="border border-gray-300 py-2"><textarea disabled name="report_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                        </tr>
-                        <tr class="hidden odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700" id="section3tr1">
-                            <td class="border border-gray-300 py-2">2</td>
-                            <td class="border border-gray-300 py-2"><textarea disabled name="report_feature[]" id="section3tr1td" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $report_feature[1] ?></textarea></td>
-                            <td class="border border-gray-300 py-2"><textarea disabled name="report_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                            <td class="border border-gray-300 py-2"><textarea disabled name="report_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                            <td class="border border-gray-300 py-2"><textarea disabled name="report_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                        </tr>
-                        <tr class="hidden odd :bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700" id="section3tr2">
-                            <td class="border border-gray-300 py-2">3</td>
-                            <td class="border border-gray-300 py-2"><textarea disabled name="report_feature[]" id="section3tr2td" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $report_feature[2] ?></textarea></td>
-                            <td class="border border-gray-300 py-2"><textarea disabled name="report_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                            <td class="border border-gray-300 py-2"><textarea disabled name="report_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                            <td class="border border-gray-300 py-2"><textarea disabled name="report_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                        </tr>
-                        <tr class="hidden odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700" id="section3tr3">
-                            <td class="border border-gray-300 py-2">4</td>
-                            <td class="border border-gray-300 py-2"><textarea disabled name="report_feature[]" id="section3tr3td" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $report_feature[3] ?></textarea></td>
-                            <td class="border border-gray-300 py-2"><textarea disabled name="report_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                            <td class="border border-gray-300 py-2"><textarea disabled name="report_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                            <td class="border border-gray-300 py-2"><textarea disabled name="report_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                        </tr>
+                        <?php
+                        for ($i = 0; $i < 4; $i++) {
+                            $class = ($i == 0 || (!empty($report_feature[$i]))) ? '' : 'hidden';
+                            echo "<tr id='section3tr$i' class='$class odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700'>
+                                <td class='border border-gray-300 py-2'>" . ($i + 1) . "</td>
+                                <td class='border border-gray-300 py-2'><textarea name='report_feature[]' id='section3tr{$i}td' class='w-full h-40 border border-gray-300 rounded px-2 py-1' rows='3'>" . htmlspecialchars($report_feature[$i] ?? '') . "</textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea disabled name='report_setfeature[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1' rows='3'></textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea disabled name='report_result[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1' rows='3'></textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea disabled name='report_compare[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1' rows='3'></textarea></td>
+                            </tr>";
+                        }
+                        ?>
                     </tbody>
                 </table>
                 <button type="button" id="section3addbtn" onclick="section3add()" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">เพิ่ม</button>
@@ -341,34 +326,18 @@ if (isset($_GET['id'])) {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
-                            <td class="border border-gray-300 py-2">1</td>
-                            <td class="border border-gray-300 py-2"><textarea name="senrity_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $senrity_feature[0] ?></textarea></td>
-                            <td class="border border-gray-300 py-2"><textarea disabled name="senrity_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                            <td class="border border-gray-300 py-2"><textarea disabled name="senrity_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                            <td class="border border-gray-300 py-2"><textarea disabled name="senrity_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                        </tr>
-                        <tr class="hidden odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700" id="section4tr1">
-                            <td class="border border-gray-300 py-2">2</td>
-                            <td class="border border-gray-300 py-2"><textarea disabled name="senrity_feature[]" id="section4tr1td" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $senrity_feature[1] ?></textarea></td>
-                            <td class="border border-gray-300 py-2"><textarea disabled name="senrity_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                            <td class="border border-gray-300 py-2"><textarea disabled name="senrity_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                            <td class="border border-gray-300 py-2"><textarea disabled name="senrity_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                        </tr>
-                        <tr class="hidden odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700" id="section4tr2">
-                            <td class="border border-gray-300 py-2">3</td>
-                            <td class="border border-gray-300 py-2"><textarea disabled name="senrity_feature[]" id="section4tr2td" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $senrity_feature[2] ?></textarea></td>
-                            <td class="border border-gray-300 py-2"><textarea disabled name="senrity_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                            <td class="border border-gray-300 py-2"><textarea disabled name="senrity_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                            <td class="border border-gray-300 py-2"><textarea disabled name="senrity_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                        </tr>
-                        <tr class="hidden odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700" id="section4tr3">
-                            <td class="border border-gray-300 py-2">4</td>
-                            <td class="border border-gray-300 py-2"><textarea disabled name="senrity_feature[]" id="section4tr3td" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"><?= $senrity_feature[3] ?></textarea></td>
-                            <td class="border border-gray-300 py-2"><textarea disabled name="senrity_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                            <td class="border border-gray-300 py-2"><textarea disabled name="senrity_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                            <td class="border border-gray-300 py-2"><textarea disabled name="senrity_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
-                        </tr>
+                        <?php
+                        for ($i = 0; $i < 4; $i++) {
+                            $class = ($i == 0 || (!empty($senrity_feature[$i]))) ? '' : 'hidden';
+                            echo "<tr id='section4tr$i' class='$class odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700'>
+                                <td class='border border-gray-300 py-2'>" . ($i + 1) . "</td>
+                                <td class='border border-gray-300 py-2'><textarea name='senrity_feature[]' id='section4tr{$i}td' class='w-full h-40 border border-gray-300 rounded px-2 py-1' rows='3'>" . htmlspecialchars($senrity_feature[$i] ?? '') . "</textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea disabled name='senrity_setfeature[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1' rows='3'></textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea disabled name='senrity_result[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1' rows='3'></textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea disabled name='senrity_compare[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1' rows='3'></textarea></td>
+                            </tr>";
+                        }
+                        ?>
                     </tbody>
                 </table>
                 <button type="button" id="section4addbtn" onclick="section4add()" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">เพิ่ม</button>
