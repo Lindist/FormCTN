@@ -68,7 +68,7 @@
                         <div class="btns">
                         <a id='btn' onclick="isaddClass('<?php echo $row['form_id']; ?>')" >ดูข้อมูล</a>
                         <a href='editform.php?id=<?php echo $row['form_id']; ?>' id='btnedit'>แก้ไข</a>
-                        <a id='btndelete' onclick="confirmdel(['<?php echo $c; ?>','<?php echo $row['form_id']; ?>','<?php echo $row1['Input_id']; ?>','<?php echo $row2['process_id']; ?>','<?php echo $row3['report_id']; ?>','<?php echo $row4['senrity_id']; ?>'])" >ลบ</a>
+                        <a id='btndelete' onclick="confirmdel(['<?php echo $c; ?>','<?php echo $row['form_id']; ?>'])" >ลบ</a>
                         </div>
                         </div>
                         </div>

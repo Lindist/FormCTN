@@ -8,7 +8,6 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 $user_id = $_SESSION['user_id'];
-
 if(isset($_POST['class'])){
     if($_POST['class'] == "have"){
         $class = 'columnData';
@@ -17,7 +16,6 @@ if(isset($_POST['class'])){
         $class = $_POST['class'];
     }
 }
-
 if (isset($_POST['save'])) {
     $formname = $_POST['formname'];
     $ad = $_POST['ad'];
