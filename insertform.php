@@ -124,7 +124,7 @@ unset($_SESSION['senrity_compare']); // Clear the session flag after use
             Back to Index
         </button>
         <form action="insertData.php" method="POST">
-            <input type="text" name="class" id="class" value="<?php echo $class; ?>">
+            <input type="hidden" name="class" id="class" value="<?php echo $class; ?>">
             <h1 class="text-center text-2xl mb-5">แบบฟอร์มประเมินประสิทธิภาพ</h1>
 
             <?php if (isset($_SESSION['error'])) { ?>
