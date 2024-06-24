@@ -63,10 +63,10 @@
         <div class="form-box" id="adddata"> 
     <?php if($count > 0){ ?>
             <script type="text/javascript">
-                const showform = document.querySelector('#adddata');
-                showform.classList.remove('form-box');
-                showform.classList.add('grid');
-                showform.insertAdjacentHTML("beforeend",`
+                const showform = document.querySelectorAll('#adddata');
+                showform[0].classList.remove('form-box');
+                showform[0].classList.add('grid');
+                showform[0].insertAdjacentHTML("beforeend",`
                 <?php for($c = 1;$c <= $count;$c++){ ?>
                         <?php $row = $result->fetch(PDO::FETCH_ASSOC); ?>
                         <?php $row1 = $input->fetch(PDO::FETCH_ASSOC); ?>
@@ -104,12 +104,11 @@
         <div class="form-box" id="adddata"> 
     <?php if($count1 > 0){ ?>
             <script type="text/javascript">
-                const showform1 = document.querySelector('#adddata');
-                showform1.classList.remove('form-box');
-                showform1.classList.add('grid');
-                showform1.insertAdjacentHTML("beforeend",`
-                <?php for($c1 = 1;$c <= $count1;$c1++){ ?>
-                    <?php echo "Hello"; ?>
+                const showform1 = document.querySelectorAll('#adddata');
+                showform1[1].classList.remove('form-box');
+                showform1[1].classList.add('grid');
+                showform1[1].insertAdjacentHTML("beforeend",`
+                <?php for($c1 = 1;$c1 <= $count1;$c1++){ ?>
                         <?php $row5 = $result1->fetch(PDO::FETCH_ASSOC); ?>
                         <?php $row6 = $user_req->fetch(PDO::FETCH_ASSOC); ?>
                         <?php $row7 = $function->fetch(PDO::FETCH_ASSOC); ?>
