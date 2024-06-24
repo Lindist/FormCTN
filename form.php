@@ -125,6 +125,6 @@
 
     </div>
     <script src="script/active2.js" type="module"></script>
-    <script src="script/script_add_data9.js"></script>
+    <script src="script/script_add_data10.js"></script>
 </body>
 </html>
