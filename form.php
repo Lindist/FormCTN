@@ -19,6 +19,18 @@
     $senrity = $conn->query("SELECT * FROM tb_senrity");
     $senrity->execute();
 
+    $result1 = $conn->query("SELECT * FROM tb_satisfied");
+    $count1 = count($result1->fetchAll());
+    $result1->execute();
+    $user_req = $conn->query("SELECT * FROM tb_user_req");
+    $user_req->execute();
+    $function = $conn->query("SELECT * FROM tb_function");
+    $function->execute();
+    $uesful = $conn->query("SELECT * FROM tb_uesful");
+    $uesful->execute();
+    $seurity = $conn->query("SELECT * FROM tb_seurity");
+    $seurity->execute();
+
 ?>
 
 <!DOCTYPE html>
@@ -90,26 +102,27 @@
             <a href="#" class="adds" id="check-edit">ตรวจสอบและแก้ไข</a>  
         </div>
         <div class="form-box" id="adddata"> 
-    <?php if(!($count > 0)){ ?>
+    <?php if($count1 > 0){ ?>
             <script type="text/javascript">
-                const showform = document.querySelector('#adddata');
-                showform.classList.remove('form-box');
-                showform.classList.add('grid');
-                showform.insertAdjacentHTML("beforeend",`
-                <?php for($c = 1;$c <= $count;$c++){ ?>
-                        <?php $row = $result->fetch(PDO::FETCH_ASSOC); ?>
-                        <?php $row1 = $input->fetch(PDO::FETCH_ASSOC); ?>
-                        <?php $row2 = $process->fetch(PDO::FETCH_ASSOC); ?>
-                        <?php $row3 = $report->fetch(PDO::FETCH_ASSOC); ?>
-                        <?php $row4 = $senrity->fetch(PDO::FETCH_ASSOC); ?>
+                const showform1 = document.querySelector('#adddata');
+                showform1.classList.remove('form-box');
+                showform1.classList.add('grid');
+                showform1.insertAdjacentHTML("beforeend",`
+                <?php for($c1 = 1;$c <= $count1;$c1++){ ?>
+                    <?php echo "Hello"; ?>
+                        <?php $row5 = $result1->fetch(PDO::FETCH_ASSOC); ?>
+                        <?php $row6 = $user_req->fetch(PDO::FETCH_ASSOC); ?>
+                        <?php $row7 = $function->fetch(PDO::FETCH_ASSOC); ?>
+                        <?php $row8 = $uesful->fetch(PDO::FETCH_ASSOC); ?>
+                        <?php $row9 = $seurity->fetch(PDO::FETCH_ASSOC); ?>
                         <div class='container120'>
                         <div class='subform'>
-                        <h2>แบบฟอร์มที่ <?php echo $c; ?></h2>
-                        <div class='text'><?php echo $row['form_name']; ?></div>
+                        <h2>แบบฟอร์มที่ <?php echo $c1; ?></h2>
+                        <div class='text'><?php echo $row5['sati_ep2']; ?></div>
                         <div class="btns">
-                        <a id='btn' onclick="isaddClass('<?php echo $row['form_id']; ?>')" >ดูข้อมูล</a>
-                        <a href='editform.php?id=<?php echo $row['form_id']; ?>' id='btnedit'>แก้ไข</a>
-                        <a id='btndelete' onclick="confirmdel(['<?php echo $c; ?>','<?php echo $row['form_id']; ?>'])" >ลบ</a>
+                        <a id='btn' onclick="isaddClass('<?php echo $row5['sati_id']; ?>')" >ดูข้อมูล</a>
+                        <a href='editform.php?id=<?php echo $row5['sati_id']; ?>' id='btnedit'>แก้ไข</a>
+                        <a id='btndelete' onclick="confirmdel(['<?php echo $c1; ?>','<?php echo $row5['sati_id']; ?>'])" >ลบ</a>
                         </div>
                         </div>
                         </div>
