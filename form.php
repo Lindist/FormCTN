@@ -10,26 +10,26 @@
     $result = $conn->query("SELECT * FROM tb_efficiercy_form");
     $count = count($result->fetchAll());
     $result->execute();
-    $input = $conn->query("SELECT * FROM tb_input");
-    $input->execute();
-    $process = $conn->query("SELECT * FROM tb_process");
-    $process->execute();
-    $report = $conn->query("SELECT * FROM tb_report");
-    $report->execute();
-    $senrity = $conn->query("SELECT * FROM tb_senrity");
-    $senrity->execute();
+    // $input = $conn->query("SELECT * FROM tb_input");
+    // $input->execute();
+    // $process = $conn->query("SELECT * FROM tb_process");
+    // $process->execute();
+    // $report = $conn->query("SELECT * FROM tb_report");
+    // $report->execute();
+    // $senrity = $conn->query("SELECT * FROM tb_senrity");
+    // $senrity->execute();
 
     $result1 = $conn->query("SELECT * FROM tb_satisfied");
     $count1 = count($result1->fetchAll());
     $result1->execute();
-    $user_req = $conn->query("SELECT * FROM tb_user_req");
-    $user_req->execute();
-    $function = $conn->query("SELECT * FROM tb_function");
-    $function->execute();
-    $uesful = $conn->query("SELECT * FROM tb_uesful");
-    $uesful->execute();
-    $seurity = $conn->query("SELECT * FROM tb_seurity");
-    $seurity->execute();
+    // $user_req = $conn->query("SELECT * FROM tb_user_req");
+    // $user_req->execute();
+    // $function = $conn->query("SELECT * FROM tb_function");
+    // $function->execute();
+    // $uesful = $conn->query("SELECT * FROM tb_uesful");
+    // $uesful->execute();
+    // $seurity = $conn->query("SELECT * FROM tb_seurity");
+    // $seurity->execute();
 
 ?>
 
@@ -69,10 +69,6 @@
                 showform[0].insertAdjacentHTML("beforeend",`
                 <?php for($c = 1;$c <= $count;$c++){ ?>
                         <?php $row = $result->fetch(PDO::FETCH_ASSOC); ?>
-                        <?php $row1 = $input->fetch(PDO::FETCH_ASSOC); ?>
-                        <?php $row2 = $process->fetch(PDO::FETCH_ASSOC); ?>
-                        <?php $row3 = $report->fetch(PDO::FETCH_ASSOC); ?>
-                        <?php $row4 = $senrity->fetch(PDO::FETCH_ASSOC); ?>
                         <div class='container120'>
                         <div class='subform'>
                         <h2>แบบฟอร์มที่ <?php echo $c; ?></h2>
@@ -110,10 +106,6 @@
                 showform1[1].insertAdjacentHTML("beforeend",`
                 <?php for($c1 = 1;$c1 <= $count1;$c1++){ ?>
                         <?php $row5 = $result1->fetch(PDO::FETCH_ASSOC); ?>
-                        <?php $row6 = $user_req->fetch(PDO::FETCH_ASSOC); ?>
-                        <?php $row7 = $function->fetch(PDO::FETCH_ASSOC); ?>
-                        <?php $row8 = $uesful->fetch(PDO::FETCH_ASSOC); ?>
-                        <?php $row9 = $seurity->fetch(PDO::FETCH_ASSOC); ?>
                         <div class='container120'>
                         <div class='subform'>
                         <h2>แบบฟอร์มที่ <?php echo $c1; ?></h2>
