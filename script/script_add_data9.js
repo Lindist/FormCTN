@@ -97,14 +97,15 @@ window.onload = function() {
     if (classToAdd1 === 'firstshow') {
 
     const istab2 = document.getElementById('tab2');
+    const istab2_1 = document.querySelector('#tab2 h3');
 
         tabs.forEach(tab=>{tab.classList.remove('active')})
         istab2.classList.add('active');
 
         all_content.forEach(content=>{content.classList.remove('active')});
         all_content[1].classList.add('active');
-        line.style.width = istab2.offsetWidth + 'px';
-        line.style.left = istab2.offsetLeft + 'px';
+        line.style.width = istab2_1.offsetWidth + 'px';
+        line.style.left = istab2_1.offsetLeft + 'px';
     }
     if (classToAdd === 'columnData') {
 
