@@ -28,7 +28,7 @@ document.getElementById('addFormsatisfy').addEventListener('click', () => {
 function confirmdel(ids){
     let discon = confirm(`ยืนยันที่จะลบฟอร์มที่${ids[0]}หรือไม่`);
     if(discon === true){
-        window.location.href = `delete.php?id=${ids[1]}&id_input=${ids[2]}&id_process=${ids[3]}&id_report=${ids[4]}&id_senrity=${ids[5]}`;
+        window.location.href = `delete.php?id=${ids[1]}`;
     }
 }
 
