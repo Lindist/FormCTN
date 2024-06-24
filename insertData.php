@@ -51,9 +51,9 @@ if (isset($_POST['save'])) {
 
 $_SESSION['formname'] = $formname;
 $_SESSION['ad'] = $ad;
-$_SESSION['gender'] = $gender;
-$_SESSION['type_m'] = $type_m;
-$_SESSION['edu'] = $edu;
+$_SESSION['gender'] = $_POST['genders'];
+$_SESSION['type_m'] = $_POST['kinduser'];
+$_SESSION['edu'] = $_POST['le_education'];
 // $_SESSION['input_name'] = $input_name;
 // $_SESSION['process_name'] = $process_name;
 // $_SESSION['report_name'] = $report_name;
@@ -85,14 +85,14 @@ if (empty($formname)) {
 } else if (empty($ad)) {
     $_SESSION['error'] = "กรุณากรอกคำชี้แจง";
     header("location: insertform.php");
-} else if (empty($gender)) {
-    $_SESSION['error'] = "กรุณาเลือก เพศ";
+} else if (empty(array_filter($_POST['genders']))) {
+    $_SESSION['error'] = "กรุณากรอก เพศ อย่างน้อย 1 เพศ";
     header("location: insertform.php");
-} else if (empty($type_m)) {
-    $_SESSION['error'] = "กรุณาเลือก ประเภทผู้ใช้";
+} else if (empty(array_filter($_POST['kinduser']))) {
+    $_SESSION['error'] = "กรุณากรอก ประเภทผู้ใช้อย่างน้อย 1 ประเภท";
     header("location: insertform.php");
-} else if (empty($edu)) {
-    $_SESSION['error'] = "กรุณาเลือก ระดับการศึกษา";
+} else if (empty(array_filter($_POST['le_education']))) {
+    $_SESSION['error'] = "กรุณากรอก ระดับการศึกษา อย่างน้อย 1 ระดับ";
     header("location: insertform.php");
 // } else if (empty($input_name)) {
 //     $_SESSION['error'] = "กรุณากรอกด้านที่ 1";
