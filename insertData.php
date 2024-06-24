@@ -9,6 +9,15 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
+if(isset($_POST['class'])){
+    if($_POST['class'] == "have"){
+        $class = 'columnData';
+    }
+    else{
+        $class = $_POST['class'];
+    }
+}
+
 if (isset($_POST['save'])) {
     $formname = $_POST['formname'];
     $ad = $_POST['ad'];
@@ -173,7 +182,7 @@ if (empty($formname)) {
             // unset($_SESSION['senrity_result']);
             // unset($_SESSION['senrity_compare']);
 
-            header("location: form.php");
+            header("location: form.php?class=".$class);
         }
     } catch (PDOException $e) {
         echo "Registrati3on failed: " . $e->getMessage();
