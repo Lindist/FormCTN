@@ -74,7 +74,7 @@ unset($_SESSION['senrity_feature']); // Clear the session flag after use
         <button type="button" onclick="isClass('<?php echo $class; ?>')" class="flex bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             Back to Index
         </button>
-        <form action="insertData.php" method="POST">
+        <form action="insert_performance.php" method="POST">
         <input type="hidden" name="class" id="class" value="<?php echo $class; ?>">
             <h1 class="text-center text-2xl mb-5">แบบฟอร์มประเมินประสิทธิภาพ</h1>
 
