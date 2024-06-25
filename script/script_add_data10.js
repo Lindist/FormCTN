@@ -7,9 +7,9 @@ const showformout = document.querySelectorAll('#adddata');
 document.getElementById('addFormperformance').addEventListener('click', () => {
     showformout.forEach((e) => {
         if(e.classList.contains('columnData')){
-            window.location.href = `insertform.php?class=have`;
+            window.location.href = `insert_performance_form.php.php?class=have`;
         }else{
-            window.location.href = `insertform.php`;
+            window.location.href = `insert_performance_form.php.php`;
         }
     });
 });
