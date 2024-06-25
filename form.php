@@ -51,7 +51,7 @@
     <div class="line"></div>
     </div>
     <div>
-        <a href="logout.php" class="logout">ออกจากระบบ <img src="picture/logout.png"></a>
+        <a href="session/logout.php" class="logout">ออกจากระบบ <img src="picture/logout.png"></a>
     </div>
     </header>
     <div class="content_box active">
