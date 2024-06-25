@@ -10,14 +10,26 @@
     $result = $conn->query("SELECT * FROM tb_efficiercy_form");
     $count = count($result->fetchAll());
     $result->execute();
-    $input = $conn->query("SELECT * FROM tb_input");
-    $input->execute();
-    $process = $conn->query("SELECT * FROM tb_process");
-    $process->execute();
-    $report = $conn->query("SELECT * FROM tb_report");
-    $report->execute();
-    $senrity = $conn->query("SELECT * FROM tb_senrity");
-    $senrity->execute();
+    // $input = $conn->query("SELECT * FROM tb_input");
+    // $input->execute();
+    // $process = $conn->query("SELECT * FROM tb_process");
+    // $process->execute();
+    // $report = $conn->query("SELECT * FROM tb_report");
+    // $report->execute();
+    // $senrity = $conn->query("SELECT * FROM tb_senrity");
+    // $senrity->execute();
+
+    $result1 = $conn->query("SELECT * FROM tb_satisfied");
+    $count1 = count($result1->fetchAll());
+    $result1->execute();
+    // $user_req = $conn->query("SELECT * FROM tb_user_req");
+    // $user_req->execute();
+    // $function = $conn->query("SELECT * FROM tb_function");
+    // $function->execute();
+    // $uesful = $conn->query("SELECT * FROM tb_uesful");
+    // $uesful->execute();
+    // $seurity = $conn->query("SELECT * FROM tb_seurity");
+    // $seurity->execute();
 
 ?>
 
@@ -26,7 +38,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/formstyle7.css">
+    <link rel="stylesheet" href="style/formstyle.css">
     <link rel="stylesheet" href="style/tabstyle1.css">
     <title>From</title>
 </head>
@@ -51,16 +63,12 @@
         <div class="form-box" id="adddata"> 
     <?php if($count > 0){ ?>
             <script type="text/javascript">
-                const showform = document.querySelector('#adddata');
-                showform.classList.remove('form-box');
-                showform.classList.add('grid');
-                showform.insertAdjacentHTML("beforeend",`
+                const showform = document.querySelectorAll('#adddata');
+                showform[0].classList.remove('form-box');
+                showform[0].classList.add('grid');
+                showform[0].insertAdjacentHTML("beforeend",`
                 <?php for($c = 1;$c <= $count;$c++){ ?>
                         <?php $row = $result->fetch(PDO::FETCH_ASSOC); ?>
-                        <?php $row1 = $input->fetch(PDO::FETCH_ASSOC); ?>
-                        <?php $row2 = $process->fetch(PDO::FETCH_ASSOC); ?>
-                        <?php $row3 = $report->fetch(PDO::FETCH_ASSOC); ?>
-                        <?php $row4 = $senrity->fetch(PDO::FETCH_ASSOC); ?>
                         <div class='container120'>
                         <div class='subform'>
                         <h2>แบบฟอร์มที่ <?php echo $c; ?></h2>
@@ -90,26 +98,22 @@
             <a href="#" class="adds" id="check-edit">ตรวจสอบและแก้ไข</a>  
         </div>
         <div class="form-box" id="adddata"> 
-    <?php if(!($count > 0)){ ?>
+    <?php if($count1 > 0){ ?>
             <script type="text/javascript">
-                const showform = document.querySelector('#adddata');
-                showform.classList.remove('form-box');
-                showform.classList.add('grid');
-                showform.insertAdjacentHTML("beforeend",`
-                <?php for($c = 1;$c <= $count;$c++){ ?>
-                        <?php $row = $result->fetch(PDO::FETCH_ASSOC); ?>
-                        <?php $row1 = $input->fetch(PDO::FETCH_ASSOC); ?>
-                        <?php $row2 = $process->fetch(PDO::FETCH_ASSOC); ?>
-                        <?php $row3 = $report->fetch(PDO::FETCH_ASSOC); ?>
-                        <?php $row4 = $senrity->fetch(PDO::FETCH_ASSOC); ?>
+                const showform1 = document.querySelectorAll('#adddata');
+                showform1[1].classList.remove('form-box');
+                showform1[1].classList.add('grid');
+                showform1[1].insertAdjacentHTML("beforeend",`
+                <?php for($c1 = 1;$c1 <= $count1;$c1++){ ?>
+                        <?php $row5 = $result1->fetch(PDO::FETCH_ASSOC); ?>
                         <div class='container120'>
                         <div class='subform'>
-                        <h2>แบบฟอร์มที่ <?php echo $c; ?></h2>
-                        <div class='text'><?php echo $row['form_name']; ?></div>
+                        <h2>แบบฟอร์มที่ <?php echo $c1; ?></h2>
+                        <div class='text'><?php echo $row5['sati_ep2']; ?></div>
                         <div class="btns">
-                        <a id='btn' onclick="isaddClass('<?php echo $row['form_id']; ?>')" >ดูข้อมูล</a>
-                        <a href='editform.php?id=<?php echo $row['form_id']; ?>' id='btnedit'>แก้ไข</a>
-                        <a id='btndelete' onclick="confirmdel(['<?php echo $c; ?>','<?php echo $row['form_id']; ?>'])" >ลบ</a>
+                        <a id='btn' onclick="isaddClass('<?php echo $row5['sati_id']; ?>')" >ดูข้อมูล</a>
+                        <a href='editform.php?id=<?php echo $row5['sati_id']; ?>' id='btnedit'>แก้ไข</a>
+                        <a id='btndelete' onclick="confirmdel(['<?php echo $c1; ?>','<?php echo $row5['sati_id']; ?>'])" >ลบ</a>
                         </div>
                         </div>
                         </div>
