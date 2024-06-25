@@ -94,7 +94,7 @@ if (isset($_GET['id'])) {
         <button type="button" onclick="window.location.href='form.php?class=columnData';" class="flex bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             Back to Index
         </button>
-        <form action="update.php" method="POST">
+        <form action="update_performance.php" method="POST">
             <h1 class="text-center text-2xl mb-5">แก้ไขแบบฟอร์มประเมินประสิทธิภาพ</h1>
 
             <?php if (isset($_SESSION['error'])) { ?>

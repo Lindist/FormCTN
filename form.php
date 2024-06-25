@@ -75,7 +75,7 @@
                         <div class='text'><?php echo $row['form_name']; ?></div>
                         <div class="btns">
                         <a id='btn' onclick="isaddClass('<?php echo $row['form_id']; ?>')" >ดูข้อมูล</a>
-                        <a href='editform.php?id=<?php echo $row['form_id']; ?>' id='btnedit'>แก้ไข</a>
+                        <a href='edit_performance_form.php?id=<?php echo $row['form_id']; ?>' id='btnedit'>แก้ไข</a>
                         <a id='btndelete' onclick="confirmdel(['<?php echo $c; ?>','<?php echo $row['form_id']; ?>'])" >ลบ</a>
                         </div>
                         </div>
