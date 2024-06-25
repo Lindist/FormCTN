@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'config.php';
+require 'session/config.php';
 
 if (!isset($_SESSION['user_id'])) {
     header("Location: index.php");
