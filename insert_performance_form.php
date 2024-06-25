@@ -66,7 +66,7 @@ unset($_SESSION['senrity_feature']); // Clear the session flag after use
             background-color: rgb(180, 180, 180);
         }
     </style>
-    <script src="js/addtable.js"></script>
+    <script src="script/add_remove_performance_insert.js"></script>
 </head>
 
 <body>

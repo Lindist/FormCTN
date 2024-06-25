@@ -86,7 +86,7 @@ if (isset($_GET['id'])) {
             background-color: rgb(180, 180, 180);
         }
     </style>
-    <script src="js/add_renove_edit.js"></script>
+    <script src="script/add_remove_performance_edit.js"></script>
 </head>
 
 <body>
