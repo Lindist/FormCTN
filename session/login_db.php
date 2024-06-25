@@ -33,7 +33,7 @@
 
             if ($password == $userData['member_code']) {
                 $_SESSION['user_id'] = $userData['member_id'];
-                header("location: form.php");
+                header("location: ../form.php");
             } else {
                 $_SESSION['login_error'] = "รหัสนักศึกษาหรือรหัสผ่านไม่ถูกต้อง";
                 $_SESSION['show_login'] = true; // Flag to show the login element

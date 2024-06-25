@@ -236,7 +236,7 @@ if (isset($_GET['id'])) {
                         <?php
                         for ($i = 0; $i < 4; $i++) {
                             $class = ($i == 0 || (!empty($input_feature[$i]) || !empty($input_setfeature[$i]))) ? '' : 'hidden';
-                            echo "<tr id='section1tr$i' class='$class'>
+                            echo "<tr id='section1tr$i' class='$class odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700'>
                                 <td class='border border-gray-300 py-2'>" . ($i + 1) . "</td>
                                 <td class='border border-gray-300 py-2'><textarea name='input_feature[]' id='section1tr{$i}td' class='w-full h-40 border border-gray-300 rounded px-2 py-1' rows='3'>" . htmlspecialchars($input_feature[$i] ?? '') . "</textarea></td>
                                 <td class='border border-gray-300 py-2'><textarea disabled name='input_setfeature[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1' rows='3'></textarea></td>

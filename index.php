@@ -66,7 +66,7 @@ unset($_SESSION['fname']); // Clear the session flag after use
             </button>
             <h2 class="text-2xl font-bold mb-4 text-center">เข้าสู่ระบบ</h2>
             <!-- Add your login form here -->
-            <form action="login_db.php" method="POST">
+            <form action="session/login_db.php" method="POST">
 
                 <?php if (isset($_SESSION['login_error'])) { ?>
                     <div class="text-center p-3 my-4 bg-red-100 text-red-500 border border-red-300 rounded" role="alert">
