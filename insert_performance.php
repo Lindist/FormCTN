@@ -81,19 +81,19 @@ $_SESSION['edu'] = $_POST['le_education'];
 
 if (empty($formname)) {
     $_SESSION['error'] = "กรุณากรอกชื่อฟอร์ม";
-    header("location: insertform.php");
+    header("location: insert_performance_form.php");
 } else if (empty($ad)) {
     $_SESSION['error'] = "กรุณากรอกคำชี้แจง";
-    header("location: insertform.php");
+    header("location: insert_performance_form.php");
 } else if (empty(array_filter($_POST['genders']))) {
     $_SESSION['error'] = "กรุณากรอก เพศ อย่างน้อย 1 เพศ";
-    header("location: insertform.php");
+    header("location: insert_performance_form.php");
 } else if (empty(array_filter($_POST['kinduser']))) {
     $_SESSION['error'] = "กรุณากรอก ประเภทผู้ใช้อย่างน้อย 1 ประเภท";
-    header("location: insertform.php");
+    header("location: insert_performance_form.php");
 } else if (empty(array_filter($_POST['le_education']))) {
     $_SESSION['error'] = "กรุณากรอก ระดับการศึกษา อย่างน้อย 1 ระดับ";
-    header("location: insertform.php");
+    header("location: insert_performance_form.php");
 // } else if (empty($input_name)) {
 //     $_SESSION['error'] = "กรุณากรอกด้านที่ 1";
 //     header("location: insertform.php");
