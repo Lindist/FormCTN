@@ -94,18 +94,18 @@ if (empty($formname)) {
 } else if (empty(array_filter($_POST['le_education']))) {
     $_SESSION['error'] = "กรุณากรอก ระดับการศึกษา อย่างน้อย 1 ระดับ";
     header("location: insert_performance_form.php");
-// } else if (empty($input_name)) {
-//     $_SESSION['error'] = "กรุณากรอกด้านที่ 1";
-//     header("location: insertform.php");
-// } else if (empty($process_name)) {
-//     $_SESSION['error'] = "กรุณากรอกด้านที่ 2";
-//     header("location: insertform.php");
-// } else if (empty($report_name)) {
-//     $_SESSION['error'] = "กรุณากรอกด้านที่ 3";
-//     header("location: insertform.php");
-// } else if (empty($senrity_name)) {
-//     $_SESSION['error'] = "กรุณากรอกด้านที่ 4";
-//     header("location: insertform.php");
+} else if (empty($input_feature)) {
+    $_SESSION['error'] = "กรุณากรอกด้านที่ 1 อย่างน้อย 1 หัวข้อ";
+    header("location: insert_performance_form.php");
+} else if (empty($process_feature)) {
+    $_SESSION['error'] = "กรุณากรอกด้านที่ 2 อย่างน้อย 1 หัวข้อ";
+    header("location: insert_performance_form.php");
+} else if (empty($report_feature)) {
+    $_SESSION['error'] = "กรุณากรอกด้านที่ 3 อย่างน้อย 1 หัวข้อ";
+    header("location: insert_performance_form.php");
+} else if (empty($senrity_feature)) {
+    $_SESSION['error'] = "กรุณากรอกด้านที่ 4 อย่างน้อย 1 หัวข้อ";
+    header("location: insert_performance_form.php");
 } else {
     try {
         if (!isset($_SESSION['error'])) {
