@@ -167,11 +167,11 @@ header div img{
     flex-direction: column;
     justify-content: flex-start;
     flex: 1;
-    width: 20rem;
-    height: 15rem;
+    width: 20em;
     background-color: #DCD;
     border-radius: 10px;
     padding: 1rem;
+    padding-bottom: 3rem;
     border-bottom-width: 3px;
     border-bottom-style: solid;
     border-bottom-color: rgba(88, 88, 88, 0.685);
@@ -218,7 +218,6 @@ header div img{
     justify-content: space-between;
     flex: 1;
     width: 90vw;
-    height: 100px;
     background-color: #DCD;
     border-radius: 10px;
     padding: 2rem;
@@ -235,6 +234,8 @@ header div img{
 .subform.columnData > .text{
     margin: 0;
     align-self: center;
+    width: 30rem;
+    text-align: center;
 }
 .subform.columnData > .btns{
     margin: 0;
@@ -446,10 +447,10 @@ header div img{
         justify-content: flex-start;
         flex: 1;
         width: 20em;
-        height: 15em;
         background-color: #DCD;
         border-radius: 10px;
         padding: 1rem;
+        padding-bottom: 3rem;
         border-bottom-width: 3px;
         border-bottom-style: solid;
         border-bottom-color: rgba(88, 88, 88, 0.685);
@@ -493,8 +494,7 @@ header div img{
         flex-direction: column;
         justify-content: flex-start;
         flex: 1;
-        width: 20rem;
-        height: 15rem;
+        width: 20em;
         background-color: #DCD;
         border-radius: 10px;
         padding: 1rem;
@@ -508,6 +508,12 @@ header div img{
     }
     .subform.columnData > h2{
         align-self: center;
+    }
+    .subform.columnData > .text{
+        margin: 0;
+        align-self: center;
+        width: 20rem;
+        text-align: center;
     }
     .subform.columnData > .btns{
         margin-top: 2rem;
