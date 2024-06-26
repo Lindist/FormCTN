@@ -135,6 +135,16 @@
         .subform.columnData > .text{
             overflow-wrap: break-word;
         }
+        .subform > h2{
+            text-align: center;
+            width: 250px;
+            overflow-wrap: break-word;
+        }
+        .subform.columnData > h2{
+            text-align: center;
+            width: 250px;
+            overflow-wrap: break-word;
+        }
     </style>
     <script src="script/active4.js" type="module"></script>
     <script src="script/script_add_data12.js"></script>
