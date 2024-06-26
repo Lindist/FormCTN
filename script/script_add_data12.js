@@ -34,7 +34,7 @@ function confirmdel(ids){
 
 /* ------------------------*/
 function isaddClass(ids,tab2='false'){
-    if(tab2=='false'){
+    if(tab2==='false'){
         showformout.forEach((e) => {
             if(e.classList.contains('columnData')){
                 window.location.href = `show_performance.php?id=${ids}&class=have`;
@@ -43,7 +43,7 @@ function isaddClass(ids,tab2='false'){
             }
         });
     }
-    else if (tab2=='true'){
+    else if (tab2==='true'){
         showformout.forEach((e) => {
             if(e.classList.contains('columnData')){
                 window.location.href = `show_satis.php?id=${ids}&class=have`;

@@ -8,44 +8,6 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: index.php");
 }
 
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-    $result = $conn->query("SELECT * FROM tb_efficiercy_form  WHERE form_id = '$id'"); 
-    $result->execute();
-    $row = $result->fetch(PDO::FETCH_ASSOC);
-    // echo "<script>";
-    // echo "alert('$row');";
-    // echo "</script>";
-    $genders = preg_split("/,/", $row["form_gender"]);
-    $form_type = preg_split("/,/", $row["form_type"]);
-    $form_education = preg_split("/,/", $row["form_education"]);
-    // print_r($genders);
-    $in = $row['input_id'];
-    $pr = $row['process_id'];
-    $re = $row['report_id'];
-    $se = $row['senrity_id'];
-    
-    $result1 = $conn->query("SELECT * FROM tb_input  WHERE Input_id = '$in'"); 
-    $result1->execute();
-    $row1 = $result1->fetch(PDO::FETCH_ASSOC);
-    $input_feature = preg_split("/@/", $row1["Input_feature"]);
-    
-    $result2 = $conn->query("SELECT * FROM tb_process WHERE process_id = '$pr'"); 
-    $result2->execute();
-    $row2 = $result2->fetch(PDO::FETCH_ASSOC);
-    $process_feature = preg_split("/@/", $row2["process_feature"]);
-    
-    $result3 = $conn->query("SELECT * FROM tb_report WHERE report_id = '$re'"); 
-    $result3->execute();
-    $row3 = $result3->fetch(PDO::FETCH_ASSOC);
-    $report_feature = preg_split("/@/", $row3["report_feature"]);
-    
-    $result4 = $conn->query("SELECT * FROM tb_senrity WHERE senrity_id = '$se'"); 
-    $result4->execute();
-    $row4 = $result4->fetch(PDO::FETCH_ASSOC);
-    $senrity_feature = preg_split("/@/", $row4["senrity_feature"]);
-
-}
 
 
 if (isset($_GET['class'])) {
@@ -118,15 +80,12 @@ if (isset($_GET['class'])) {
 
             <!-- Title_Content -->
             <div class="head_content mt-5 mb-2">
-                <label class="form-label">ชื่อแบบฟอร์ม</label>
-                <div class="rad form-control">
-                    <?php echo $row['form_name']; ?>
-                </div>
-
-                <label class="form-label mt-2">คำชี้แจง</label>
-                <div class="rad form-control">
-                <?php echo $row['form_ad']; ?>
-                </div>
+                <label class="text-2xl mb-5 font-bold">คำชี้แจง</label> <br>
+                <label class="font-bold" for="">ในแบบประเมินความพึงพอใจการใช้งานระบบ แบ่งออกเป็น 3 ตอนดังนี้</label> <br>
+                <label class="font-bold" for="">ตอนที่ 1</label> <br>
+                <label class="font-bold" for="">เป็นข้อมูลพื้นฐานของผู้กรอกแบบสอบถาม</label> <br>
+                <label class="font-bold" for="">ตอนที่ 2</label> <br>
+                <input class="font-bold" type="text" class="rad form-control mb-2">
             </div>
             <!-- Body_Content -->
             <div class="body_content mt-5">
