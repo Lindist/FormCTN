@@ -8,7 +8,44 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: index.php");
 }
 
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $result = $conn->query("SELECT * FROM tb_satisfied  WHERE sati_id = '$id'"); 
+    $result->execute();
+    $row = $result->fetch(PDO::FETCH_ASSOC);
+    // echo "<script>";
+    // echo "alert('$row');";
+    // echo "</script>";
+    // $genders = preg_split("/,/", $row["form_gender"]);
+    // $form_type = preg_split("/,/", $row["form_type"]);
+    // $form_education = preg_split("/,/", $row["form_education"]);
+    // print_r($genders);
+    // $in = $row['input_id'];
+    // $pr = $row['process_id'];
+    // $re = $row['report_id'];
+    // $se = $row['senrity_id'];
+    
+    // $result1 = $conn->query("SELECT * FROM tb_input  WHERE Input_id = '$in'"); 
+    // $result1->execute();
+    // $row1 = $result1->fetch(PDO::FETCH_ASSOC);
+    // $input_feature = preg_split("/@/", $row1["Input_feature"]);
+    
+    // $result2 = $conn->query("SELECT * FROM tb_process WHERE process_id = '$pr'"); 
+    // $result2->execute();
+    // $row2 = $result2->fetch(PDO::FETCH_ASSOC);
+    // $process_feature = preg_split("/@/", $row2["process_feature"]);
+    
+    // $result3 = $conn->query("SELECT * FROM tb_report WHERE report_id = '$re'"); 
+    // $result3->execute();
+    // $row3 = $result3->fetch(PDO::FETCH_ASSOC);
+    // $report_feature = preg_split("/@/", $row3["report_feature"]);
+    
+    // $result4 = $conn->query("SELECT * FROM tb_senrity WHERE senrity_id = '$se'"); 
+    // $result4->execute();
+    // $row4 = $result4->fetch(PDO::FETCH_ASSOC);
+    // $senrity_feature = preg_split("/@/", $row4["senrity_feature"]);
 
+}
 
 if (isset($_GET['class'])) {
     $class = $_GET['class'];
@@ -84,8 +121,12 @@ if (isset($_GET['class'])) {
                 <label class="font-bold" for="">ในแบบประเมินความพึงพอใจการใช้งานระบบ แบ่งออกเป็น 3 ตอนดังนี้</label> <br>
                 <label class="font-bold" for="">ตอนที่ 1</label> <br>
                 <label class="font-bold" for="">เป็นข้อมูลพื้นฐานของผู้กรอกแบบสอบถาม</label> <br>
-                <label class="font-bold" for="">ตอนที่ 2</label> <br>
-                <input class="font-bold" type="text" class="rad form-control mb-2">
+                <label class="font-bold" for="">ตอนที่ 2 เป็นแบบสอบถามความคิดเห็นของนักเรียน นักศึกษา และครูอาจารย์ของผู้ใช้งาน
+                <span class="rad form-control mb-2"><?php echo $row['sati_ep2']; ?></span>
+                </label><br>
+                
+                <label class="font-bold" for="">โดยแบ่งการประเมินเป็น 4 ด้าน คือ</label> <br>
+                <label class="font-bold" for="">ตอนที่ 3</label> <br>
             </div>
             <!-- Body_Content -->
             <div class="body_content mt-5">
