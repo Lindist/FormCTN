@@ -110,46 +110,47 @@ unset($_SESSION['senrity_feature']); // Clear the session flag after use
                 <!-- Gender -->
                 <hr class="my-3">
 
-                <div class="grid grid-cols-2 mb-4">
-                    <label class="block text-center mb-1">เพศ</label>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                    <label class="block text-center mb-1 sm:mb-0 sm:self-center">เพศ</label>
                     <div class="mx-2">
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="genders[]" id="" value="<?= $gender[0] ?>">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="genders[]" id="" value="<?= $gender[0] ?>">
                         </div>
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="genders[]" id="" value="<?= $gender[1] ?>">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="genders[]" id="" value="<?= $gender[1] ?>">
                         </div>
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="genders[]" id="" value="<?= $gender[2] ?>">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="genders[]" id="" value="<?= $gender[2] ?>">
                         </div>
-                        <div class="flex items-center">
+                        <div class="flex items-center justify-center">
                             <p class="text-gray-400">***ไม่จำเป็นต้องกรอกครบ***</p>
                         </div>
                     </div>
                 </div>
 
+
                 <!-- User Type -->
                 <hr class="my-3">
 
-                <div class="grid grid-cols-2 mb-4">
-                    <label class="block text-center mb-1">ประเภทผู้ใช้</label>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                    <label class="block text-center mb-1 sm:mb-0 sm:self-center">ประเภทผู้ใช้</label>
                     <div class="mx-2">
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="kinduser[]" id="" value="<?= $type_m[0] ?>">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="kinduser[]" id="" value="<?= $type_m[0] ?>">
                         </div>
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="kinduser[]" id="" value="<?= $type_m[1] ?>">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="kinduser[]" id="" value="<?= $type_m[1] ?>">
                         </div>
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="kinduser[]" id="" value="<?= $type_m[2] ?>">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="kinduser[]" id="" value="<?= $type_m[2] ?>">
                         </div>
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="kinduser[]" id="" value="<?= $type_m[3] ?>">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="kinduser[]" id="" value="<?= $type_m[3] ?>">
                         </div>
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="kinduser[]" id="" value="<?= $type_m[4] ?>">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="kinduser[]" id="" value="<?= $type_m[4] ?>">
                         </div>
-                        <div class="flex items-center">
+                        <div class="flex items-center justify-center">
                             <p class="text-gray-400">***ไม่จำเป็นต้องกรอกครบ***</p>
                         </div>
                     </div>
@@ -158,32 +159,32 @@ unset($_SESSION['senrity_feature']); // Clear the session flag after use
                 <!-- Education Level -->
                 <hr class="my-3">
 
-                <div class="grid grid-cols-2 mb-4">
-                    <label class="block text-center mb-1">ระดับการศึกษา</label>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                    <label class="block text-center mb-1 sm:mb-0 sm:self-center">ระดับการศึกษา</label>
                     <div class="mx-2">
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="le_education[]" id="" value="<?= $edu[0] ?>">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="le_education[]" id="" value="<?= $edu[0] ?>">
                         </div>
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="le_education[]" id="" value="<?= $edu[1] ?>">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="le_education[]" id="" value="<?= $edu[1] ?>">
                         </div>
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="le_education[]" id="" value="<?= $edu[2] ?>">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="le_education[]" id="" value="<?= $edu[2] ?>">
                         </div>
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="le_education[]" id="" value="<?= $edu[3] ?>">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="le_education[]" id="" value="<?= $edu[3] ?>">
                         </div>
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="le_education[]" id="" value="<?= $edu[4] ?>">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="le_education[]" id="" value="<?= $edu[4] ?>">
                         </div>
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="le_education[]" id="" value="<?= $edu[5] ?>">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="le_education[]" id="" value="<?= $edu[5] ?>">
                         </div>
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="le_education[]" id="" value="<?= $edu[6] ?>">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="le_education[]" id="" value="<?= $edu[6] ?>">
                         </div>
                         <div class="flex items-center">
-                            <p class="text-gray-400">***ไม่จำเป็นต้องกรอกครบ***</p>
+                            <p class="text-gray-400 justify-center">***ไม่จำเป็นต้องกรอกครบ***</p>
                         </div>
                     </div>
                 </div>
