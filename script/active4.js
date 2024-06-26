@@ -22,6 +22,9 @@ function saveInputValues() {
     if (tab2.tab2.classList.contains('firstshow')) {
         const firstshowtab2 = 'firstshow';
         localStorage.setItem('firstshow', firstshowtab2);
+    }else{
+        const firstshowtab2 = 'nofirstshow';
+        localStorage.setItem('firstshow', firstshowtab2);
     }
     const inputab2 = 'active';
     localStorage.setItem('tab2', inputab2);
