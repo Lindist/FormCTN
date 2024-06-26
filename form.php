@@ -111,7 +111,7 @@
                         <h2>แบบฟอร์มที่ <?php echo $c1; ?></h2>
                         <div class='text'><?php echo $row5['sati_ep2']; ?></div>
                         <div class="btns">
-                        <a id='btn' onclick="isaddClass('<?php echo $row5['sati_id']; ?>')" >ดูข้อมูล</a>
+                        <a id='btn' onclick="isaddClass('<?php echo $row5['sati_id']; ?>','true')" >ดูข้อมูล</a>
                         <a href='editform.php?id=<?php echo $row5['sati_id']; ?>' id='btnedit'>แก้ไข</a>
                         <a id='btndelete' onclick="confirmdel(['<?php echo $c1; ?>','<?php echo $row5['sati_id']; ?>'])" >ลบ</a>
                         </div>
@@ -129,6 +129,6 @@
 
     </div>
     <script src="script/active2.js" type="module"></script>
-    <script src="script/script_add_data11.js"></script>
+    <script src="script/script_add_data12.js"></script>
 </body>
 </html>

@@ -33,14 +33,25 @@ function confirmdel(ids){
 }
 
 /* ------------------------*/
-function isaddClass(ids){
-    showformout.forEach((e) => {
-        if(e.classList.contains('columnData')){
-            window.location.href = `show_performance.php?id=${ids}&class=have`;
-        }else{
-            window.location.href = `show_performance.php?id=${ids}`;
-        }
-    });
+function isaddClass(ids,tab2='false'){
+    if(tab2=='false'){
+        showformout.forEach((e) => {
+            if(e.classList.contains('columnData')){
+                window.location.href = `show_performance.php?id=${ids}&class=have`;
+            }else{
+                window.location.href = `show_performance.php?id=${ids}`;
+            }
+        });
+    }
+    else if (tab2=='true'){
+        showformout.forEach((e) => {
+            if(e.classList.contains('columnData')){
+                window.location.href = `show_satis.php?id=${ids}&class=have`;
+            }else{
+                window.location.href = `show_satis.php?id=${ids}`;
+            }
+        });
+    }
     
 }
 
@@ -128,7 +139,7 @@ window.onload = function() {
             } 
         });
     }
-
+    
 
 
 };
