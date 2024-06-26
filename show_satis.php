@@ -96,7 +96,16 @@ if (isset($_GET['class'])) {
         th,td{
             vertical-align: middle;
         }
+        ul{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 50;
+        }
+        ul > li {
+            list-style: none;
 
+        }
         @media screen and (min-width: 990px) {
             .content {
                 width: 700px;
@@ -111,7 +120,7 @@ if (isset($_GET['class'])) {
 </head>
 
 <body>
-    <div class="main overflow-x-hidden container col-11 bg-white py-1 my-3 rounded">
+    <div class="main overflow-x-hidden container-md col-11 bg-white py-1 my-3 rounded">
     <button type="button" onclick="isClass('<?php echo $class; ?>')" style="display:flex; background-color:#1a75ff; color:#fff; font-weight:bold; border-radius:10px; padding: 10px; border-color: #444; transition:all .3s ease-in-out;" onmouseover="this.style.backgroundColor='#00f';" onmouseout="this.style.backgroundColor='#1a75ff';">
             Back to Index
     </button>
@@ -126,22 +135,14 @@ if (isset($_GET['class'])) {
                 <label class="font-bold" for="">เป็นข้อมูลพื้นฐานของผู้กรอกแบบสอบถาม</label> <br>
                 <label class="font-bold" for="">ตอนที่ 2 เป็นแบบสอบถามความคิดเห็นของนักเรียน นักศึกษา และครูอาจารย์ของผู้ใช้งาน 
                 </label><br>
-                <span class="rad form-control overflow-x-scroll mb-2" style="width: 100%;"><?php echo $row['sati_ep2']; ?></span>
-                <div class="position-relative w-50 mb-4 mt-4 me-5">
-                    <label class="font-bold position-absolute top-auto start-50 translate-middle-x w-100" for="">โดยแบ่งการประเมินเป็น 4 ด้าน คือ</label> <br>
-                </div>
-                <div class="position-relative w-50 mb-4 mt-4 me-5">
-                    <label class="font-bold position-absolute top-auto start-50 w-100" for="">ด้านที่ 1 ความต้องการของผู้ใช้งานระบบ</label> <br>
-                </div>
-                <div class="position-relative w-50 mb-4 mt-4 me-5">
-                    <label class="font-bold position-absolute top-auto start-50 w-100" for="">ด้านที่ 2 ด้านการทำงานของฟั่งชั่นระบบ</label> <br>
-                </div>
-                <div class="position-relative w-50 mb-4 mt-4 me-5">
-                    <label class="font-bold position-absolute top-auto start-50 w-100" for="">ด้านที่ 3 ด้านความง่ายต่อการใช้ระบบ</label> <br>
-                </div>
-                <div class="position-relative w-50 mb-5 mt-4 me-5">
-                    <label class="font-bold position-absolute top-auto start-50 w-100" for="">ด้านที่ 4 ด้านการใช้งานรักษาความปลอดภัยของข้อมูลในระบบ</label> <br>
-                </div>
+                <span class="rad form-control text-break mb-2" style="width: 100%;"><?php echo $row['sati_ep2']; ?></span>
+                <label class="font-bold">โดยแบ่งการประเมินเป็น 4 ด้าน คือ</label>
+                <ul class="">
+                    <li class="" for="">ด้านที่ 1 ความต้องการของผู้ใช้งานระบบ</li> <br>
+                    <li class="" for="">ด้านที่ 2 ด้านการทำงานของฟั่งชั่นระบบ</li> <br>
+                    <li class="" for="">ด้านที่ 3 ด้านความง่ายต่อการใช้ระบบ</li> <br>
+                    <li class="" for="">ด้านที่ 4 ด้านการใช้งานรักษาความปลอดภัยของข้อมูลในระบบ</li> <br>
+                </ul>
                 <label class="font-bold" for="">ตอนที่ 3 เป็นข้อคิดเห็นและเสนอแนะอื่นๆ</label> <br>
             </div>
             <!-- Body_Content -->
@@ -179,6 +180,99 @@ if (isset($_GET['class'])) {
                         <tr>
                             <th scope="row">1</th>
                             <td><div class="form-control1" id="format" rows="3"><?php echo $row1['ur_score']; ?></div></td>	
+                            <td><div class="form-control1" id="format" rows="3"></div></td>
+                            <td><div class="form-control1" id="format" rows="3"></div></td>
+                            <td><div class="form-control1" id="format" rows="3"></div></td>
+                            <td><div class="form-control1" id="format" rows="3"></div></td>
+                            <td><div class="form-control1" id="format" rows="3"></div></td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+                <label class="form-label mt-2">ด้านที่ 2</label>
+                <div class="rad form-control mb-2"><?php echo $row2["fun_topic"]; ?></div>
+                <div  id="widthfix">
+                <table class="table table-bordered table-striped text-center mt-3">
+                    <thead>
+                        <tr>
+                            <th scope="col" rowspan="2">ที่</th>
+                            <th scope="col" rowspan="2">หัวข้อ</th>
+                            <th scope="col" colspan="6">ระดับความคิดเห็น</th>
+                        </tr>
+                        <tr>
+                            <th scope="col">5</th>
+                            <th scope="col">4</th>
+                            <th scope="col">3</th>
+                            <th scope="col">2</th>
+                            <th scope="col">1</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td><div class="form-control1" id="format" rows="3"><?php echo $row2['fun_score']; ?></div></td>	
+                            <td><div class="form-control1" id="format" rows="3"></div></td>
+                            <td><div class="form-control1" id="format" rows="3"></div></td>
+                            <td><div class="form-control1" id="format" rows="3"></div></td>
+                            <td><div class="form-control1" id="format" rows="3"></div></td>
+                            <td><div class="form-control1" id="format" rows="3"></div></td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+                <label class="form-label mt-2">ด้านที่ 3</label>
+                <div class="rad form-control mb-2"><?php echo $row3["uf_topic"]; ?></div>
+                <div  id="widthfix">
+                <table class="table table-bordered table-striped text-center mt-3">
+                    <thead>
+                        <tr>
+                            <th scope="col" rowspan="2">ที่</th>
+                            <th scope="col" rowspan="2">หัวข้อ</th>
+                            <th scope="col" colspan="6">ระดับความคิดเห็น</th>
+                        </tr>
+                        <tr>
+                            <th scope="col">5</th>
+                            <th scope="col">4</th>
+                            <th scope="col">3</th>
+                            <th scope="col">2</th>
+                            <th scope="col">1</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td><div class="form-control1" id="format" rows="3"><?php echo $row3['uf_score']; ?></div></td>	
+                            <td><div class="form-control1" id="format" rows="3"></div></td>
+                            <td><div class="form-control1" id="format" rows="3"></div></td>
+                            <td><div class="form-control1" id="format" rows="3"></div></td>
+                            <td><div class="form-control1" id="format" rows="3"></div></td>
+                            <td><div class="form-control1" id="format" rows="3"></div></td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+                <label class="form-label mt-2">ด้านที่ 4</label>
+                <div class="rad form-control mb-2"><?php echo $row4["ss_topic"]; ?></div>
+                <div  id="widthfix">
+                <table class="table table-bordered table-striped text-center mt-3">
+                    <thead>
+                        <tr>
+                            <th scope="col" rowspan="2">ที่</th>
+                            <th scope="col" rowspan="2">หัวข้อ</th>
+                            <th scope="col" colspan="6">ระดับความคิดเห็น</th>
+                        </tr>
+                        <tr>
+                            <th scope="col">5</th>
+                            <th scope="col">4</th>
+                            <th scope="col">3</th>
+                            <th scope="col">2</th>
+                            <th scope="col">1</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td><div class="form-control1" id="format" rows="3"><?php echo $row4['ss_score']; ?></div></td>	
                             <td><div class="form-control1" id="format" rows="3"></div></td>
                             <td><div class="form-control1" id="format" rows="3"></div></td>
                             <td><div class="form-control1" id="format" rows="3"></div></td>
