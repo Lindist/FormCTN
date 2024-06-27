@@ -113,7 +113,7 @@
                         <div class="btns">
                         <a id='btn' onclick="isaddClass('<?php echo $row5['sati_id']; ?>','true')" >ดูข้อมูล</a>
                         <a href='editform.php?id=<?php echo $row5['sati_id']; ?>' id='btnedit'>แก้ไข</a>
-                        <a id='btndelete' onclick="confirmdel(['<?php echo $c1; ?>','<?php echo $row5['sati_id']; ?>'])" >ลบ</a>
+                        <a id='btndelete' onclick="confirmdel(['<?php echo $c1; ?>','<?php echo $row5['sati_id']; ?>'],'true')" >ลบ</a>
                         </div>
                         </div>
                         </div>
@@ -146,7 +146,7 @@
             overflow-wrap: break-word;
         }
     </style>
-    <script src="script/active5.js" type="module"></script>
-    <script src="script/script_add_data12.js"></script>
+    <script src="script/active.js" type="module"></script>
+    <script src="script/script_add_data.js"></script>
 </body>
 </html>

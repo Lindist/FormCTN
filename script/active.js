@@ -26,6 +26,12 @@ function saveInputValues() {
         const firstshowtab2 = 'nofirstshow';
         localStorage.setItem('firstshow', firstshowtab2);
     }
+    const iscolclass = document.querySelectorAll('#adddata');
+        iscolclass.forEach((e) =>{
+            if(e.classList.contains('columnData')){
+                localStorage.setItem('columnData', 'columnData');
+            } 
+    });
     const inputab2 = 'active';
     localStorage.setItem('tab2', inputab2);
 }
@@ -35,11 +41,16 @@ function restoreInputValues() {
     history.pushState(null, '', '/from/fixtest/form.php');
     const savedInput1 = localStorage.getItem('tab2');
     const savedInput2 = localStorage.getItem('firstshow');
-    if (savedInput2 == 'firstshow') {
+    const savedInput3 = localStorage.getItem('columnData');
+    if (savedInput2 === 'firstshow') {
         tab2.tab1.classList.remove('active');
         tab2.tab2.classList.add(savedInput1);
         tab2.tab2.classList.add(savedInput2);
 
+        if(savedInput3 === 'columnData'){
+            alert('have');
+        }
+        
         const all_content = document.querySelectorAll('.content_box');
         var line=document.querySelector('.line');
         const istab2_1 = document.querySelector('#tab2 h3');
