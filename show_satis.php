@@ -317,8 +317,8 @@ if (isset($_GET['class'])) {
             </div>
         </form>
         <div class="d-flex flex-column align-items-end text-break w-100">
-            <label for="" class="text-center" id="format2">(ลายมือชื่อ)...........................ผู้ทำแบบประเมิน</label>
-            <label for="" class="text-center" id="format2">(..............................)</label>
+            <label for="" class="form-label text-center text-break" id="format2">(ลายมือชื่อ)...........................ผู้ทำแบบประเมิน</label>
+            <label for="" class="form-label text-center text-break" id="format2">(.................................................................................................)</label>
         </div>
         <button type="button" class="btn btn-primary w-100 mt-2 mb-4" onclick="isClass('<?php echo $class; ?>')">กลับหน้าแรก</button>
     </div>
