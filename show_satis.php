@@ -16,9 +16,9 @@ if (isset($_GET['id'])) {
     // echo "<script>";
     // echo "alert('$row');";
     // echo "</script>";
-    // $genders = preg_split("/,/", $row["form_gender"]);
-    // $form_type = preg_split("/,/", $row["form_type"]);
-    // $form_education = preg_split("/,/", $row["form_education"]);
+    $genders = preg_split("/,/", $row["sati_gender"]);
+    $form_type = preg_split("/,/", $row["sati_type"]);
+    $form_education = preg_split("/,/", $row["sati_level"]);
     // print_r($genders);
     $ur = $row['ur_id'];
     $fun = $row['fun_id'];
@@ -136,22 +136,41 @@ if (isset($_GET['class'])) {
                 <label class="font-bold" for="">ตอนที่ 2 เป็นแบบสอบถามความคิดเห็นของนักเรียน นักศึกษา และครูอาจารย์ของผู้ใช้งาน 
                 </label><br>
                 <span class="rad form-control text-break mb-2" style="width: 100%;"><?php echo $row['sati_ep2']; ?></span>
-                <label class="font-bold">โดยแบ่งการประเมินเป็น 4 ด้าน คือ</label>
-                <ul class="">
-                    <li class="" for="">ด้านที่ 1 ความต้องการของผู้ใช้งานระบบ</li> <br>
-                    <li class="" for="">ด้านที่ 2 ด้านการทำงานของฟั่งชั่นระบบ</li> <br>
-                    <li class="" for="">ด้านที่ 3 ด้านความง่ายต่อการใช้ระบบ</li> <br>
-                    <li class="" for="">ด้านที่ 4 ด้านการใช้งานรักษาความปลอดภัยของข้อมูลในระบบ</li> <br>
-                </ul>
+                <div class="d-flex flex-column w-50 align-items-center">
+                    <label class="font-bold d-flex justify-content-start w-100">โดยแบ่งการประเมินเป็น 4 ด้าน คือ</label>
+                    <ul class="">
+                        <li class="" for="">ด้านที่ 1 ความต้องการของผู้ใช้งานระบบ</li> <br>
+                        <li class="" for="">ด้านที่ 2 ด้านการทำงานของฟั่งชั่นระบบ</li> <br>
+                        <li class="" for="">ด้านที่ 3 ด้านความง่ายต่อการใช้ระบบ</li> <br>
+                        <li class="" for="">ด้านที่ 4 ด้านการใช้งานรักษาความปลอดภัยของข้อมูลในระบบ</li> <br>
+                    </ul>
+                </div>
                 <label class="font-bold" for="">ตอนที่ 3 เป็นข้อคิดเห็นและเสนอแนะอื่นๆ</label> <br>
             </div>
             <!-- Body_Content -->
             <div class="body_content mt-5">
                 <label class="form-label font-bold">ตอนที่ 1</label>
                 <label for="">ข้อมูลพื้นฐานของผู้กรอกแบบสอบถาม</label><br>
-                <label class="col-3 col-form-label">1.เพศ</label><br>
-                <label class="col-3 col-form-label">2.สถานะของผู้สอบถาม</label><br>
-                <label class="col-3 col-form-label">3.ระดับการศึกษา</label><br>
+                <div class="w-100">
+                    <label class="col-3 col-form-label w-100">1.เพศ 
+                    <?php for($i=0;$i < count($genders);$i++){ ?>
+                    <input class="rad form-check-input ms-4" type="radio" value="" disabled name="" >
+                    <?php echo $genders[$i]; ?>
+                    <?php } ?>
+                    </label><br>
+                    <label class="col-3 col-form-label w-100">2.สถานะของผู้สอบถาม 
+                    <?php for($i=0;$i < count($form_type);$i++){ ?>
+                    <input class="rad form-check-input ms-4" type="radio" value="" disabled name="" >
+                    <?php echo $form_type[$i]; ?>
+                    <?php } ?>
+                    </label><br>
+                    <label class="col-3 col-form-label w-100">3.ระดับการศึกษา 
+                    <?php for($i=0;$i < count($form_education);$i++){ ?>
+                    <input class="rad form-check-input ms-4" type="radio" value="" disabled name="" >
+                    <?php echo $form_education[$i]; ?>
+                    <?php } ?>
+                </div>
+                </label><br>
 
                 <label class="form-label">ตอนที่ 2</label>
                 <label for="">แบบสอบถามความคิดเห็น</label> <br>
@@ -159,7 +178,7 @@ if (isset($_GET['class'])) {
                 <label for="">โปรดบันทึกความคิดเห็นของท่านลงในช่องว่างในแต่ละข้อ</label> <br>
                 <!-- Start table -->
                 <label class="form-label mt-2">ด้านที่ 1</label>
-                <div class="rad form-control mb-2"><?php echo $row1["ur_topic"]; ?></div>
+                <div class="rad form-control mb-2" id="format"><?php echo $row1["ur_topic"]; ?></div>
                 <div  id="widthfix">
                 <table class="table table-bordered table-striped text-center mt-3">
                     <thead>
@@ -192,7 +211,7 @@ if (isset($_GET['class'])) {
                 </table>
                 </div>
                 <label class="form-label mt-2">ด้านที่ 2</label>
-                <div class="rad form-control mb-2"><?php echo $row2["fun_topic"]; ?></div>
+                <div class="rad form-control mb-2" id="format"><?php echo $row2["fun_topic"]; ?></div>
                 <div  id="widthfix">
                 <table class="table table-bordered table-striped text-center mt-3">
                     <thead>
@@ -225,7 +244,7 @@ if (isset($_GET['class'])) {
                 </table>
                 </div>
                 <label class="form-label mt-2">ด้านที่ 3</label>
-                <div class="rad form-control mb-2"><?php echo $row3["uf_topic"]; ?></div>
+                <div class="rad form-control mb-2" id="format"><?php echo $row3["uf_topic"]; ?></div>
                 <div  id="widthfix">
                 <table class="table table-bordered table-striped text-center mt-3">
                     <thead>
@@ -258,7 +277,7 @@ if (isset($_GET['class'])) {
                 </table>
                 </div>
                 <label class="form-label mt-2">ด้านที่ 4</label>
-                <div class="rad form-control mb-2"><?php echo $row4["ss_topic"]; ?></div>
+                <div class="rad form-control mb-2" id="format"><?php echo $row4["ss_topic"]; ?></div>
                 <div  id="widthfix">
                 <table class="table table-bordered table-striped text-center mt-3">
                     <thead>
