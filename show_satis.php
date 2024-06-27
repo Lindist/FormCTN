@@ -129,7 +129,7 @@ if (isset($_GET['class'])) {
 
             <!-- Title_Content -->
             <div class="head_content mt-5 mb-2">
-                <label class="text-2xl mb-5 font-bold">คำชี้แจง</label> <br>
+                <label class="text-2xl mb-5 font-bold">คำชี้แจง ในแบบประเมินความพึงพอใจจะแบ่งออกเป็น 3 ตอน ดังนี้</label> <br>
                 <label class="font-bold" for="">ในแบบประเมินความพึงพอใจการใช้งานระบบ แบ่งออกเป็น 3 ตอนดังนี้</label> <br>
                 <label class="font-bold" for="">ตอนที่ 1</label> <br>
                 <label class="font-bold" for="">เป็นข้อมูลพื้นฐานของผู้กรอกแบบสอบถาม</label> <br>
