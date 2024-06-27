@@ -316,6 +316,10 @@ if (isset($_GET['class'])) {
                 
             </div>
         </form>
+        <div class="d-flex flex-column align-items-end text-break w-100">
+            <label for="" class="text-center" id="format2">(ลายมือชื่อ)...........................ผู้ทำแบบประเมิน</label>
+            <label for="" class="text-center" id="format2">(..............................)</label>
+        </div>
         <button type="button" class="btn btn-primary w-100 mt-2 mb-4" onclick="isClass('<?php echo $class; ?>')">กลับหน้าแรก</button>
     </div>
     <style>
@@ -331,6 +335,14 @@ if (isset($_GET['class'])) {
         }
         #widthfix{
             overflow-x: scroll;
+        }
+        #format2{
+            width: 20em;
+        }
+        @media screen and (max-width: 320px) {
+            #format2{
+                width: 220px;
+            }
         }
     </style>
     <script src="script/changeclass.js"></script>
