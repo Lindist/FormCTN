@@ -290,7 +290,10 @@ if (isset($_GET['class'])) {
                     </tbody>
                 </table>
                 </div>
-                
+                <label class="form-label mt-2">ตอนที่3 ข้อเสนอแนะอื่นๆ</label>
+                <div class="rad form-control" id="format">
+                    <?php echo $row['sati_comment']; ?>
+                </div>
                 
             </div>
         </form>
