@@ -28,22 +28,22 @@ if (isset($_GET['id'])) {
     $result1 = $conn->query("SELECT * FROM tb_user_req  WHERE ur_id = '$ur'"); 
     $result1->execute();
     $row1 = $result1->fetch(PDO::FETCH_ASSOC);
-    // $input_feature = preg_split("/@/", $row1["Input_feature"]);
+    $ur_score = preg_split("/@/", $row1["ur_score"]);
     
     $result2 = $conn->query("SELECT * FROM tb_function WHERE fun_id = '$fun'"); 
     $result2->execute();
     $row2 = $result2->fetch(PDO::FETCH_ASSOC);
-    // $process_feature = preg_split("/@/", $row2["process_feature"]);
+    $fun_score = preg_split("/@/", $row2["fun_score"]);
     
     $result3 = $conn->query("SELECT * FROM tb_uesful WHERE uf_id = '$uf'"); 
     $result3->execute();
     $row3 = $result3->fetch(PDO::FETCH_ASSOC);
-    // $report_feature = preg_split("/@/", $row3["report_feature"]);
+    $uf_score = preg_split("/@/", $row3["uf_score"]);
     
     $result4 = $conn->query("SELECT * FROM tb_seurity WHERE ss_id = '$ss'"); 
     $result4->execute();
     $row4 = $result4->fetch(PDO::FETCH_ASSOC);
-    // $senrity_feature = preg_split("/@/", $row4["senrity_feature"]);
+    $ss_score = preg_split("/@/", $row4["ss_score"]);
 
 }
 
@@ -177,15 +177,17 @@ if (isset($_GET['class'])) {
                         </tr>
                     </thead>
                     <tbody>
+                        <?php for($i = 0;$i < count($ur_score);$i++){ ?>
                         <tr>
-                            <th scope="row">1</th>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $row1['ur_score']; ?></div></td>	
+                            <th scope="row"><?php echo $i+1; ?></th>
+                            <td><div class="form-control1" id="format" rows="3"><?php echo $ur_score[$i]; ?></div></td>	
                             <td><div class="form-control1" id="format" rows="3"></div></td>
                             <td><div class="form-control1" id="format" rows="3"></div></td>
                             <td><div class="form-control1" id="format" rows="3"></div></td>
                             <td><div class="form-control1" id="format" rows="3"></div></td>
                             <td><div class="form-control1" id="format" rows="3"></div></td>
                         </tr>
+                        <?php } ?>
                     </tbody>
                 </table>
                 </div>
@@ -208,15 +210,17 @@ if (isset($_GET['class'])) {
                         </tr>
                     </thead>
                     <tbody>
+                    <?php for($i = 0;$i < count($fun_score);$i++){ ?>
                         <tr>
-                            <th scope="row">1</th>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $row2['fun_score']; ?></div></td>	
+                            <th scope="row"><?php echo $i+1; ?></th>
+                            <td><div class="form-control1" id="format" rows="3"><?php echo $fun_score[$i]; ?></div></td>	
                             <td><div class="form-control1" id="format" rows="3"></div></td>
                             <td><div class="form-control1" id="format" rows="3"></div></td>
                             <td><div class="form-control1" id="format" rows="3"></div></td>
                             <td><div class="form-control1" id="format" rows="3"></div></td>
                             <td><div class="form-control1" id="format" rows="3"></div></td>
                         </tr>
+                    <?php } ?>   
                     </tbody>
                 </table>
                 </div>
@@ -239,15 +243,17 @@ if (isset($_GET['class'])) {
                         </tr>
                     </thead>
                     <tbody>
+                    <?php for($i = 0;$i < count($uf_score);$i++){ ?>
                         <tr>
-                            <th scope="row">1</th>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $row3['uf_score']; ?></div></td>	
+                            <th scope="row"><?php echo $i+1; ?></th>
+                            <td><div class="form-control1" id="format" rows="3"><?php echo $uf_score[$i]; ?></div></td>	
                             <td><div class="form-control1" id="format" rows="3"></div></td>
                             <td><div class="form-control1" id="format" rows="3"></div></td>
                             <td><div class="form-control1" id="format" rows="3"></div></td>
                             <td><div class="form-control1" id="format" rows="3"></div></td>
                             <td><div class="form-control1" id="format" rows="3"></div></td>
                         </tr>
+                    <?php } ?>   
                     </tbody>
                 </table>
                 </div>
@@ -270,15 +276,17 @@ if (isset($_GET['class'])) {
                         </tr>
                     </thead>
                     <tbody>
+                    <?php for($i = 0;$i < count($ss_score);$i++){ ?>
                         <tr>
-                            <th scope="row">1</th>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $row4['ss_score']; ?></div></td>	
+                            <th scope="row"><?php echo $i+1; ?></th>
+                            <td><div class="form-control1" id="format" rows="3"><?php echo $ss_score[$i]; ?></div></td>	
                             <td><div class="form-control1" id="format" rows="3"></div></td>
                             <td><div class="form-control1" id="format" rows="3"></div></td>
                             <td><div class="form-control1" id="format" rows="3"></div></td>
                             <td><div class="form-control1" id="format" rows="3"></div></td>
                             <td><div class="form-control1" id="format" rows="3"></div></td>
                         </tr>
+                    <?php } ?>  
                     </tbody>
                 </table>
                 </div>
