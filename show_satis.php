@@ -154,20 +154,26 @@ if (isset($_GET['class'])) {
                 <div class="w-100">
                     <label class="col-3 col-form-label w-100">1.เพศ 
                     <?php for($i=0;$i < count($genders);$i++){ ?>
+                    <?php if(!($genders[$i] == null)){ ?>
                     <input class="rad form-check-input ms-4" type="radio" value="" disabled name="" >
                     <?php echo $genders[$i]; ?>
+                    <?php } ?>
                     <?php } ?>
                     </label><br>
                     <label class="col-3 col-form-label w-100">2.สถานะของผู้สอบถาม 
                     <?php for($i=0;$i < count($form_type);$i++){ ?>
+                    <?php if(!($form_type[$i] == null)){ ?>
                     <input class="rad form-check-input ms-4" type="radio" value="" disabled name="" >
                     <?php echo $form_type[$i]; ?>
+                    <?php } ?>
                     <?php } ?>
                     </label><br>
                     <label class="col-3 col-form-label w-100">3.ระดับการศึกษา 
                     <?php for($i=0;$i < count($form_education);$i++){ ?>
+                    <?php if(!($form_education[$i] == null)){ ?>
                     <input class="rad form-check-input ms-4" type="radio" value="" disabled name="" >
                     <?php echo $form_education[$i]; ?>
+                    <?php } ?>
                     <?php } ?>
                 </div>
                 </label><br>
@@ -197,6 +203,7 @@ if (isset($_GET['class'])) {
                     </thead>
                     <tbody>
                         <?php for($i = 0;$i < count($ur_score);$i++){ ?>
+                            <?php if(!($ur_score[$i] == null)){ ?>
                         <tr>
                             <th scope="row"><?php echo $i+1; ?></th>
                             <td><div class="form-control1" id="format" rows="3"><?php echo $ur_score[$i]; ?></div></td>	
@@ -206,6 +213,7 @@ if (isset($_GET['class'])) {
                             <td><div class="form-control1" id="format" rows="3"></div></td>
                             <td><div class="form-control1" id="format" rows="3"></div></td>
                         </tr>
+                        <?php } ?>
                         <?php } ?>
                     </tbody>
                 </table>
@@ -230,6 +238,7 @@ if (isset($_GET['class'])) {
                     </thead>
                     <tbody>
                     <?php for($i = 0;$i < count($fun_score);$i++){ ?>
+                        <?php if(!($fun_score[$i] == null)){ ?>
                         <tr>
                             <th scope="row"><?php echo $i+1; ?></th>
                             <td><div class="form-control1" id="format" rows="3"><?php echo $fun_score[$i]; ?></div></td>	
@@ -239,6 +248,7 @@ if (isset($_GET['class'])) {
                             <td><div class="form-control1" id="format" rows="3"></div></td>
                             <td><div class="form-control1" id="format" rows="3"></div></td>
                         </tr>
+                    <?php } ?>   
                     <?php } ?>   
                     </tbody>
                 </table>
@@ -263,6 +273,7 @@ if (isset($_GET['class'])) {
                     </thead>
                     <tbody>
                     <?php for($i = 0;$i < count($uf_score);$i++){ ?>
+                        <?php if(!($uf_score[$i] == null)){ ?>
                         <tr>
                             <th scope="row"><?php echo $i+1; ?></th>
                             <td><div class="form-control1" id="format" rows="3"><?php echo $uf_score[$i]; ?></div></td>	
@@ -272,6 +283,7 @@ if (isset($_GET['class'])) {
                             <td><div class="form-control1" id="format" rows="3"></div></td>
                             <td><div class="form-control1" id="format" rows="3"></div></td>
                         </tr>
+                    <?php } ?>   
                     <?php } ?>   
                     </tbody>
                 </table>
@@ -296,6 +308,7 @@ if (isset($_GET['class'])) {
                     </thead>
                     <tbody>
                     <?php for($i = 0;$i < count($ss_score);$i++){ ?>
+                        <?php if(!($ss_score[$i] == null)){ ?>
                         <tr>
                             <th scope="row"><?php echo $i+1; ?></th>
                             <td><div class="form-control1" id="format" rows="3"><?php echo $ss_score[$i]; ?></div></td>	
@@ -305,6 +318,7 @@ if (isset($_GET['class'])) {
                             <td><div class="form-control1" id="format" rows="3"></div></td>
                             <td><div class="form-control1" id="format" rows="3"></div></td>
                         </tr>
+                    <?php } ?>  
                     <?php } ?>  
                     </tbody>
                 </table>
