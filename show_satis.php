@@ -28,22 +28,22 @@ if (isset($_GET['id'])) {
     $result1 = $conn->query("SELECT * FROM tb_user_req  WHERE ur_id = '$ur'"); 
     $result1->execute();
     $row1 = $result1->fetch(PDO::FETCH_ASSOC);
-    $ur_score = preg_split("/@/", $row1["ur_score"]);
+    $ur_topic = preg_split("/@/", $row1["ur_topic"]);
     
     $result2 = $conn->query("SELECT * FROM tb_function WHERE fun_id = '$fun'"); 
     $result2->execute();
     $row2 = $result2->fetch(PDO::FETCH_ASSOC);
-    $fun_score = preg_split("/@/", $row2["fun_score"]);
+    $fun_topic = preg_split("/@/", $row2["fun_topic"]);
     
     $result3 = $conn->query("SELECT * FROM tb_uesful WHERE uf_id = '$uf'"); 
     $result3->execute();
     $row3 = $result3->fetch(PDO::FETCH_ASSOC);
-    $uf_score = preg_split("/@/", $row3["uf_score"]);
+    $uf_topic = preg_split("/@/", $row3["uf_topic"]);
     
     $result4 = $conn->query("SELECT * FROM tb_seurity WHERE ss_id = '$ss'"); 
     $result4->execute();
     $row4 = $result4->fetch(PDO::FETCH_ASSOC);
-    $ss_score = preg_split("/@/", $row4["ss_score"]);
+    $ss_topic = preg_split("/@/", $row4["ss_topic"]);
 
 }
 
@@ -184,7 +184,7 @@ if (isset($_GET['class'])) {
                 <label for="">โปรดบันทึกความคิดเห็นของท่านลงในช่องว่างในแต่ละข้อ</label> <br>
                 <!-- Start table -->
                 <label class="form-label mt-2">ด้านที่ 1</label>
-                <div class="rad form-control mb-2" id="format"><?php echo $row1["ur_topic"]; ?></div>
+                <label class="form-label mb-2" id="format">ด้านการนำเข้าข้อมูลระบบ</label>
                 <div  id="widthfix">
                 <table class="table table-bordered table-striped text-center mt-3">
                     <thead>
@@ -202,11 +202,11 @@ if (isset($_GET['class'])) {
                         </tr>
                     </thead>
                     <tbody>
-                        <?php for($i = 0;$i < count($ur_score);$i++){ ?>
-                            <?php if(!($ur_score[$i] == null)){ ?>
+                        <?php for($i = 0;$i < count($ur_topic);$i++){ ?>
+                            <?php if(!($ur_topic[$i] == null)){ ?>
                         <tr>
                             <th scope="row"><?php echo $i+1; ?></th>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $ur_score[$i]; ?></div></td>	
+                            <td><div class="form-control1" id="format" rows="3"><?php echo $ur_topic[$i]; ?></div></td>	
                             <td><div class="form-control1" id="format" rows="3"></div></td>
                             <td><div class="form-control1" id="format" rows="3"></div></td>
                             <td><div class="form-control1" id="format" rows="3"></div></td>
@@ -219,7 +219,7 @@ if (isset($_GET['class'])) {
                 </table>
                 </div>
                 <label class="form-label mt-2">ด้านที่ 2</label>
-                <div class="rad form-control mb-2" id="format"><?php echo $row2["fun_topic"]; ?></div>
+                <label class="form-label mb-2" id="format">ด้านการประมวลผล</label>
                 <div  id="widthfix">
                 <table class="table table-bordered table-striped text-center mt-3">
                     <thead>
@@ -237,11 +237,11 @@ if (isset($_GET['class'])) {
                         </tr>
                     </thead>
                     <tbody>
-                    <?php for($i = 0;$i < count($fun_score);$i++){ ?>
-                        <?php if(!($fun_score[$i] == null)){ ?>
+                    <?php for($i = 0;$i < count($fun_topic);$i++){ ?>
+                        <?php if(!($fun_topic[$i] == null)){ ?>
                         <tr>
                             <th scope="row"><?php echo $i+1; ?></th>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $fun_score[$i]; ?></div></td>	
+                            <td><div class="form-control1" id="format" rows="3"><?php echo $fun_topic[$i]; ?></div></td>	
                             <td><div class="form-control1" id="format" rows="3"></div></td>
                             <td><div class="form-control1" id="format" rows="3"></div></td>
                             <td><div class="form-control1" id="format" rows="3"></div></td>
@@ -254,7 +254,7 @@ if (isset($_GET['class'])) {
                 </table>
                 </div>
                 <label class="form-label mt-2">ด้านที่ 3</label>
-                <div class="rad form-control mb-2" id="format"><?php echo $row3["uf_topic"]; ?></div>
+                <label class="form-label mb-2" id="format">ด้านการรายงานข้อมูล</label>
                 <div  id="widthfix">
                 <table class="table table-bordered table-striped text-center mt-3">
                     <thead>
@@ -272,11 +272,11 @@ if (isset($_GET['class'])) {
                         </tr>
                     </thead>
                     <tbody>
-                    <?php for($i = 0;$i < count($uf_score);$i++){ ?>
-                        <?php if(!($uf_score[$i] == null)){ ?>
+                    <?php for($i = 0;$i < count($uf_topic);$i++){ ?>
+                        <?php if(!($uf_topic[$i] == null)){ ?>
                         <tr>
                             <th scope="row"><?php echo $i+1; ?></th>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $uf_score[$i]; ?></div></td>	
+                            <td><div class="form-control1" id="format" rows="3"><?php echo $uf_topic[$i]; ?></div></td>	
                             <td><div class="form-control1" id="format" rows="3"></div></td>
                             <td><div class="form-control1" id="format" rows="3"></div></td>
                             <td><div class="form-control1" id="format" rows="3"></div></td>
@@ -289,7 +289,7 @@ if (isset($_GET['class'])) {
                 </table>
                 </div>
                 <label class="form-label mt-2">ด้านที่ 4</label>
-                <div class="rad form-control mb-2" id="format"><?php echo $row4["ss_topic"]; ?></div>
+                <label class="form-label mb-2" id="format">ด้านความปลอดภัย</label>
                 <div  id="widthfix">
                 <table class="table table-bordered table-striped text-center mt-3">
                     <thead>
@@ -307,11 +307,11 @@ if (isset($_GET['class'])) {
                         </tr>
                     </thead>
                     <tbody>
-                    <?php for($i = 0;$i < count($ss_score);$i++){ ?>
-                        <?php if(!($ss_score[$i] == null)){ ?>
+                    <?php for($i = 0;$i < count($ss_topic);$i++){ ?>
+                        <?php if(!($ss_topic[$i] == null)){ ?>
                         <tr>
                             <th scope="row"><?php echo $i+1; ?></th>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $ss_score[$i]; ?></div></td>	
+                            <td><div class="form-control1" id="format" rows="3"><?php echo $ss_topic[$i]; ?></div></td>	
                             <td><div class="form-control1" id="format" rows="3"></div></td>
                             <td><div class="form-control1" id="format" rows="3"></div></td>
                             <td><div class="form-control1" id="format" rows="3"></div></td>
