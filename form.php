@@ -14,7 +14,7 @@
     // $input->execute();
     // $process = $conn->query("SELECT * FROM tb_process");
     // $process->execute();
-    // $report = $conn->query("SELECT * FROM tb_report");
+    // $report = $conn->query("SELECT * FROM tb_report");++
     // $report->execute();
     // $senrity = $conn->query("SELECT * FROM tb_senrity");
     // $senrity->execute();
