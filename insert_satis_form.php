@@ -66,6 +66,7 @@ unset($_SESSION['ss_topic']); // Clear the session flag after use
             background-color: rgb(180, 180, 180);
         }
     </style>
+    <script src="script/add_remove_satis_insert.js"></script>
 </head>
 
 <body>
@@ -234,59 +235,59 @@ unset($_SESSION['ss_topic']); // Clear the session flag after use
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="odd :bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
-                            <td class="border border-gray-300 py-2">1</td>
-                            <td class="border border-gray-300 py-2"><textarea name="ur_topic[]" class="w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"></textarea></td>
-                            <td class="border border-gray-300 py-2"><input class="w-full h-16 border border-gray-300 px-2 py-1 flex items-center" type="radio" name="ur_score[]" id="" value="พึงพอใจมากที่สุด"></td>
-                            <td class="border border-gray-300 py-2"><input class="w-full h-16 border border-gray-300 px-2 py-1 flex items-center" type="radio" name="ur_score[]" id="" value="พึงพอใจมาก"></td>
-                            <td class="border border-gray-300 py-2"><input class="w-full h-16 border border-gray-300 px-2 py-1 flex items-center" type="radio" name="ur_score[]" id="" value="พึงพอใจปานกลาง"></td>
-                            <td class="border border-gray-300 py-2"><input class="w-full h-16 border border-gray-300 px-2 py-1 flex items-center" type="radio" name="ur_score[]" id="" value="พึงพอใจน้อย"></td>
-                            <td class="border border-gray-300 py-2"><input class="w-full h-16 border border-gray-300 px-2 py-1 flex items-center" type="radio" name="ur_score[]" id="" value="พึงพอใจน้อยที่สุด"></td>
+                        <tr class="odd:bg-white even:bg-gray-100">
+                            <td class="border border-gray-300 py-2 text-center">1</td>
+                            <td class="border border-gray-300 py-2"><textarea name="ur_topic[]" class="w-full h-16 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ur_score[0]" value="พึงพอใจมากที่สุด"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ur_score[0]" value="พึงพอใจมาก"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ur_score[0]" value="พึงพอใจปานกลาง"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ur_score[0]" value="พึงพอใจน้อย"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ur_score[0]" value="พึงพอใจน้อยที่สุด"></td>
                         </tr>
-                        <tr class="odd :bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
-                            <td class="border border-gray-300 py-2">2</td>
-                            <td class="border border-gray-300 py-2"><textarea name="ur_topic[]" class="w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"></textarea></td>
-                            <td class="border border-gray-300 py-2"><input class="w-full h-16 border border-gray-300 px-2 py-1 flex items-center" type="radio" name="ur_score[]" id="" value="พึงพอใจมากที่สุด"></td>
-                            <td class="border border-gray-300 py-2"><input class="w-full h-16 border border-gray-300 px-2 py-1 flex items-center" type="radio" name="ur_score[]" id="" value="พึงพอใจมาก"></td>
-                            <td class="border border-gray-300 py-2"><input class="w-full h-16 border border-gray-300 px-2 py-1 flex items-center" type="radio" name="ur_score[]" id="" value="พึงพอใจปานกลาง"></td>
-                            <td class="border border-gray-300 py-2"><input class="w-full h-16 border border-gray-300 px-2 py-1 flex items-center" type="radio" name="ur_score[]" id="" value="พึงพอใจน้อย"></td>
-                            <td class="border border-gray-300 py-2"><input class="w-full h-16 border border-gray-300 px-2 py-1 flex items-center" type="radio" name="ur_score[]" id="" value="พึงพอใจน้อยที่สุด"></td>
+                        <tr class="odd:bg-white even:bg-gray-100 hidden" id="section1tr1">
+                            <td class="border border-gray-300 py-2 text-center">2</td>
+                            <td class="border border-gray-300 py-2"><textarea name="ur_topic[]" disabled id="section1tr1td" class="w-full h-16 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ur_score[1]" value="พึงพอใจมากที่สุด"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ur_score[1]" value="พึงพอใจมาก"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ur_score[1]" value="พึงพอใจปานกลาง"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ur_score[1]" value="พึงพอใจน้อย"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ur_score[1]" value="พึงพอใจน้อยที่สุด"></td>
                         </tr>
-                        <tr class="odd :bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
-                            <td class="border border-gray-300 py-2">3</td>
-                            <td class="border border-gray-300 py-2"><textarea name="ur_topic[]" class="w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"></textarea></td>
-                            <td class="border border-gray-300 py-2"><input class="w-full h-16 border border-gray-300 px-2 py-1 flex items-center" type="radio" name="ur_score[]" id="" value="พึงพอใจมากที่สุด"></td>
-                            <td class="border border-gray-300 py-2"><input class="w-full h-16 border border-gray-300 px-2 py-1 flex items-center" type="radio" name="ur_score[]" id="" value="พึงพอใจมาก"></td>
-                            <td class="border border-gray-300 py-2"><input class="w-full h-16 border border-gray-300 px-2 py-1 flex items-center" type="radio" name="ur_score[]" id="" value="พึงพอใจปานกลาง"></td>
-                            <td class="border border-gray-300 py-2"><input class="w-full h-16 border border-gray-300 px-2 py-1 flex items-center" type="radio" name="ur_score[]" id="" value="พึงพอใจน้อย"></td>
-                            <td class="border border-gray-300 py-2"><input class="w-full h-16 border border-gray-300 px-2 py-1 flex items-center" type="radio" name="ur_score[]" id="" value="พึงพอใจน้อยที่สุด"></td>
+                        <tr class="odd:bg-white even:bg-gray-100 hidden" id="section1tr2">
+                            <td class="border border-gray-300 py-2 text-center">3</td>
+                            <td class="border border-gray-300 py-2"><textarea name="ur_topic[]" disabled id="section1tr2td" class="w-full h-16 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ur_score[2]" value="พึงพอใจมากที่สุด"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ur_score[2]" value="พึงพอใจมาก"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ur_score[2]" value="พึงพอใจปานกลาง"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ur_score[2]" value="พึงพอใจน้อย"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ur_score[2]" value="พึงพอใจน้อยที่สุด"></td>
                         </tr>
-                        <tr class="odd :bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
-                            <td class="border border-gray-300 py-2">4</td>
-                            <td class="border border-gray-300 py-2"><textarea name="ur_topic[]" class="w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"></textarea></td>
-                            <td class="border border-gray-300 py-2"><input class="w-full h-16 border border-gray-300 px-2 py-1 flex items-center" type="radio" name="ur_score[]" id="" value="พึงพอใจมากที่สุด"></td>
-                            <td class="border border-gray-300 py-2"><input class="w-full h-16 border border-gray-300 px-2 py-1 flex items-center" type="radio" name="ur_score[]" id="" value="พึงพอใจมาก"></td>
-                            <td class="border border-gray-300 py-2"><input class="w-full h-16 border border-gray-300 px-2 py-1 flex items-center" type="radio" name="ur_score[]" id="" value="พึงพอใจปานกลาง"></td>
-                            <td class="border border-gray-300 py-2"><input class="w-full h-16 border border-gray-300 px-2 py-1 flex items-center" type="radio" name="ur_score[]" id="" value="พึงพอใจน้อย"></td>
-                            <td class="border border-gray-300 py-2"><input class="w-full h-16 border border-gray-300 px-2 py-1 flex items-center" type="radio" name="ur_score[]" id="" value="พึงพอใจน้อยที่สุด"></td>
+                        <tr class="odd:bg-white even:bg-gray-100 hidden" id="section1tr3">
+                            <td class="border border-gray-300 py-2 text-center">4</td>
+                            <td class="border border-gray-300 py-2"><textarea name="ur_topic[]" disabled id="section1tr3td" class="w-full h-16 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ur_score[3]" value="พึงพอใจมากที่สุด"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ur_score[3]" value="พึงพอใจมาก"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ur_score[3]" value="พึงพอใจปานกลาง"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ur_score[3]" value="พึงพอใจน้อย"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ur_score[3]" value="พึงพอใจน้อยที่สุด"></td>
                         </tr>
-                        <tr class="odd :bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
-                            <td class="border border-gray-300 py-2">5</td>
-                            <td class="border border-gray-300 py-2"><textarea name="ur_topic[]" class="w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"></textarea></td>
-                            <td class="border border-gray-300 py-2"><input class="w-full h-16 border border-gray-300 px-2 py-1 flex items-center" type="radio" name="ur_score[]" id="" value="พึงพอใจมากที่สุด"></td>
-                            <td class="border border-gray-300 py-2"><input class="w-full h-16 border border-gray-300 px-2 py-1 flex items-center" type="radio" name="ur_score[]" id="" value="พึงพอใจมาก"></td>
-                            <td class="border border-gray-300 py-2"><input class="w-full h-16 border border-gray-300 px-2 py-1 flex items-center" type="radio" name="ur_score[]" id="" value="พึงพอใจปานกลาง"></td>
-                            <td class="border border-gray-300 py-2"><input class="w-full h-16 border border-gray-300 px-2 py-1 flex items-center" type="radio" name="ur_score[]" id="" value="พึงพอใจน้อย"></td>
-                            <td class="border border-gray-300 py-2"><input class="w-full h-16 border border-gray-300 px-2 py-1 flex items-center" type="radio" name="ur_score[]" id="" value="พึงพอใจน้อยที่สุด"></td>
+                        <tr class="odd:bg-white even:bg-gray-100 hidden" id="section1tr4">
+                            <td class="border border-gray-300 py-2 text-center">5</td>
+                            <td class="border border-gray-300 py-2"><textarea name="ur_topic[]" disabled id="section1tr4td" class="w-full h-16 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ur_score[4]" value="พึงพอใจมากที่สุด"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ur_score[4]" value="พึงพอใจมาก"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ur_score[4]" value="พึงพอใจปานกลาง"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ur_score[4]" value="พึงพอใจน้อย"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ur_score[4]" value="พึงพอใจน้อยที่สุด"></td>
                         </tr>
                     </tbody>
                 </table>
-                <button type="button" id="section3addbtn" onclick="section1add()" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">เพิ่ม</button>
-                <button type="button" id="section3removebtn" onclick="section1remove()" class="hidden bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">ลบ</button>
+                <button type="button" id="section1addbtn" onclick="section1add()" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">เพิ่ม</button>
+                <button type="button" id="section1removebtn" onclick="section1remove()" class="hidden bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">ลบ</button>
 
                 <!-- Section 2 -->
                 <label for="" class="block text-lg my-5"><label class="text-lg font-bold mb-2">ด้านที่ 2 </label>ด้านการทำงานตามฟังก์ชันของระบบ</label>
-                <input type="hidden" name="" value="ด้านการทำงานตามฟังก์ชันของระบบ">
+                <input disabled type="hidden" name="" value="ด้านการทำงานตามฟังก์ชันของระบบ">
 
                 <table class="w-full border border-gray-300 text-center my-3">
                     <thead>
@@ -304,23 +305,59 @@ unset($_SESSION['ss_topic']); // Clear the session flag after use
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="odd :bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
-                            <td class="border border-gray-300 py-2">1</td>
+                        <tr class="odd:bg-white even:bg-gray-100">
+                            <td class="border border-gray-300 py-2 text-center">1</td>
                             <td class="border border-gray-300 py-2"><textarea name="fun_topic[]" class="w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"></textarea></td>
-                            <td class="border border-gray-300 py-2"><input class="w-full h-16 border border-gray-300 px-2 py-1 flex items-center" type="radio" name="fun_score[]" id="" value="พึงพอใจมากที่สุด"></td>
-                            <td class="border border-gray-300 py-2"><input class="w-full h-16 border border-gray-300 px-2 py-1 flex items-center" type="radio" name="fun_score[]" id="" value="พึงพอใจมาก"></td>
-                            <td class="border border-gray-300 py-2"><input class="w-full h-16 border border-gray-300 px-2 py-1 flex items-center" type="radio" name="fun_score[]" id="" value="พึงพอใจปานกลาง"></td>
-                            <td class="border border-gray-300 py-2"><input class="w-full h-16 border border-gray-300 px-2 py-1 flex items-center" type="radio" name="fun_score[]" id="" value="พึงพอใจน้อย"></td>
-                            <td class="border border-gray-300 py-2"><input class="w-full h-16 border border-gray-300 px-2 py-1 flex items-center" type="radio" name="fun_score[]" id="" value="พึงพอใจน้อยที่สุด"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="fun_score[0]" value="พึงพอใจมากที่สุด"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="fun_score[0]" value="พึงพอใจมาก"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="fun_score[0]" value="พึงพอใจปานกลาง"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="fun_score[0]" value="พึงพอใจน้อย"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="fun_score[0]" value="พึงพอใจน้อยที่สุด"></td>
+                        </tr>
+                        <tr class="odd:bg-white even:bg-gray-100 hidden" id="section2tr1">
+                            <td class="border border-gray-300 py-2 text-center">2</td>
+                            <td class="border border-gray-300 py-2"><textarea name="fun_topic[]" disabled id="section2tr1td" class="w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="fun_score[1]" value="พึงพอใจมากที่สุด"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="fun_score[1]" value="พึงพอใจมาก"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="fun_score[1]" value="พึงพอใจปานกลาง"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="fun_score[1]" value="พึงพอใจน้อย"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="fun_score[1]" value="พึงพอใจน้อยที่สุด"></td>
+                        </tr>
+                        <tr class="odd:bg-white even:bg-gray-100 hidden" id="section2tr2">
+                            <td class="border border-gray-300 py-2 text-center">3</td>
+                            <td class="border border-gray-300 py-2"><textarea name="fun_topic[]" disabled id="section2tr2td" class="w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="fun_score[2]" value="พึงพอใจมากที่สุด"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="fun_score[2]" value="พึงพอใจมาก"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="fun_score[2]" value="พึงพอใจปานกลาง"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="fun_score[2]" value="พึงพอใจน้อย"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="fun_score[2]" value="พึงพอใจน้อยที่สุด"></td>
+                        </tr>
+                        <tr class="odd:bg-white even:bg-gray-100 hidden" id="section2tr3">
+                            <td class="border border-gray-300 py-2 text-center">4</td>
+                            <td class="border border-gray-300 py-2"><textarea name="fun_topic[]" disabled id="section2tr3td" class="w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="fun_score[3]" value="พึงพอใจมากที่สุด"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="fun_score[3]" value="พึงพอใจมาก"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="fun_score[3]" value="พึงพอใจปานกลาง"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="fun_score[3]" value="พึงพอใจน้อย"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="fun_score[3]" value="พึงพอใจน้อยที่สุด"></td>
+                        </tr>
+                        <tr class="odd:bg-white even:bg-gray-100 hidden" id="section2tr4">
+                            <td class="border border-gray-300 py-2 text-center">5</td>
+                            <td class="border border-gray-300 py-2"><textarea name="fun_topic[]" disabled id="section2tr4td" class="w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="fun_score[4]" value="พึงพอใจมากที่สุด"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="fun_score[4]" value="พึงพอใจมาก"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="fun_score[4]" value="พึงพอใจปานกลาง"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="fun_score[4]" value="พึงพอใจน้อย"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="fun_score[4]" value="พึงพอใจน้อยที่สุด"></td>
                         </tr>
                     </tbody>
                 </table>
-                <button type="button" id="section3addbtn" onclick="section2add()" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">เพิ่ม</button>
-                <button type="button" id="section3removebtn" onclick="section2remove()" class="hidden bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">ลบ</button>
+                <button type="button" id="section2addbtn" onclick="section2add()" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">เพิ่ม</button>
+                <button type="button" id="section2removebtn" onclick="section2remove()" class="hidden bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">ลบ</button>
 
                 <!-- Section 3 -->
                 <label for="" class="block text-lg my-5"><label class="text-lg font-bold mb-2">ด้านที่ 3 </label>ด้านความง่ายต่อการใช้งานของระบบ</label>
-                <input type="hidden" name="" value="ด้านความง่ายต่อการใช้งานของระบบ">
+                <input disabled type="hidden" name="" value="ด้านความง่ายต่อการใช้งานของระบบ">
 
                 <table class="w-full border border-gray-300 text-center my-3">
                     <thead>
@@ -338,14 +375,50 @@ unset($_SESSION['ss_topic']); // Clear the session flag after use
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="odd :bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
-                            <td class="border border-gray-300 py-2">1</td>
+                        <tr class="odd:bg-white even:bg-gray-100">
+                            <td class="border border-gray-300 py-2 text-center">1</td>
                             <td class="border border-gray-300 py-2"><textarea name="uf_topic[]" class="w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"></textarea></td>
-                            <td class="border border-gray-300 py-2"><input class="w-full h-16 border border-gray-300 px-2 py-1 flex items-center" type="radio" name="uf_score[]" id="" value="พึงพอใจมากที่สุด"></td>
-                            <td class="border border-gray-300 py-2"><input class="w-full h-16 border border-gray-300 px-2 py-1 flex items-center" type="radio" name="uf_score[]" id="" value="พึงพอใจมาก"></td>
-                            <td class="border border-gray-300 py-2"><input class="w-full h-16 border border-gray-300 px-2 py-1 flex items-center" type="radio" name="uf_score[]" id="" value="พึงพอใจปานกลาง"></td>
-                            <td class="border border-gray-300 py-2"><input class="w-full h-16 border border-gray-300 px-2 py-1 flex items-center" type="radio" name="uf_score[]" id="" value="พึงพอใจน้อย"></td>
-                            <td class="border border-gray-300 py-2"><input class="w-full h-16 border border-gray-300 px-2 py-1 flex items-center" type="radio" name="uf_score[]" id="" value="พึงพอใจน้อยที่สุด"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="uf_score[0]" value="พึงพอใจมากที่สุด"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="uf_score[0]" value="พึงพอใจมาก"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="uf_score[0]" value="พึงพอใจปานกลาง"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="uf_score[0]" value="พึงพอใจน้อย"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="uf_score[0]" value="พึงพอใจน้อยที่สุด"></td>
+                        </tr>
+                        <tr class="odd:bg-white even:bg-gray-100 hidden" id="section3tr1">
+                            <td class="border border-gray-300 py-2 text-center">2</td>
+                            <td class="border border-gray-300 py-2"><textarea name="uf_topic[]" disabled id="section3tr1td" class="w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="uf_score[1]" value="พึงพอใจมากที่สุด"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="uf_score[1]" value="พึงพอใจมาก"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="uf_score[1]" value="พึงพอใจปานกลาง"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="uf_score[1]" value="พึงพอใจน้อย"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="uf_score[1]" value="พึงพอใจน้อยที่สุด"></td>
+                        </tr>
+                        <tr class="odd:bg-white even:bg-gray-100 hidden" id="section3tr2">
+                            <td class="border border-gray-300 py-2 text-center">3</td>
+                            <td class="border border-gray-300 py-2"><textarea name="uf_topic[]" disabled id="section3tr2td" class="w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="uf_score[2]" value="พึงพอใจมากที่สุด"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="uf_score[2]" value="พึงพอใจมาก"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="uf_score[2]" value="พึงพอใจปานกลาง"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="uf_score[2]" value="พึงพอใจน้อย"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="uf_score[2]" value="พึงพอใจน้อยที่สุด"></td>
+                        </tr>
+                        <tr class="odd:bg-white even:bg-gray-100 hidden" id="section3tr3">
+                            <td class="border border-gray-300 py-2 text-center">4</td>
+                            <td class="border border-gray-300 py-2"><textarea name="uf_topic[]" disabled id="section3tr3td" class="w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="uf_score[3]" value="พึงพอใจมากที่สุด"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="uf_score[3]" value="พึงพอใจมาก"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="uf_score[3]" value="พึงพอใจปานกลาง"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="uf_score[3]" value="พึงพอใจน้อย"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="uf_score[3]" value="พึงพอใจน้อยที่สุด"></td>
+                        </tr>
+                        <tr class="odd:bg-white even:bg-gray-100 hidden" id="section3tr4">
+                            <td class="border border-gray-300 py-2 text-center">5</td>
+                            <td class="border border-gray-300 py-2"><textarea name="uf_topic[]" disabled id="section3tr4td" class="w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="uf_score[4]" value="พึงพอใจมากที่สุด"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="uf_score[4]" value="พึงพอใจมาก"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="uf_score[4]" value="พึงพอใจปานกลาง"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="uf_score[4]" value="พึงพอใจน้อย"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="uf_score[4]" value="พึงพอใจน้อยที่สุด"></td>
                         </tr>
                     </tbody>
                 </table>
@@ -354,7 +427,7 @@ unset($_SESSION['ss_topic']); // Clear the session flag after use
 
                 <!-- Section 4 -->
                 <label for="" class="block text-lg my-5"><label class="text-lg font-bold mb-2">ด้านที่ 4 </label>ด้านการใช้งานรักษาความปลอดภัยของข้อมูลในระบบ</label>
-                <input type="hidden" name="" value="ด้านการใช้งานรักษาความปลอดภัยของข้อมูลในระบบ">
+                <input disabled type="hidden" name="" value="ด้านการใช้งานรักษาความปลอดภัยของข้อมูลในระบบ">
 
                 <table class="w-full border border-gray-300 text-center my-3">
                     <thead>
@@ -372,19 +445,55 @@ unset($_SESSION['ss_topic']); // Clear the session flag after use
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="odd :bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700">
-                            <td class="border border-gray-300 py-2">1</td>
+                        <tr class="odd:bg-white even:bg-gray-100">
+                            <td class="border border-gray-300 py-2 text-center">1</td>
                             <td class="border border-gray-300 py-2"><textarea name="ss_topic[]" class="w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"></textarea></td>
-                            <td class="border border-gray-300 py-2"><input class="w-full h-16 border border-gray-300 px-2 py-1 flex items-center" type="radio" name="ss_score[]" id="" value="พึงพอใจมากที่สุด"></td>
-                            <td class="border border-gray-300 py-2"><input class="w-full h-16 border border-gray-300 px-2 py-1 flex items-center" type="radio" name="ss_score[]" id="" value="พึงพอใจมาก"></td>
-                            <td class="border border-gray-300 py-2"><input class="w-full h-16 border border-gray-300 px-2 py-1 flex items-center" type="radio" name="ss_score[]" id="" value="พึงพอใจปานกลาง"></td>
-                            <td class="border border-gray-300 py-2"><input class="w-full h-16 border border-gray-300 px-2 py-1 flex items-center" type="radio" name="ss_score[]" id="" value="พึงพอใจน้อย"></td>
-                            <td class="border border-gray-300 py-2"><input class="w-full h-16 border border-gray-300 px-2 py-1 flex items-center" type="radio" name="ss_score[]" id="" value="พึงพอใจน้อยที่สุด"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ss_score[0]" value="พึงพอใจมากที่สุด"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ss_score[0]" value="พึงพอใจมาก"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ss_score[0]" value="พึงพอใจปานกลาง"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ss_score[0]" value="พึงพอใจน้อย"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ss_score[0]" value="พึงพอใจน้อยที่สุด"></td>
+                        </tr>
+                        <tr class="odd:bg-white even:bg-gray-100 hidden" id="section4tr1">
+                            <td class="border border-gray-300 py-2 text-center">2</td>
+                            <td class="border border-gray-300 py-2"><textarea name="ss_topic[]" disabled id="section4tr1td" class="w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ss_score[1]" value="พึงพอใจมากที่สุด"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ss_score[1]" value="พึงพอใจมาก"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ss_score[1]" value="พึงพอใจปานกลาง"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ss_score[1]" value="พึงพอใจน้อย"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ss_score[1]" value="พึงพอใจน้อยที่สุด"></td>
+                        </tr>
+                        <tr class="odd:bg-white even:bg-gray-100 hidden" id="section4tr2">
+                            <td class="border border-gray-300 py-2 text-center">3</td>
+                            <td class="border border-gray-300 py-2"><textarea name="ss_topic[]" disabled id="section4tr2td" class="w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ss_score[2]" value="พึงพอใจมากที่สุด"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ss_score[2]" value="พึงพอใจมาก"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ss_score[2]" value="พึงพอใจปานกลาง"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ss_score[2]" value="พึงพอใจน้อย"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ss_score[2]" value="พึงพอใจน้อยที่สุด"></td>
+                        </tr>
+                        <tr class="odd:bg-white even:bg-gray-100 hidden" id="section4tr3">
+                            <td class="border border-gray-300 py-2 text-center">4</td>
+                            <td class="border border-gray-300 py-2"><textarea name="ss_topic[]" disabled id="section4tr3td" class="w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ss_score[3]" value="พึงพอใจมากที่สุด"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ss_score[3]" value="พึงพอใจมาก"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ss_score[3]" value="พึงพอใจปานกลาง"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ss_score[3]" value="พึงพอใจน้อย"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ss_score[3]" value="พึงพอใจน้อยที่สุด"></td>
+                        </tr>
+                        <tr class="odd:bg-white even:bg-gray-100 hidden" id="section4tr4">
+                            <td class="border border-gray-300 py-2 text-center">5</td>
+                            <td class="border border-gray-300 py-2"><textarea name="ss_topic[]" disabled id="section4tr4td" class="w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ss_score[4]" value="พึงพอใจมากที่สุด"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ss_score[4]" value="พึงพอใจมาก"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ss_score[4]" value="พึงพอใจปานกลาง"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ss_score[4]" value="พึงพอใจน้อย"></td>
+                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ss_score[4]" value="พึงพอใจน้อยที่สุด"></td>
                         </tr>
                     </tbody>
                 </table>
-                <button type="button" id="section3addbtn" onclick="section4add()" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">เพิ่ม</button>
-                <button type="button" id="section3removebtn" onclick="section4remove()" class="hidden bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">ลบ</button>
+                <button type="button" id="section4addbtn" onclick="section4add()" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">เพิ่ม</button>
+                <button type="button" id="section4removebtn" onclick="section4remove()" class="hidden bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">ลบ</button>
 
                 <!-- comment -->
                 <label for="" class="block text-lg my-5"><label class="text-lg font-bold mb-2">ตอนที่ 3 </label>ข้อเสนอแนะอื่นๆ</label>
