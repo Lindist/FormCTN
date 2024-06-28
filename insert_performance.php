@@ -26,27 +26,15 @@ if (isset($_POST['save'])) {
 
     $input_name = $_POST['input_name'];
     $input_feature = implode("@", $_POST['input_feature']);
-    // $input_setfeature = implode("@", $_POST['input_setfeature']);
-    // $input_result = implode("@", $_POST['input_result']);
-    // $input_compare = implode("@", $_POST['input_compare']);
 
     $process_name = $_POST['process_name'];
     $process_feature = implode("@", $_POST['process_feature']);
-    // $process_setfeature = implode("@", $_POST['process_setfeature']);
-    // $process_result = implode("@", $_POST['process_result']);
-    // $process_compare = implode("@", $_POST['process_compare']);
 
     $report_name = $_POST['report_name'];
     $report_feature = implode("@", $_POST['report_feature']);
-    // $report_setfeature = implode("@", $_POST['report_setfeature']);
-    // $report_result = implode("@", $_POST['report_result']);
-    // $report_compare = implode("@", $_POST['report_compare']);
 
     $senrity_name = $_POST['senrity_name'];
     $senrity_feature = implode("@", $_POST['senrity_feature']);
-    // $senrity_setfeature = implode("@", $_POST['senrity_setfeature']);
-    // $senrity_result = implode("@", $_POST['senrity_result']);
-    // $senrity_compare = implode("@", $_POST['senrity_compare']);
 }
 
 $_SESSION['formname'] = $formname;
@@ -54,30 +42,6 @@ $_SESSION['ad'] = $ad;
 $_SESSION['gender'] = $_POST['genders'];
 $_SESSION['type_m'] = $_POST['kinduser'];
 $_SESSION['edu'] = $_POST['le_education'];
-// $_SESSION['input_name'] = $input_name;
-// $_SESSION['process_name'] = $process_name;
-// $_SESSION['report_name'] = $report_name;
-// $_SESSION['senrity_name'] = $senrity_name;
-
-// $_SESSION['input_feature'] = $_POST['input_feature'];
-// $_SESSION['input_setfeature'] = $_POST['input_setfeature'];
-// $_SESSION['input_result'] = $_POST['input_result'];
-// $_SESSION['input_compare'] = $_POST['input_compare'];
-
-// $_SESSION['process_feature'] = $_POST['process_feature'];
-// $_SESSION['process_setfeature'] = $_POST['process_setfeature'];
-// $_SESSION['process_result'] = $_POST['process_result'];
-// $_SESSION['process_compare'] = $_POST['process_compare'];
-
-// $_SESSION['report_feature'] = $_POST['report_feature'];
-// $_SESSION['report_setfeature'] = $_POST['report_setfeature'];
-// $_SESSION['report_result'] = $_POST['report_result'];
-// $_SESSION['report_compare'] = $_POST['report_compare'];
-
-// $_SESSION['senrity_feature'] = $_POST['senrity_feature'];
-// $_SESSION['senrity_setfeature'] = $_POST['senrity_setfeature'];
-// $_SESSION['senrity_result'] = $_POST['senrity_result'];
-// $_SESSION['senrity_compare'] = $_POST['senrity_compare'];
 
 if (empty($formname)) {
     $_SESSION['error'] = "กรุณากรอกชื่อฟอร์ม";
@@ -155,30 +119,11 @@ if (empty($formname)) {
             unset($_SESSION['gender']);
             unset($_SESSION['type_m']);
             unset($_SESSION['edu']);
-            // unset($_SESSION['input_name']);
-            // unset($_SESSION['process_name']);
-            // unset($_SESSION['report_name']);
-            // unset($_SESSION['senrity_name']);
 
             unset($_SESSION['input_feature']);
-            // unset($_SESSION['input_setfeature']);
-            // unset($_SESSION['input_result']);
-            // unset($_SESSION['input_compare']);
-
             unset($_SESSION['process_feature']);
-            // unset($_SESSION['process_setfeature']);
-            // unset($_SESSION['process_result']);
-            // unset($_SESSION['process_compare']);
-
             unset($_SESSION['report_feature']);
-            // unset($_SESSION['report_setfeature']);
-            // unset($_SESSION['report_result']);
-            // unset($_SESSION['report_compare']);
-
             unset($_SESSION['senrity_feature']);
-            // unset($_SESSION['senrity_setfeature']);
-            // unset($_SESSION['senrity_result']);
-            // unset($_SESSION['senrity_compare']);
 
             header("location: form.php?class=".$class);
         }

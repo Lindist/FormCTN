@@ -77,8 +77,8 @@ const section2add = () => {
     const section2tr2 = document.getElementById('section2tr2');
     const section2tr3 = document.getElementById('section2tr3');
     const section2tr4 = document.getElementById('section2tr4');
-    const section2addbtn = document.getElementById('section1addbtn');
-    const section2removebtn = document.getElementById('section1removebtn');
+    const section2addbtn = document.getElementById('section2addbtn');
+    const section2removebtn = document.getElementById('section2removebtn');
     const textarea1 = document.getElementById('section2tr1td');
     const textarea2 = document.getElementById('section2tr2td');
     const textarea3 = document.getElementById('section2tr3td');
@@ -113,14 +113,17 @@ const section2remove = () => {
     const section2tr2 = document.getElementById('section2tr2');
     const section2tr3 = document.getElementById('section2tr3');
     const section2tr4 = document.getElementById('section2tr4');
-    const section2addbtn = document.getElementById('section1addbtn');
-    const section2removebtn = document.getElementById('section1removebtn');
+    const section2addbtn = document.getElementById('section2addbtn');
+    const section2removebtn = document.getElementById('section2removebtn');
     const textarea1 = document.getElementById('section2tr1td');
     const textarea2 = document.getElementById('section2tr2td');
     const textarea3 = document.getElementById('section2tr3td');
     const textarea4 = document.getElementById('section2tr4td');
 
-    if (!section2tr3.classList.contains('hidden')) {
+    if (!section2tr4.classList.contains('hidden')) {
+        section2tr4.classList.add('hidden');
+        textarea4.disabled = true;
+    } else if (!section2tr3.classList.contains('hidden')) {
         section2tr3.classList.add('hidden');
         textarea3.disabled = true;
     } else if (!section2tr2.classList.contains('hidden')) {
@@ -162,6 +165,9 @@ const section3add = () => {
     } else if (section3tr3.classList.contains('hidden')) {
         section3tr3.classList.remove('hidden');
         textarea3.disabled = false;
+    } else if (section3tr4.classList.contains('hidden')) {
+        section3tr4.classList.remove('hidden');
+        textarea4.disabled = false;
     }
 
     if (!section3tr1.classList.contains('hidden')) {
@@ -186,7 +192,10 @@ const section3remove = () => {
     const textarea3 = document.getElementById('section3tr3td');
     const textarea4 = document.getElementById('section3tr4td');
 
-    if (!section3tr3.classList.contains('hidden')) {
+    if (!section3tr4.classList.contains('hidden')) {
+        section3tr4.classList.add('hidden');
+        textarea4.disabled = true;
+    } else if (!section3tr3.classList.contains('hidden')) {
         section3tr3.classList.add('hidden');
         textarea3.disabled = true;
     } else if (!section3tr2.classList.contains('hidden')) {
@@ -228,6 +237,9 @@ const section4add = () => {
     } else if (section4tr3.classList.contains('hidden')) {
         section4tr3.classList.remove('hidden');
         textarea3.disabled = false;
+    } else if (section4tr4.classList.contains('hidden')) {
+        section4tr4.classList.remove('hidden');
+        textarea4.disabled = false;
     }
 
     if (!section4tr1.classList.contains('hidden')) {
@@ -252,7 +264,10 @@ const section4remove = () => {
     const textarea3 = document.getElementById('section4tr3td');
     const textarea4 = document.getElementById('section4tr4td');
 
-    if (!section4tr3.classList.contains('hidden')) {
+    if (!section4tr4.classList.contains('hidden')) {
+        section4tr4.classList.add('hidden');
+        textarea4.disabled = true;
+    } else if (!section4tr3.classList.contains('hidden')) {
         section4tr3.classList.add('hidden');
         textarea3.disabled = true;
     } else if (!section4tr2.classList.contains('hidden')) {
