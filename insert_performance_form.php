@@ -191,7 +191,6 @@ unset($_SESSION['senrity_feature']); // Clear the session flag after use
                 <label for="" class="block text-lg"><label class=" text-lg font-bold mb-2">คำชี้แจง </label>โปรดบันทึกความคิดเห็นของท่านลงในช่องว่างในแต่ละข้อ</label>
 
                 <!-- Section 1 -->
-
                 <label for="" class="block text-lg my-5"><label class="text-lg font-bold mb-2">ด้านที่ 1 </label>ด้านการนำเข้าข้อมูลระบบ</label>
                 <input type="hidden" name="input_name" value="ด้านการนำเข้าข้อมูลระบบ">
 
@@ -240,7 +239,6 @@ unset($_SESSION['senrity_feature']); // Clear the session flag after use
                 <button type="button" id="section1removebtn" onclick="section1remove()" class="hidden bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">ลบ</button>
 
                 <!-- Section 2 -->
-
                 <label for="" class="block text-lg my-5"><label class="text-lg font-bold mb-2">ด้านที่ 2 </label>ด้านการประมวลผล</label>
                 <input type="hidden" name="process_name" value="ด้านการประมวลผล">
 
@@ -289,8 +287,6 @@ unset($_SESSION['senrity_feature']); // Clear the session flag after use
                 <button type="button" id="section2removebtn" onclick="section2remove()" class="hidden bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">ลบ</button>
 
                 <!-- Section 3 -->
-
-
                 <label for="" class="block text-lg my-5"><label class="text-lg font-bold mb-2">ด้านที่ 3 </label>ด้านการรายงานข้อมูล</label>
                 <input type="hidden" name="report_name" value="ด้านการรายงานข้อมูล">
 
@@ -319,7 +315,7 @@ unset($_SESSION['senrity_feature']); // Clear the session flag after use
                             <td class="border border-gray-300 py-2"><textarea disabled name="report_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"></textarea></td>
                             <td class="border border-gray-300 py-2"><textarea disabled name="report_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"></textarea></td>
                         </tr>
-                        <tr class="hidden odd :bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700" id="section3tr2">
+                        <tr class="hidden odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700" id="section3tr2">
                             <td class="border border-gray-300 py-2">3</td>
                             <td class="border border-gray-300 py-2"><textarea disabled name="report_feature[]" id="section3tr2td" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"><?= $report_feature[2] ?></textarea></td>
                             <td class="border border-gray-300 py-2"><textarea disabled name="report_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"></textarea></td>
@@ -339,7 +335,6 @@ unset($_SESSION['senrity_feature']); // Clear the session flag after use
                 <button type="button" id="section3removebtn" onclick="section3remove()" class="hidden bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">ลบ</button>
 
                 <!-- Section 4 -->
-
                 <label for="" class="block text-lg my-5"><label class="text-lg font-bold mb-2">ด้านที่ 4 </label>ด้านความปลอดภัย</label>
                 <input type="hidden" name="senrity_name" value="ด้านความปลอดภัย">
 

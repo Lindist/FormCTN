@@ -1,4 +1,5 @@
-// session1
+
+// section1
 const section1add = () => {
     for (let i = 0; i < 4; i++) {
         const row = document.getElementById(`section1tr${i}`);
@@ -46,7 +47,7 @@ const update1Buttons = () => {
     document.getElementById('section1removebtn').classList.toggle('hidden', visibleRows <= 1);
 }
 
-// session2
+// section2
 const section2add = () => {
     for (let i = 0; i < 4; i++) {
         const row = document.getElementById(`section2tr${i}`);
@@ -94,7 +95,7 @@ const update2Buttons = () => {
     document.getElementById('section2removebtn').classList.toggle('hidden', visibleRows <= 1);
 }
 
-// session3
+// section3
 const section3add = () => {
     for (let i = 0; i < 4; i++) {
         const row = document.getElementById(`section3tr${i}`);
@@ -142,7 +143,7 @@ const update3Buttons = () => {
     document.getElementById('section3removebtn').classList.toggle('hidden', visibleRows <= 1);
 }
 
-// session4
+// section4
 const section4add = () => {
     for (let i = 0; i < 4; i++) {
         const row = document.getElementById(`section4tr${i}`);
@@ -190,7 +191,7 @@ const update4Buttons = () => {
     document.getElementById('section4removebtn').classList.toggle('hidden', visibleRows <= 1);
 }
 
-// Initialize buttons for each session on page load
+// Initialize buttons for each section on page load
 window.onload = () => {
     update1Buttons();
     update2Buttons();
