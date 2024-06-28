@@ -119,12 +119,12 @@ if (isset($_GET['class'])) {
             <!-- Title_Content -->
             <div class="head_content mt-5 mb-2">
                 <label class="form-label">ชื่อแบบฟอร์ม</label>
-                <div class="rad form-control">
+                <div class="rad form-control text-break">
                     <?php echo $row['form_name']; ?>
                 </div>
 
                 <label class="form-label mt-2">คำชี้แจง</label>
-                <div class="rad form-control">
+                <div class="rad form-control text-break">
                 <?php echo $row['form_ad']; ?>
                 </div>
             </div>
