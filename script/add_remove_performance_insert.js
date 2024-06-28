@@ -83,9 +83,9 @@ const section2add = () => {
         textarea3.disabled = false;
     }
 
-    // if (!section2tr1.classList.contains('hidden')) {
-    //     section2removebtn.classList.remove('hidden');
-    // }
+    if (!section2tr1.classList.contains('hidden')) {
+        section2removebtn.classList.remove('hidden');
+    }
 
     if (!section2tr3.classList.contains('hidden')) {
         section2addbtn.classList.add('hidden');
