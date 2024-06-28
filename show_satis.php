@@ -133,7 +133,12 @@ if (isset($_GET['class'])) {
                 <label class="font-bold" for="">ในแบบประเมินความพึงพอใจการใช้งานระบบ แบ่งออกเป็น 3 ตอนดังนี้</label> <br>
                 <label class="font-bold" for="">ตอนที่ 1</label> <br>
                 <label class="font-bold" for="">เป็นข้อมูลพื้นฐานของผู้กรอกแบบสอบถาม</label> <br>
-                <label class="font-bold" for="">ตอนที่ 2 เป็นแบบสอบถามความคิดเห็นของนักเรียน นักศึกษา และครูอาจารย์ของผู้ใช้งาน 
+                <label class="font-bold" for="">ตอนที่ 2 เป็นแบบสอบถามความคิดเห็นของ
+                <?php for($i=0;$i < count($form_type);$i++){ ?>
+                    <?php if(!($form_type[$i] == null)){ ?>
+                    <span class="ms-2"><?php echo $form_type[$i]; ?></span>
+                    <?php } ?>
+                    <?php } ?> 
                 </label><br>
                 <span class="rad form-control text-break mb-2" style="width: 100%;"><?php echo $row['sati_ep2']; ?></span>
                 <div class="d-flex flex-column w-50 align-items-center">
