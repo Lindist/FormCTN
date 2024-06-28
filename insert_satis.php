@@ -110,7 +110,7 @@ if (empty($sati_ep2)) {
             $tb_satisfied = $conn->prepare("INSERT INTO tb_satisfied(sati_ep2, sati_gender, sati_level, sati_type, sati_comment, ur_id, fun_id, uf_id, ss_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)");
             $tb_satisfied->execute([$sati_ep2, $sati_gender, $sati_level, $sati_type, $sati_comment, $tb_user_req['ur_id'], $tb_function['fun_id'], $tb_uesful['uf_id'], $tb_seurity['ss_id']]);
 
-            header("location: insert_satis_form.php");
+            header("location: form.php");
 
         }
     } catch (PDOException $e) {
