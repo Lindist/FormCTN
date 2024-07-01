@@ -5,7 +5,7 @@ session_start();
 if (isset($_SESSION['user_id'])) {
     header("Location: form.php");
 }
-    
+
 $registerClass = isset($_SESSION['show_register']) && $_SESSION['show_register'] ? '' : 'hidden';
 unset($_SESSION['show_register']); // Clear the session flag after use
 
@@ -49,7 +49,7 @@ unset($_SESSION['fname']); // Clear the session flag after use
     <div class="bg-blue-50 overflow-hidden">
         <nav class="flex justify-between mx-4 my-4 items-center">
             <div class="flex items-center text-3xl font-bold">
-            <img src="https://i.imgur.com/m0H7jcN.png" class="w-6 h-6 mr-1">
+                <img src="https://i.imgur.com/m0H7jcN.png" class="w-6 h-6 mr-1">
                 CTN Phrae
             </div>
             <ul class="">
@@ -77,8 +77,8 @@ unset($_SESSION['fname']); // Clear the session flag after use
                 <?php if (isset($_SESSION['login_error'])) { ?>
                     <div class="text-center p-3 my-4 bg-red-100 text-red-500 border border-red-300 rounded" role="alert">
                         <?php
-                            echo $_SESSION['login_error'];
-                            unset($_SESSION['login_error']);
+                        echo $_SESSION['login_error'];
+                        unset($_SESSION['login_error']);
                         ?>
                     </div>
                 <?php } ?>
@@ -120,8 +120,8 @@ unset($_SESSION['fname']); // Clear the session flag after use
                 <?php if (isset($_SESSION['register_success'])) { ?>
                     <div class="flex justify-center text-center p-3 my-4 bg-green-100 text-green-500 border border-green-300 rounded" role="alert">
                         <?php
-                            echo $_SESSION['register_success'];
-                            unset($_SESSION['register_success']);
+                        echo $_SESSION['register_success'];
+                        unset($_SESSION['register_success']);
                         ?>
                     </div>
                 <?php } ?>
@@ -129,8 +129,8 @@ unset($_SESSION['fname']); // Clear the session flag after use
                 <?php if (isset($_SESSION['register_error'])) { ?>
                     <div class="text-center p-3 my-4 bg-red-100 text-red-500 border border-red-300 rounded" role="alert">
                         <?php
-                            echo $_SESSION['register_error'];
-                            unset($_SESSION['register_error']);
+                        echo $_SESSION['register_error'];
+                        unset($_SESSION['register_error']);
                         ?>
                     </div>
                 <?php } ?>
