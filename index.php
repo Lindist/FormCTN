@@ -74,8 +74,9 @@ unset($_SESSION['fname']); // Clear the session flag after use
         </nav>
     </div>
 
-    <div class="popup fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 <?= $loginClass; ?> z-50">
-        <div class="bg-white p-8 rounded-lg shadow-lg relative w-full max-w-sm">
+
+    <div id="loginPopup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 <?= $loginClass; ?>">
+        <div class="bg-white p-8 rounded-lg shadow-lg relative w-full max-w-sm mx-4 sm:mx-auto">
             <button class="text-3xl absolute top-2 right-2 text-gray-600 hover:text-gray-900" onclick="closePopup()">
                 <i class="fas fa-times"></i>
             </button>
@@ -109,7 +110,7 @@ unset($_SESSION['fname']); // Clear the session flag after use
                         เข้าสู่ระบบ
                     </button>
                 </div>
-                <div class="flex mt-4">
+                <div class="flex mt-4 text-sm">
                     <p>ยังไม่เป็นสมาชิกใช่ไหม</p><a href="#" class="mx-1 hover:underline underline-offset-1" onclick="openRegister()">คลิกที่นี่</a>
                     <p>เพื่อสมัครสมาชิก</p>
                 </div>
@@ -202,22 +203,22 @@ unset($_SESSION['fname']); // Clear the session flag after use
     </footer>
 
     <script>
-        const popup = document.querySelector('.popup');
-        const register = document.querySelector('.register');
+        const loginPopup = document.getElementById('loginPopup');
+        const registerPopup = document.getElementById('registerPopup');
 
         function openPopup() {
-            popup.classList.remove("hidden");
-            register.classList.add("hidden");
+            loginPopup.classList.remove("hidden");
+            registerPopup.classList.add("hidden");
         }
 
         function closePopup() {
-            popup.classList.add("hidden");
-            register.classList.add("hidden");
+            loginPopup.classList.add("hidden");
+            registerPopup.classList.add("hidden");
         }
 
         function openRegister() {
-            register.classList.remove("hidden");
-            popup.classList.add("hidden");
+            registerPopup.classList.remove("hidden");
+            loginPopup.classList.add("hidden");
         }
 
         // window.onclick = function(event) {
