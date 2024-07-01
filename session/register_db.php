@@ -20,16 +20,16 @@
 
     if (empty($fname)) {
         $_SESSION['register_error'] = "กรุณากรอกชื่อจริงของคุณ";
-        header("Location: index.php");
+        header("Location: ../index.php");
     } else if (empty($lname)) {
         $_SESSION['register_error'] = "กรุณากรอกนามสกุลของคุณ";
-        header("location: index.php");
+        header("location: ../index.php");
     } else if (empty($std_id)) {
         $_SESSION['register_error'] = "กรุณากรอกรหัสนักศึกษาของคุณ";
-        header("location: index.php");
+        header("location: ../index.php");
     } else if (strlen($std_id) !== $Length) {
         $_SESSION['register_error'] = "จำนวนรหัสนักศึกษาของคุณไม่กูกต้อง";
-        header("location: index.php");
+        header("location: ../index.php");
     } else {
 
         $checkstd_id = $conn -> prepare("SELECT COUNT(*) FROM tb_member WHERE member_code = ?");
@@ -38,7 +38,7 @@
 
         if ($std_idExists) {
             $_SESSION['register_error'] = "รหัสนักศึกษานี้อยู่ในฐานข้อมูลแล้ว";
-            header("location: index.php");
+            header("location: ../index.php");
         } else {
 
             // if you want to hash std_id
@@ -54,12 +54,12 @@
                 // echo $fname;
                 // echo $lname;
                 // echo $std_id;
-                header("location: index.php");
+                header("location: ../index.php");
 
             } catch (PDOException $e) {
                 $_SESSION['register_error'] = "มีบางอย่างผิดพลาดกรุณาลองใหม่อักครั้ง";
                 echo "Registration failed: " . $e->getMessage();
-                header("location: index.php");
+                header("location: ../index.php");
             }
 
         }

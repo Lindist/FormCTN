@@ -42,6 +42,10 @@ $_SESSION['ad'] = $ad;
 $_SESSION['gender'] = $_POST['genders'];
 $_SESSION['type_m'] = $_POST['kinduser'];
 $_SESSION['edu'] = $_POST['le_education'];
+// $_SESSION['input_feature'] = $_POST['input_feature'];
+// $_SESSION['process_feature'] = $_POST['process_feature'];
+// $_SESSION['report_feature'] = $_POST['report_feature'];
+// $_SESSION['$senrity_feature'] = $_POST['$senrity_feature'];
 
 if (empty($formname)) {
     $_SESSION['error'] = "กรุณากรอกชื่อฟอร์ม";

@@ -12,9 +12,6 @@ unset($_SESSION['show_register']); // Clear the session flag after use
 $loginClass = isset($_SESSION['show_login']) && $_SESSION['show_login'] ? '' : 'hidden';
 unset($_SESSION['show_login']); // Clear the session flag after use
 
-$fname = isset($_SESSION['fname']) && $_SESSION['fname'] ? $_SESSION['fname'] : '';
-unset($_SESSION['fname']); // Clear the session flag after use
-
 ?>
 
 <!DOCTYPE html>
@@ -74,9 +71,9 @@ unset($_SESSION['fname']); // Clear the session flag after use
         </nav>
     </div>
 
-
+    <!-- Login Popup -->
     <div id="loginPopup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 <?= $loginClass; ?>">
-        <div class="bg-white p-8 rounded-lg shadow-lg relative w-full max-w-sm mx-4 sm:mx-auto">
+        <div class="bg-white p-8 rounded-lg shadow-lg relative w-full max-w-sm mx-4 sm:mx-auto overflow-y-auto">
             <button class="text-3xl absolute top-2 right-2 text-gray-600 hover:text-gray-900" onclick="closePopup()">
                 <i class="fas fa-times"></i>
             </button>
@@ -118,14 +115,15 @@ unset($_SESSION['fname']); // Clear the session flag after use
         </div>
     </div>
 
-    <div class="register fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 <?= $registerClass; ?> z-50">
-        <div class="bg-white p-8 rounded-lg shadow-lg relative w-full max-w-sm">
+    <!-- Register Popup -->
+    <div id="registerPopup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 <?= $registerClass; ?>">
+        <div class="bg-white p-8 rounded-lg shadow-lg relative w-full max-w-sm mx-4 sm:mx-auto overflow-y-auto">
             <button class="text-3xl absolute top-2 right-2 text-gray-600 hover:text-gray-900" onclick="closePopup()">
                 <i class="fas fa-times"></i>
             </button>
             <h2 class="text-2xl font-bold mb-4 text-center">สมัครสมาชิก</h2>
             <!-- Add your register form here -->
-            <form action="register_db.php" method="POST">
+            <form action="session/register_db.php" method="POST">
 
                 <?php if (isset($_SESSION['register_success'])) { ?>
                     <div class="flex justify-center text-center p-3 my-4 bg-green-100 text-green-500 border border-green-300 rounded" role="alert">
@@ -158,7 +156,7 @@ unset($_SESSION['fname']); // Clear the session flag after use
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="fname">
                         ชื่อ
                     </label>
-                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" value="<?= $fname ?>" name="fname" type="text" placeholder="ชื่อ">
+                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="fname" type="text" placeholder="ชื่อ">
                 </div>
                 <div class="mb-4">
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="lname">
@@ -177,7 +175,7 @@ unset($_SESSION['fname']); // Clear the session flag after use
                         สมัครสมาชิก
                     </button>
                 </div>
-                <div class="flex mt-4">
+                <div class="flex mt-4 text-sm">
                     <p>เป็นสมาชิกแล้วใช่ไหม</p><a href="#" class="mx-1 hover:underline underline-offset-1" onclick="openPopup()">คลิกที่นี่</a>
                     <p>เพื่อเข้าสู่ระบบ</p>
                 </div>

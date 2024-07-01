@@ -71,7 +71,7 @@ if (isset($_GET['id'])) {
 <html lang="en">
 
 <head>
-    <title>แบบประเมินความพึงพอใจ</title>
+    <title>แก้ไขแบบประเมินความพึงพอใจ</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <script src="https://cdn.tailwindcss.com"></script>
@@ -94,7 +94,7 @@ if (isset($_GET['id'])) {
             Back to Index
         </button>
         <form action="update_satis.php" method="POST">
-            <h1 class="text-center text-3xl mb-5">แบบฟอร์มประเมินความพึงพอใจ</h1>
+            <h1 class="text-center text-3xl mb-5">แก้ไขแบบฟอร์มประเมินความพึงพอใจ</h1>
 
             <?php if (isset($_SESSION['error'])) { ?>
                 <div class="text-center mb-4 p-3 mt-10 bg-yellow-100 text-yellow-800 border border-yellow-300 rounded">
