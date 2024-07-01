@@ -7,7 +7,10 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: index.php");
 }
 
-$user_id = $_SESSION['user_id'];
+if (isset($_SESSION['user_id'])) {
+    $user_id = $_SESSION['user_id'];
+}
+
 if(isset($_POST['class'])){
     if($_POST['class'] == "have"){
         $class = 'columnData';

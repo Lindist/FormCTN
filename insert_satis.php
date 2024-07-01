@@ -7,6 +7,10 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: index.php");
 }
 
+if (isset($_SESSION['user_id'])) {
+    $user_id = $_SESSION['user_id'];
+}
+
 if (isset($_POST['save'])) {
     $sati_ep2 = $_POST['sati_ep2'];
 
@@ -107,8 +111,8 @@ if (empty($sati_ep2)) {
             $sql_tb_seurity->execute();
             $tb_seurity = $sql_tb_seurity->fetch();
 
-            $tb_satisfied = $conn->prepare("INSERT INTO tb_satisfied(sati_ep2, sati_gender, sati_level, sati_type, sati_comment, ur_id, fun_id, uf_id, ss_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            $tb_satisfied->execute([$sati_ep2, $sati_gender, $sati_level, $sati_type, $sati_comment, $tb_user_req['ur_id'], $tb_function['fun_id'], $tb_uesful['uf_id'], $tb_seurity['ss_id']]);
+            $tb_satisfied = $conn->prepare("INSERT INTO tb_satisfied(sati_ep2, sati_gender, sati_level, sati_type, sati_comment, ur_id, fun_id, uf_id, ss_id,member_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $tb_satisfied->execute([$sati_ep2, $sati_gender, $sati_level, $sati_type, $sati_comment, $tb_user_req['ur_id'], $tb_function['fun_id'], $tb_uesful['uf_id'], $tb_seurity['ss_id'],$user_id]);
 
             header("location: form.php");
 
