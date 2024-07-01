@@ -47,12 +47,18 @@ unset($_SESSION['fname']); // Clear the session flag after use
 <body class="bg-blue-600">
 
     <div class="bg-blue-50 overflow-hidden">
-        <nav class="flex justify-between mx-8 my-6 items-center">
-            <div class="text-3xl font-bold">CTN Phrae</div>
-            <ul class="flex space-x-6">
-                <li>
+        <nav class="flex justify-between mx-4 my-4 items-center">
+            <div class="flex items-center text-3xl font-bold">
+            <img src="https://i.imgur.com/m0H7jcN.png" class="w-6 h-6 mr-1">
+                CTN Phrae
+            </div>
+            <ul class="">
+                <li class="flex space-x-3">
+                    <a href="#" class="flex items-center " onclick="openRegister()">
+                        สมัครสมาชิก
+                    </a>
                     <a href="#" class="flex items-center " onclick="openPopup()">
-                        เข้าสู่ระบบ <i class="fa-solid fa-right-to-bracket ml-2"></i>
+                        เข้าสู่ระบบ
                     </a>
                 </li>
             </ul>
@@ -169,11 +175,11 @@ unset($_SESSION['fname']); // Clear the session flag after use
         </div>
     </div>
 
-    <div class="block lg:grid items-center mx-6 md:mx-16 my-8 md:my-52 grid-cols-2 gap-8">
+    <div class="block lg:grid items-center mx-6 md:mx-16 my-6 md:my-6 grid-cols-2 gap-8">
         <div class="w-auto lg:inline xl:w-[600px] mx-auto">
             <p class="text-white text-6xl">ระบบแบบสอบถามออนไลน์</p>
             <p class="text-white text-2xl mt-2 mb-10">ระบบแบบสอบถามนี้เป็นส่วนช่วยในการกรอกแบบสอบถามของ วิชาโครงการ บทที่ 3 ช่วยให้ผู้ใช้งานสามาถสร้างแบบสอบถามเพื่อนำไปใช้ในรายวิชาพร้อมผลสรุป</p>
-            <a class="text-white text-2xl p-2 px-4 border border-white rounded-full" href="#">วิชาโครงการ</a>
+            <a class="text-white text-2xl p-2 px-4 border border-white rounded-full mb-1" href="#">วิชาโครงการ</a>
         </div>
         <div>
             <img class="hidden lg:mt-0 lg:col-span-5 lg:flex w-[500px]" src="https://i.imgur.com/CdoHEKs.png">
