@@ -92,7 +92,7 @@ if (isset($_GET['id'])) {
 </head>
 
 <body>
-    <div class="container mx-auto bg-white p-4 my-4 rounded shadow">
+    <div class="mx-5 sm:mx-16 bg-white p-4 my-4 rounded shadow">
         <button type="button" onclick="window.location.href='form.php?class=columnData';" class="flex bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             Back to Index
         </button>
