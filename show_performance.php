@@ -109,7 +109,7 @@ if (isset($_GET['class'])) {
 </head>
 
 <body>
-    <div class="main container col-11 bg-white py-1 my-3 rounded">
+    <div class="main container-fluid col-11 bg-white py-1 my-3 rounded">
     <button type="button" onclick="isClass('<?php echo $class; ?>')" style="display:flex; background-color:#1a75ff; color:#fff; font-weight:bold; border-radius:10px; padding: 10px; border-color: #444; transition:all .3s ease-in-out;" onmouseover="this.style.backgroundColor='#00f';" onmouseout="this.style.backgroundColor='#1a75ff';">
             Back to Index
     </button>
