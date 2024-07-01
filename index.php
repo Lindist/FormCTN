@@ -33,6 +33,9 @@ unset($_SESSION['fname']); // Clear the session flag after use
             font-family: "Kanit", sans-serif;
             font-weight: 500;
             font-style: normal;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         input[type="number"]::-webkit-outer-spin-button,
@@ -40,25 +43,31 @@ unset($_SESSION['fname']); // Clear the session flag after use
             -webkit-appearance: none;
             margin: 0;
         }
+
+        .popup, .register {
+            display: none;
+        }
     </style>
     <title>CTN Phrae</title>
 </head>
 
 <body class="bg-blue-600">
 
-    <div class="bg-blue-50 overflow-hidden">
+    <div class="bg-blue-50">
         <nav class="flex justify-between mx-4 my-4 items-center">
             <div class="flex items-center text-3xl font-bold">
                 <img src="https://i.imgur.com/m0H7jcN.png" class="w-6 h-6 mr-1">
                 CTN Phrae
             </div>
-            <ul class="">
-                <li class="flex space-x-3">
-                    <a href="#" class="flex items-center " onclick="openRegister()">
-                        สมัครสมาชิก
+            <ul class="flex space-x-3">
+                <li>
+                    <a href="#" class="flex items-center" onclick="openRegister()">
+                        สมัครสมาชิก <i class="fa-solid fa-right-to-bracket ml-1 hidden sm:inline"></i>
                     </a>
-                    <a href="#" class="flex items-center " onclick="openPopup()">
-                        เข้าสู่ระบบ
+                </li>
+                <li>
+                    <a href="#" class="flex items-center" onclick="openPopup()">
+                        เข้าสู่ระบบ <i class="fa-solid fa-right-to-bracket ml-1 hidden sm:inline"></i>
                     </a>
                 </li>
             </ul>
@@ -175,18 +184,20 @@ unset($_SESSION['fname']); // Clear the session flag after use
         </div>
     </div>
 
-    <div class="block lg:grid items-center mx-6 md:mx-16 my-6 md:my-6 grid-cols-2 gap-8">
-        <div class="w-auto lg:inline xl:w-[600px] mx-auto">
-            <p class="text-white text-6xl">ระบบแบบสอบถามออนไลน์</p>
-            <p class="text-white text-2xl mt-2 mb-10">ระบบแบบสอบถามนี้เป็นส่วนช่วยในการกรอกแบบสอบถามของ วิชาโครงการ บทที่ 3 ช่วยให้ผู้ใช้งานสามาถสร้างแบบสอบถามเพื่อนำไปใช้ในรายวิชาพร้อมผลสรุป</p>
-            <a class="text-white text-2xl p-2 px-4 border border-white rounded-full mb-1" href="#">วิชาโครงการ</a>
-        </div>
-        <div>
-            <img class="hidden lg:mt-0 lg:col-span-5 lg:flex w-[500px]" src="https://i.imgur.com/CdoHEKs.png">
+    <div class="flex-grow flex items-center justify-center mx-6 md:mx-16">
+        <div class="block lg:flex items-center max-w-screen-xl">
+            <div class="w-auto lg:w-1/2 xl:w-[600px] mx-auto lg:text-left lg:mr-8">
+                <p class="text-white text-5xl sm:text-6xl">ระบบแบบสอบถามออนไลน์</p>
+                <p class="text-white text-2xl mt-2 mb-10">ระบบแบบสอบถามนี้เป็นส่วนช่วยในการกรอกแบบสอบถามของ วิชาโครงการ บทที่ 3 ช่วยให้ผู้ใช้งานสามารถสร้างแบบสอบถามเพื่อนำไปใช้ในรายวิชาพร้อมผลสรุป</p>
+                <a class="text-white text-2xl p-2 px-4 border border-white rounded-full mb-1 inline-block" href="#">วิชาโครงการ</a>
+            </div>
+            <div class="hidden lg:flex w-auto lg:w-1/2 justify-center">
+                <img class="w-[300px] lg:w-[500px] mx-auto lg:mx-0" src="https://i.imgur.com/CdoHEKs.png" alt="Survey Image">
+            </div>
         </div>
     </div>
 
-    <footer class="fixed left-0 bottom-0 w-full bg-blue-950 text-white text-center py-6">
+    <footer class="bg-blue-950 text-white text-center py-6 w-full mt-auto">
         <p>*footer info*</p>
     </footer>
 
