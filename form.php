@@ -6,8 +6,11 @@
     if (!isset($_SESSION['user_id'])) {
         header("Location: index.php");
     }
+    if (isset($_SESSION['user_id'])) {
+        $user_id = $_SESSION['user_id'];
+    }
 
-    $result = $conn->query("SELECT * FROM tb_efficiercy_form");
+    $result = $conn->query("SELECT * FROM tb_efficiercy_form WHERE member_id = '$user_id'");
     $count = count($result->fetchAll());
     $result->execute();
     // $input = $conn->query("SELECT * FROM tb_input");
@@ -19,7 +22,7 @@
     // $senrity = $conn->query("SELECT * FROM tb_senrity");
     // $senrity->execute();
 
-    $result1 = $conn->query("SELECT * FROM tb_satisfied");
+    $result1 = $conn->query("SELECT * FROM tb_satisfied WHERE member_id = '$user_id'");
     $count1 = count($result1->fetchAll());
     $result1->execute();
     // $user_req = $conn->query("SELECT * FROM tb_user_req");
@@ -38,7 +41,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/formstyle1.css">
+    <link rel="stylesheet" href="style/formstyle.css">
     <link rel="stylesheet" href="style/tabstyle1.css">
     <title>From</title>
 </head>

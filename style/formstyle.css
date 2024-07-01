@@ -98,7 +98,7 @@ header div img{
     transition: background-color .3s ease-in;
 }
 .container > .btnshow > #check-edit:hover{
-    background-color: #FFC100;
+    background-color: #982600;
 }
 
 .container a:hover {
@@ -168,7 +168,7 @@ header div img{
     justify-content: flex-start;
     flex: 1;
     width: 20em;
-    background-color: #DCD;
+    background-color: #DDDDDD;
     border-radius: 10px;
     padding: 1rem;
     padding-bottom: 3rem;
@@ -218,7 +218,7 @@ header div img{
     justify-content: space-between;
     flex: 1;
     width: 90vw;
-    background-color: #DCD;
+    background-color: #DDDDDD;
     border-radius: 10px;
     padding: 2rem;
     border-bottom-width: 3px;
@@ -391,11 +391,11 @@ header div img{
         background-color: #01085b;
     }
     .container > .btnshow > #check-edit{
-        background-color: #FC4100;
+        background-color: #FFC100;
         transition: background-color .3s ease-in;
     }
     .container > .btnshow > #check-edit:hover{
-        background-color: #FFC100;
+        background-color: #d09c00;
     }
     
     .form-box{
@@ -447,7 +447,7 @@ header div img{
         justify-content: flex-start;
         flex: 1;
         width: 20em;
-        background-color: #DCD;
+        background-color: #DDDDDD;
         border-radius: 10px;
         padding: 1rem;
         padding-bottom: 3rem;
@@ -495,7 +495,7 @@ header div img{
         justify-content: flex-start;
         flex: 1;
         width: 20em;
-        background-color: #DCD;
+        background-color: #DDDDDD;
         border-radius: 10px;
         padding: 1rem;
         border-bottom-width: 3px;
