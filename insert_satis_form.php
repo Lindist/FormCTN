@@ -76,7 +76,8 @@ unset($_SESSION['ss_topic']); // Clear the session flag after use
         </button>
         <form action="insert_satis.php" method="POST">
             <h1 class="text-center text-3xl mb-5">แบบฟอร์มประเมินความพึงพอใจ</h1>
-
+            <input type="hidden" name="class" id="class" value="<?php echo $class; ?>">
+            <input type="hidden" name="class1" id="class1" value="<?php echo $class1; ?>">
             <?php if (isset($_SESSION['error'])) { ?>
                 <div class="text-center mb-4 p-3 mt-10 bg-yellow-100 text-yellow-800 border border-yellow-300 rounded">
                     <?php
