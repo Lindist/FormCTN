@@ -94,7 +94,7 @@ if (isset($_GET['id'])) {
 <body>
     <div class="mx-5 sm:mx-16 bg-white p-4 my-4 rounded shadow">
         <button type="button" onclick="window.location.href='form.php?class=columnData';" class="flex bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            Back to Index
+            กลับหน้าแรก
         </button>
         <form action="update_performance.php" method="POST">
             <h1 class="text-center text-2xl mb-5">แก้ไขแบบฟอร์มประเมินประสิทธิภาพ</h1>
