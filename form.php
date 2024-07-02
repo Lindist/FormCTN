@@ -13,26 +13,12 @@
     $result = $conn->query("SELECT * FROM tb_efficiercy_form WHERE member_id = '$user_id'");
     $count = count($result->fetchAll());
     $result->execute();
-    // $input = $conn->query("SELECT * FROM tb_input");
-    // $input->execute();
-    // $process = $conn->query("SELECT * FROM tb_process");
-    // $process->execute();
-    // $report = $conn->query("SELECT * FROM tb_report");++
-    // $report->execute();
-    // $senrity = $conn->query("SELECT * FROM tb_senrity");
-    // $senrity->execute();
+
 
     $result1 = $conn->query("SELECT * FROM tb_satisfied WHERE member_id = '$user_id'");
     $count1 = count($result1->fetchAll());
     $result1->execute();
-    // $user_req = $conn->query("SELECT * FROM tb_user_req");
-    // $user_req->execute();
-    // $function = $conn->query("SELECT * FROM tb_function");
-    // $function->execute();
-    // $uesful = $conn->query("SELECT * FROM tb_uesful");
-    // $uesful->execute();
-    // $seurity = $conn->query("SELECT * FROM tb_seurity");
-    // $seurity->execute();
+
 
 ?>
 
@@ -41,7 +27,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/formstyle.css">
+    <link rel="stylesheet" href="style/formstyle2.css">
     <link rel="stylesheet" href="style/tabstyle1.css">
     <title>From</title>
 </head>
@@ -53,7 +39,17 @@
     <button class="tab_btn" id="tab2"><h3>แบบฟอร์มประเมินความพึงพอใจ</h3></button>
     <div class="line"></div>
     </div>
-    <div>
+    <div class="dropdown">
+        <div class="select">
+            <span class="selected"><h3>เลือกฟอร์มสำหรับกรอก</h3></span>
+            <div class="caret"></div>
+        </div>
+        <ul class="menunavbar">
+            <li class=""><h4>ฟอร์มประเมินประสิทธิภาพ</h4></li>
+            <li class=""><h4>ฟอร์มประเมินความพึงพอใจ</h4></li>
+        </ul>
+    </div>
+    <div class="logout">
         <a href="session/logout.php" class="logout">ออกจากระบบ <img src="picture/logout.png"></a>
     </div>
     </header>
@@ -150,6 +146,7 @@
         }
     </style>
     <script src="script/active.js" type="module"></script>
+    <script src="script/dropdown1.js"></script>
     <script src="script/script_add_data.js"></script>
 </body>
 </html>
