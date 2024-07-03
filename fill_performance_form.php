@@ -7,8 +7,10 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: index.php");
 }
 
-$keys = [];
-
+$test = ['line1', 'line2,', 'line3', 'line4', 'line5'];
+$gender = ['gender1', 'gender2', 'gender3', 'gender4', 'gender5'];
+$type_m = ['type1', 'type2', 'type3', 'type4', 'type5'];
+$edu = ['edu1', 'edu2', 'edu3', 'edu4', 'edu5']
 
 ?>
 
@@ -65,84 +67,44 @@ $keys = [];
 
                 <!-- Gender -->
                 <hr class="my-3">
-
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                     <label class="block text-center mb-1 sm:mb-0 sm:self-center">เพศ</label>
                     <div class="mx-2">
-                        <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="genders[]" id="" value="<?= $gender[0] ?>">
-                        </div>
-                        <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="genders[]" id="" value="<?= $gender[1] ?>">
-                        </div>
-                        <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="genders[]" id="" value="<?= $gender[2] ?>">
-                        </div>
-                        <div class="flex items-center justify-center">
-                            <p class="text-gray-400">***ไม่จำเป็นต้องกรอกครบ***</p>
-                        </div>
+                        <?php for ($i = 0; $i < count($gender); $i++) { ?>
+                            <div class="flex items-center">
+                                <p class="px-3 py-2 mb-3 w-full" name="genders[]"><?= $gender[$i] ?></p>
+                                
+                            </div>
+                        <?php } ?>
                     </div>
                 </div>
 
                 <!-- User Type -->
                 <hr class="my-3">
-
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                     <label class="block text-center mb-1 sm:mb-0 sm:self-center">ประเภทผู้ใช้</label>
                     <div class="mx-2">
-                        <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="kinduser[]" id="" value="<?= $type_m[0] ?>">
-                        </div>
-                        <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="kinduser[]" id="" value="<?= $type_m[1] ?>">
-                        </div>
-                        <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="kinduser[]" id="" value="<?= $type_m[2] ?>">
-                        </div>
-                        <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="kinduser[]" id="" value="<?= $type_m[3] ?>">
-                        </div>
-                        <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="kinduser[]" id="" value="<?= $type_m[4] ?>">
-                        </div>
-                        <div class="flex items-center justify-center">
-                            <p class="text-gray-400">***ไม่จำเป็นต้องกรอกครบ***</p>
-                        </div>
+                        <?php for ($i = 0; $i < count($type_m); $i++) { ?>
+                            <div class="flex items-center">
+                                <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="kinduser[]" id="" value="<?= $type_m[$i] ?>">
+                            </div>
+                        <?php } ?>
                     </div>
                 </div>
 
                 <!-- Education Level -->
                 <hr class="my-3">
-
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                     <label class="block text-center mb-1 sm:mb-0 sm:self-center">ระดับการศึกษา</label>
                     <div class="mx-2">
-                        <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="le_education[]" id="" value="<?= $edu[0] ?>">
-                        </div>
-                        <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="le_education[]" id="" value="<?= $edu[1] ?>">
-                        </div>
-                        <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="le_education[]" id="" value="<?= $edu[2] ?>">
-                        </div>
-                        <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="le_education[]" id="" value="<?= $edu[3] ?>">
-                        </div>
-                        <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="le_education[]" id="" value="<?= $edu[4] ?>">
-                        </div>
-                        <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="le_education[]" id="" value="<?= $edu[5] ?>">
-                        </div>
-                        <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="le_education[]" id="" value="<?= $edu[6] ?>">
-                        </div>
-                        <div class="flex items-center justify-center">
-                            <p class="text-gray-400">***ไม่จำเป็นต้องกรอกครบ***</p>
-                        </div>
+                        <?php for ($i = 0; $i < count($edu); $i++) { ?>
+                            <div class="flex items-center">
+                                <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="le_education[]" id="" value="<?= $edu[0] ?>">
+                            </div>
+                        <?php } ?>
                     </div>
                 </div>
+
             </div>
 
             <!-- Survey Section 2 -->
@@ -168,34 +130,15 @@ $keys = [];
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="odd:bg-white even:bg-gray-100">
-                            <td class="border border-gray-300 py-2">1</td>
-                            <td class="border border-gray-300 py-2"><textarea name="input_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"><?= $input_feature[0] ?></textarea></td>
-                            <td class="border border-gray-300 py-2"><textarea disabled name="input_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"></textarea></td>
-                            <td class="border border-gray-300 py-2"><textarea disabled name="input_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"></textarea></td>
-                            <td class="border border-gray-300 py-2"><textarea disabled name="input_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"></textarea></td>
-                        </tr>
-                        <tr class="hidden odd:bg-white even:bg-gray-100" id="section1tr1">
-                            <td class="border border-gray-300 py-2">2</td>
-                            <td class="border border-gray-300 py-2"><textarea disabled name="input_feature[]" id="section1tr1td" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"><?= $input_feature[1] ?></textarea></td>
-                            <td class="border border-gray-300 py-2"><textarea disabled name="input_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"></textarea></td>
-                            <td class="border border-gray-300 py-2"><textarea disabled name="input_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"></textarea></td>
-                            <td class="border border-gray-300 py-2"><textarea disabled name="input_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"></textarea></td>
-                        </tr>
-                        <tr class="hidden odd:bg-white even:bg-gray-100" id="section1tr2">
-                            <td class="border border-gray-300 py-2">3</td>
-                            <td class="border border-gray-300 py-2"><textarea disabled name="input_feature[]" id="section1tr2td" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"><?= $input_feature[2] ?></textarea></td>
-                            <td class="border border-gray-300 py-2"><textarea disabled name="input_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"></textarea></td>
-                            <td class="border border-gray-300 py-2"><textarea disabled name="input_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"></textarea></td>
-                            <td class="border border-gray-300 py-2"><textarea disabled name="input_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"></textarea></td>
-                        </tr>
-                        <tr class="hidden odd:bg-white even:bg-gray-100" id="section1tr3">
-                            <td class="border border-gray-300 py-2">4</td>
-                            <td class="border border-gray-300 py-2"><textarea disabled name="input_feature[]" id="section1tr3td" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"><?= $input_feature[3] ?></textarea></td>
-                            <td class="border border-gray-300 py-2"><textarea disabled name="input_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"></textarea></td>
-                            <td class="border border-gray-300 py-2"><textarea disabled name="input_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"></textarea></td>
-                            <td class="border border-gray-300 py-2"><textarea disabled name="input_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"></textarea></td>
-                        </tr>
+                        <?php for ($i = 0; $i < count($test); $i++) { ?>
+                            <tr class='odd:bg-white even:bg-gray-100'>
+                                <td class='border border-gray-300 py-2'><?= $i + 1 ?></td>
+                                <td class='border border-gray-300 py-2'><textarea readonly name='input_feature[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center' rows='3'><?= $test[$i] ?></textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea name='input_setfeature[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center' rows='3'></textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea name='input_result[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center' rows='3'></textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea name='input_compare[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center' rows='3'></textarea></td>
+                            </tr>
+                        <?php } ?>
                     </tbody>
                 </table>
 
