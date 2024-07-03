@@ -19,6 +19,16 @@
     $count1 = count($result1->fetchAll());
     $result1->execute();
 
+    $countdropbox = array();
+    $result2 = $conn->query("SELECT * FROM tb_efficiercy_form");
+    array_push($countdropbox,count($result2->fetchAll()));
+    $result2->execute();
+
+
+    $result3 = $conn->query("SELECT * FROM tb_satisfied");
+    array_push($countdropbox,count($result3->fetchAll()));
+    $result3->execute();
+
 
 ?>
 
@@ -27,7 +37,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/formstyle2.css">
+    <link rel="stylesheet" href="style/formstyle3.css">
     <link rel="stylesheet" href="style/tabstyle1.css">
     <title>From</title>
 </head>
@@ -37,17 +47,17 @@
     <div class="tab_box">
     <button class="tab_btn active" id="tab1"><h3>แบบฟอร์มประเมินประสิทธิภาพ</h3></button>
     <button class="tab_btn" id="tab2"><h3>แบบฟอร์มประเมินความพึงพอใจ</h3></button>
-    <div class="line"></div>
-    </div>
     <div class="dropdown">
         <div class="select">
             <span class="selected"><h3>เลือกฟอร์มสำหรับกรอก</h3></span>
             <div class="caret"></div>
         </div>
         <ul class="menunavbar">
-            <li class=""><h4>ฟอร์มประเมินประสิทธิภาพ</h4></li>
-            <li class=""><h4>ฟอร์มประเมินความพึงพอใจ</h4></li>
+            <li class=""><button class="tab_btn"><h4>ฟอร์มประเมินประสิทธิภาพ</h4></button></li>
+            <li class=""><button class="tab_btn"><h4>ฟอร์มประเมินความพึงพอใจ</h4></button></li>
         </ul>
+    </div>
+    <div class="line"></div>
     </div>
     <div class="logout">
         <a href="session/logout.php" class="logout">ออกจากระบบ <img src="picture/logout.png"></a>
@@ -113,6 +123,72 @@
                         <a id='btn' onclick="isaddClass('<?php echo $row5['sati_id']; ?>','true')" >ดูข้อมูล</a>
                         <a href='edit_satis_form.php?id=<?php echo $row5['sati_id']; ?>' id='btnedit'>แก้ไข</a>
                         <a id='btndelete' onclick="confirmdel(['<?php echo $c1; ?>','<?php echo $row5['sati_id']; ?>'],'true')" >ลบ</a>
+                        </div>
+                        </div>
+                        </div>
+                <?php } ?>`
+                );
+            </script>
+        <?php }else{ ?>
+            <img class='disimg' src="picture/empty-folder.png">
+            <h3 class='disimg'>ไม่มีข้อมูลแบบสอบถาม</h3>
+        <?php } ?>
+        </div>
+        </div>
+
+    </div>
+    <div class="content_box">
+    <div class="container"> 
+        <div class="form-box" id="adddata"> 
+    <?php if($countdropbox[0] > 0){ ?>
+            <script type="text/javascript">
+                const showform = document.querySelectorAll('#adddata');
+                showform[2].classList.remove('form-box');
+                showform[2].classList.add('grid');
+                showform[2].insertAdjacentHTML("beforeend",`
+                <?php for($c = 1;$c <= $countdropbox[0];$c++){ ?>
+                        <?php $row6 = $result2->fetch(PDO::FETCH_ASSOC); ?>
+                        <div class='container120'>
+                        <div class='subform'>
+                        <h2>แบบฟอร์มที่ <?php echo $c; ?></h2>
+                        <div class='text'><?php echo $row6['form_name']; ?></div>
+                        <div class="btns">
+                        <a id='btn' onclick="isaddClass('<?php echo $row6['form_id']; ?>')" >ดูข้อมูล</a>
+                        <a href='edit_performance_form.php?id=<?php echo $row6['form_id']; ?>' id='btnedit'>แก้ไข</a>
+                        <a id='btndelete' onclick="confirmdel(['<?php echo $c; ?>','<?php echo $row6['form_id']; ?>'])" >ลบ</a>
+                        </div>
+                        </div>
+                        </div>
+                <?php } ?>`
+                );
+            </script>
+        <?php }else{ ?>
+            <img class='disimg' src="picture/empty-folder.png">
+            <h3 class='disimg'>ไม่มีข้อมูลแบบสอบถาม</h3>
+        <?php } ?>
+        </div>          
+        </div>
+
+    </div>
+    <div class="content_box">
+    <div class="container"> 
+        <div class="form-box" id="adddata"> 
+    <?php if($countdropbox[1] > 0){ ?>
+            <script type="text/javascript">
+                const showform1 = document.querySelectorAll('#adddata');
+                showform1[3].classList.remove('form-box');
+                showform1[3].classList.add('grid');
+                showform1[3].insertAdjacentHTML("beforeend",`
+                <?php for($c1 = 1;$c1 <= $countdropbox[1];$c1++){ ?>
+                        <?php $row7 = $result3->fetch(PDO::FETCH_ASSOC); ?>
+                        <div class='container120'>
+                        <div class='subform'>
+                        <h2>แบบฟอร์มที่ <?php echo $c1; ?></h2>
+                        <div class='text'><?php echo $row7['sati_ep2']; ?></div>
+                        <div class="btns">
+                        <a id='btn' onclick="isaddClass('<?php echo $row7['sati_id']; ?>','true')" >ดูข้อมูล</a>
+                        <a href='edit_satis_form.php?id=<?php echo $row7['sati_id']; ?>' id='btnedit'>แก้ไข</a>
+                        <a id='btndelete' onclick="confirmdel(['<?php echo $c1; ?>','<?php echo $row7['sati_id']; ?>'],'true')" >ลบ</a>
                         </div>
                         </div>
                         </div>

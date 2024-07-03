@@ -15,7 +15,6 @@ dropdowns.forEach(dropdown => {
     options.forEach(option => {
         option.addEventListener('click', () => {
             selected.innerHTML = `<h3> ${option.innerText} </h3>`;
-        // select.classList.remove('select-clicked');
             caret.classList.remove('caret-rotate');
             menu.classList.remove('menu-open');
             options.forEach(option => {
