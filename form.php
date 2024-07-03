@@ -153,7 +153,7 @@
                         <h2>แบบฟอร์มที่ <?php echo $c; ?></h2>
                         <div class='text'><?php echo $row6['form_name']; ?></div>
                         <div class="btns">
-                        <a id='btn' onclick="isaddClass('<?php echo $row6['form_id']; ?>')" >กรอกข้อมูล</a>
+                        <a id='btn' href='fill_performance_form.php' >กรอกข้อมูล</a>
                         </div>
                         </div>
                         </div>
@@ -184,7 +184,7 @@
                         <h2>แบบฟอร์มที่ <?php echo $c1; ?></h2>
                         <div class='text'><?php echo $row7['sati_ep2']; ?></div>
                         <div class="btns">
-                        <a id='btn' onclick="isaddClass('<?php echo $row7['sati_id']; ?>','true')" >กรอกข้อมูล</a>
+                        <a id='btn' href='fill_satis_form.php' >กรอกข้อมูล</a>
                         </div>
                         </div>
                         </div>
