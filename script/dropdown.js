@@ -16,6 +16,9 @@ dropdowns.forEach(dropdown => {
         if(isopen === true){
             caret.classList.remove('caret-rotate');
             menu.classList.remove('menu-open');
+            options.forEach(option => {
+                option.classList.remove('activefordropdown');
+            });
             isopen = false;
         }
         selected.innerHTML = `<h3> เลือกฟอร์มสำหรับกรอก </h3>`;
@@ -24,6 +27,9 @@ dropdowns.forEach(dropdown => {
         if(isopen === true){
             caret.classList.remove('caret-rotate');
             menu.classList.remove('menu-open');
+            options.forEach(option => {
+                option.classList.remove('activefordropdown');
+            });
             isopen = false;
         }
         selected.innerHTML = `<h3> เลือกฟอร์มสำหรับกรอก </h3>`;
