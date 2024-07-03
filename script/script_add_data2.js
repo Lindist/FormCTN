@@ -84,7 +84,6 @@ function showformRange(){
 }
 /*--------------------------------------------- */
 const tabs = document.querySelectorAll('.tab_btn');
-console.log(tabs);
 const dropdown = document.querySelector('.dropdown');
 const all_content = document.querySelectorAll('.content_box');
 const lineclass = document.querySelector('.tab_btn.active > h3');
