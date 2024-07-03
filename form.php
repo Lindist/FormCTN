@@ -142,10 +142,10 @@
         <div class="form-box" id="adddata"> 
     <?php if($countdropbox[0] > 0){ ?>
             <script type="text/javascript">
-                const showform = document.querySelectorAll('#adddata');
-                showform[2].classList.remove('form-box');
-                showform[2].classList.add('grid');
-                showform[2].insertAdjacentHTML("beforeend",`
+                const showform2 = document.querySelectorAll('#adddata');
+                showform2[2].classList.remove('form-box');
+                showform2[2].classList.add('grid');
+                showform2[2].insertAdjacentHTML("beforeend",`
                 <?php for($c = 1;$c <= $countdropbox[0];$c++){ ?>
                         <?php $row6 = $result2->fetch(PDO::FETCH_ASSOC); ?>
                         <div class='container120'>
@@ -153,9 +153,7 @@
                         <h2>แบบฟอร์มที่ <?php echo $c; ?></h2>
                         <div class='text'><?php echo $row6['form_name']; ?></div>
                         <div class="btns">
-                        <a id='btn' onclick="isaddClass('<?php echo $row6['form_id']; ?>')" >ดูข้อมูล</a>
-                        <a href='edit_performance_form.php?id=<?php echo $row6['form_id']; ?>' id='btnedit'>แก้ไข</a>
-                        <a id='btndelete' onclick="confirmdel(['<?php echo $c; ?>','<?php echo $row6['form_id']; ?>'])" >ลบ</a>
+                        <a id='btn' onclick="isaddClass('<?php echo $row6['form_id']; ?>')" >กรอกข้อมูล</a>
                         </div>
                         </div>
                         </div>
@@ -175,10 +173,10 @@
         <div class="form-box" id="adddata"> 
     <?php if($countdropbox[1] > 0){ ?>
             <script type="text/javascript">
-                const showform1 = document.querySelectorAll('#adddata');
-                showform1[3].classList.remove('form-box');
-                showform1[3].classList.add('grid');
-                showform1[3].insertAdjacentHTML("beforeend",`
+                const showform3 = document.querySelectorAll('#adddata');
+                showform3[3].classList.remove('form-box');
+                showform3[3].classList.add('grid');
+                showform3[3].insertAdjacentHTML("beforeend",`
                 <?php for($c1 = 1;$c1 <= $countdropbox[1];$c1++){ ?>
                         <?php $row7 = $result3->fetch(PDO::FETCH_ASSOC); ?>
                         <div class='container120'>
@@ -186,9 +184,7 @@
                         <h2>แบบฟอร์มที่ <?php echo $c1; ?></h2>
                         <div class='text'><?php echo $row7['sati_ep2']; ?></div>
                         <div class="btns">
-                        <a id='btn' onclick="isaddClass('<?php echo $row7['sati_id']; ?>','true')" >ดูข้อมูล</a>
-                        <a href='edit_satis_form.php?id=<?php echo $row7['sati_id']; ?>' id='btnedit'>แก้ไข</a>
-                        <a id='btndelete' onclick="confirmdel(['<?php echo $c1; ?>','<?php echo $row7['sati_id']; ?>'],'true')" >ลบ</a>
+                        <a id='btn' onclick="isaddClass('<?php echo $row7['sati_id']; ?>','true')" >กรอกข้อมูล</a>
                         </div>
                         </div>
                         </div>
