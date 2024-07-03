@@ -5,12 +5,28 @@ dropdowns.forEach(dropdown => {
     const menu = dropdown.querySelector('.menunavbar');
     const options = dropdown.querySelectorAll('.menunavbar li');
     const selected = dropdown.querySelector('.selected');
-
+    let isopen = false;
     select.addEventListener('click', () => {
         caret.classList.toggle('caret-rotate');
         menu.classList.toggle('menu-open');
+        isopen = true;
     });
 
+    document.querySelector('#tab1').addEventListener('click', () => {
+        if(isopen === true){
+            caret.classList.remove('caret-rotate');
+            menu.classList.remove('menu-open');
+            isopen = false;
+        }
+    });
+    document.querySelector('#tab2').addEventListener('click', () => {
+        if(isopen === true){
+            caret.classList.remove('caret-rotate');
+            menu.classList.remove('menu-open');
+            isopen = false;
+        }
+    });
+    
 
     options.forEach(option => {
         option.addEventListener('click', () => {
