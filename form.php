@@ -139,7 +139,7 @@
 
     </div>
     <div class="content_box">
-    <div class="container"> 
+    <div class="container" style="margin-top: 3em;"> 
         <div class="form-box" id="adddata"> 
     <?php if($countdropbox[0] > 0){ ?>
             <script type="text/javascript">
@@ -170,7 +170,7 @@
 
     </div>
     <div class="content_box">
-    <div class="container"> 
+    <div class="container" style="margin-top: 3em;"> 
         <div class="form-box" id="adddata"> 
     <?php if($countdropbox[1] > 0){ ?>
             <script type="text/javascript">
