@@ -38,9 +38,27 @@ function saveInputValues() {
     }else{
         localStorage.setItem('columnDatatab2', 'nocolumnData');
     }
-    
+
     const inputab2 = 'active';
     localStorage.setItem('tab2', inputab2);
+
+    const isdropclass = document.querySelectorAll('.tab_btn.dropline');
+
+    if(isdropclass[0].classList.contains('active')){
+        localStorage.setItem('btndropdown1', inputab2);
+    }
+    else{
+        localStorage.setItem('btndropdown1', null);
+    }
+
+    if(isdropclass[1].classList.contains('active')){
+        localStorage.setItem('btndropdown2', inputab2);
+    }
+    else{
+        localStorage.setItem('btndropdown2', null);
+    }
+
+
 }
 
 // Function to restore input values from local storage
@@ -50,6 +68,42 @@ function restoreInputValues() {
     const savedInput2 = localStorage.getItem('firstshow');
     const savedInput3_1 = localStorage.getItem('columnDatatab1');
     const savedInput3_2 = localStorage.getItem('columnDatatab2');
+
+    const savedInput4_1 = localStorage.getItem('btndropdown1');
+    const savedInput4_2 = localStorage.getItem('btndropdown2');
+
+    if(savedInput4_1 === 'active' || savedInput4_2 === 'active'){
+        
+        const tabs = document.querySelectorAll('.tab_btn');
+        const all_content = document.querySelectorAll('.content_box');
+        var line=document.querySelector('.line');
+        const dropdown = document.querySelector('.dropdown');
+        const options = dropdown.querySelectorAll('.menunavbar li');
+        const selected = dropdown.querySelector('.selected');
+            
+                
+
+        tabs.forEach(tab=>{tab.classList.remove('active')})
+        all_content.forEach(content=>{content.classList.remove('active')});
+        if(savedInput4_1 === 'active'){
+            all_content[2].classList.add('active');
+            selected.innerHTML = `<h3> ${options[0].innerText} </h3>`;
+                options.forEach(option => {
+                    option.classList.remove('activefordropdown');
+                });
+            options[0].classList.add('activefordropdown');
+        }else{
+            all_content[3].classList.add('active');
+            selected.innerHTML = `<h3> ${options[1].innerText} </h3>`;
+                options.forEach(option => {
+                    option.classList.remove('activefordropdown');
+                });
+            options[1].classList.add('activefordropdown');
+        }
+        line.style.width = dropdown.offsetWidth + "px";
+        line.style.left = dropdown.offsetLeft + "px";
+    }
+
     if(savedInput3_1 === 'columnData' || savedInput3_2 === 'columnData'){
         document.querySelectorAll('#adddata').forEach(e => {
             e.classList.add('columnData');
