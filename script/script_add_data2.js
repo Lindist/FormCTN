@@ -84,6 +84,8 @@ function showformRange(){
 }
 /*--------------------------------------------- */
 const tabs = document.querySelectorAll('.tab_btn');
+console.log(tabs);
+const dropdown = document.querySelector('.dropdown');
 const all_content = document.querySelectorAll('.content_box');
 const lineclass = document.querySelector('.tab_btn.active > h3');
 var line=document.querySelector('.line');
@@ -92,13 +94,19 @@ tabs.forEach((tab, index) => {
         tabs.forEach(tab=>{tab.classList.remove('active')})
         tab.classList.add('active');
 
-        
-        line.style.width = e.target.offsetWidth + "px";
-        line.style.left = e.target.offsetLeft + "px";
+        if(tab.classList.contains('dropline')){
+            line.style.width = dropdown.offsetWidth + "px";
+            line.style.left = dropdown.offsetLeft + "px";
+        }else{
+            line.style.width = e.target.offsetWidth + "px";
+            line.style.left = e.target.offsetLeft + "px";
+        }
+
         all_content.forEach(content=>{content.classList.remove('active')});
         all_content[index].classList.add('active');
     })
 })
+
 window.onload = function() {
     line.style.width = lineclass.offsetWidth + 'px';
     line.style.left = lineclass.offsetLeft + 'px';

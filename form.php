@@ -37,7 +37,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/formstyle3.css">
+    <link rel="stylesheet" href="style/formstyle1.css">
     <link rel="stylesheet" href="style/tabstyle1.css">
     <title>From</title>
 </head>
@@ -53,10 +53,11 @@
             <div class="caret"></div>
         </div>
         <ul class="menunavbar">
-            <li class=""><button class="tab_btn"><h4>ฟอร์มประเมินประสิทธิภาพ</h4></button></li>
-            <li class=""><button class="tab_btn"><h4>ฟอร์มประเมินความพึงพอใจ</h4></button></li>
+            <li class=""><button class="tab_btn dropline"><h4>ฟอร์มประเมินประสิทธิภาพ</h4></button></li>
+            <li class=""><button class="tab_btn dropline"><h4>ฟอร์มประเมินความพึงพอใจ</h4></button></li>
         </ul>
     </div>
+
     <div class="line"></div>
     </div>
     <div class="logout">
@@ -219,6 +220,6 @@
     </style>
     <script src="script/active.js" type="module"></script>
     <script src="script/dropdown3.js"></script>
-    <script src="script/script_add_data.js"></script>
+    <script src="script/script_add_data2.js"></script>
 </body>
 </html>
