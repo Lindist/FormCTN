@@ -16,6 +16,12 @@ tab2.tab2.addEventListener('click', () => {
         tab2.tab2.classList.add('firstshow');
     }
 });
+const tab3 = document.querySelectorAll('#tab3');
+tab3.forEach((e) => {
+    e.addEventListener('click', () => {
+        tab2.tab2.classList.remove('firstshow');
+    });
+});
 
 // Function to save input values to local storage
 function saveInputValues() {
@@ -83,7 +89,7 @@ function restoreInputValues() {
             
                 
 
-        tabs.forEach(tab=>{tab.classList.remove('active')})
+        tabs.forEach(tab=>{tab.classList.remove('active')});
         all_content.forEach(content=>{content.classList.remove('active')});
         if(savedInput4_1 === 'active'){
             all_content[2].classList.add('active');
