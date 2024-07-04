@@ -57,6 +57,7 @@ header > .tab_box > button > h3{
 
 header .dropdown{
     width: 20vw;
+    height: 100%;
     position: relative;
 }
 
