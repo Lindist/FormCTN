@@ -31,27 +31,35 @@ if (isset($_POST['update'])) {
 if (empty($sati_ep2)) {
     $_SESSION['error'] = "กรุณากรอกชื่อ โปรเจค";
     header("location: insert_satis_form.php");
+    exit;
 } else if (empty(array_filter($_POST['sati_gender']))) {
     $_SESSION['error'] = "กรุณากรอก เพศ อย่างน้อย 1 เพศ";
     header("location: insert_satis_form.php");
+    exit;
 } else if (empty(array_filter($_POST['sati_type']))) {
     $_SESSION['error'] = "กรุณากรอก ประเภทผู้ใช้อย่างน้อย 1 ประเภท";
     header("location: insert_satis_form.php");
+    exit;
 } else if (empty(array_filter($_POST['sati_level']))) {
     $_SESSION['error'] = "กรุณากรอก ระดับการศึกษา อย่างน้อย 1 ระดับ";
     header("location: insert_satis_form.php");
+    exit;
 } else if (empty($ur_topic)) {
     $_SESSION['error'] = "กรุณากรอกด้านที่ 1 อย่างน้อย 1 หัวข้อ";
     header("location: insert_satis_form.php");
+    exit;
 } else if (empty($fun_topic)) {
     $_SESSION['error'] = "กรุณากรอกด้านที่ 2 อย่างน้อย 1 หัวข้อ";
     header("location: insert_satis_form.php");
+    exit;
 } else if (empty($uf_topic)) {
     $_SESSION['error'] = "กรุณากรอกด้านที่ 3 อย่างน้อย 1 หัวข้อ";
     header("location: insert_satis_form.php");
+    exit;
 } else if (empty($ss_topic)) {
     $_SESSION['error'] = "กรุณากรอกด้านที่ 4 อย่างน้อย 1 หัวข้อ";
     header("location: insert_satis_form.php");
+    exit;
 } else {
     try {
         if (!isset($_SESSION['error'])) {

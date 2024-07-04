@@ -21,7 +21,7 @@ if (isset($_GET['class1'])) {
 
 $keys = [];
 
-for ($i = 0; $i < 20; $i++) { // Replace 10 with any large number or condition
+for ($i = 0; $i < 10; $i++) { // Replace 10 with any large number or condition
     $keys[$i] = null;
 }
 

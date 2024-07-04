@@ -23,29 +23,31 @@ if (isset($_POST['update'])) {
     $edu = implode(",", $_POST['le_education']);
 
     $input_feature = implode("@", $_POST['input_feature']);
-
     $process_feature = implode("@", $_POST['process_feature']);
-
     $report_feature = implode("@", $_POST['report_feature']);
-
     $senrity_feature = implode("@", $_POST['senrity_feature']);
 }
 
 if (empty($formname)) {
     $_SESSION['error'] = "กรุณากรอกชื่อฟอร์ม";
     header("location: edit_performance_form.php?id=$form_id");
+    exit;
 } else if (empty($ad)) {
     $_SESSION['error'] = "กรุณากรอกคำชี้แจง";
     header("location: edit_performance_form.php?id=$form_id");
+    exit;
 } else if (empty(array_filter($_POST['genders']))) {
     $_SESSION['error'] = "กรุณากรอก เพศ อย่างน้อย 1 เพศ";
     header("location: edit_performance_form.php?id=$form_id");
+    exit;
 } else if (empty(array_filter($_POST['kinduser']))) {
     $_SESSION['error'] = "กรุณากรอก ประเภทผู้ใช้อย่างน้อย 1 ประเภท";
     header("location: edit_performance_form.php?id=$form_id");
+    exit;
 } else if (empty(array_filter($_POST['le_education']))) {
     $_SESSION['error'] = "กรุณากรอก ระดับการศึกษา อย่างน้อย 1 ระดับ";
     header("location: edit_performance_form.php?id=$form_id");
+    exit;
 } else {
     try {
         if (!isset($_SESSION['error'])) {
