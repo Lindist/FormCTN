@@ -53,30 +53,39 @@ $_SESSION['edu'] = $_POST['le_education'];
 if (empty($formname)) {
     $_SESSION['error'] = "กรุณากรอกชื่อฟอร์ม";
     header("location: insert_performance_form.php");
+    exit;
 } else if (empty($ad)) {
     $_SESSION['error'] = "กรุณากรอกคำชี้แจง";
     header("location: insert_performance_form.php");
+    exit;
 } else if (empty(array_filter($_POST['genders']))) {
     $_SESSION['error'] = "กรุณากรอก เพศ อย่างน้อย 1 เพศ";
     header("location: insert_performance_form.php");
+    exit;
 } else if (empty(array_filter($_POST['kinduser']))) {
     $_SESSION['error'] = "กรุณากรอก ประเภทผู้ใช้อย่างน้อย 1 ประเภท";
     header("location: insert_performance_form.php");
+    exit;
 } else if (empty(array_filter($_POST['le_education']))) {
     $_SESSION['error'] = "กรุณากรอก ระดับการศึกษา อย่างน้อย 1 ระดับ";
     header("location: insert_performance_form.php");
+    exit;
 } else if (empty($input_feature)) {
     $_SESSION['error'] = "กรุณากรอกด้านที่ 1 อย่างน้อย 1 หัวข้อ";
     header("location: insert_performance_form.php");
+    exit;
 } else if (empty($process_feature)) {
     $_SESSION['error'] = "กรุณากรอกด้านที่ 2 อย่างน้อย 1 หัวข้อ";
     header("location: insert_performance_form.php");
+    exit;
 } else if (empty($report_feature)) {
     $_SESSION['error'] = "กรุณากรอกด้านที่ 3 อย่างน้อย 1 หัวข้อ";
     header("location: insert_performance_form.php");
+    exit;
 } else if (empty($senrity_feature)) {
     $_SESSION['error'] = "กรุณากรอกด้านที่ 4 อย่างน้อย 1 หัวข้อ";
     header("location: insert_performance_form.php");
+    exit;
 } else {
     try {
         if (!isset($_SESSION['error'])) {

@@ -155,7 +155,7 @@
                         <h2>แบบฟอร์มที่ <?php echo $c; ?></h2>
                         <div class='text'><?php echo $row6['form_name']; ?></div>
                         <div class="btns">
-                        <a id='btn' href='fill_performance_form.php' >กรอกข้อมูล</a>
+                        <a id='btn' href='fill_performance_form.php?id=<?= $row6['form_id'] ?>' >กรอกข้อมูล</a>
                         </div>
                         </div>
                         </div>
