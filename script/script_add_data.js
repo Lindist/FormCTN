@@ -84,7 +84,9 @@ function showformRange(){
 }
 /*--------------------------------------------- */
 const tabs = document.querySelectorAll('.tab_btn');
-const dropdown = document.querySelector('.dropdown');
+const dropdown1 = document.querySelector('.dropdown');
+
+const linedropdown = document.querySelector('.linedropdown');
 const all_content = document.querySelectorAll('.content_box');
 const lineclass = document.querySelector('.tab_btn.active > h3');
 var line=document.querySelector('.line');
@@ -94,9 +96,14 @@ tabs.forEach((tab, index) => {
         tab.classList.add('active');
 
         if(tab.classList.contains('dropline')){
-            line.style.width = dropdown.offsetWidth + "px";
-            line.style.left = dropdown.offsetLeft + "px";
+            line.style.opacity = "0";
+            linedropdown.style.opacity = "1";
+            line.style.width = dropdown1.offsetWidth + "px";
+            line.style.left = dropdown1.offsetLeft + "px";
         }else{
+            line.style.opacity = "1";
+            linedropdown.style.opacity = "0";
+            linedropdown.style.transition = "all .4s linear";
             line.style.width = e.target.offsetWidth + "px";
             line.style.left = e.target.offsetLeft + "px";
         }

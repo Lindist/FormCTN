@@ -220,7 +220,7 @@
         }
     </style>
     <script src="script/active1.js" type="module"></script>
-    <script src="script/dropdown.js"></script>
-    <script src="script/script_add_data2.js"></script>
+    <script src="script/dropdown1.js"></script>
+    <script src="script/script_add_data.js"></script>
 </body>
 </html>

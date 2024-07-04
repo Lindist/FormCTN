@@ -8,6 +8,7 @@
 /* @keyframes moving{
     from{opacity: 0;}
     to{opacity: 1;}
+    line.style.transition = "all .5s ease-in-out";
 } */
 .line{
     position: absolute;
@@ -23,9 +24,9 @@
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 200px;
+    width: 0;
     height: 5px;
-    background-color: #d10606;
+    background-color: #4B70F5;
     border-radius: 6px;
     transition: all .2s ease-in-out;
 }
@@ -41,6 +42,9 @@
         display: initial;
     }
     .line{
+        display: none;
+    }
+    .linedropdown{
         display: none;
     }
 }
