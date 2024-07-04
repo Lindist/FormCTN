@@ -179,8 +179,7 @@ if (isset($_GET['class'])) {
                 <label class="form-label mt-2">คำชี้แจง</label>
                 <label for="">โปรดบันทึกความคิดเห็นของท่านลงในช่องว่างในแต่ละข้อ</label> <br>
                 <!-- Start table -->
-                <label class="form-label mt-2">ด้านที่ 1</label>
-                <div class="rad form-control mb-2"><?php echo $row1["Input_name"]; ?></div>
+                <label class="form-label mt-2">ด้านที่ 1 <?php echo $row1["Input_name"]; ?></label>
                 <div  id="widthfix">
                 <table class="table table-bordered table-striped text-center mt-3">
                     <thead>
@@ -207,8 +206,7 @@ if (isset($_GET['class'])) {
                 </table>
                 </div>
                 
-                <label class="form-label">ด้านที่ 2</label>
-                <div class="rad form-control mb-2"><?php echo $row2['process_name']; ?></div>
+                <label class="form-label">ด้านที่ 2 <?php echo $row2['process_name']; ?></label>
                 <div  id="widthfix">
                 <table class="table table-bordered table-striped text-center mt-3">
                     <thead>
@@ -234,8 +232,7 @@ if (isset($_GET['class'])) {
                     </tbody>
                 </table>
                 </div>
-                <label class="form-label">ด้านที่ 3</label>
-                <div class="rad form-control mb-2"><?php echo $row3['report_name']; ?></div>
+                <label class="form-label">ด้านที่ 3 <?php echo $row3['report_name']; ?></label>
                 <div  id="widthfix">
                 <table class="table table-bordered table-striped text-center mt-3">
                     <thead>
@@ -261,8 +258,7 @@ if (isset($_GET['class'])) {
                     </tbody>
                 </table>
                 </div>
-                <label class="form-label">ด้านที่ 4</label>
-                <div class="rad form-control mb-2"><?php echo $row4['senrity_name']; ?></div>
+                <label class="form-label">ด้านที่ 4 <?php echo $row4['senrity_name']; ?></label>
                 <div  id="widthfix">
                 <table class="table table-bordered table-striped text-center mt-3">
                     <thead>

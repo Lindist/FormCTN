@@ -92,6 +92,7 @@ function restoreInputValues() {
         tabs.forEach(tab=>{tab.classList.remove('active')});
         all_content.forEach(content=>{content.classList.remove('active')});
         if(savedInput4_1 === 'active'){
+            tabs[2].classList.add('active');
             all_content[2].classList.add('active');
             selected.innerHTML = `<h3> ${options[0].innerText} </h3>`;
                 options.forEach(option => {
@@ -99,6 +100,7 @@ function restoreInputValues() {
                 });
             options[0].classList.add('activefordropdown');
         }else{
+            tabs[3].classList.add('active');
             all_content[3].classList.add('active');
             selected.innerHTML = `<h3> ${options[1].innerText} </h3>`;
                 options.forEach(option => {
@@ -108,6 +110,14 @@ function restoreInputValues() {
         }
         line.style.width = dropdown.offsetWidth + "px";
         line.style.left = dropdown.offsetLeft + "px";
+        const linedropdown = document.querySelector('.linedropdown');
+        line.style.opacity = "0";
+        linedropdown.style.opacity = "1";
+        let dropdown2 = document.querySelector('.dropdown .select .selected');
+        let dropdown3 = document.querySelector('.dropdown .select .caret');
+        let sumlongline = (dropdown2.offsetWidth + dropdown3.offsetWidth);
+        linedropdown.style.width = sumlongline + "px";
+        linedropdown.style.left = dropdown2.offsetLeft + "px";
     }
 
     if(savedInput3_1 === 'columnData' || savedInput3_2 === 'columnData'){
