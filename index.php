@@ -56,14 +56,14 @@ unset($_SESSION['show_login']); // Clear the session flag after use
                 <img src="https://i.imgur.com/m0H7jcN.png" class="w-6 h-6 mr-1">
                 CTN Phrae
             </div>
-            <ul class="flex space-x-3">
+            <ul class="flex space-x-3 sm:space-x-5">
                 <li>
-                    <a href="#" class="flex items-center" onclick="openRegister()">
+                    <a href="#" class="flex items-center font-bold" onclick="openRegister()">
                         สมัครสมาชิก <i class="fa-solid fa-right-to-bracket ml-1 hidden sm:inline"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="flex items-center" onclick="openPopup()">
+                    <a href="#" class="flex items-center font-bold" onclick="openPopup()">
                         เข้าสู่ระบบ <i class="fa-solid fa-right-to-bracket ml-1 hidden sm:inline"></i>
                     </a>
                 </li>
@@ -187,11 +187,11 @@ unset($_SESSION['show_login']); // Clear the session flag after use
         <div class="block lg:flex items-center max-w-screen-xl">
             <div class="w-auto lg:w-1/2 xl:w-[600px] mx-auto lg:text-left lg:mr-8">
                 <p class="text-white text-5xl sm:text-6xl">ระบบแบบสอบถามออนไลน์</p>
-                <p class="text-white text-2xl mt-2 mb-10">ระบบแบบสอบถามนี้เป็นส่วนช่วยในการกรอกแบบสอบถามของ วิชาโครงการ บทที่ 3 ช่วยให้ผู้ใช้งานสามารถสร้างแบบสอบถามเพื่อนำไปใช้ในรายวิชาพร้อมผลสรุป</p>
+                <p class="text-white text-2xl mt-2 mb-6 sm:mb-10">ระบบแบบสอบถามนี้เป็นส่วนช่วยในการกรอกแบบสอบถามของ วิชาโครงการ บทที่ 3 ช่วยให้ผู้ใช้งานสามารถสร้างแบบสอบถามเพื่อนำไปใช้ในรายวิชาพร้อมผลสรุป</p>
                 <a class="text-white text-2xl p-2 px-4 border border-white rounded-full mb-1 inline-block" href="#">วิชาโครงการ</a>
             </div>
-            <div class="hidden lg:flex w-auto lg:w-1/2 justify-center">
-                <img class="w-[300px] lg:w-[500px] mx-auto lg:mx-0" src="https://i.imgur.com/CdoHEKs.png" alt="Survey Image">
+            <div class="flex w-auto lg:w-1/2 justify-center">
+                <img class="w-[300px] lg:w-[500px] mx-auto lg:mx-0 my-4 sm:my-0" src="https://i.imgur.com/P8jl1rq.png" alt="Survey Image">
             </div>
         </div>
     </div>

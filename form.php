@@ -5,8 +5,7 @@
 
     if (!isset($_SESSION['user_id'])) {
         header("Location: index.php");
-    }
-    if (isset($_SESSION['user_id'])) {
+    } else if (isset($_SESSION['user_id'])) {
         $user_id = $_SESSION['user_id'];
     }
 
@@ -186,7 +185,7 @@
                         <h2>แบบฟอร์มที่ <?php echo $c1; ?></h2>
                         <div class='text'><?php echo $row7['sati_ep2']; ?></div>
                         <div class="btns">
-                        <a id='btn' href='fill_satis_form.php' >กรอกข้อมูล</a>
+                        <a id='btn' href='fill_satis_form.php?id=<?= $row7['sati_id'] ?>'>กรอกข้อมูล</a>
                         </div>
                         </div>
                         </div>

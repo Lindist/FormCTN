@@ -49,7 +49,6 @@ if (isset($_GET['id'])) {
 
     $senrity_feature = preg_split("/@/", $row4["senrity_feature"]);
 
-    // print_r($edu);
 } else {
     header("Location: index.php");
 }
@@ -105,7 +104,7 @@ unset($_SESSION['senrity_result']);
 $senrity_compare = isset($_SESSION['senrity_compare']) && $_SESSION['senrity_compare'] ? $_SESSION['senrity_compare'] : $keys;
 unset($_SESSION['senrity_compare']);
 
-
+// print_r($gender)
 ?>
 
 <!doctype html>
@@ -135,7 +134,6 @@ unset($_SESSION['senrity_compare']);
             กลับหน้าแรก
         </button>
         <form action="fill_performance.php" method="POST">
-            <input type="hidden" name="class" id="class" value="<?php echo $class; ?>">
             <h1 class="text-center text-3xl mb-5">กรอกแบบฟอร์มประเมินประสิทธิภาพ</h1>
 
             <input type="text" name="form_id" class="hidden" value="<?= $_GET['id'] ?>">
