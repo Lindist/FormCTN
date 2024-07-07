@@ -6,7 +6,7 @@ require 'session/config.php';
 if (!isset($_SESSION['user_id'])) {
     header("Location: index.php");
 } else {
-    $user_id = $_SESSION['user_id'];
+    $user_id  = $_SESSION['user_id'];
 }
 
 if (isset($_POST['save'])) {
@@ -21,33 +21,45 @@ if (isset($_POST['save'])) {
     $sati_gender = $_POST['sati_gender'];
     $sati_type = $_POST['sati_type'];
     $sati_level = $_POST['sati_level'];
+    $sati_comment = $_POST['sati_comment'];
 
-    $ur_topic = $_POST['ur_topic'];
-    $input_feature = implode("@", $_POST['input_feature']);
-    $input_setfeature = implode("@", $_POST['input_setfeature']);
-    $input_result = implode("@", $_POST['input_result']);
-    $input_compare = implode("@", $_POST['input_compare']);
+    $ur_topic = implode($_POST['ur_topic']);
+    $ur_score = implode("@", $_POST['ur_score']);
 
-    $fun_topic = $_POST['fun_topic'];
-    $process_feature = implode("@", $_POST['process_feature']);
-    $process_setfeature = implode("@", $_POST['process_setfeature']);
-    $process_result = implode("@", $_POST['process_result']);
-    $process_compare = implode("@", $_POST['process_compare']);
+    $fun_topic = implode($_POST['fun_topic']);
+    $fun_score = implode("@", $_POST['fun_score']);
 
-    $uf_topic = $_POST['uf_topic'];
-    $report_feature = implode("@", $_POST['report_feature']);
-    $report_setfeature = implode("@", $_POST['report_setfeature']);
-    $report_result = implode("@", $_POST['report_result']);
-    $report_compare = implode("@", $_POST['report_compare']);
+    $uf_topic = implode($_POST['uf_topic']);
+    $uf_score = implode("@", $_POST['uf_score']);
 
-    $ss_topic = $_POST['ss_topic'];
-    $senrity_feature = implode("@", $_POST['senrity_feature']);
-    $senrity_setfeature = implode("@", $_POST['senrity_setfeature']);
-    $senrity_result = implode("@", $_POST['senrity_result']);
-    $senrity_compare = implode("@", $_POST['senrity_compare']);
+    $ss_topic = implode($_POST['ss_topic']);
+    $ss_score = implode("@", $_POST['ss_score']);
+
+    // // Echo all variables
+    // echo "<pre>";
+    // echo "sati_id: $sati_id\n";
+    // echo "sati_name: $sati_name\n";
+    // echo "ur_id: $ur_id\n";
+    // echo "fun_id: $fun_id\n";
+    // echo "uf_id: $uf_id\n";
+    // echo "ss_id: $ss_id\n";
+    // echo "sati_gender: $sati_gender\n";
+    // echo "sati_type: $sati_type\n";
+    // echo "sati_level: $sati_level\n";
+    // echo "sati_comment: $sati_comment\n";
+    // echo "ur_topic: $ur_topic\n";
+    // echo "ur_score: $ur_score\n";
+    // echo "fun_topic: $fun_topic\n";
+    // echo "fun_score: $fun_score\n";
+    // echo "uf_topic: $uf_topic\n";
+    // echo "uf_score: $uf_score\n";
+    // echo "ss_topic: $ss_topic\n";
+    // echo "ss_score: $ss_score\n";
+    // echo "</pre>";
 }
 
-function check_empty($array) {
+function check_empty($array)
+{
     foreach ($array as $value) {
         if (empty($value)) {
             return true;
@@ -56,76 +68,86 @@ function check_empty($array) {
     return false;
 }
 
-$_SESSION['gender'] = $_POST['gender'];
-$_SESSION['type_m'] = $_POST['type_m'];
-$_SESSION['edu'] = $_POST['edu'];
+$_SESSION['sati_gender'] = $_POST['sati_gender'];
+$_SESSION['sati_type'] = $_POST['sati_type'];
+$_SESSION['sati_level'] = $_POST['sati_level'];
+$_SESSION['ur_score'] = $_POST['ur_score'];
+$_SESSION['fun_score'] = $_POST['fun_score'];
+$_SESSION['uf_score'] = $_POST['uf_score'];
+$_SESSION['ss_score'] = $_POST['ss_score'];
 
-if (empty($_POST['gender'])) {
+if (empty($_POST['sati_gender'])) {
     $_SESSION['error'] = "กรุณาเลือก เพศ";
-    header("location: fill_performance_form.php?id=$form_id");
+    header("location: fill_satis_form.php?id=$sati_id");
     exit;
-} else if (empty($_POST['type_m'])) {
+} else if (empty($_POST['sati_type'])) {
     $_SESSION['error'] = "กรุณาเลือก ประเภทผู้ใช้";
-    header("location: fill_performance_form.php?id=$form_id");
+    header("location: fill_satis_form.php?id=$sati_id");
     exit;
-} else if (empty($_POST['edu'])) {
+} else if (empty($_POST['sati_level'])) {
     $_SESSION['error'] = "กรุณาเลือก ระดับการศึกษา";
-    header("location: fill_performance_form.php?id=$form_id");
+    header("location: fill_satis_form.php?id=$sati_id");
     exit;
-} else if (check_empty($_POST['input_setfeature']) || check_empty($_POST['input_result']) || check_empty($_POST['input_compare'])) {
+} else if (check_empty($_POST['ur_score'])) {
     $_SESSION['error'] = "กรุณากรอกด้านที่ 1 ให้ครบ";
-    header("location: fill_performance_form.php?id=$form_id");
+    header("location: fill_satis_form.php?id=$sati_id");
     exit;
-} else if (check_empty($_POST['process_setfeature']) || check_empty($_POST['process_result']) || check_empty($_POST['process_compare'])) {
+} else if (check_empty($_POST['fun_score'])) {
     $_SESSION['error'] = "กรุณากรอกด้านที่ 2 ให้ครบ";
-    header("location: fill_performance_form.php?id=$form_id");
+    header("location: fill_satis_form.php?id=$sati_id");
     exit;
-} else if (check_empty($_POST['report_setfeature']) || check_empty($_POST['report_result']) || check_empty($_POST['report_compare'])) {
+} else if (check_empty($_POST['uf_score'])) {
     $_SESSION['error'] = "กรุณากรอกด้านที่ 3 ให้ครบ";
-    header("location: fill_performance_form.php?id=$form_id");
+    header("location: fill_satis_form.php?id=$sati_id");
     exit;
-} else if (check_empty($_POST['senrity_setfeature']) || check_empty($_POST['senrity_result']) || check_empty($_POST['senrity_compare'])) {
+} else if (check_empty($_POST['ss_score'])) {
     $_SESSION['error'] = "กรุณากรอกด้านที่ 4 ให้ครบ";
-    header("location: fill_performance_form.php?id=$form_id");
+    header("location: fill_satis_form.php?id=$sati_id");
     exit;
 } else {
     try {
         if (!isset($_SESSION['error'])) {
+            echo "inloop";
+
             $conn->beginTransaction();
 
-            // Insert ข้อมูลในตาราง tb_fill_input
-            $stmt = $conn->prepare("INSERT INTO tb_fill_input (input_id, input_name, input_feature, input_setfeature, input_result, input_compare) VALUES (?, ?, ?, ?, ?, ?)");
-            $stmt->execute([$input_id, $input_name, $input_feature, $input_setfeature, $input_result, $input_compare]);
-            $fill_input_id = $conn->lastInsertId();
-        
-            // Insert ข้อมูลในตาราง tb_fill_process
-            $stmt = $conn->prepare("INSERT INTO tb_fill_process (process_id, process_name, process_feature, process_setfeature, process_result, process_compare) VALUES (?, ?, ?, ?, ?, ?)");
-            $stmt->execute([$process_id, $process_name, $process_feature, $process_setfeature, $process_result, $process_compare]);
-            $fill_process_id = $conn->lastInsertId();
-        
-            // Insert ข้อมูลในตาราง tb_fill_report
-            $stmt = $conn->prepare("INSERT INTO tb_fill_report (report_id, report_name, report_feature, report_setfeature, report_result, report_compare) VALUES (?, ?, ?, ?, ?, ?)");
-            $stmt->execute([$report_id, $report_name, $report_feature, $report_setfeature, $report_result, $report_compare]);
-            $fill_report_id = $conn->lastInsertId();
-        
-            // Insert ข้อมูลในตาราง tb_fill_senrity
-            $stmt = $conn->prepare("INSERT INTO tb_fill_senrity (senrity_id, senrity_name, senrity_feature, senrity_setfeature, senrity_result, senrity_compare) VALUES (?, ?, ?, ?, ?, ?)");
-            $stmt->execute([$senrity_id, $senrity_name, $senrity_feature, $senrity_setfeature, $senrity_result, $senrity_compare]);
-            $fill_senrity_id = $conn->lastInsertId();
-        
-            // ถ้าทุกอย่างเรียบร้อย ให้ commit การทำงาน
-            $conn->commit();
-        
+            // Insert ข้อมูลในตาราง tb_fill_user_req
+            $stmt = $conn->prepare("INSERT INTO tb_fill_user_req (ur_id, ur_topic, ur_score) VALUES (?, ?, ?)");
+            $stmt->execute([$ur_id, $ur_topic, $ur_score]);
+            $fill_ur_id = $conn->lastInsertId();
 
-            $tb_fill_efficiercy = $conn->prepare("INSERT INTO tb_fill_efficiercy(form_id, form_name, form_gender, form_type, form_education, member_id, fill_input_id, fill_process_id, fill_report_id, fill_senrity_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            $tb_fill_efficiercy->execute([$form_id, $form_name, $gender, $type_m, $edu, $user_id, $fill_input_id, $fill_process_id, $fill_report_id, $fill_senrity_id]);
+            // Insert ข้อมูลในตาราง tb_fill_function
+            $stmt = $conn->prepare("INSERT INTO tb_fill_function (fun_id, fun_topic, fun_score) VALUES (?, ?, ?)");
+            $stmt->execute([$fun_id, $fun_topic, $fun_score]);
+            $fill_fun_id = $conn->lastInsertId();
 
-            unset($_SESSION['gender']);
-            unset($_SESSION['type_m']);
-            unset($_SESSION['edu']);
+            // Insert ข้อมูลในตาราง tb_fill_uesful
+            $stmt = $conn->prepare("INSERT INTO tb_fill_uesful (uf_id, uf_topic, uf_score) VALUES (?, ?, ?)");
+            $stmt->execute([$uf_id, $uf_topic, $uf_score]);
+            $fill_uf_id = $conn->lastInsertId();
 
-            header("location: form.php");
-       }
+            // Insert ข้อมูลในตาราง tb_fill_seurity
+            // $stmt = $conn->prepare("INSERT INTO tb_fill_seurity (ss_id, ss_topic, ss_score) VALUES (?, ?, ?)");
+            // $stmt->execute([$ss_id, $ss_topic, $ss_score]);
+            // $fill_ss_id = $conn->lastInsertId();
+
+            // // ถ้าทุกอย่างเรียบร้อย ให้ commit การทำงาน
+            // $conn->commit();
+
+
+            // $tb_fill_efficiercy = $conn->prepare("INSERT INTO tb_fill_satisfied (sati_id, sati_ep2, sati_gender, sati_type, sati_level, fill_ur_id, fill_fun_id, fill_uf_id, fill_ss_id, sati_comment, member_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            // $tb_fill_efficiercy->execute([$sati_id, $sati_name, $sati_gender, $sati_type, $sati_level, $fill_ur_id, $fill_fun_id, $fill_uf_id, $fill_ss_id, $sati_comment, $user_id]);
+
+            unset($_SESSION['sati_gender']);
+            unset($_SESSION['sati_type']);
+            unset($_SESSION['sati_level']);
+            unset($_SESSION['ur_score']);
+            unset($_SESSION['fun_score']);
+            unset($_SESSION['uf_score']);
+            unset($_SESSION['ss_score']);
+
+            // header("location: form.php");
+        }
     } catch (PDOException $e) {
         echo "Registrati3on failed: " . $e->getMessage();
     }
