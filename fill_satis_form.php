@@ -66,13 +66,25 @@ for ($i = 0; $i < 10; $i++) { // Replace 10 with any large number or condition
 }
 
 $sati_gender_ss = isset($_SESSION['sati_gender']) && $_SESSION['sati_gender'] ? $_SESSION['sati_gender'] : '';
-unset($_SESSION['sati_gender']); // Clear the session flag after use
+unset($_SESSION['sati_gender']);
 
 $sati_type_ss = isset($_SESSION['sati_type']) && $_SESSION['sati_type'] ? $_SESSION['sati_type'] : '';
-unset($_SESSION['sati_type']); // Clear the session flag after use
+unset($_SESSION['sati_type']);
 
 $sati_level_ss = isset($_SESSION['sati_level']) && $_SESSION['sati_level'] ? $_SESSION['sati_level'] : '';
-unset($_SESSION['sati_level']); // Clear the session flag after use
+unset($_SESSION['sati_level']);
+
+// $ur_score = isset($_SESSION['ur_score']) && $_SESSION['ur_score'] ? $_SESSION['ur_score'] : $keys;
+// unset($_SESSION['ur_score']);
+
+// $fun_score = isset($_SESSION['fun_score']) && $_SESSION['fun_score'] ? $_SESSION['fun_score'] : $keys;
+// unset($_SESSION['fun_score']);
+
+// $uf_score = isset($_SESSION['uf_score']) && $_SESSION['uf_score'] ? $_SESSION['uf_score'] : $keys;
+// unset($_SESSION['uf_score']);
+
+// $ss_score = isset($_SESSION['ss_score']) && $_SESSION['ss_score'] ? $_SESSION['ss_score'] : $keys;
+// unset($_SESSION['ss_score']);
 
 ?>
 

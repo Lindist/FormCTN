@@ -23,16 +23,16 @@ if (isset($_POST['save'])) {
     $sati_level = $_POST['sati_level'];
     $sati_comment = $_POST['sati_comment'];
 
-    $ur_topic = implode($_POST['ur_topic']);
+    $ur_topic = implode("@", $_POST['ur_topic']);
     $ur_score = implode("@", $_POST['ur_score']);
 
-    $fun_topic = implode($_POST['fun_topic']);
+    $fun_topic = implode("@", $_POST['fun_topic']);
     $fun_score = implode("@", $_POST['fun_score']);
 
-    $uf_topic = implode($_POST['uf_topic']);
+    $uf_topic = implode("@", $_POST['uf_topic']);
     $uf_score = implode("@", $_POST['uf_score']);
 
-    $ss_topic = implode($_POST['ss_topic']);
+    $ss_topic = implode("@", $_POST['ss_topic']);
     $ss_score = implode("@", $_POST['ss_score']);
 
     // // Echo all variables
@@ -107,8 +107,7 @@ if (empty($_POST['sati_gender'])) {
 } else {
     try {
         if (!isset($_SESSION['error'])) {
-            echo "inloop";
-
+            // echo "inloop";
             $conn->beginTransaction();
 
             // Insert ข้อมูลในตาราง tb_fill_user_req
@@ -127,16 +126,16 @@ if (empty($_POST['sati_gender'])) {
             $fill_uf_id = $conn->lastInsertId();
 
             // Insert ข้อมูลในตาราง tb_fill_seurity
-            // $stmt = $conn->prepare("INSERT INTO tb_fill_seurity (ss_id, ss_topic, ss_score) VALUES (?, ?, ?)");
-            // $stmt->execute([$ss_id, $ss_topic, $ss_score]);
-            // $fill_ss_id = $conn->lastInsertId();
+            $stmt = $conn->prepare("INSERT INTO tb_fill_seurity (ss_id, ss_topic, ss_score) VALUES (?, ?, ?)");
+            $stmt->execute([$ss_id, $ss_topic, $ss_score]);
+            $fill_ss_id = $conn->lastInsertId();
 
-            // // ถ้าทุกอย่างเรียบร้อย ให้ commit การทำงาน
-            // $conn->commit();
+            // ถ้าทุกอย่างเรียบร้อย ให้ commit การทำงาน
+            $conn->commit();
 
 
-            // $tb_fill_efficiercy = $conn->prepare("INSERT INTO tb_fill_satisfied (sati_id, sati_ep2, sati_gender, sati_type, sati_level, fill_ur_id, fill_fun_id, fill_uf_id, fill_ss_id, sati_comment, member_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            // $tb_fill_efficiercy->execute([$sati_id, $sati_name, $sati_gender, $sati_type, $sati_level, $fill_ur_id, $fill_fun_id, $fill_uf_id, $fill_ss_id, $sati_comment, $user_id]);
+            $tb_fill_efficiercy = $conn->prepare("INSERT INTO tb_fill_satisfied (sati_id, sati_ep2, sati_gender, sati_type, sati_level, fill_ur_id, fill_fun_id, fill_uf_id, fill_ss_id, sati_comment, member_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $tb_fill_efficiercy->execute([$sati_id, $sati_name, $sati_gender, $sati_type, $sati_level, $fill_ur_id, $fill_fun_id, $fill_uf_id, $fill_ss_id, $sati_comment, $user_id]);
 
             unset($_SESSION['sati_gender']);
             unset($_SESSION['sati_type']);
@@ -146,7 +145,7 @@ if (empty($_POST['sati_gender'])) {
             unset($_SESSION['uf_score']);
             unset($_SESSION['ss_score']);
 
-            // header("location: form.php");
+            header("location: form.php");
         }
     } catch (PDOException $e) {
         echo "Registrati3on failed: " . $e->getMessage();

@@ -96,6 +96,7 @@ $report_compare = isset($_SESSION['report_compare']) && $_SESSION['report_compar
 unset($_SESSION['report_compare']);
 
 $senrity_setfeature = isset($_SESSION['senrity_setfeature']) && $_SESSION['senrity_setfeature'] ? $_SESSION['senrity_setfeature'] : $keys;
+// print_r($senrity_setfeature);
 unset($_SESSION['senrity_setfeature']);
 
 $senrity_result = isset($_SESSION['senrity_result']) && $_SESSION['senrity_result'] ? $_SESSION['senrity_result'] : $keys;
@@ -340,7 +341,7 @@ unset($_SESSION['senrity_compare']);
                                 <td class="border border-gray-300 py-2"><?= $i + 1 ?></td>
                                 <td class="border border-gray-300 py-2"><textarea readonly name="senrity_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"><?= $senrity_feature[$i] ?></textarea></td>
                                 <td class="border border-gray-300 py-2"><textarea name="senrity_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"><?= $senrity_setfeature[$i] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea name="senrity_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"><?= $report_result[$i] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="senrity_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"><?= $senrity_result[$i] ?></textarea></td>
                                 <td class="border border-gray-300 py-2"><textarea name="senrity_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"><?= $senrity_compare[$i] ?></textarea></td>
                             </tr>
                         <?php } ?>
