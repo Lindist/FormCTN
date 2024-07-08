@@ -27,19 +27,19 @@ header{
     top: 0;
 }
 
-header>h1{
+header h1{
     width: 18vw;
     display: flex;
     justify-content: flex-start;
     align-items: center;
 }
 
-header> div >a{
+header div >a{
     text-decoration: none;
     color: #333;
 }
 
-header > .tab_box > button{
+header .tab_box > button{
     width: 20vw;
     font-size: 16px;
     display: flex;
@@ -50,7 +50,7 @@ header > .tab_box > button{
     background-color: #FFF;
     
 }
-header > .tab_box > button > h3{
+header .tab_box > button > h3{
     color: #000;
 
 }
@@ -395,8 +395,17 @@ header .logout img{
         padding-top: 2rem;
         top: 0;
     }
-    header > h1{
+    header h1{
+        width: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    header .responsive{
+        background-color: #FFF;
         width: 100%;
+        position: fixed;
+        top: 0;
         display: flex;
         justify-content: center;
     }
@@ -405,9 +414,32 @@ header .logout img{
         text-decoration: none;
         color: #333;
     }
-    header > .tab_box{
+    header .tab_box{
         display: flex;
         flex-direction: column;
+        position: relative;
+        top: -350px;
+        height: 0px;
+        opacity: 0;
+        z-index: -10;
+        transition: all .3s ease-in-out;
+    }
+    
+    header .tab_box.active{
+        top: 20px;
+        height: auto;
+        opacity: 1;
+        display: flex;
+        flex-direction: column;
+    }
+    header .responsive .caret{
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 6px solid #333;
+        margin-left: 5px;
+        transition: .3s;
     }
     header > .tab_box > button{
         width: 95vw;
@@ -415,7 +447,6 @@ header .logout img{
         padding: 10px 0;
         border: 2px solid #000;
         box-shadow: 2px 2px 0 0 #fff,4px 4px 0 0 #000;
-        /* border-style: ; */
         background-color: #FFF;
         margin-bottom: 1em;
         transition-duration: 200ms;
@@ -465,7 +496,7 @@ header .logout img{
         margin-left: 5px;
         transition: .3s;
     }
-    header .dropdown .caret-rotate{
+    .caret-rotate{
         transform: rotate(180deg);
     }
     header .dropdown .menunavbar{
@@ -506,7 +537,9 @@ header .logout img{
     }
     
     header .logout{
+        z-index: -11;
         width: 100%;
+        margin-top: 0.5rem;
         padding: 0.5rem 2rem;
         display: flex;
         justify-content: center;
