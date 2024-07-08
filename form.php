@@ -36,13 +36,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/formstyle.css">
+    <link rel="stylesheet" href="style/formstyle2.css">
     <link rel="stylesheet" href="style/tabstyle.css">
     <title>From</title>
 </head>
 <body>
     <header>
-    <h1>CTN Phrae</h1>
+        <div class="responsive">
+            <h1>CTN Phrae</h1>
+            <div class="caret"></div>
+        </div>
     <div class="tab_box">
     <button class="tab_btn active" id="tab1"><h3>แบบฟอร์มประเมินประสิทธิภาพ</h3></button>
     <button class="tab_btn" id="tab2"><h3>แบบฟอร์มประเมินความพึงพอใจ</h3></button>
@@ -220,6 +223,7 @@
     </style>
     <script src="script/active.js" type="module"></script>
     <script src="script/dropdown1.js"></script>
+    <script src="script/dropdownforreponsive.js"></script>
     <script src="script/script_add_data.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
