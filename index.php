@@ -22,7 +22,7 @@ unset($_SESSION['show_login']); // Clear the session flag after use
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- <script src="scripts.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
 
@@ -41,7 +41,8 @@ unset($_SESSION['show_login']); // Clear the session flag after use
             margin: 0;
         }
 
-        .popup, .register {
+        .popup,
+        .register {
             display: none;
         }
     </style>
@@ -82,12 +83,16 @@ unset($_SESSION['show_login']); // Clear the session flag after use
             <form action="session/login_db.php" method="POST">
 
                 <?php if (isset($_SESSION['login_error'])) { ?>
-                    <div class="text-center p-3 my-4 bg-red-100 text-red-500 border border-red-300 rounded" role="alert">
-                        <?php
-                        echo $_SESSION['login_error'];
-                        unset($_SESSION['login_error']);
-                        ?>
-                    </div>
+                    <script>
+                        Swal.fire({
+                            title: "คำเตือน",
+                            text: "<?= $_SESSION['login_error'] ?>",
+                            icon: "warning",
+                            confirmButtonColor: "#3085d6",
+                            confirmButtonText: 'ตกลง'
+                        });
+                    </script>
+                    <?php unset($_SESSION['login_error']); ?>
                 <?php } ?>
 
                 <div class="mb-4">
@@ -126,21 +131,33 @@ unset($_SESSION['show_login']); // Clear the session flag after use
             <form action="session/register_db.php" method="POST">
 
                 <?php if (isset($_SESSION['register_success'])) { ?>
-                    <div class="flex justify-center text-center p-3 my-4 bg-green-100 text-green-500 border border-green-300 rounded" role="alert">
-                        <?php
-                        echo $_SESSION['register_success'];
-                        unset($_SESSION['register_success']);
-                        ?>
-                    </div>
+                    <script>
+                        Swal.fire({
+                            title: "สมัครสมาชิกสำเร็จ",
+                            text: "<?= $_SESSION['register_success'] ?>",
+                            icon: "success",
+                            confirmButtonColor: "#16a34a",
+                            confirmButtonText: 'ตกลง'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                openPopup();
+                            }
+                        });
+                    </script>
+                    <?php unset($_SESSION['register_success']); ?>
                 <?php } ?>
 
                 <?php if (isset($_SESSION['register_error'])) { ?>
-                    <div class="text-center p-3 my-4 bg-red-100 text-red-500 border border-red-300 rounded" role="alert">
-                        <?php
-                        echo $_SESSION['register_error'];
-                        unset($_SESSION['register_error']);
-                        ?>
-                    </div>
+                    <script>
+                        Swal.fire({
+                            title: "คำเตือน",
+                            text: "<?= $_SESSION['register_error'] ?>",
+                            icon: "warning",
+                            confirmButtonColor: "#3085d6",
+                            confirmButtonText: 'ตกลง'
+                        });
+                    </script>
+                    <?php unset($_SESSION['register_error']); ?>
                 <?php } ?>
 
                 <div class="mb-4">

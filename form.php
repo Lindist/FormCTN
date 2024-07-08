@@ -1,38 +1,39 @@
 <?php
 
-    session_start();
-    require 'session/config.php';
+session_start();
+require 'session/config.php';
 
-    if (!isset($_SESSION['user_id'])) {
-        header("Location: index.php");
-    } else if (isset($_SESSION['user_id'])) {
-        $user_id = $_SESSION['user_id'];
-    }
+if (!isset($_SESSION['user_id'])) {
+    header("Location: index.php");
+} else if (isset($_SESSION['user_id'])) {
+    $user_id = $_SESSION['user_id'];
+}
 
-    $result = $conn->query("SELECT * FROM tb_efficiercy_form WHERE member_id = '$user_id'");
-    $count = count($result->fetchAll());
-    $result->execute();
-
-
-    $result1 = $conn->query("SELECT * FROM tb_satisfied WHERE member_id = '$user_id'");
-    $count1 = count($result1->fetchAll());
-    $result1->execute();
-
-    $countdropbox = array();
-    $result2 = $conn->query("SELECT * FROM tb_efficiercy_form");
-    array_push($countdropbox,count($result2->fetchAll()));
-    $result2->execute();
+$result = $conn->query("SELECT * FROM tb_efficiercy_form WHERE member_id = '$user_id'");
+$count = count($result->fetchAll());
+$result->execute();
 
 
-    $result3 = $conn->query("SELECT * FROM tb_satisfied");
-    array_push($countdropbox,count($result3->fetchAll()));
-    $result3->execute();
+$result1 = $conn->query("SELECT * FROM tb_satisfied WHERE member_id = '$user_id'");
+$count1 = count($result1->fetchAll());
+$result1->execute();
+
+$countdropbox = array();
+$result2 = $conn->query("SELECT * FROM tb_efficiercy_form");
+array_push($countdropbox, count($result2->fetchAll()));
+$result2->execute();
+
+
+$result3 = $conn->query("SELECT * FROM tb_satisfied");
+array_push($countdropbox, count($result3->fetchAll()));
+$result3->execute();
 
 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,47 +41,71 @@
     <link rel="stylesheet" href="style/tabstyle.css">
     <title>From</title>
 </head>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <body>
+    <?php if (isset($_SESSION['login_success'])) { ?>
+        <script>
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "<?= $_SESSION['login_success'] ?>",
+                showConfirmButton: false,
+                timer: 1000
+            });
+        </script>
+        <?php unset($_SESSION['login_success']); ?>
+    <?php } ?>
     <header>
         <div class="responsive">
             <h1>CTN Phrae</h1>
             <div class="caret"></div>
         </div>
-    <div class="tab_box">
-    <button class="tab_btn active" id="tab1"><h3>แบบฟอร์มประเมินประสิทธิภาพ</h3></button>
-    <button class="tab_btn" id="tab2"><h3>แบบฟอร์มประเมินความพึงพอใจ</h3></button>
-    <div class="dropdown">
-        <div class="select">
-            <span class="selected"><h3>เลือกฟอร์มสำหรับกรอก</h3></span>
-            <div class="caret"></div>
-        </div>
-        <ul class="menunavbar">
-            <li class=""><button class="tab_btn dropline" id="tab3"><h4>ฟอร์มประเมินประสิทธิภาพ</h4></button></li>
-            <li class=""><button class="tab_btn dropline" id="tab3"><h4>ฟอร์มประเมินความพึงพอใจ</h4></button></li>
-        </ul>
-        <div class="linedropdown"></div>
-    </div>
+        <div class="tab_box">
+            <button class="tab_btn active" id="tab1">
+                <h3>แบบฟอร์มประเมินประสิทธิภาพ</h3>
+            </button>
+            <button class="tab_btn" id="tab2">
+                <h3>แบบฟอร์มประเมินความพึงพอใจ</h3>
+            </button>
+            <div class="dropdown">
+                <div class="select">
+                    <span class="selected">
+                        <h3>เลือกฟอร์มสำหรับกรอก</h3>
+                    </span>
+                    <div class="caret"></div>
+                </div>
+                <ul class="menunavbar">
+                    <li class=""><button class="tab_btn dropline" id="tab3">
+                            <h4>ฟอร์มประเมินประสิทธิภาพ</h4>
+                        </button></li>
+                    <li class=""><button class="tab_btn dropline" id="tab3">
+                            <h4>ฟอร์มประเมินความพึงพอใจ</h4>
+                        </button></li>
+                </ul>
+                <div class="linedropdown"></div>
+            </div>
 
-    <div class="line"></div>
-    </div>
-    <div class="logout">
-        <a onclick="logout(event, 'session/logout.php')" class="logout">ออกจากระบบ <img src="picture/logout.png"></a>
-    </div>
+            <div class="line"></div>
+        </div>
+        <div class="logout">
+            <a onclick="logout(event, 'session/logout.php')" class="logout">ออกจากระบบ <img src="picture/logout.png"></a>
+        </div>
     </header>
     <div class="content_box active">
-    <div class="container"> 
-        <div class="btnshow">
-            <a href="#" class="adds" id="addFormperformance">เพิ่มแบบสอบถาม</a>
-            <a href="#" class="adds" id="check-edit">ตรวจสอบและแก้ไข</a>  
-        </div>
-        <div class="form-box" id="adddata"> 
-    <?php if($count > 0){ ?>
-            <script type="text/javascript">
-                const showform = document.querySelectorAll('#adddata');
-                showform[0].classList.remove('form-box');
-                showform[0].classList.add('grid');
-                showform[0].insertAdjacentHTML("beforeend",`
-                <?php for($c = 1;$c <= $count;$c++){ ?>
+        <div class="container">
+            <div class="btnshow">
+                <a href="#" class="adds" id="addFormperformance">เพิ่มแบบสอบถาม</a>
+                <a href="#" class="adds" id="check-edit">ตรวจสอบและแก้ไข</a>
+            </div>
+            <div class="form-box" id="adddata">
+                <?php if ($count > 0) { ?>
+                    <script type="text/javascript">
+                        const showform = document.querySelectorAll('#adddata');
+                        showform[0].classList.remove('form-box');
+                        showform[0].classList.add('grid');
+                        showform[0].insertAdjacentHTML("beforeend", `
+                <?php for ($c = 1; $c <= $count; $c++) { ?>
                         <?php $row = $result->fetch(PDO::FETCH_ASSOC); ?>
                         <div class='container120'>
                         <div class='subform'>
@@ -93,31 +118,30 @@
                         </div>
                         </div>
                         </div>
-                <?php } ?>`
-                );
-            </script>
-        <?php }else{ ?>
-            <img class='disimg' src="picture/empty-folder.png">
-            <h3 class='disimg'>ไม่มีข้อมูลแบบสอบถาม</h3>
-        <?php } ?>
-        </div>          
+                <?php } ?>`);
+                    </script>
+                <?php } else { ?>
+                    <img class='disimg' src="picture/empty-folder.png">
+                    <h3 class='disimg'>ไม่มีข้อมูลแบบสอบถาม</h3>
+                <?php } ?>
+            </div>
         </div>
 
     </div>
     <div class="content_box">
-    <div class="container"> 
-        <div class="btnshow">
-            <a href="#" class="adds" id="addFormsatisfy">เพิ่มแบบสอบถาม</a>
-            <a href="#" class="adds" id="check-edit">ตรวจสอบและแก้ไข</a>  
-        </div>
-        <div class="form-box" id="adddata"> 
-    <?php if($count1 > 0){ ?>
-            <script type="text/javascript">
-                const showform1 = document.querySelectorAll('#adddata');
-                showform1[1].classList.remove('form-box');
-                showform1[1].classList.add('grid');
-                showform1[1].insertAdjacentHTML("beforeend",`
-                <?php for($c1 = 1;$c1 <= $count1;$c1++){ ?>
+        <div class="container">
+            <div class="btnshow">
+                <a href="#" class="adds" id="addFormsatisfy">เพิ่มแบบสอบถาม</a>
+                <a href="#" class="adds" id="check-edit">ตรวจสอบและแก้ไข</a>
+            </div>
+            <div class="form-box" id="adddata">
+                <?php if ($count1 > 0) { ?>
+                    <script type="text/javascript">
+                        const showform1 = document.querySelectorAll('#adddata');
+                        showform1[1].classList.remove('form-box');
+                        showform1[1].classList.add('grid');
+                        showform1[1].insertAdjacentHTML("beforeend", `
+                <?php for ($c1 = 1; $c1 <= $count1; $c1++) { ?>
                         <?php $row5 = $result1->fetch(PDO::FETCH_ASSOC); ?>
                         <div class='container120'>
                         <div class='subform'>
@@ -130,27 +154,26 @@
                         </div>
                         </div>
                         </div>
-                <?php } ?>`
-                );
-            </script>
-        <?php }else{ ?>
-            <img class='disimg' src="picture/empty-folder.png">
-            <h3 class='disimg'>ไม่มีข้อมูลแบบสอบถาม</h3>
-        <?php } ?>
-        </div>
+                <?php } ?>`);
+                    </script>
+                <?php } else { ?>
+                    <img class='disimg' src="picture/empty-folder.png">
+                    <h3 class='disimg'>ไม่มีข้อมูลแบบสอบถาม</h3>
+                <?php } ?>
+            </div>
         </div>
 
     </div>
     <div class="content_box">
-    <div class="container" style="margin-top: 3em;"> 
-        <div class="form-box" id="adddata"> 
-    <?php if($countdropbox[0] > 0){ ?>
-            <script type="text/javascript">
-                const showform2 = document.querySelectorAll('#adddata');
-                showform2[2].classList.remove('form-box');
-                showform2[2].classList.add('grid');
-                showform2[2].insertAdjacentHTML("beforeend",`
-                <?php for($c = 1;$c <= $countdropbox[0];$c++){ ?>
+        <div class="container" style="margin-top: 3em;">
+            <div class="form-box" id="adddata">
+                <?php if ($countdropbox[0] > 0) { ?>
+                    <script type="text/javascript">
+                        const showform2 = document.querySelectorAll('#adddata');
+                        showform2[2].classList.remove('form-box');
+                        showform2[2].classList.add('grid');
+                        showform2[2].insertAdjacentHTML("beforeend", `
+                <?php for ($c = 1; $c <= $countdropbox[0]; $c++) { ?>
                         <?php $row6 = $result2->fetch(PDO::FETCH_ASSOC); ?>
                         <div class='container120'>
                         <div class='subform'>
@@ -161,27 +184,26 @@
                         </div>
                         </div>
                         </div>
-                <?php } ?>`
-                );
-            </script>
-        <?php }else{ ?>
-            <img class='disimg' src="picture/empty-folder.png">
-            <h3 class='disimg'>ไม่มีข้อมูลแบบสอบถาม</h3>
-        <?php } ?>
-        </div>          
+                <?php } ?>`);
+                    </script>
+                <?php } else { ?>
+                    <img class='disimg' src="picture/empty-folder.png">
+                    <h3 class='disimg'>ไม่มีข้อมูลแบบสอบถาม</h3>
+                <?php } ?>
+            </div>
         </div>
 
     </div>
     <div class="content_box">
-    <div class="container" style="margin-top: 3em;"> 
-        <div class="form-box" id="adddata"> 
-    <?php if($countdropbox[1] > 0){ ?>
-            <script type="text/javascript">
-                const showform3 = document.querySelectorAll('#adddata');
-                showform3[3].classList.remove('form-box');
-                showform3[3].classList.add('grid');
-                showform3[3].insertAdjacentHTML("beforeend",`
-                <?php for($c1 = 1;$c1 <= $countdropbox[1];$c1++){ ?>
+        <div class="container" style="margin-top: 3em;">
+            <div class="form-box" id="adddata">
+                <?php if ($countdropbox[1] > 0) { ?>
+                    <script type="text/javascript">
+                        const showform3 = document.querySelectorAll('#adddata');
+                        showform3[3].classList.remove('form-box');
+                        showform3[3].classList.add('grid');
+                        showform3[3].insertAdjacentHTML("beforeend", `
+                <?php for ($c1 = 1; $c1 <= $countdropbox[1]; $c1++) { ?>
                         <?php $row7 = $result3->fetch(PDO::FETCH_ASSOC); ?>
                         <div class='container120'>
                         <div class='subform'>
@@ -192,30 +214,32 @@
                         </div>
                         </div>
                         </div>
-                <?php } ?>`
-                );
-            </script>
-        <?php }else{ ?>
-            <img class='disimg' src="picture/empty-folder.png">
-            <h3 class='disimg'>ไม่มีข้อมูลแบบสอบถาม</h3>
-        <?php } ?>
-        </div>
+                <?php } ?>`);
+                    </script>
+                <?php } else { ?>
+                    <img class='disimg' src="picture/empty-folder.png">
+                    <h3 class='disimg'>ไม่มีข้อมูลแบบสอบถาม</h3>
+                <?php } ?>
+            </div>
         </div>
 
     </div>
     <style>
-        .subform{
+        .subform {
             overflow-wrap: break-word;
         }
-        .subform.columnData > .text{
+
+        .subform.columnData>.text {
             overflow-wrap: break-word;
         }
-        .subform > h2{
+
+        .subform>h2 {
             text-align: center;
             width: 250px;
             overflow-wrap: break-word;
         }
-        .subform.columnData > h2{
+
+        .subform.columnData>h2 {
             text-align: center;
             width: 250px;
             overflow-wrap: break-word;
@@ -225,7 +249,6 @@
     <script src="script/dropdown1.js"></script>
     <script src="script/dropdownforreponsive.js"></script>
     <script src="script/script_add_data.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         logout = (event, url) => {
             Swal.fire({
@@ -244,4 +267,5 @@
         };
     </script>
 </body>
+
 </html>
