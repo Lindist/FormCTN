@@ -51,10 +51,39 @@ unset($_SESSION['show_login']); // Clear the session flag after use
 
 <body class="bg-blue-600">
 
-    <div class="bg-blue-50">
-        <nav class="flex justify-between mx-4 my-4 items-center">
+    <div>
+        <nav class="bg-white border-b border-gray-200 fixed top-0 left-0 right-0 z-50">
+            <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+                <!-- Logo and brand -->
+                <a href="https://www.ctnphrae.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
+                    <img src="https://i.imgur.com/m0H7jcN.png" class="h-8" alt="CTN Logo" />
+                    <span class="text-2xl font-semibold">CTN Phrae</span>
+                </a>
+                <!-- Mobile menu button -->
+                <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-8 h-8 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-default" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+                <!-- Desktop menu -->
+                <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+                    <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-white md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">
+                        <li>
+                            <a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-blue-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0" onclick="openRegister()">
+                                สมัครสมาชิก <i class="fa-solid fa-right-to-bracket"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-blue-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0" onclick="openPopup()">
+                                เข้าสู่ระบบ <i class="fa-solid fa-right-to-bracket ml-1"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- <nav class="flex justify-between mx-4 my-4 items-center">
             <div class="flex items-center text-3xl font-bold">
-                <img src="https://i.imgur.com/m0H7jcN.png" class="w-6 h-6 mr-1">
+                <img src="https://i.imgur.com/m0H7jcN.png" class="w-8 h-8 mr-1">
                 CTN Phrae
             </div>
             <ul class="flex space-x-3 sm:space-x-5">
@@ -69,7 +98,7 @@ unset($_SESSION['show_login']); // Clear the session flag after use
                     </a>
                 </li>
             </ul>
-        </nav>
+        </nav> -->
     </div>
 
     <!-- Login Popup -->
@@ -200,7 +229,7 @@ unset($_SESSION['show_login']); // Clear the session flag after use
         </div>
     </div>
 
-    <div class="flex-grow flex items-center justify-center mx-6 md:mx-16">
+    <div class="pt-16 flex-grow flex items-center justify-center mx-6 md:mx-16">
         <div class="block lg:flex items-center max-w-screen-xl">
             <div class="w-auto lg:w-1/2 xl:w-[600px] mx-auto lg:text-left lg:mr-8">
                 <p class="text-white text-5xl sm:text-6xl">ระบบแบบสอบถามออนไลน์</p>
@@ -220,21 +249,30 @@ unset($_SESSION['show_login']); // Clear the session flag after use
     <script>
         const loginPopup = document.getElementById('loginPopup');
         const registerPopup = document.getElementById('registerPopup');
+        const toggleButton = document.querySelector('[data-collapse-toggle="navbar-default"]');
+        const navbarMenu = document.getElementById('navbar-default');
 
         function openPopup() {
             loginPopup.classList.remove("hidden");
             registerPopup.classList.add("hidden");
+            navbarMenu.classList.add('hidden');
         }
 
         function closePopup() {
             loginPopup.classList.add("hidden");
             registerPopup.classList.add("hidden");
+            navbarMenu.classList.add('hidden');
         }
 
         function openRegister() {
             registerPopup.classList.remove("hidden");
             loginPopup.classList.add("hidden");
+            navbarMenu.classList.add('hidden');
         }
+
+        toggleButton.addEventListener('click', function() {
+            navbarMenu.classList.toggle('hidden');
+        });
 
         // window.onclick = function(event) {
         //     if (event.target === popup || event.target === register) {
