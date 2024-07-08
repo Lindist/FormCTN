@@ -267,11 +267,11 @@ unset($_SESSION['sati_level']);
                                 <tr class='odd:bg-white even:bg-gray-100'>
                                     <td class='border border-gray-300 py-2 text-center'><?= $i + 1 ?></td>
                                     <td class="border border-gray-300 py-2"><textarea readonly name="ur_topic[]" class="w-full h-16 border border-gray-300 rounded px-2 py-1" rows="3"><?= $ur_topic[$i] ?></textarea></td>
-                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-full h-10 flex items-center" type="radio" name="ur_score[<?= $i ?>]" value="พึงพอใจมากที่สุด"></td>
-                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-full h-10 flex items-center" type="radio" name="ur_score[<?= $i ?>]" value="พึงพอใจมาก"></td>
-                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-full h-10 flex items-center" type="radio" name="ur_score[<?= $i ?>]" value="พึงพอใจปานกลาง"></td>
-                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-full h-10 flex items-center" type="radio" name="ur_score[<?= $i ?>]" value="พึงพอใจน้อย"></td>
-                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-full h-10 flex items-center" type="radio" name="ur_score[<?= $i ?>]" value="พึงพอใจน้อยที่สุด"></td>
+                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-8 sm:w-full h-10 flex items-center" type="radio" name="ur_score[<?= $i ?>]" value="พึงพอใจมากที่สุด"></td>
+                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-8 sm:w-full h-10 flex items-center" type="radio" name="ur_score[<?= $i ?>]" value="พึงพอใจมาก"></td>
+                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-8 sm:w-full h-10 flex items-center" type="radio" name="ur_score[<?= $i ?>]" value="พึงพอใจปานกลาง"></td>
+                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-8 sm:w-full h-10 flex items-center" type="radio" name="ur_score[<?= $i ?>]" value="พึงพอใจน้อย"></td>
+                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-8 sm:w-full h-10 flex items-center" type="radio" name="ur_score[<?= $i ?>]" value="พึงพอใจน้อยที่สุด"></td>
                                 </tr>
                             <?php } ?>
                         </tbody>
@@ -301,11 +301,11 @@ unset($_SESSION['sati_level']);
                                 <tr class='odd:bg-white even:bg-gray-100'>
                                     <td class='border border-gray-300 py-2 text-center'><?= $i + 1 ?></td>
                                     <td class="border border-gray-300 py-2"><textarea readonly name="fun_topic[]" class="w-full h-16 border border-gray-300 rounded px-2 py-1" rows="3"><?= $fun_topic[$i] ?></textarea></td>
-                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-full h-10 flex items-center" type="radio" name="fun_score[<?= $i ?>]" value="พึงพอใจมากที่สุด"></td>
-                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-full h-10 flex items-center" type="radio" name="fun_score[<?= $i ?>]" value="พึงพอใจมาก"></td>
-                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-full h-10 flex items-center" type="radio" name="fun_score[<?= $i ?>]" value="พึงพอใจปานกลาง"></td>
-                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-full h-10 flex items-center" type="radio" name="fun_score[<?= $i ?>]" value="พึงพอใจน้อย"></td>
-                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-full h-10 flex items-center" type="radio" name="fun_score[<?= $i ?>]" value="พึงพอใจน้อยที่สุด"></td>
+                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-8 sm:w-full h-10 flex items-center" type="radio" name="fun_score[<?= $i ?>]" value="พึงพอใจมากที่สุด"></td>
+                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-8 sm:w-full h-10 flex items-center" type="radio" name="fun_score[<?= $i ?>]" value="พึงพอใจมาก"></td>
+                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-8 sm:w-full h-10 flex items-center" type="radio" name="fun_score[<?= $i ?>]" value="พึงพอใจปานกลาง"></td>
+                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-8 sm:w-full h-10 flex items-center" type="radio" name="fun_score[<?= $i ?>]" value="พึงพอใจน้อย"></td>
+                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-8 sm:w-full h-10 flex items-center" type="radio" name="fun_score[<?= $i ?>]" value="พึงพอใจน้อยที่สุด"></td>
                                 </tr>
                             <?php } ?>
                         </tbody>
@@ -335,11 +335,11 @@ unset($_SESSION['sati_level']);
                                 <tr class='odd:bg-white even:bg-gray-100'>
                                     <td class='border border-gray-300 py-2 text-center'><?= $i + 1 ?></td>
                                     <td class="border border-gray-300 py-2"><textarea readonly name="uf_topic[]" class="w-full h-16 border border-gray-300 rounded px-2 py-1" rows="3"><?= $uf_topic[$i] ?></textarea></td>
-                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-full h-10 flex items-center" type="radio" name="uf_score[<?= $i ?>]" value="พึงพอใจมากที่สุด"></td>
-                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-full h-10 flex items-center" type="radio" name="uf_score[<?= $i ?>]" value="พึงพอใจมาก"></td>
-                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-full h-10 flex items-center" type="radio" name="uf_score[<?= $i ?>]" value="พึงพอใจปานกลาง"></td>
-                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-full h-10 flex items-center" type="radio" name="uf_score[<?= $i ?>]" value="พึงพอใจน้อย"></td>
-                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-full h-10 flex items-center" type="radio" name="uf_score[<?= $i ?>]" value="พึงพอใจน้อยที่สุด"></td>
+                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-8 sm:w-full h-10 flex items-center" type="radio" name="uf_score[<?= $i ?>]" value="พึงพอใจมากที่สุด"></td>
+                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-8 sm:w-full h-10 flex items-center" type="radio" name="uf_score[<?= $i ?>]" value="พึงพอใจมาก"></td>
+                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-8 sm:w-full h-10 flex items-center" type="radio" name="uf_score[<?= $i ?>]" value="พึงพอใจปานกลาง"></td>
+                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-8 sm:w-full h-10 flex items-center" type="radio" name="uf_score[<?= $i ?>]" value="พึงพอใจน้อย"></td>
+                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-8 sm:w-full h-10 flex items-center" type="radio" name="uf_score[<?= $i ?>]" value="พึงพอใจน้อยที่สุด"></td>
                                 </tr>
                             <?php } ?>
                         </tbody>
@@ -369,11 +369,11 @@ unset($_SESSION['sati_level']);
                                 <tr class='odd:bg-white even:bg-gray-100'>
                                     <td class='border border-gray-300 py-2 text-center'><?= $i + 1 ?></td>
                                     <td class="border border-gray-300 py-2"><textarea readonly name="ss_topic[]" class="w-full h-16 border border-gray-300 rounded px-2 py-1" rows="3"><?= $ss_topic[$i] ?></textarea></td>
-                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-full h-10 flex items-center" type="radio" name="ss_score[<?= $i ?>]" value="พึงพอใจมากที่สุด"></td>
-                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-full h-10 flex items-center" type="radio" name="ss_score[<?= $i ?>]" value="พึงพอใจมาก"></td>
-                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-full h-10 flex items-center" type="radio" name="ss_score[<?= $i ?>]" value="พึงพอใจปานกลาง"></td>
-                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-full h-10 flex items-center" type="radio" name="ss_score[<?= $i ?>]" value="พึงพอใจน้อย"></td>
-                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-full h-10 flex items-center" type="radio" name="ss_score[<?= $i ?>]" value="พึงพอใจน้อยที่สุด"></td>
+                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-8 sm:w-full h-10 flex items-center" type="radio" name="ss_score[<?= $i ?>]" value="พึงพอใจมากที่สุด"></td>
+                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-8 sm:w-full h-10 flex items-center" type="radio" name="ss_score[<?= $i ?>]" value="พึงพอใจมาก"></td>
+                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-8 sm:w-full h-10 flex items-center" type="radio" name="ss_score[<?= $i ?>]" value="พึงพอใจปานกลาง"></td>
+                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-8 sm:w-full h-10 flex items-center" type="radio" name="ss_score[<?= $i ?>]" value="พึงพอใจน้อย"></td>
+                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-8 sm:w-full h-10 flex items-center" type="radio" name="ss_score[<?= $i ?>]" value="พึงพอใจน้อยที่สุด"></td>
                                 </tr>
                             <?php } ?>
                         </tbody>
