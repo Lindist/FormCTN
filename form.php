@@ -61,7 +61,7 @@
     <div class="line"></div>
     </div>
     <div class="logout">
-        <a href="session/logout.php" class="logout">ออกจากระบบ <img src="picture/logout.png"></a>
+        <a onclick="logout(event, 'session/logout.php')" class="logout">ออกจากระบบ <img src="picture/logout.png"></a>
     </div>
     </header>
     <div class="content_box active">
@@ -221,5 +221,23 @@
     <script src="script/active.js" type="module"></script>
     <script src="script/dropdown1.js"></script>
     <script src="script/script_add_data.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        logout = (event, url) => {
+            Swal.fire({
+                title: 'คุณต้องการออกจากระบบหรือไม่?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'ใช่',
+                cancelButtonText: 'ไม่',
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = url;
+                }
+            });
+        };
+    </script>
 </body>
 </html>
