@@ -19,7 +19,7 @@ if (isset($_POST['update'])) {
     $sati_gender = implode(",", $_POST['sati_gender']);
     $sati_type = implode(",", $_POST['sati_type']);
     $sati_level = implode(",", $_POST['sati_level']);
-    $sati_comment = $_POST['sati_comment'];
+    // $sati_comment = $_POST['sati_comment'];
     
     $ur_topic = implode("@", $_POST['ur_topic']);
     $fun_topic = implode("@", $_POST['fun_topic']);
@@ -76,8 +76,8 @@ if (empty($sati_ep2)) {
             $tb_seurity = $conn->prepare("UPDATE tb_seurity SET ss_topic = ? WHERE ss_id = ?");
             $tb_seurity->execute([$ss_topic, $ss_id]);
 
-            $tb_satisfied = $conn->prepare("UPDATE tb_satisfied SET sati_ep2 = ?, sati_gender = ?, sati_level = ?, sati_type = ?, sati_comment = ? WHERE sati_id = ?");
-            $tb_satisfied->execute([$sati_ep2, $sati_gender, $sati_level, $sati_type, $sati_comment, $sati_id]);
+            $tb_satisfied = $conn->prepare("UPDATE tb_satisfied SET sati_ep2 = ?, sati_gender = ?, sati_level = ?, sati_type = ? WHERE sati_id = ?");
+            $tb_satisfied->execute([$sati_ep2, $sati_gender, $sati_level, $sati_type, $sati_id]);
 
             header("location: form.php");
 
