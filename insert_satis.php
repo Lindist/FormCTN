@@ -34,7 +34,7 @@ if (isset($_POST['save'])) {
     $sati_gender = implode(",", $_POST['sati_gender']);
     $sati_type = implode(",", $_POST['sati_type']);
     $sati_level = implode(",", $_POST['sati_level']);
-    $sati_comment = $_POST['sati_comment'];
+    // $sati_comment = $_POST['sati_comment'];
     
     $ur_topic = implode("@", $_POST['ur_topic']);
     $fun_topic = implode("@", $_POST['fun_topic']);
@@ -136,8 +136,8 @@ if (empty($sati_ep2)) {
             $sql_tb_seurity->execute();
             $tb_seurity = $sql_tb_seurity->fetch();
 
-            $tb_satisfied = $conn->prepare("INSERT INTO tb_satisfied(sati_ep2, sati_gender, sati_level, sati_type, sati_comment, ur_id, fun_id, uf_id, ss_id,member_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            $tb_satisfied->execute([$sati_ep2, $sati_gender, $sati_level, $sati_type, $sati_comment, $tb_user_req['ur_id'], $tb_function['fun_id'], $tb_uesful['uf_id'], $tb_seurity['ss_id'],$user_id]);
+            $tb_satisfied = $conn->prepare("INSERT INTO tb_satisfied(sati_ep2, sati_gender, sati_level, sati_type, ur_id, fun_id, uf_id, ss_id, member_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $tb_satisfied->execute([$sati_ep2, $sati_gender, $sati_level, $sati_type, $tb_user_req['ur_id'], $tb_function['fun_id'], $tb_uesful['uf_id'], $tb_seurity['ss_id'],$user_id]);
 
             header("location: form.php");
 

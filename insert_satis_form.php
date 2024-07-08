@@ -56,6 +56,7 @@ unset($_SESSION['ss_topic']); // Clear the session flag after use
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
 
@@ -78,13 +79,18 @@ unset($_SESSION['ss_topic']); // Clear the session flag after use
             <h1 class="text-center text-3xl mb-5">แบบฟอร์มประเมินความพึงพอใจ</h1>
             <input type="hidden" name="class" id="class" value="<?php echo $class; ?>">
             <input type="hidden" name="class1" id="class1" value="<?php echo $class1; ?>">
+            
             <?php if (isset($_SESSION['error'])) { ?>
-                <div class="text-center mb-4 p-3 mt-10 bg-yellow-100 text-yellow-800 border border-yellow-300 rounded">
-                    <?php
-                    echo $_SESSION['error'];
-                    unset($_SESSION['error']);
-                    ?>
-                </div>
+                <script>
+                    Swal.fire({
+                        title: "คำเตือน",
+                        text: "<?= $_SESSION['error'] ?>",
+                        icon: "warning",
+                        confirmButtonColor: "#3085d6",
+                        confirmButtonText: 'ตกลง'
+                    });
+                </script>
+                <?php unset($_SESSION['error']); ?>
             <?php } ?>
 
             <!-- Title_Content -->
