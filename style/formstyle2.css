@@ -28,7 +28,7 @@ header{
 }
 
 header h1{
-    width: 18vw;
+    width: 15vw;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -134,13 +134,13 @@ header div{
 }
 header .logout{
     width: 20vw;
-    padding: 0 2rem;
+    padding: 0 0.5rem 0 1rem;
     display: flex;
     justify-content: flex-end;
     align-items: center;
 }
 header .logout a{
-    padding: 0 2rem;
+    padding: 0 0.5rem 0 1rem;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -149,7 +149,6 @@ header .logout a{
 header .logout img{
     width: 25px;
     height: 25px;
-    margin-left: 0.5rem;
 }
 .container > .btnshow{
     display: flex;
