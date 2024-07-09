@@ -130,17 +130,17 @@ if (isset($_GET['id'])) {
                 <!-- Gender -->
                 <hr class="my-3">
 
-                <div class="grid grid-cols-2 mb-4">
-                    <label class="block text-center mb-1">เพศ</label>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                    <label class="block text-center mb-1 sm:mb-0 sm:self-center">เพศ</label>
                     <div class="mx-2">
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="genders[]" id="" value="<?= $gender[0] ?>">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="genders[]" id="" value="<?= $gender[0] ?>">
                         </div>
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="genders[]" id="" value="<?= $gender[1] ?>">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="genders[]" id="" value="<?= $gender[1] ?>">
                         </div>
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="genders[]" id="" value="<?= $gender[2] ?>">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="genders[]" id="" value="<?= $gender[2] ?>">
                         </div>
                         <div class="flex items-center">
                             <p class="text-gray-400">***ไม่จำเป็นต้องกรอกครบ***</p>
@@ -153,23 +153,23 @@ if (isset($_GET['id'])) {
 
                 <hr class="my-3">
 
-                <div class="grid grid-cols-2 mb-4">
-                    <label class="block text-center mb-1">ประเภทผู้ใช้</label>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                    <label class="block text-center mb-1 sm:mb-0 sm:self-center">ประเภทผู้ใช้</label>
                     <div class="mx-2">
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="kinduser[]" id="" value="<?= $type_m[0] ?>">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="kinduser[]" id="" value="<?= $type_m[0] ?>">
                         </div>
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="kinduser[]" id="" value="<?= $type_m[1] ?>">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="kinduser[]" id="" value="<?= $type_m[1] ?>">
                         </div>
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="kinduser[]" id="" value="<?= $type_m[2] ?>">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="kinduser[]" id="" value="<?= $type_m[2] ?>">
                         </div>
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="kinduser[]" id="" value="<?= $type_m[3] ?>">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="kinduser[]" id="" value="<?= $type_m[3] ?>">
                         </div>
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="kinduser[]" id="" value="<?= $type_m[4] ?>">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="kinduser[]" id="" value="<?= $type_m[4] ?>">
                         </div>
                         <div class="flex items-center">
                             <p class="text-gray-400">***ไม่จำเป็นต้องกรอกครบ***</p>
@@ -181,29 +181,29 @@ if (isset($_GET['id'])) {
                 <!-- Education Level -->
                 <hr class="my-3">
 
-                <div class="grid grid-cols-2 mb-4">
-                    <label class="block text-center mb-1">ระดับการศึกษา</label>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                    <label class="block text-center mb-1 sm:mb-0 sm:self-center">ระดับการศึกษา</label>
                     <div class="mx-2">
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="le_education[]" id="" value="<?= $edu[0] ?>">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="le_education[]" id="" value="<?= $edu[0] ?>">
                         </div>
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="le_education[]" id="" value="<?= $edu[1] ?>">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="le_education[]" id="" value="<?= $edu[1] ?>">
                         </div>
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="le_education[]" id="" value="<?= $edu[2] ?>">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="le_education[]" id="" value="<?= $edu[2] ?>">
                         </div>
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="le_education[]" id="" value="<?= $edu[3] ?>">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="le_education[]" id="" value="<?= $edu[3] ?>">
                         </div>
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="le_education[]" id="" value="<?= $edu[4] ?>">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="le_education[]" id="" value="<?= $edu[4] ?>">
                         </div>
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="le_education[]" id="" value="<?= $edu[5] ?>">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="le_education[]" id="" value="<?= $edu[5] ?>">
                         </div>
                         <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3" name="le_education[]" id="" value="<?= $edu[6] ?>">
+                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="le_education[]" id="" value="<?= $edu[6] ?>">
                         </div>
                         <div class="flex items-center">
                             <p class="text-gray-400">***ไม่จำเป็นต้องกรอกครบ***</p>
@@ -223,15 +223,15 @@ if (isset($_GET['id'])) {
                 <!-- Section 1 -->
                 <label for="" class="block text-lg my-5"><label class="text-lg font-bold mb-2">ด้านที่ 1 </label><?= $input_name ?></label>
 
-
-                <table class="w-full border border-gray-300 text-center my-3">
+                <div class="overflow-x-auto my-2">
+                <table class="w-full border border-gray-300 text-center">
                     <thead>
                         <tr class="bg-gray-200">
-                            <th scope="col" class="border border-gray-300 py-2">ที่</th>
-                            <th scope="col" class="border border-gray-300 py-2">คุณสมบัติด้านเทคนิค</th>
-                            <th scope="col" class="border border-gray-300 py-2">คุณสมบัติที่ตั้งไว้</th>
-                            <th scope="col" class="border border-gray-300 py-2">คุณสมบัติที่ทำได้</th>
-                            <th scope="col" class="border border-gray-300 py-2">ผลการเปรียบเทียบ</th>
+                            <th scope="col" class="border border-gray-300 p-2">ที่</th>
+                            <th scope="col" class="border border-gray-300 p-2">คุณสมบัติด้านเทคนิค</th>
+                            <th scope="col" class="border border-gray-300 p-2">คุณสมบัติที่ตั้งไว้</th>
+                            <th scope="col" class="border border-gray-300 p-2">คุณสมบัติที่ทำได้</th>
+                            <th scope="col" class="border border-gray-300 p-2">ผลการเปรียบเทียบ</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -240,29 +240,32 @@ if (isset($_GET['id'])) {
                             $class = ($i == 0 || (!empty($input_feature[$i]))) ? '' : 'hidden';
                             echo "<tr id='section1tr$i' class='$class odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700'>
                                 <td class='border border-gray-300 py-2'>" . ($i + 1) . "</td>
-                                <td class='border border-gray-300 py-2'><textarea name='input_feature[]' id='section1tr{$i}td' class='w-full h-40 border border-gray-300 rounded px-2 py-1>" . htmlspecialchars($input_feature[$i] ?? '') . "</textarea></td>
-                                <td class='border border-gray-300 py-2'><textarea disabled name='input_setfeature[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1></textarea></td>
-                                <td class='border border-gray-300 py-2'><textarea disabled name='input_result[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1></textarea></td>
-                                <td class='border border-gray-300 py-2'><textarea disabled name='input_compare[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1></textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea name='input_feature[]' id='section1tr{$i}td' class='border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center'>" . htmlspecialchars($input_feature[$i] ?? '') . "</textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea disabled name='input_setfeature[]' class='border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center'></textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea disabled name='input_result[]' class='border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center'></textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea disabled name='input_compare[]' class='border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center'></textarea></td>
                             </tr>";
                         }
                         ?>
                     </tbody>
                 </table>
+                </div>
+
                 <button type="button" id="section1addbtn" onclick="section1add()" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">เพิ่ม</button>
                 <button type="button" id="section1removebtn" onclick="section1remove()" class="hidden bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">ลบ</button>
 
                 <!-- Section 2 -->
                 <label for="" class="block text-lg my-5"><label class="text-lg font-bold mb-2">ด้านที่ 2 </label><?= $process_name ?></label>
 
-                <table class="w-full border border-gray-300 text-center my-3">
+                <div class="overflow-x-auto my-2">
+                <table class="w-full border border-gray-300 text-center">
                     <thead>
                         <tr class="bg-gray-200">
-                            <th scope="col" class="border border-gray-300 py-2">ที่</th>
-                            <th scope="col" class="border border-gray-300 py-2">คุณสมบัติด้านเทคนิค</th>
-                            <th scope="col" class="border border-gray-300 py-2">คุณสมบัติที่ตั้งไว้</th>
-                            <th scope="col" class="border border-gray-300 py-2">คุณสมบัติที่ทำได้</th>
-                            <th scope="col" class="border border-gray-300 py-2">ผลการเปรียบเทียบ</th>
+                            <th scope="col" class="border border-gray-300 p-2">ที่</th>
+                            <th scope="col" class="border border-gray-300 p-2">คุณสมบัติด้านเทคนิค</th>
+                            <th scope="col" class="border border-gray-300 p-2">คุณสมบัติที่ตั้งไว้</th>
+                            <th scope="col" class="border border-gray-300 p-2">คุณสมบัติที่ทำได้</th>
+                            <th scope="col" class="border border-gray-300 p-2">ผลการเปรียบเทียบ</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -271,29 +274,32 @@ if (isset($_GET['id'])) {
                             $class = ($i == 0 || (!empty($process_feature[$i]))) ? '' : 'hidden';
                             echo "<tr id='section2tr$i' class='$class odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700'>
                                 <td class='border border-gray-300 py-2'>" . ($i + 1) . "</td>
-                                <td class='border border-gray-300 py-2'><textarea name='process_feature[]' id='section2tr{$i}td' class='w-full h-40 border border-gray-300 rounded px-2 py-1>" . htmlspecialchars($process_feature[$i] ?? '') . "</textarea></td>
-                                <td class='border border-gray-300 py-2'><textarea disabled name='process_setfeature[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1></textarea></td>
-                                <td class='border border-gray-300 py-2'><textarea disabled name='process_result[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1></textarea></td>
-                                <td class='border border-gray-300 py-2'><textarea disabled name='process_compare[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1></textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea name='process_feature[]' id='section2tr{$i}td' class='border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center'>" . htmlspecialchars($process_feature[$i] ?? '') . "</textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea disabled name='process_setfeature[]' class='border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center'></textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea disabled name='process_result[]' class='border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center'></textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea disabled name='process_compare[]' class='border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center'></textarea></td>
                             </tr>";
                         }
                         ?>
                     </tbody>
                 </table>
+                </div>
+
                 <button type="button" id="section2addbtn" onclick="section2add()" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">เพิ่ม</button>
                 <button type="button" id="section2removebtn" onclick="section2remove()" class="hidden bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">ลบ</button>
 
                 <!-- Section 3 -->
                 <label for="" class="block text-lg my-5"><label class="text-lg font-bold mb-2">ด้านที่ 3 </label><?= $report_name ?></label>
 
-                <table class="w-full border border-gray-300 text-center my-3">
+                <div class="overflow-x-auto my-2">
+                <table class="w-full border border-gray-300 text-center">
                     <thead>
                         <tr class="bg-gray-200">
-                            <th scope="col" class="border border-gray-300 py-2">ที่</th>
-                            <th scope="col" class="border border-gray-300 py-2">คุณสมบัติด้านเทคนิค</th>
-                            <th scope="col" class="border border-gray-300 py-2">คุณสมบัติที่ตั้งไว้</th>
-                            <th scope="col" class="border border-gray-300 py-2">คุณสมบัติที่ทำได้</th>
-                            <th scope="col" class="border border-gray-300 py-2">ผลการเปรียบเทียบ</th>
+                            <th scope="col" class="border border-gray-300 p-2">ที่</th>
+                            <th scope="col" class="border border-gray-300 p-2">คุณสมบัติด้านเทคนิค</th>
+                            <th scope="col" class="border border-gray-300 p-2">คุณสมบัติที่ตั้งไว้</th>
+                            <th scope="col" class="border border-gray-300 p-2">คุณสมบัติที่ทำได้</th>
+                            <th scope="col" class="border border-gray-300 p-2">ผลการเปรียบเทียบ</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -302,29 +308,32 @@ if (isset($_GET['id'])) {
                             $class = ($i == 0 || (!empty($report_feature[$i]))) ? '' : 'hidden';
                             echo "<tr id='section3tr$i' class='$class odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700'>
                                 <td class='border border-gray-300 py-2'>" . ($i + 1) . "</td>
-                                <td class='border border-gray-300 py-2'><textarea name='report_feature[]' id='section3tr{$i}td' class='w-full h-40 border border-gray-300 rounded px-2 py-1>" . htmlspecialchars($report_feature[$i] ?? '') . "</textarea></td>
-                                <td class='border border-gray-300 py-2'><textarea disabled name='report_setfeature[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1></textarea></td>
-                                <td class='border border-gray-300 py-2'><textarea disabled name='report_result[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1></textarea></td>
-                                <td class='border border-gray-300 py-2'><textarea disabled name='report_compare[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1></textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea name='report_feature[]' id='section3tr{$i}td' class='border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center'>" . htmlspecialchars($report_feature[$i] ?? '') . "</textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea disabled name='report_setfeature[]' class='border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center'></textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea disabled name='report_result[]' class='border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center'></textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea disabled name='report_compare[]' class='border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center'></textarea></td>
                             </tr>";
                         }
                         ?>
                     </tbody>
                 </table>
+                </div>
+
                 <button type="button" id="section3addbtn" onclick="section3add()" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">เพิ่ม</button>
                 <button type="button" id="section3removebtn" onclick="section3remove()" class="hidden bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">ลบ</button>
 
                 <!-- Section 4 -->
                 <label for="" class="block text-lg my-5"><label class="text-lg font-bold mb-2">ด้านที่ 4 </label><?= $senrity_name ?></label>
 
-                <table class="w-full border border-gray-300 text-center my-3">
+                <div class="overflow-x-auto my-2">
+                <table class="w-full border border-gray-300 text-center">
                     <thead>
                         <tr class="bg-gray-200">
-                            <th scope="col" class="border border-gray-300 py-2">ที่</th>
-                            <th scope="col" class="border border-gray-300 py-2">คุณสมบัติด้านเทคนิค</th>
-                            <th scope="col" class="border border-gray-300 py-2">คุณสมบัติที่ตั้งไว้</th>
-                            <th scope="col" class="border border-gray-300 py-2">คุณสมบัติที่ทำได้</th>
-                            <th scope="col" class="border border-gray-300 py-2">ผลการเปรียบเทียบ</th>
+                            <th scope="col" class="border border-gray-300 p-2">ที่</th>
+                            <th scope="col" class="border border-gray-300 p-2">คุณสมบัติด้านเทคนิค</th>
+                            <th scope="col" class="border border-gray-300 p-2">คุณสมบัติที่ตั้งไว้</th>
+                            <th scope="col" class="border border-gray-300 p-2">คุณสมบัติที่ทำได้</th>
+                            <th scope="col" class="border border-gray-300 p-2">ผลการเปรียบเทียบ</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -333,15 +342,17 @@ if (isset($_GET['id'])) {
                             $class = ($i == 0 || (!empty($senrity_feature[$i]))) ? '' : 'hidden';
                             echo "<tr id='section4tr$i' class='$class odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700'>
                                 <td class='border border-gray-300 py-2'>" . ($i + 1) . "</td>
-                                <td class='border border-gray-300 py-2'><textarea name='senrity_feature[]' id='section4tr{$i}td' class='w-full h-40 border border-gray-300 rounded px-2 py-1>" . htmlspecialchars($senrity_feature[$i] ?? '') . "</textarea></td>
-                                <td class='border border-gray-300 py-2'><textarea disabled name='senrity_setfeature[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1></textarea></td>
-                                <td class='border border-gray-300 py-2'><textarea disabled name='senrity_result[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1></textarea></td>
-                                <td class='border border-gray-300 py-2'><textarea disabled name='senrity_compare[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1></textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea name='senrity_feature[]' id='section4tr{$i}td' class='border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center'>" . htmlspecialchars($senrity_feature[$i] ?? '') . "</textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea disabled name='senrity_setfeature[]' class='border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center'></textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea disabled name='senrity_result[]' class='border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center'></textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea disabled name='senrity_compare[]' class='border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center'></textarea></td>
                             </tr>";
                         }
                         ?>
                     </tbody>
                 </table>
+                </div>
+                
                 <button type="button" id="section4addbtn" onclick="section4add()" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">เพิ่ม</button>
                 <button type="button" id="section4removebtn" onclick="section4remove()" class="hidden bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">ลบ</button>
 

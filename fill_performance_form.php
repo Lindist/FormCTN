@@ -244,109 +244,117 @@ unset($_SESSION['senrity_compare']);
                 <label for="" class="block text-lg my-5"><label class="text-lg font-bold mb-2">ด้านที่ 1 </label>ด้านการนำเข้าข้อมูลระบบ</label>
                 <input type="hidden" name="input_name" value="ด้านการนำเข้าข้อมูลระบบ">
 
-                <table class="w-full border border-gray-300 text-center my-3">
+                <div class="overflow-x-auto my-2">
+                <table class="w-full border border-gray-300 text-center">
                     <thead>
                         <tr class="bg-gray-200">
-                            <th scope="col" class="border border-gray-300 py-2">ที่</th>
-                            <th scope="col" class="border border-gray-300 py-2">คุณสมบัติด้านเทคนิค</th>
-                            <th scope="col" class="border border-gray-300 py-2">คุณสมบัติที่ตั้งไว้</th>
-                            <th scope="col" class="border border-gray-300 py-2">คุณสมบัติที่ทำได้</th>
-                            <th scope="col" class="border border-gray-300 py-2">ผลการเปรียบเทียบ</th>
+                            <th scope="col" class="border border-gray-300 p-2">ที่</th>
+                            <th scope="col" class="border border-gray-300 p-2">คุณสมบัติด้านเทคนิค</th>
+                            <th scope="col" class="border border-gray-300 p-2">คุณสมบัติที่ตั้งไว้</th>
+                            <th scope="col" class="border border-gray-300 p-2">คุณสมบัติที่ทำได้</th>
+                            <th scope="col" class="border border-gray-300 p-2">ผลการเปรียบเทียบ</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php for ($i = 0; $i < count($input_feature); $i++) { ?>
                             <tr class='odd:bg-white even:bg-gray-100'>
                                 <td class='border border-gray-300 py-2'><?= $i + 1 ?></td>
-                                <td class='border border-gray-300 py-2'><textarea readonly name='input_feature[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center'><?= $input_feature[$i] ?></textarea></td>
-                                <td class='border border-gray-300 py-2'><textarea required name='input_setfeature[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center'><?= $input_setfeature[$i] ?></textarea></td>
-                                <td class='border border-gray-300 py-2'><textarea required name='input_result[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center'><?= $input_result[$i] ?></textarea></td>
-                                <td class='border border-gray-300 py-2'><textarea required name='input_compare[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center'><?= $input_compare[$i] ?></textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea readonly name='input_feature[]' class='border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center'><?= $input_feature[$i] ?></textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea required name='input_setfeature[]' class='border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center'><?= $input_setfeature[$i] ?></textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea required name='input_result[]' class='border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center'><?= $input_result[$i] ?></textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea required name='input_compare[]' class='border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center'><?= $input_compare[$i] ?></textarea></td>
                             </tr>
                         <?php } ?>
                     </tbody>
                 </table>
+                </div>
 
                 <!-- Section 2 -->
                 <label for="" class="block text-lg my-5"><label class="text-lg font-bold mb-2">ด้านที่ 2 </label>ด้านการประมวลผล</label>
                 <input type="hidden" name="process_name" value="ด้านการประมวลผล">
 
-                <table class="w-full border border-gray-300 text-center my-3">
+                <div class="overflow-x-auto my-2">
+                <table class="w-full border border-gray-300 text-center">
                     <thead>
                         <tr class="bg-gray-200">
-                            <th scope="col" class="border border-gray-300 py-2">ที่</th>
-                            <th scope="col" class="border border-gray-300 py-2">คุณสมบัติด้านเทคนิค</th>
-                            <th scope="col" class="border border-gray-300 py-2">คุณสมบัติที่ตั้งไว้</th>
-                            <th scope="col" class="border border-gray-300 py-2">คุณสมบัติที่ทำได้</th>
-                            <th scope="col" class="border border-gray-300 py-2">ผลการเปรียบเทียบ</th>
+                            <th scope="col" class="border border-gray-300 p-2">ที่</th>
+                            <th scope="col" class="border border-gray-300 p-2">คุณสมบัติด้านเทคนิค</th>
+                            <th scope="col" class="border border-gray-300 p-2">คุณสมบัติที่ตั้งไว้</th>
+                            <th scope="col" class="border border-gray-300 p-2">คุณสมบัติที่ทำได้</th>
+                            <th scope="col" class="border border-gray-300 p-2">ผลการเปรียบเทียบ</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php for ($i = 0; $i < count($process_feature); $i++) { ?>
                             <tr class="odd:bg-white even:bg-gray-100">
                                 <td class="border border-gray-300 py-2"><?= $i + 1 ?></td>
-                                <td class="border border-gray-300 py-2"><textarea readonly name="process_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center"><?= $process_feature[$i] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea required name="process_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center"><?= $process_setfeature[$i] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea required name="process_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center"><?= $process_result[$i] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea required name="process_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center"><?= $process_compare[$i] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea readonly name="process_feature[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"><?= $process_feature[$i] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea required name="process_setfeature[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"><?= $process_setfeature[$i] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea required name="process_result[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"><?= $process_result[$i] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea required name="process_compare[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"><?= $process_compare[$i] ?></textarea></td>
                             </tr>
                         <?php } ?>
                     </tbody>
                 </table>
+                </div>
 
                 <!-- Section 3 -->
                 <label for="" class="block text-lg my-5"><label class="text-lg font-bold mb-2">ด้านที่ 3 </label>ด้านการรายงานข้อมูล</label>
                 <input type="hidden" name="report_name" value="ด้านการรายงานข้อมูล">
 
-                <table class="w-full border border-gray-300 text-center my-3">
+                <div class="overflow-x-auto my-2">
+                <table class="w-full border border-gray-300 text-center">
                     <thead>
                         <tr class="bg-gray-200">
-                            <th scope="col" class="border border-gray-300 py-2">ที่</th>
-                            <th scope="col" class="border border-gray-300 py-2">คุณสมบัติด้านเทคนิค</th>
-                            <th scope="col" class="border border-gray-300 py-2">คุณสมบัติที่ตั้งไว้</th>
-                            <th scope="col" class="border border-gray-300 py-2">คุณสมบัติที่ทำได้</th>
-                            <th scope="col" class="border border-gray-300 py-2">ผลการเปรียบเทียบ</th>
+                            <th scope="col" class="border border-gray-300 p-2">ที่</th>
+                            <th scope="col" class="border border-gray-300 p-2">คุณสมบัติด้านเทคนิค</th>
+                            <th scope="col" class="border border-gray-300 p-2">คุณสมบัติที่ตั้งไว้</th>
+                            <th scope="col" class="border border-gray-300 p-2">คุณสมบัติที่ทำได้</th>
+                            <th scope="col" class="border border-gray-300 p-2">ผลการเปรียบเทียบ</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php for ($i = 0; $i < count($report_feature); $i++) { ?>
                             <tr class="odd:bg-white even:bg-gray-100">
                                 <td class="border border-gray-300 py-2"><?= $i + 1 ?></td>
-                                <td class="border border-gray-300 py-2"><textarea readonly name="report_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center"><?= $report_feature[$i] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea required name="report_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center"><?= $report_setfeature[$i] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea required name="report_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center"><?= $report_result[$i] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea required name="report_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center"><?= $report_compare[$i] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea readonly name="report_feature[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"><?= $report_feature[$i] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea required name="report_setfeature[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"><?= $report_setfeature[$i] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea required name="report_result[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"><?= $report_result[$i] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea required name="report_compare[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"><?= $report_compare[$i] ?></textarea></td>
                             </tr>
                         <?php } ?>
                     </tbody>
                 </table>
+                </div>
 
                 <!-- Section 4 -->
                 <label for="" class="block text-lg my-5"><label class="text-lg font-bold mb-2">ด้านที่ 4 </label>ด้านความปลอดภัย</label>
                 <input type="hidden" name="senrity_name" value="ด้านความปลอดภัย">
 
-                <table class="w-full border border-gray-300 text-center my-3">
+                <div class="overflow-x-auto my-2">
+                <table class="w-full border border-gray-300 text-center">
                     <thead>
                         <tr class="bg-gray-200">
-                            <th scope="col" class="border border-gray-300 py-2">ที่</th>
-                            <th scope="col" class="border border-gray-300 py-2">คุณสมบัติด้านเทคนิค</th>
-                            <th scope="col" class="border border-gray-300 py-2">คุณสมบัติที่ตั้งไว้</th>
-                            <th scope="col" class="border border-gray-300 py-2">คุณสมบัติที่ทำได้</th>
-                            <th scope="col" class="border border-gray-300 py-2">ผลการเปรียบเทียบ</th>
+                            <th scope="col" class="border border-gray-300 p-2">ที่</th>
+                            <th scope="col" class="border border-gray-300 p-2">คุณสมบัติด้านเทคนิค</th>
+                            <th scope="col" class="border border-gray-300 p-2">คุณสมบัติที่ตั้งไว้</th>
+                            <th scope="col" class="border border-gray-300 p-2">คุณสมบัติที่ทำได้</th>
+                            <th scope="col" class="border border-gray-300 p-2">ผลการเปรียบเทียบ</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php for ($i = 0; $i < count($senrity_feature); $i++) { ?>
                             <tr class="odd:bg-white even:bg-gray-100">
                                 <td class="border border-gray-300 py-2"><?= $i + 1 ?></td>
-                                <td class="border border-gray-300 py-2"><textarea readonly name="senrity_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center"><?= $senrity_feature[$i] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea required name="senrity_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center"><?= $senrity_setfeature[$i] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea required name="senrity_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center"><?= $senrity_result[$i] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea required name="senrity_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center"><?= $senrity_compare[$i] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea readonly name="senrity_feature[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"><?= $senrity_feature[$i] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea required name="senrity_setfeature[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"><?= $senrity_setfeature[$i] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea required name="senrity_result[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"><?= $senrity_result[$i] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea required name="senrity_compare[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"><?= $senrity_compare[$i] ?></textarea></td>
                             </tr>
                         <?php } ?>
                     </tbody>
                 </table>
+                </div>
 
             </div>
             <div class="text-center mt-5">
