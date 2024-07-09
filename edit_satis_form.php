@@ -265,7 +265,7 @@ if (isset($_GET['id'])) {
                             $class = ($i == 0 || (!empty($ur_topic[$i]))) ? '' : 'hidden';
                             echo "<tr id='section1tr$i' class='$class odd:bg-white even:bg-gray-100'>
                                 <td class='border border-gray-300 py-2 text-center'>" . ($i + 1) . "</td>
-                                <td class='border border-gray-300 py-2'><textarea name='ur_topic[]' id='section1tr{$i}td' class='w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center' rows='3'>" . htmlspecialchars($ur_topic[$i] ?? '') . "</textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea name='ur_topic[]' id='section1tr{$i}td' class='w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center'>" . htmlspecialchars($ur_topic[$i] ?? '') . "</textarea></td>
                                 <td class='border border-gray-300 py-2 text-center'><input disabled class='w-full h-10 flex items-center' type='radio' name='ur_score[0]' value='พึงพอใจมากที่สุด'></td>
                                 <td class='border border-gray-300 py-2 text-center'><input disabled class='w-full h-10 flex items-center' type='radio' name='ur_score[0]' value='พึงพอใจมาก'></td>
                                 <td class='border border-gray-300 py-2 text-center'><input disabled class='w-full h-10 flex items-center' type='radio' name='ur_score[0]' value='พึงพอใจปานกลาง'></td>
@@ -304,7 +304,7 @@ if (isset($_GET['id'])) {
                             $class = ($i == 0 || (!empty($fun_topic[$i]))) ? '' : 'hidden';
                             echo "<tr id='section2tr$i' class='$class odd:bg-white even:bg-gray-100'>
                                 <td class='border border-gray-300 py-2 text-center'>" . ($i + 1) . "</td>
-                                <td class='border border-gray-300 py-2'><textarea name='fun_topic[]' id='section2tr{$i}td' class='w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center' rows='3'>" . htmlspecialchars($fun_topic[$i] ?? '') . "</textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea name='fun_topic[]' id='section2tr{$i}td' class='w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center'>" . htmlspecialchars($fun_topic[$i] ?? '') . "</textarea></td>
                                 <td class='border border-gray-300 py-2 text-center'><input disabled class='w-full h-10 flex items-center' type='radio' name='fun_score[0]' value='พึงพอใจมากที่สุด'></td>
                                 <td class='border border-gray-300 py-2 text-center'><input disabled class='w-full h-10 flex items-center' type='radio' name='fun_score[0]' value='พึงพอใจมาก'></td>
                                 <td class='border border-gray-300 py-2 text-center'><input disabled class='w-full h-10 flex items-center' type='radio' name='fun_score[0]' value='พึงพอใจปานกลาง'></td>
@@ -343,7 +343,7 @@ if (isset($_GET['id'])) {
                             $class = ($i == 0 || (!empty($uf_topic[$i]))) ? '' : 'hidden';
                             echo "<tr id='section3tr$i' class='$class odd:bg-white even:bg-gray-100'>
                                 <td class='border border-gray-300 py-2 text-center'>" . ($i + 1) . "</td>
-                                <td class='border border-gray-300 py-2'><textarea name='uf_topic[]' id='section3tr{$i}td' class='w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center' rows='3'>" . htmlspecialchars($uf_topic[$i] ?? '') . "</textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea name='uf_topic[]' id='section3tr{$i}td' class='w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center'>" . htmlspecialchars($uf_topic[$i] ?? '') . "</textarea></td>
                                 <td class='border border-gray-300 py-2 text-center'><input disabled class='w-full h-10 flex items-center' type='radio' name='uf_score[0]' value='พึงพอใจมากที่สุด'></td>
                                 <td class='border border-gray-300 py-2 text-center'><input disabled class='w-full h-10 flex items-center' type='radio' name='uf_score[0]' value='พึงพอใจมาก'></td>
                                 <td class='border border-gray-300 py-2 text-center'><input disabled class='w-full h-10 flex items-center' type='radio' name='uf_score[0]' value='พึงพอใจปานกลาง'></td>
@@ -382,7 +382,7 @@ if (isset($_GET['id'])) {
                             $class = ($i == 0 || (!empty($ss_topic[$i]))) ? '' : 'hidden';
                             echo "<tr id='section4tr$i' class='$class odd:bg-white even:bg-gray-100'>
                                 <td class='border border-gray-300 py-2 text-center'>" . ($i + 1) . "</td>
-                                <td class='border border-gray-300 py-2'><textarea name='ss_topic[]' id='section4tr{$i}td' class='w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center' rows='3'>" . htmlspecialchars($ss_topic[$i] ?? '') . "</textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea name='ss_topic[]' id='section4tr{$i}td' class='w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center'>" . htmlspecialchars($ss_topic[$i] ?? '') . "</textarea></td>
                                 <td class='border border-gray-300 py-2 text-center'><input disabled class='w-full h-10 flex items-center' type='radio' name='ss_score[0]' value='พึงพอใจมากที่สุด'></td>
                                 <td class='border border-gray-300 py-2 text-center'><input disabled class='w-full h-10 flex items-center' type='radio' name='ss_score[0]' value='พึงพอใจมาก'></td>
                                 <td class='border border-gray-300 py-2 text-center'><input disabled class='w-full h-10 flex items-center' type='radio' name='ss_score[0]' value='พึงพอใจปานกลาง'></td>

@@ -240,10 +240,10 @@ if (isset($_GET['id'])) {
                             $class = ($i == 0 || (!empty($input_feature[$i]))) ? '' : 'hidden';
                             echo "<tr id='section1tr$i' class='$class odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700'>
                                 <td class='border border-gray-300 py-2'>" . ($i + 1) . "</td>
-                                <td class='border border-gray-300 py-2'><textarea name='input_feature[]' id='section1tr{$i}td' class='w-full h-40 border border-gray-300 rounded px-2 py-1' rows='3'>" . htmlspecialchars($input_feature[$i] ?? '') . "</textarea></td>
-                                <td class='border border-gray-300 py-2'><textarea disabled name='input_setfeature[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1' rows='3'></textarea></td>
-                                <td class='border border-gray-300 py-2'><textarea disabled name='input_result[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1' rows='3'></textarea></td>
-                                <td class='border border-gray-300 py-2'><textarea disabled name='input_compare[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1' rows='3'></textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea name='input_feature[]' id='section1tr{$i}td' class='w-full h-40 border border-gray-300 rounded px-2 py-1>" . htmlspecialchars($input_feature[$i] ?? '') . "</textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea disabled name='input_setfeature[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1></textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea disabled name='input_result[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1></textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea disabled name='input_compare[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1></textarea></td>
                             </tr>";
                         }
                         ?>
@@ -271,10 +271,10 @@ if (isset($_GET['id'])) {
                             $class = ($i == 0 || (!empty($process_feature[$i]))) ? '' : 'hidden';
                             echo "<tr id='section2tr$i' class='$class odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700'>
                                 <td class='border border-gray-300 py-2'>" . ($i + 1) . "</td>
-                                <td class='border border-gray-300 py-2'><textarea name='process_feature[]' id='section2tr{$i}td' class='w-full h-40 border border-gray-300 rounded px-2 py-1' rows='3'>" . htmlspecialchars($process_feature[$i] ?? '') . "</textarea></td>
-                                <td class='border border-gray-300 py-2'><textarea disabled name='process_setfeature[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1' rows='3'></textarea></td>
-                                <td class='border border-gray-300 py-2'><textarea disabled name='process_result[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1' rows='3'></textarea></td>
-                                <td class='border border-gray-300 py-2'><textarea disabled name='process_compare[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1' rows='3'></textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea name='process_feature[]' id='section2tr{$i}td' class='w-full h-40 border border-gray-300 rounded px-2 py-1>" . htmlspecialchars($process_feature[$i] ?? '') . "</textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea disabled name='process_setfeature[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1></textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea disabled name='process_result[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1></textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea disabled name='process_compare[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1></textarea></td>
                             </tr>";
                         }
                         ?>
@@ -302,10 +302,10 @@ if (isset($_GET['id'])) {
                             $class = ($i == 0 || (!empty($report_feature[$i]))) ? '' : 'hidden';
                             echo "<tr id='section3tr$i' class='$class odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700'>
                                 <td class='border border-gray-300 py-2'>" . ($i + 1) . "</td>
-                                <td class='border border-gray-300 py-2'><textarea name='report_feature[]' id='section3tr{$i}td' class='w-full h-40 border border-gray-300 rounded px-2 py-1' rows='3'>" . htmlspecialchars($report_feature[$i] ?? '') . "</textarea></td>
-                                <td class='border border-gray-300 py-2'><textarea disabled name='report_setfeature[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1' rows='3'></textarea></td>
-                                <td class='border border-gray-300 py-2'><textarea disabled name='report_result[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1' rows='3'></textarea></td>
-                                <td class='border border-gray-300 py-2'><textarea disabled name='report_compare[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1' rows='3'></textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea name='report_feature[]' id='section3tr{$i}td' class='w-full h-40 border border-gray-300 rounded px-2 py-1>" . htmlspecialchars($report_feature[$i] ?? '') . "</textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea disabled name='report_setfeature[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1></textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea disabled name='report_result[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1></textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea disabled name='report_compare[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1></textarea></td>
                             </tr>";
                         }
                         ?>
@@ -333,10 +333,10 @@ if (isset($_GET['id'])) {
                             $class = ($i == 0 || (!empty($senrity_feature[$i]))) ? '' : 'hidden';
                             echo "<tr id='section4tr$i' class='$class odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700'>
                                 <td class='border border-gray-300 py-2'>" . ($i + 1) . "</td>
-                                <td class='border border-gray-300 py-2'><textarea name='senrity_feature[]' id='section4tr{$i}td' class='w-full h-40 border border-gray-300 rounded px-2 py-1' rows='3'>" . htmlspecialchars($senrity_feature[$i] ?? '') . "</textarea></td>
-                                <td class='border border-gray-300 py-2'><textarea disabled name='senrity_setfeature[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1' rows='3'></textarea></td>
-                                <td class='border border-gray-300 py-2'><textarea disabled name='senrity_result[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1' rows='3'></textarea></td>
-                                <td class='border border-gray-300 py-2'><textarea disabled name='senrity_compare[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1' rows='3'></textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea name='senrity_feature[]' id='section4tr{$i}td' class='w-full h-40 border border-gray-300 rounded px-2 py-1>" . htmlspecialchars($senrity_feature[$i] ?? '') . "</textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea disabled name='senrity_setfeature[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1></textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea disabled name='senrity_result[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1></textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea disabled name='senrity_compare[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1></textarea></td>
                             </tr>";
                         }
                         ?>

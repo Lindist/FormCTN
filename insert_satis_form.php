@@ -244,7 +244,7 @@ unset($_SESSION['ss_topic']); // Clear the session flag after use
                     <tbody>
                         <tr class="odd:bg-white even:bg-gray-100">
                             <td class="border border-gray-300 py-2 text-center">1</td>
-                            <td class="border border-gray-300 py-2"><textarea name="ur_topic[]" class="w-full h-16 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea name="ur_topic[]" class="w-full h-16 border border-gray-300 rounded px-2 py-1"></textarea></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ur_score[0]" value="พึงพอใจมากที่สุด"></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ur_score[0]" value="พึงพอใจมาก"></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ur_score[0]" value="พึงพอใจปานกลาง"></td>
@@ -253,7 +253,7 @@ unset($_SESSION['ss_topic']); // Clear the session flag after use
                         </tr>
                         <tr class="odd:bg-white even:bg-gray-100 hidden" id="section1tr1">
                             <td class="border border-gray-300 py-2 text-center">2</td>
-                            <td class="border border-gray-300 py-2"><textarea name="ur_topic[]" disabled id="section1tr1td" class="w-full h-16 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea name="ur_topic[]" disabled id="section1tr1td" class="w-full h-16 border border-gray-300 rounded px-2 py-1"></textarea></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ur_score[1]" value="พึงพอใจมากที่สุด"></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ur_score[1]" value="พึงพอใจมาก"></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ur_score[1]" value="พึงพอใจปานกลาง"></td>
@@ -262,7 +262,7 @@ unset($_SESSION['ss_topic']); // Clear the session flag after use
                         </tr>
                         <tr class="odd:bg-white even:bg-gray-100 hidden" id="section1tr2">
                             <td class="border border-gray-300 py-2 text-center">3</td>
-                            <td class="border border-gray-300 py-2"><textarea name="ur_topic[]" disabled id="section1tr2td" class="w-full h-16 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea name="ur_topic[]" disabled id="section1tr2td" class="w-full h-16 border border-gray-300 rounded px-2 py-1"></textarea></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ur_score[2]" value="พึงพอใจมากที่สุด"></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ur_score[2]" value="พึงพอใจมาก"></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ur_score[2]" value="พึงพอใจปานกลาง"></td>
@@ -271,7 +271,7 @@ unset($_SESSION['ss_topic']); // Clear the session flag after use
                         </tr>
                         <tr class="odd:bg-white even:bg-gray-100 hidden" id="section1tr3">
                             <td class="border border-gray-300 py-2 text-center">4</td>
-                            <td class="border border-gray-300 py-2"><textarea name="ur_topic[]" disabled id="section1tr3td" class="w-full h-16 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea name="ur_topic[]" disabled id="section1tr3td" class="w-full h-16 border border-gray-300 rounded px-2 py-1"></textarea></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ur_score[3]" value="พึงพอใจมากที่สุด"></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ur_score[3]" value="พึงพอใจมาก"></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ur_score[3]" value="พึงพอใจปานกลาง"></td>
@@ -280,7 +280,7 @@ unset($_SESSION['ss_topic']); // Clear the session flag after use
                         </tr>
                         <tr class="odd:bg-white even:bg-gray-100 hidden" id="section1tr4">
                             <td class="border border-gray-300 py-2 text-center">5</td>
-                            <td class="border border-gray-300 py-2"><textarea name="ur_topic[]" disabled id="section1tr4td" class="w-full h-16 border border-gray-300 rounded px-2 py-1" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea name="ur_topic[]" disabled id="section1tr4td" class="w-full h-16 border border-gray-300 rounded px-2 py-1"></textarea></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ur_score[4]" value="พึงพอใจมากที่สุด"></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ur_score[4]" value="พึงพอใจมาก"></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ur_score[4]" value="พึงพอใจปานกลาง"></td>
@@ -314,7 +314,7 @@ unset($_SESSION['ss_topic']); // Clear the session flag after use
                     <tbody>
                         <tr class="odd:bg-white even:bg-gray-100">
                             <td class="border border-gray-300 py-2 text-center">1</td>
-                            <td class="border border-gray-300 py-2"><textarea name="fun_topic[]" class="w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea name="fun_topic[]" class="w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center"></textarea></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="fun_score[0]" value="พึงพอใจมากที่สุด"></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="fun_score[0]" value="พึงพอใจมาก"></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="fun_score[0]" value="พึงพอใจปานกลาง"></td>
@@ -323,7 +323,7 @@ unset($_SESSION['ss_topic']); // Clear the session flag after use
                         </tr>
                         <tr class="odd:bg-white even:bg-gray-100 hidden" id="section2tr1">
                             <td class="border border-gray-300 py-2 text-center">2</td>
-                            <td class="border border-gray-300 py-2"><textarea name="fun_topic[]" disabled id="section2tr1td" class="w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea name="fun_topic[]" disabled id="section2tr1td" class="w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center"></textarea></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="fun_score[1]" value="พึงพอใจมากที่สุด"></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="fun_score[1]" value="พึงพอใจมาก"></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="fun_score[1]" value="พึงพอใจปานกลาง"></td>
@@ -332,7 +332,7 @@ unset($_SESSION['ss_topic']); // Clear the session flag after use
                         </tr>
                         <tr class="odd:bg-white even:bg-gray-100 hidden" id="section2tr2">
                             <td class="border border-gray-300 py-2 text-center">3</td>
-                            <td class="border border-gray-300 py-2"><textarea name="fun_topic[]" disabled id="section2tr2td" class="w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea name="fun_topic[]" disabled id="section2tr2td" class="w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center"></textarea></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="fun_score[2]" value="พึงพอใจมากที่สุด"></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="fun_score[2]" value="พึงพอใจมาก"></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="fun_score[2]" value="พึงพอใจปานกลาง"></td>
@@ -341,7 +341,7 @@ unset($_SESSION['ss_topic']); // Clear the session flag after use
                         </tr>
                         <tr class="odd:bg-white even:bg-gray-100 hidden" id="section2tr3">
                             <td class="border border-gray-300 py-2 text-center">4</td>
-                            <td class="border border-gray-300 py-2"><textarea name="fun_topic[]" disabled id="section2tr3td" class="w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea name="fun_topic[]" disabled id="section2tr3td" class="w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center"></textarea></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="fun_score[3]" value="พึงพอใจมากที่สุด"></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="fun_score[3]" value="พึงพอใจมาก"></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="fun_score[3]" value="พึงพอใจปานกลาง"></td>
@@ -350,7 +350,7 @@ unset($_SESSION['ss_topic']); // Clear the session flag after use
                         </tr>
                         <tr class="odd:bg-white even:bg-gray-100 hidden" id="section2tr4">
                             <td class="border border-gray-300 py-2 text-center">5</td>
-                            <td class="border border-gray-300 py-2"><textarea name="fun_topic[]" disabled id="section2tr4td" class="w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea name="fun_topic[]" disabled id="section2tr4td" class="w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center"></textarea></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="fun_score[4]" value="พึงพอใจมากที่สุด"></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="fun_score[4]" value="พึงพอใจมาก"></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="fun_score[4]" value="พึงพอใจปานกลาง"></td>
@@ -384,7 +384,7 @@ unset($_SESSION['ss_topic']); // Clear the session flag after use
                     <tbody>
                         <tr class="odd:bg-white even:bg-gray-100">
                             <td class="border border-gray-300 py-2 text-center">1</td>
-                            <td class="border border-gray-300 py-2"><textarea name="uf_topic[]" class="w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea name="uf_topic[]" class="w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center"></textarea></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="uf_score[0]" value="พึงพอใจมากที่สุด"></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="uf_score[0]" value="พึงพอใจมาก"></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="uf_score[0]" value="พึงพอใจปานกลาง"></td>
@@ -393,7 +393,7 @@ unset($_SESSION['ss_topic']); // Clear the session flag after use
                         </tr>
                         <tr class="odd:bg-white even:bg-gray-100 hidden" id="section3tr1">
                             <td class="border border-gray-300 py-2 text-center">2</td>
-                            <td class="border border-gray-300 py-2"><textarea name="uf_topic[]" disabled id="section3tr1td" class="w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea name="uf_topic[]" disabled id="section3tr1td" class="w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center"></textarea></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="uf_score[1]" value="พึงพอใจมากที่สุด"></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="uf_score[1]" value="พึงพอใจมาก"></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="uf_score[1]" value="พึงพอใจปานกลาง"></td>
@@ -402,7 +402,7 @@ unset($_SESSION['ss_topic']); // Clear the session flag after use
                         </tr>
                         <tr class="odd:bg-white even:bg-gray-100 hidden" id="section3tr2">
                             <td class="border border-gray-300 py-2 text-center">3</td>
-                            <td class="border border-gray-300 py-2"><textarea name="uf_topic[]" disabled id="section3tr2td" class="w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea name="uf_topic[]" disabled id="section3tr2td" class="w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center"></textarea></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="uf_score[2]" value="พึงพอใจมากที่สุด"></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="uf_score[2]" value="พึงพอใจมาก"></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="uf_score[2]" value="พึงพอใจปานกลาง"></td>
@@ -411,7 +411,7 @@ unset($_SESSION['ss_topic']); // Clear the session flag after use
                         </tr>
                         <tr class="odd:bg-white even:bg-gray-100 hidden" id="section3tr3">
                             <td class="border border-gray-300 py-2 text-center">4</td>
-                            <td class="border border-gray-300 py-2"><textarea name="uf_topic[]" disabled id="section3tr3td" class="w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea name="uf_topic[]" disabled id="section3tr3td" class="w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center"></textarea></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="uf_score[3]" value="พึงพอใจมากที่สุด"></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="uf_score[3]" value="พึงพอใจมาก"></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="uf_score[3]" value="พึงพอใจปานกลาง"></td>
@@ -420,7 +420,7 @@ unset($_SESSION['ss_topic']); // Clear the session flag after use
                         </tr>
                         <tr class="odd:bg-white even:bg-gray-100 hidden" id="section3tr4">
                             <td class="border border-gray-300 py-2 text-center">5</td>
-                            <td class="border border-gray-300 py-2"><textarea name="uf_topic[]" disabled id="section3tr4td" class="w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea name="uf_topic[]" disabled id="section3tr4td" class="w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center"></textarea></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="uf_score[4]" value="พึงพอใจมากที่สุด"></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="uf_score[4]" value="พึงพอใจมาก"></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="uf_score[4]" value="พึงพอใจปานกลาง"></td>
@@ -454,7 +454,7 @@ unset($_SESSION['ss_topic']); // Clear the session flag after use
                     <tbody>
                         <tr class="odd:bg-white even:bg-gray-100">
                             <td class="border border-gray-300 py-2 text-center">1</td>
-                            <td class="border border-gray-300 py-2"><textarea name="ss_topic[]" class="w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea name="ss_topic[]" class="w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center"></textarea></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ss_score[0]" value="พึงพอใจมากที่สุด"></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ss_score[0]" value="พึงพอใจมาก"></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ss_score[0]" value="พึงพอใจปานกลาง"></td>
@@ -463,7 +463,7 @@ unset($_SESSION['ss_topic']); // Clear the session flag after use
                         </tr>
                         <tr class="odd:bg-white even:bg-gray-100 hidden" id="section4tr1">
                             <td class="border border-gray-300 py-2 text-center">2</td>
-                            <td class="border border-gray-300 py-2"><textarea name="ss_topic[]" disabled id="section4tr1td" class="w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea name="ss_topic[]" disabled id="section4tr1td" class="w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center"></textarea></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ss_score[1]" value="พึงพอใจมากที่สุด"></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ss_score[1]" value="พึงพอใจมาก"></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ss_score[1]" value="พึงพอใจปานกลาง"></td>
@@ -472,7 +472,7 @@ unset($_SESSION['ss_topic']); // Clear the session flag after use
                         </tr>
                         <tr class="odd:bg-white even:bg-gray-100 hidden" id="section4tr2">
                             <td class="border border-gray-300 py-2 text-center">3</td>
-                            <td class="border border-gray-300 py-2"><textarea name="ss_topic[]" disabled id="section4tr2td" class="w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea name="ss_topic[]" disabled id="section4tr2td" class="w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center"></textarea></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ss_score[2]" value="พึงพอใจมากที่สุด"></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ss_score[2]" value="พึงพอใจมาก"></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ss_score[2]" value="พึงพอใจปานกลาง"></td>
@@ -481,7 +481,7 @@ unset($_SESSION['ss_topic']); // Clear the session flag after use
                         </tr>
                         <tr class="odd:bg-white even:bg-gray-100 hidden" id="section4tr3">
                             <td class="border border-gray-300 py-2 text-center">4</td>
-                            <td class="border border-gray-300 py-2"><textarea name="ss_topic[]" disabled id="section4tr3td" class="w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea name="ss_topic[]" disabled id="section4tr3td" class="w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center"></textarea></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ss_score[3]" value="พึงพอใจมากที่สุด"></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ss_score[3]" value="พึงพอใจมาก"></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ss_score[3]" value="พึงพอใจปานกลาง"></td>
@@ -490,7 +490,7 @@ unset($_SESSION['ss_topic']); // Clear the session flag after use
                         </tr>
                         <tr class="odd:bg-white even:bg-gray-100 hidden" id="section4tr4">
                             <td class="border border-gray-300 py-2 text-center">5</td>
-                            <td class="border border-gray-300 py-2"><textarea name="ss_topic[]" disabled id="section4tr4td" class="w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"></textarea></td>
+                            <td class="border border-gray-300 py-2"><textarea name="ss_topic[]" disabled id="section4tr4td" class="w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center"></textarea></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ss_score[4]" value="พึงพอใจมากที่สุด"></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ss_score[4]" value="พึงพอใจมาก"></td>
                             <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="ss_score[4]" value="พึงพอใจปานกลาง"></td>

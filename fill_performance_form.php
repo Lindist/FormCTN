@@ -258,10 +258,10 @@ unset($_SESSION['senrity_compare']);
                         <?php for ($i = 0; $i < count($input_feature); $i++) { ?>
                             <tr class='odd:bg-white even:bg-gray-100'>
                                 <td class='border border-gray-300 py-2'><?= $i + 1 ?></td>
-                                <td class='border border-gray-300 py-2'><textarea readonly name='input_feature[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center' rows='3'><?= $input_feature[$i] ?></textarea></td>
-                                <td class='border border-gray-300 py-2'><textarea required name='input_setfeature[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center' rows='3'><?= $input_setfeature[$i] ?></textarea></td>
-                                <td class='border border-gray-300 py-2'><textarea required name='input_result[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center' rows='3'><?= $input_result[$i] ?></textarea></td>
-                                <td class='border border-gray-300 py-2'><textarea required name='input_compare[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center' rows='3'><?= $input_compare[$i] ?></textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea readonly name='input_feature[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center'><?= $input_feature[$i] ?></textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea required name='input_setfeature[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center'><?= $input_setfeature[$i] ?></textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea required name='input_result[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center'><?= $input_result[$i] ?></textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea required name='input_compare[]' class='w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center'><?= $input_compare[$i] ?></textarea></td>
                             </tr>
                         <?php } ?>
                     </tbody>
@@ -285,10 +285,10 @@ unset($_SESSION['senrity_compare']);
                         <?php for ($i = 0; $i < count($process_feature); $i++) { ?>
                             <tr class="odd:bg-white even:bg-gray-100">
                                 <td class="border border-gray-300 py-2"><?= $i + 1 ?></td>
-                                <td class="border border-gray-300 py-2"><textarea readonly name="process_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"><?= $process_feature[$i] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea required name="process_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"><?= $process_setfeature[$i] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea required name="process_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"><?= $process_result[$i] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea required name="process_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"><?= $process_compare[$i] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea readonly name="process_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center"><?= $process_feature[$i] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea required name="process_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center"><?= $process_setfeature[$i] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea required name="process_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center"><?= $process_result[$i] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea required name="process_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center"><?= $process_compare[$i] ?></textarea></td>
                             </tr>
                         <?php } ?>
                     </tbody>
@@ -312,10 +312,10 @@ unset($_SESSION['senrity_compare']);
                         <?php for ($i = 0; $i < count($report_feature); $i++) { ?>
                             <tr class="odd:bg-white even:bg-gray-100">
                                 <td class="border border-gray-300 py-2"><?= $i + 1 ?></td>
-                                <td class="border border-gray-300 py-2"><textarea readonly name="report_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"><?= $report_feature[$i] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea required name="report_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"><?= $report_setfeature[$i] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea required name="report_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"><?= $report_result[$i] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea required name="report_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"><?= $report_compare[$i] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea readonly name="report_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center"><?= $report_feature[$i] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea required name="report_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center"><?= $report_setfeature[$i] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea required name="report_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center"><?= $report_result[$i] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea required name="report_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center"><?= $report_compare[$i] ?></textarea></td>
                             </tr>
                         <?php } ?>
                     </tbody>
@@ -339,10 +339,10 @@ unset($_SESSION['senrity_compare']);
                         <?php for ($i = 0; $i < count($senrity_feature); $i++) { ?>
                             <tr class="odd:bg-white even:bg-gray-100">
                                 <td class="border border-gray-300 py-2"><?= $i + 1 ?></td>
-                                <td class="border border-gray-300 py-2"><textarea readonly name="senrity_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"><?= $senrity_feature[$i] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea required name="senrity_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"><?= $senrity_setfeature[$i] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea required name="senrity_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"><?= $senrity_result[$i] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea required name="senrity_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center" rows="3"><?= $senrity_compare[$i] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea readonly name="senrity_feature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center"><?= $senrity_feature[$i] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea required name="senrity_setfeature[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center"><?= $senrity_setfeature[$i] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea required name="senrity_result[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center"><?= $senrity_result[$i] ?></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea required name="senrity_compare[]" class="w-full h-40 border border-gray-300 rounded px-2 py-1 flex items-center"><?= $senrity_compare[$i] ?></textarea></td>
                             </tr>
                         <?php } ?>
                     </tbody>
