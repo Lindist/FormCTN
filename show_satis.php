@@ -330,7 +330,11 @@ if (isset($_GET['class'])) {
                 </div>
                 <label class="form-label mt-2">ตอนที่3 ข้อเสนอแนะอื่นๆ</label>
                 <div class="rad form-control" id="format">
-                    <?php echo $row['sati_comment']; ?>
+                    <?php if($row['sati_comment'] != null) { ?>
+                        <?php echo $row['sati_comment']; ?>
+                    <?php }else { ?>
+                        ----เสนอแนะ----
+                    <?php } ?>
                 </div>
                 
             </div>
