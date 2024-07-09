@@ -112,6 +112,7 @@ unset($_SESSION['senrity_compare']);
 
 <head>
     <title>กรอกแบบฟอร์มประเมินประสิทธิภาพ</title>
+    <link rel="icon" type="icon" href="https://i.imgur.com/m0H7jcN.png">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <script src="https://cdn.tailwindcss.com"></script>

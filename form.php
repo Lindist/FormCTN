@@ -40,6 +40,7 @@ $result3->execute();
     <link rel="stylesheet" href="style/formstyle2.css">
     <link rel="stylesheet" href="style/tabstyle.css">
     <title>From</title>
+    <link rel="icon" type="icon" href="https://i.imgur.com/m0H7jcN.png">
 </head>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -89,7 +90,7 @@ $result3->execute();
             <div class="line"></div>
         </div>
         <div class="logout">
-            <a onclick="logout(event, 'session/logout.php')" class="logout">ออกจากระบบ <img src="picture/logout.png"></a>
+            <a onclick="logout(event, 'session/logout.php')" class="logout">ออกจากระบบ<img style="margin-left: 8px;" src="picture/logout.png"></a>
         </div>
     </header>
     <div class="content_box active">
