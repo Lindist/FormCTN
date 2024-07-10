@@ -93,6 +93,7 @@ unset($_SESSION['sati_level']);
 
 <head>
     <title>กรอกแบบฟอร์มประเมินความพึงพอใจ</title>
+    <link rel="icon" type="icon" href="https://i.imgur.com/m0H7jcN.png">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <script src="https://cdn.tailwindcss.com"></script>
@@ -250,23 +251,23 @@ unset($_SESSION['sati_level']);
                     <table class="w-full border border-gray-300 text-center my-3">
                         <thead>
                             <tr class="bg-gray-200">
-                                <th scope="col" rowspan="2" class="border border-gray-300 py-2">ที่</th>
-                                <th scope="col" rowspan="2" class="border border-gray-300 py-2">หัวข้อ</th>
-                                <th scope="col" colspan="5" class="border border-gray-300 py-2">ระดับความคิดเห็น</th>
+                                <th scope="col" rowspan="2" class="border border-gray-300 p-1">ที่</th>
+                                <th scope="col" rowspan="2" class="border border-gray-300 p-1">หัวข้อ</th>
+                                <th scope="col" colspan="5" class="border border-gray-300 p-1">ระดับความคิดเห็น</th>
                             </tr>
                             <tr class="bg-gray-200">
-                                <th scope="col" class="border border-gray-300 py-2">5</th>
-                                <th scope="col" class="border border-gray-300 py-2">4</th>
-                                <th scope="col" class="border border-gray-300 py-2">3</th>
-                                <th scope="col" class="border border-gray-300 py-2">2</th>
-                                <th scope="col" class="border border-gray-300 py-2">1</th>
+                                <th scope="col" class="border border-gray-300 p-1">5</th>
+                                <th scope="col" class="border border-gray-300 p-1">4</th>
+                                <th scope="col" class="border border-gray-300 p-1">3</th>
+                                <th scope="col" class="border border-gray-300 p-1">2</th>
+                                <th scope="col" class="border border-gray-300 p-1">1</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php for ($i = 0; $i < count($ur_topic); $i++) { ?>
                                 <tr class='odd:bg-white even:bg-gray-100'>
                                     <td class='border border-gray-300 py-2 text-center'><?= $i + 1 ?></td>
-                                    <td class="border border-gray-300 py-2"><textarea readonly name="ur_topic[]" class="w-full h-16 border border-gray-300 rounded px-2 py-1"><?= $ur_topic[$i] ?></textarea></td>
+                                    <td class="border border-gray-300 py-2"><textarea readonly name="ur_topic[]" class="w-full h-28 sm:h-16 border border-gray-300 rounded px-2 py-1"><?= $ur_topic[$i] ?></textarea></td>
                                     <td class="border border-gray-300 py-2 text-center"><input required class="w-8 sm:w-full h-10 flex items-center" type="radio" name="ur_score[<?= $i ?>]" value="พึงพอใจมากที่สุด"></td>
                                     <td class="border border-gray-300 py-2 text-center"><input required class="w-8 sm:w-full h-10 flex items-center" type="radio" name="ur_score[<?= $i ?>]" value="พึงพอใจมาก"></td>
                                     <td class="border border-gray-300 py-2 text-center"><input required class="w-8 sm:w-full h-10 flex items-center" type="radio" name="ur_score[<?= $i ?>]" value="พึงพอใจปานกลาง"></td>
@@ -284,23 +285,23 @@ unset($_SESSION['sati_level']);
                     <table class="w-full border border-gray-300 text-center my-3">
                         <thead>
                             <tr class="bg-gray-200">
-                                <th scope="col" rowspan="2" class="border border-gray-300 py-2">ที่</th>
-                                <th scope="col" rowspan="2" class="border border-gray-300 py-2">หัวข้อ</th>
-                                <th scope="col" colspan="5" class="border border-gray-300 py-2">ระดับความคิดเห็น</th>
+                                <th scope="col" rowspan="2" class="border border-gray-300 p-1">ที่</th>
+                                <th scope="col" rowspan="2" class="border border-gray-300 p-1">หัวข้อ</th>
+                                <th scope="col" colspan="5" class="border border-gray-300 p-1">ระดับความคิดเห็น</th>
                             </tr>
                             <tr class="bg-gray-200">
-                                <th scope="col" class="border border-gray-300 py-2">5</th>
-                                <th scope="col" class="border border-gray-300 py-2">4</th>
-                                <th scope="col" class="border border-gray-300 py-2">3</th>
-                                <th scope="col" class="border border-gray-300 py-2">2</th>
-                                <th scope="col" class="border border-gray-300 py-2">1</th>
+                                <th scope="col" class="border border-gray-300 p-1">5</th>
+                                <th scope="col" class="border border-gray-300 p-1">4</th>
+                                <th scope="col" class="border border-gray-300 p-1">3</th>
+                                <th scope="col" class="border border-gray-300 p-1">2</th>
+                                <th scope="col" class="border border-gray-300 p-1">1</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php for ($i = 0; $i < count($fun_topic); $i++) { ?>
                                 <tr class='odd:bg-white even:bg-gray-100'>
                                     <td class='border border-gray-300 py-2 text-center'><?= $i + 1 ?></td>
-                                    <td class="border border-gray-300 py-2"><textarea readonly name="fun_topic[]" class="w-full h-16 border border-gray-300 rounded px-2 py-1"><?= $fun_topic[$i] ?></textarea></td>
+                                    <td class="border border-gray-300 py-2"><textarea readonly name="fun_topic[]" class="w-full h-28 sm:h-16 border border-gray-300 rounded px-2 py-1"><?= $fun_topic[$i] ?></textarea></td>
                                     <td class="border border-gray-300 py-2 text-center"><input required class="w-8 sm:w-full h-10 flex items-center" type="radio" name="fun_score[<?= $i ?>]" value="พึงพอใจมากที่สุด"></td>
                                     <td class="border border-gray-300 py-2 text-center"><input required class="w-8 sm:w-full h-10 flex items-center" type="radio" name="fun_score[<?= $i ?>]" value="พึงพอใจมาก"></td>
                                     <td class="border border-gray-300 py-2 text-center"><input required class="w-8 sm:w-full h-10 flex items-center" type="radio" name="fun_score[<?= $i ?>]" value="พึงพอใจปานกลาง"></td>
@@ -318,23 +319,23 @@ unset($_SESSION['sati_level']);
                     <table class="w-full border border-gray-300 text-center my-3">
                         <thead>
                             <tr class="bg-gray-200">
-                                <th scope="col" rowspan="2" class="border border-gray-300 py-2">ที่</th>
-                                <th scope="col" rowspan="2" class="border border-gray-300 py-2">หัวข้อ</th>
-                                <th scope="col" colspan="5" class="border border-gray-300 py-2">ระดับความคิดเห็น</th>
+                                <th scope="col" rowspan="2" class="border border-gray-300 p-1">ที่</th>
+                                <th scope="col" rowspan="2" class="border border-gray-300 p-1">หัวข้อ</th>
+                                <th scope="col" colspan="5" class="border border-gray-300 p-1">ระดับความคิดเห็น</th>
                             </tr>
                             <tr class="bg-gray-200">
-                                <th scope="col" class="border border-gray-300 py-2">5</th>
-                                <th scope="col" class="border border-gray-300 py-2">4</th>
-                                <th scope="col" class="border border-gray-300 py-2">3</th>
-                                <th scope="col" class="border border-gray-300 py-2">2</th>
-                                <th scope="col" class="border border-gray-300 py-2">1</th>
+                                <th scope="col" class="border border-gray-300 p-1">5</th>
+                                <th scope="col" class="border border-gray-300 p-1">4</th>
+                                <th scope="col" class="border border-gray-300 p-1">3</th>
+                                <th scope="col" class="border border-gray-300 p-1">2</th>
+                                <th scope="col" class="border border-gray-300 p-1">1</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php for ($i = 0; $i < count($uf_topic); $i++) { ?>
                                 <tr class='odd:bg-white even:bg-gray-100'>
                                     <td class='border border-gray-300 py-2 text-center'><?= $i + 1 ?></td>
-                                    <td class="border border-gray-300 py-2"><textarea readonly name="uf_topic[]" class="w-full h-16 border border-gray-300 rounded px-2 py-1"><?= $uf_topic[$i] ?></textarea></td>
+                                    <td class="border border-gray-300 py-2"><textarea readonly name="uf_topic[]" class="w-full h-28 sm:h-16 border border-gray-300 rounded px-2 py-1"><?= $uf_topic[$i] ?></textarea></td>
                                     <td class="border border-gray-300 py-2 text-center"><input required class="w-8 sm:w-full h-10 flex items-center" type="radio" name="uf_score[<?= $i ?>]" value="พึงพอใจมากที่สุด"></td>
                                     <td class="border border-gray-300 py-2 text-center"><input required class="w-8 sm:w-full h-10 flex items-center" type="radio" name="uf_score[<?= $i ?>]" value="พึงพอใจมาก"></td>
                                     <td class="border border-gray-300 py-2 text-center"><input required class="w-8 sm:w-full h-10 flex items-center" type="radio" name="uf_score[<?= $i ?>]" value="พึงพอใจปานกลาง"></td>
@@ -352,23 +353,23 @@ unset($_SESSION['sati_level']);
                     <table class="w-full border border-gray-300 text-center my-3">
                         <thead>
                             <tr class="bg-gray-200">
-                                <th scope="col" rowspan="2" class="border border-gray-300 py-2">ที่</th>
-                                <th scope="col" rowspan="2" class="border border-gray-300 py-2">หัวข้อ</th>
-                                <th scope="col" colspan="5" class="border border-gray-300 py-2">ระดับความคิดเห็น</th>
+                                <th scope="col" rowspan="2" class="border border-gray-300 p-1">ที่</th>
+                                <th scope="col" rowspan="2" class="border border-gray-300 p-1">หัวข้อ</th>
+                                <th scope="col" colspan="5" class="border border-gray-300 p-1">ระดับความคิดเห็น</th>
                             </tr>
                             <tr class="bg-gray-200">
-                                <th scope="col" class="border border-gray-300 py-2">5</th>
-                                <th scope="col" class="border border-gray-300 py-2">4</th>
-                                <th scope="col" class="border border-gray-300 py-2">3</th>
-                                <th scope="col" class="border border-gray-300 py-2">2</th>
-                                <th scope="col" class="border border-gray-300 py-2">1</th>
+                                <th scope="col" class="border border-gray-300 p-1">5</th>
+                                <th scope="col" class="border border-gray-300 p-1">4</th>
+                                <th scope="col" class="border border-gray-300 p-1">3</th>
+                                <th scope="col" class="border border-gray-300 p-1">2</th>
+                                <th scope="col" class="border border-gray-300 p-1">1</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php for ($i = 0; $i < count($ss_topic); $i++) { ?>
                                 <tr class='odd:bg-white even:bg-gray-100'>
                                     <td class='border border-gray-300 py-2 text-center'><?= $i + 1 ?></td>
-                                    <td class="border border-gray-300 py-2"><textarea readonly name="ss_topic[]" class="w-full h-16 border border-gray-300 rounded px-2 py-1"><?= $ss_topic[$i] ?></textarea></td>
+                                    <td class="border border-gray-300 py-2"><textarea readonly name="ss_topic[]" class="w-full h-28 sm:h-16 border border-gray-300 rounded px-2 py-1"><?= $ss_topic[$i] ?></textarea></td>
                                     <td class="border border-gray-300 py-2 text-center"><input required class="w-8 sm:w-full h-10 flex items-center" type="radio" name="ss_score[<?= $i ?>]" value="พึงพอใจมากที่สุด"></td>
                                     <td class="border border-gray-300 py-2 text-center"><input required class="w-8 sm:w-full h-10 flex items-center" type="radio" name="ss_score[<?= $i ?>]" value="พึงพอใจมาก"></td>
                                     <td class="border border-gray-300 py-2 text-center"><input required class="w-8 sm:w-full h-10 flex items-center" type="radio" name="ss_score[<?= $i ?>]" value="พึงพอใจปานกลาง"></td>

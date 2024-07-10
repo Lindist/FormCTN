@@ -72,6 +72,7 @@ if (isset($_GET['id'])) {
 
 <head>
     <title>แก้ไขแบบประเมินความพึงพอใจ</title>
+    <link rel="icon" type="icon" href="https://i.imgur.com/m0H7jcN.png">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <script src="https://cdn.tailwindcss.com"></script>
@@ -247,16 +248,16 @@ if (isset($_GET['id'])) {
                 <table class="w-full border border-gray-300 text-center my-3">
                     <thead>
                         <tr class="bg-gray-200">
-                            <th scope="col" rowspan="2" class="border border-gray-300 py-2">ที่</th>
-                            <th scope="col" rowspan="2" class="border border-gray-300 py-2">หัวข้อ</th>
-                            <th scope="col" colspan="5" class="border border-gray-300 py-2">ระดับความคิดเห็น</th>
+                            <th scope="col" rowspan="2" class="border border-gray-300 p-1">ที่</th>
+                            <th scope="col" rowspan="2" class="border border-gray-300 p-1">หัวข้อ</th>
+                            <th scope="col" colspan="5" class="border border-gray-300 p-1">ระดับความคิดเห็น</th>
                         </tr>
                         <tr class="bg-gray-200">
-                            <th scope="col" class="border border-gray-300 py-2">5</th>
-                            <th scope="col" class="border border-gray-300 py-2">4</th>
-                            <th scope="col" class="border border-gray-300 py-2">3</th>
-                            <th scope="col" class="border border-gray-300 py-2">2</th>
-                            <th scope="col" class="border border-gray-300 py-2">1</th>
+                            <th scope="col" class="border border-gray-300 p-1">5</th>
+                            <th scope="col" class="border border-gray-300 p-1">4</th>
+                            <th scope="col" class="border border-gray-300 p-1">3</th>
+                            <th scope="col" class="border border-gray-300 p-1">2</th>
+                            <th scope="col" class="border border-gray-300 p-1">1</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -265,7 +266,7 @@ if (isset($_GET['id'])) {
                             $class = ($i == 0 || (!empty($ur_topic[$i]))) ? '' : 'hidden';
                             echo "<tr id='section1tr$i' class='$class odd:bg-white even:bg-gray-100'>
                                 <td class='border border-gray-300 py-2 text-center'>" . ($i + 1) . "</td>
-                                <td class='border border-gray-300 py-2'><textarea name='ur_topic[]' id='section1tr{$i}td' class='w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center'>" . htmlspecialchars($ur_topic[$i] ?? '') . "</textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea name='ur_topic[]' id='section1tr{$i}td' class='w-full h-28 sm:h-16 border border-gray-300 rounded px-2 py-1 flex items-center'>" . htmlspecialchars($ur_topic[$i] ?? '') . "</textarea></td>
                                 <td class='border border-gray-300 py-2 text-center'><input disabled class='w-full h-10 flex items-center' type='radio' name='ur_score[0]' value='พึงพอใจมากที่สุด'></td>
                                 <td class='border border-gray-300 py-2 text-center'><input disabled class='w-full h-10 flex items-center' type='radio' name='ur_score[0]' value='พึงพอใจมาก'></td>
                                 <td class='border border-gray-300 py-2 text-center'><input disabled class='w-full h-10 flex items-center' type='radio' name='ur_score[0]' value='พึงพอใจปานกลาง'></td>
@@ -286,16 +287,16 @@ if (isset($_GET['id'])) {
                 <table class="w-full border border-gray-300 text-center my-3">
                     <thead>
                         <tr class="bg-gray-200">
-                            <th scope="col" rowspan="2" class="border border-gray-300 py-2">ที่</th>
-                            <th scope="col" rowspan="2" class="border border-gray-300 py-2">หัวข้อ</th>
-                            <th scope="col" colspan="5" class="border border-gray-300 py-2">ระดับความคิดเห็น</th>
+                            <th scope="col" rowspan="2" class="border border-gray-300 p-1">ที่</th>
+                            <th scope="col" rowspan="2" class="border border-gray-300 p-1">หัวข้อ</th>
+                            <th scope="col" colspan="5" class="border border-gray-300 p-1">ระดับความคิดเห็น</th>
                         </tr>
                         <tr class="bg-gray-200">
-                            <th scope="col" class="border border-gray-300 py-2">5</th>
-                            <th scope="col" class="border border-gray-300 py-2">4</th>
-                            <th scope="col" class="border border-gray-300 py-2">3</th>
-                            <th scope="col" class="border border-gray-300 py-2">2</th>
-                            <th scope="col" class="border border-gray-300 py-2">1</th>
+                            <th scope="col" class="border border-gray-300 p-1">5</th>
+                            <th scope="col" class="border border-gray-300 p-1">4</th>
+                            <th scope="col" class="border border-gray-300 p-1">3</th>
+                            <th scope="col" class="border border-gray-300 p-1">2</th>
+                            <th scope="col" class="border border-gray-300 p-1">1</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -304,7 +305,7 @@ if (isset($_GET['id'])) {
                             $class = ($i == 0 || (!empty($fun_topic[$i]))) ? '' : 'hidden';
                             echo "<tr id='section2tr$i' class='$class odd:bg-white even:bg-gray-100'>
                                 <td class='border border-gray-300 py-2 text-center'>" . ($i + 1) . "</td>
-                                <td class='border border-gray-300 py-2'><textarea name='fun_topic[]' id='section2tr{$i}td' class='w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center'>" . htmlspecialchars($fun_topic[$i] ?? '') . "</textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea name='fun_topic[]' id='section2tr{$i}td' class='w-full h-28 sm:h-16 border border-gray-300 rounded px-2 py-1 flex items-center'>" . htmlspecialchars($fun_topic[$i] ?? '') . "</textarea></td>
                                 <td class='border border-gray-300 py-2 text-center'><input disabled class='w-full h-10 flex items-center' type='radio' name='fun_score[0]' value='พึงพอใจมากที่สุด'></td>
                                 <td class='border border-gray-300 py-2 text-center'><input disabled class='w-full h-10 flex items-center' type='radio' name='fun_score[0]' value='พึงพอใจมาก'></td>
                                 <td class='border border-gray-300 py-2 text-center'><input disabled class='w-full h-10 flex items-center' type='radio' name='fun_score[0]' value='พึงพอใจปานกลาง'></td>
@@ -325,16 +326,16 @@ if (isset($_GET['id'])) {
                 <table class="w-full border border-gray-300 text-center my-3">
                     <thead>
                         <tr class="bg-gray-200">
-                            <th scope="col" rowspan="2" class="border border-gray-300 py-2">ที่</th>
-                            <th scope="col" rowspan="2" class="border border-gray-300 py-2">หัวข้อ</th>
-                            <th scope="col" colspan="5" class="border border-gray-300 py-2">ระดับความคิดเห็น</th>
+                            <th scope="col" rowspan="2" class="border border-gray-300 p-1">ที่</th>
+                            <th scope="col" rowspan="2" class="border border-gray-300 p-1">หัวข้อ</th>
+                            <th scope="col" colspan="5" class="border border-gray-300 p-1">ระดับความคิดเห็น</th>
                         </tr>
                         <tr class="bg-gray-200">
-                            <th scope="col" class="border border-gray-300 py-2">5</th>
-                            <th scope="col" class="border border-gray-300 py-2">4</th>
-                            <th scope="col" class="border border-gray-300 py-2">3</th>
-                            <th scope="col" class="border border-gray-300 py-2">2</th>
-                            <th scope="col" class="border border-gray-300 py-2">1</th>
+                            <th scope="col" class="border border-gray-300 p-1">5</th>
+                            <th scope="col" class="border border-gray-300 p-1">4</th>
+                            <th scope="col" class="border border-gray-300 p-1">3</th>
+                            <th scope="col" class="border border-gray-300 p-1">2</th>
+                            <th scope="col" class="border border-gray-300 p-1">1</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -343,7 +344,7 @@ if (isset($_GET['id'])) {
                             $class = ($i == 0 || (!empty($uf_topic[$i]))) ? '' : 'hidden';
                             echo "<tr id='section3tr$i' class='$class odd:bg-white even:bg-gray-100'>
                                 <td class='border border-gray-300 py-2 text-center'>" . ($i + 1) . "</td>
-                                <td class='border border-gray-300 py-2'><textarea name='uf_topic[]' id='section3tr{$i}td' class='w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center'>" . htmlspecialchars($uf_topic[$i] ?? '') . "</textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea name='uf_topic[]' id='section3tr{$i}td' class='w-full h-28 sm:h-16 border border-gray-300 rounded px-2 py-1 flex items-center'>" . htmlspecialchars($uf_topic[$i] ?? '') . "</textarea></td>
                                 <td class='border border-gray-300 py-2 text-center'><input disabled class='w-full h-10 flex items-center' type='radio' name='uf_score[0]' value='พึงพอใจมากที่สุด'></td>
                                 <td class='border border-gray-300 py-2 text-center'><input disabled class='w-full h-10 flex items-center' type='radio' name='uf_score[0]' value='พึงพอใจมาก'></td>
                                 <td class='border border-gray-300 py-2 text-center'><input disabled class='w-full h-10 flex items-center' type='radio' name='uf_score[0]' value='พึงพอใจปานกลาง'></td>
@@ -364,16 +365,16 @@ if (isset($_GET['id'])) {
                 <table class="w-full border border-gray-300 text-center my-3">
                     <thead>
                         <tr class="bg-gray-200">
-                            <th scope="col" rowspan="2" class="border border-gray-300 py-2">ที่</th>
-                            <th scope="col" rowspan="2" class="border border-gray-300 py-2">หัวข้อ</th>
-                            <th scope="col" colspan="5" class="border border-gray-300 py-2">ระดับความคิดเห็น</th>
+                            <th scope="col" rowspan="2" class="border border-gray-300 p-1">ที่</th>
+                            <th scope="col" rowspan="2" class="border border-gray-300 p-1">หัวข้อ</th>
+                            <th scope="col" colspan="5" class="border border-gray-300 p-1">ระดับความคิดเห็น</th>
                         </tr>
                         <tr class="bg-gray-200">
-                            <th scope="col" class="border border-gray-300 py-2">5</th>
-                            <th scope="col" class="border border-gray-300 py-2">4</th>
-                            <th scope="col" class="border border-gray-300 py-2">3</th>
-                            <th scope="col" class="border border-gray-300 py-2">2</th>
-                            <th scope="col" class="border border-gray-300 py-2">1</th>
+                            <th scope="col" class="border border-gray-300 p-1">5</th>
+                            <th scope="col" class="border border-gray-300 p-1">4</th>
+                            <th scope="col" class="border border-gray-300 p-1">3</th>
+                            <th scope="col" class="border border-gray-300 p-1">2</th>
+                            <th scope="col" class="border border-gray-300 p-1">1</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -382,7 +383,7 @@ if (isset($_GET['id'])) {
                             $class = ($i == 0 || (!empty($ss_topic[$i]))) ? '' : 'hidden';
                             echo "<tr id='section4tr$i' class='$class odd:bg-white even:bg-gray-100'>
                                 <td class='border border-gray-300 py-2 text-center'>" . ($i + 1) . "</td>
-                                <td class='border border-gray-300 py-2'><textarea name='ss_topic[]' id='section4tr{$i}td' class='w-full h-16 border border-gray-300 rounded px-2 py-1 flex items-center'>" . htmlspecialchars($ss_topic[$i] ?? '') . "</textarea></td>
+                                <td class='border border-gray-300 py-2'><textarea name='ss_topic[]' id='section4tr{$i}td' class='w-full h-28 sm:h-16 border border-gray-300 rounded px-2 py-1 flex items-center'>" . htmlspecialchars($ss_topic[$i] ?? '') . "</textarea></td>
                                 <td class='border border-gray-300 py-2 text-center'><input disabled class='w-full h-10 flex items-center' type='radio' name='ss_score[0]' value='พึงพอใจมากที่สุด'></td>
                                 <td class='border border-gray-300 py-2 text-center'><input disabled class='w-full h-10 flex items-center' type='radio' name='ss_score[0]' value='พึงพอใจมาก'></td>
                                 <td class='border border-gray-300 py-2 text-center'><input disabled class='w-full h-10 flex items-center' type='radio' name='ss_score[0]' value='พึงพอใจปานกลาง'></td>

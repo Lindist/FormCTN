@@ -53,6 +53,7 @@ unset($_SESSION['senrity_feature']); // Clear the session flag after use
 
 <head>
     <title>แบบฟอร์มประเมินประสิทธิภาพ</title>
+    <link rel="icon" type="icon" href="https://i.imgur.com/m0H7jcN.png">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <script src="https://cdn.tailwindcss.com"></script>
@@ -251,14 +252,14 @@ unset($_SESSION['senrity_feature']); // Clear the session flag after use
                 <input type="hidden" name="process_name" value="ด้านการประมวลผล">
 
                 <div class="overflow-x-auto my-2">
-                    <table class="w-full border border-gray-300 text-center my-3">
+                    <table class="w-full border border-gray-300 text-center">
                         <thead>
                             <tr class="bg-gray-200">
-                                <th scope="col" class="border border-gray-300 py-2">ที่</th>
-                                <th scope="col" class="border border-gray-300 py-2">คุณสมบัติด้านเทคนิค</th>
-                                <th scope="col" class="border border-gray-300 py-2">คุณสมบัติที่ตั้งไว้</th>
-                                <th scope="col" class="border border-gray-300 py-2">คุณสมบัติที่ทำได้</th>
-                                <th scope="col" class="border border-gray-300 py-2">ผลการเปรียบเทียบ</th>
+                                <th scope="col" class="border border-gray-300 p-2">ที่</th>
+                                <th scope="col" class="border border-gray-300 p-2">คุณสมบัติด้านเทคนิค</th>
+                                <th scope="col" class="border border-gray-300 p-2">คุณสมบัติที่ตั้งไว้</th>
+                                <th scope="col" class="border border-gray-300 p-2">คุณสมบัติที่ทำได้</th>
+                                <th scope="col" class="border border-gray-300 p-2">ผลการเปรียบเทียบ</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -302,14 +303,14 @@ unset($_SESSION['senrity_feature']); // Clear the session flag after use
                 <input type="hidden" name="report_name" value="ด้านการรายงานข้อมูล">
 
                 <div class="overflow-x-auto my-2">
-                    <table class="w-full border border-gray-300 text-center my-3">
+                    <table class="w-full border border-gray-300 text-center">
                         <thead>
                             <tr class="bg-gray-200">
-                                <th scope="col" class="border border-gray-300 py-2">ที่</th>
-                                <th scope="col" class="border border-gray-300 py-2">คุณสมบัติด้านเทคนิค</th>
-                                <th scope="col" class="border border-gray-300 py-2">คุณสมบัติที่ตั้งไว้</th>
-                                <th scope="col" class="border border-gray-300 py-2">คุณสมบัติที่ทำได้</th>
-                                <th scope="col" class="border border-gray-300 py-2">ผลการเปรียบเทียบ</th>
+                                <th scope="col" class="border border-gray-300 p-2">ที่</th>
+                                <th scope="col" class="border border-gray-300 p-2">คุณสมบัติด้านเทคนิค</th>
+                                <th scope="col" class="border border-gray-300 p-2">คุณสมบัติที่ตั้งไว้</th>
+                                <th scope="col" class="border border-gray-300 p-2">คุณสมบัติที่ทำได้</th>
+                                <th scope="col" class="border border-gray-300 p-2">ผลการเปรียบเทียบ</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -353,14 +354,14 @@ unset($_SESSION['senrity_feature']); // Clear the session flag after use
                 <input type="hidden" name="senrity_name" value="ด้านความปลอดภัย">
 
                 <div class="overflow-x-auto my-2">
-                    <table class="w-full border border-gray-300 text-center my-3">
+                    <table class="w-full border border-gray-300 text-center">
                         <thead>
                             <tr class="bg-gray-200">
-                                <th scope="col" class="border border-gray-300 py-2">ที่</th>
-                                <th scope="col" class="border border-gray-300 py-2">คุณสมบัติด้านเทคนิค</th>
-                                <th scope="col" class="border border-gray-300 py-2">คุณสมบัติที่ตั้งไว้</th>
-                                <th scope="col" class="border border-gray-300 py-2">คุณสมบัติที่ทำได้</th>
-                                <th scope="col" class="border border-gray-300 py-2">ผลการเปรียบเทียบ</th>
+                                <th scope="col" class="border border-gray-300 p-2">ที่</th>
+                                <th scope="col" class="border border-gray-300 p-2">คุณสมบัติด้านเทคนิค</th>
+                                <th scope="col" class="border border-gray-300 p-2">คุณสมบัติที่ตั้งไว้</th>
+                                <th scope="col" class="border border-gray-300 p-2">คุณสมบัติที่ทำได้</th>
+                                <th scope="col" class="border border-gray-300 p-2">ผลการเปรียบเทียบ</th>
                             </tr>
                         </thead>
                         <tbody>
