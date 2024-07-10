@@ -108,7 +108,6 @@ unset($_SESSION['sati_level']);
             background-color: rgb(180, 180, 180);
         }
     </style>
-    <script src="script/add_remove_satis_insertt.js"></script>
 </head>
 
 <body>
