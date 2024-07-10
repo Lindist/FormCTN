@@ -279,10 +279,14 @@ header .logout img{
     transition: all .2s ease-in-out;
     cursor: pointer;
 }
+.subform .btns #btnshow,
 .subform .btns #btnedit,
 .subform .btns #btndelete{
     display: none;
 
+}
+.subform .btns #btn{
+    display: inline-block;
 }
 .subform > .btns > a:hover{
     background-color: rgb(3, 3, 159);
@@ -337,9 +341,13 @@ header .logout img{
 .subform.columnData > .btns > a:hover{
     background-color: rgb(3, 3, 159);
 }
+.subform.columnData .btns #btnshow,
 .subform.columnData .btns #btnedit,
 .subform.columnData .btns #btndelete{
     display: inline-block;
+}
+.subform.columnData .btns #btn{
+    display: none;
 }
 .subform.columnData .btns #btnedit{
     background-color: #FFDB00;
@@ -669,11 +677,14 @@ header .logout img{
     .subform > .btns > a:hover{
         background-color: rgb(3, 3, 159);
     }
+    .subform .btns #btnshow,
     .subform .btns #btnedit,
     .subform .btns #btndelete{
         display: none;
     }
-
+    .subform .btns #btn{
+        display: inline-block;
+    }
 
     .subform.columnData{
         display: flex;
@@ -724,10 +735,13 @@ header .logout img{
     .subform.columnData > .btns > a:active{
         background-color: rgb(3, 3, 159);
     }
-
+    .subform.columnData .btns #btnshow,
     .subform.columnData .btns #btnedit,
     .subform.columnData .btns #btndelete{
         display: inline-block;
+    }
+    .subform.columnData .btns #btn{
+        display: none;
     }
     .subform.columnData .btns #btnedit{
         background-color: #FFDB00;

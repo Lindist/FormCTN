@@ -37,7 +37,7 @@ $result3->execute();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/formstyle2.css">
+    <link rel="stylesheet" href="style/formstyle.css">
     <link rel="stylesheet" href="style/tabstyle.css">
     <title>From</title>
     <link rel="icon" type="icon" href="https://i.imgur.com/m0H7jcN.png">
@@ -127,7 +127,7 @@ $result3->execute();
                         <div class='text'><?php echo $row['form_name']; ?></div>
                         <div class="btns">
                         <a id='btn' href='showlist.php'>ดูรายชื่อ</a>
-                        <a id='btn' onclick="isaddClass('<?php echo $row['form_id']; ?>')" >ดูข้อมูล</a>
+                        <a id='btnshow' onclick="isaddClass('<?php echo $row['form_id']; ?>')" >ดูข้อมูล</a>
                         <a href='edit_performance_form.php?id=<?php echo $row['form_id']; ?>' id='btnedit'>แก้ไข</a>
                         <a id='btndelete' onclick="confirmdel(['<?php echo $c; ?>','<?php echo $row['form_id']; ?>'])" >ลบ</a>
                         </div>
@@ -164,7 +164,7 @@ $result3->execute();
                         <div class='text'><?php echo $row5['sati_ep2']; ?></div>
                         <div class="btns">
                         <a id='btn' href='showlist.php'>ดูรายชื่อ</a>
-                        <a id='btn' onclick="isaddClass('<?php echo $row5['sati_id']; ?>','true')" >ดูข้อมูล</a>
+                        <a id='btnshow' onclick="isaddClass('<?php echo $row5['sati_id']; ?>','true')" >ดูข้อมูล</a>
                         <a href='edit_satis_form.php?id=<?php echo $row5['sati_id']; ?>' id='btnedit'>แก้ไข</a>
                         <a id='btndelete' onclick="confirmdel(['<?php echo $c1; ?>','<?php echo $row5['sati_id']; ?>'],'true')" >ลบ</a>
                         </div>
