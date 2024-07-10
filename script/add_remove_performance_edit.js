@@ -4,10 +4,12 @@ const section1add = () => {
     for (let i = 0; i < 4; i++) {
         const row = document.getElementById(`section1tr${i}`);
         const textarea = document.getElementById(`section1tr${i}td`);
+        const textareaf = document.getElementById(`section1tr${i}tdf`);
 
         if (row.classList.contains('hidden')) {
             row.classList.remove('hidden');
             textarea.disabled = false;
+            textareaf.disabled = false;
             break;
         }
     }
@@ -19,10 +21,12 @@ const section1remove = () => {
     for (let i = 3; i >= 0; i--) {
         const row = document.getElementById(`section1tr${i}`);
         const textarea = document.getElementById(`section1tr${i}td`);
+        const textareaf = document.getElementById(`section1tr${i}tdf`);
 
         if (!row.classList.contains('hidden')) {
             row.classList.add('hidden');
             textarea.disabled = true;
+            textareaf.disabled = true;
             break;
         }
     }
@@ -35,11 +39,14 @@ const update1Buttons = () => {
 
     for (let i = 0; i < 4; i++) {
         const textarea = document.getElementById(`section1tr${i}td`);
+        const textareaf = document.getElementById(`section1tr${i}tdf`);
         if (!document.getElementById(`section1tr${i}`).classList.contains('hidden')) {
             visibleRows++;
-            textarea.disabled = false; // Enable textarea when row is visible
+            textarea.disabled = false;
+            textareaf.disabled = false;
         } else {
-            textarea.disabled = true; // Disable textarea when row is hidden
+            textarea.disabled = true;
+            textareaf.disabled = true;
         }
     }
 
@@ -52,10 +59,12 @@ const section2add = () => {
     for (let i = 0; i < 4; i++) {
         const row = document.getElementById(`section2tr${i}`);
         const textarea = document.getElementById(`section2tr${i}td`);
+        const textareaf = document.getElementById(`section2tr${i}tdf`);
 
         if (row.classList.contains('hidden')) {
             row.classList.remove('hidden');
             textarea.disabled = false;
+            textareaf.disabled = false;
             break;
         }
     }
@@ -67,10 +76,12 @@ const section2remove = () => {
     for (let i = 3; i >= 0; i--) {
         const row = document.getElementById(`section2tr${i}`);
         const textarea = document.getElementById(`section2tr${i}td`);
+        const textareaf = document.getElementById(`section2tr${i}tdf`);
 
         if (!row.classList.contains('hidden')) {
             row.classList.add('hidden');
             textarea.disabled = true;
+            textareaf.disabled = true;
             break;
         }
     }
@@ -83,11 +94,14 @@ const update2Buttons = () => {
 
     for (let i = 0; i < 4; i++) {
         const textarea = document.getElementById(`section2tr${i}td`);
+        const textareaf = document.getElementById(`section2tr${i}tdf`);
         if (!document.getElementById(`section2tr${i}`).classList.contains('hidden')) {
             visibleRows++;
-            textarea.disabled = false; // Enable textarea when row is visible
+            textarea.disabled = false;
+            textareaf.disabled = false;
         } else {
-            textarea.disabled = true; // Disable textarea when row is hidden
+            textarea.disabled = true;
+            textareaf.disabled = true;
         }
     }
 
@@ -100,10 +114,12 @@ const section3add = () => {
     for (let i = 0; i < 4; i++) {
         const row = document.getElementById(`section3tr${i}`);
         const textarea = document.getElementById(`section3tr${i}td`);
+        const textareaf = document.getElementById(`section3tr${i}tdf`);
 
         if (row.classList.contains('hidden')) {
             row.classList.remove('hidden');
             textarea.disabled = false;
+            textareaf.disabled = false;
             break;
         }
     }
@@ -115,10 +131,12 @@ const section3remove = () => {
     for (let i = 3; i >= 0; i--) {
         const row = document.getElementById(`section3tr${i}`);
         const textarea = document.getElementById(`section3tr${i}td`);
+        const textareaf = document.getElementById(`section3tr${i}tdf`);
 
         if (!row.classList.contains('hidden')) {
             row.classList.add('hidden');
             textarea.disabled = true;
+            textareaf.disabled = true;
             break;
         }
     }
@@ -131,11 +149,14 @@ const update3Buttons = () => {
 
     for (let i = 0; i < 4; i++) {
         const textarea = document.getElementById(`section3tr${i}td`);
+        const textareaf = document.getElementById(`section3tr${i}tdf`);
         if (!document.getElementById(`section3tr${i}`).classList.contains('hidden')) {
             visibleRows++;
-            textarea.disabled = false; // Enable textarea when row is visible
+            textarea.disabled = false;
+            textareaf.disabled = false;
         } else {
-            textarea.disabled = true; // Disable textarea when row is hidden
+            textarea.disabled = true;
+            textareaf.disabled = true;
         }
     }
 
@@ -148,10 +169,12 @@ const section4add = () => {
     for (let i = 0; i < 4; i++) {
         const row = document.getElementById(`section4tr${i}`);
         const textarea = document.getElementById(`section4tr${i}td`);
+        const textareaf = document.getElementById(`section4tr${i}tdf`);
 
         if (row.classList.contains('hidden')) {
             row.classList.remove('hidden');
             textarea.disabled = false;
+            textareaf.disabled = false;
             break;
         }
     }
@@ -163,10 +186,12 @@ const section4remove = () => {
     for (let i = 3; i >= 0; i--) {
         const row = document.getElementById(`section4tr${i}`);
         const textarea = document.getElementById(`section4tr${i}td`);
+        const textareaf = document.getElementById(`section4tr${i}tdf`);
 
         if (!row.classList.contains('hidden')) {
             row.classList.add('hidden');
             textarea.disabled = true;
+            textareaf.disabled = true;
             break;
         }
     }
@@ -179,11 +204,14 @@ const update4Buttons = () => {
 
     for (let i = 0; i < 4; i++) {
         const textarea = document.getElementById(`section4tr${i}td`);
+        const textareaf = document.getElementById(`section4tr${i}tdf`);
         if (!document.getElementById(`section4tr${i}`).classList.contains('hidden')) {
             visibleRows++;
-            textarea.disabled = false; // Enable textarea when row is visible
+            textarea.disabled = false;
+            textareaf.disabled = false;
         } else {
-            textarea.disabled = true; // Disable textarea when row is hidden
+            textarea.disabled = true;
+            textareaf.disabled = true;
         }
     }
 
