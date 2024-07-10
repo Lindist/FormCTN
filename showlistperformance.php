@@ -7,10 +7,28 @@
     } else if (isset($_SESSION['user_id'])) {
         $user_id = $_SESSION['user_id'];
     }
-
+    if(isset($_GET['id'])){
+        $id = $_GET['id'];
+    }
     $result = $conn->query("SELECT * FROM tb_member WHERE member_id = '$user_id'");
     $count = count($result->fetchAll());
     $result->execute();
+
+
+    $tb_fill_efficiercy = $conn->query("SELECT * FROM tb_fill_efficiercy WHERE form_id = '$id'");
+    $tb_fill_efficiercy->execute();
+
+    if(count($tb_fill_efficiercy->fetchAll()) > 0){
+        while($row_tb_fill_efficiercy = $tb_fill_efficiercy->fetch(PDO::FETCH_ASSOC)){
+            $nofiller[] = $row_tb_fill_efficiercy["member_id"];
+        }
+        for($i = 0; $i < count($nofiller);$i++){
+            $member_id = $conn->query("SELECT * FROM tb_member WHERE member_id = '$nofiller[$i]'");
+            $member_id->execute();
+            $row = $member_id->fetch(PDO::FETCH_ASSOC);
+            $filler[] = $row;
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +50,7 @@
             color: #000;
         }
         body > div {
-            height: 96vh;
+            height: 95vh;
         }
         body > div #form{
             overflow-y: scroll;
@@ -67,6 +85,9 @@
 <body>
     <div class="main container-fluid col-11 bg-white py-1 my-3 rounded">
         <form action="" id="form">
+            <button type="button" onclick="backtoindex()" style="display:flex; background-color:#1a75ff; color:#fff; font-weight:bold; border-radius:10px; padding: 10px; border-color: #444; transition:all .3s ease-in-out;" onmouseover="this.style.backgroundColor='#00f';" onmouseout="this.style.backgroundColor='#1a75ff';">
+                กลับหน้าแรก
+            </button>
             <h1 class="header text-center my-5 text-break">รายชื่อผู้กรอกและผู้สร้างฟอร์ม</h1>
             <main>
                 
@@ -76,6 +97,7 @@
     <script type="text/javascript">
         const showform = document.querySelector('main');
             showform.insertAdjacentHTML("beforeend", `
+            
                 <?php for ($c = 1; $c <= $count; $c++) { ?>
                         <?php $row = $result->fetch(PDO::FETCH_ASSOC); ?>
                         <div>
@@ -85,7 +107,20 @@
                         <a id='btn' href="#" >ดูข้อมูล</a>
                         </div>
                         </div>
-                <?php } ?>`);
+                <?php } ?>
+                <?php for ($i = 0; $i < count($nofiller); $i++) { ?>
+                        <div>
+                        <div>ลำดับที่ <?php echo $i+2; ?></div>
+                        <div class='text'><?php echo $filler[$i]['member_title']." ".$filler[$i]['member_firstname']." ".$filler[$i]['member_lastname']." ".$filler[$i]['member_code']; ?></div>
+                        <div class="btns">
+                        <a id='btn' href="#" >ดูข้อมูล</a>
+                        </div>
+                        </div>
+                <?php } ?>
+                `);
+        backtoindex = () =>{
+            window.location.href = 'form.php';
+        };
     </script>
     <style>
         .btns > a{
