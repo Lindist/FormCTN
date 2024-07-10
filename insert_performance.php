@@ -29,15 +29,19 @@ if (isset($_POST['save'])) {
 
     $input_name = $_POST['input_name'];
     $input_feature = implode("@", $_POST['input_feature']);
+    $input_setfeature = implode("@", $_POST['input_setfeature']);
 
     $process_name = $_POST['process_name'];
     $process_feature = implode("@", $_POST['process_feature']);
+    $process_setfeature = implode("@", $_POST['process_setfeature']);
 
     $report_name = $_POST['report_name'];
     $report_feature = implode("@", $_POST['report_feature']);
+    $report_setfeature = implode("@", $_POST['report_setfeature']);
 
     $senrity_name = $_POST['senrity_name'];
     $senrity_feature = implode("@", $_POST['senrity_feature']);
+    $senrity_setfeature = implode("@", $_POST['senrity_setfeature']);
 }
 
 $_SESSION['formname'] = $formname;
@@ -45,10 +49,6 @@ $_SESSION['ad'] = $ad;
 $_SESSION['gender'] = $_POST['genders'];
 $_SESSION['type_m'] = $_POST['kinduser'];
 $_SESSION['edu'] = $_POST['le_education'];
-// $_SESSION['input_feature'] = $_POST['input_feature'];
-// $_SESSION['process_feature'] = $_POST['process_feature'];
-// $_SESSION['report_feature'] = $_POST['report_feature'];
-// $_SESSION['$senrity_feature'] = $_POST['$senrity_feature'];
 
 if (empty($formname)) {
     $_SESSION['error'] = "กรุณากรอกชื่อฟอร์ม";
@@ -70,36 +70,36 @@ if (empty($formname)) {
     $_SESSION['error'] = "กรุณากรอก ระดับการศึกษา อย่างน้อย 1 ระดับ";
     header("location: insert_performance_form.php");
     exit;
-} else if (empty($input_feature)) {
-    $_SESSION['error'] = "กรุณากรอกด้านที่ 1 อย่างน้อย 1 หัวข้อ";
+} else if (empty($input_feature) || empty($input_setfeature)) {
+    $_SESSION['error'] = "กรุณากรอกด้านที่ 1 ให้ครบอย่างน้อย 1 หัวข้อ";
     header("location: insert_performance_form.php");
     exit;
-} else if (empty($process_feature)) {
-    $_SESSION['error'] = "กรุณากรอกด้านที่ 2 อย่างน้อย 1 หัวข้อ";
+} else if (empty($process_feature) || empty($process_setfeature)) {
+    $_SESSION['error'] = "กรุณากรอกด้านที่ 2 ให้ครบอย่างน้อย 1 หัวข้อ";
     header("location: insert_performance_form.php");
     exit;
-} else if (empty($report_feature)) {
-    $_SESSION['error'] = "กรุณากรอกด้านที่ 3 อย่างน้อย 1 หัวข้อ";
+} else if (empty($report_feature) || empty($report_setfeature)) {
+    $_SESSION['error'] = "กรุณากรอกด้านที่ 3 ให้ครบอย่างน้อย 1 หัวข้อ";
     header("location: insert_performance_form.php");
     exit;
 } else if (empty($senrity_feature)) {
-    $_SESSION['error'] = "กรุณากรอกด้านที่ 4 อย่างน้อย 1 หัวข้อ";
+    $_SESSION['error'] = "กรุณากรอกด้านที่ 4 ให้ครบอย่างน้อย 1 หัวข้อ";
     header("location: insert_performance_form.php");
     exit;
 } else {
     try {
         if (!isset($_SESSION['error'])) {
-            $tb_input = $conn->prepare("INSERT INTO tb_input(Input_name, input_feature) VALUES(?,?)");
-            $tb_input->execute([$input_name, $input_feature]);
+            $tb_input = $conn->prepare("INSERT INTO tb_input(Input_name, input_feature, input_setfeature) VALUES(?,?,?)");
+            $tb_input->execute([$input_name, $input_feature, $input_setfeature]);
 
-            $tb_process = $conn->prepare("INSERT INTO tb_process(process_name, process_feature) VALUES(?,?)");
-            $tb_process->execute([$process_name, $process_feature]);
+            $tb_process = $conn->prepare("INSERT INTO tb_process(process_name, process_feature, process_setfeature) VALUES(?,?,?)");
+            $tb_process->execute([$process_name, $process_feature, $process_setfeature]);
 
-            $tb_report = $conn->prepare("INSERT INTO tb_report(report_name, report_feature) VALUES(?,?)");
-            $tb_report->execute([$report_name, $report_feature]);
+            $tb_report = $conn->prepare("INSERT INTO tb_report(report_name, report_feature, report_setfeature) VALUES(?,?,?)");
+            $tb_report->execute([$report_name, $report_feature, $report_setfeature]);
             
-            $tb_senrity = $conn->prepare("INSERT INTO tb_senrity(senrity_name, senrity_feature) VALUES(?,?)");
-            $tb_senrity->execute([$senrity_name, $senrity_feature]);
+            $tb_senrity = $conn->prepare("INSERT INTO tb_senrity(senrity_name, senrity_feature, senrity_setfeature) VALUES(?,?,?)");
+            $tb_senrity->execute([$senrity_name, $senrity_feature, $senrity_setfeature]);
 
             $sql_tb_input = $conn->prepare("SELECT * FROM tb_input WHERE Input_feature = :input_feature");
             $sql_tb_input->bindParam(":input_feature", $input_feature);

@@ -34,18 +34,6 @@ unset($_SESSION['type_m']); // Clear the session flag after use
 $edu = isset($_SESSION['edu']) && $_SESSION['edu'] ? $_SESSION['edu'] : $keys;
 unset($_SESSION['edu']); // Clear the session flag after use
 
-$input_feature = isset($_SESSION['input_feature']) && $_SESSION['input_feature'] ? $_SESSION['input_feature'] : $keys;
-unset($_SESSION['input_feature']); // Clear the session flag after use
-
-$process_feature = isset($_SESSION['process_feature']) && $_SESSION['process_feature'] ? $_SESSION['process_feature'] : $keys;
-unset($_SESSION['process_feature']); // Clear the session flag after use
-
-$report_feature = isset($_SESSION['report_feature']) && $_SESSION['report_feature'] ? $_SESSION['report_feature'] : $keys;
-unset($_SESSION['report_feature']); // Clear the session flag after use
-
-$senrity_feature = isset($_SESSION['senrity_feature']) && $_SESSION['senrity_feature'] ? $_SESSION['senrity_feature'] : $keys;
-unset($_SESSION['senrity_feature']); // Clear the session flag after use
-
 ?>
 
 <!doctype html>
@@ -214,29 +202,29 @@ unset($_SESSION['senrity_feature']); // Clear the session flag after use
                         <tbody>
                             <tr class="odd:bg-white even:bg-gray-100">
                                 <td class="border border-gray-300 py-2">1</td>
-                                <td class="border border-gray-300 py-2"><textarea name="input_feature[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"><?= $input_feature[0] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea disabled name="input_setfeature[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="input_feature[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="input_setfeature[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                                 <td class="border border-gray-300 py-2"><textarea disabled name="input_result[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                                 <td class="border border-gray-300 py-2"><textarea disabled name="input_compare[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                             </tr>
                             <tr class="hidden odd:bg-white even:bg-gray-100" id="section1tr1">
                                 <td class="border border-gray-300 py-2">2</td>
-                                <td class="border border-gray-300 py-2"><textarea disabled name="input_feature[]" id="section1tr1td" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"><?= $input_feature[1] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea disabled name="input_setfeature[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea disabled name="input_feature[]" id="section1tr1td" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea disabled name="input_setfeature[]" id="section1tr1tdf" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                                 <td class="border border-gray-300 py-2"><textarea disabled name="input_result[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                                 <td class="border border-gray-300 py-2"><textarea disabled name="input_compare[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                             </tr>
                             <tr class="hidden odd:bg-white even:bg-gray-100" id="section1tr2">
                                 <td class="border border-gray-300 py-2">3</td>
-                                <td class="border border-gray-300 py-2"><textarea disabled name="input_feature[]" id="section1tr2td" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"><?= $input_feature[2] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea disabled name="input_setfeature[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea disabled name="input_feature[]" id="section1tr2td" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea disabled name="input_setfeature[]" id="section1tr2tdf" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                                 <td class="border border-gray-300 py-2"><textarea disabled name="input_result[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                                 <td class="border border-gray-300 py-2"><textarea disabled name="input_compare[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                             </tr>
                             <tr class="hidden odd:bg-white even:bg-gray-100" id="section1tr3">
                                 <td class="border border-gray-300 py-2">4</td>
-                                <td class="border border-gray-300 py-2"><textarea disabled name="input_feature[]" id="section1tr3td" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"><?= $input_feature[3] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea disabled name="input_setfeature[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea disabled name="input_feature[]" id="section1tr3td" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea disabled name="input_setfeature[]" id="section1tr3tdf" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                                 <td class="border border-gray-300 py-2"><textarea disabled name="input_result[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                                 <td class="border border-gray-300 py-2"><textarea disabled name="input_compare[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                             </tr>
@@ -265,29 +253,29 @@ unset($_SESSION['senrity_feature']); // Clear the session flag after use
                         <tbody>
                             <tr class="odd:bg-white even:bg-gray-100">
                                 <td class="border border-gray-300 py-2">1</td>
-                                <td class="border border-gray-300 py-2"><textarea name="process_feature[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"><?= $process_feature[0] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea disabled name="process_setfeature[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="process_feature[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="process_setfeature[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                                 <td class="border border-gray-300 py-2"><textarea disabled name="process_result[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                                 <td class="border border-gray-300 py-2"><textarea disabled name="process_compare[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                             </tr>
                             <tr class="hidden odd:bg-white even:bg-gray-100" id="section2tr1">
                                 <td class="border border-gray-300 py-2">2</td>
-                                <td class="border border-gray-300 py-2"><textarea disabled name="process_feature[]" id="section2tr1td" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"><?= $process_feature[1] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea disabled name="process_setfeature[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea disabled name="process_feature[]" id="section2tr1td" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea disabled name="process_setfeature[]" id="section2tr1tdf" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                                 <td class="border border-gray-300 py-2"><textarea disabled name="process_result[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                                 <td class="border border-gray-300 py-2"><textarea disabled name="process_compare[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></textarea></td>
                             </tr>
                             <tr class="hidden odd:bg-white even:bg-gray-100" id="section2tr2">
                                 <td class="border border-gray-300 py-2">3</td>
-                                <td class="border border-gray-300 py-2"><textarea disabled name="process_feature[]" id="section2tr2td" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"><?= $process_feature[2] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea disabled name="process_setfeature[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea disabled name="process_feature[]" id="section2tr2td" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea disabled name="process_setfeature[]" id="section2tr2tdf" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                                 <td class="border border-gray-300 py-2"><textarea disabled name="process_result[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                                 <td class="border border-gray-300 py-2"><textarea disabled name="process_compare[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                             </tr>
                             <tr class="hidden odd:bg-white even:bg-gray-100" id="section2tr3">
                                 <td class="border border-gray-300 py-2">4</td>
-                                <td class="border border-gray-300 py-2"><textarea disabled name="process_feature[]" id="section2tr3td" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"><?= $process_feature[3] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea disabled name="process_setfeature[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea disabled name="process_feature[]" id="section2tr3td" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea disabled name="process_setfeature[]" id="section2tr3tdf" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                                 <td class="border border-gray-300 py-2"><textarea disabled name="process_result[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                                 <td class="border border-gray-300 py-2"><textarea disabled name="process_compare[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                             </tr>
@@ -316,29 +304,29 @@ unset($_SESSION['senrity_feature']); // Clear the session flag after use
                         <tbody>
                             <tr class="odd:bg-white even:bg-gray-100">
                                 <td class="border border-gray-300 py-2">1</td>
-                                <td class="border border-gray-300 py-2"><textarea name="report_feature[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"><?= $report_feature[0] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea disabled name="report_setfeature[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="report_feature[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="report_setfeature[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                                 <td class="border border-gray-300 py-2"><textarea disabled name="report_result[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                                 <td class="border border-gray-300 py-2"><textarea disabled name="report_compare[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                             </tr>
                             <tr class="hidden odd:bg-white even:bg-gray-100" id="section3tr1">
                                 <td class="border border-gray-300 py-2">2</td>
-                                <td class="border border-gray-300 py-2"><textarea disabled name="report_feature[]" id="section3tr1td" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"><?= $report_feature[1] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea disabled name="report_setfeature[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea disabled name="report_feature[]" id="section3tr1td" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea disabled name="report_setfeature[]" id="section3tr1tdf" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                                 <td class="border border-gray-300 py-2"><textarea disabled name="report_result[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                                 <td class="border border-gray-300 py-2"><textarea disabled name="report_compare[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                             </tr>
                             <tr class="hidden odd:bg-white even:bg-gray-100" id="section3tr2">
                                 <td class="border border-gray-300 py-2">3</td>
-                                <td class="border border-gray-300 py-2"><textarea disabled name="report_feature[]" id="section3tr2td" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"><?= $report_feature[2] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea disabled name="report_setfeature[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea disabled name="report_feature[]" id="section3tr2td" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea disabled name="report_setfeature[]" id="section3tr2tdf" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                                 <td class="border border-gray-300 py-2"><textarea disabled name="report_result[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                                 <td class="border border-gray-300 py-2"><textarea disabled name="report_compare[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                             </tr>
                             <tr class="hidden odd:bg-white even:bg-gray-100" id="section3tr3">
                                 <td class="border border-gray-300 py-2">4</td>
-                                <td class="border border-gray-300 py-2"><textarea disabled name="report_feature[]" id="section3tr3td" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"><?= $report_feature[3] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea disabled name="report_setfeature[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea disabled name="report_feature[]" id="section3tr3td" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea disabled name="report_setfeature[]" id="section3tr3tdf" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                                 <td class="border border-gray-300 py-2"><textarea disabled name="report_result[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                                 <td class="border border-gray-300 py-2"><textarea disabled name="report_compare[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                             </tr>
@@ -367,29 +355,29 @@ unset($_SESSION['senrity_feature']); // Clear the session flag after use
                         <tbody>
                             <tr class="odd:bg-white even:bg-gray-100">
                                 <td class="border border-gray-300 py-2">1</td>
-                                <td class="border border-gray-300 py-2"><textarea name="senrity_feature[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"><?= $senrity_feature[0] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea disabled name="senrity_setfeature[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="senrity_feature[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea name="senrity_setfeature[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                                 <td class="border border-gray-300 py-2"><textarea disabled name="senrity_result[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                                 <td class="border border-gray-300 py-2"><textarea disabled name="senrity_compare[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                             </tr>
                             <tr class="hidden odd:bg-white even:bg-gray-100" id="section4tr1">
                                 <td class="border border-gray-300 py-2">2</td>
-                                <td class="border border-gray-300 py-2"><textarea disabled name="senrity_feature[]" id="section4tr1td" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"><?= $senrity_feature[1] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea disabled name="senrity_setfeature[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea disabled name="senrity_feature[]" id="section4tr1td" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea disabled name="senrity_setfeature[]" id="section4tr1tdf" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                                 <td class="border border-gray-300 py-2"><textarea disabled name="senrity_result[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                                 <td class="border border-gray-300 py-2"><textarea disabled name="senrity_compare[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                             </tr>
                             <tr class="hidden odd:bg-white even:bg-gray-100" id="section4tr2">
                                 <td class="border border-gray-300 py-2">3</td>
-                                <td class="border border-gray-300 py-2"><textarea disabled name="senrity_feature[]" id="section4tr2td" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"><?= $senrity_feature[2] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea disabled name="senrity_setfeature[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea disabled name="senrity_feature[]" id="section4tr2td" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea disabled name="senrity_setfeature[]" id="section4tr2tdf" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                                 <td class="border border-gray-300 py-2"><textarea disabled name="senrity_result[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                                 <td class="border border-gray-300 py-2"><textarea disabled name="senrity_compare[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                             </tr>
                             <tr class="hidden odd:bg-white even:bg-gray-100" id="section4tr3">
                                 <td class="border border-gray-300 py-2">4</td>
-                                <td class="border border-gray-300 py-2"><textarea disabled name="senrity_feature[]" id="section4tr3td" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"><?= $senrity_feature[3] ?></textarea></td>
-                                <td class="border border-gray-300 py-2"><textarea disabled name="senrity_setfeature[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea disabled name="senrity_feature[]" id="section4tr3td" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
+                                <td class="border border-gray-300 py-2"><textarea disabled name="senrity_setfeature[]" id="section4tr3tdf" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                                 <td class="border border-gray-300 py-2"><textarea disabled name="senrity_result[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                                 <td class="border border-gray-300 py-2"><textarea disabled name="senrity_compare[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                             </tr>

@@ -26,6 +26,11 @@ if (isset($_POST['update'])) {
     $process_feature = implode("@", $_POST['process_feature']);
     $report_feature = implode("@", $_POST['report_feature']);
     $senrity_feature = implode("@", $_POST['senrity_feature']);
+
+    $input_setfeature = implode("@", $_POST['input_setfeature']);
+    $process_setfeature = implode("@", $_POST['process_setfeature']);
+    $report_setfeature = implode("@", $_POST['report_setfeature']);
+    $senrity_setfeature = implode("@", $_POST['senrity_setfeature']);
 }
 
 if (empty($formname)) {
@@ -52,20 +57,20 @@ if (empty($formname)) {
     try {
         if (!isset($_SESSION['error'])) {
             // Update tb_input
-            $tb_input = $conn->prepare("UPDATE tb_input SET input_feature = ? WHERE input_id = ?");
-            $tb_input->execute([$input_feature, $input_id]);
+            $tb_input = $conn->prepare("UPDATE tb_input SET input_feature = ?, input_setfeature = ? WHERE input_id = ?");
+            $tb_input->execute([$input_feature, $input_setfeature, $input_id]);
 
             // Update tb_process
-            $tb_process = $conn->prepare("UPDATE tb_process SET process_feature = ? WHERE process_id = ?");
-            $tb_process->execute([$process_feature, $process_id]);
+            $tb_process = $conn->prepare("UPDATE tb_process SET process_feature = ?, process_setfeature = ? WHERE process_id = ?");
+            $tb_process->execute([$process_feature, $process_setfeature, $process_id]);
 
             // Update tb_report
-            $tb_report = $conn->prepare("UPDATE tb_report SET report_feature = ? WHERE report_id = ?");
-            $tb_report->execute([$report_feature, $report_id]);
+            $tb_report = $conn->prepare("UPDATE tb_report SET report_feature = ?, report_setfeature = ? WHERE report_id = ?");
+            $tb_report->execute([$report_feature, $report_setfeature, $report_id]);
 
             // Update tb_senrity
-            $tb_senrity = $conn->prepare("UPDATE tb_senrity SET senrity_feature = ? WHERE senrity_id = ?");
-            $tb_senrity->execute([$senrity_feature, $senrity_id]);
+            $tb_senrity = $conn->prepare("UPDATE tb_senrity SET senrity_feature = ?, senrity_setfeature = ? WHERE senrity_id = ?");
+            $tb_senrity->execute([$senrity_feature, $senrity_setfeature, $senrity_id]);
 
             // Update tb_efficiercy_form
             $tb_efficiercy_form = $conn->prepare("UPDATE tb_efficiercy_form SET form_ad = ?, form_gender = ?, form_type = ?, form_education = ?, form_name = ? WHERE form_id = ?");

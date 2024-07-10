@@ -9,16 +9,22 @@ const section1add = () => {
     const textarea1 = document.getElementById('section1tr1td');
     const textarea2 = document.getElementById('section1tr2td');
     const textarea3 = document.getElementById('section1tr3td');
+    const textarea1f = document.getElementById('section1tr1tdf');
+    const textarea2f = document.getElementById('section1tr2tdf');
+    const textarea3f = document.getElementById('section1tr3tdf');
 
     if (section1tr1.classList.contains('hidden')) {
         section1tr1.classList.remove('hidden');
         textarea1.disabled = false;
+        textarea1f.disabled = false;
     } else if (section1tr2.classList.contains('hidden')) {
         section1tr2.classList.remove('hidden');
         textarea2.disabled = false;
+        textarea2f.disabled = false;
     } else if (section1tr3.classList.contains('hidden')) {
         section1tr3.classList.remove('hidden');
         textarea3.disabled = false;
+        textarea3f.disabled = false;
     }
 
     if (!section1tr1.classList.contains('hidden')) {
@@ -40,18 +46,24 @@ const section1remove = () => {
     const textarea1 = document.getElementById('section1tr1td');
     const textarea2 = document.getElementById('section1tr2td');
     const textarea3 = document.getElementById('section1tr3td');
+    const textarea1f = document.getElementById('section1tr1tdf');
+    const textarea2f = document.getElementById('section1tr2tdf');
+    const textarea3f = document.getElementById('section1tr3tdf');
 
     if (!section1tr3.classList.contains('hidden')) {
         section1tr3.classList.add('hidden');
         textarea3.disabled = true;
+        textarea3f.disabled = true;
     } else if (!section1tr2.classList.contains('hidden')) {
         section1tr2.classList.add('hidden');
         textarea2.disabled = true;
+        textarea2f.disabled = true;
     } else if (!section1tr1.classList.contains('hidden')) {
         section1tr1.classList.add('hidden');
         textarea1.disabled = true;
+        textarea1f.disabled = true;
     }
-
+    
     if (section1tr1.classList.contains('hidden')) {
         section1removebtn.classList.add('hidden');
     }
@@ -71,16 +83,22 @@ const section2add = () => {
     const textarea1 = document.getElementById('section2tr1td');
     const textarea2 = document.getElementById('section2tr2td');
     const textarea3 = document.getElementById('section2tr3td');
+    const textarea1f = document.getElementById('section2tr1tdf');
+    const textarea2f = document.getElementById('section2tr2tdf');
+    const textarea3f = document.getElementById('section2tr3tdf');
 
     if (section2tr1.classList.contains('hidden')) {
         section2tr1.classList.remove('hidden');
         textarea1.disabled = false;
+        textarea1f.disabled = false;
     } else if (section2tr2.classList.contains('hidden')) {
         section2tr2.classList.remove('hidden');
         textarea2.disabled = false;
+        textarea2f.disabled = false;
     } else if (section2tr3.classList.contains('hidden')) {
         section2tr3.classList.remove('hidden');
         textarea3.disabled = false;
+        textarea3f.disabled = false;
     }
 
     if (!section2tr1.classList.contains('hidden')) {
@@ -102,16 +120,22 @@ const section2remove = () => {
     const textarea1 = document.getElementById('section2tr1td');
     const textarea2 = document.getElementById('section2tr2td');
     const textarea3 = document.getElementById('section2tr3td');
+    const textarea1f = document.getElementById('section2tr1tdf');
+    const textarea2f = document.getElementById('section2tr2tdf');
+    const textarea3f = document.getElementById('section2tr3tdf');
 
     if (!section2tr3.classList.contains('hidden')) {
         section2tr3.classList.add('hidden');
         textarea3.disabled = true;
+        textarea3f.disabled = true;
     } else if (!section2tr2.classList.contains('hidden')) {
         section2tr2.classList.add('hidden');
         textarea2.disabled = true;
+        textarea2f.disabled = true;
     } else if (!section2tr1.classList.contains('hidden')) {
         section2tr1.classList.add('hidden');
         textarea1.disabled = true;
+        textarea1f.disabled = true;
     }
 
     if (section2tr1.classList.contains('hidden')) {
@@ -133,16 +157,22 @@ const section3add = () => {
     const textarea1 = document.getElementById('section3tr1td');
     const textarea2 = document.getElementById('section3tr2td');
     const textarea3 = document.getElementById('section3tr3td');
+    const textarea1f = document.getElementById('section3tr1tdf');
+    const textarea2f = document.getElementById('section3tr2tdf');
+    const textarea3f = document.getElementById('section3tr3tdf');
 
     if (section3tr1.classList.contains('hidden')) {
         section3tr1.classList.remove('hidden');
         textarea1.disabled = false;
+        textarea1f.disabled = false;
     } else if (section3tr2.classList.contains('hidden')) {
         section3tr2.classList.remove('hidden');
         textarea2.disabled = false;
+        textarea2f.disabled = false;
     } else if (section3tr3.classList.contains('hidden')) {
         section3tr3.classList.remove('hidden');
         textarea3.disabled = false;
+        textarea3f.disabled = false;
     }
 
     if (!section3tr1.classList.contains('hidden')) {
@@ -164,16 +194,22 @@ const section3remove = () => {
     const textarea1 = document.getElementById('section3tr1td');
     const textarea2 = document.getElementById('section3tr2td');
     const textarea3 = document.getElementById('section3tr3td');
+    const textarea1f = document.getElementById('section3tr1tdf');
+    const textarea2f = document.getElementById('section3tr2tdf');
+    const textarea3f = document.getElementById('section3tr3tdf');
 
     if (!section3tr3.classList.contains('hidden')) {
         section3tr3.classList.add('hidden');
         textarea3.disabled = true;
+        textarea3f.disabled = true;
     } else if (!section3tr2.classList.contains('hidden')) {
         section3tr2.classList.add('hidden');
         textarea2.disabled = true;
+        textarea2f.disabled = true;
     } else if (!section3tr1.classList.contains('hidden')) {
         section3tr1.classList.add('hidden');
         textarea1.disabled = true;
+        textarea1f.disabled = true;
     }
 
     if (section3tr1.classList.contains('hidden')) {
@@ -195,16 +231,22 @@ const section4add = () => {
     const textarea1 = document.getElementById('section4tr1td');
     const textarea2 = document.getElementById('section4tr2td');
     const textarea3 = document.getElementById('section4tr3td');
+    const textarea1f = document.getElementById('section4tr1tdf');
+    const textarea2f = document.getElementById('section4tr2tdf');
+    const textarea3f = document.getElementById('section4tr3tdf');
 
     if (section4tr1.classList.contains('hidden')) {
         section4tr1.classList.remove('hidden');
         textarea1.disabled = false;
+        textarea1f.disabled = false;
     } else if (section4tr2.classList.contains('hidden')) {
         section4tr2.classList.remove('hidden');
         textarea2.disabled = false;
+        textarea2f.disabled = false;
     } else if (section4tr3.classList.contains('hidden')) {
         section4tr3.classList.remove('hidden');
         textarea3.disabled = false;
+        textarea3f.disabled = false;
     }
 
     if (!section4tr1.classList.contains('hidden')) {
@@ -226,16 +268,22 @@ const section4remove = () => {
     const textarea1 = document.getElementById('section4tr1td');
     const textarea2 = document.getElementById('section4tr2td');
     const textarea3 = document.getElementById('section4tr3td');
+    const textarea1f = document.getElementById('section4tr1tdf');
+    const textarea2f = document.getElementById('section4tr2tdf');
+    const textarea3f = document.getElementById('section4tr3tdf');
 
     if (!section4tr3.classList.contains('hidden')) {
         section4tr3.classList.add('hidden');
         textarea3.disabled = true;
+        textarea3f.disabled = true;
     } else if (!section4tr2.classList.contains('hidden')) {
         section4tr2.classList.add('hidden');
         textarea2.disabled = true;
+        textarea2f.disabled = true;
     } else if (!section4tr1.classList.contains('hidden')) {
         section4tr1.classList.add('hidden');
         textarea1.disabled = true;
+        textarea1f.disabled = true;
     }
 
     if (section4tr1.classList.contains('hidden')) {

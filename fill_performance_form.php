@@ -27,6 +27,7 @@ if (isset($_GET['id'])) {
     $row1 = $tb_input->fetch();
 
     $input_feature = preg_split("/@/", $row1["Input_feature"]);
+    $input_setfeature = preg_split("/@/", $row1["Input_setfeature"]);
 
     $tb_process = $conn->prepare("SELECT * FROM tb_process WHERE process_id = :process_id");
     $tb_process->bindParam(":process_id", $row['process_id']);
@@ -34,6 +35,7 @@ if (isset($_GET['id'])) {
     $row2 = $tb_process->fetch();
 
     $process_feature = preg_split("/@/", $row2["process_feature"]);
+    $process_setfeature = preg_split("/@/", $row2["process_setfeature"]);
 
     $tb_report = $conn->prepare("SELECT * FROM tb_report WHERE report_id = :report_id");
     $tb_report->bindParam(":report_id", $row['report_id']);
@@ -41,6 +43,7 @@ if (isset($_GET['id'])) {
     $row3 = $tb_report->fetch();
 
     $report_feature = preg_split("/@/", $row3["report_feature"]);
+    $report_setfeature = preg_split("/@/", $row3["report_setfeature"]);
 
     $tb_senrity = $conn->prepare("SELECT * FROM tb_senrity WHERE senrity_id = :senrity_id");
     $tb_senrity->bindParam(":senrity_id", $row['senrity_id']);
@@ -48,6 +51,7 @@ if (isset($_GET['id'])) {
     $row4 = $tb_senrity->fetch();
 
     $senrity_feature = preg_split("/@/", $row4["senrity_feature"]);
+    $senrity_setfeature = preg_split("/@/", $row4["senrity_setfeature"]);
 } else {
     header("Location: index.php");
 }
@@ -67,17 +71,11 @@ unset($_SESSION['type_m']);
 $edu_ss = isset($_SESSION['edu']) && $_SESSION['edu'] ? $_SESSION['edu'] : '';
 unset($_SESSION['edu']);
 
-$input_setfeature = isset($_SESSION['input_setfeature']) && $_SESSION['input_setfeature'] ? $_SESSION['input_setfeature'] : $keys;
-unset($_SESSION['input_setfeature']);
-
 $input_result = isset($_SESSION['input_result']) && $_SESSION['input_result'] ? $_SESSION['input_result'] : $keys;
 unset($_SESSION['input_result']);
 
 $input_compare = isset($_SESSION['input_compare']) && $_SESSION['input_compare'] ? $_SESSION['input_compare'] : $keys;
 unset($_SESSION['input_compare']);
-
-$process_setfeature = isset($_SESSION['process_setfeature']) && $_SESSION['process_setfeature'] ? $_SESSION['process_setfeature'] : $keys;
-unset($_SESSION['process_setfeature']);
 
 $process_result = isset($_SESSION['process_result']) && $_SESSION['process_result'] ? $_SESSION['process_result'] : $keys;
 unset($_SESSION['process_result']);
@@ -85,18 +83,11 @@ unset($_SESSION['process_result']);
 $process_compare = isset($_SESSION['process_compare']) && $_SESSION['process_compare'] ? $_SESSION['process_compare'] : $keys;
 unset($_SESSION['process_compare']);
 
-$report_setfeature = isset($_SESSION['report_setfeature']) && $_SESSION['report_setfeature'] ? $_SESSION['report_setfeature'] : $keys;
-unset($_SESSION['report_setfeature']);
-
 $report_result = isset($_SESSION['report_result']) && $_SESSION['report_result'] ? $_SESSION['report_result'] : $keys;
 unset($_SESSION['report_result']);
 
 $report_compare = isset($_SESSION['report_compare']) && $_SESSION['report_compare'] ? $_SESSION['report_compare'] : $keys;
 unset($_SESSION['report_compare']);
-
-$senrity_setfeature = isset($_SESSION['senrity_setfeature']) && $_SESSION['senrity_setfeature'] ? $_SESSION['senrity_setfeature'] : $keys;
-// print_r($senrity_setfeature);
-unset($_SESSION['senrity_setfeature']);
 
 $senrity_result = isset($_SESSION['senrity_result']) && $_SESSION['senrity_result'] ? $_SESSION['senrity_result'] : $keys;
 unset($_SESSION['senrity_result']);
@@ -260,7 +251,7 @@ unset($_SESSION['senrity_compare']);
                                 <tr class='odd:bg-white even:bg-gray-100'>
                                     <td class='border border-gray-300 py-2'><?= $i + 1 ?></td>
                                     <td class='border border-gray-300 py-2'><textarea readonly name='input_feature[]' class='border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center'><?= $input_feature[$i] ?></textarea></td>
-                                    <td class='border border-gray-300 py-2'><textarea required name='input_setfeature[]' class='border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center'><?= $input_setfeature[$i] ?></textarea></td>
+                                    <td class='border border-gray-300 py-2'><textarea readonly name='input_setfeature[]' class='border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center'><?= $input_setfeature[$i] ?></textarea></td>
                                     <td class='border border-gray-300 py-2'><textarea required name='input_result[]' class='border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center'><?= $input_result[$i] ?></textarea></td>
                                     <td class='border border-gray-300 py-2'><textarea required name='input_compare[]' class='border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center'><?= $input_compare[$i] ?></textarea></td>
                                 </tr>
@@ -289,7 +280,7 @@ unset($_SESSION['senrity_compare']);
                                 <tr class="odd:bg-white even:bg-gray-100">
                                     <td class="border border-gray-300 py-2"><?= $i + 1 ?></td>
                                     <td class="border border-gray-300 py-2"><textarea readonly name="process_feature[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"><?= $process_feature[$i] ?></textarea></td>
-                                    <td class="border border-gray-300 py-2"><textarea required name="process_setfeature[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"><?= $process_setfeature[$i] ?></textarea></td>
+                                    <td class="border border-gray-300 py-2"><textarea readonly name="process_setfeature[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"><?= $process_setfeature[$i] ?></textarea></td>
                                     <td class="border border-gray-300 py-2"><textarea required name="process_result[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"><?= $process_result[$i] ?></textarea></td>
                                     <td class="border border-gray-300 py-2"><textarea required name="process_compare[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"><?= $process_compare[$i] ?></textarea></td>
                                 </tr>
@@ -318,7 +309,7 @@ unset($_SESSION['senrity_compare']);
                                 <tr class="odd:bg-white even:bg-gray-100">
                                     <td class="border border-gray-300 py-2"><?= $i + 1 ?></td>
                                     <td class="border border-gray-300 py-2"><textarea readonly name="report_feature[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"><?= $report_feature[$i] ?></textarea></td>
-                                    <td class="border border-gray-300 py-2"><textarea required name="report_setfeature[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"><?= $report_setfeature[$i] ?></textarea></td>
+                                    <td class="border border-gray-300 py-2"><textarea readonly name="report_setfeature[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"><?= $report_setfeature[$i] ?></textarea></td>
                                     <td class="border border-gray-300 py-2"><textarea required name="report_result[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"><?= $report_result[$i] ?></textarea></td>
                                     <td class="border border-gray-300 py-2"><textarea required name="report_compare[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"><?= $report_compare[$i] ?></textarea></td>
                                 </tr>
@@ -347,7 +338,7 @@ unset($_SESSION['senrity_compare']);
                                 <tr class="odd:bg-white even:bg-gray-100">
                                     <td class="border border-gray-300 py-2"><?= $i + 1 ?></td>
                                     <td class="border border-gray-300 py-2"><textarea readonly name="senrity_feature[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"><?= $senrity_feature[$i] ?></textarea></td>
-                                    <td class="border border-gray-300 py-2"><textarea required name="senrity_setfeature[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"><?= $senrity_setfeature[$i] ?></textarea></td>
+                                    <td class="border border-gray-300 py-2"><textarea readonly name="senrity_setfeature[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"><?= $senrity_setfeature[$i] ?></textarea></td>
                                     <td class="border border-gray-300 py-2"><textarea required name="senrity_result[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"><?= $senrity_result[$i] ?></textarea></td>
                                     <td class="border border-gray-300 py-2"><textarea required name="senrity_compare[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"><?= $senrity_compare[$i] ?></textarea></td>
                                 </tr>

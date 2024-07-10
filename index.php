@@ -70,36 +70,18 @@ unset($_SESSION['show_login']); // Clear the session flag after use
                     <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-white md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">
                         <li>
                             <a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-blue-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0" onclick="openRegister()">
-                                สมัครสมาชิก <i class="fa-solid fa-right-to-bracket"></i>
+                                สมัครสมาชิก</i>
                             </a>
                         </li>
                         <li>
                             <a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-blue-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0" onclick="openPopup()">
-                                เข้าสู่ระบบ <i class="fa-solid fa-right-to-bracket ml-1"></i>
+                                เข้าสู่ระบบ</i>
                             </a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
-        <!-- <nav class="flex justify-between mx-4 my-4 items-center">
-            <div class="flex items-center text-3xl font-bold">
-                <img src="https://i.imgur.com/m0H7jcN.png" class="w-8 h-8 mr-1">
-                CTN Phrae
-            </div>
-            <ul class="flex space-x-3 sm:space-x-5">
-                <li>
-                    <a href="#" class="flex items-center font-bold" onclick="openRegister()">
-                        สมัครสมาชิก <i class="fa-solid fa-right-to-bracket ml-1 hidden sm:inline"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="flex items-center font-bold" onclick="openPopup()">
-                        เข้าสู่ระบบ <i class="fa-solid fa-right-to-bracket ml-1 hidden sm:inline"></i>
-                    </a>
-                </li>
-            </ul>
-        </nav> -->
     </div>
 
     <!-- Login Popup -->
@@ -244,7 +226,7 @@ unset($_SESSION['show_login']); // Clear the session flag after use
     </div>
 
     <footer class="bg-blue-950 text-white text-center py-6 w-full mt-auto">
-        <p>*footer info*</p>
+        <p>© 2024 CTN Phrae. All rights reserved. | <a class="no-underline hover:underline" href="https://www.ctnphrae.com/">Privacy Policy</a></p>
     </footer>
 
     <script>
