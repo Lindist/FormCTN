@@ -126,6 +126,7 @@ $result3->execute();
                         <h2>แบบฟอร์มที่ <?php echo $c; ?></h2>
                         <div class='text'><?php echo $row['form_name']; ?></div>
                         <div class="btns">
+                        <a id='btn' href='showlist.php'>ดูรายชื่อ</a>
                         <a id='btn' onclick="isaddClass('<?php echo $row['form_id']; ?>')" >ดูข้อมูล</a>
                         <a href='edit_performance_form.php?id=<?php echo $row['form_id']; ?>' id='btnedit'>แก้ไข</a>
                         <a id='btndelete' onclick="confirmdel(['<?php echo $c; ?>','<?php echo $row['form_id']; ?>'])" >ลบ</a>
@@ -162,6 +163,7 @@ $result3->execute();
                         <h2>แบบฟอร์มที่ <?php echo $c1; ?></h2>
                         <div class='text'><?php echo $row5['sati_ep2']; ?></div>
                         <div class="btns">
+                        <a id='btn' href='showlist.php'>ดูรายชื่อ</a>
                         <a id='btn' onclick="isaddClass('<?php echo $row5['sati_id']; ?>','true')" >ดูข้อมูล</a>
                         <a href='edit_satis_form.php?id=<?php echo $row5['sati_id']; ?>' id='btnedit'>แก้ไข</a>
                         <a id='btndelete' onclick="confirmdel(['<?php echo $c1; ?>','<?php echo $row5['sati_id']; ?>'],'true')" >ลบ</a>
@@ -258,6 +260,13 @@ $result3->execute();
             width: 250px;
             overflow-wrap: break-word;
         }
+
+        .subform>.text {
+            text-align: center;
+            width: 100%;
+            overflow-wrap: break-word;
+        }
+
     </style>
     <script src="script/active.js" type="module"></script>
     <script src="script/dropdown1.js"></script>
