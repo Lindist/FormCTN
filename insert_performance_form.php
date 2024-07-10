@@ -56,7 +56,7 @@ unset($_SESSION['edu']); // Clear the session flag after use
             background-color: rgb(180, 180, 180);
         }
     </style>
-    <script src="script/add_remove_performance_insert.js"></script>
+    <script src="script/add_remove_performance_insertt.js"></script>
 </head>
 
 <body>
