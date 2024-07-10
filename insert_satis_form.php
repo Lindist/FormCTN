@@ -68,7 +68,7 @@ unset($_SESSION['ss_topic']); // Clear the session flag after use
             background-color: rgb(180, 180, 180);
         }
     </style>
-    <script src="script/add_remove_satis_insertt.js"></script>
+    <script src="script/add_remove_satis_insert.js"></script>
 </head>
 
 <body>
