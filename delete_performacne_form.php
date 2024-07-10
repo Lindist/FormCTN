@@ -10,9 +10,10 @@ try {
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $result = $conn->query("SELECT * FROM tb_efficiercy_form  WHERE form_id = '$id'"); 
+    $result = $conn->query("SELECT * FROM tb_efficiercy_form  WHERE form_id = '$id'");
     $result->execute();
     $row = $result->fetch(PDO::FETCH_ASSOC);
+    $form_id = $row['form_id'];
     
     $in = $row['input_id'];
     $pr = $row['process_id'];
@@ -27,12 +28,33 @@ if (isset($_GET['id'])) {
     
     $conn->query("DELETE FROM tb_report WHERE report_id = '$re'")->execute();
     
-    $conn->query("DELETE FROM tb_senrity WHERE senrity_id = '$se'")->execute(); 
+    $conn->query("DELETE FROM tb_senrity WHERE senrity_id = '$se'")->execute();
+
+    $del_tb_fill_efficiercy = $conn->query("SELECT * FROM tb_fill_efficiercy WHERE form_id = '$form_id'");
+    $del_tb_fill_efficiercy->execute();
+    $row_tb_fill_efficiercy = $del_tb_fill_efficiercy->fetch(PDO::FETCH_ASSOC);
+    
+    $fill_in = $row_tb_fill_efficiercy['fill_input_id'];
+    $fill_pr = $row_tb_fill_efficiercy['fill_process_id'];
+    $fill_re = $row_tb_fill_efficiercy['fill_report_id'];
+    $fill_se = $row_tb_fill_efficiercy['fill_senrity_id '];
+
+    $conn->query("DELETE FROM tb_fill_efficiercy  WHERE form_id = '$form_id'")->execute(); 
+
+    $conn->query("DELETE FROM tb_fill_input  WHERE fill_input_id = '$fill_in'")->execute();
+    
+    $conn->query("DELETE FROM tb_fill_process WHERE fill_process_id = '$fill_pr'")->execute();
+    
+    $conn->query("DELETE FROM tb_fill_report WHERE fill_report_id = '$fill_re'")->execute();
+    
+    $conn->query("DELETE FROM tb_fill_senrity WHERE fill_senrity_id = '$fill_se'")->execute();
+
+    $_SESSION['delete'] = "ลบข้อมูลเรียบร้อย";
+    header("location: form.php?class=columnData");
 }
 else{
     echo "Delete Error undefine is id of parameter";
 }
-header("location: form.php?class=columnData");
 } catch (PDOException $e) {
     echo "Registrati3on failed: " . $e->getMessage();
 }

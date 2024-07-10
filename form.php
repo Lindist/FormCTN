@@ -249,7 +249,7 @@ $result3->execute();
     <script src="script/active.js" type="module"></script>
     <script src="script/dropdown1.js"></script>
     <script src="script/dropdownforreponsive.js"></script>
-    <script src="script/script_add_data.js"></script>
+    <script src="script/script_add_data1.js"></script>
     <script>
         logout = (event, url) => {
             Swal.fire({

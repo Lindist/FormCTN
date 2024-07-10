@@ -26,12 +26,24 @@ document.getElementById('addFormsatisfy').addEventListener('click', () => {
 
 /*------------- */
 function confirmdel(ids,tab2='false'){
-    let discon = confirm(`ยืนยันที่จะลบฟอร์มที่${ids[0]}หรือไม่`);
-    if(discon === true && tab2=='false'){
-        window.location.href = `delete_performacne_form.php?id=${ids[1]}`;
-    }else if(discon === true && tab2=='true'){
-        window.location.href = `delete_satis_form.php?id=${ids[1]}`;
-    }
+    Swal.fire({
+        title: "ลบฟอร์มข้อมูล",
+        text: `ยืนยันที่จะลบฟอร์มที่${ids[0]}หรือไม่`,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#d33",
+        cancelButtonColor: "#333",
+        confirmButtonText: "ลบ",
+        cancelButtonText: "ยกเลิก"
+      }).then((result) => {
+        if (result.isConfirmed) {
+            if(tab2=='false'){
+                window.location.href = `delete_performacne_form.php?id=${ids[1]}`;
+            }else if(tab2=='true'){
+                window.location.href = `delete_satis_form.php?id=${ids[1]}`;
+            }
+        }
+      });
 }
 
 /* ------------------------*/
