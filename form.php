@@ -57,6 +57,20 @@ $result3->execute();
         </script>
         <?php unset($_SESSION['login_success']); ?>
     <?php } ?>
+
+    <?php if (isset($_SESSION['delete'])) { ?>
+        <script>
+            Swal.fire({
+                
+                position: "center",
+                icon: "success",
+                title: "<?= $_SESSION['delete'] ?>",
+                showConfirmButton: false,
+                timer: 1000
+            });
+        </script>
+        <?php unset($_SESSION['delete']); ?>
+    <?php } ?>
     <header>
         <div class="responsive">
             <h1>CTN Phrae</h1>
@@ -249,7 +263,7 @@ $result3->execute();
     <script src="script/active.js" type="module"></script>
     <script src="script/dropdown1.js"></script>
     <script src="script/dropdownforreponsive.js"></script>
-    <script src="script/script_add_data.js"></script>
+    <script src="script/script_add_data1.js"></script>
     <script>
         logout = (event, url) => {
             Swal.fire({
