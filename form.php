@@ -57,20 +57,6 @@ $result3->execute();
         </script>
         <?php unset($_SESSION['login_success']); ?>
     <?php } ?>
-
-    <?php if (isset($_SESSION['delete'])) { ?>
-        <script>
-            Swal.fire({
-                
-                position: "center",
-                icon: "success",
-                title: "<?= $_SESSION['delete'] ?>",
-                showConfirmButton: false,
-                timer: 1000
-            });
-        </script>
-        <?php unset($_SESSION['delete']); ?>
-    <?php } ?>
     <header>
         <div class="responsive">
             <h1>CTN Phrae</h1>
