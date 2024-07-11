@@ -81,7 +81,48 @@
             border-bottom-style: solid;
             border-bottom-color: rgba(88, 88, 88, 0.685);
         }
+        @media all and (max-width:800px) {
+            body {
+            font-family: "Kanit", sans-serif;
+            font-weight: 500;
+            font-style: normal;
+            background-color: rgb(180, 180, 180);
+            color: #000;
+            }
+            body > div {
+                height: 95vh;
+            }
+            body > div #form{
+                width: 100%;
+                padding: 1rem;
+                height: 100%;
+                overflow-y: scroll;
+            }
 
+            main{
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-row-gap: 10px;
+                padding: 0 2rem;
+                width: 100%;
+            }
+            main > div{
+                display: flex;
+                text-align: center;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+                padding: 2rem 1rem;
+                width: 250px;
+                background-color: rgb(200, 200, 200);
+                border-radius: 10px;
+                overflow-wrap: break-word;
+                font-size: 18px;
+                border-bottom-width: 3px;
+                border-bottom-style: solid;
+                border-bottom-color: rgba(88, 88, 88, 0.685);
+            }
+        }
     </style>
 </head>
 <body>
