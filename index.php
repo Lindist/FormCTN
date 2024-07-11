@@ -51,12 +51,12 @@ unset($_SESSION['show_login']); // Clear the session flag after use
 </head>
 
 <body class="bg-blue-600">
-
+    
     <div>
         <nav class="bg-white border-b border-gray-200 fixed top-0 left-0 right-0 z-50">
             <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 <!-- Logo and brand -->
-                <a href="https://www.ctnphrae.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
                     <img src="https://i.imgur.com/m0H7jcN.png" class="h-8" alt="CTN Logo" />
                     <span class="text-2xl font-semibold">CTN Phrae</span>
                 </a>
@@ -67,16 +67,16 @@ unset($_SESSION['show_login']); // Clear the session flag after use
                 </button>
                 <!-- Desktop menu -->
                 <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-                    <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-white md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">
+                    <ul class="text-xl font-semibold flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-white md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">
                         <li>
-                            <a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-blue-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0" onclick="openRegister()">
-                                สมัครสมาชิก</i>
-                            </a>
+                            <button class="block w-full py-2 px-3 text-gray-900 rounded hover:bg-sky-100 md:hover:bg-transparent md:border-0 md:hover:text-sky-500 md:p-0" onclick="openRegister()">
+                                สมัครสมาชิก
+                            </button>
                         </li>
                         <li>
-                            <a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-blue-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0" onclick="openPopup()">
-                                เข้าสู่ระบบ</i>
-                            </a>
+                            <button class="block w-full py-2 px-3 text-gray-900 rounded hover:bg-sky-100 md:hover:bg-transparent md:border-0 md:hover:text-sky-500 md:p-0" onclick="openPopup()">
+                                เข้าสู่ระบบ
+                            </button>
                         </li>
                     </ul>
                 </div>
@@ -226,7 +226,7 @@ unset($_SESSION['show_login']); // Clear the session flag after use
     </div>
 
     <footer class="bg-blue-950 text-white text-center py-6 w-full mt-auto">
-        <p>© 2024 CTN Phrae. All rights reserved. | <a class="no-underline hover:underline" href="https://www.ctnphrae.com/">Privacy Policy</a></p>
+        <p class="text-xs sm:text-sm">© 2024 CTN Phrae. All rights reserved. | <a class="no-underline hover:underline" href="https://www.ctnphrae.com/">Privacy Policy</a></p>
     </footer>
 
     <script>
@@ -257,12 +257,11 @@ unset($_SESSION['show_login']); // Clear the session flag after use
             navbarMenu.classList.toggle('hidden');
         });
 
-        // window.onclick = function(event) {
-        //     if (event.target === popup || event.target === register) {
-        //         popup.classList.add("hidden");
-        //         register.classList.add("hidden");
-        //     }
-        // }
+        window.addEventListener('click', function(event) {
+            if (!navbarMenu.contains(event.target) && !toggleButton.contains(event.target)) {
+                navbarMenu.classList.add('hidden');
+            }
+        });
     </script>
 
 </body>

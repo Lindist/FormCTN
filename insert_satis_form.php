@@ -72,7 +72,7 @@ unset($_SESSION['ss_topic']); // Clear the session flag after use
 </head>
 
 <body>
-    <div class="mx-5 sm:mx-16 bg-white p-4 my-4 rounded shadow">
+    <div class="mx-2 sm:mx-16 bg-white p-4 my-2 sm:my-4 rounded shadow">
         <button type="button" onclick="isClass('<?php echo $class; ?>','<?php echo $class1; ?>')" class="flex bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             กลับหน้าแรก
         </button>
