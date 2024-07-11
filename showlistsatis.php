@@ -15,13 +15,13 @@
     $result->execute();
 
 
-    $tb_fill_efficiercy = $conn->query("SELECT * FROM tb_fill_efficiercy WHERE form_id = '$id'");
-    $tb_fill_efficiercy->execute();
+    $tb_fill_satisfied = $conn->query("SELECT * FROM tb_fill_satisfied WHERE sati_id = '$id'");
+    $tb_fill_satisfied->execute();
 
     $nofiller = array();
     $filler = array();
-        while($row_tb_fill_efficiercy = $tb_fill_efficiercy->fetch(PDO::FETCH_ASSOC)){
-            $nofiller[] = $row_tb_fill_efficiercy["member_id"];
+        while($row_tb_fill_satisfied = $tb_fill_satisfied->fetch(PDO::FETCH_ASSOC)){
+            $nofiller[] = $row_tb_fill_satisfied["member_id"];
         }
         for($i = 0; $i < count($nofiller);$i++){
             $member_id = $conn->query("SELECT * FROM tb_member WHERE member_id = '$nofiller[$i]'");

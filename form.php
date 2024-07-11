@@ -163,7 +163,7 @@ $result3->execute();
                         <h2>แบบฟอร์มที่ <?php echo $c1; ?></h2>
                         <div class='text'><?php echo $row5['sati_ep2']; ?></div>
                         <div class="btns">
-                        <a id='btn' href='showlistsatis.php'>ดูรายชื่อ</a>
+                        <a id='btn' href='showlistsatis.php?id=<?php echo $row5['sati_id']; ?>'>ดูรายชื่อ</a>
                         <a id='btnshow' onclick="isaddClass('<?php echo $row5['sati_id']; ?>','true')" >ดูข้อมูล</a>
                         <a href='edit_satis_form.php?id=<?php echo $row5['sati_id']; ?>' id='btnedit'>แก้ไข</a>
                         <a id='btndelete' onclick="confirmdel(['<?php echo $c1; ?>','<?php echo $row5['sati_id']; ?>'],'true')" >ลบ</a>
@@ -196,7 +196,7 @@ $result3->execute();
                         <h2>แบบฟอร์มที่ <?php echo $c; ?></h2>
                         <div class='text'><?php echo $row6['form_name']; ?></div>
                         <div class="btns">
-                        <a id='btn' href='fill_performance_form.php?id=<?= $row6['form_id'] ?>' >กรอกข้อมูล</a>
+                        <a id='btn1' href='fill_performance_form.php?id=<?= $row6['form_id'] ?>' >กรอกข้อมูล</a>
                         </div>
                         </div>
                         </div>
@@ -226,7 +226,7 @@ $result3->execute();
                         <h2>แบบฟอร์มที่ <?php echo $c1; ?></h2>
                         <div class='text'><?php echo $row7['sati_ep2']; ?></div>
                         <div class="btns">
-                        <a id='btn' href='fill_satis_form.php?id=<?= $row7['sati_id'] ?>'>กรอกข้อมูล</a>
+                        <a id='btn1' href='fill_satis_form.php?id=<?= $row7['sati_id'] ?>'>กรอกข้อมูล</a>
                         </div>
                         </div>
                         </div>
