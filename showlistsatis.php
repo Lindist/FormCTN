@@ -107,6 +107,7 @@
                 width: 100%;
             }
             main > div{
+                place-self: center;
                 display: flex;
                 text-align: center;
                 flex-direction: column;
@@ -146,7 +147,7 @@
                     <div>ลำดับที่ <?php echo $c; ?></div>
                     <div class='text'><?php echo $row['member_title']." ".$row['member_firstname']." ".$row['member_lastname']." ".$row['member_code']." "."(ผู้สร้าง)"; ?></div>
                     <div class="btns">
-                    <a id='btn' href="#" >ดูข้อมูล</a>
+                    <a id='btn' href="showfilled.php?id=<?php echo $row['member_id']; ?>&issta=1" >ดูข้อมูล</a>
                     </div>
                     </div>
                 <?php } ?>
@@ -155,7 +156,7 @@
                         <div>ลำดับที่ <?php echo $i+2; ?></div>
                         <div class='text'><?php echo $filler[$i]['member_title']." ".$filler[$i]['member_firstname']." ".$filler[$i]['member_lastname']." ".$filler[$i]['member_code']; ?></div>
                         <div class="btns">
-                        <a id='btn' href="#" >ดูข้อมูล</a>
+                        <a id='btn' href="showfilled.php?id=<?php echo $filler[$i]['member_id']; ?>&issta=1" >ดูข้อมูล</a>
                         </div>
                         </div>
                 <?php } ?>
