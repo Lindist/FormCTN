@@ -39,6 +39,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
     <link rel="icon" type="icon" href="https://i.imgur.com/m0H7jcN.png">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Document</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
@@ -80,6 +81,12 @@
             border-bottom-width: 3px;
             border-bottom-style: solid;
             border-bottom-color: rgba(88, 88, 88, 0.685);
+        }
+        .text1,i{
+            font-size: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         @media all and (max-width:800px) {
             body {
@@ -123,6 +130,12 @@
                 border-bottom-style: solid;
                 border-bottom-color: rgba(88, 88, 88, 0.685);
             }
+            .text1,i{
+            font-size: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
         }
     </style>
 </head>
@@ -143,20 +156,20 @@
             showform.insertAdjacentHTML("beforeend", `
             <?php for ($c = 1; $c <= $count; $c++) { ?>
                 <?php $row = $result->fetch(PDO::FETCH_ASSOC); ?>
-                    <div>
-                    <div>ลำดับที่ <?php echo $c; ?></div>
-                    <div class='text'><?php echo $row['member_title']." ".$row['member_firstname']." ".$row['member_lastname']." ".$row['member_code']." "."(ผู้สร้าง)"; ?></div>
-                    <div class="btns">
+                    <span>
+                    <!-- <div>ลำดับที่ <?php echo $c; ?></div> -->
+                    <div class='text1'><i class='bx bxs-user-circle'></i><?php echo $row['member_title']." ".$row['member_firstname']." ".$row['member_lastname']." ".$row['member_code']." "."(ผู้สร้าง)"; ?></div>
+                    <!-- <div class="btns">
                     <a id='btn' href="showfilled.php?id=<?php echo $row['member_id']; ?>&issta=1" >ดูข้อมูล</a>
-                    </div>
-                    </div>
+                    </div> -->
+                    </span>
                 <?php } ?>
                 <?php for ($i = 0; $i < count($nofiller); $i++) { ?>
                         <div>
-                        <div>ลำดับที่ <?php echo $i+2; ?></div>
+                        <div>ลำดับที่ <?php echo $i+1; ?></div>
                         <div class='text'><?php echo $filler[$i]['member_title']." ".$filler[$i]['member_firstname']." ".$filler[$i]['member_lastname']." ".$filler[$i]['member_code']; ?></div>
                         <div class="btns">
-                        <a id='btn' href="showfilled.php?id=<?php echo $filler[$i]['member_id']; ?>&issta=1" >ดูข้อมูล</a>
+                        <a id='btn' href="showfilledstatisfied.php?user_id=<?php echo $filler[$i]['member_id']; ?>&form_id=<?= $id; ?>" >ดูข้อมูล</a>
                         </div>
                         </div>
                 <?php } ?>
