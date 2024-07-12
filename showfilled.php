@@ -52,6 +52,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="icon" type="icon" href="https://i.imgur.com/m0H7jcN.png">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Document</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
@@ -80,6 +81,9 @@
             padding: 0 2rem;
             width: 100%;
         }
+        main .tabbtn .disimg{
+            place-self: center;
+        }
         main .tabbtn > div{
             display: flex;
             justify-content: space-between;
@@ -103,8 +107,12 @@
         .nameuser{
             display: flex;
             justify-content: flex-end;
-            text-decoration-line: underline;
-            text-decoration-thickness: auto;
+        }
+        .nameuser > i{
+            font-size: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         @media all and (max-width:800px) {
             body {
@@ -130,6 +138,9 @@
             grid-row-gap: 10px;
             padding: 0 2rem;
             width: 100%;
+        }
+        main .tabbtn .disimg{
+            place-self: center;
         }
         main .tabbtn > div{
             display: flex;
@@ -157,8 +168,6 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            text-decoration-line: underline;
-            text-decoration-thickness: auto;
         }
         .btn-group{
             position: relative;
@@ -169,6 +178,12 @@
             position: relative;
             left: 25%;
             transform: translateX(-25%);
+        }
+        .nameuser > i{
+            font-size: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         }
         @media all and (max-width:500px) {
@@ -194,7 +209,8 @@
 
             <h1 class="header text-center my-2 text-break">แสดงฟอร์มที่สร้างและเคยกรอก</h1>
             <div class="nameuser">
-                <?= $row_member['member_title']." ".$row_member['member_firstname']." ".$row_member['member_lastname']." ".$row_member['member_code']; ?>
+                <i class='bx bxs-user-circle'></i>
+                <?= "ชื่อ ".$row_member['member_title']." ".$row_member['member_firstname']." นามสกุล ".$row_member['member_lastname']." รหัส ".$row_member['member_code']; ?>
             </div>
             <ul class="nav nav-tabs my-3" id="myTab" role="tablist">
 
@@ -240,35 +256,75 @@
     <script type="text/javascript">
             const showform = document.querySelectorAll('.tabbtn');
             showform[0].insertAdjacentHTML("beforeend", `
+            <?php if($count > 0){ ?>
             <?php for ($i = 0; $i < $count; $i++) { ?>
+                <?php if($i==0){ ?>
+                    <span class="fs-4 fw-semibold mt-3" id='hidden1'>
+                        ฟอร์มที่สร้าง
+                        <hr>
+                    </span>
+                <?php } ?>
                         <div id='hidden1'>
                         <?php $row_tb_efficiercy_form = $tb_efficiercy_form->fetch(PDO::FETCH_ASSOC); ?>
                         <div style="font-weight: bold;">ลำดับที่ <?php echo $i+1; ?></div>
                         <div class='text'><?php echo "(แบบฟอร์มที่สร้างไว้)"." ".$row_tb_efficiercy_form['form_name']; ?></div>
                         </div>
             <?php } ?>
+            <?php } ?>
+            <?php if($count0 > 0){ ?>
             <?php for ($i = 0; $i < $count0; $i++) { ?>
+                <?php if($i==0){ ?>
+                    <span class="fs-4 fw-semibold mt-3" id='hidden2'>
+                        ฟอร์มที่กรอก
+                        <hr>
+                    </span>
+                <?php } ?>
                         <div id='hidden2'>
                         <?php $row_tb_fill_efficiercy = $tb_fill_efficiercy->fetch(PDO::FETCH_ASSOC); ?>
                         <div style="font-weight: bold;">ลำดับที่ <?php echo $i+1; ?></div>
                         <div class='text'><?php echo $row_tb_fill_efficiercy['form_name']; ?></div>
                         </div>
             <?php } ?>
+            <?php } ?>
+            <?php if($count >= 0 && $count0 <= 0){ ?>
+                <img class='disimg' style="width:250px;" src="picture/empty-folder.png">
+                <h3 class='disimg fs-4 fw-semibold' style="width:250px;">ไม่มีข้อมูลแบบสอบถาม</h3>
+            <?php } ?>
             `);
             showform[1].insertAdjacentHTML("beforeend", `
+            <?php if($count1 > 0){ ?>
             <?php for ($i = 0; $i < $count1; $i++) { ?>
+                <?php if($i==0){ ?>
+                    <span class="fs-4 fw-semibold mt-3" id='hidden1'>
+                        ฟอร์มที่สร้าง
+                        <hr>
+                    </span>
+                <?php } ?>
                         <div id='hidden1'>
                         <?php $row_tb_satisfied = $tb_satisfied->fetch(PDO::FETCH_ASSOC); ?>
                         <div style="font-weight: bold;">ลำดับที่ <?php echo $i+1; ?></div>
                         <div class='text'><?php echo "(แบบฟอร์มที่สร้างไว้)"." ".$row_tb_satisfied['sati_ep2']; ?></div>
                         </div>
             <?php } ?>
+            <?php } ?>
+            <?php if($count2 > 0){ ?>
             <?php for ($i = 0; $i < $count2; $i++) { ?>
+                <?php if($i==0){ ?>
+                    <span class="fs-4 fw-semibold mt-3" id='hidden2'>
+                        ฟอร์มที่กรอก
+                        <hr>
+                    </span>
+                <?php } ?>
                         <div id='hidden2'>
                         <?php $row_tb_fill_satisfied = $tb_fill_satisfied->fetch(PDO::FETCH_ASSOC); ?>
                         <div style="font-weight: bold;">ลำดับที่ <?php echo $i+1; ?></div>
                         <div class='text'><?php echo $row_tb_fill_satisfied['sati_ep2']; ?></div>
                         </div>
+            <?php } ?>
+            <?php } ?>
+            <?php if($count1 >= 0 && $count2 <= 0){ ?>
+                <img class='disimg' style="width:250px;" src="picture/empty-folder.png">
+                <h3 class='disimg fs-4 fw-semibold' style="width:250px;">ไม่มีข้อมูลแบบสอบถาม</h3>
             <?php } ?>
             `);
         const clickD = document.querySelectorAll('.dropdown-item');
