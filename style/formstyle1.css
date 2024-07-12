@@ -414,7 +414,8 @@ header .logout img{
         position: fixed;
         top: 0;
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
+        padding: 0 1.5rem;
     }
     
     header> div >a{
@@ -439,15 +440,48 @@ header .logout img{
         display: flex;
         flex-direction: column;
     }
-    header .responsive .caret{
-        width: 0;
-        height: 0;
-        border-left: 5px solid transparent;
-        border-right: 5px solid transparent;
-        border-top: 6px solid #333;
-        margin-left: 5px;
-        transition: .3s;
+
+    header .responsive .toggle-btn{
+        position: relative;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
     }
+    header .responsive .toggle-btn span{
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        border: 3.5px solid #111;
+        border-radius: 2px;
+        background-color: #111;
+        transform: translateY(-50%);
+        transition: all 200ms ease-in-out;
+    }
+    header .responsive .toggle-btn span:nth-child(1){
+        top: 10%;
+    
+    }
+    header .responsive .toggle-btn span:nth-child(2){
+        top: 50%;
+        
+    }
+    header .responsive .toggle-btn span:nth-child(3){
+        top: 90%;
+        
+    }
+
+    header .responsive .toggle-btn .spanactive:nth-child(1){
+        top: 50%;
+        transform: translateY(-50%) rotate(45deg);
+    }
+    header .responsive .toggle-btn .spanactive:nth-child(2){
+        display: none;
+    }
+    header .responsive .toggle-btn .spanactive:nth-child(3){
+        top: 50%;
+        transform: translateY(-50%) rotate(-45deg);
+    }
+
     header > .tab_box > button{
         width: 95vw;
         font-size: 16px;

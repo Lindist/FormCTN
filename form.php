@@ -37,7 +37,7 @@ $result3->execute();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/formstyle.css">
+    <link rel="stylesheet" href="style/formstyle1.css">
     <link rel="stylesheet" href="style/tabstyle.css">
     <title>From</title>
     <link rel="icon" type="icon" href="https://i.imgur.com/m0H7jcN.png">
@@ -73,7 +73,11 @@ $result3->execute();
     <header>
         <div class="responsive">
             <h1>CTN Phrae</h1>
-            <div class="caret"></div>
+            <div class="toggle-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
         <div class="tab_box">
             <button class="tab_btn active" id="tab1">
@@ -270,7 +274,7 @@ $result3->execute();
     </style>
     <script src="script/active.js" type="module"></script>
     <script src="script/dropdown1.js"></script>
-    <script src="script/dropdownforreponsive.js"></script>
+    <script src="script/dropdownforreponsives.js"></script>
     <script src="script/script_add_data1.js"></script>
     <script>
         logout = (event, url) => {
