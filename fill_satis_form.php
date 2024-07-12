@@ -21,6 +21,11 @@ if (isset($_GET['id'])) {
     $sati_type = preg_split("/,/", $row['sati_type']);
     $sati_level = preg_split("/,/", $row['sati_level']);
     $sati_name = $row['sati_ep2'];
+    $member_id = $row['member_id'];
+
+    if($_SESSION['user_id'] == $member_id) {
+        header("Location: index.php");
+    }
 
     $tb_user_req = $conn->prepare("SELECT * FROM tb_user_req WHERE ur_id = :ur_id");
     $tb_user_req->bindParam(":ur_id", $row['ur_id']);

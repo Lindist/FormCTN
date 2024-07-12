@@ -20,6 +20,11 @@ if (isset($_GET['id'])) {
     $edu = preg_split("/,/", $row['form_education']);
     $form_name = $row['form_name'];
     $ad = $row['form_ad'];
+    $member_id = $row['member_id'];
+
+    if($_SESSION['user_id'] == $member_id) {
+        header("Location: index.php");
+    }
 
     $tb_input = $conn->prepare("SELECT * FROM tb_input WHERE Input_id = :input_id");
     $tb_input->bindParam(":input_id", $row['input_id']);
