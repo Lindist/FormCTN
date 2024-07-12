@@ -29,21 +29,25 @@ if (isset($_GET['id'])) {
     $result1->execute();
     $row1 = $result1->fetch(PDO::FETCH_ASSOC);
     $input_feature = preg_split("/@/", $row1["Input_feature"]);
+    $Input_setfeature = preg_split("/@/", $row1["Input_setfeature"]);
     
     $result2 = $conn->query("SELECT * FROM tb_process WHERE process_id = '$pr'"); 
     $result2->execute();
     $row2 = $result2->fetch(PDO::FETCH_ASSOC);
     $process_feature = preg_split("/@/", $row2["process_feature"]);
+    $process_setfeature = preg_split("/@/", $row2["process_setfeature"]);
     
     $result3 = $conn->query("SELECT * FROM tb_report WHERE report_id = '$re'"); 
     $result3->execute();
     $row3 = $result3->fetch(PDO::FETCH_ASSOC);
     $report_feature = preg_split("/@/", $row3["report_feature"]);
+    $report_setfeature = preg_split("/@/", $row3["report_setfeature"]);
     
     $result4 = $conn->query("SELECT * FROM tb_senrity WHERE senrity_id = '$se'"); 
     $result4->execute();
     $row4 = $result4->fetch(PDO::FETCH_ASSOC);
     $senrity_feature = preg_split("/@/", $row4["senrity_feature"]);
+    $senrity_setfeature = preg_split("/@/", $row4["senrity_setfeature"]);
 
 }
 
@@ -198,7 +202,7 @@ if (isset($_GET['class'])) {
                         <tr>
                             <th scope="row"><?php echo $key+1 ?></th>
                             <td><div class="form-control1" id="format" rows="3"><?php echo $value; ?></div></td>
-                            <td><div class="form-control1" id="format" rows="3"></div></td>
+                            <td><div class="form-control1" id="format" rows="3"><?php echo $Input_setfeature[$key]; ?></div></td>
                             <td><div class="form-control1" id="format" rows="3"></div></td>
                             <td><div class="form-control1" id="format" rows="3"></div></td>
                         </tr>
@@ -225,7 +229,7 @@ if (isset($_GET['class'])) {
                         <tr>
                             <th scope="row"><?php echo $key+1 ?></th>
                             <td><div class="form-control1" id="format" rows="3"><?php echo $value; ?></div></td>
-                            <td><div class="form-control1" id="format" rows="3"></div></td>
+                            <td><div class="form-control1" id="format" rows="3"><?php echo $process_setfeature[$key]; ?></div></td>
                             <td><div class="form-control1" id="format" rows="3"></div></td>
                             <td><div class="form-control1" id="format" rows="3"></div></td>
                         </tr>
@@ -251,7 +255,7 @@ if (isset($_GET['class'])) {
                         <tr>
                             <th scope="row"><?php echo $key+1 ?></th>
                             <td><div class="form-control1" id="format" rows="3"><?php echo $value; ?></div></td>
-                            <td><div class="form-control1" id="format" rows="3"></div></td>
+                            <td><div class="form-control1" id="format" rows="3"><?php echo $report_setfeature[$key]; ?></div></td>
                             <td><div class="form-control1" id="format" rows="3"></div></td>
                             <td><div class="form-control1" id="format" rows="3"></div></td>
                         </tr>
@@ -277,7 +281,7 @@ if (isset($_GET['class'])) {
                         <tr>
                             <th scope="row"><?php echo $key+1 ?></th>
                             <td><div class="form-control1" id="format" rows="3"><?php echo $value; ?></div></td>
-                            <td><div class="form-control1" id="format" rows="3"></div></td>
+                            <td><div class="form-control1" id="format" rows="3"><?php echo $senrity_setfeature[$key]; ?></div></td>
                             <td><div class="form-control1" id="format" rows="3"></div></td>
                             <td><div class="form-control1" id="format" rows="3"></div></td>
                         </tr>
