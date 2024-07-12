@@ -382,25 +382,5 @@
             window.location.href = 'form.php';
         };
     </script>
-    <style>
-        .btns > a{
-            margin: 0;
-            display: inline-block;
-            text-align: center;
-            text-decoration: none;
-            width: 100px;
-            padding: 0.5rem;
-            background-color: #00f;
-            border-radius: 5px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-            cursor: pointer;
-            color: #fff;
-            transition: all .2s ease-in-out;
-
-        }
-        .btns > a:hover{
-            background-color: rgb(3, 3, 159);
-        }
-    </style>
 </body>
 </html>
