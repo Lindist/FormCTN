@@ -18,13 +18,38 @@ $result1 = $conn->query("SELECT * FROM tb_satisfied WHERE member_id = '$user_id'
 $count1 = count($result1->fetchAll());
 $result1->execute();
 
+
+$tb_fill_efficiercy = $conn->query("SELECT * FROM tb_fill_efficiercy WHERE member_id = '$user_id'");
+$tb_fill_efficiercy->execute();
+
+$efficiercy_form_id = array();
+while($efficiercy_member_id = $tb_fill_efficiercy->fetch(PDO::FETCH_ASSOC)){
+    $efficiercy_form_id[] = $efficiercy_member_id['form_id'];
+}
+
+$tb_fill_satisfied = $conn->query("SELECT * FROM tb_fill_satisfied WHERE member_id = '$user_id'");
+$tb_fill_satisfied->execute();
+
+$satisfied_sati_id = array();
+while($satisfied_member_id = $tb_fill_satisfied->fetch(PDO::FETCH_ASSOC)){
+    $satisfied_sati_id[] = $satisfied_member_id['sati_id'];
+}
+
+
 $countdropbox = array();
-$result2 = $conn->query("SELECT * FROM tb_efficiercy_form");
+$str1 = "SELECT * FROM tb_efficiercy_form WHERE NOT member_id = '$user_id'";
+foreach($efficiercy_form_id as $row1){
+    $str1 .= " AND NOT form_id = '$row1'";
+}
+$result2 = $conn->query($str1);
 array_push($countdropbox, count($result2->fetchAll()));
 $result2->execute();
 
-
-$result3 = $conn->query("SELECT * FROM tb_satisfied");
+$str2 = "SELECT * FROM tb_satisfied WHERE NOT member_id = '$user_id'";
+foreach($satisfied_sati_id as $row2){
+    $str2 .= " AND NOT sati_id = '$row2'";
+}
+$result3 = $conn->query($str2);
 array_push($countdropbox, count($result3->fetchAll()));
 $result3->execute();
 
