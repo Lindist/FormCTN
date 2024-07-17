@@ -217,7 +217,7 @@ unset($_SESSION['show_login']); // Clear the session flag after use
             <div class="w-auto lg:w-1/2 xl:w-[600px] mx-auto lg:text-left lg:mr-8">
                 <p class="text-white text-5xl sm:text-6xl">ระบบแบบสอบถามออนไลน์</p>
                 <p class="text-white text-2xl mt-2 mb-6 sm:mb-10">ระบบแบบสอบถามนี้เป็นส่วนช่วยในการกรอกแบบสอบถามของ วิชาโครงการ บทที่ 3 ช่วยให้ผู้ใช้งานสามารถสร้างแบบสอบถามเพื่อนำไปใช้ในรายวิชาพร้อมผลสรุป</p>
-                <a class="text-white text-2xl p-2 px-4 border border-white rounded-full mb-1 inline-block" href="#">วิชาโครงการ</a>
+                <a class="text-white text-2xl p-2 px-4 border border-white rounded-full mb-1 inline-block" href="http://www.project.ctnphrae.com/">วิชาโครงการ</a>
             </div>
             <div class="flex w-auto lg:w-1/2 justify-center">
                 <img class="w-[300px] lg:w-[500px] mx-auto lg:mx-0 my-4 sm:my-0" src="https://i.imgur.com/P8jl1rq.png" alt="Survey Image">
