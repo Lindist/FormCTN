@@ -7,27 +7,28 @@ searchInput.forEach((childsearch,indexchild) => {
     let form = []
     childsearch.addEventListener("input", (e) => {
         const value = e.target.value.toLowerCase()
+        const isVisiblearr = []
 
         form.forEach((f,i) => {
             const isVisible = f.name.toLowerCase().includes(value)
-            console.log(isVisible)
+            isVisiblearr.push(isVisible)
             data[i].classList.toggle("d-none", !isVisible)
-            if(isVisible === false){
-                document.querySelectorAll(without_data_all).forEach(ew => {    
+            })
+        const decideisshow = isVisiblearr.filter(e=>e===true)
+        console.log(decideisshow)
+        if(!decideisshow[0]){
+            document.querySelectorAll(without_data_all).forEach(ew => {    
                 ew.insertAdjacentHTML("beforeend",`
-                  <div class='disimg' style="place-self: center; position: absolute; left: 50%; transform: translateX(-50%);">
-                      <img class='disimg' style="width: 200px;" src="picture/empty-folder.png">
-                      <h3 class='disimg' style="text-align: center;">ไม่มีข้อมูลแบบสอบถาม</h3>
-                  </div>
-                  `  );
+                    <div class='disimg' style="place-self: center; position: absolute; left: 50%; transform: translateX(-50%);">
+                    <img class='disimg' style="width: 200px;" src="picture/empty-folder.png">
+                    <h3 class='disimg' style="text-align: center;">ไม่มีข้อมูลแบบสอบถาม</h3>
+                    </div>
+                    `  );
                 })
-            }
-            else{
-                document.querySelectorAll(without_data_all + " > .disimg").forEach(ew => { ew.remove(); })
-            }
-            
-        })
-        // console.log(value)
+        }
+        else{
+            document.querySelectorAll(without_data_all + " > .disimg").forEach(ew => { ew.remove(); })
+        }
         
     })
 
