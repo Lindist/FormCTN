@@ -8,6 +8,9 @@
     if (isset($_POST['login'])) {
         $std_id = $_POST['std_id'];
         $password = $_POST['password'];
+    } elseif (isset($_SESSION['std_id']) && $_SESSION['password']) {
+        $std_id = $_SESSION['std_id'];
+        $password = $_SESSION['password'];
     }
 
     if (empty($std_id)) {
@@ -35,6 +38,11 @@
             if ($password == $userData['member_code']) {
                 $_SESSION['user_id'] = $userData['member_id'];
                 $_SESSION['login_success'] = "เข้าสู่ระบบสำเร็จ";
+                setcookie('std_id', $std_id, time() + (10 * 365 * 24 * 60 * 60), "/", "", true, true);
+                setcookie('password', $password, time() + (10 * 365 * 24 * 60 * 60), "/", "", true, true);
+                // unset session
+                unset($_SESSION['std_id']);
+                unset($_SESSION['password']);
                 header("location: ../form.php");
                 exit();
             } else {
