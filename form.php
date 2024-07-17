@@ -173,8 +173,8 @@ $result3->execute();
                 <?php } ?>`);
                     </script>
                 <?php } else { ?>
-                    <img class='disimg' src="picture/empty-folder.png">
-                    <h3 class='disimg'>ไม่มีข้อมูลแบบสอบถาม</h3>
+                    <img class='disimg0' src="picture/empty-folder.png">
+                    <h3 class='disimg0'>ไม่มีข้อมูลแบบสอบถาม</h3>
                 <?php } ?>
             </div>
         </div>
@@ -215,8 +215,8 @@ $result3->execute();
                 <?php } ?>`);
                     </script>
                 <?php } else { ?>
-                    <img class='disimg' src="picture/empty-folder.png">
-                    <h3 class='disimg'>ไม่มีข้อมูลแบบสอบถาม</h3>
+                    <img class='disimg1' src="picture/empty-folder.png">
+                    <h3 class='disimg1'>ไม่มีข้อมูลแบบสอบถาม</h3>
                 <?php } ?>
             </div>
         </div>
@@ -250,8 +250,8 @@ $result3->execute();
                 <?php } ?>`);
                     </script>
                 <?php } else { ?>
-                    <img class='disimg' src="picture/empty-folder.png">
-                    <h3 class='disimg'>ไม่มีข้อมูลแบบสอบถาม</h3>
+                    <img class='disimg2' src="picture/empty-folder.png">
+                    <h3 class='disimg2'>ไม่มีข้อมูลแบบสอบถาม</h3>
                 <?php } ?>
             </div>
         </div>
@@ -285,8 +285,8 @@ $result3->execute();
                 <?php } ?>`);
                     </script>
                 <?php } else { ?>
-                    <img class='disimg' src="picture/empty-folder.png">
-                    <h3 class='disimg'>ไม่มีข้อมูลแบบสอบถาม</h3>
+                    <img class='disimg3' src="picture/empty-folder.png">
+                    <h3 class='disimg3'>ไม่มีข้อมูลแบบสอบถาม</h3>
                 <?php } ?>
             </div>
         </div>

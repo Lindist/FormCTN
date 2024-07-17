@@ -3,6 +3,7 @@ searchInput.forEach((childsearch,indexchild) => {
 
     let indexedform = "#data" + indexchild.toString()
     let without_data_all = `[without-data${indexchild.toString()}]`
+    let disimg = `.disimg${indexchild.toString()}`
     const data = document.querySelectorAll(indexedform);
     let form = []
     childsearch.addEventListener("input", (e) => {
@@ -16,7 +17,7 @@ searchInput.forEach((childsearch,indexchild) => {
             })
         const decideisshow = isVisiblearr.filter(e=>e===true)
         if(!decideisshow[0]){
-            document.querySelectorAll(".disimg").forEach(element => {
+            document.querySelectorAll(disimg).forEach(element => {
                 element.style.display = "none";
             });   
             document.querySelectorAll(without_data_all).forEach(ew => {    
