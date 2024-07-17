@@ -109,9 +109,9 @@ unset($_SESSION['show_login']); // Clear the session flag after use
 
                 <div class="mb-4">
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="std_id">
-                        รหัสนักศึกษา
+                        รหัสนักศึกษา หรือ เบอร์โทรศัพท์
                     </label>
-                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="std_id" type="number" placeholder="รหัสนักศึกษา">
+                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="std_id" type="number" placeholder="รหัสนักศึกษา หรือ เบอร์โทรศัพท์">
                 </div>
                 <div class="mb-4">
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
@@ -195,9 +195,9 @@ unset($_SESSION['show_login']); // Clear the session flag after use
                 </div>
                 <div class="mb-4">
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="std_id">
-                        รหัสนักศึกษา
+                        รหัสนักศึกษา หรือ เบอร์โทรศัพท์
                     </label>
-                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="std_id" type="number" placeholder="รหัสนักศึกษา">
+                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="std_id" type="number" placeholder="รหัสนักศึกษา หรือ เบอร์โทรศัพท์">
                 </div>
                 <div class="flex items-center justify-between">
                     <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" name="register" type="submit">
