@@ -3,8 +3,6 @@
     session_start();
     require 'config.php';
 
-    $Length = 11;
-
     // $query 
 
     if (isset($_POST['login'])) {
@@ -17,7 +15,7 @@
         $_SESSION['show_login'] = true; // Flag to show the login element
         header("location: ../index.php");
         exit();
-    } else if (strlen($std_id) !== $Length) {
+    } else if (strlen($std_id) !== 10 && strlen($std_id) !== 11) {
         $_SESSION['login_error'] = 'จำนวนรหัสนักศึกษาของคุณไม่กูกต้อง';
         $_SESSION['show_login'] = true; // Flag to show the login element
         header("location: ../index.php");

@@ -3,8 +3,6 @@
     session_start();
     require 'config.php';
 
-    $Length = 11;
-
     if (isset($_POST['register'])) {
         $title = $_POST['title'];
         $fname = $_POST['fname'];
@@ -30,7 +28,7 @@
         $_SESSION['register_error'] = "กรุณากรอกรหัสนักศึกษาของคุณ";
         header("location: ../index.php");
         exit();
-    } else if (strlen($std_id) !== $Length) {
+    } else if (strlen($std_id) !== 10 && strlen($std_id) !== 11) {
         $_SESSION['register_error'] = "จำนวนรหัสนักศึกษาของคุณไม่กูกต้อง";
         header("location: ../index.php");
         exit();
