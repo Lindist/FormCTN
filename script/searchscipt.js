@@ -15,18 +15,23 @@ searchInput.forEach((childsearch,indexchild) => {
             data[i].classList.toggle("d-none", !isVisible)
             })
         const decideisshow = isVisiblearr.filter(e=>e===true)
-        console.log(decideisshow)
         if(!decideisshow[0]){
+            document.querySelectorAll(".disimg").forEach(element => {
+                element.style.display = "none";
+            });   
             document.querySelectorAll(without_data_all).forEach(ew => {    
                 ew.insertAdjacentHTML("beforeend",`
                     <div class='disimg' style="place-self: center; position: absolute; left: 50%; transform: translateX(-50%);">
-                    <img class='disimg' style="width: 200px;" src="picture/empty-folder.png">
+                    <img class='disimg' style="position: relative; left: 50%; transform: translateX(-50%); width: 10rem; height: 10rem;" src="picture/empty-folder.png">
                     <h3 class='disimg' style="text-align: center;">ไม่มีข้อมูลแบบสอบถาม</h3>
                     </div>
                     `  );
-                })
+                }) 
         }
         else{
+            document.querySelectorAll(".disimg").forEach(element => {
+                element.style.display = "block";
+            });
             document.querySelectorAll(without_data_all + " > .disimg").forEach(ew => { ew.remove(); })
         }
         
