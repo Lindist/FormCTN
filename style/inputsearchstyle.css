@@ -1,0 +1,31 @@
+.search-wrapper{
+    --padding: 14px;
+
+    width: max-content;
+    display: flex;
+    align-items: center;
+    padding: var(--padding);
+    border-radius: 28px;
+    background-color: #f6f6f6;
+    width: 100%;
+    margin-bottom: var(--padding);
+    transition: box-shadow 0.25s;
+}
+
+.search-wrapper:focus-within{
+    box-shadow: 0 0 2px rgba(0,0,0,0.75);
+}
+
+#search{
+    font-size: 16px;
+    color: #333;
+    margin-left: var(--padding);
+    outline: none;
+    border: none;
+    background: transparent;
+    flex: 1;
+}
+#search::placeholder,
+.search-icon{
+    color: rgba(0, 0, 0, 0.25);
+}

@@ -64,8 +64,11 @@ $result3->execute();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/formstyle1.css">
     <link rel="stylesheet" href="style/tabstyle.css">
+    <link rel="stylesheet" href="style/inputsearchstyle.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <title>From</title>
     <link rel="icon" type="icon" href="https://i.imgur.com/m0H7jcN.png">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" /> -->
 </head>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -141,7 +144,12 @@ $result3->execute();
                 <a href="#" class="adds" id="addFormperformance">เพิ่มแบบสอบถาม</a>
                 <a href="#" class="adds" id="check-edit">ตรวจสอบและแก้ไข</a>
             </div>
-            <div class="form-box" id="adddata">
+            <div class="search-wrapper">
+                <span class="search-icon material-symbols-outlined">search</span>
+                <!-- <label for="search">Search Project</label> -->
+                <input type="search" placeholder="ชื่อแบบฟอร์มทีต้องการค้นหา..." name="" id="search" data-search>
+            </div>
+            <div class="form-box" id="adddata" without-data0>
                 <?php if ($count > 0) { ?>
                     <script type="text/javascript">
                         const showform = document.querySelectorAll('#adddata');
@@ -150,7 +158,7 @@ $result3->execute();
                         showform[0].insertAdjacentHTML("beforeend", `
                 <?php for ($c = 1; $c <= $count; $c++) { ?>
                         <?php $row = $result->fetch(PDO::FETCH_ASSOC); ?>
-                        <div class='container120'>
+                        <div class='container120' id="data0">
                         <div class='subform'>
                         <h2>แบบฟอร์มที่ <?php echo $c; ?></h2>
                         <div class='text'><?php echo $row['form_name']; ?></div>
@@ -178,7 +186,12 @@ $result3->execute();
                 <a href="#" class="adds" id="addFormsatisfy">เพิ่มแบบสอบถาม</a>
                 <a href="#" class="adds" id="check-edit">ตรวจสอบและแก้ไข</a>
             </div>
-            <div class="form-box" id="adddata">
+            <div class="search-wrapper">
+                <span class="search-icon material-symbols-outlined">search</span>
+                <!-- <label for="search">Search Project</label> -->
+                <input type="search" placeholder="ชื่อแบบฟอร์มทีต้องการค้นหา..." name="" id="search" data-search>
+            </div>
+            <div class="form-box" id="adddata" without-data1>
                 <?php if ($count1 > 0) { ?>
                     <script type="text/javascript">
                         const showform1 = document.querySelectorAll('#adddata');
@@ -187,7 +200,7 @@ $result3->execute();
                         showform1[1].insertAdjacentHTML("beforeend", `
                 <?php for ($c1 = 1; $c1 <= $count1; $c1++) { ?>
                         <?php $row5 = $result1->fetch(PDO::FETCH_ASSOC); ?>
-                        <div class='container120'>
+                        <div class='container120' id="data1">
                         <div class='subform'>
                         <h2>แบบฟอร์มที่ <?php echo $c1; ?></h2>
                         <div class='text'><?php echo $row5['sati_ep2']; ?></div>
@@ -211,7 +224,12 @@ $result3->execute();
     </div>
     <div class="content_box">
         <div class="container" style="margin-top: 3em;">
-            <div class="form-box" id="adddata">
+            <div class="search-wrapper">
+                <span class="search-icon material-symbols-outlined">search</span>
+                <!-- <label for="search">Search Project</label> -->
+                <input type="search" placeholder="ชื่อแบบฟอร์มทีต้องการค้นหา..." name="" id="search" data-search>
+            </div>
+            <div class="form-box" id="adddata" without-data2>
                 <?php if ($countdropbox[0] > 0) { ?>
                     <script type="text/javascript">
                         const showform2 = document.querySelectorAll('#adddata');
@@ -220,7 +238,7 @@ $result3->execute();
                         showform2[2].insertAdjacentHTML("beforeend", `
                 <?php for ($c = 1; $c <= $countdropbox[0]; $c++) { ?>
                         <?php $row6 = $result2->fetch(PDO::FETCH_ASSOC); ?>
-                        <div class='container120'>
+                        <div class='container120' id="data2">
                         <div class='subform'>
                         <h2>แบบฟอร์มที่ <?php echo $c; ?></h2>
                         <div class='text'><?php echo $row6['form_name']; ?></div>
@@ -241,7 +259,12 @@ $result3->execute();
     </div>
     <div class="content_box">
         <div class="container" style="margin-top: 3em;">
-            <div class="form-box" id="adddata">
+            <div class="search-wrapper">
+                <span class="search-icon material-symbols-outlined">search</span>
+                <!-- <label for="search">Search Project</label> -->
+                <input type="search" placeholder="ชื่อแบบฟอร์มทีต้องการค้นหา..." name="" id="search" data-search>
+            </div>
+            <div class="form-box" id="adddata" without-data3>
                 <?php if ($countdropbox[1] > 0) { ?>
                     <script type="text/javascript">
                         const showform3 = document.querySelectorAll('#adddata');
@@ -250,7 +273,7 @@ $result3->execute();
                         showform3[3].insertAdjacentHTML("beforeend", `
                 <?php for ($c1 = 1; $c1 <= $countdropbox[1]; $c1++) { ?>
                         <?php $row7 = $result3->fetch(PDO::FETCH_ASSOC); ?>
-                        <div class='container120'>
+                        <div class='container120' id="data3">
                         <div class='subform'>
                         <h2>แบบฟอร์มที่ <?php echo $c1; ?></h2>
                         <div class='text'><?php echo $row7['sati_ep2']; ?></div>
@@ -295,12 +318,16 @@ $result3->execute();
             width: 100%;
             overflow-wrap: break-word;
         }
-
+        .d-none{
+            display: none;
+        }
     </style>
     <script src="script/active.js" type="module"></script>
+    <script src="script/searchscipt.js"></script>
     <script src="script/dropdown1.js"></script>
     <script src="script/dropdownforreponsives.js"></script>
     <script src="script/script_add_data1.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script> -->
     <script>
         logout = (event, url) => {
             Swal.fire({
