@@ -6,3 +6,6 @@ test_check.php
 session/dashboard.php
 testtable.html
 testpopup.html
+searchtest.php
+livesearch.php
+testfetch.php
