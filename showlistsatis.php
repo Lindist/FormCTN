@@ -88,6 +88,12 @@
             justify-content: center;
             align-items: center;
         }
+        .imgage{
+            position: absolute;
+            left: 50%; 
+            top: 70%; 
+            transform: translate(-50%,-70%);
+        }
         @media all and (max-width:800px) {
             body {
             font-family: "Kanit", sans-serif;
@@ -136,6 +142,9 @@
             justify-content: center;
             align-items: center;
         }
+        .imgage{
+            display: none;
+            }
         }
     </style>
 </head>
@@ -175,7 +184,7 @@
                             </div>
                     <?php } ?>
                 <?php }else{ ?>
-                    <span style="position: absolute;  left: 50%; top: 70%; transform: translate(-50%,-70%);">
+                    <span class="imgage"">
                         <img src="picture/form.png" style="width: 10rem; position: relative; left: 50%; transform: translateX(-50%)">
                         <h3 style="text-align: center;">ไม่มีการกรอกข้อมูลแบบสอบถาม</h3>
                     </span>
