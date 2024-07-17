@@ -164,14 +164,21 @@
                     </div> -->
                     </span>
                 <?php } ?>
-                <?php for ($i = 0; $i < count($nofiller); $i++) { ?>
-                        <div>
-                        <div>ลำดับที่ <?php echo $i+1; ?></div>
-                        <div class='text'><?php echo $filler[$i]['member_title']." ".$filler[$i]['member_firstname']." ".$filler[$i]['member_lastname']." ".$filler[$i]['member_code']; ?></div>
-                        <div class="btns">
-                        <a id='btn' href="showfilledperformance.php?user_id=<?php echo $filler[$i]['member_id']; ?>&form_id=<?= $id; ?>" >ดูข้อมูล</a>
-                        </div>
-                        </div>
+                <?php if(count($nofiller) > 0){ ?>
+                    <?php for ($i = 0; $i < count($nofiller); $i++) { ?>
+                            <div>
+                            <div>ลำดับที่ <?php echo $i+1; ?></div>
+                            <div class='text'><?php echo $filler[$i]['member_title']." ".$filler[$i]['member_firstname']." ".$filler[$i]['member_lastname']." ".$filler[$i]['member_code']; ?></div>
+                            <div class="btns">
+                            <a id='btn' href="showfilledperformance.php?user_id=<?php echo $filler[$i]['member_id']; ?>&form_id=<?= $id; ?>" >ดูข้อมูล</a>
+                            </div>
+                            </div>
+                    <?php } ?>
+                <?php }else{ ?>
+                    <span style="position: absolute;  left: 50%; top: 50%; transform: translate(-50%,-50%);">
+                        <img src="picture/form.png" style="width: 10rem; position: relative; left: 50%; transform: translateX(-50%)">
+                        <h3 style="text-align: center;">ไม่มีการกรอกข้อมูลแบบสอบถาม</h3>
+                    </span>
                 <?php } ?>
                 `);
         backtoindex = () =>{
