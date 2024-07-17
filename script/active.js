@@ -69,7 +69,7 @@ function saveInputValues() {
 
 // Function to restore input values from local storage
 function restoreInputValues() {
-    history.pushState(null, '', '/form.php');
+    history.pushState(null, '', '/FormCTN/form.php');
     const savedInput1 = localStorage.getItem('tab2');
     const savedInput2 = localStorage.getItem('firstshow');
     const savedInput3_1 = localStorage.getItem('columnDatatab1');
