@@ -68,12 +68,16 @@
                 $_SESSION['login_error'] = "รหัสนักศึกษาหรือรหัสผ่านไม่ถูกต้อง";
                 $_SESSION['show_login'] = true; // Flag to show the login element
                 header("location: ../index.php");
+                setcookie('std_id', '', time() - 3600, "/", $domain, $secure, true);
+                setcookie('password', '', time() - 3600, "/", $domain, $secure, true);
                 exit();
             }
 
         } catch (PDOException $e) {
             $_SESSION['login_error'] = "มีบางอย่างผิดพลาดกรุณาลองใหม่อักครั้ง";
             $_SESSION['show_login'] = true; // Flag to show the login element
+            setcookie('std_id', '', time() - 3600, "/", $domain, $secure, true);
+            setcookie('password', '', time() - 3600, "/", $domain, $secure, true);
             header("location: ../index.php");
             exit();
         }
