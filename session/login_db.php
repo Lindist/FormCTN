@@ -36,14 +36,33 @@
             $userData = $stmt -> fetch();
 
             if ($password == $userData['member_code']) {
-                $_SESSION['user_id'] = $userData['member_id'];
-                $_SESSION['login_success'] = "เข้าสู่ระบบสำเร็จ";
-                setcookie('std_id', $std_id, time() + (10 * 365 * 24 * 60 * 60), "/", "", true, true);
-                setcookie('password', $password, time() + (10 * 365 * 24 * 60 * 60), "/", "", true, true);
+                $domain = $_SERVER['HTTP_HOST'];
+                $secure = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on';
+                setcookie('std_id', $std_id, time() + (30 * 24 * 60 * 60), "/", $domain, $secure, true);
+                setcookie('password', $password, time() + (30 * 24 * 60 * 60), "/", $domain, $secure, true);
+
+                if (isset($_POST['login'])) {
+                    $_SESSION['user_id'] = $userData['member_id'];
+                    $_SESSION['login_success'] = "เข้าสู่ระบบสำเร็จ";
+                    header("location: ../form.php");
+                    exit();
+                } elseif (isset($_SESSION['std_id']) && $_SESSION['password']) {
+                    $_SESSION['user_id'] = $userData['member_id'];
+                    unset($_SESSION['std_id']);
+                    unset($_SESSION['password']);
+                    header("location: ../form.php");
+                    exit();
+                }
+                // $_SESSION['user_id'] = $userData['member_id'];
+                // $_SESSION['login_success'] = "เข้าสู่ระบบสำเร็จ";
+                // $domain = $_SERVER['HTTP_HOST'];
+                // $secure = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on';
+                // setcookie('std_id', $std_id, time() + (30 * 24 * 60 * 60), "/", $domain, $secure, true);
+                // setcookie('password', $password, time() + (30 * 24 * 60 * 60), "/", $domain, $secure, true);
                 // unset session
-                unset($_SESSION['std_id']);
-                unset($_SESSION['password']);
-                header("location: ../form.php");
+                // unset($_SESSION['std_id']);
+                // unset($_SESSION['password']);
+                // header("location: ../form.php");
                 exit();
             } else {
                 $_SESSION['login_error'] = "รหัสนักศึกษาหรือรหัสผ่านไม่ถูกต้อง";
