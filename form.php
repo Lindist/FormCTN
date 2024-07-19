@@ -70,9 +70,18 @@ $result3->execute();
       href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Icons+Sharp|Material+Icons+Two+Tone"
       rel="stylesheet"
     />
-    <link href="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
+    <script src="script/thaidatepicker.js"></script>
+    <script>
+    $(function() {
+    //original datepicker
+      $(".datepicker").datetimepicker()
+      //thai datepicker
+      thaiDatepicker("#d1,#d2,#d3")
+    })
+    </script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <title>From</title>
     <link rel="icon" type="icon" href="https://i.imgur.com/m0H7jcN.png">
@@ -106,14 +115,14 @@ $result3->execute();
         <?php unset($_SESSION['delete']); ?>
     <?php } ?>
 <div class="modal">
-    <form class="modal-content animate" action="/action_page.php" method="post">
+    <form class="modal-content animate" action="/action_page.php" id="myform" method="post">
         <div class="containerformodal">
             <span class="close" title="Close Modal">&times;</span>
             <div class="title" style="text-align: center; margin-top: 0.5rem;"><h1>โครงการ</h1></div>
             <label for="pname"><b>ชื่อโครงการ</b></label>
             <input type="text" placeholder="ชื่อโครงการ...." name="pname" required>
             <label for=""><b>วันหมดอายุ</b></label><br>
-            <input type="date" name="expired[]" id="date-time" placeholder="วันหมดอายุ...." value="" required><br>
+            <input type="text" name="expired[]" id="d1" class="datepicker" placeholder="วันหมดอายุ...." value="" required><br>
             <label for=""><b>ระดับการศึกษา</b></label>
 
                 <div class="dropdownforaddintro">
@@ -400,9 +409,11 @@ $result3->execute();
     <script src="script/searchscipt.js"></script>
     <script src="script/dropdown1.js"></script>
     <script src="script/dropdownforreponsives.js"></script>
-    <script src="script/script_add_data2.js"></script>
+    <script src="script/script_add_data.js"></script>
     <script src="script/scriptSelector1.js"></script>
     <script src="script/datepicker12.js"></script>
+    <script src="script/isiperandisstatis1.js"></script>
+
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script> -->
     <script>
         logout = (event, url) => {

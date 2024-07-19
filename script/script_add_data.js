@@ -4,32 +4,35 @@ formRange.forEach((f) => {
 });
 const showformout = document.querySelectorAll('#adddata');
 /*------------------ */
+
+/*------------------------------*/
 document.getElementById('addFormperformance').addEventListener('click', () => {
-    showformout.forEach((e) => {
-        if(e.classList.contains('columnData')){
-            window.location.href = `insert_performance_form.php?class=have`;
-        }else{
-            window.location.href = `insert_performance_form.php`;
-        }
-    });
-});
-document.getElementById('addFormsatisfy').addEventListener('click', () => {
-    // alert("pressed btn!!!");
     const modal = document.querySelector('.modal')
+    modal.classList.add("isperformance")
     modal.style.display='block';
     document.querySelector('.close').addEventListener('click', () => {
         modal.style.display='none';
+        modal.classList.remove("isperformance")
     })
     document.querySelector('.cancelbtn').addEventListener('click', () => {
         modal.style.display='none';
+        modal.classList.remove("isperformance")
     })
-    // showformout.forEach((e) => {
-    //     if(e.classList.contains('columnData')){
-    //         window.location.href = `insert_satis_form.php?class1=firstshow&class=have`;
-    //     }else{
-    //         window.location.href = `insert_satis_form.php?class1=firstshow`;
-    //     }
-    // });
+
+});
+document.getElementById('addFormsatisfy').addEventListener('click', () => {
+    const modal = document.querySelector('.modal')
+    modal.classList.add("issatisfy")
+    modal.style.display='block';
+    document.querySelector('.close').addEventListener('click', () => {
+        modal.style.display='none';
+        modal.classList.remove("issatisfy")
+    })
+    document.querySelector('.cancelbtn').addEventListener('click', () => {
+        modal.style.display='none';
+        modal.classList.remove("issatisfy")
+    })
+
 });
 /*------------- */
 

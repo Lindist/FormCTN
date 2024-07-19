@@ -17,8 +17,8 @@ if(day < 10){
     daystr = day.toString();
 }
 
-let today = `${(year+543).toString()}-${mothstr}-${daystr}`;
-document.getElementById("date-time").value = today;
+let today = `${daystr}/${mothstr}/${(year+543).toString()}`;
+document.querySelector(".datepicker").value = today;
 // console.log(moment(new Date()).format("YYYY-MM-DD-dddd"));
 // console.log(` ${year-1}-${year}-${year+1}`);
 document.querySelectorAll(".namedate").forEach((e,i) => {
