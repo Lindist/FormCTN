@@ -14,13 +14,22 @@ document.getElementById('addFormperformance').addEventListener('click', () => {
     });
 });
 document.getElementById('addFormsatisfy').addEventListener('click', () => {
-    showformout.forEach((e) => {
-        if(e.classList.contains('columnData')){
-            window.location.href = `insert_satis_form.php?class1=firstshow&class=have`;
-        }else{
-            window.location.href = `insert_satis_form.php?class1=firstshow`;
-        }
-    });
+    // alert("pressed btn!!!");
+    const modal = document.querySelector('.modal')
+    modal.style.display='block';
+    document.querySelector('.close').addEventListener('click', () => {
+        modal.style.display='none';
+    })
+    document.querySelector('.cancelbtn').addEventListener('click', () => {
+        modal.style.display='none';
+    })
+    // showformout.forEach((e) => {
+    //     if(e.classList.contains('columnData')){
+    //         window.location.href = `insert_satis_form.php?class1=firstshow&class=have`;
+    //     }else{
+    //         window.location.href = `insert_satis_form.php?class1=firstshow`;
+    //     }
+    // });
 });
 /*------------- */
 

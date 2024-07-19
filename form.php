@@ -65,6 +65,14 @@ $result3->execute();
     <link rel="stylesheet" href="style/formstyle1.css">
     <link rel="stylesheet" href="style/tabstyle.css">
     <link rel="stylesheet" href="style/inputsearchstyle.css">
+    <link rel="stylesheet" href="style/addProjectname.css">
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Icons+Sharp|Material+Icons+Two+Tone"
+      rel="stylesheet"
+    />
+    <link href="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <title>From</title>
     <link rel="icon" type="icon" href="https://i.imgur.com/m0H7jcN.png">
@@ -97,7 +105,73 @@ $result3->execute();
         </script>
         <?php unset($_SESSION['delete']); ?>
     <?php } ?>
+<div class="modal">
+    <form class="modal-content animate" action="/action_page.php" method="post">
+        <div class="containerformodal">
+            <span class="close" title="Close Modal">&times;</span>
+            <div class="title" style="text-align: center; margin-top: 0.5rem;"><h1>โครงการ</h1></div>
+            <label for="pname"><b>ชื่อโครงการ</b></label>
+            <input type="text" placeholder="ชื่อโครงการ...." name="pname" required>
+            <label for=""><b>วันหมดอายุ</b></label><br>
+            <input type="date" name="expired[]" id="date-time" placeholder="วันหมดอายุ...." value="" required><br>
+            <label for=""><b>ระดับการศึกษา</b></label>
 
+                <div class="dropdownforaddintro">
+                    <div class="input-box"></div>
+                <div class="list">
+                    <input type="radio" name="drop1" id="id11" class="radio" />
+                    <label for="id11">
+                    <span class="material-symbols-outlined">person</span>
+                        <span class="name">ปวช.</span>
+                    </label>
+
+                    <input type="radio" name="drop1" id="id12" class="radio" />
+                    <label for="id12">
+                    <span class="material-symbols-outlined">person_4</span>
+                        <span class="name">ปวส.</span>
+                    </label>
+                    </div>
+                </div>
+
+                <label for=""><b>ปีการศึกษา</b></label>
+
+                <div class="dropdownforaddintro">
+                    <div class="input-box"></div>
+                <div class="list">
+                    <input type="radio" name="drop1" id="id14" class="radio1" />
+                    <label for="id14">
+                        <span class="namedate"></span>
+                    </label>
+
+                    <input type="radio" name="drop1" id="id15" class="radio1" />
+                    <label for="id15">
+                        <span class="namedate"></span>
+                    </label>
+
+                    <input type="radio" name="drop1" id="id16" class="radio1" />
+                    <label for="id16">
+                        <span class="namedate"></span>
+                    </label>
+                    </div>
+                </div>
+
+            <button type="submit" class="confirmbtn">ยืนยัน</button>
+            <button type="button" class="cancelbtn">ยกเลิก</button>
+        </div>
+
+    </form>
+    <!-- <script>
+        const datePicker = MCDatepicker.create({
+        el: '#datepicker',
+        bodyType: 'modal',
+        dateFormat: 'dd-mmmm-yyyy'
+
+        
+        });
+        // let today = new Date("21-July-2006").toLocaleDateString("th-TH",{day:"numeric",month:"long",year:"numeric"})
+        // console.log(today)
+    </script> -->
+</div>
     <header>
         <div class="responsive">
             <h1>CTN Phrae</h1>
@@ -326,7 +400,9 @@ $result3->execute();
     <script src="script/searchscipt.js"></script>
     <script src="script/dropdown1.js"></script>
     <script src="script/dropdownforreponsives.js"></script>
-    <script src="script/script_add_data1.js"></script>
+    <script src="script/script_add_data2.js"></script>
+    <script src="script/scriptSelector1.js"></script>
+    <script src="script/datepicker12.js"></script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script> -->
     <script>
         logout = (event, url) => {
