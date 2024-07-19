@@ -21,7 +21,7 @@
     border: 1px solid #0000003d;
     border-radius: 15px;
 }
-.containerformodal {
+.containerformodal ,.moreaddproject{
     position: relative;
     padding: 16px;
 }
@@ -101,6 +101,14 @@ button:hover{
     height: fit-content;
     box-sizing: border-box;
     position: relative;
+    margin: 8px 0;
+  }
+  .dropdownforaddpriject{
+    width: 50%;
+    height: fit-content;
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
     margin: 8px 0;
   }
   .input-box {

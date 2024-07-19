@@ -65,7 +65,7 @@ $result3->execute();
     <link rel="stylesheet" href="style/formstyle1.css">
     <link rel="stylesheet" href="style/tabstyle.css">
     <link rel="stylesheet" href="style/inputsearchstyle.css">
-    <link rel="stylesheet" href="style/addProjectname.css">
+    <link rel="stylesheet" href="style/addProjectnames.css">
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Icons+Sharp|Material+Icons+Two+Tone"
       rel="stylesheet"
@@ -73,15 +73,6 @@ $result3->execute();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css">
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
-    <script src="script/thaidatepicker.js"></script>
-    <script>
-    $(function() {
-    //original datepicker
-      $(".datepicker").datetimepicker()
-      //thai datepicker
-      thaiDatepicker("#d1,#d2,#d3")
-    })
-    </script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <title>From</title>
     <link rel="icon" type="icon" href="https://i.imgur.com/m0H7jcN.png">
@@ -119,11 +110,22 @@ $result3->execute();
         <div class="containerformodal">
             <span class="close" title="Close Modal">&times;</span>
             <div class="title" style="text-align: center; margin-top: 0.5rem;"><h1>โครงการ</h1></div>
-            <label for="pname"><b>ชื่อโครงการ</b></label>
+            <div class="addproject">
+            <label for=""><b>เพิ่มหัวข้อโครงการ</b></label>
+            <div class="dropdownforaddpriject">
+                <div class="input-box">1</div>
+                <button type="button" style="margin-left: 10px;" class="confirmbtn btncrease">เพิ่ม</button>
+
+                    <div class="list">
+                        <script src="script/add_remove_project1.js"></script>
+                    </div>
+                </div>
+            </div>
+            <!-- <input type="text" name="expired[]" id="d4" class="datepicker" placeholder="วันหมดอายุ...." value="" required><br> -->
+            <!-- <label for="pname"><b>ชื่อโครงการ</b></label>
             <input type="text" placeholder="ชื่อโครงการ...." name="pname" required>
-            <label for=""><b>วันหมดอายุ</b></label><br>
-            <input type="text" name="expired[]" id="d1" class="datepicker" placeholder="วันหมดอายุ...." value="" required><br>
-            <label for=""><b>ระดับการศึกษา</b></label>
+            <label><b>วันหมดอายุ</b></label><br>
+            <label><b>ระดับการศึกษา</b></label>
 
                 <div class="dropdownforaddintro">
                     <div class="input-box"></div>
@@ -163,7 +165,9 @@ $result3->execute();
                     </label>
                     </div>
                 </div>
-
+             -->
+        </div>
+        <div class="moreaddproject">
             <button type="submit" class="confirmbtn">ยืนยัน</button>
             <button type="button" class="cancelbtn">ยกเลิก</button>
         </div>
@@ -410,10 +414,27 @@ $result3->execute();
     <script src="script/dropdown1.js"></script>
     <script src="script/dropdownforreponsives.js"></script>
     <script src="script/script_add_data.js"></script>
-    <script src="script/scriptSelector1.js"></script>
-    <script src="script/datepicker12.js"></script>
+    <script src="script/scriptSelector.js"></script>
+    <script src="script/datepicker.js"></script>
     <script src="script/isiperandisstatis1.js"></script>
-
+    <script src="script/thaidatepicker.js"></script>
+    <script>
+        document.querySelector(".btncrease").addEventListener('click', () => {
+            let date= []
+            let ids = document.querySelectorAll('.datepicker')
+            ids.forEach((element,i) => {
+                date.push("#d"+(i+1).toString());
+            });
+            // console.log(document.querySelectorAll('.datepicker'))
+            $(function() {
+            //original datepicker
+            $(".datepicker1").datetimepicker()
+            //thai datepicker
+            thaiDatepicker(date.join(','))
+            })
+            // $(function() {thaiDatepicker("#d1,#d2,#d3")})
+        })
+    </script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script> -->
     <script>
         logout = (event, url) => {
