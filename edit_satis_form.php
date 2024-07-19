@@ -162,7 +162,7 @@ if (isset($_GET['id'])) {
                         <hr class="my-3">
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-2" id="info-container_<?= $i + 1 ?>">
                             <div class="flex sm:block flex-col justify-center">
-                                <input type="text" class="border border-gray-300 rounded px-3 py-2 w-full my-2" name="sati_info[]" value="<?= $sati_info[$i] ?>" required>
+                                <input type="text" class="border border-gray-300 rounded px-3 py-2 w-full my-1 mb-2" name="sati_info[]" value="<?= $sati_info[$i] ?>" required>
                                 <button type="button" id="addsubinfo_<?= $i + 1 ?>" class="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 justify-start">เพิ่มข้อมูลพื้นฐานที่ <?= $i + 1 ?></button>
                             </div>
                             <div id="sub-info_<?= $i + 1 ?>">
@@ -193,7 +193,7 @@ if (isset($_GET['id'])) {
                                 <hr class="my-3">
                                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-2">
                                     <div class="flex flex-col justify-center">
-                                        <input type="text" class="border border-gray-300 rounded px-3 py-2 w-full my-2" name="sati_info[]" required>
+                                        <input type="text" class="border border-gray-300 rounded px-3 py-2 w-full my-1 mb-2" name="sati_info[]" required>
                                         <button type="button" id="addsubinfo_${index}" class="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 justify-center">เพิ่มข้อมูลพื้นฐานที่ ${index}</button>
                                     </div>
                                     <div id="sub-info_${index}"></div>
@@ -464,10 +464,6 @@ if (isset($_GET['id'])) {
                     </table>
                     <button type="button" id="section4addbtn" onclick="section4add()" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">เพิ่ม</button>
                     <button type="button" id="section4removebtn" onclick="section4remove()" class="hidden bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">ลบ</button>
-
-                    <!-- comment -->
-                    <!-- <label for="" class="block text-lg my-5"><label class="text-lg font-bold mb-2">ตอนที่ 3 </label>ข้อเสนอแนะอื่นๆ</label>
-                <textarea disabled class="p-2 text-lg text-gray-900 border border-gray-300 rounded bg-gray-50 w-full" name="sati_comment" id="" cols="30" rows="10" placeholder="ไม่จำเป็นต้องกรอก . . . . ."><?= $row['sati_comment'] ?></textarea> -->
 
                     <div class="text-center mt-5">
                         <button type="submit" name="update" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">บันทึกข้อมูล</button>

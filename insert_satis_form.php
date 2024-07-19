@@ -119,38 +119,62 @@ for ($i = 0; $i < 10; $i++) { // Replace 10 with any large number or condition
                         newBlock.innerHTML = `
                                 <hr class="my-3">
                                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-2" id="info-container_${currentBlocks + 1}">
-                                    <div class="flex-col items-center justify-center">
-                                        <input type="text" class="border border-gray-300 rounded px-3 py-2 my-1 w-full sm:w-8/12" name="sati_info[]" value="" required>
-                                        <button type="button" id="addsubinfo_${currentBlocks + 1}" class="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 ml-2">เพิ่มข้อมูลพื้นฐานที่ ${currentBlocks + 1}</button>
+                                    <div class="flex sm:block flex-col justify-center">
+                                        <input type="text" class="border border-gray-300 rounded px-3 py-2 w-full my-1 mb-2" name="sati_info[]" value="" required>
+                                        <button type="button" id="addsubinfo_${currentBlocks + 1}" class="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 justify-start">เพิ่มข้อมูลพื้นฐานที่ ${currentBlocks + 1}</button>
                                     </div>
                                     <div id="sub-info_${currentBlocks + 1}"></div>
                                 </div>
                             `;
                         infoSection.appendChild(newBlock);
 
-                        // Add event listener for the "เพิ่มข้อมูลพื้นฐานที่" button
                         document.getElementById(`addsubinfo_${currentBlocks + 1}`).addEventListener('click', function() {
-                            var containerId = this.id.replace('addsubinfo_', '');
-                            var subInfoSection = document.getElementById(`sub-info_${containerId}`);
-                            var newInput = document.createElement('input');
-                            newInput.required = true;
-                            newInput.type = 'text';
-                            newInput.className = 'border border-gray-300 rounded px-3 py-2 my-1 w-full sm:w-10/12';
-                            newInput.name = `sub_info${containerId}[]`;
 
-                            var newButton = document.createElement('button');
-                            newButton.type = 'button';
-                            newButton.className = 'bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 mx-2';
-                            newButton.textContent = 'ลบ';
+                        // Creating a new div to contain the new input field and remove button
+                        var containerId = this.id.replace('addsubinfo_', '');
+                        var subInfoSection = document.getElementById(`sub-info_${containerId}`);
 
-                            newButton.addEventListener('click', function() {
-                                newInput.remove();
-                                newButton.remove();
-                            });
+                        const newSubInfoField = document.createElement('div');
+                        newSubInfoField.className = 'flex items-center my-1';
+                        newSubInfoField.innerHTML = `
+                            <input required type="text" class="border border-gray-300 rounded px-3 py-2 w-full" name="sub_info${containerId}[]">
+                            <button type="button" class="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 ml-2 remove-subinfo">ลบ</button>
+                        `;
 
-                            subInfoSection.appendChild(newInput);
-                            subInfoSection.appendChild(newButton);
+                        // Finding the container and appending the new element
+                        subInfoSection.appendChild(newSubInfoField);
+
+                        // Adding an event listener to the new remove button
+                        newSubInfoField.querySelector('.remove-subinfo').addEventListener('click', function() {
+                            newSubInfoField.remove();
                         });
+                        });
+
+
+                        // // Add event listener for the "เพิ่มข้อมูลพื้นฐานที่" button
+                        // document.getElementById(`addsubinfo_${currentBlocks + 1}`).addEventListener('click', function() {
+
+                        //     var containerId = this.id.replace('addsubinfo_', '');
+                        //     var subInfoSection = document.getElementById(`sub-info_${containerId}`);
+                        //     var newInput = document.createElement('input');
+                        //     newInput.required = true;
+                        //     newInput.type = 'text';
+                        //     newInput.className = 'border border-gray-300 rounded px-3 py-2 my-1 w-full';
+                        //     newInput.name = `sub_info${containerId}[]`;
+
+                        //     var newButton = document.createElement('button');
+                        //     newButton.type = 'button';
+                        //     newButton.className = 'bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 ml-2';
+                        //     newButton.textContent = 'ลบ';
+
+                        //     newButton.addEventListener('click', function() {
+                        //         newInput.remove();
+                        //         newButton.remove();
+                        //     });
+
+                        //     subInfoSection.appendChild(newInput);
+                        //     subInfoSection.appendChild(newButton);
+                        // });
 
                         // Add event listener for the "ลบ" button to remove the block
 
