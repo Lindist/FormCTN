@@ -161,15 +161,15 @@ if (isset($_GET['id'])) {
                     <?php while ($i < count($sati_info)) { ?>
                         <hr class="my-3">
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-2" id="info-container_<?= $i + 1 ?>">
-                            <div class="flex-col items-center justify-center">
-                                <input type="text" class="border border-gray-300 rounded px-3 py-2 my-1 w-full sm:w-8/12" name="sati_info[]" value="<?= $sati_info[$i] ?>" required>
-                                <button type="button" id="addsubinfo_<?= $i + 1 ?>" class="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 ml-2">เพิ่มข้อมูลพื้นฐานที่ <?= $i + 1 ?></button>
+                            <div class="flex sm:block flex-col justify-center">
+                                <input type="text" class="border border-gray-300 rounded px-3 py-2 w-full my-2" name="sati_info[]" value="<?= $sati_info[$i] ?>" required>
+                                <button type="button" id="addsubinfo_<?= $i + 1 ?>" class="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 justify-start">เพิ่มข้อมูลพื้นฐานที่ <?= $i + 1 ?></button>
                             </div>
                             <div id="sub-info_<?= $i + 1 ?>">
                                 <?php for ($c = 0; $c < count($sub_info_ex[$i]); $c++) { ?>
                                     <div class="flex items-center my-1">
-                                        <input required value="<?= $sub_info_ex[$i][$c] ?>" type="text" class="border border-gray-300 rounded px-3 py-2 w-full sm:w-10/12" name="sub_info<?= $i + 1 ?>[]">
-                                        <button type="button" class="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 mx-2 remove-subinfo">ลบ</button>
+                                        <input required value="<?= $sub_info_ex[$i][$c] ?>" type="text" class="border border-gray-300 rounded px-3 py-2 w-full" name="sub_info<?= $i + 1 ?>[]">
+                                        <button type="button" class="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 ml-2 remove-subinfo">ลบ</button>
                                     </div>
                                 <?php } ?>
                             </div>
@@ -190,15 +190,15 @@ if (isset($_GET['id'])) {
                             newInfoContainer.id = `info-container_${index}`;
 
                             newInfoContainer.innerHTML = `
-            <hr class="my-3">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-2">
-                <div class="flex-col items-center justify-center">
-                    <input type="text" class="border border-gray-300 rounded px-3 py-2 my-1 w-full sm:w-8/12" name="sati_info[]" required>
-                    <button type="button" id="addsubinfo_${index}" class="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 ml-2">เพิ่มข้อมูลพื้นฐานที่ ${index}</button>
-                </div>
-                <div id="sub-info_${index}"></div>
-            </div>
-        `;
+                                <hr class="my-3">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-2">
+                                    <div class="flex flex-col justify-center">
+                                        <input type="text" class="border border-gray-300 rounded px-3 py-2 w-full my-2" name="sati_info[]" required>
+                                        <button type="button" id="addsubinfo_${index}" class="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 justify-center">เพิ่มข้อมูลพื้นฐานที่ ${index}</button>
+                                    </div>
+                                    <div id="sub-info_${index}"></div>
+                                </div>
+                            `;
 
                             infoSection.appendChild(newInfoContainer);
 
@@ -216,9 +216,9 @@ if (isset($_GET['id'])) {
                             const newSubInfoField = document.createElement('div');
                             newSubInfoField.className = 'flex items-center my-1';
                             newSubInfoField.innerHTML = `
-            <input required type="text" class="border border-gray-300 rounded px-3 py-2 w-full sm:w-10/12" name="sub_info${infoIndex}[]">
-            <button type="button" class="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 mx-2 remove-subinfo">ลบ</button>
-        `;
+                                <input required type="text" class="border border-gray-300 rounded px-3 py-2 w-full" name="sub_info${infoIndex}[]">
+                                <button type="button" class="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 ml-2 remove-subinfo">ลบ</button>
+                            `;
 
                             subInfoContainer.appendChild(newSubInfoField);
 
@@ -233,6 +233,19 @@ if (isset($_GET['id'])) {
                             sectionCount++;
                             addInfoSection(sectionCount);
                         });
+
+                        // Function to handle existing and newly added "เพิ่มข้อมูลพื้นฐานที่" buttons
+                        function handleAddSubInfoButtons() {
+                            document.querySelectorAll('[id^=addsubinfo_]').forEach(button => {
+                                button.addEventListener('click', () => {
+                                    const infoIndex = button.id.split('_')[1];
+                                    addSubInfo(infoIndex);
+                                });
+                            });
+                        }
+
+                        // Initial setup for existing "เพิ่มข้อมูลพื้นฐานที่" buttons
+                        handleAddSubInfoButtons();
 
                         // Remove the last main info section
                         document.getElementById('removeinfo').addEventListener('click', () => {
@@ -267,6 +280,7 @@ if (isset($_GET['id'])) {
                         });
                     });
                 </script>
+
                 <!-- Survey Section 2 -->
                 <hr class="my-3">
 
