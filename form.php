@@ -117,73 +117,31 @@ $result3->execute();
                 <button type="button" style="margin-left: 10px;" class="confirmbtn btncrease">เพิ่ม</button>
 
                     <div class="list">
-                        <script src="script/add_remove_project1.js"></script>
+                        <script src="script/add_remove_project103.js"></script>
                     </div>
                 </div>
             </div>
-            <!-- <input type="text" name="expired[]" id="d4" class="datepicker" placeholder="วันหมดอายุ...." value="" required><br> -->
-            <!-- <label for="pname"><b>ชื่อโครงการ</b></label>
-            <input type="text" placeholder="ชื่อโครงการ...." name="pname" required>
-            <label><b>วันหมดอายุ</b></label><br>
-            <label><b>ระดับการศึกษา</b></label>
-
-                <div class="dropdownforaddintro">
-                    <div class="input-box"></div>
-                <div class="list">
-                    <input type="radio" name="drop1" id="id11" class="radio" />
-                    <label for="id11">
-                    <span class="material-symbols-outlined">person</span>
-                        <span class="name">ปวช.</span>
-                    </label>
-
-                    <input type="radio" name="drop1" id="id12" class="radio" />
-                    <label for="id12">
-                    <span class="material-symbols-outlined">person_4</span>
-                        <span class="name">ปวส.</span>
-                    </label>
-                    </div>
-                </div>
-
-                <label for=""><b>ปีการศึกษา</b></label>
-
-                <div class="dropdownforaddintro">
-                    <div class="input-box"></div>
-                <div class="list">
-                    <input type="radio" name="drop1" id="id14" class="radio1" />
-                    <label for="id14">
-                        <span class="namedate"></span>
-                    </label>
-
-                    <input type="radio" name="drop1" id="id15" class="radio1" />
-                    <label for="id15">
-                        <span class="namedate"></span>
-                    </label>
-
-                    <input type="radio" name="drop1" id="id16" class="radio1" />
-                    <label for="id16">
-                        <span class="namedate"></span>
-                    </label>
-                    </div>
-                </div>
-             -->
         </div>
-        <div class="moreaddproject">
+        <div id="btnform" class="moreaddproject d-none">
             <button type="submit" class="confirmbtn">ยืนยัน</button>
             <button type="button" class="cancelbtn">ยกเลิก</button>
         </div>
 
     </form>
-    <!-- <script>
-        const datePicker = MCDatepicker.create({
-        el: '#datepicker',
-        bodyType: 'modal',
-        dateFormat: 'dd-mmmm-yyyy'
+    <script>
+        document.querySelector(".btncrease").addEventListener('click', () => {
+            document.querySelector(".moreaddproject").classList.remove("d-none");
+        })
+        // const datePicker = MCDatepicker.create({
+        // el: '#datepicker',
+        // bodyType: 'modal',
+        // dateFormat: 'dd-mmmm-yyyy'
 
         
-        });
+        // });
         // let today = new Date("21-July-2006").toLocaleDateString("th-TH",{day:"numeric",month:"long",year:"numeric"})
         // console.log(today)
-    </script> -->
+    </script>
 </div>
     <header>
         <div class="responsive">
@@ -414,7 +372,7 @@ $result3->execute();
     <script src="script/dropdown1.js"></script>
     <script src="script/dropdownforreponsives.js"></script>
     <script src="script/script_add_data.js"></script>
-    <script src="script/scriptSelector.js"></script>
+    <script src="script/scriptSelector101.js"></script>
     <script src="script/datepicker.js"></script>
     <script src="script/isiperandisstatis1.js"></script>
     <script src="script/thaidatepicker.js"></script>
@@ -425,7 +383,8 @@ $result3->execute();
             ids.forEach((element,i) => {
                 date.push("#d"+(i+1).toString());
             });
-            // console.log(document.querySelectorAll('.datepicker'))
+            // console.log(date)
+            // console.log(ids)
             $(function() {
             //original datepicker
             $(".datepicker1").datetimepicker()

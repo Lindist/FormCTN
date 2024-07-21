@@ -5,6 +5,7 @@ document.querySelector(".btncrease").addEventListener('click', () => {
 let day = new Date().getDate();
 let moth = new Date().getMonth()+1;
 let year = new Date().getFullYear();
+// console.log(year)
 let mothstr = ""
 let daystr = ""
 if(moth < 10){
@@ -24,8 +25,19 @@ document.querySelectorAll(".datepicker").forEach(e => {
 })
 // console.log(moment(new Date()).format("YYYY-MM-DD-dddd"));
 // console.log(` ${year-1}-${year}-${year+1}`);
-document.querySelectorAll(".namedate").forEach((e,i) => {
-    e.value = year+(i-1)+543
-    e.innerText = year+(i-1)+543
+let fixednum = 0;
+document.querySelectorAll(".namedate").forEach((e) => {
+    if(fixednum < 3){
+        e.textContent = year+(fixednum -1)+543;
+        e.value = year+(fixednum -1)+543;
+        fixednum++;
+    }
+    else{
+        fixednum = 0;
+        e.textContent = year+(fixednum -1)+543;
+        e.value = year+(fixednum -1)+543;
+        fixednum++;
+    }
 })
+// console.log(document.querySelectorAll(".namedate"))
 })
