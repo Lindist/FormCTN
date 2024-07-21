@@ -72,7 +72,7 @@ document.querySelector(".btncrease").addEventListener('click', () => {
 // console.log(del);
 // console.log(data);
 let countdel = document.querySelectorAll(".openbtn").length;
-increasecountdel = countdel;
+increasecountdel += countdel;
 for(let c = 0;c<countdel;c++){
     let del = "#delthis";
     let delbtn = "#btnfordeldataout";
@@ -80,6 +80,7 @@ for(let c = 0;c<countdel;c++){
     let btndel = document.querySelectorAll(delbtn)[c];
     btndel.addEventListener('click', () => {
         thisdel.remove();
+        increasecountdel--;
         Swal.fire({
             position: "top-end",
             width: "25em",
@@ -88,13 +89,12 @@ for(let c = 0;c<countdel;c++){
             showConfirmButton: false,
             timer: 1000
           });          
-        increasecountdel--;
-        if(increasecountdel===0){
-            document.querySelector("#btnform").classList.add("d-none");
+        if(increasecountdel<=0){
+              document.querySelector("#btnform").classList.add("d-none");
         }
+        console.log(increasecountdel)
     })
     
 }
-
 })
 // document.querySelector(".dropdownforaddpriject .list").classList.add("after");
