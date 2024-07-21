@@ -92,7 +92,7 @@ for(let c = 0;c<countdel;c++){
         if(increasecountdel<=0){
               document.querySelector("#btnform").classList.add("d-none");
         }
-        console.log(increasecountdel)
+        // console.log(increasecountdel)
     })
     
 }
