@@ -32,14 +32,14 @@ if (isset($_POST['save'])) {
     $sati_ep2 = $_POST['sati_ep2'];
 
     $combined_subinfo = [];
-    for ($i = 1; $i <= 10; $i++) {
+    for ($i = 1; $i <= count($_POST['sati_info']); $i++) {
         if (isset($_POST['sub_info' . $i])) {
             $combined_subinfo[$i - 1] = implode("Ϫ", $_POST['sub_info' . $i]);
         }
     }
 
     $combined_subtopic = [];
-    for ($i = 1; $i <= 10; $i++) {
+    for ($i = 1; $i <= count($_POST['sati_topic']); $i++) {
         if (isset($_POST['sub_topic' . $i])) {
             $combined_subtopic[$i - 1] = implode("Ϫ", $_POST['sub_topic' . $i]);
         }
@@ -47,25 +47,27 @@ if (isset($_POST['save'])) {
 
     $sati_info = implode("Ϫ", $_POST['sati_info']);
 
-    $sub_info = implode("~", $combined_subinfo);
+    $sub_info = implode("ꓘ", $combined_subinfo);
 
     $sati_topic = implode("Ϫ", $_POST['sati_topic']);
 
-    $sub_topic = implode("~", $combined_subtopic);
+    $sub_topic = implode("ꓘ", $combined_subtopic);
 
-    // $sub_info_ex = preg_split("/~/", $sub_info);
+    // $sub_info_ex = preg_split("/ꓘ/", $sub_info);
     
     echo $sati_ep2;
     echo "<br>";
     echo "// ข้อมูลพื้นฐาน //";
     echo $sati_info; // ข้อมูลพื้นฐาน
     echo "<br>";
+    echo count($_POST['sati_info']);
     echo "// ข้อมูลพื้นฐานย่อย //";
     print_r($sub_info); // ข้อมูลพื้นฐานย่อย
     echo "<br>";
     echo "// หัวข้อด้าน //";
     print_r($sati_topic); // หัวข้อด้าน
     echo "<br>";
+    echo count($_POST['sati_topic']);
     echo "// ข้อมูลแต่ละด้าน //";
     print_r($sub_topic); // ข้อมูลแต่ละด้าน
 
@@ -119,10 +121,10 @@ if (empty($sati_ep2)) {
             // $sql_tb_seurity->execute();
             // $tb_seurity = $sql_tb_seurity->fetch();
 
-            $tb_satisfied = $conn->prepare("INSERT INTO tb_satisfied(sati_ep2, sati_info, sub_info, sati_topic, sub_topic, member_id) VALUES (?, ?, ?, ?, ?, ?)");
-            $tb_satisfied->execute([$sati_ep2, $sati_info, $sub_info, $sati_topic, $sub_topic, $user_id]);
+            // $tb_satisfied = $conn->prepare("INSERT INTO tb_satisfied(sati_ep2, sati_info, sub_info, sati_topic, sub_topic, member_id) VALUES (?, ?, ?, ?, ?, ?)");
+            // $tb_satisfied->execute([$sati_ep2, $sati_info, $sub_info, $sati_topic, $sub_topic, $user_id]);
 
-            header("location: form.php");
+            // header("location: form.php");
 
         }
     } catch (PDOException $e) {

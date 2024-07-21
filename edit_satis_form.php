@@ -34,18 +34,24 @@ if (isset($_GET['id'])) {
     $sub_topic_un = $row['sub_topic'];
 
     $sati_info = preg_split("/Ϫ/", $sati_info_un);
-    $sub_info = preg_split("/~/", $sub_info_un);
-    $sati_topic = preg_split("/~/", $sati_topic_un);
-    $sub_topic = preg_split("/~/", $sub_topic_un);
+    $sub_info = preg_split("/ꓘ/", $sub_info_un);
+    $sati_topic = preg_split("/Ϫ/", $sati_topic_un);
+    $sub_topic = preg_split("/ꓘ/", $sub_topic_un);
 
     $sub_info_ex = [];
     foreach ($sub_info as $index => $info) {
         $sub_info_ex[$index] = preg_split("/Ϫ/", $info);
     }
 
+    $sub_topic_ex = [];
+    foreach ($sub_topic as $index => $topic) {
+        $sub_topic_ex[$index] = preg_split("/Ϫ/", $topic);
+    }
 
-    // $sub_info_ex = preg_split("/@/", $sub_info);
-
+    echo "sub_topic_ex = ";
+    print_r($sub_topic_ex[0]);
+    echo "<br>";
+    echo "sub_info_ex = ";
     print_r($sub_info_ex[0]);
     echo "<br>";
     echo $sati_ep2;
@@ -122,10 +128,6 @@ if (isset($_GET['id'])) {
             <?php } ?>
 
             <input type="hidden" name="id" class="block border" value="<?= $row['sati_id'] ?>">
-            <input type="hidden" name="ur_id" class="block border" value="<?= $row1['ur_id'] ?>">
-            <input type="hidden" name="fun_id" class="block border" value="<?= $row2['fun_id'] ?>">
-            <input type="hidden" name="uf_id" class="block border" value="<?= $row3['uf_id'] ?>">
-            <input type="hidden" name="ss_id" class="block border" value="<?= $row4['ss_id'] ?>">
 
             <!-- Title_Content -->
             <div class="head_content mt-5 mb-2">
@@ -192,9 +194,9 @@ if (isset($_GET['id'])) {
                             newInfoContainer.innerHTML = `
                                 <hr class="my-3">
                                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-2">
-                                    <div class="flex flex-col justify-center">
+                                    <div class="flex sm:block flex-col justify-center">
                                         <input type="text" class="border border-gray-300 rounded px-3 py-2 w-full my-1 mb-2" name="sati_info[]" required>
-                                        <button type="button" id="addsubinfo_${index}" class="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 justify-center">เพิ่มข้อมูลพื้นฐานที่ ${index}</button>
+                                        <button type="button" id="addsubinfo_${index}" class="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 justify-start">เพิ่มข้อมูลพื้นฐานที่ ${index}</button>
                                     </div>
                                     <div id="sub-info_${index}"></div>
                                 </div>
@@ -308,166 +310,59 @@ if (isset($_GET['id'])) {
                 <div>
 
                     <!-- Start Table -->
+                    <div class="flex justify-end">
+                        <button type="button" id="add-section" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 mr-4">เพิ่มจำนวนด้าน</button>
+                        <button type="button" id="remove-section" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">ลบจำนวนด้าน</button>
+                    </div>
 
-                    <!-- Section 1 -->
-                    <label class="text-lg"><label class="text-lg font-bold">ด้านที่ 1 </label>ด้านความต้องการของผู้ใช้งานระบบ</label><br>
-                    <input type="hidden" name="" value="ด้านความต้องการของผู้ใช้งานระบบ">
+                    <div id="sections-container">
 
-                    <table class="w-full border border-gray-300 text-center my-3">
-                        <thead>
-                            <tr class="bg-gray-200">
-                                <th scope="col" rowspan="2" class="border border-gray-300 p-1">ที่</th>
-                                <th scope="col" rowspan="2" class="border border-gray-300 p-1">หัวข้อ</th>
-                                <th scope="col" colspan="5" class="border border-gray-300 p-1">ระดับความคิดเห็น</th>
-                            </tr>
-                            <tr class="bg-gray-200">
-                                <th scope="col" class="border border-gray-300 p-1">5</th>
-                                <th scope="col" class="border border-gray-300 p-1">4</th>
-                                <th scope="col" class="border border-gray-300 p-1">3</th>
-                                <th scope="col" class="border border-gray-300 p-1">2</th>
-                                <th scope="col" class="border border-gray-300 p-1">1</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            for ($i = 0; $i < 5; $i++) {
-                                $class = ($i == 0 || (!empty($ur_topic[$i]))) ? '' : 'hidden';
-                                echo "<tr id='section1tr$i' class='$class odd:bg-white even:bg-gray-100'>
-                                <td class='border border-gray-300 py-2 text-center'>" . ($i + 1) . "</td>
-                                <td class='border border-gray-300 py-2'><textarea name='ur_topic[]' id='section1tr{$i}td' class='w-full h-28 sm:h-16 border border-gray-300 rounded px-2 py-1 flex items-center'>" . htmlspecialchars($ur_topic[$i] ?? '') . "</textarea></td>
-                                <td class='border border-gray-300 py-2 text-center'><input disabled class='w-full h-10 flex items-center' type='radio' name='ur_score[0]' value='พึงพอใจมากที่สุด'></td>
-                                <td class='border border-gray-300 py-2 text-center'><input disabled class='w-full h-10 flex items-center' type='radio' name='ur_score[0]' value='พึงพอใจมาก'></td>
-                                <td class='border border-gray-300 py-2 text-center'><input disabled class='w-full h-10 flex items-center' type='radio' name='ur_score[0]' value='พึงพอใจปานกลาง'></td>
-                                <td class='border border-gray-300 py-2 text-center'><input disabled class='w-full h-10 flex items-center' type='radio' name='ur_score[0]' value='พึงพอใจน้อย'></td>
-                                <td class='border border-gray-300 py-2 text-center'><input disabled class='w-full h-10 flex items-center' type='radio' name='ur_score[0]' value='พึงพอใจน้อยที่สุด'></td>
-                            </tr>";
-                            }
-                            ?>
-                        </tbody>
-                    </table>
-                    <button type="button" id="section1addbtn" onclick="section1add()" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">เพิ่ม</button>
-                    <button type="button" id="section1removebtn" onclick="section1remove()" class="hidden bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">ลบ</button>
+                    </div>
 
-                    <!-- Section 2 -->
-                    <label for="" class="block text-lg my-5"><label class="text-lg font-bold mb-2">ด้านที่ 2 </label>ด้านการทำงานตามฟังก์ชันของระบบ</label>
-                    <input disabled type="hidden" name="" value="ด้านการทำงานตามฟังก์ชันของระบบ">
+                    <?php $t = 0; ?>
+                    <?php while ($t < count($sati_topic)) { ?>
+                        <div class="mt-6">
+                            <label class="text-lg"><label class="text-lg font-bold">ด้านที่ <?= $t ?> </label>ด้าน<input type="text" name="sati_topic[]" class="p-1 text-lg border border-gray-300 rounded w-76 sm:w-86 md:w-96 ml-1" value="<?= $sati_topic[$t] ?>" required></label><br>
 
-                    <table class="w-full border border-gray-300 text-center my-3">
-                        <thead>
-                            <tr class="bg-gray-200">
-                                <th scope="col" rowspan="2" class="border border-gray-300 p-1">ที่</th>
-                                <th scope="col" rowspan="2" class="border border-gray-300 p-1">หัวข้อ</th>
-                                <th scope="col" colspan="5" class="border border-gray-300 p-1">ระดับความคิดเห็น</th>
-                            </tr>
-                            <tr class="bg-gray-200">
-                                <th scope="col" class="border border-gray-300 p-1">5</th>
-                                <th scope="col" class="border border-gray-300 p-1">4</th>
-                                <th scope="col" class="border border-gray-300 p-1">3</th>
-                                <th scope="col" class="border border-gray-300 p-1">2</th>
-                                <th scope="col" class="border border-gray-300 p-1">1</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            for ($i = 0; $i < 5; $i++) {
-                                $class = ($i == 0 || (!empty($fun_topic[$i]))) ? '' : 'hidden';
-                                echo "<tr id='section2tr$i' class='$class odd:bg-white even:bg-gray-100'>
-                                <td class='border border-gray-300 py-2 text-center'>" . ($i + 1) . "</td>
-                                <td class='border border-gray-300 py-2'><textarea name='fun_topic[]' id='section2tr{$i}td' class='w-full h-28 sm:h-16 border border-gray-300 rounded px-2 py-1 flex items-center'>" . htmlspecialchars($fun_topic[$i] ?? '') . "</textarea></td>
-                                <td class='border border-gray-300 py-2 text-center'><input disabled class='w-full h-10 flex items-center' type='radio' name='fun_score[0]' value='พึงพอใจมากที่สุด'></td>
-                                <td class='border border-gray-300 py-2 text-center'><input disabled class='w-full h-10 flex items-center' type='radio' name='fun_score[0]' value='พึงพอใจมาก'></td>
-                                <td class='border border-gray-300 py-2 text-center'><input disabled class='w-full h-10 flex items-center' type='radio' name='fun_score[0]' value='พึงพอใจปานกลาง'></td>
-                                <td class='border border-gray-300 py-2 text-center'><input disabled class='w-full h-10 flex items-center' type='radio' name='fun_score[0]' value='พึงพอใจน้อย'></td>
-                                <td class='border border-gray-300 py-2 text-center'><input disabled class='w-full h-10 flex items-center' type='radio' name='fun_score[0]' value='พึงพอใจน้อยที่สุด'></td>
-                            </tr>";
-                            }
-                            ?>
-                        </tbody>
-                    </table>
-                    <button type="button" id="section2addbtn" onclick="section2add()" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">เพิ่ม</button>
-                    <button type="button" id="section2removebtn" onclick="section2remove()" class="hidden bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">ลบ</button>
-
-                    <!-- Section 3 -->
-                    <label for="" class="block text-lg my-5"><label class="text-lg font-bold mb-2">ด้านที่ 3 </label>ด้านความง่ายต่อการใช้งานของระบบ</label>
-                    <input disabled type="hidden" name="" value="ด้านความง่ายต่อการใช้งานของระบบ">
-
-                    <table class="w-full border border-gray-300 text-center my-3">
-                        <thead>
-                            <tr class="bg-gray-200">
-                                <th scope="col" rowspan="2" class="border border-gray-300 p-1">ที่</th>
-                                <th scope="col" rowspan="2" class="border border-gray-300 p-1">หัวข้อ</th>
-                                <th scope="col" colspan="5" class="border border-gray-300 p-1">ระดับความคิดเห็น</th>
-                            </tr>
-                            <tr class="bg-gray-200">
-                                <th scope="col" class="border border-gray-300 p-1">5</th>
-                                <th scope="col" class="border border-gray-300 p-1">4</th>
-                                <th scope="col" class="border border-gray-300 p-1">3</th>
-                                <th scope="col" class="border border-gray-300 p-1">2</th>
-                                <th scope="col" class="border border-gray-300 p-1">1</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            for ($i = 0; $i < 5; $i++) {
-                                $class = ($i == 0 || (!empty($uf_topic[$i]))) ? '' : 'hidden';
-                                echo "<tr id='section3tr$i' class='$class odd:bg-white even:bg-gray-100'>
-                                <td class='border border-gray-300 py-2 text-center'>" . ($i + 1) . "</td>
-                                <td class='border border-gray-300 py-2'><textarea name='uf_topic[]' id='section3tr{$i}td' class='w-full h-28 sm:h-16 border border-gray-300 rounded px-2 py-1 flex items-center'>" . htmlspecialchars($uf_topic[$i] ?? '') . "</textarea></td>
-                                <td class='border border-gray-300 py-2 text-center'><input disabled class='w-full h-10 flex items-center' type='radio' name='uf_score[0]' value='พึงพอใจมากที่สุด'></td>
-                                <td class='border border-gray-300 py-2 text-center'><input disabled class='w-full h-10 flex items-center' type='radio' name='uf_score[0]' value='พึงพอใจมาก'></td>
-                                <td class='border border-gray-300 py-2 text-center'><input disabled class='w-full h-10 flex items-center' type='radio' name='uf_score[0]' value='พึงพอใจปานกลาง'></td>
-                                <td class='border border-gray-300 py-2 text-center'><input disabled class='w-full h-10 flex items-center' type='radio' name='uf_score[0]' value='พึงพอใจน้อย'></td>
-                                <td class='border border-gray-300 py-2 text-center'><input disabled class='w-full h-10 flex items-center' type='radio' name='uf_score[0]' value='พึงพอใจน้อยที่สุด'></td>
-                            </tr>";
-                            }
-                            ?>
-                        </tbody>
-                    </table>
-                    <button type="button" id="section3addbtn" onclick="section3add()" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">เพิ่ม</button>
-                    <button type="button" id="section3removebtn" onclick="section3remove()" class="hidden bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">ลบ</button>
-
-                    <!-- Section 4 -->
-                    <label for="" class="block text-lg my-5"><label class="text-lg font-bold mb-2">ด้านที่ 4 </label>ด้านการใช้งานรักษาความปลอดภัยของข้อมูลในระบบ</label>
-                    <input disabled type="hidden" name="" value="ด้านการใช้งานรักษาความปลอดภัยของข้อมูลในระบบ">
-
-                    <table class="w-full border border-gray-300 text-center my-3">
-                        <thead>
-                            <tr class="bg-gray-200">
-                                <th scope="col" rowspan="2" class="border border-gray-300 p-1">ที่</th>
-                                <th scope="col" rowspan="2" class="border border-gray-300 p-1">หัวข้อ</th>
-                                <th scope="col" colspan="5" class="border border-gray-300 p-1">ระดับความคิดเห็น</th>
-                            </tr>
-                            <tr class="bg-gray-200">
-                                <th scope="col" class="border border-gray-300 p-1">5</th>
-                                <th scope="col" class="border border-gray-300 p-1">4</th>
-                                <th scope="col" class="border border-gray-300 p-1">3</th>
-                                <th scope="col" class="border border-gray-300 p-1">2</th>
-                                <th scope="col" class="border border-gray-300 p-1">1</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            for ($i = 0; $i < 5; $i++) {
-                                $class = ($i == 0 || (!empty($ss_topic[$i]))) ? '' : 'hidden';
-                                echo "<tr id='section4tr$i' class='$class odd:bg-white even:bg-gray-100'>
-                                <td class='border border-gray-300 py-2 text-center'>" . ($i + 1) . "</td>
-                                <td class='border border-gray-300 py-2'><textarea name='ss_topic[]' id='section4tr{$i}td' class='w-full h-28 sm:h-16 border border-gray-300 rounded px-2 py-1 flex items-center'>" . htmlspecialchars($ss_topic[$i] ?? '') . "</textarea></td>
-                                <td class='border border-gray-300 py-2 text-center'><input disabled class='w-full h-10 flex items-center' type='radio' name='ss_score[0]' value='พึงพอใจมากที่สุด'></td>
-                                <td class='border border-gray-300 py-2 text-center'><input disabled class='w-full h-10 flex items-center' type='radio' name='ss_score[0]' value='พึงพอใจมาก'></td>
-                                <td class='border border-gray-300 py-2 text-center'><input disabled class='w-full h-10 flex items-center' type='radio' name='ss_score[0]' value='พึงพอใจปานกลาง'></td>
-                                <td class='border border-gray-300 py-2 text-center'><input disabled class='w-full h-10 flex items-center' type='radio' name='ss_score[0]' value='พึงพอใจน้อย'></td>
-                                <td class='border border-gray-300 py-2 text-center'><input disabled class='w-full h-10 flex items-center' type='radio' name='ss_score[0]' value='พึงพอใจน้อยที่สุด'></td>
-                            </tr>";
-                            }
-                            ?>
-                        </tbody>
-                    </table>
-                    <button type="button" id="section4addbtn" onclick="section4add()" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">เพิ่ม</button>
-                    <button type="button" id="section4removebtn" onclick="section4remove()" class="hidden bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">ลบ</button>
+                            <table class="w-full border border-gray-300 text-center my-3">
+                                <thead>
+                                    <tr class="bg-gray-200">
+                                        <th scope="col" rowspan="2" class="border border-gray-300 p-1">ที่</th>
+                                        <th scope="col" rowspan="2" class="border border-gray-300 p-1">หัวข้อ</th>
+                                        <th scope="col" colspan="5" class="border border-gray-300 p-1">ระดับความคิดเห็น</th>
+                                    </tr>
+                                    <tr class="bg-gray-200">
+                                        <th scope="col" class="border border-gray-300 p-1">5</th>
+                                        <th scope="col" class="border border-gray-300 p-1">4</th>
+                                        <th scope="col" class="border border-gray-300 p-1">3</th>
+                                        <th scope="col" class="border border-gray-300 p-1">2</th>
+                                        <th scope="col" class="border border-gray-300 p-1">1</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php for ($b = 0; $b < count($sub_topic_ex[$t]); $b++) { ?>
+                                        <tr class="odd:bg-white even:bg-gray-100">
+                                            <td class="border border-gray-300 py-2 text-center"><?= $b + 1 ?></td>
+                                            <td class="border border-gray-300 py-2"><textarea name="sub_topic<?= $t + 1 ?>[]" class="w-full h-28 sm:h-16 border border-gray-300 rounded px-2 py-1" required><?= $sub_topic_ex[$t][$b] ?></textarea></td>
+                                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" value="พึงพอใจมากที่สุด"></td>
+                                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" value="พึงพอใจมาก"></td>
+                                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" value="พึงพอใจปานกลาง"></td>
+                                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" value="พึงพอใจน้อย"></td>
+                                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" value="พึงพอใจน้อยที่สุด"></td>
+                                        </tr>
+                                    <?php } ?>
+                                </tbody>
+                            </table>
+                            <button type="button" id="section<?= $t ?>addbtn" onclick="section1add()" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">เพิ่ม</button>
+                            <button type="button" id="section<?= $t ?>removebtn" onclick="section1remove()" class="hidden bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">ลบ</button>
+                        </div>
+                    <?php $t++;
+                    } ?>
 
                     <div class="text-center mt-5">
                         <button type="submit" name="update" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">บันทึกข้อมูล</button>
                     </div>
+
                 </div>
         </form>
     </div>
