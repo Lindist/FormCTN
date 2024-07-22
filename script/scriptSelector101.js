@@ -51,7 +51,7 @@ rad.forEach((item) => {
   item.addEventListener("change", () => {
     let x = "." + item.id; 
     var inputrad = document.querySelector(addinputrad);
-    inputrad.innerHTML = document.querySelector(x).textContent;
+    inputrad.value = document.querySelector(x).textContent;
     inputrad.click();
     // console.log(2)
   })
@@ -64,7 +64,7 @@ rad.forEach((item) => {
     item.addEventListener("change", () => {
         let x = "." + item.id; 
         var inputrad1 = document.querySelector(addinputrad1);
-        inputrad1.innerHTML = document.querySelector(x).textContent;
+        inputrad1.value = document.querySelector(x).textContent;
         inputrad1.click();
         // console.log(2)
       })

@@ -105,8 +105,20 @@ $result3->execute();
         </script>
         <?php unset($_SESSION['delete']); ?>
     <?php } ?>
+    <?php if (isset($_SESSION['addproject'])) { ?>
+        <script>
+            Swal.fire({
+                position: "center",
+                title: "เพิ่มข้อมูลเรียบร้อย",
+                icon: "success",
+                showConfirmButton: false,
+                timer: 1000
+            });
+        </script>
+        <?php unset($_SESSION['addproject']); ?>
+    <?php } ?>
 <div class="modal">
-    <form class="modal-content animate" action="/action_page.php" id="myform" method="post">
+    <form class="modal-content animate" action="addprojecton.php" id="myform" method="post">
         <div class="containerformodal">
             <span class="close" title="Close Modal">&times;</span>
             <div class="title" style="text-align: center; margin-top: 0.5rem;"><h1>โครงการ</h1></div>
@@ -117,7 +129,7 @@ $result3->execute();
                 <button type="button" style="margin-left: 10px;" class="confirmbtn btncrease">เพิ่ม</button>
 
                     <div class="list">
-                        <script src="script/add_remove_project103.js"></script>
+                        <script src="script/add_remove_project.js"></script>
                     </div>
                 </div>
             </div>
@@ -132,15 +144,6 @@ $result3->execute();
         document.querySelector(".btncrease").addEventListener('click', () => {
             document.querySelector(".moreaddproject").classList.remove("d-none");
         })
-        // const datePicker = MCDatepicker.create({
-        // el: '#datepicker',
-        // bodyType: 'modal',
-        // dateFormat: 'dd-mmmm-yyyy'
-
-        
-        // });
-        // let today = new Date("21-July-2006").toLocaleDateString("th-TH",{day:"numeric",month:"long",year:"numeric"})
-        // console.log(today)
     </script>
 </div>
     <header>
@@ -373,8 +376,8 @@ $result3->execute();
     <script src="script/dropdownforreponsives.js"></script>
     <script src="script/script_add_data.js"></script>
     <script src="script/scriptSelector101.js"></script>
-    <script src="script/datepicker.js"></script>
-    <script src="script/isiperandisstatis1.js"></script>
+    <script src="script/datepicker1.js"></script>
+    <!-- <script src="script/isiperandisstatis1.js"></script> -->
     <script src="script/thaidatepicker.js"></script>
     <script>
         document.querySelector(".btncrease").addEventListener('click', () => {
