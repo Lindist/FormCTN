@@ -48,39 +48,39 @@ if (isset($_GET['id'])) {
         $sub_topic_ex[$index] = preg_split("/Ϫ/", $topic);
     }
 
-    echo "sub_topic_ex = ";
-    print_r($sub_topic_ex[0]);
-    echo "<br>";
-    echo "sub_info_ex = ";
-    print_r($sub_info_ex[0]);
-    echo "<br>";
-    echo $sati_ep2;
-    echo "<br>";
-    echo "// ข้อมูลพื้นฐาน //";
-    print_r($sati_info); // ข้อมูลพื้นฐาน
-    echo "<br>";
-    echo "// ข้อมูลพื้นฐานย่อย //";
-    print_r($sub_info); // ข้อมูลพื้นฐานย่อย
-    echo "<br>";
-    echo "// หัวข้อด้าน //";
-    print_r($sati_topic); // หัวข้อด้าน
-    echo "<br>";
-    echo "// ข้อมูลแต่ละด้าน //";
-    print_r($sub_topic); // ข้อมูลแต่ละด้าน
+    // echo "sub_topic_ex = ";
+    // print_r($sub_topic_ex[0]);
+    // echo "<br>";
+    // echo "sub_info_ex = ";
+    // print_r($sub_info_ex[0]);
+    // echo "<br>";
+    // echo $sati_ep2;
+    // echo "<br>";
+    // echo "// ข้อมูลพื้นฐาน //";
+    // print_r($sati_info); // ข้อมูลพื้นฐาน
+    // echo "<br>";
+    // echo "// ข้อมูลพื้นฐานย่อย //";
+    // print_r($sub_info); // ข้อมูลพื้นฐานย่อย
+    // echo "<br>";
+    // echo "// หัวข้อด้าน //";
+    // print_r($sati_topic); // หัวข้อด้าน
+    // echo "<br>";
+    // echo "// ข้อมูลแต่ละด้าน //";
+    // print_r($sub_topic); // ข้อมูลแต่ละด้าน
 
-    echo "<br>";
-    echo "<br>";
-    echo "// ข้อมูลพื้นฐาน //";
-    echo $sati_info_un; // ข้อมูลพื้นฐาน
-    echo "<br>";
-    echo "// ข้อมูลพื้นฐานย่อย //";
-    print_r($sub_info_un); // ข้อมูลพื้นฐานย่อย
-    echo "<br>";
-    echo "// หัวข้อด้าน //";
-    print_r($sati_topic_un); // หัวข้อด้าน
-    echo "<br>";
-    echo "// ข้อมูลแต่ละด้าน //";
-    print_r($sub_topic_un); // ข้อมูลแต่ละด้าน
+    // echo "<br>";
+    // echo "<br>";
+    // echo "// ข้อมูลพื้นฐาน //";
+    // echo $sati_info_un; // ข้อมูลพื้นฐาน
+    // echo "<br>";
+    // echo "// ข้อมูลพื้นฐานย่อย //";
+    // print_r($sub_info_un); // ข้อมูลพื้นฐานย่อย
+    // echo "<br>";
+    // echo "// หัวข้อด้าน //";
+    // print_r($sati_topic_un); // หัวข้อด้าน
+    // echo "<br>";
+    // echo "// ข้อมูลแต่ละด้าน //";
+    // print_r($sub_topic_un); // ข้อมูลแต่ละด้าน
 
 } else {
     header("Location: index.php");
@@ -116,6 +116,7 @@ if (isset($_GET['id'])) {
             กลับหน้าแรก
         </button>
         <form action="update_satis.php" method="POST">
+            <input type="hidden" name="sati_id" value="<?= $_GET['id'] ?>">
             <h1 class="text-center text-3xl mb-5">แก้ไขแบบฟอร์มประเมินความพึงพอใจ</h1>
 
             <?php if (isset($_SESSION['error'])) { ?>
@@ -409,6 +410,7 @@ if (isset($_GET['id'])) {
                                 `;
 
                                 topicSection.appendChild(newTopicContainer);
+                                updateRemoveButtonVisibility(index); // Ensure button visibility is correct when a new section is added
                             }
 
                             function addSubTopic(topicIndex) {
@@ -430,6 +432,7 @@ if (isset($_GET['id'])) {
                                 `;
 
                                 subTopicContainer.appendChild(newSubTopicField);
+                                updateRemoveButtonVisibility(topicIndex);
                             }
 
                             window.sectionAdd = function(sectionIndex) {
@@ -438,10 +441,17 @@ if (isset($_GET['id'])) {
 
                             window.sectionRemove = function(sectionIndex) {
                                 const subTopicContainer = document.getElementById(`section${sectionIndex}-tbody`);
-                                if (subTopicContainer && subTopicContainer.children.length > 0) {
+                                if (subTopicContainer && subTopicContainer.children.length > 1) {
                                     subTopicContainer.removeChild(subTopicContainer.lastElementChild);
                                 }
+                                updateRemoveButtonVisibility(sectionIndex);
                             };
+
+                            // Call updateRemoveButtonVisibility for each section initially
+                            document.querySelectorAll('#sections-container > div[id^="section-"]').forEach((section) => {
+                                const index = section.id.split('-')[1];
+                                updateRemoveButtonVisibility(index);
+                            });
 
                             document.getElementById('add-section').addEventListener('click', () => {
                                 sectionCount++;
@@ -455,6 +465,16 @@ if (isset($_GET['id'])) {
                                     sectionCount--;
                                 }
                             });
+
+                            function updateRemoveButtonVisibility(sectionIndex) {
+                                const subTopicContainer = document.getElementById(`section${sectionIndex}-tbody`);
+                                const removeButton = document.querySelector(`#section-${sectionIndex} button[onclick*="sectionRemove"]`);
+                                if (subTopicContainer && subTopicContainer.children.length <= 1) {
+                                    removeButton.classList.add('hidden');
+                                } else {
+                                    removeButton.classList.remove('hidden');
+                                }
+                            }
                         });
                     </script>
 
