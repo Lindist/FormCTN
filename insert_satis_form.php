@@ -247,7 +247,7 @@ for ($i = 0; $i < 10; $i++) { // Replace 10 with any large number or condition
 
                             // HTML สำหรับด้านใหม่
                             newSection.innerHTML = `
-                                <label class="text-lg"><label class="text-lg font-bold">ด้านที่ ${sectionNumber} </label>ด้าน<input type="text" name="sati_topic[]" class="p-1 text-lg border border-gray-300 rounded w-86 sm:w-96 ml-1" required></label><br>
+                                <label class="text-lg"><label class="text-lg font-bold">ด้านที่ ${sectionNumber} </label>ด้าน<input type="text" name="sati_topic[]" class="p-1 text-lg border border-gray-300 rounded w-76 sm:w-86 md:w-96 ml-1" required></label><br>
 
                                 <table class="w-full border border-gray-300 text-center my-3">
                                     <thead>
@@ -268,11 +268,11 @@ for ($i = 0; $i < 10; $i++) { // Replace 10 with any large number or condition
                                         <tr class="odd:bg-white even:bg-gray-100">
                                             <td class="border border-gray-300 py-2 text-center">1</td>
                                             <td class="border border-gray-300 py-2"><textarea name="sub_topic${sectionNumber}[]" class="w-full h-28 sm:h-16 border border-gray-300 rounded px-2 py-1" required></textarea></td>
-                                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="" value="พึงพอใจมากที่สุด"></td>
-                                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="" value="พึงพอใจมาก"></td>
-                                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="" value="พึงพอใจปานกลาง"></td>
-                                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="" value="พึงพอใจน้อย"></td>
-                                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" name="" value="พึงพอใจน้อยที่สุด"></td>
+                                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" value="พึงพอใจมากที่สุด"></td>
+                                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" value="พึงพอใจมาก"></td>
+                                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" value="พึงพอใจปานกลาง"></td>
+                                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" value="พึงพอใจน้อย"></td>
+                                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" value="พึงพอใจน้อยที่สุด"></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -361,6 +361,7 @@ for ($i = 0; $i < 10; $i++) { // Replace 10 with any large number or condition
                     <div class="text-center mt-5">
                         <button type="submit" name="save" id="save" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">บันทึกข้อมูล</button>
                     </div>
+                    
                 </div>
         </form>
     </div>

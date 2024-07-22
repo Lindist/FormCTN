@@ -107,7 +107,7 @@ if (isset($_GET['id'])) {
             background-color: rgb(180, 180, 180);
         }
     </style>
-    <script src="script/add_remove_satis_edit.js"></script>
+    <!-- <script src="script/add_remove_satis_edit.js"></script> -->
 </head>
 
 <body>
@@ -183,7 +183,7 @@ if (isset($_GET['id'])) {
                 <script>
                     document.addEventListener('DOMContentLoaded', () => {
                         let sectionCount = document.querySelectorAll('#info-section > .grid').length; // Initialize count based on existing sections
-
+                        // console.log(sectionCount);
                         // Function to add a new main info section
                         function addInfoSection(index) {
                             const infoSection = document.getElementById('info-section');
@@ -316,48 +316,147 @@ if (isset($_GET['id'])) {
                     </div>
 
                     <div id="sections-container">
-
+                        <?php $t = 0; ?>
+                        <?php while ($t < count($sati_topic)) { ?>
+                            <div id="section-<?= $t + 1 ?>" class="mt-6">
+                                <label class="text-lg">
+                                    <label class="text-lg font-bold">ด้านที่ <?= $t + 1 ?> </label>ด้าน
+                                    <input type="text" name="sati_topic[]" class="p-1 text-lg border border-gray-300 rounded w-76 sm:w-86 md:w-96 ml-1" value="<?= $sati_topic[$t] ?>" required>
+                                </label><br>
+                                <table class="w-full border border-gray-300 text-center my-3">
+                                    <thead>
+                                        <tr class="bg-gray-200">
+                                            <th scope="col" rowspan="2" class="border border-gray-300 p-1">ที่</th>
+                                            <th scope="col" rowspan="2" class="border border-gray-300 p-1">หัวข้อ</th>
+                                            <th scope="col" colspan="5" class="border border-gray-300 p-1">ระดับความคิดเห็น</th>
+                                        </tr>
+                                        <tr class="bg-gray-200">
+                                            <th scope="col" class="border border-gray-300 p-1">5</th>
+                                            <th scope="col" class="border border-gray-300 p-1">4</th>
+                                            <th scope="col" class="border border-gray-300 p-1">3</th>
+                                            <th scope="col" class="border border-gray-300 p-1">2</th>
+                                            <th scope="col" class="border border-gray-300 p-1">1</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="section<?= $t + 1 ?>-tbody">
+                                        <?php for ($b = 0; $b < count($sub_topic_ex[$t]); $b++) { ?>
+                                            <tr class="odd:bg-white even:bg-gray-100">
+                                                <td class="border border-gray-300 py-2 text-center"><?= $b + 1 ?></td>
+                                                <td class="border border-gray-300 py-2"><textarea name="sub_topic<?= $t + 1 ?>[]" class="w-full h-28 sm:h-16 border border-gray-300 rounded px-2 py-1" required><?= $sub_topic_ex[$t][$b] ?></textarea></td>
+                                                <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" value="พึงพอใจมากที่สุด"></td>
+                                                <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" value="พึงพอใจมาก"></td>
+                                                <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" value="พึงพอใจปานกลาง"></td>
+                                                <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" value="พึงพอใจน้อย"></td>
+                                                <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" value="พึงพอใจน้อยที่สุด"></td>
+                                            </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
+                                <button type="button" onclick="sectionAdd(<?= $t + 1 ?>)" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">เพิ่ม</button>
+                                <button type="button" onclick="sectionRemove(<?= $t + 1 ?>)" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">ลบ</button>
+                            </div>
+                        <?php $t++;
+                        } ?>
                     </div>
 
-                    <?php $t = 0; ?>
-                    <?php while ($t < count($sati_topic)) { ?>
-                        <div class="mt-6">
-                            <label class="text-lg"><label class="text-lg font-bold">ด้านที่ <?= $t ?> </label>ด้าน<input type="text" name="sati_topic[]" class="p-1 text-lg border border-gray-300 rounded w-76 sm:w-86 md:w-96 ml-1" value="<?= $sati_topic[$t] ?>" required></label><br>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+                            let sectionCount = document.querySelectorAll('#sections-container > div[id^="section-"]').length;
 
-                            <table class="w-full border border-gray-300 text-center my-3">
-                                <thead>
-                                    <tr class="bg-gray-200">
-                                        <th scope="col" rowspan="2" class="border border-gray-300 p-1">ที่</th>
-                                        <th scope="col" rowspan="2" class="border border-gray-300 p-1">หัวข้อ</th>
-                                        <th scope="col" colspan="5" class="border border-gray-300 p-1">ระดับความคิดเห็น</th>
-                                    </tr>
-                                    <tr class="bg-gray-200">
-                                        <th scope="col" class="border border-gray-300 p-1">5</th>
-                                        <th scope="col" class="border border-gray-300 p-1">4</th>
-                                        <th scope="col" class="border border-gray-300 p-1">3</th>
-                                        <th scope="col" class="border border-gray-300 p-1">2</th>
-                                        <th scope="col" class="border border-gray-300 p-1">1</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php for ($b = 0; $b < count($sub_topic_ex[$t]); $b++) { ?>
-                                        <tr class="odd:bg-white even:bg-gray-100">
-                                            <td class="border border-gray-300 py-2 text-center"><?= $b + 1 ?></td>
-                                            <td class="border border-gray-300 py-2"><textarea name="sub_topic<?= $t + 1 ?>[]" class="w-full h-28 sm:h-16 border border-gray-300 rounded px-2 py-1" required><?= $sub_topic_ex[$t][$b] ?></textarea></td>
-                                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" value="พึงพอใจมากที่สุด"></td>
-                                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" value="พึงพอใจมาก"></td>
-                                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" value="พึงพอใจปานกลาง"></td>
-                                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" value="พึงพอใจน้อย"></td>
-                                            <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" value="พึงพอใจน้อยที่สุด"></td>
-                                        </tr>
-                                    <?php } ?>
-                                </tbody>
-                            </table>
-                            <button type="button" id="section<?= $t ?>addbtn" onclick="section1add()" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">เพิ่ม</button>
-                            <button type="button" id="section<?= $t ?>removebtn" onclick="section1remove()" class="hidden bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">ลบ</button>
-                        </div>
-                    <?php $t++;
-                    } ?>
+                            function addTopicSection(index) {
+                                const topicSection = document.getElementById('sections-container');
+
+                                const newTopicContainer = document.createElement('div');
+                                newTopicContainer.id = `section-${index}`;
+                                newTopicContainer.className = 'mt-6';
+
+                                newTopicContainer.innerHTML = `
+                                    <label class="text-lg">
+                                        <span class="text-lg font-bold">ด้านที่ ${index} </span>ด้าน
+                                        <input type="text" name="sati_topic[]" class="p-1 text-lg border border-gray-300 rounded w-76 sm:w-86 md:w-96 ml-1" required>
+                                    </label><br>
+                                    <table class="w-full border border-gray-300 text-center my-3">
+                                        <thead>
+                                            <tr class="bg-gray-200">
+                                                <th scope="col" rowspan="2" class="border border-gray-300 p-1">ที่</th>
+                                                <th scope="col" rowspan="2" class="border border-gray-300 p-1">หัวข้อ</th>
+                                                <th scope="col" colspan="5" class="border border-gray-300 p-1">ระดับความคิดเห็น</th>
+                                            </tr>
+                                            <tr class="bg-gray-200">
+                                                <th scope="col" class="border border-gray-300 p-1">5</th>
+                                                <th scope="col" class="border border-gray-300 p-1">4</th>
+                                                <th scope="col" class="border border-gray-300 p-1">3</th>
+                                                <th scope="col" class="border border-gray-300 p-1">2</th>
+                                                <th scope="col" class="border border-gray-300 p-1">1</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="section${index}-tbody">
+                                            <tr class="odd:bg-white even:bg-gray-100">
+                                                <td class="border border-gray-300 py-2 text-center">1</td>
+                                                <td class="border border-gray-300 py-2">
+                                                    <textarea name="sub_topic${index}[]" class="w-full h-28 sm:h-16 border border-gray-300 rounded px-2 py-1" required></textarea>
+                                                </td>
+                                                <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" value="พึงพอใจมากที่สุด"></td>
+                                                <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" value="พึงพอใจมาก"></td>
+                                                <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" value="พึงพอใจปานกลาง"></td>
+                                                <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" value="พึงพอใจน้อย"></td>
+                                                <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" value="พึงพอใจน้อยที่สุด"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <button type="button" onclick="sectionAdd(${index})" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">เพิ่ม</button>
+                                    <button type="button" onclick="sectionRemove(${index})" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">ลบ</button>
+                                `;
+
+                                topicSection.appendChild(newTopicContainer);
+                            }
+
+                            function addSubTopic(topicIndex) {
+                                const subTopicContainer = document.getElementById(`section${topicIndex}-tbody`);
+                                const subTopicCount = subTopicContainer.children.length;
+
+                                const newSubTopicField = document.createElement('tr');
+                                newSubTopicField.className = 'odd:bg-white even:bg-gray-100';
+                                newSubTopicField.innerHTML = `
+                                    <td class="border border-gray-300 py-2 text-center">${subTopicCount + 1}</td>
+                                    <td class="border border-gray-300 py-2">
+                                        <textarea name="sub_topic${topicIndex}[]" class="w-full h-28 sm:h-16 border border-gray-300 rounded px-2 py-1" required></textarea>
+                                    </td>
+                                    <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" value="พึงพอใจมากที่สุด"></td>
+                                    <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" value="พึงพอใจมาก"></td>
+                                    <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" value="พึงพอใจปานกลาง"></td>
+                                    <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" value="พึงพอใจน้อย"></td>
+                                    <td class="border border-gray-300 py-2 text-center"><input disabled class="w-full h-10 flex items-center" type="radio" value="พึงพอใจน้อยที่สุด"></td>
+                                `;
+
+                                subTopicContainer.appendChild(newSubTopicField);
+                            }
+
+                            window.sectionAdd = function(sectionIndex) {
+                                addSubTopic(sectionIndex);
+                            };
+
+                            window.sectionRemove = function(sectionIndex) {
+                                const subTopicContainer = document.getElementById(`section${sectionIndex}-tbody`);
+                                if (subTopicContainer && subTopicContainer.children.length > 0) {
+                                    subTopicContainer.removeChild(subTopicContainer.lastElementChild);
+                                }
+                            };
+
+                            document.getElementById('add-section').addEventListener('click', () => {
+                                sectionCount++;
+                                addTopicSection(sectionCount);
+                            });
+
+                            document.getElementById('remove-section').addEventListener('click', () => {
+                                if (sectionCount > 0) {
+                                    const sectionContainer = document.getElementById('sections-container');
+                                    sectionContainer.removeChild(sectionContainer.lastElementChild);
+                                    sectionCount--;
+                                }
+                            });
+                        });
+                    </script>
 
                     <div class="text-center mt-5">
                         <button type="submit" name="update" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">บันทึกข้อมูล</button>
