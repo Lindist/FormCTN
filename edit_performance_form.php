@@ -15,55 +15,57 @@ if (isset($_GET['id'])) {
     $query->execute();
     $row = $query->fetch();
 
-    $gender = preg_split("/,/", $row['form_gender']);
-    $type_m = preg_split("/,/", $row['form_type']);
-    $edu = preg_split("/,/", $row['form_education']);
+    $formname = $row['form_name'];
+    $ad = $row['form_ad'];
+    $form_info_un = $row['form_info'];
+    $sub_info_un = $row['sub_info'];
+    $form_topic_un = $row['form_topic'];
+    $feature_un = $row['feature'];
+    $setfeature_un = $row['setfeature'];
 
-    $tb_input = $conn->prepare("SELECT * FROM tb_input WHERE Input_id = :input_id");
-    $tb_input->bindParam(":input_id", $row['input_id']);
-    $tb_input->execute();
-    $row1 = $tb_input->fetch();
+    $form_info = preg_split("/Ϫ/", $form_info_un);
+    $sub_info = preg_split("/ꓘ/", $sub_info_un);
+    $form_topic = preg_split("/Ϫ/", $form_topic_un);
+    $feature = preg_split("/ꓘ/", $feature_un);
+    $setfeature = preg_split("/ꓘ/", $setfeature_un);
 
-    $input_name = $row1['Input_name'];
-    $input_feature = preg_split("/@/", $row1["Input_feature"]);
-    $input_setfeature = preg_split("/@/", $row1["Input_setfeature"]);
-    $input_result = preg_split("/@/", $row1["Input_result"]);
-    $input_compare = preg_split("/@/", $row1["Input_compare"]);
+    $sub_info_ex = [];
+    foreach ($sub_info as $index => $info) {
+        $sub_info_ex[$index] = preg_split("/Ϫ/", $info);
+    }
 
-    $tb_process = $conn->prepare("SELECT * FROM tb_process WHERE process_id = :process_id");
-    $tb_process->bindParam(":process_id", $row['process_id']);
-    $tb_process->execute();
-    $row2 = $tb_process->fetch();
+    $feature_ex = [];
+    foreach ($feature as $index => $topic) {
+        $feature_ex[$index] = preg_split("/Ϫ/", $topic);
+    }
 
-    $process_name = $row2['process_name'];
-    $process_feature = preg_split("/@/", $row2["process_feature"]);
-    $process_setfeature = preg_split("/@/", $row2["process_setfeature"]);
-    $process_result = preg_split("/@/", $row2["process_result"]);
-    $process_compare = preg_split("/@/", $row2["process_compare"]);
+    $setfeature_ex = [];
+    foreach ($setfeature as $index => $topic) {
+        $setfeature_ex[$index] = preg_split("/Ϫ/", $topic);
+    }
 
-    $tb_report = $conn->prepare("SELECT * FROM tb_report WHERE report_id = :report_id");
-    $tb_report->bindParam(":report_id", $row['report_id']);
-    $tb_report->execute();
-    $row3 = $tb_report->fetch();
+    echo $formname;
+    echo "<br>";
+    echo $ad;
+    echo "<br>";
+    echo "// ข้อมูลพื้นฐาน //";
+    print_r($form_info); // ข้อมูลพื้นฐาน
+    echo "<br>";
+    echo count($form_info);
+    echo "// ข้อมูลพื้นฐานย่อย //";
+    print_r($sub_info_ex); // ข้อมูลพื้นฐานย่อย
+    echo "<br>";
+    echo "// หัวข้อด้าน //";
+    print_r($form_topic); // หัวข้อด้าน
+    echo "<br>";
+    echo count($form_topic);
+    echo "<br>";
+    echo "// คุณสมบัติด้านเทคนิค //";
+    print_r($feature_ex); // คุณสมบัติด้านเทคนิค
+    echo "<br>";
+    echo "// คุณสมบัติที่ตั้งไว้ //";
+    print_r($setfeature_ex); // คุณสมบัติที่ตั้งไว้
 
-    $report_name = $row3['report_name'];
-    $report_feature = preg_split("/@/", $row3["report_feature"]);
-    $report_setfeature = preg_split("/@/", $row3["report_setfeature"]);
-    $report_result = preg_split("/@/", $row3["report_result"]);
-    $report_compare = preg_split("/@/", $row3["report_compare"]);
-
-    $tb_senrity = $conn->prepare("SELECT * FROM tb_senrity WHERE senrity_id = :senrity_id");
-    $tb_senrity->bindParam(":senrity_id", $row['senrity_id']);
-    $tb_senrity->execute();
-    $row4 = $tb_senrity->fetch();
-
-    $senrity_name = $row4['senrity_name'];
-    $senrity_feature = preg_split("/@/", $row4["senrity_feature"]);
-    $senrity_setfeature = preg_split("/@/", $row4["senrity_setfeature"]);
-    $senrity_result = preg_split("/@/", $row4["senrity_result"]);
-    $senrity_compare = preg_split("/@/", $row4["senrity_compare"]);
-
-    // print_r($edu);
 } else {
     header("Location: index.php");
 }
@@ -89,7 +91,7 @@ if (isset($_GET['id'])) {
             background-color: rgb(180, 180, 180);
         }
     </style>
-    <script src="script/add_remove_performance_edit.js"></script>
+    <!-- <script src="script/add_remove_performance_edit.js"></script> -->
 </head>
 
 <body>
@@ -115,10 +117,6 @@ if (isset($_GET['id'])) {
                 <input type="text" value="<?= $row['form_name'] ?>" name="formname" id="formname" class="block w-full border border-gray-300 rounded px-3 py-2 mb-3">
 
                 <input type="hidden" name="id" class="block border" value="<?= $row['form_id'] ?>">
-                <input type="hidden" name="input_id" class="block border" value="<?= $row1['Input_id'] ?>">
-                <input type="hidden" name="process_id" class="block border" value="<?= $row2['process_id'] ?>">
-                <input type="hidden" name="report_id" class="block border" value="<?= $row3['report_id'] ?>">
-                <input type="hidden" name="senrity_id" class="block border" value="<?= $row4['senrity_id'] ?>">
 
                 <label class="block text-lg font-bold mb-2">คำชี้แจง</label>
                 <textarea name="ad" class="block w-full border border-gray-300 rounded px-3 py-2" rows="5"><?= $row['form_ad'] ?></textarea>
@@ -128,243 +126,305 @@ if (isset($_GET['id'])) {
             <div class="mb-4">
                 <label class="block text-lg font-bold mb-2">ตอนที่ 1 ข้อมูลพื้นฐานของผู้กรอกแบบสอบถาม</label>
 
-                <!-- Gender -->
+                <!-- Info -->
                 <hr class="my-3">
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-                    <label class="block text-center mb-1 sm:mb-0 sm:self-center">เพศ</label>
-                    <div class="mx-2">
-                        <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="genders[]" id="" value="<?= $gender[0] ?>">
-                        </div>
-                        <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="genders[]" id="" value="<?= $gender[1] ?>">
-                        </div>
-                        <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="genders[]" id="" value="<?= $gender[2] ?>">
-                        </div>
-                        <div class="flex items-center">
-                            <p class="text-gray-400">***ไม่จำเป็นต้องกรอกครบ***</p>
-                        </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-2">
+                    <label class="block text-center mb-1 sm:mb-0 sm:self-center">เพิ่มข้อมูลพื้นฐาน</label>
+                    <div class="flex justify-center">
+                        <button type="button" id="addinfo" class="bg-green-500 text-white py-2 rounded hover:bg-green-600 w-5/12 mx-2">เพิ่มหัวข้อ</button>
+                        <button type="button" id="removeinfo" class="bg-red-500 text-white py-2 rounded hover:bg-red-600 w-5/12 mx-2">ลบหัวข้อ</button>
                     </div>
                 </div>
 
+                <div id="info-section">
+                    <?php $i = 0; ?>
+                    <?php while ($i < count($form_info)) { ?>
+                        <hr class="my-3">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-2" id="info-container_<?= $i + 1 ?>">
+                            <div class="flex sm:block flex-col justify-center">
+                                <input type="text" class="border border-gray-300 rounded px-3 py-2 w-full my-1 mb-2" name="form_info[]" value="<?= $form_info[$i] ?>" required>
+                                <button type="button" id="addsubinfo_<?= $i + 1 ?>" class="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 justify-start">เพิ่มข้อมูลพื้นฐานที่ <?= $i + 1 ?></button>
+                            </div>
+                            <div id="sub-info_<?= $i + 1 ?>">
+                                <?php for ($c = 0; $c < count($sub_info_ex[$i]); $c++) { ?>
+                                    <div class="flex items-center my-1">
+                                        <input required value="<?= $sub_info_ex[$i][$c] ?>" type="text" class="border border-gray-300 rounded px-3 py-2 w-full" name="sub_info<?= $i + 1 ?>[]">
+                                        <button type="button" class="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 ml-2 remove-subinfo">ลบ</button>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                        </div>
+                    <?php $i++;
+                    } ?>
+                </div>
 
-                <!-- User Type -->
+                <script>
+                    document.addEventListener('DOMContentLoaded', () => {
+                        let sectionCount = document.querySelectorAll('#info-section > .grid').length; // Initialize count based on existing sections
+                        // console.log(sectionCount);
+                        // Function to add a new main info section
+                        function addInfoSection(index) {
+                            const infoSection = document.getElementById('info-section');
 
+                            const newInfoContainer = document.createElement('div');
+                            newInfoContainer.id = `info-container_${index}`;
+
+                            newInfoContainer.innerHTML = `
+                                <hr class="my-3">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-2">
+                                    <div class="flex sm:block flex-col justify-center">
+                                        <input type="text" class="border border-gray-300 rounded px-3 py-2 w-full my-1 mb-2" name="form_info[]" required>
+                                        <button type="button" id="addsubinfo_${index}" class="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 justify-start">เพิ่มข้อมูลพื้นฐานที่ ${index}</button>
+                                    </div>
+                                    <div id="sub-info_${index}"></div>
+                                </div>
+                            `;
+
+                            infoSection.appendChild(newInfoContainer);
+
+                            // Add event listener for the new "เพิ่มข้อมูลพื้นฐานที่" button
+                            document.getElementById(`addsubinfo_${index}`).addEventListener('click', () => {
+                                addSubInfo(index);
+                            });
+                        }
+
+                        // Function to add a sub-info field
+                        function addSubInfo(infoIndex) {
+                            const subInfoContainer = document.getElementById(`sub-info_${infoIndex}`);
+                            const subInfoCount = subInfoContainer.children.length;
+
+                            const newSubInfoField = document.createElement('div');
+                            newSubInfoField.className = 'flex items-center my-1';
+                            newSubInfoField.innerHTML = `
+                                <input required type="text" class="border border-gray-300 rounded px-3 py-2 w-full" name="sub_info${infoIndex}[]">
+                                <button type="button" class="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 ml-2 remove-subinfo">ลบ</button>
+                            `;
+
+                            subInfoContainer.appendChild(newSubInfoField);
+
+                            // Add event listener for the new "ลบ" button
+                            newSubInfoField.querySelector('.remove-subinfo').addEventListener('click', () => {
+                                subInfoContainer.removeChild(newSubInfoField);
+                            });
+                        }
+
+                        // Add event listener for "เพิ่มหัวข้อ" button
+                        document.getElementById('addinfo').addEventListener('click', () => {
+                            sectionCount++;
+                            addInfoSection(sectionCount);
+                        });
+
+                        // Function to handle existing and newly added "เพิ่มข้อมูลพื้นฐานที่" buttons
+                        function handleAddSubInfoButtons() {
+                            document.querySelectorAll('[id^=addsubinfo_]').forEach(button => {
+                                button.addEventListener('click', () => {
+                                    const infoIndex = button.id.split('_')[1];
+                                    addSubInfo(infoIndex);
+                                });
+                            });
+                        }
+
+                        // Initial setup for existing "เพิ่มข้อมูลพื้นฐานที่" buttons
+                        handleAddSubInfoButtons();
+
+                        // Remove the last main info section
+                        document.getElementById('removeinfo').addEventListener('click', () => {
+                            const infoSection = document.getElementById('info-section');
+
+                            if (sectionCount > 0) {
+                                const lastInfoContainer = infoSection.querySelector(`#info-container_${sectionCount}`);
+                                const hrElement = lastInfoContainer.previousElementSibling; // The <hr> preceding the container
+
+                                if (lastInfoContainer) {
+                                    if (hrElement && hrElement.tagName.toLowerCase() === 'hr') {
+                                        infoSection.removeChild(hrElement); // Remove the preceding <hr>
+                                    }
+                                    infoSection.removeChild(lastInfoContainer);
+                                    sectionCount--;
+                                }
+                            }
+                        });
+
+                        // Initial setup for existing sub-info fields and their remove buttons
+                        document.querySelectorAll('.addsubinfo').forEach(button => {
+                            button.addEventListener('click', () => {
+                                const infoIndex = button.id.split('_')[1];
+                                addSubInfo(infoIndex);
+                            });
+                        });
+
+                        document.querySelectorAll('.remove-subinfo').forEach(button => {
+                            button.addEventListener('click', () => {
+                                button.parentElement.remove();
+                            });
+                        });
+                    });
+                </script>
+
+                <!-- Survey Section 2 -->
                 <hr class="my-3">
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-                    <label class="block text-center mb-1 sm:mb-0 sm:self-center">ประเภทผู้ใช้</label>
-                    <div class="mx-2">
-                        <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="kinduser[]" id="" value="<?= $type_m[0] ?>">
-                        </div>
-                        <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="kinduser[]" id="" value="<?= $type_m[1] ?>">
-                        </div>
-                        <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="kinduser[]" id="" value="<?= $type_m[2] ?>">
-                        </div>
-                        <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="kinduser[]" id="" value="<?= $type_m[3] ?>">
-                        </div>
-                        <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="kinduser[]" id="" value="<?= $type_m[4] ?>">
-                        </div>
-                        <div class="flex items-center">
-                            <p class="text-gray-400">***ไม่จำเป็นต้องกรอกครบ***</p>
-                        </div>
+                <div class="mb-4">
+                    <label for="" class="text-lg"><label class="text-lg font-bold mb-2">ตอนที่ 2 </label>แบบสอบถามความคิดเห็น</label>
+
+                    <label for="" class="block text-lg"><label class=" text-lg font-bold mb-2">คำชี้แจง </label>โปรดบันทึกความคิดเห็นของท่านลงในช่องว่างในแต่ละข้อ</label>
+
+                    <!-- Start Table -->
+                    <div class="flex justify-end">
+                        <button type="button" id="add-section" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 mr-4">เพิ่มจำนวนด้าน</button>
+                        <button type="button" id="remove-section" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">ลบจำนวนด้าน</button>
                     </div>
-                </div>
 
+                    <div id="sections-container">
+                        <?php $t = 0; ?>
+                        <?php while ($t < count($form_topic)) { ?>
+                            <div id="section-<?= $t + 1 ?>" class="mt-6">
+                                <label for="" class="block text-lg mb-5"><label class="text-lg font-bold mb-2">ด้านที่ <?= $t + 1 ?> </label>ด้าน<input type="text" name="form_topic[]" class="p-1 text-lg border border-gray-300 rounded w-76 sm:w-86 md:w-96 ml-1" value="<?= $form_topic[$t] ?>" required></label>
 
-                <!-- Education Level -->
-                <hr class="my-3">
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-                    <label class="block text-center mb-1 sm:mb-0 sm:self-center">ระดับการศึกษา</label>
-                    <div class="mx-2">
-                        <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="le_education[]" id="" value="<?= $edu[0] ?>">
-                        </div>
-                        <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="le_education[]" id="" value="<?= $edu[1] ?>">
-                        </div>
-                        <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="le_education[]" id="" value="<?= $edu[2] ?>">
-                        </div>
-                        <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="le_education[]" id="" value="<?= $edu[3] ?>">
-                        </div>
-                        <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="le_education[]" id="" value="<?= $edu[4] ?>">
-                        </div>
-                        <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="le_education[]" id="" value="<?= $edu[5] ?>">
-                        </div>
-                        <div class="flex items-center">
-                            <input type="text" class="border border-gray-300 rounded px-3 py-2 mb-3 w-full" name="le_education[]" id="" value="<?= $edu[6] ?>">
-                        </div>
-                        <div class="flex items-center">
-                            <p class="text-gray-400">***ไม่จำเป็นต้องกรอกครบ***</p>
-                        </div>
+                                <div class="overflow-x-auto my-2">
+                                    <table class="w-full border border-gray-300 text-center">
+                                        <thead>
+                                            <tr class="bg-gray-200">
+                                                <th scope="col" class="border border-gray-300 p-2">ที่</th>
+                                                <th scope="col" class="border border-gray-300 p-2">คุณสมบัติด้านเทคนิค</th>
+                                                <th scope="col" class="border border-gray-300 p-2">คุณสมบัติที่ตั้งไว้</th>
+                                                <th scope="col" class="border border-gray-300 p-2">คุณสมบัติที่ทำได้</th>
+                                                <th scope="col" class="border border-gray-300 p-2">ผลการเปรียบเทียบ</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="section<?= $t + 1 ?>-tbody">
+                                            <?php for ($b = 0; $b < count($feature_ex[$t]); $b++) { ?>
+                                                <tr class="odd:bg-white even:bg-gray-100">
+                                                    <td class="border border-gray-300 py-2"><?= $b + 1 ?></td>
+                                                    <td class="border border-gray-300 py-2"><textarea name="feature<?= $t + 1 ?>[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"><?= $feature_ex[$t][$b] ?></textarea></td>
+                                                    <td class="border border-gray-300 py-2"><textarea name="setfeature<?= $t + 1 ?>[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"><?= $setfeature_ex[$t][$b] ?></textarea></td>
+                                                    <td class="border border-gray-300 py-2"><textarea disabled name="" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
+                                                    <td class="border border-gray-300 py-2"><textarea disabled name="" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
+                                                </tr>
+                                            <?php } ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <button type="button" onclick="sectionAdd(<?= $t + 1 ?>)" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">เพิ่ม</button>
+                                <button type="button" onclick="sectionRemove(<?= $t + 1 ?>)" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">ลบ</button>
+                            </div>
+                        <?php $t++;
+                        } ?>
                     </div>
+
+                    <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+                            let sectionCount = document.querySelectorAll('#sections-container > div[id^="section-"]').length;
+
+                            function addTopicSection(index) {
+                                const topicSection = document.getElementById('sections-container');
+
+                                const newTopicContainer = document.createElement('div');
+                                newTopicContainer.id = `section-${index}`;
+                                newTopicContainer.className = 'mt-6';
+
+                                newTopicContainer.innerHTML = `
+                                    <label for="" class="block text-lg mb-5"><label class="text-lg font-bold mb-2">ด้านที่ ${index} </label>ด้าน<input type="text" name="form_topic[]" class="p-1 text-lg border border-gray-300 rounded w-76 sm:w-86 md:w-96 ml-1" required></label>
+                                    <div class="overflow-x-auto my-2">
+                                    <table class="w-full border border-gray-300 text-center">
+                                        <thead>
+                                            <tr class="bg-gray-200">
+                                                <th scope="col" class="border border-gray-300 p-2">ที่</th>
+                                                <th scope="col" class="border border-gray-300 p-2">คุณสมบัติด้านเทคนิค</th>
+                                                <th scope="col" class="border border-gray-300 p-2">คุณสมบัติที่ตั้งไว้</th>
+                                                <th scope="col" class="border border-gray-300 p-2">คุณสมบัติที่ทำได้</th>
+                                                <th scope="col" class="border border-gray-300 p-2">ผลการเปรียบเทียบ</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="section${index}-tbody">
+                                            <tr class="odd:bg-white even:bg-gray-100">
+                                                <td class="border border-gray-300 py-2">1</td>
+                                                <td class="border border-gray-300 py-2"><textarea name="feature${index}[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
+                                                <td class="border border-gray-300 py-2"><textarea name="setfeature${index}[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
+                                                <td class="border border-gray-300 py-2"><textarea disabled name="" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
+                                                <td class="border border-gray-300 py-2"><textarea disabled name="" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    </div>
+                                    <button type="button" onclick="sectionAdd(${index})" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">เพิ่ม</button>
+                                    <button type="button" onclick="sectionRemove(${index})" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">ลบ</button>
+                                `;
+
+                                topicSection.appendChild(newTopicContainer);
+                                updateRemoveButtonVisibility(index); // Ensure button visibility is correct when a new section is added
+                            }
+
+                            function addSubTopic(topicIndex) {
+                                const subTopicContainer = document.getElementById(`section${topicIndex}-tbody`);
+                                const subTopicCount = subTopicContainer.children.length;
+
+                                const newSubTopicField = document.createElement('tr');
+                                newSubTopicField.className = 'odd:bg-white even:bg-gray-100';
+                                newSubTopicField.innerHTML = `
+                                    <td class="border border-gray-300 py-2">${subTopicCount + 1}</td>
+                                    <td class="border border-gray-300 py-2"><textarea name="feature${topicIndex}[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
+                                    <td class="border border-gray-300 py-2"><textarea name="setfeature${topicIndex}[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
+                                    <td class="border border-gray-300 py-2"><textarea disabled name="" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
+                                    <td class="border border-gray-300 py-2"><textarea disabled name="" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
+                                `;
+
+                                subTopicContainer.appendChild(newSubTopicField);
+                                updateRemoveButtonVisibility(topicIndex);
+                            }
+
+                            window.sectionAdd = function(sectionIndex) {
+                                addSubTopic(sectionIndex);
+                            };
+
+                            window.sectionRemove = function(sectionIndex) {
+                                const subTopicContainer = document.getElementById(`section${sectionIndex}-tbody`);
+                                if (subTopicContainer && subTopicContainer.children.length > 1) {
+                                    subTopicContainer.removeChild(subTopicContainer.lastElementChild);
+                                }
+                                updateRemoveButtonVisibility(sectionIndex);
+                            };
+
+                            // Call updateRemoveButtonVisibility for each section initially
+                            document.querySelectorAll('#sections-container > div[id^="section-"]').forEach((section) => {
+                                const index = section.id.split('-')[1];
+                                updateRemoveButtonVisibility(index);
+                            });
+
+                            document.getElementById('add-section').addEventListener('click', () => {
+                                sectionCount++;
+                                addTopicSection(sectionCount);
+                            });
+
+                            document.getElementById('remove-section').addEventListener('click', () => {
+                                if (sectionCount > 0) {
+                                    const sectionContainer = document.getElementById('sections-container');
+                                    sectionContainer.removeChild(sectionContainer.lastElementChild);
+                                    sectionCount--;
+                                }
+                            });
+
+                            function updateRemoveButtonVisibility(sectionIndex) {
+                                const subTopicContainer = document.getElementById(`section${sectionIndex}-tbody`);
+                                const removeButton = document.querySelector(`#section-${sectionIndex} button[onclick*="sectionRemove"]`);
+                                if (subTopicContainer && subTopicContainer.children.length <= 1) {
+                                    removeButton.classList.add('hidden');
+                                } else {
+                                    removeButton.classList.remove('hidden');
+                                }
+                            }
+                        });
+                    </script>
+
                 </div>
+                <div class="text-center mt-5">
+                    <button type="submit" name="update" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">บันทึกข้อมูล</button>
+                </div>
+
             </div>
 
-            <!-- Survey Section 2 -->
-            <hr class="my-3">
-
-            <div class="mb-4">
-                <label for="" class="text-lg"><label class="text-lg font-bold mb-2">ตอนที่ 2 </label>แบบสอบถามความคิดเห็น</label>
-
-                <label for="" class="block text-lg"><label class=" text-lg font-bold mb-2">คำชี้แจง </label>โปรดบันทึกความคิดเห็นของท่านลงในช่องว่างในแต่ละข้อ</label>
-
-                <!-- Section 1 -->
-                <label for="" class="block text-lg my-5"><label class="text-lg font-bold mb-2">ด้านที่ 1 </label><?= $input_name ?></label>
-
-                <div class="overflow-x-auto my-2">
-                    <table class="w-full border border-gray-300 text-center">
-                        <thead>
-                            <tr class="bg-gray-200">
-                                <th scope="col" class="border border-gray-300 p-2">ที่</th>
-                                <th scope="col" class="border border-gray-300 p-2">คุณสมบัติด้านเทคนิค</th>
-                                <th scope="col" class="border border-gray-300 p-2">คุณสมบัติที่ตั้งไว้</th>
-                                <th scope="col" class="border border-gray-300 p-2">คุณสมบัติที่ทำได้</th>
-                                <th scope="col" class="border border-gray-300 p-2">ผลการเปรียบเทียบ</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            for ($i = 0; $i < 4; $i++) {
-                                $class = ($i == 0 || (!empty($input_feature[$i]))) ? '' : 'hidden';
-                                echo "<tr id='section1tr$i' class='$class odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700'>
-                                <td class='border border-gray-300 py-2'>" . ($i + 1) . "</td>
-                                <td class='border border-gray-300 py-2'><textarea name='input_feature[]' id='section1tr{$i}td' class='border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center'>" . htmlspecialchars($input_feature[$i] ?? '') . "</textarea></td>
-                                <td class='border border-gray-300 py-2'><textarea name='input_setfeature[]' id='section1tr{$i}tdf' class='border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center'>" . htmlspecialchars($input_setfeature[$i] ?? '') . "</textarea></td>
-                                <td class='border border-gray-300 py-2'><textarea disabled name='input_result[]' class='border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center'></textarea></td>
-                                <td class='border border-gray-300 py-2'><textarea disabled name='input_compare[]' class='border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center'></textarea></td>
-                            </tr>";
-                            }
-                            ?>
-                        </tbody>
-                    </table>
-                </div>
-
-                <button type="button" id="section1addbtn" onclick="section1add()" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">เพิ่ม</button>
-                <button type="button" id="section1removebtn" onclick="section1remove()" class="hidden bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">ลบ</button>
-
-                <!-- Section 2 -->
-                <label for="" class="block text-lg my-5"><label class="text-lg font-bold mb-2">ด้านที่ 2 </label><?= $process_name ?></label>
-
-                <div class="overflow-x-auto my-2">
-                    <table class="w-full border border-gray-300 text-center">
-                        <thead>
-                            <tr class="bg-gray-200">
-                                <th scope="col" class="border border-gray-300 p-2">ที่</th>
-                                <th scope="col" class="border border-gray-300 p-2">คุณสมบัติด้านเทคนิค</th>
-                                <th scope="col" class="border border-gray-300 p-2">คุณสมบัติที่ตั้งไว้</th>
-                                <th scope="col" class="border border-gray-300 p-2">คุณสมบัติที่ทำได้</th>
-                                <th scope="col" class="border border-gray-300 p-2">ผลการเปรียบเทียบ</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            for ($i = 0; $i < 4; $i++) {
-                                $class = ($i == 0 || (!empty($process_feature[$i]))) ? '' : 'hidden';
-                                echo "<tr id='section2tr$i' class='$class odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700'>
-                                <td class='border border-gray-300 py-2'>" . ($i + 1) . "</td>
-                                <td class='border border-gray-300 py-2'><textarea name='process_feature[]' id='section2tr{$i}td' class='border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center'>" . htmlspecialchars($process_feature[$i] ?? '') . "</textarea></td>
-                                <td class='border border-gray-300 py-2'><textarea name='process_setfeature[]' id='section2tr{$i}tdf' class='border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center'>" . htmlspecialchars($process_setfeature[$i] ?? '') . "</textarea></td>
-                                <td class='border border-gray-300 py-2'><textarea disabled name='process_result[]' class='border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center'></textarea></td>
-                                <td class='border border-gray-300 py-2'><textarea disabled name='process_compare[]' class='border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center'></textarea></td>
-                            </tr>";
-                            }
-                            ?>
-                        </tbody>
-                    </table>
-                </div>
-
-                <button type="button" id="section2addbtn" onclick="section2add()" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">เพิ่ม</button>
-                <button type="button" id="section2removebtn" onclick="section2remove()" class="hidden bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">ลบ</button>
-
-                <!-- Section 3 -->
-                <label for="" class="block text-lg my-5"><label class="text-lg font-bold mb-2">ด้านที่ 3 </label><?= $report_name ?></label>
-
-                <div class="overflow-x-auto my-2">
-                    <table class="w-full border border-gray-300 text-center">
-                        <thead>
-                            <tr class="bg-gray-200">
-                                <th scope="col" class="border border-gray-300 p-2">ที่</th>
-                                <th scope="col" class="border border-gray-300 p-2">คุณสมบัติด้านเทคนิค</th>
-                                <th scope="col" class="border border-gray-300 p-2">คุณสมบัติที่ตั้งไว้</th>
-                                <th scope="col" class="border border-gray-300 p-2">คุณสมบัติที่ทำได้</th>
-                                <th scope="col" class="border border-gray-300 p-2">ผลการเปรียบเทียบ</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            for ($i = 0; $i < 4; $i++) {
-                                $class = ($i == 0 || (!empty($report_feature[$i]))) ? '' : 'hidden';
-                                echo "<tr id='section3tr$i' class='$class odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700'>
-                                <td class='border border-gray-300 py-2'>" . ($i + 1) . "</td>
-                                <td class='border border-gray-300 py-2'><textarea name='report_feature[]' id='section3tr{$i}td' class='border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center'>" . htmlspecialchars($report_feature[$i] ?? '') . "</textarea></td>
-                                <td class='border border-gray-300 py-2'><textarea name='report_setfeature[]' id='section3tr{$i}tdf' class='border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center'>" . htmlspecialchars($report_setfeature[$i] ?? '') . "</textarea></td>
-                                <td class='border border-gray-300 py-2'><textarea disabled name='report_result[]' class='border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center'></textarea></td>
-                                <td class='border border-gray-300 py-2'><textarea disabled name='report_compare[]' class='border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center'></textarea></td>
-                            </tr>";
-                            }
-                            ?>
-                        </tbody>
-                    </table>
-                </div>
-
-                <button type="button" id="section3addbtn" onclick="section3add()" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">เพิ่ม</button>
-                <button type="button" id="section3removebtn" onclick="section3remove()" class="hidden bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">ลบ</button>
-
-                <!-- Section 4 -->
-                <label for="" class="block text-lg my-5"><label class="text-lg font-bold mb-2">ด้านที่ 4 </label><?= $senrity_name ?></label>
-
-                <div class="overflow-x-auto my-2">
-                    <table class="w-full border border-gray-300 text-center">
-                        <thead>
-                            <tr class="bg-gray-200">
-                                <th scope="col" class="border border-gray-300 p-2">ที่</th>
-                                <th scope="col" class="border border-gray-300 p-2">คุณสมบัติด้านเทคนิค</th>
-                                <th scope="col" class="border border-gray-300 p-2">คุณสมบัติที่ตั้งไว้</th>
-                                <th scope="col" class="border border-gray-300 p-2">คุณสมบัติที่ทำได้</th>
-                                <th scope="col" class="border border-gray-300 p-2">ผลการเปรียบเทียบ</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            for ($i = 0; $i < 4; $i++) {
-                                $class = ($i == 0 || (!empty($senrity_feature[$i]))) ? '' : 'hidden';
-                                echo "<tr id='section4tr$i' class='$class odd:bg-white odd:white:bg-gray-900 even:bg-gray-100 even:white:bg-gray-800 border-b white:border-gray-700'>
-                                <td class='border border-gray-300 py-2'>" . ($i + 1) . "</td>
-                                <td class='border border-gray-300 py-2'><textarea name='senrity_feature[]' id='section4tr{$i}td' class='border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center'>" . htmlspecialchars($senrity_feature[$i] ?? '') . "</textarea></td>
-                                <td class='border border-gray-300 py-2'><textarea name='senrity_setfeature[]' id='section4tr{$i}tdf' class='border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center'>" . htmlspecialchars($senrity_setfeature[$i] ?? '') . "</textarea></td>
-                                <td class='border border-gray-300 py-2'><textarea disabled name='senrity_result[]' class='border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center'></textarea></td>
-                                <td class='border border-gray-300 py-2'><textarea disabled name='senrity_compare[]' class='border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center'></textarea></td>
-                            </tr>";
-                            }
-                            ?>
-                        </tbody>
-                    </table>
-                </div>
-
-                <button type="button" id="section4addbtn" onclick="section4add()" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">เพิ่ม</button>
-                <button type="button" id="section4removebtn" onclick="section4remove()" class="hidden bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">ลบ</button>
-
-            </div>
-            <div class="text-center mt-5">
-                <button type="submit" name="update" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">บันทึกข้อมูล</button>
-            </div>
-
-    </div>
-
-    </form>
+        </form>
     </div>
 </body>
 

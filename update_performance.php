@@ -10,73 +10,87 @@ if (!isset($_SESSION['user_id'])) {
 $user_id = $_SESSION['user_id'];
 
 if (isset($_POST['update'])) {
-    $form_id = $_POST['id'];
-    $input_id = $_POST['input_id'];
-    $process_id = $_POST['process_id'];
-    $report_id = $_POST['report_id'];
-    $senrity_id = $_POST['senrity_id'];
-
     $formname = $_POST['formname'];
     $ad = $_POST['ad'];
-    $gender = implode(",", $_POST['genders']);
-    $type_m = implode(",", $_POST['kinduser']);
-    $edu = implode(",", $_POST['le_education']);
+    $form_id = $_POST['id'];
 
-    $input_feature = implode("@", $_POST['input_feature']);
-    $process_feature = implode("@", $_POST['process_feature']);
-    $report_feature = implode("@", $_POST['report_feature']);
-    $senrity_feature = implode("@", $_POST['senrity_feature']);
+    $combined_subinfo = [];
+    for ($i = 1; $i <= count($_POST['form_info']); $i++) {
+        if (isset($_POST['sub_info' . $i])) {
+            $combined_subinfo[$i - 1] = implode("Ϫ", $_POST['sub_info' . $i]);
+        }
+    }
 
-    $input_setfeature = implode("@", $_POST['input_setfeature']);
-    $process_setfeature = implode("@", $_POST['process_setfeature']);
-    $report_setfeature = implode("@", $_POST['report_setfeature']);
-    $senrity_setfeature = implode("@", $_POST['senrity_setfeature']);
+    $combined_subtopic = [];
+    for ($i = 1; $i <= count($_POST['form_topic']); $i++) {
+        if (isset($_POST['feature' . $i]) && isset($_POST['setfeature' . $i])) {
+            $combined_feature[$i - 1] = implode("Ϫ", $_POST['feature' . $i]);
+            $combined_setfeature[$i - 1] = implode("Ϫ", $_POST['setfeature' . $i]);
+        }
+    }
+
+    $form_info = implode("Ϫ", $_POST['form_info']);
+
+    $sub_info = implode("ꓘ", $combined_subinfo);
+
+    $form_topic = implode("Ϫ", $_POST['form_topic']);
+
+    $feature = implode("ꓘ", $combined_feature);
+
+    $setfeature = implode("ꓘ", $combined_setfeature);
+
+    // $sub_info_ex = preg_split("/ꓘ/", $sub_info);
+    
+    // echo $formname;
+    // echo "<br>";
+    // echo $ad;
+    // echo "<br>";
+    // echo "// ข้อมูลพื้นฐาน //";
+    // echo $form_info; // ข้อมูลพื้นฐาน
+    // echo "<br>";
+    // echo count($_POST['form_info']);
+    // echo "<br>";
+    // echo "// ข้อมูลพื้นฐานย่อย //";
+    // print_r($sub_info); // ข้อมูลพื้นฐานย่อย
+    // echo "<br>";
+    // echo "// หัวข้อด้าน //";
+    // print_r($form_topic); // หัวข้อด้าน
+    // echo "<br>";
+    // echo count($_POST['form_topic']);
+    // echo "<br>";
+    // echo "// คุณสมบัติด้านเทคนิค //";
+    // print_r($feature); // คุณสมบัติด้านเทคนิค
+    // echo "<br>";
+    // echo "// คุณสมบัติที่ตั้งไว้ //";
+    // print_r($setfeature); // คุณสมบัติที่ตั้งไว้
+
 }
 
 if (empty($formname)) {
-    $_SESSION['error'] = "กรุณากรอกชื่อฟอร์ม";
+    $_SESSION['error'] = "กรุณากรอกชื่อ โปรเจค";
     header("location: edit_performance_form.php?id=$form_id");
     exit;
 } else if (empty($ad)) {
     $_SESSION['error'] = "กรุณากรอกคำชี้แจง";
     header("location: edit_performance_form.php?id=$form_id");
     exit;
-} else if (empty(array_filter($_POST['genders']))) {
-    $_SESSION['error'] = "กรุณากรอก เพศ อย่างน้อย 1 เพศ";
+} else if (empty($form_info)) {
+    $_SESSION['error'] = "กรุณากรอก ข้อมูลพื้นฐาน อย่างน้อย 1 ประเภท";
     header("location: edit_performance_form.php?id=$form_id");
     exit;
-} else if (empty(array_filter($_POST['kinduser']))) {
-    $_SESSION['error'] = "กรุณากรอก ประเภทผู้ใช้อย่างน้อย 1 ประเภท";
-    header("location: edit_performance_form.php?id=$form_id");
-    exit;
-} else if (empty(array_filter($_POST['le_education']))) {
-    $_SESSION['error'] = "กรุณากรอก ระดับการศึกษา อย่างน้อย 1 ระดับ";
+} else if (empty($form_topic)) {
+    $_SESSION['error'] = "กรุณากรอก ด้าน อย่างน้อย 1 ด้าน";
     header("location: edit_performance_form.php?id=$form_id");
     exit;
 } else {
     try {
         if (!isset($_SESSION['error'])) {
-            // Update tb_input
-            $tb_input = $conn->prepare("UPDATE tb_input SET input_feature = ?, input_setfeature = ? WHERE input_id = ?");
-            $tb_input->execute([$input_feature, $input_setfeature, $input_id]);
 
-            // Update tb_process
-            $tb_process = $conn->prepare("UPDATE tb_process SET process_feature = ?, process_setfeature = ? WHERE process_id = ?");
-            $tb_process->execute([$process_feature, $process_setfeature, $process_id]);
+            $tb_efficiercy_form = $conn->prepare("UPDATE tb_efficiercy_form SET form_name = ?, form_ad = ?, member_id = ?, form_info = ?, sub_info = ?, form_topic = ?, feature = ?, setfeature = ?");
+            $tb_efficiercy_form->execute([$formname, $ad, $user_id, $form_info, $sub_info, $form_topic, $feature, $setfeature]);
 
-            // Update tb_report
-            $tb_report = $conn->prepare("UPDATE tb_report SET report_feature = ?, report_setfeature = ? WHERE report_id = ?");
-            $tb_report->execute([$report_feature, $report_setfeature, $report_id]);
+            header("location: form.php?class=".$class);
 
-            // Update tb_senrity
-            $tb_senrity = $conn->prepare("UPDATE tb_senrity SET senrity_feature = ?, senrity_setfeature = ? WHERE senrity_id = ?");
-            $tb_senrity->execute([$senrity_feature, $senrity_setfeature, $senrity_id]);
-
-            // Update tb_efficiercy_form
-            $tb_efficiercy_form = $conn->prepare("UPDATE tb_efficiercy_form SET form_ad = ?, form_gender = ?, form_type = ?, form_education = ?, form_name = ? WHERE form_id = ?");
-            $tb_efficiercy_form->execute([$ad, $gender, $type_m, $edu, $formname, $form_id]);
-
-            header("location: form.php?class=columnData");
         }
     } catch (PDOException $e) {
         echo "Registrati3on failed: " . $e->getMessage();
