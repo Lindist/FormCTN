@@ -5,7 +5,7 @@ document.querySelector(".btncrease").addEventListener('click', () => {
 const input = document.querySelectorAll(".input-box");
 let list = document.querySelectorAll(".list");
 
-let creaseValue2 = document.querySelector('.dropdownforaddpriject > .input-box').textContent
+let creaseValue2 = document.querySelector('.dropdownforaddproject > .input-box').textContent
 creaseValue2 = parseInt(creaseValue2, 10)
 
 for(let i = 1;i < input.length;i++){

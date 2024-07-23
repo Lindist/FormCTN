@@ -33,6 +33,27 @@
 .tab_box{
     position: relative;
 }
+.tab_btn_pro.active{
+    font-weight: bold;
+    color:#399918;
+    border-bottom: 3px solid #399918;
+}
+.tab_btn_pro{
+    padding: 0.7em 0.5em;
+    border-style: none;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: #F5F7F8;
+    color: #9fa5b5;
+    transform: color .3s ease-in-out;
+    margin-bottom: 10px;
+}
+.tab_btn_pro:hover{
+    color: #464646;
+}
+.tab_btn_pro.active:hover{
+    color:#30990d;
+}
 
 @media all and (max-width:800px) {
     .content_box{

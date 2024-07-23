@@ -14,7 +14,7 @@ document.getElementById('addFormperformance').addEventListener('click', () => {
         modal.style.display='none';
         modal.classList.remove("isperformance")
     })
-    document.querySelector('.cancelbtn').addEventListener('click', () => {
+    document.querySelector('#cancelbtn').addEventListener('click', () => {
         modal.style.display='none';
         modal.classList.remove("isperformance")
     })
@@ -28,14 +28,16 @@ document.getElementById('addFormsatisfy').addEventListener('click', () => {
         modal.style.display='none';
         modal.classList.remove("issatisfy")
     })
-    document.querySelector('.cancelbtn').addEventListener('click', () => {
+    document.querySelector('#cancelbtn').addEventListener('click', () => {
         modal.style.display='none';
         modal.classList.remove("issatisfy")
     })
 
 });
 /*------------- */
-
+Delproject = (id) =>{
+    window.location.href = `delete_project.php?id=${id}`;
+}
 /*------------- */
 function confirmdel(ids,tab2='false'){
     Swal.fire({
@@ -147,8 +149,8 @@ window.onload = function() {
 
     if (classToAdd1 === 'firstshow') {
 
-    const istab2 = document.getElementById('tab2');
-    const istab2_1 = document.querySelector('#tab2 h3');
+        const istab2 = document.getElementById('tab2');
+        const istab2_1 = document.querySelector('#tab2 h3');
 
         tabs.forEach(tab=>{tab.classList.remove('active')})
         istab2.classList.add('active');

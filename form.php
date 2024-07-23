@@ -54,6 +54,12 @@ array_push($countdropbox, count($result3->fetchAll()));
 $result3->execute();
 
 
+$project = $conn->query("SELECT * FROM project WHERE member_id = '$user_id'");
+$projectcount = count($project->fetchAll());
+$project->execute();
+
+$projectedit = $conn->query("SELECT * FROM project WHERE member_id = '$user_id'");
+$projectedit->execute();
 ?>
 
 <!DOCTYPE html>
@@ -62,10 +68,10 @@ $result3->execute();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/formstyle1.css">
-    <link rel="stylesheet" href="style/tabstyle.css">
+    <link rel="stylesheet" href="style/formstyle.css">
+    <link rel="stylesheet" href="style/tabstyle1.css">
     <link rel="stylesheet" href="style/inputsearchstyle.css">
-    <link rel="stylesheet" href="style/addProjectnames.css">
+    <link rel="stylesheet" href="style/addProjectname.css">
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Icons+Sharp|Material+Icons+Two+Tone"
       rel="stylesheet"
@@ -105,47 +111,153 @@ $result3->execute();
         </script>
         <?php unset($_SESSION['delete']); ?>
     <?php } ?>
-    <?php if (isset($_SESSION['addproject'])) { ?>
-        <script>
-            Swal.fire({
-                position: "center",
-                title: "เพิ่มข้อมูลเรียบร้อย",
-                icon: "success",
-                showConfirmButton: false,
-                timer: 1000
-            });
-        </script>
-        <?php unset($_SESSION['addproject']); ?>
-    <?php } ?>
 <div class="modal">
     <form class="modal-content animate" action="addprojecton.php" id="myform" method="post">
         <div class="containerformodal">
             <span class="close" title="Close Modal">&times;</span>
             <div class="title" style="text-align: center; margin-top: 0.5rem;"><h1>โครงการ</h1></div>
-            <div class="addproject">
-            <label for=""><b>เพิ่มหัวข้อโครงการ</b></label>
-            <div class="dropdownforaddpriject">
-                <div class="input-box">1</div>
-                <button type="button" style="margin-left: 10px;" class="confirmbtn btncrease">เพิ่ม</button>
-
-                    <div class="list">
-                        <script src="script/add_remove_project.js"></script>
+            <div class="tab_box">
+                <button type="button" class="tab_btn_pro active">
+                    <h4>สร้างหัวข้อโครงการ</h4>
+                </button>
+                <button type="button" class="tab_btn_pro">
+                    <h4>หัวข้อโครงการที่มีอยู่แล้ว</h4>
+                </button>
+            </div>
+            <div class="tab_content_for_project active">
+                <div class="addproject">
+                <label for=""><b>เพิ่มหัวข้อโครงการ</b></label>
+                <div class="dropdownforaddproject">
+                    <div class="input-box">1</div>
+                    <button type="button" style="margin-left: 10px;" class="confirmbtn btncrease">เพิ่ม</button>
+                        <div class="list">
+                            <script src="script/add_remove_project10.js"></script>
+                        </div>
                     </div>
                 </div>
+            </div>
+
+            <div class="tab_content_for_project">
+                <?php if($projectcount > 0){ ?>
+                    <?php while($rowproject = $project->fetch(PDO::FETCH_ASSOC)){ ?>
+                        <input type="hidden" name="" id="pd" value="<?= $rowproject['project_id']; ?>">
+                        <hr style="border-width: 0.7mm; margin: 2rem 0;">
+                        <div class="isEdit" id="editpro<?= $rowproject['project_id']; ?>">
+                            <label for=""><b>ชื่อโครงการ</b></label>
+                            <input type="text" id="p1" value="<?= $rowproject['project_name']; ?>" readonly>
+                            <div>
+                                <button type="button" class="confirmbtn" id="addper_">เพิ่มแบบฟอร์มประเมินประสิทธิภาพ</button>
+                                <button type="button" class="confirmbtn" id="addsta_">เพิ่มแบบฟอร์มประเมินความพึงพอใจ</button>
+                            </div>
+                            <label for=""><b>วันหมดอายุ</b></label><br>
+                            <input type="hidden" name="" id="p1" value="<?= $rowproject['project_expired']; ?>">
+                            <input type="text" id="" value="<?= $rowproject['project_expired']; ?>" readonly>
+                            <label for=""><b>ระดับการศึกษา</b></label><br>
+                            <input type="text" id="p1" value="<?= $rowproject['project_leveledu']; ?>" readonly>
+                            <label for=""><b>ปีการศึกษา</b></label><br>
+                            <input type="text" id="p1" value="<?= $rowproject['project_yearedu']; ?>" readonly>
+                            
+                        </div>
+                            <div id="cancelproject<?= $rowproject['project_id']; ?>" class="ispressedit d-none">
+                                <button type="submit" class="confirmbtn">ยืนยันการแก้ไข</button>
+                                <button type="button" class="cancelbtn cancelproject" id="cancelproject<?= $rowproject['project_id']; ?>" onclick="cancelEditproject(<?= $rowproject['project_id']; ?>)" >ยกเลิกการแก้ไข</button>
+                            </div>
+                            <div id="editproject<?= $rowproject['project_id']; ?>" class="preedit">
+                                <button type="button" class="editbtn editproject" id="editproject<?= $rowproject['project_id']; ?>" onclick="Editproject(<?= $rowproject['project_id']; ?>)">แก้ไขข้อมูลโครงการ</button>
+                                <button type="button" class="cancelbtn" onclick="Delproject(<?= $rowproject['project_id']; ?>)">ลบข้อมูลโครงการ</button>
+                            </div>
+                    <?php } ?>
+                <?php } else { ?>
+                    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                        <img class='disimg' style="width: 160px;" src="picture/form.png">
+                        <h3 class='disimg'>ไม่มีข้อมูลโครงการ</h3>
+                    </div>
+                <?php } ?>
             </div>
         </div>
         <div id="btnform" class="moreaddproject d-none">
             <button type="submit" class="confirmbtn">ยืนยัน</button>
-            <button type="button" class="cancelbtn">ยกเลิก</button>
+            <button type="button" class="cancelbtn" id="cancelbtn">ยกเลิก</button>
         </div>
 
     </form>
+    <script src="script/tabbox_to_btnProject.js"></script>
     <script>
         document.querySelector(".btncrease").addEventListener('click', () => {
             document.querySelector(".moreaddproject").classList.remove("d-none");
         })
     </script>
 </div>
+<?php if (isset($_SESSION['addproject'])) { ?>
+    <script>
+        Swal.fire({
+            position: "center",
+            title: "เพิ่มข้อมูลเรียบร้อย",
+            icon: "success",
+            showConfirmButton: false,
+            timer: 1000
+        });
+        const tabs13 = document.querySelectorAll(".tab_btn_pro");
+        const all_content13 = document.querySelectorAll(".tab_content_for_project");
+                tabs13.forEach(tab=>{tab.classList.remove('active')})
+                tabs13[1].classList.add('active');
+                all_content13.forEach(content=>{content.classList.remove('active')});
+                all_content13[1].classList.add('active');
+        const modalpopup = document.querySelector('.modal');
+        modalpopup.style.display='block';
+        document.querySelector('.close').addEventListener('click', () => {
+            modalpopup.style.display='none';
+        })
+        document.querySelector('#cancelbtn').addEventListener('click', () => {
+            modalpopup.style.display='none';
+        })
+        tabs13[1].addEventListener('click', () => {
+            document.querySelector("#btnform").classList.add("d-none");
+        })
+        tabs13[0].addEventListener('click', () => {
+            if(document.querySelectorAll(".openbtn").length > 0){
+                document.querySelector("#btnform").classList.remove("d-none");
+            }
+        })
+    </script>
+    <?php unset($_SESSION['addproject']); ?>
+<?php } ?>
+
+
+<?php if (isset($_SESSION['deleteproject'])) { ?>
+    <script>
+        Swal.fire({
+            position: "center",
+            title: "ลบข้อมูลเรียบร้อย",
+            icon: "success",
+            showConfirmButton: false,
+            timer: 1000
+        });
+        const tabs23 = document.querySelectorAll(".tab_btn_pro");
+        const all_content23 = document.querySelectorAll(".tab_content_for_project");
+                tabs23.forEach(tab=>{tab.classList.remove('active')})
+                tabs23[1].classList.add('active');
+                all_content23.forEach(content=>{content.classList.remove('active')});
+                all_content23[1].classList.add('active');
+        const modalpopup1 = document.querySelector('.modal');
+        modalpopup1.style.display='block';
+        document.querySelector('.close').addEventListener('click', () => {
+            modalpopup1.style.display='none';
+        })
+        document.querySelector('#cancelbtn').addEventListener('click', () => {
+            modalpopup1.style.display='none';
+        })
+        tabs23[1].addEventListener('click', () => {
+            document.querySelector("#btnform").classList.add("d-none");
+        })
+        tabs23[0].addEventListener('click', () => {
+            if(document.querySelectorAll(".openbtn").length > 0){
+                document.querySelector("#btnform").classList.remove("d-none");
+            }
+        })
+    </script>
+    <?php unset($_SESSION['deleteproject']); ?>
+<?php } ?>
     <header>
         <div class="responsive">
             <h1>CTN Phrae</h1>
@@ -189,7 +301,7 @@ $result3->execute();
     <div class="content_box active">
         <div class="container">
             <div class="btnshow">
-                <a href="#" class="adds" id="addFormperformance">เพิ่มแบบสอบถาม</a>
+                <a href="#" class="adds" id="addFormperformance">สร้าง/แก้ไขหัวข้อโครงการ</a>
                 <a href="#" class="adds" id="check-edit">ตรวจสอบและแก้ไข</a>
             </div>
             <div class="search-wrapper">
@@ -231,7 +343,7 @@ $result3->execute();
     <div class="content_box">
         <div class="container">
             <div class="btnshow">
-                <a href="#" class="adds" id="addFormsatisfy">เพิ่มแบบสอบถาม</a>
+                <a href="#" class="adds" id="addFormsatisfy">สร้าง/แก้ไขหัวข้อโครงการ</a>
                 <a href="#" class="adds" id="check-edit">ตรวจสอบและแก้ไข</a>
             </div>
             <div class="search-wrapper">
@@ -360,28 +472,33 @@ $result3->execute();
             width: 250px;
             overflow-wrap: break-word;
         }
-
         .subform>.text {
             text-align: center;
             width: 100%;
             overflow-wrap: break-word;
         }
+        .tab_content_for_project,
         .d-none{
             display: none;
+        }
+        .tab_content_for_project.active{
+            display: block;
         }
     </style>
     <script src="script/active.js" type="module"></script>
     <script src="script/searchscipt.js"></script>
     <script src="script/dropdown1.js"></script>
     <script src="script/dropdownforreponsives.js"></script>
-    <script src="script/script_add_data.js"></script>
-    <script src="script/scriptSelector101.js"></script>
+    <script src="script/script_add_dataes.js"></script>
+    <script src="script/scriptSelector.js"></script>
     <script src="script/datepicker1.js"></script>
-    <!-- <script src="script/isiperandisstatis1.js"></script> -->
     <script src="script/thaidatepicker.js"></script>
     <script>
+        let date = []
+        document.querySelectorAll("#pd").forEach(element => {
+            date.push("#pdate"+ element.value.toString());
+        });
         document.querySelector(".btncrease").addEventListener('click', () => {
-            let date= []
             let ids = document.querySelectorAll('.datepicker')
             ids.forEach((element,i) => {
                 date.push("#d"+(i+1).toString());
@@ -389,14 +506,39 @@ $result3->execute();
             // console.log(date)
             // console.log(ids)
             $(function() {
-            //original datepicker
             $(".datepicker1").datetimepicker()
-            //thai datepicker
             thaiDatepicker(date.join(','))
             })
             // $(function() {thaiDatepicker("#d1,#d2,#d3")})
         })
+        document.querySelectorAll(".editproject").forEach(element => {
+            element.addEventListener('click', () => {
+                const checkid = element.id.toString();
+                document.querySelectorAll(".preedit").forEach((e,index) => {
+                    if(e.id === checkid){
+                        e.classList.add('d-none')
+                        document.querySelectorAll(".ispressedit")[index].classList.remove('d-none')
+                    }
+                });
+                $(function() {
+                    $(".datepicker1").datetimepicker()
+                    thaiDatepicker(date.join(','))
+                })
+            })
+        })
+        document.querySelectorAll(".cancelproject").forEach(element => {
+            element.addEventListener('click', () => {
+                const checkid = element.id.toString();
+                document.querySelectorAll(".ispressedit").forEach((e,index) => {
+                    if(e.id === checkid){
+                        e.classList.toggle('d-none')
+                        document.querySelectorAll(".preedit")[index].classList.remove('d-none')
+                    }
+                });
+            })
+        })
     </script>
+    <script src="script/editproject.js"></script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script> -->
     <script>
         logout = (event, url) => {
