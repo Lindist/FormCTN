@@ -322,7 +322,7 @@ if (isset($_GET['id'])) {
                             <div id="section-<?= $t + 1 ?>" class="mt-6">
                                 <label class="text-lg">
                                     <label class="text-lg font-bold">ด้านที่ <?= $t + 1 ?> </label>ด้าน
-                                    <input type="text" name="sati_topic[]" class="p-1 text-lg border border-gray-300 rounded w-76 sm:w-86 md:w-96 ml-1" value="<?= $sati_topic[$t] ?>" required>
+                                    <input type="text" name="sati_topic[]" class="p-1 text-lg border border-gray-300 rounded w-full sm:w-86 md:w-96 ml-0 sm:ml-1" value="<?= $sati_topic[$t] ?>" required>
                                 </label><br>
                                 <table class="w-full border border-gray-300 text-center my-3">
                                     <thead>
@@ -374,7 +374,7 @@ if (isset($_GET['id'])) {
                                 newTopicContainer.innerHTML = `
                                     <label class="text-lg">
                                         <span class="text-lg font-bold">ด้านที่ ${index} </span>ด้าน
-                                        <input type="text" name="sati_topic[]" class="p-1 text-lg border border-gray-300 rounded w-76 sm:w-86 md:w-96 ml-1" required>
+                                        <input type="text" name="sati_topic[]" class="p-1 text-lg border border-gray-300 rounded w-full sm:w-86 md:w-96 ml-0 sm:ml-1" required>
                                     </label><br>
                                     <table class="w-full border border-gray-300 text-center my-3">
                                         <thead>

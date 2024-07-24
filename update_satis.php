@@ -25,8 +25,8 @@ if (isset($_POST['update'])) {
         }
     }
 
-    echo $sati_id;
-    echo "<br>";
+    // echo $sati_id;
+    // echo "<br>";
 
     $sati_info = implode("Ϫ", $_POST['sati_info']);
 

@@ -15,81 +15,66 @@ if (isset($_GET['id'])) {
     $query->execute();
     $row = $query->fetch();
 
-    // echo $row['sati_ep2'];
-
-    $sati_gender = preg_split("/,/", $row['sati_gender']);
-    $sati_type = preg_split("/,/", $row['sati_type']);
-    $sati_level = preg_split("/,/", $row['sati_level']);
-    $sati_name = $row['sati_ep2'];
     $member_id = $row['member_id'];
+    $sati_name = $row['sati_ep2'];
+    $sati_info_un = $row['sati_info'];
+    $sub_info_un = $row['sub_info'];
+    $sati_topic_un = $row['sati_topic'];
+    $sub_topic_un = $row['sub_topic'];
 
-    if($_SESSION['user_id'] == $member_id) {
-        header("Location: index.php");
+    $sati_info = preg_split("/Ϫ/", $sati_info_un);
+    $sub_info = preg_split("/ꓘ/", $sub_info_un);
+    $sati_topic = preg_split("/Ϫ/", $sati_topic_un);
+    $sub_topic = preg_split("/ꓘ/", $sub_topic_un);
+
+    $sub_info_ex = [];
+    foreach ($sub_info as $index => $info) {
+        $sub_info_ex[$index] = preg_split("/Ϫ/", $info);
     }
 
-    $tb_user_req = $conn->prepare("SELECT * FROM tb_user_req WHERE ur_id = :ur_id");
-    $tb_user_req->bindParam(":ur_id", $row['ur_id']);
-    $tb_user_req->execute();
-    $row1 = $tb_user_req->fetch();
+    $sub_topic_ex = [];
+    foreach ($sub_topic as $index => $topic) {
+        $sub_topic_ex[$index] = preg_split("/Ϫ/", $topic);
+    }
 
-    // echo $row1['ur_topic'];
-    $ur_topic = preg_split("/@/", $row1['ur_topic']);
+    // echo "sub_topic_ex = ";
+    // print_r($sub_topic_ex);
+    // echo "<br>";
+    // echo "sub_info_ex = ";
+    // print_r($sub_info_ex);
+    echo "<br>";
+    echo $sati_name;
+    echo "<br>";
+    echo "// ข้อมูลพื้นฐาน // ";
+    print_r($sati_info); // ข้อมูลพื้นฐาน
+    echo "<br>";
+    echo "// ข้อมูลพื้นฐานย่อย // ";
+    print_r($sub_info_ex); // ข้อมูลพื้นฐานย่อย
+    echo "<br>";
+    echo "// หัวข้อด้าน // ";
+    print_r($sati_topic); // หัวข้อด้าน
+    echo "<br>";
+    echo "// ข้อมูลแต่ละด้าน // ";
+    print_r($sub_topic_ex); // ข้อมูลแต่ละด้าน
 
-    $tb_function = $conn->prepare("SELECT * FROM tb_function WHERE fun_id = :fun_id");
-    $tb_function->bindParam(":fun_id", $row['fun_id']);
-    $tb_function->execute();
-    $row2 = $tb_function->fetch();
+    // echo "<br>";
+    // echo $sati_ep2;
+    // echo "<br>";
+    // echo "// ข้อมูลพื้นฐาน // ";
+    // echo $sati_info_un; // ข้อมูลพื้นฐาน
+    // echo "<br>";
+    // echo "// ข้อมูลพื้นฐานย่อย // ";
+    // print_r($sub_info_un); // ข้อมูลพื้นฐานย่อย
+    // echo "<br>";
+    // echo "// หัวข้อด้าน // ";
+    // print_r($sati_topic_un); // หัวข้อด้าน
+    // echo "<br>";
+    // echo "// ข้อมูลแต่ละด้าน // ";
+    // print_r($sub_topic_un); // ข้อมูลแต่ละด้าน
 
-    // echo $row2['fun_topic'];
-    $fun_topic = preg_split("/@/", $row2['fun_topic']);
-
-    $tb_uesful = $conn->prepare("SELECT * FROM tb_uesful WHERE uf_id = :uf_id");
-    $tb_uesful->bindParam(":uf_id", $row['uf_id']);
-    $tb_uesful->execute();
-    $row3 = $tb_uesful->fetch();
-
-    // echo $row3['uf_topic'];
-    $uf_topic = preg_split("/@/", $row3['uf_topic']);
-
-    $tb_seurity = $conn->prepare("SELECT * FROM tb_seurity WHERE ss_id = :ss_id");
-    $tb_seurity->bindParam(":ss_id", $row['ss_id']);
-    $tb_seurity->execute();
-    $row4 = $tb_seurity->fetch();
-
-    // echo $row4['ss_topic'];
-    $ss_topic = preg_split("/@/", $row4['ss_topic']);
-
-    // print_r($sati_gender);
 } else {
     header("Location: index.php");
 }
-
-$keys = [];
-
-for ($i = 0; $i < 10; $i++) { // Replace 10 with any large number or condition
-    $keys[$i] = null;
-}
-
-$sati_gender_ss = isset($_SESSION['sati_gender']) && $_SESSION['sati_gender'] ? $_SESSION['sati_gender'] : '';
-unset($_SESSION['sati_gender']);
-
-$sati_type_ss = isset($_SESSION['sati_type']) && $_SESSION['sati_type'] ? $_SESSION['sati_type'] : '';
-unset($_SESSION['sati_type']);
-
-$sati_level_ss = isset($_SESSION['sati_level']) && $_SESSION['sati_level'] ? $_SESSION['sati_level'] : '';
-unset($_SESSION['sati_level']);
-
-// $ur_score = isset($_SESSION['ur_score']) && $_SESSION['ur_score'] ? $_SESSION['ur_score'] : $keys;
-// unset($_SESSION['ur_score']);
-
-// $fun_score = isset($_SESSION['fun_score']) && $_SESSION['fun_score'] ? $_SESSION['fun_score'] : $keys;
-// unset($_SESSION['fun_score']);
-
-// $uf_score = isset($_SESSION['uf_score']) && $_SESSION['uf_score'] ? $_SESSION['uf_score'] : $keys;
-// unset($_SESSION['uf_score']);
-
-// $ss_score = isset($_SESSION['ss_score']) && $_SESSION['ss_score'] ? $_SESSION['ss_score'] : $keys;
-// unset($_SESSION['ss_score']);
 
 ?>
 
@@ -125,10 +110,6 @@ unset($_SESSION['sati_level']);
 
             <input type="text" name="sati_id" class="hidden" value="<?= $_GET['id'] ?>">
             <input type="text" name="sati_name" class="hidden" value="<?= $sati_name ?>">
-            <input type="text" name="ur_id" class="hidden" value="<?= $row['ur_id'] ?>">
-            <input type="text" name="fun_id" class="hidden" value="<?= $row['fun_id'] ?>">
-            <input type="text" name="uf_id" class="hidden" value="<?= $row['uf_id'] ?>">
-            <input type="text" name="ss_id" class="hidden" value="<?= $row['ss_id'] ?>">
 
             <?php if (isset($_SESSION['error'])) { ?>
                 <script>
@@ -160,64 +141,25 @@ unset($_SESSION['sati_level']);
             <div class="mb-4">
                 <label class="text-lg"><label class="text-lg font-bold mb-2">ตอนที่ 1 </label>ข้อมูลพื้นฐานของผู้กรอกแบบสอบถาม</label>
 
-                <!-- Gender -->
-                <hr class="my-3">
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-                    <label class="block text-center mb-1 sm:mb-0 sm:self-center">เพศ</label>
-                    <div class="mx-2">
-                        <?php foreach ($sati_gender as $value) { ?>
-                            <?php if (!empty($value)) { ?>
-                                <div class="flex items-center justify-center sm:justify-start">
-                                    <?php if ($value == $sati_gender_ss) { ?>
-                                        <input type="radio" name="sati_gender" class="w-6 h-6" value="<?= $value ?>" checked>
-                                    <?php } else { ?>
-                                        <input type="radio" required name="sati_gender" class="w-6 h-6" value="<?= $value ?>">
-                                    <?php } ?>
-                                    <p class="mx-3 my-2"><?= $value ?></p>
-                                </div>
-                            <?php } ?>
-                        <?php } ?>
-                    </div>
-                </div>
-
-                <!-- User Type -->
-                <hr class="my-3">
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-                    <label class="block text-center mb-1 sm:mb-0 sm:self-center">ประเภทผู้ใช้</label>
-                    <div class="mx-2">
-                        <?php foreach ($sati_type as $value) { ?>
-                            <?php if (!empty($value)) { ?>
-                                <div class="flex items-center justify-center sm:justify-start">
-                                    <?php if ($value == $sati_type_ss) { ?>
-                                        <input type="radio" name="sati_type" class="w-6 h-6" value="<?= $value ?>" checked>
-                                    <?php } else { ?>
-                                        <input type="radio" required name="sati_type" class="w-6 h-6" value="<?= $value ?>">
-                                    <?php } ?>
-                                    <p class="mx-3 my-2"><?= $value ?></p>
-                                </div>
-                            <?php } ?>
-                        <?php } ?>
-                    </div>
-                </div>
-
-                <!-- Education Level -->
-                <hr class="my-3">
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-                    <label class="block text-center mb-1 sm:mb-0 sm:self-center">ประเภทผู้ใช้</label>
-                    <div class="mx-2">
-                        <?php foreach ($sati_level as $value) { ?>
-                            <?php if (!empty($value)) { ?>
-                                <div class="flex items-center justify-center sm:justify-start">
-                                    <?php if ($value == $sati_level_ss) { ?>
-                                        <input type="radio" name="sati_level" class="w-6 h-6" value="<?= $value ?>" checked>
-                                    <?php } else { ?>
-                                        <input type="radio" required name="sati_level" class="w-6 h-6" value="<?= $value ?>">
-                                    <?php } ?>
-                                    <p class="mx-3 my-2"><?= $value ?></p>
-                                </div>
-                            <?php } ?>
-                        <?php } ?>
-                    </div>
+                <!-- Info -->
+                <div id="info-section">
+                    <?php $i = 0; ?>
+                    <?php while ($i < count($sati_info)) { ?>
+                        <hr class="my-3">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                            <label class="block text-center mb-1 sm:mb-0 sm:self-center"><?= $sati_info[$i] ?></label>
+                            <input type="hidden" name="sati_info[]" value="<?= $sati_info[$i] ?>">
+                            <div class="mx-2">
+                                <?php for ($c = 0; $c < count($sub_info_ex[$i]); $c++) { ?>
+                                    <div class="flex items-center justify-center sm:justify-start">
+                                        <input type="radio" name="sub_info<?= $i + 1 ?>[]" class="w-6 h-6" value="<?= $sub_info_ex[$i][$c] ?>" required>
+                                        <p class="mx-3 my-2"><?= $sub_info_ex[$i][$c] ?></p>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                        </div>
+                    <?php $i++;
+                    } ?>
                 </div>
 
                 <!-- Survey Section 2 -->
@@ -248,141 +190,46 @@ unset($_SESSION['sati_level']);
 
                     <!-- Start Table -->
 
-                    <!-- Section 1 -->
-                    <label class="text-lg"><label class="text-lg font-bold">ด้านที่ 1 </label>ด้านความต้องการของผู้ใช้งานระบบ</label><br>
-                    <input type="hidden" name="" value="ด้านความต้องการของผู้ใช้งานระบบ">
+                    <div id="sections-container">
+                        <?php $t = 0; ?>
+                        <?php while ($t < count($sati_topic)) { ?>
+                            <div id="section-<?= $t + 1 ?>" class="mt-12">
+                                <label class="text-lg"><label class="text-lg font-bold">ด้านที่ <?= $t + 1 ?> </label>ด้าน <?= $sati_topic[$t] ?></label><br>
+                                <input type="hidden" name="sati_topic[]" value="<?= $sati_topic[$t] ?>">
 
-                    <table class="w-full border border-gray-300 text-center my-3">
-                        <thead>
-                            <tr class="bg-gray-200">
-                                <th scope="col" rowspan="2" class="border border-gray-300 p-1">ที่</th>
-                                <th scope="col" rowspan="2" class="border border-gray-300 p-1">หัวข้อ</th>
-                                <th scope="col" colspan="5" class="border border-gray-300 p-1">ระดับความคิดเห็น</th>
-                            </tr>
-                            <tr class="bg-gray-200">
-                                <th scope="col" class="border border-gray-300 p-1">5</th>
-                                <th scope="col" class="border border-gray-300 p-1">4</th>
-                                <th scope="col" class="border border-gray-300 p-1">3</th>
-                                <th scope="col" class="border border-gray-300 p-1">2</th>
-                                <th scope="col" class="border border-gray-300 p-1">1</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php for ($i = 0; $i < count($ur_topic); $i++) { ?>
-                                <tr class='odd:bg-white even:bg-gray-100'>
-                                    <td class='border border-gray-300 py-2 text-center'><?= $i + 1 ?></td>
-                                    <td class="border border-gray-300 py-2"><textarea readonly name="ur_topic[]" class="w-full h-28 sm:h-16 border border-gray-300 rounded px-2 py-1"><?= $ur_topic[$i] ?></textarea></td>
-                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-8 sm:w-full h-10 flex items-center" type="radio" name="ur_score[<?= $i ?>]" value="พึงพอใจมากที่สุด"></td>
-                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-8 sm:w-full h-10 flex items-center" type="radio" name="ur_score[<?= $i ?>]" value="พึงพอใจมาก"></td>
-                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-8 sm:w-full h-10 flex items-center" type="radio" name="ur_score[<?= $i ?>]" value="พึงพอใจปานกลาง"></td>
-                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-8 sm:w-full h-10 flex items-center" type="radio" name="ur_score[<?= $i ?>]" value="พึงพอใจน้อย"></td>
-                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-8 sm:w-full h-10 flex items-center" type="radio" name="ur_score[<?= $i ?>]" value="พึงพอใจน้อยที่สุด"></td>
-                                </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table>
-
-                    <!-- Section 2 -->
-                    <label for="" class="block text-lg my-5"><label class="text-lg font-bold mb-2">ด้านที่ 2 </label>ด้านการทำงานตามฟังก์ชันของระบบ</label>
-                    <input disabled type="hidden" name="" value="ด้านการทำงานตามฟังก์ชันของระบบ">
-
-                    <table class="w-full border border-gray-300 text-center my-3">
-                        <thead>
-                            <tr class="bg-gray-200">
-                                <th scope="col" rowspan="2" class="border border-gray-300 p-1">ที่</th>
-                                <th scope="col" rowspan="2" class="border border-gray-300 p-1">หัวข้อ</th>
-                                <th scope="col" colspan="5" class="border border-gray-300 p-1">ระดับความคิดเห็น</th>
-                            </tr>
-                            <tr class="bg-gray-200">
-                                <th scope="col" class="border border-gray-300 p-1">5</th>
-                                <th scope="col" class="border border-gray-300 p-1">4</th>
-                                <th scope="col" class="border border-gray-300 p-1">3</th>
-                                <th scope="col" class="border border-gray-300 p-1">2</th>
-                                <th scope="col" class="border border-gray-300 p-1">1</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php for ($i = 0; $i < count($fun_topic); $i++) { ?>
-                                <tr class='odd:bg-white even:bg-gray-100'>
-                                    <td class='border border-gray-300 py-2 text-center'><?= $i + 1 ?></td>
-                                    <td class="border border-gray-300 py-2"><textarea readonly name="fun_topic[]" class="w-full h-28 sm:h-16 border border-gray-300 rounded px-2 py-1"><?= $fun_topic[$i] ?></textarea></td>
-                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-8 sm:w-full h-10 flex items-center" type="radio" name="fun_score[<?= $i ?>]" value="พึงพอใจมากที่สุด"></td>
-                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-8 sm:w-full h-10 flex items-center" type="radio" name="fun_score[<?= $i ?>]" value="พึงพอใจมาก"></td>
-                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-8 sm:w-full h-10 flex items-center" type="radio" name="fun_score[<?= $i ?>]" value="พึงพอใจปานกลาง"></td>
-                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-8 sm:w-full h-10 flex items-center" type="radio" name="fun_score[<?= $i ?>]" value="พึงพอใจน้อย"></td>
-                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-8 sm:w-full h-10 flex items-center" type="radio" name="fun_score[<?= $i ?>]" value="พึงพอใจน้อยที่สุด"></td>
-                                </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table>
-
-                    <!-- Section 3 -->
-                    <label for="" class="block text-lg my-5"><label class="text-lg font-bold mb-2">ด้านที่ 3 </label>ด้านความง่ายต่อการใช้งานของระบบ</label>
-                    <input disabled type="hidden" name="" value="ด้านความง่ายต่อการใช้งานของระบบ">
-
-                    <table class="w-full border border-gray-300 text-center my-3">
-                        <thead>
-                            <tr class="bg-gray-200">
-                                <th scope="col" rowspan="2" class="border border-gray-300 p-1">ที่</th>
-                                <th scope="col" rowspan="2" class="border border-gray-300 p-1">หัวข้อ</th>
-                                <th scope="col" colspan="5" class="border border-gray-300 p-1">ระดับความคิดเห็น</th>
-                            </tr>
-                            <tr class="bg-gray-200">
-                                <th scope="col" class="border border-gray-300 p-1">5</th>
-                                <th scope="col" class="border border-gray-300 p-1">4</th>
-                                <th scope="col" class="border border-gray-300 p-1">3</th>
-                                <th scope="col" class="border border-gray-300 p-1">2</th>
-                                <th scope="col" class="border border-gray-300 p-1">1</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php for ($i = 0; $i < count($uf_topic); $i++) { ?>
-                                <tr class='odd:bg-white even:bg-gray-100'>
-                                    <td class='border border-gray-300 py-2 text-center'><?= $i + 1 ?></td>
-                                    <td class="border border-gray-300 py-2"><textarea readonly name="uf_topic[]" class="w-full h-28 sm:h-16 border border-gray-300 rounded px-2 py-1"><?= $uf_topic[$i] ?></textarea></td>
-                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-8 sm:w-full h-10 flex items-center" type="radio" name="uf_score[<?= $i ?>]" value="พึงพอใจมากที่สุด"></td>
-                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-8 sm:w-full h-10 flex items-center" type="radio" name="uf_score[<?= $i ?>]" value="พึงพอใจมาก"></td>
-                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-8 sm:w-full h-10 flex items-center" type="radio" name="uf_score[<?= $i ?>]" value="พึงพอใจปานกลาง"></td>
-                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-8 sm:w-full h-10 flex items-center" type="radio" name="uf_score[<?= $i ?>]" value="พึงพอใจน้อย"></td>
-                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-8 sm:w-full h-10 flex items-center" type="radio" name="uf_score[<?= $i ?>]" value="พึงพอใจน้อยที่สุด"></td>
-                                </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table>
-
-                    <!-- Section 4 -->
-                    <label for="" class="block text-lg my-5"><label class="text-lg font-bold mb-2">ด้านที่ 4 </label>ด้านการใช้งานรักษาความปลอดภัยของข้อมูลในระบบ</label>
-                    <input disabled type="hidden" name="" value="ด้านการใช้งานรักษาความปลอดภัยของข้อมูลในระบบ">
-
-                    <table class="w-full border border-gray-300 text-center my-3">
-                        <thead>
-                            <tr class="bg-gray-200">
-                                <th scope="col" rowspan="2" class="border border-gray-300 p-1">ที่</th>
-                                <th scope="col" rowspan="2" class="border border-gray-300 p-1">หัวข้อ</th>
-                                <th scope="col" colspan="5" class="border border-gray-300 p-1">ระดับความคิดเห็น</th>
-                            </tr>
-                            <tr class="bg-gray-200">
-                                <th scope="col" class="border border-gray-300 p-1">5</th>
-                                <th scope="col" class="border border-gray-300 p-1">4</th>
-                                <th scope="col" class="border border-gray-300 p-1">3</th>
-                                <th scope="col" class="border border-gray-300 p-1">2</th>
-                                <th scope="col" class="border border-gray-300 p-1">1</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php for ($i = 0; $i < count($ss_topic); $i++) { ?>
-                                <tr class='odd:bg-white even:bg-gray-100'>
-                                    <td class='border border-gray-300 py-2 text-center'><?= $i + 1 ?></td>
-                                    <td class="border border-gray-300 py-2"><textarea readonly name="ss_topic[]" class="w-full h-28 sm:h-16 border border-gray-300 rounded px-2 py-1"><?= $ss_topic[$i] ?></textarea></td>
-                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-8 sm:w-full h-10 flex items-center" type="radio" name="ss_score[<?= $i ?>]" value="พึงพอใจมากที่สุด"></td>
-                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-8 sm:w-full h-10 flex items-center" type="radio" name="ss_score[<?= $i ?>]" value="พึงพอใจมาก"></td>
-                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-8 sm:w-full h-10 flex items-center" type="radio" name="ss_score[<?= $i ?>]" value="พึงพอใจปานกลาง"></td>
-                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-8 sm:w-full h-10 flex items-center" type="radio" name="ss_score[<?= $i ?>]" value="พึงพอใจน้อย"></td>
-                                    <td class="border border-gray-300 py-2 text-center"><input required class="w-8 sm:w-full h-10 flex items-center" type="radio" name="ss_score[<?= $i ?>]" value="พึงพอใจน้อยที่สุด"></td>
-                                </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table>
+                                <table class="w-full border border-gray-300 text-center my-3">
+                                    <thead>
+                                        <tr class="bg-gray-200">
+                                            <th scope="col" rowspan="2" class="border border-gray-300 p-1">ที่</th>
+                                            <th scope="col" rowspan="2" class="border border-gray-300 p-1">หัวข้อ</th>
+                                            <th scope="col" colspan="5" class="border border-gray-300 p-1">ระดับความคิดเห็น</th>
+                                        </tr>
+                                        <tr class="bg-gray-200">
+                                            <th scope="col" class="border border-gray-300 p-1">5</th>
+                                            <th scope="col" class="border border-gray-300 p-1">4</th>
+                                            <th scope="col" class="border border-gray-300 p-1">3</th>
+                                            <th scope="col" class="border border-gray-300 p-1">2</th>
+                                            <th scope="col" class="border border-gray-300 p-1">1</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="section<?= $t + 1 ?>-tbody">
+                                        <?php for ($b = 0; $b < count($sub_topic_ex[$t]); $b++) { ?>
+                                            <tr class='odd:bg-white even:bg-gray-100'>
+                                                <td class='border border-gray-300 py-2 text-center'><?= $b + 1 ?></td>
+                                                <td class="border border-gray-300 py-2"><textarea readonly name="sub_topic<?= $t + 1 ?>[]" class="w-full h-28 sm:h-16 border border-gray-300 rounded px-2 py-1"><?= $sub_topic_ex[$t][$b] ?></textarea></td>
+                                                <td class="border border-gray-300 py-2 text-center px-0.5"><input required class="w-full h-10 flex items-center" type="radio" name="ur_score<?= $t + 1 ?>[<?= $b ?>]" value="พึงพอใจมากที่สุด"></td>
+                                                <td class="border border-gray-300 py-2 text-center px-0.5"><input required class="w-full h-10 flex items-center" type="radio" name="ur_score<?= $t + 1 ?>[<?= $b ?>]" value="พึงพอใจมาก"></td>
+                                                <td class="border border-gray-300 py-2 text-center px-0.5"><input required class="w-full h-10 flex items-center" type="radio" name="ur_score<?= $t + 1 ?>[<?= $b ?>]" value="พึงพอใจปานกลาง"></td>
+                                                <td class="border border-gray-300 py-2 text-center px-0.5"><input required class="w-full h-10 flex items-center" type="radio" name="ur_score<?= $t + 1 ?>[<?= $b ?>]" value="พึงพอใจน้อย"></td>
+                                                <td class="border border-gray-300 py-2 text-center px-0.5"><input required class="w-full h-10 flex items-center" type="radio" name="ur_score<?= $t + 1 ?>[<?= $b ?>]" value="พึงพอใจน้อยที่สุด"></td>
+                                            </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <?php $t++;
+                        } ?>
+                    </div>
 
                     <!-- comment -->
                     <label for="" class="block text-lg my-5"><label class="text-lg font-bold mb-2">ตอนที่ 3 </label>ข้อเสนอแนะอื่นๆ</label>

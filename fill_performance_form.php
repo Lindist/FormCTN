@@ -45,27 +45,27 @@ if (isset($_GET['id'])) {
         $setfeature_ex[$index] = preg_split("/Ϫ/", $topic);
     }
 
-    echo $form_name;
-    echo "<br>";
-    echo $ad;
-    echo "<br>";
-    echo "// ข้อมูลพื้นฐาน //";
-    print_r($form_info); // ข้อมูลพื้นฐาน
-    echo "<br>";
-    echo count($form_info);
-    echo "// ข้อมูลพื้นฐานย่อย //";
-    print_r($sub_info_ex); // ข้อมูลพื้นฐานย่อย
-    echo "<br>";
-    echo "// หัวข้อด้าน //";
-    print_r($form_topic); // หัวข้อด้าน
-    echo "<br>";
-    echo count($form_topic);
-    echo "<br>";
-    echo "// คุณสมบัติด้านเทคนิค //";
-    print_r($feature_ex); // คุณสมบัติด้านเทคนิค
-    echo "<br>";
-    echo "// คุณสมบัติที่ตั้งไว้ //";
-    print_r($setfeature_ex); // คุณสมบัติที่ตั้งไว้
+    // echo $form_name;
+    // echo "<br>";
+    // echo $ad;
+    // echo "<br>";
+    // echo "// ข้อมูลพื้นฐาน //";
+    // print_r($form_info); // ข้อมูลพื้นฐาน
+    // echo "<br>";
+    // echo count($form_info);
+    // echo "// ข้อมูลพื้นฐานย่อย //";
+    // print_r($sub_info_ex); // ข้อมูลพื้นฐานย่อย
+    // echo "<br>";
+    // echo "// หัวข้อด้าน //";
+    // print_r($form_topic); // หัวข้อด้าน
+    // echo "<br>";
+    // echo count($form_topic);
+    // echo "<br>";
+    // echo "// คุณสมบัติด้านเทคนิค //";
+    // print_r($feature_ex); // คุณสมบัติด้านเทคนิค
+    // echo "<br>";
+    // echo "// คุณสมบัติที่ตั้งไว้ //";
+    // print_r($setfeature_ex); // คุณสมบัติที่ตั้งไว้
 
     if ($_SESSION['user_id'] == $member_id) {
         header("Location: index.php");
@@ -73,8 +73,6 @@ if (isset($_GET['id'])) {
 } else {
     header("Location: index.php");
 }
-
-
 
 ?>
 
