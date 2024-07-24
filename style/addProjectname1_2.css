@@ -20,6 +20,7 @@
     height: auto;
     border: 1px solid #0000003d;
     border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
 }
 .containerformodal ,.moreaddproject{
     position: relative;
@@ -89,7 +90,19 @@ button:hover{
     from {transform: scale(0)} 
     to {transform: scale(1)}
 }
-
+.editColor{
+  background-color: #F6FB7A;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  border: 2px solid #FFDE4D;
+}
+.alertedit{
+  font-weight: 400;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 2px solid #FFC700;
+  background-color: #F4CE14;
+}
 
 .close {
     position: absolute;
@@ -121,7 +134,7 @@ button:hover{
     display: flex;
     margin: 8px 0;
   }
-  .input-box {
+  .input-box,.input-editbox {
     width: 100%;
     padding: 12px 20px;
     box-sizing: border-box;
@@ -134,7 +147,8 @@ button:hover{
     justify-content: flex-start;
     position: relative;
   }
-  .input-box::before {
+  .input-box::before,
+  .input-editbox::before {
     content: "เปิด";
     position: absolute;
     font-size: 18px;
@@ -144,14 +158,16 @@ button:hover{
     width: fit-content;
     height: fit-content;
   }
-  .input-box.open::before {
+  .input-box.open::before,
+  .input-editbox.open::before {
     content: "ปิด";
   }
-  .input-box:empty::after {
+  .input-box:empty::after,
+  .input-editbox:empty::after {
     content: "เลือกตัวเลือกที่ต้องการ...";
     color: rgba(0, 0, 0, 0.5);
   }
-  .list {
+  .list,.list1 {
     position: absolute;
     top: 100%;
     left: 0;
@@ -169,10 +185,12 @@ button:hover{
     z-index: 10;
     transition: 0.25s ease-out;
   }
-  .list input {
+  .list input,
+  .list1 input {
     display: none;
   }
-  .list label {
+  .list label,
+  .list1 label {
     display: flex;
     width: 100%;
     align-items: center;
@@ -184,11 +202,14 @@ button:hover{
     position: relative;
   }
   .list label .material-symbols-outlined,
-  .input-box .material-symbols-outlined {
+  .list1 label .material-symbols-outlined,
+  .input-box .material-symbols-outlined,
+  .input-editbox .material-symbols-outlined{
     margin-right: 5px;
     font-size: 22px;
   }
-  .list label:hover {
+  .list label:hover,
+  .list1 label:hover {
     background: rgba(0, 0, 0, 0.08);
   }
   input:checked + label {
@@ -207,5 +228,18 @@ button:hover{
   .open {
     outline: 0.5mm solid #000;
   }
+  @media all and (max-width:800px) {
+    .dropdownforaddproject{
+      width: 100%;
+      height: fit-content;
+      box-sizing: border-box;
+      position: relative;
+      display: flex;
+      margin: 8px 0;
+    }
 
+    #addper_{
+      margin-bottom: 15px;
+    }
+  }
   

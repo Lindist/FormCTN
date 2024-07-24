@@ -71,7 +71,7 @@ $projectedit->execute();
     <link rel="stylesheet" href="style/formstyle.css">
     <link rel="stylesheet" href="style/tabstyle1.css">
     <link rel="stylesheet" href="style/inputsearchstyle.css">
-    <link rel="stylesheet" href="style/addProjectname.css">
+    <link rel="stylesheet" href="style/addProjectname1_2.css">
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Icons+Sharp|Material+Icons+Two+Tone"
       rel="stylesheet"
@@ -142,6 +142,7 @@ $projectedit->execute();
                     <?php while($rowproject = $project->fetch(PDO::FETCH_ASSOC)){ ?>
                         <input type="hidden" name="" id="pd" value="<?= $rowproject['project_id']; ?>">
                         <hr style="border-width: 0.7mm; margin: 2rem 0;">
+                        <div class="editManager">
                         <div class="isEdit" id="editpro<?= $rowproject['project_id']; ?>">
                             <label for=""><b>ชื่อโครงการ</b></label>
                             <input type="text" id="p1" value="<?= $rowproject['project_name']; ?>" readonly>
@@ -160,12 +161,13 @@ $projectedit->execute();
                         </div>
                             <div id="cancelproject<?= $rowproject['project_id']; ?>" class="ispressedit d-none">
                                 <button type="submit" class="confirmbtn">ยืนยันการแก้ไข</button>
-                                <button type="button" class="cancelbtn cancelproject" id="cancelproject<?= $rowproject['project_id']; ?>" onclick="cancelEditproject(<?= $rowproject['project_id']; ?>)" >ยกเลิกการแก้ไข</button>
+                                <button type="button" class="cancelbtn cancelproject" id="cancelproject<?= $rowproject['project_id']; ?>" onclick="cancelEditproject('<?= $rowproject['project_id']; ?>','<?= $rowproject['project_name']; ?>','<?= $rowproject['project_expired']; ?>','<?= $rowproject['project_leveledu']; ?>','<?= $rowproject['project_yearedu']; ?>')" >ยกเลิกการแก้ไข</button>
                             </div>
                             <div id="editproject<?= $rowproject['project_id']; ?>" class="preedit">
                                 <button type="button" class="editbtn editproject" id="editproject<?= $rowproject['project_id']; ?>" onclick="Editproject(<?= $rowproject['project_id']; ?>)">แก้ไขข้อมูลโครงการ</button>
                                 <button type="button" class="cancelbtn" onclick="Delproject(<?= $rowproject['project_id']; ?>)">ลบข้อมูลโครงการ</button>
                             </div>
+                        </div>
                     <?php } ?>
                 <?php } else { ?>
                     <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
@@ -515,8 +517,9 @@ $projectedit->execute();
             element.addEventListener('click', () => {
                 const checkid = element.id.toString();
                 document.querySelectorAll(".preedit").forEach((e,index) => {
+                    document.querySelectorAll(".ispressedit")[index].classList.add('d-none')
+                    e.classList.add('d-none')
                     if(e.id === checkid){
-                        e.classList.add('d-none')
                         document.querySelectorAll(".ispressedit")[index].classList.remove('d-none')
                     }
                 });
@@ -530,15 +533,15 @@ $projectedit->execute();
             element.addEventListener('click', () => {
                 const checkid = element.id.toString();
                 document.querySelectorAll(".ispressedit").forEach((e,index) => {
+                    document.querySelectorAll(".preedit")[index].classList.remove('d-none')
                     if(e.id === checkid){
                         e.classList.toggle('d-none')
-                        document.querySelectorAll(".preedit")[index].classList.remove('d-none')
                     }
                 });
             })
         })
     </script>
-    <script src="script/editproject.js"></script>
+    <script src="script/editproject1.js"></script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script> -->
     <script>
         logout = (event, url) => {
