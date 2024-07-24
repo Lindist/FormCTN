@@ -42,20 +42,20 @@ if (isset($_GET['id'])) {
     // echo "<br>";
     // echo "sub_info_ex = ";
     // print_r($sub_info_ex);
-    echo "<br>";
-    echo $sati_name;
-    echo "<br>";
-    echo "// ข้อมูลพื้นฐาน // ";
-    print_r($sati_info); // ข้อมูลพื้นฐาน
-    echo "<br>";
-    echo "// ข้อมูลพื้นฐานย่อย // ";
-    print_r($sub_info_ex); // ข้อมูลพื้นฐานย่อย
-    echo "<br>";
-    echo "// หัวข้อด้าน // ";
-    print_r($sati_topic); // หัวข้อด้าน
-    echo "<br>";
-    echo "// ข้อมูลแต่ละด้าน // ";
-    print_r($sub_topic_ex); // ข้อมูลแต่ละด้าน
+    // echo "<br>";
+    // echo $sati_name;
+    // echo "<br>";
+    // echo "// ข้อมูลพื้นฐาน // ";
+    // print_r($sati_info); // ข้อมูลพื้นฐาน
+    // echo "<br>";
+    // echo "// ข้อมูลพื้นฐานย่อย // ";
+    // print_r($sub_info_ex); // ข้อมูลพื้นฐานย่อย
+    // echo "<br>";
+    // echo "// หัวข้อด้าน // ";
+    // print_r($sati_topic); // หัวข้อด้าน
+    // echo "<br>";
+    // echo "// ข้อมูลแต่ละด้าน // ";
+    // print_r($sub_topic_ex); // ข้อมูลแต่ละด้าน
 
     // echo "<br>";
     // echo $sati_ep2;
