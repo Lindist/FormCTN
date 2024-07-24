@@ -31,7 +31,7 @@ try{
     }
 
     if($result){
-        $_SESSION['addproject'] = "true";
+        $_SESSION['addproject'] = "เพิ่มข้อมูลโครงการเรียบร้อย";
         header("location: form.php");
     }else{
         echo "Something Wrong";

@@ -6,20 +6,18 @@ Editproject = (idp) => {
             let pname = e.querySelectorAll("#p1");
             editManager[index].classList.add("editColor");
             e.innerHTML = `
-            <form class="" action="addprojecton.php" id="" method="post">
-
             <div for="" style="text-align: center; width: 100%;"><h3>หน้าแก้ไข</h3></div>
             <div for="" style="text-align: center; width: 100%;" class="alertedit">#เมื่ออยู่หน้าแก้ไขจะไม่สามารถแก้ไขข้อมูลส่วนอื่นได้จนกว่าจะกดยืนยันหรือยกเลิกการแก้ไขข้อมูล!!!</div><br>
             <label for="" style="color: red; font-size: 20px;"><b>*</b></label>
             <label for=""><b>ชื่อโครงการ</b></label>
-            <input type="text" id="p1" value="${pname[0].value}">
+            <input type="text" id="p1" class="p1" value="${pname[0].value}">
             <label for="" style="color: red; font-size: 20px;"><b>*</b></label>
             <label for=""><b>วันหมดอายุ</b></label><br>
-            <input type="text" id="pdate${idp}" value="${pname[1].value}">
+            <input type="text" id="pdate${idp}" class="p1" value="${pname[1].value}">
             <label for="" style="color: red; font-size: 20px;"><b>*</b></label>
             <label for=""><b>ระดับการศึกษา</b></label><br>
             <div class="dropdownforaddintro">
-            <input type="text" id="p1" class="input-editbox input-boxA${idp}" value="${pname[2].value}" readonly>
+            <input type="text" id="p1" class="input-editbox input-boxA${idp} p1" value="${pname[2].value}" readonly>
                 <div class="list1">
                     <input type="radio" name="dropD${idp}" id="ideditA${idp}" class="radio7 radio_A${idp}" />
                     <label for="ideditA${idp}">
@@ -37,7 +35,7 @@ Editproject = (idp) => {
             <label for="" style="color: red; font-size: 20px;"><b>*</b></label>
             <label for=""><b>ปีการศึกษา</b></label><br>
             <div class="dropdownforaddintro">
-                <input type="text" id="p1" class="input-editbox input-boxB${idp}" value="${pname[3].value}" readonly>
+                <input type="text" id="p1" class="input-editbox input-boxB${idp} p1" value="${pname[3].value}" readonly>
                 <div class="list1">
                         <input type="radio" name="dropE${idp}" id="idedit14${idp}" class="radio8 radioB${idp}" />
                         <label for="idedit14${idp}">
@@ -55,7 +53,6 @@ Editproject = (idp) => {
                         </label>
                 </div>
             </div>
-            </form>
             `;
         }
     });
@@ -132,8 +129,8 @@ cancelEditproject = (idp,name,expired,leveledu,yearedu) => {
             <label for=""><b>ชื่อโครงการ</b></label>
             <input type="text" id="p1" value="${name}" readonly>
             <div>
-                <button type="button" class="confirmbtn" id="addper_">เพิ่มแบบฟอร์มประเมินประสิทธิภาพ</button>
-                <button type="button" class="confirmbtn" id="addsta_">เพิ่มแบบฟอร์มประเมินความพึงพอใจ</button>
+                <button type="button" class="confirmbtn" id="addper_" onclick="nextToper()">เพิ่มแบบฟอร์มประเมินประสิทธิภาพ</button>
+                <button type="button" class="confirmbtn" id="addsta_" onclick="nextTosta()">เพิ่มแบบฟอร์มประเมินความพึงพอใจ</button>
             </div>
             <label for=""><b>วันหมดอายุ</b></label><br>
             <input type="hidden" name="" id="p1" value="${expired}">
@@ -145,4 +142,14 @@ cancelEditproject = (idp,name,expired,leveledu,yearedu) => {
             `;
         }
     });
+}
+
+Editformcomfirm = (idp) =>{
+    let pname = document.querySelectorAll(".p1");
+    let str = "update_project.php?pro_id=" + idp.toString();
+    let arr = ["&name=","&expired=","&leveledu=","&yearedu="]
+    pname.forEach((e,i) => {
+        str += arr[i] + e.value.toString()
+    })
+    window.location.href = str;
 }

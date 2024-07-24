@@ -139,7 +139,7 @@ $projectedit->execute();
 
             <div class="tab_content_for_project">
                 <?php if($projectcount > 0){ ?>
-                    <?php while($rowproject = $project->fetch(PDO::FETCH_ASSOC)){ ?>
+                    <?php while($rowproject = $project->fetch(PDO::FETCH_ASSOC)){ ?>                       
                         <input type="hidden" name="" id="pd" value="<?= $rowproject['project_id']; ?>">
                         <hr style="border-width: 0.7mm; margin: 2rem 0;">
                         <div class="editManager">
@@ -147,8 +147,8 @@ $projectedit->execute();
                             <label for=""><b>ชื่อโครงการ</b></label>
                             <input type="text" id="p1" value="<?= $rowproject['project_name']; ?>" readonly>
                             <div>
-                                <button type="button" class="confirmbtn" id="addper_">เพิ่มแบบฟอร์มประเมินประสิทธิภาพ</button>
-                                <button type="button" class="confirmbtn" id="addsta_">เพิ่มแบบฟอร์มประเมินความพึงพอใจ</button>
+                                <button type="button" class="confirmbtn" id="addper_" onclick="nextToper()">เพิ่มแบบฟอร์มประเมินประสิทธิภาพ</button>
+                                <button type="button" class="confirmbtn" id="addsta_" onclick="nextTosta()">เพิ่มแบบฟอร์มประเมินความพึงพอใจ</button>
                             </div>
                             <label for=""><b>วันหมดอายุ</b></label><br>
                             <input type="hidden" name="" id="p1" value="<?= $rowproject['project_expired']; ?>">
@@ -160,7 +160,7 @@ $projectedit->execute();
                             
                         </div>
                             <div id="cancelproject<?= $rowproject['project_id']; ?>" class="ispressedit d-none">
-                                <button type="submit" class="confirmbtn">ยืนยันการแก้ไข</button>
+                                <button type="button" class="confirmbtn" onclick="Editformcomfirm(<?= $rowproject['project_id']; ?>)">ยืนยันการแก้ไข</button>
                                 <button type="button" class="cancelbtn cancelproject" id="cancelproject<?= $rowproject['project_id']; ?>" onclick="cancelEditproject('<?= $rowproject['project_id']; ?>','<?= $rowproject['project_name']; ?>','<?= $rowproject['project_expired']; ?>','<?= $rowproject['project_leveledu']; ?>','<?= $rowproject['project_yearedu']; ?>')" >ยกเลิกการแก้ไข</button>
                             </div>
                             <div id="editproject<?= $rowproject['project_id']; ?>" class="preedit">
@@ -194,10 +194,10 @@ $projectedit->execute();
     <script>
         Swal.fire({
             position: "center",
-            title: "เพิ่มข้อมูลเรียบร้อย",
+            title: "<?= $_SESSION['addproject']; ?>",
             icon: "success",
             showConfirmButton: false,
-            timer: 1000
+            timer: 1500
         });
         const tabs13 = document.querySelectorAll(".tab_btn_pro");
         const all_content13 = document.querySelectorAll(".tab_content_for_project");
@@ -230,7 +230,7 @@ $projectedit->execute();
     <script>
         Swal.fire({
             position: "center",
-            title: "ลบข้อมูลเรียบร้อย",
+            title: "ลบข้อมูลโครงการเรียบร้อย",
             icon: "success",
             showConfirmButton: false,
             timer: 1000
@@ -541,7 +541,7 @@ $projectedit->execute();
             })
         })
     </script>
-    <script src="script/editproject1.js"></script>
+    <script src="script/editproject.js"></script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script> -->
     <script>
         logout = (event, url) => {
@@ -559,6 +559,12 @@ $projectedit->execute();
                 }
             });
         };
+        nextToper = () =>{
+            window.location.href = "insert_performance_form.php";
+        }
+        nextTosta = () =>{
+            window.location.href = "insert_satis_form.php";
+        }
     </script>
 </body>
 
