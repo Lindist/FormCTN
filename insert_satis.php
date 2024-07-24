@@ -31,113 +31,66 @@ if(isset($_POST['class1'])){
 if (isset($_POST['save'])) {
     $sati_ep2 = $_POST['sati_ep2'];
 
-    $sati_gender = implode(",", $_POST['sati_gender']);
-    $sati_type = implode(",", $_POST['sati_type']);
-    $sati_level = implode(",", $_POST['sati_level']);
-    // $sati_comment = $_POST['sati_comment'];
-    
-    $ur_topic = implode("@", $_POST['ur_topic']);
-    $fun_topic = implode("@", $_POST['fun_topic']);
-    $uf_topic = implode("@", $_POST['uf_topic']);
-    $ss_topic = implode("@", $_POST['ss_topic']);
+    $combined_subinfo = [];
+    for ($i = 1; $i <= count($_POST['sati_info']); $i++) {
+        if (isset($_POST['sub_info' . $i])) {
+            $combined_subinfo[$i - 1] = implode("Ϫ", $_POST['sub_info' . $i]);
+        }
+    }
 
-    // echo $sati_ep2. "<br>";
-    // print_r($sati_gender);
+    $combined_subtopic = [];
+    for ($i = 1; $i <= count($_POST['sati_topic']); $i++) {
+        if (isset($_POST['sub_topic' . $i])) {
+            $combined_subtopic[$i - 1] = implode("Ϫ", $_POST['sub_topic' . $i]);
+        }
+    }
+
+    $sati_info = implode("Ϫ", $_POST['sati_info']);
+
+    $sub_info = implode("ꓘ", $combined_subinfo);
+
+    $sati_topic = implode("Ϫ", $_POST['sati_topic']);
+
+    $sub_topic = implode("ꓘ", $combined_subtopic);
+
+    // $sub_info_ex = preg_split("/ꓘ/", $sub_info);
+    
+    // echo $sati_ep2;
     // echo "<br>";
-    // print_r($sati_type);
+    // echo "// ข้อมูลพื้นฐาน //";
+    // echo $sati_info; // ข้อมูลพื้นฐาน
     // echo "<br>";
-    // print_r($sati_level);
+    // echo count($_POST['sati_info']);
+    // echo "// ข้อมูลพื้นฐานย่อย //";
+    // print_r($sub_info); // ข้อมูลพื้นฐานย่อย
     // echo "<br>";
-    // print_r($ur_topic);
+    // echo "// หัวข้อด้าน //";
+    // print_r($sati_topic); // หัวข้อด้าน
     // echo "<br>";
-    // // print_r($ur_score);
-    // echo "<br>";
-    // print_r($fun_topic);
-    // echo "<br>";
-    // // echo $fun_score;
-    // echo "<br>";
-    // print_r($uf_topic);
-    // echo "<br>";
-    // // echo $uf_score;
-    // echo "<br>";
-    // print_r($ss_topic);
-    // echo "<br>";
-    // // echo $ss_score;
-    // echo "<br>";
-    // echo "<br>comment<br>";
-    // echo $sati_comment;
+    // echo count($_POST['sati_topic']);
+    // echo "// ข้อมูลแต่ละด้าน //";
+    // print_r($sub_topic); // ข้อมูลแต่ละด้าน
+
 }
 
 if (empty($sati_ep2)) {
     $_SESSION['error'] = "กรุณากรอกชื่อ โปรเจค";
     header("location: insert_satis_form.php");
     exit;
-} else if (empty(array_filter($_POST['sati_gender']))) {
-    $_SESSION['error'] = "กรุณากรอก เพศ อย่างน้อย 1 เพศ";
+} else if (empty($sati_info)) {
+    $_SESSION['error'] = "กรุณากรอก ข้อมูลพื้นฐาน อย่างน้อย 1 ประเภท";
     header("location: insert_satis_form.php");
     exit;
-} else if (empty(array_filter($_POST['sati_type']))) {
-    $_SESSION['error'] = "กรุณากรอก ประเภทผู้ใช้อย่างน้อย 1 ประเภท";
-    header("location: insert_satis_form.php");
-    exit;
-} else if (empty(array_filter($_POST['sati_level']))) {
-    $_SESSION['error'] = "กรุณากรอก ระดับการศึกษา อย่างน้อย 1 ระดับ";
-    header("location: insert_satis_form.php");
-    exit;
-} else if (empty($ur_topic)) {
-    $_SESSION['error'] = "กรุณากรอกด้านที่ 1 อย่างน้อย 1 หัวข้อ";
-    header("location: insert_satis_form.php");
-    exit;
-} else if (empty($fun_topic)) {
-    $_SESSION['error'] = "กรุณากรอกด้านที่ 2 อย่างน้อย 1 หัวข้อ";
-    header("location: insert_satis_form.php");
-    exit;
-} else if (empty($uf_topic)) {
-    $_SESSION['error'] = "กรุณากรอกด้านที่ 3 อย่างน้อย 1 หัวข้อ";
-    header("location: insert_satis_form.php");
-    exit;
-} else if (empty($ss_topic)) {
-    $_SESSION['error'] = "กรุณากรอกด้านที่ 4 อย่างน้อย 1 หัวข้อ";
+} else if (empty($sati_topic)) {
+    $_SESSION['error'] = "กรุณากรอก ด้าน อย่างน้อย 1 ด้าน";
     header("location: insert_satis_form.php");
     exit;
 } else {
     try {
         if (!isset($_SESSION['error'])) {
 
-            $tb_user_req = $conn->prepare("INSERT INTO tb_user_req(ur_topic) VALUES(?)");
-            $tb_user_req->execute([$ur_topic]);
-
-            $tb_function = $conn->prepare("INSERT INTO tb_function(fun_topic) VALUES(?)");
-            $tb_function->execute([$fun_topic]);
-
-            $tb_uesful = $conn->prepare("INSERT INTO tb_uesful(uf_topic) VALUES(?)");
-            $tb_uesful->execute([$uf_topic]);
-
-            $tb_seurity = $conn->prepare("INSERT INTO tb_seurity(ss_topic) VALUES(?)");
-            $tb_seurity->execute([$ss_topic]);
-
-            $sql_tb_user_req = $conn->prepare("SELECT * FROM tb_user_req WHERE ur_topic = :ur_topic");
-            $sql_tb_user_req->bindParam(":ur_topic", $ur_topic);
-            $sql_tb_user_req->execute();
-            $tb_user_req = $sql_tb_user_req->fetch();
-
-            $sql_tb_function = $conn->prepare("SELECT * FROM tb_function WHERE fun_topic = :fun_topic");
-            $sql_tb_function->bindParam(":fun_topic", $fun_topic);
-            $sql_tb_function->execute();
-            $tb_function = $sql_tb_function->fetch();
-
-            $sql_tb_uesful = $conn->prepare("SELECT * FROM tb_uesful WHERE uf_topic = :uf_topic");
-            $sql_tb_uesful->bindParam(":uf_topic", $uf_topic);
-            $sql_tb_uesful->execute();
-            $tb_uesful = $sql_tb_uesful->fetch();
-
-            $sql_tb_seurity = $conn->prepare("SELECT * FROM tb_seurity WHERE ss_topic = :ss_topic");
-            $sql_tb_seurity->bindParam(":ss_topic", $ss_topic);
-            $sql_tb_seurity->execute();
-            $tb_seurity = $sql_tb_seurity->fetch();
-
-            $tb_satisfied = $conn->prepare("INSERT INTO tb_satisfied(sati_ep2, sati_gender, sati_level, sati_type, ur_id, fun_id, uf_id, ss_id, member_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            $tb_satisfied->execute([$sati_ep2, $sati_gender, $sati_level, $sati_type, $tb_user_req['ur_id'], $tb_function['fun_id'], $tb_uesful['uf_id'], $tb_seurity['ss_id'],$user_id]);
+            $tb_satisfied = $conn->prepare("INSERT INTO tb_satisfied(sati_ep2, sati_info, sub_info, sati_topic, sub_topic, member_id) VALUES (?, ?, ?, ?, ?, ?)");
+            $tb_satisfied->execute([$sati_ep2, $sati_info, $sub_info, $sati_topic, $sub_topic, $user_id]);
 
             header("location: form.php");
 
