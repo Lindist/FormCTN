@@ -30,7 +30,6 @@ if (isset($_POST['save'])) {
         }
     }
 
-    $combined_subtopic = [];
     for ($i = 1; $i <= count($_POST['form_topic']); $i++) {
         if (isset($_POST['feature' . $i]) && isset($_POST['setfeature' . $i])) {
             $combined_feature[$i - 1] = implode("Ϫ", $_POST['feature' . $i]);

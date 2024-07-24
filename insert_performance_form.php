@@ -13,18 +13,6 @@ if (isset($_GET['class'])) {
     $class = 'nohave';
 }
 
-$keys = [];
-
-for ($i = 0; $i < 10; $i++) { // Replace 10 with any large number or condition
-    $keys[$i] = null;
-}
-
-$formname = isset($_SESSION['formname']) && $_SESSION['formname'] ? $_SESSION['formname'] : '';
-unset($_SESSION['formname']); // Clear the session flag after use
-
-$ad = isset($_SESSION['ad']) && $_SESSION['ad'] ? $_SESSION['ad'] : '';
-unset($_SESSION['ad']); // Clear the session flag after use
-
 ?>
 
 <!doctype html>
@@ -75,10 +63,10 @@ unset($_SESSION['ad']); // Clear the session flag after use
             <!-- Title_Content -->
             <div class="mb-4">
                 <label class="block text-lg font-bold mb-2">ชื่อแบบฟอร์ม</label>
-                <input type="text" value="<?= $formname ?>" name="formname" id="formname" class="block w-full border border-gray-300 rounded px-3 py-2 mb-3">
+                <input type="text" name="formname" id="formname" class="block w-full border border-gray-300 rounded px-3 py-2 mb-3" required>
 
                 <label class="block text-lg font-bold mb-2">คำชี้แจง</label>
-                <textarea name="ad" class="block w-full border border-gray-300 rounded px-3 py-2" rows="5"><?= $ad ?></textarea>
+                <textarea name="ad" class="block w-full border border-gray-300 rounded px-3 py-2" rows="5" required></textarea>
             </div>
 
             <!-- Body_Content -->
@@ -222,7 +210,7 @@ unset($_SESSION['ad']); // Clear the session flag after use
                             // สร้าง div ของด้านใหม่
                             const newSection = document.createElement('div');
                             newSection.id = 'section-' + sectionNumber;
-                            newSection.className = 'mt-6'
+                            newSection.className = 'mt-12'
 
                             // HTML สำหรับด้านใหม่
                             newSection.innerHTML = `
@@ -242,8 +230,8 @@ unset($_SESSION['ad']); // Clear the session flag after use
                                             <tbody>
                                                 <tr class="odd:bg-white even:bg-gray-100">
                                                     <td class="border border-gray-300 py-2">1</td>
-                                                    <td class="border border-gray-300 py-2"><textarea name="feature${sectionNumber}[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
-                                                    <td class="border border-gray-300 py-2"><textarea name="setfeature${sectionNumber}[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
+                                                    <td class="border border-gray-300 py-2"><textarea name="feature${sectionNumber}[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center" required></textarea></td>
+                                                    <td class="border border-gray-300 py-2"><textarea name="setfeature${sectionNumber}[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center" required></textarea></td>
                                                     <td class="border border-gray-300 py-2"><textarea disabled name="" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                                                     <td class="border border-gray-300 py-2"><textarea disabled name="" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                                                 </tr>

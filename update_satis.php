@@ -36,21 +36,21 @@ if (isset($_POST['update'])) {
 
     $sub_topic = implode("ꓘ", $combined_subtopic);
     
-    echo $sati_ep2;
-    echo "<br>";
-    echo "// ข้อมูลพื้นฐาน //";
-    echo $sati_info; // ข้อมูลพื้นฐาน
-    echo "<br>";
-    echo count($_POST['sati_info']);
-    echo "// ข้อมูลพื้นฐานย่อย //";
-    print_r($sub_info); // ข้อมูลพื้นฐานย่อย
-    echo "<br>";
-    echo "// หัวข้อด้าน //";
-    print_r($sati_topic); // หัวข้อด้าน
-    echo "<br>";
-    echo count($_POST['sati_topic']);
-    echo "// ข้อมูลแต่ละด้าน //";
-    print_r($sub_topic); // ข้อมูลแต่ละด้าน
+    // echo $sati_ep2;
+    // echo "<br>";
+    // echo "// ข้อมูลพื้นฐาน //";
+    // echo $sati_info; // ข้อมูลพื้นฐาน
+    // echo "<br>";
+    // echo count($_POST['sati_info']);
+    // echo "// ข้อมูลพื้นฐานย่อย //";
+    // print_r($sub_info); // ข้อมูลพื้นฐานย่อย
+    // echo "<br>";
+    // echo "// หัวข้อด้าน //";
+    // print_r($sati_topic); // หัวข้อด้าน
+    // echo "<br>";
+    // echo count($_POST['sati_topic']);
+    // echo "// ข้อมูลแต่ละด้าน //";
+    // print_r($sub_topic); // ข้อมูลแต่ละด้าน
 
 }
 

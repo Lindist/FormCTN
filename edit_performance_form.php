@@ -44,27 +44,27 @@ if (isset($_GET['id'])) {
         $setfeature_ex[$index] = preg_split("/Ϫ/", $topic);
     }
 
-    echo $formname;
-    echo "<br>";
-    echo $ad;
-    echo "<br>";
-    echo "// ข้อมูลพื้นฐาน //";
-    print_r($form_info); // ข้อมูลพื้นฐาน
-    echo "<br>";
-    echo count($form_info);
-    echo "// ข้อมูลพื้นฐานย่อย //";
-    print_r($sub_info_ex); // ข้อมูลพื้นฐานย่อย
-    echo "<br>";
-    echo "// หัวข้อด้าน //";
-    print_r($form_topic); // หัวข้อด้าน
-    echo "<br>";
-    echo count($form_topic);
-    echo "<br>";
-    echo "// คุณสมบัติด้านเทคนิค //";
-    print_r($feature_ex); // คุณสมบัติด้านเทคนิค
-    echo "<br>";
-    echo "// คุณสมบัติที่ตั้งไว้ //";
-    print_r($setfeature_ex); // คุณสมบัติที่ตั้งไว้
+    // echo $formname;
+    // echo "<br>";
+    // echo $ad;
+    // echo "<br>";
+    // echo "// ข้อมูลพื้นฐาน //";
+    // print_r($form_info); // ข้อมูลพื้นฐาน
+    // echo "<br>";
+    // echo count($form_info);
+    // echo "// ข้อมูลพื้นฐานย่อย //";
+    // print_r($sub_info_ex); // ข้อมูลพื้นฐานย่อย
+    // echo "<br>";
+    // echo "// หัวข้อด้าน //";
+    // print_r($form_topic); // หัวข้อด้าน
+    // echo "<br>";
+    // echo count($form_topic);
+    // echo "<br>";
+    // echo "// คุณสมบัติด้านเทคนิค //";
+    // print_r($feature_ex); // คุณสมบัติด้านเทคนิค
+    // echo "<br>";
+    // echo "// คุณสมบัติที่ตั้งไว้ //";
+    // print_r($setfeature_ex); // คุณสมบัติที่ตั้งไว้
 
 } else {
     header("Location: index.php");
@@ -114,12 +114,12 @@ if (isset($_GET['id'])) {
             <!-- Title_Content -->
             <div class="mb-4">
                 <label class="block text-lg font-bold mb-2">ชื่อแบบฟอร์ม</label>
-                <input type="text" value="<?= $row['form_name'] ?>" name="formname" id="formname" class="block w-full border border-gray-300 rounded px-3 py-2 mb-3">
+                <input type="text" value="<?= $row['form_name'] ?>" name="formname" id="formname" class="block w-full border border-gray-300 rounded px-3 py-2 mb-3" required>
 
                 <input type="hidden" name="id" class="block border" value="<?= $row['form_id'] ?>">
 
                 <label class="block text-lg font-bold mb-2">คำชี้แจง</label>
-                <textarea name="ad" class="block w-full border border-gray-300 rounded px-3 py-2" rows="5"><?= $row['form_ad'] ?></textarea>
+                <textarea name="ad" class="block w-full border border-gray-300 rounded px-3 py-2" rows="5" required><?= $row['form_ad'] ?></textarea>
             </div>
 
             <!-- Body_Content -->
@@ -279,7 +279,7 @@ if (isset($_GET['id'])) {
                     <div id="sections-container">
                         <?php $t = 0; ?>
                         <?php while ($t < count($form_topic)) { ?>
-                            <div id="section-<?= $t + 1 ?>" class="mt-6">
+                            <div id="section-<?= $t + 1 ?>" class="mt-12">
                                 <label for="" class="block text-lg mb-5"><label class="text-lg font-bold mb-2">ด้านที่ <?= $t + 1 ?> </label>ด้าน<input type="text" name="form_topic[]" class="p-1 text-lg border border-gray-300 rounded w-76 sm:w-86 md:w-96 ml-1" value="<?= $form_topic[$t] ?>" required></label>
 
                                 <div class="overflow-x-auto my-2">
@@ -297,8 +297,8 @@ if (isset($_GET['id'])) {
                                             <?php for ($b = 0; $b < count($feature_ex[$t]); $b++) { ?>
                                                 <tr class="odd:bg-white even:bg-gray-100">
                                                     <td class="border border-gray-300 py-2"><?= $b + 1 ?></td>
-                                                    <td class="border border-gray-300 py-2"><textarea name="feature<?= $t + 1 ?>[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"><?= $feature_ex[$t][$b] ?></textarea></td>
-                                                    <td class="border border-gray-300 py-2"><textarea name="setfeature<?= $t + 1 ?>[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"><?= $setfeature_ex[$t][$b] ?></textarea></td>
+                                                    <td class="border border-gray-300 py-2"><textarea name="feature<?= $t + 1 ?>[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center" required><?= $feature_ex[$t][$b] ?></textarea></td>
+                                                    <td class="border border-gray-300 py-2"><textarea name="setfeature<?= $t + 1 ?>[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center" required><?= $setfeature_ex[$t][$b] ?></textarea></td>
                                                     <td class="border border-gray-300 py-2"><textarea disabled name="" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                                                     <td class="border border-gray-300 py-2"><textarea disabled name="" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                                                 </tr>
@@ -322,7 +322,7 @@ if (isset($_GET['id'])) {
 
                                 const newTopicContainer = document.createElement('div');
                                 newTopicContainer.id = `section-${index}`;
-                                newTopicContainer.className = 'mt-6';
+                                newTopicContainer.className = 'mt-12';
 
                                 newTopicContainer.innerHTML = `
                                     <label for="" class="block text-lg mb-5"><label class="text-lg font-bold mb-2">ด้านที่ ${index} </label>ด้าน<input type="text" name="form_topic[]" class="p-1 text-lg border border-gray-300 rounded w-76 sm:w-86 md:w-96 ml-1" required></label>
@@ -340,8 +340,8 @@ if (isset($_GET['id'])) {
                                         <tbody id="section${index}-tbody">
                                             <tr class="odd:bg-white even:bg-gray-100">
                                                 <td class="border border-gray-300 py-2">1</td>
-                                                <td class="border border-gray-300 py-2"><textarea name="feature${index}[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
-                                                <td class="border border-gray-300 py-2"><textarea name="setfeature${index}[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
+                                                <td class="border border-gray-300 py-2"><textarea name="feature${index}[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center" required></textarea></td>
+                                                <td class="border border-gray-300 py-2"><textarea name="setfeature${index}[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center" required></textarea></td>
                                                 <td class="border border-gray-300 py-2"><textarea disabled name="" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                                                 <td class="border border-gray-300 py-2"><textarea disabled name="" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                                             </tr>
@@ -364,8 +364,8 @@ if (isset($_GET['id'])) {
                                 newSubTopicField.className = 'odd:bg-white even:bg-gray-100';
                                 newSubTopicField.innerHTML = `
                                     <td class="border border-gray-300 py-2">${subTopicCount + 1}</td>
-                                    <td class="border border-gray-300 py-2"><textarea name="feature${topicIndex}[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
-                                    <td class="border border-gray-300 py-2"><textarea name="setfeature${topicIndex}[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
+                                    <td class="border border-gray-300 py-2"><textarea name="feature${topicIndex}[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center" required></textarea></td>
+                                    <td class="border border-gray-300 py-2"><textarea name="setfeature${topicIndex}[]" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center" required></textarea></td>
                                     <td class="border border-gray-300 py-2"><textarea disabled name="" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                                     <td class="border border-gray-300 py-2"><textarea disabled name="" class="border border-gray-300 rounded w-42 sm:w-56 md:w-80 lg:w-80 xl:w-80 2xl:w-full h-40 px-2 py-1 flex items-center"></textarea></td>
                                 `;
