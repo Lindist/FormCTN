@@ -44,6 +44,13 @@ if (isset($_GET['id'])) {
         $setfeature_ex[$index] = preg_split("/Ϫ/", $topic);
     }
 
+    $query = $conn->prepare("SELECT * FROM project WHERE project_id = :project_id");
+    $query->bindParam(":project_id", $row['project_id']);
+    $query->execute();
+    $rowp = $query->fetch();
+
+    $project_name = $rowp['project_name'];
+
     // echo $formname;
     // echo "<br>";
     // echo $ad;
@@ -114,7 +121,7 @@ if (isset($_GET['id'])) {
             <!-- Title_Content -->
             <div class="mb-4">
                 <label class="block text-lg font-bold mb-2">ชื่อแบบฟอร์ม</label>
-                <input type="text" value="<?= $row['form_name'] ?>" name="formname" id="formname" class="block w-full border border-gray-300 rounded px-3 py-2 mb-3" required>
+                <input type="text" readonly value="<?= $project_name ?>" name="formname" id="formname" class="block w-full border border-gray-300 rounded px-3 py-2 mb-3" required>
 
                 <input type="hidden" name="id" class="block border" value="<?= $row['form_id'] ?>">
 

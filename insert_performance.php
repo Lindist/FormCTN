@@ -72,6 +72,8 @@ if (isset($_POST['save'])) {
 
 }
 
+$_SESSION['pj_id'] = $_POST['pj_id'];
+
 if (empty($formname)) {
     $_SESSION['error'] = "กรุณากรอกชื่อ โปรเจค";
     header("location: insert_performance_form.php");
@@ -88,12 +90,18 @@ if (empty($formname)) {
     $_SESSION['error'] = "กรุณากรอก ด้าน อย่างน้อย 1 ด้าน";
     header("location: insert_performance_form.php");
     exit;
+} else if (empty($combined_subinfo)) {
+    $_SESSION['error'] = "กรุณากรอก ตัวเลือก ข้อมูลพื้นฐาน อย่างน้อย 1 ประเภท";
+    header("location: insert_performance_form.php");
+    exit;
 } else {
     try {
         if (!isset($_SESSION['error'])) {
 
-            $tb_efficiercy_form = $conn->prepare("INSERT INTO tb_efficiercy_form(form_name, form_ad, member_id, form_info, sub_info, form_topic, feature, setfeature) VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
-            $tb_efficiercy_form->execute([$formname, $ad, $user_id, $form_info, $sub_info, $form_topic, $feature, $setfeature]);
+            $tb_efficiercy_form = $conn->prepare("INSERT INTO tb_efficiercy_form(form_name, form_ad, member_id, form_info, sub_info, form_topic, feature, setfeature, project_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $tb_efficiercy_form->execute([$formname, $ad, $user_id, $form_info, $sub_info, $form_topic, $feature, $setfeature, $_SESSION['pj_id']]);
+
+            unset($_SESSION['pj_id']);
 
             header("location: form.php?class=".$class);
 

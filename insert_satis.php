@@ -73,6 +73,8 @@ if (isset($_POST['save'])) {
 
 }
 
+$_SESSION['pj_id'] = $_POST['pj_id'];
+
 if (empty($sati_ep2)) {
     $_SESSION['error'] = "กรุณากรอกชื่อ โปรเจค";
     header("location: insert_satis_form.php");
@@ -85,12 +87,18 @@ if (empty($sati_ep2)) {
     $_SESSION['error'] = "กรุณากรอก ด้าน อย่างน้อย 1 ด้าน";
     header("location: insert_satis_form.php");
     exit;
+} else if (empty($combined_subinfo)) {
+    $_SESSION['error'] = "กรุณากรอก ตัวเลือก ข้อมูลพื้นฐาน อย่างน้อย 1 ประเภท";
+    header("location: insert_performance_form.php");
+    exit;
 } else {
     try {
         if (!isset($_SESSION['error'])) {
 
-            $tb_satisfied = $conn->prepare("INSERT INTO tb_satisfied(sati_ep2, sati_info, sub_info, sati_topic, sub_topic, member_id) VALUES (?, ?, ?, ?, ?, ?)");
-            $tb_satisfied->execute([$sati_ep2, $sati_info, $sub_info, $sati_topic, $sub_topic, $user_id]);
+            $tb_satisfied = $conn->prepare("INSERT INTO tb_satisfied(sati_ep2, sati_info, sub_info, sati_topic, sub_topic, member_id, project_id) VALUES (?, ?, ?, ?, ?, ?, ?)");
+            $tb_satisfied->execute([$sati_ep2, $sati_info, $sub_info, $sati_topic, $sub_topic, $user_id, $_SESSION['pj_id']]);
+
+            unset($_SESSION['pj_id']);
 
             header("location: form.php");
 
