@@ -58,17 +58,17 @@ if (isset($_POST['save'])) {
     // echo "<br>";
     // echo count($_POST['form_info']);
     // echo "// ข้อมูลพื้นฐานย่อย //";
-    // print_r($sub_info); // ข้อมูลพื้นฐานย่อย
+    // print_r($combined_subinfo); // ข้อมูลพื้นฐานย่อย
     // echo "<br>";
     // echo "// หัวข้อด้าน //";
     // print_r($form_topic); // หัวข้อด้าน
     // echo "<br>";
     // echo count($_POST['form_topic']);
     // echo "// คุณสมบัติด้านเทคนิค //";
-    // print_r($feature); // คุณสมบัติด้านเทคนิค
+    // print_r($combined_feature); // คุณสมบัติด้านเทคนิค
     // echo "<br>";
     // echo "// คุณสมบัติที่ตั้งไว้ //";
-    // print_r($setfeature); // คุณสมบัติที่ตั้งไว้
+    // print_r($combined_setfeature); // คุณสมบัติที่ตั้งไว้
 
 }
 

@@ -85,19 +85,19 @@ if (check_empty($sub_info)) {
     $_SESSION['error'] = "กรุณากรอกข้อมูลพ์้นฐาน ให้ครบ";
     header("location: fill_performance_form.php?id=".$form_id);
     exit;
-} else if (check_empty($feature)) {
+} else if (check_empty($combined_feature)) {
     $_SESSION['error'] = "กรุณากรอกคุณสมบัติด้านเทคนิค ให้ครบ";
     header("location: fill_performance_form.php?id=".$form_id);
     exit;
-} else if (check_empty($setfeature)) {
+} else if (check_empty($combined_setfeature)) {
     $_SESSION['error'] = "กรุณากรอกคุณสมบัติที่ตั้งไว้ ให้ครบ";
     header("location: fill_performance_form.php?id=".$form_id);
     exit;
-} else if (check_empty($result)) {
+} else if (check_empty($combined_result)) {
     $_SESSION['error'] = "กรุณากรอกคุณสมบัติที่ทำได้ ให้ครบ";
     header("location: fill_performance_form.php?id=".$form_id);
     exit;
-} else if (check_empty($compare)) {
+} else if (check_empty($combined_compare)) {
     $_SESSION['error'] = "กรุณากรอกผลการเปรียบเทียบ ให้ครบ";
     header("location: fill_performance_form.php?id=".$form_id);
     exit;

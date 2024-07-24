@@ -247,7 +247,7 @@ for ($i = 0; $i < 10; $i++) { // Replace 10 with any large number or condition
 
                             // HTML สำหรับด้านใหม่
                             newSection.innerHTML = `
-                                <label class="text-lg"><label class="text-lg font-bold">ด้านที่ ${sectionNumber} </label>ด้าน<input type="text" name="sati_topic[]" class="p-1 text-lg border border-gray-300 rounded w-76 sm:w-86 md:w-96 ml-1" required></label><br>
+                                <label class="text-lg"><label class="text-lg font-bold">ด้านที่ ${sectionNumber} </label>ด้าน<input type="text" name="sati_topic[]" class="p-1 text-lg border border-gray-300 rounded w-full sm:w-86 md:w-96 ml-0 sm:ml-1" required></label><br>
 
                                 <table class="w-full border border-gray-300 text-center my-3">
                                     <thead>

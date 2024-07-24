@@ -280,7 +280,7 @@ if (isset($_GET['id'])) {
                         <?php $t = 0; ?>
                         <?php while ($t < count($form_topic)) { ?>
                             <div id="section-<?= $t + 1 ?>" class="mt-12">
-                                <label for="" class="block text-lg mb-5"><label class="text-lg font-bold mb-2">ด้านที่ <?= $t + 1 ?> </label>ด้าน<input type="text" name="form_topic[]" class="p-1 text-lg border border-gray-300 rounded w-76 sm:w-86 md:w-96 ml-1" value="<?= $form_topic[$t] ?>" required></label>
+                                <label for="" class="block text-lg mb-5"><label class="text-lg font-bold mb-2">ด้านที่ <?= $t + 1 ?> </label>ด้าน<input type="text" name="form_topic[]" class="p-1 text-lg border border-gray-300 rounded w-full sm:w-86 md:w-96 ml-0 sm:ml-1" value="<?= $form_topic[$t] ?>" required></label>
 
                                 <div class="overflow-x-auto my-2">
                                     <table class="w-full border border-gray-300 text-center">
@@ -325,7 +325,7 @@ if (isset($_GET['id'])) {
                                 newTopicContainer.className = 'mt-12';
 
                                 newTopicContainer.innerHTML = `
-                                    <label for="" class="block text-lg mb-5"><label class="text-lg font-bold mb-2">ด้านที่ ${index} </label>ด้าน<input type="text" name="form_topic[]" class="p-1 text-lg border border-gray-300 rounded w-76 sm:w-86 md:w-96 ml-1" required></label>
+                                    <label for="" class="block text-lg mb-5"><label class="text-lg font-bold mb-2">ด้านที่ ${index} </label>ด้าน<input type="text" name="form_topic[]" class="p-1 text-lg border border-gray-300 rounded w-full sm:w-86 md:w-96 ml-0 sm:ml-1" required></label>
                                     <div class="overflow-x-auto my-2">
                                     <table class="w-full border border-gray-300 text-center">
                                         <thead>

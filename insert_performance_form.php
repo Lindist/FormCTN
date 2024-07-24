@@ -214,7 +214,7 @@ if (isset($_GET['class'])) {
 
                             // HTML สำหรับด้านใหม่
                             newSection.innerHTML = `
-                                    <label for="" class="block text-lg my-5"><label class="text-lg font-bold mb-2">ด้านที่ ${sectionNumber} </label>ด้าน<input type="text" name="form_topic[]" class="p-1 text-lg border border-gray-300 rounded w-76 sm:w-86 md:w-96 ml-1" required></label>
+                                    <label for="" class="block text-lg my-5"><label class="text-lg font-bold mb-2">ด้านที่ ${sectionNumber} </label>ด้าน<input type="text" name="form_topic[]" class="p-1 text-lg border border-gray-300 rounded w-full sm:w-86 md:w-96 ml-0 sm:ml-1" required></label>
 
                                     <div class="overflow-x-auto my-2">
                                         <table class="w-full border border-gray-300 text-center">
