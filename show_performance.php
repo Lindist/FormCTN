@@ -9,45 +9,39 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-    $result = $conn->query("SELECT * FROM tb_efficiercy_form  WHERE form_id = '$id'"); 
-    $result->execute();
-    $row = $result->fetch(PDO::FETCH_ASSOC);
-    // echo "<script>";
-    // echo "alert('$row');";
-    // echo "</script>";
-    $genders = preg_split("/,/", $row["form_gender"]);
-    $form_type = preg_split("/,/", $row["form_type"]);
-    $form_education = preg_split("/,/", $row["form_education"]);
-    // print_r($genders);
-    $in = $row['input_id'];
-    $pr = $row['process_id'];
-    $re = $row['report_id'];
-    $se = $row['senrity_id'];
-    
-    $result1 = $conn->query("SELECT * FROM tb_input  WHERE Input_id = '$in'"); 
-    $result1->execute();
-    $row1 = $result1->fetch(PDO::FETCH_ASSOC);
-    $input_feature = preg_split("/@/", $row1["Input_feature"]);
-    $Input_setfeature = preg_split("/@/", $row1["Input_setfeature"]);
-    
-    $result2 = $conn->query("SELECT * FROM tb_process WHERE process_id = '$pr'"); 
-    $result2->execute();
-    $row2 = $result2->fetch(PDO::FETCH_ASSOC);
-    $process_feature = preg_split("/@/", $row2["process_feature"]);
-    $process_setfeature = preg_split("/@/", $row2["process_setfeature"]);
-    
-    $result3 = $conn->query("SELECT * FROM tb_report WHERE report_id = '$re'"); 
-    $result3->execute();
-    $row3 = $result3->fetch(PDO::FETCH_ASSOC);
-    $report_feature = preg_split("/@/", $row3["report_feature"]);
-    $report_setfeature = preg_split("/@/", $row3["report_setfeature"]);
-    
-    $result4 = $conn->query("SELECT * FROM tb_senrity WHERE senrity_id = '$se'"); 
-    $result4->execute();
-    $row4 = $result4->fetch(PDO::FETCH_ASSOC);
-    $senrity_feature = preg_split("/@/", $row4["senrity_feature"]);
-    $senrity_setfeature = preg_split("/@/", $row4["senrity_setfeature"]);
+    $form_id = $_GET['id'];
+    $query = $conn->prepare("SELECT * FROM tb_efficiercy_form WHERE form_id = :form_id");
+    $query->bindParam(":form_id", $form_id);
+    $query->execute();
+    $row = $query->fetch();
+
+    $formname = $row['form_name'];
+    $ad = $row['form_ad'];
+    $form_info_un = $row['form_info'];
+    $sub_info_un = $row['sub_info'];
+    $form_topic_un = $row['form_topic'];
+    $feature_un = $row['feature'];
+    $setfeature_un = $row['setfeature'];
+
+    $form_info = preg_split("/Ϫ/", $form_info_un);
+    $sub_info = preg_split("/ꓘ/", $sub_info_un);
+    $form_topic = preg_split("/Ϫ/", $form_topic_un);
+    $feature = preg_split("/ꓘ/", $feature_un);
+    $setfeature = preg_split("/ꓘ/", $setfeature_un);
+
+    $sub_info_ex = [];
+    foreach ($sub_info as $index => $info) {
+        $sub_info_ex[$index] = preg_split("/Ϫ/", $info);
+    }
+    $feature_ex = [];
+    foreach ($feature as $index => $topic) {
+        $feature_ex[$index] = preg_split("/Ϫ/", $topic);
+    }
+
+    $setfeature_ex = [];
+    foreach ($setfeature as $index => $topic) {
+        $setfeature_ex[$index] = preg_split("/Ϫ/", $topic);
+    }
 
 }
 
@@ -125,66 +119,43 @@ if (isset($_GET['class'])) {
             <div class="head_content mt-5 mb-2">
                 <label class="form-label">ชื่อแบบฟอร์ม</label>
                 <div class="rad form-control text-break">
-                    <?php echo $row['form_name']; ?>
+                    <?php echo $formname; ?>
                 </div>
 
                 <label class="form-label mt-2">คำชี้แจง</label>
                 <div class="rad form-control text-break">
-                <?php echo $row['form_ad']; ?>
+                <?php echo $ad; ?>
                 </div>
             </div>
             <!-- Body_Content -->
             <div class="body_content mt-5">
                 <label class="form-label font-bold">ตอนที่ 1</label>
                 <label for="">ข้อมูลพื้นฐานของผู้กรอกแบบสอบถาม</label>
-                <div class="group-row mt-3">
-                    <div class="mb-3 row">
-                        <label class="col-3 col-form-label w-50 text-center">เพศ</label>
-                        <div class="col mt-2">
-                            <?php foreach ($genders as $value) { ?>
-                            <?php if(!($value == null)){ ?>
-                            <input class="rad form-check-input" type="radio" value="" disabled name="" >
-                            <label>
-                            <?php echo $value; ?>
-                            </label><br>
-                            <?php } ?>
-                            <?php } ?>
+                <?php foreach($form_info as $index => $values){ ?>
+                    <div class="group-row mt-3">
+                        <div class="mb-3 row">
+                            <label class="col-3 col-form-label w-50 text-center"><?= $values; ?></label>
+                            <div class="col mt-2">
+                                <?php for ($b = 0; $b < count($sub_info_ex[$index]); $b++) { ?>
+                                <?php if(!($sub_info_ex[$index][$b] == null)){ ?>
+                                <input class="rad form-check-input" type="radio" value="" disabled name="" >
+                                <label>
+                                <?php echo $sub_info_ex[$index][$b]; ?>
+                                </label><br>
+                                <?php } ?>
+                                <?php } ?>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="mb-3 row">
-                    <label class="col-3 col-form-label w-50 text-center">ประเภทผู้ใช้</label>
+                <?php } ?>
 
-                    <div class="col mt-2">
-                            <?php foreach ($form_type as $value) { ?>
-                            <?php if(!($value == null)){ ?>
-                            <input class="rad form-check-input" type="radio" value="" disabled name="" >
-                            <label>
-                            <?php echo $value; ?>
-                            </label><br>
-                            <?php } ?>
-                            <?php } ?>
-                    </div>
-                </div>
-                <div class="mb-2 row">
-                    <label class="col-3 col-form-label w-50 text-center">ระดับการศึกษา</label>
-                    <div class="col mt-2">
-                        <?php foreach ($form_education as $value) { ?>
-                            <?php if(!($value == null)){ ?>
-                            <input class="rad form-check-input" type="radio" value="" disabled name="" >
-                            <label>
-                            <?php echo $value; ?>
-                            </label><br>
-                        <?php } ?>
-                        <?php } ?>
-                    </div>
-                </div>
                 <label class="form-label">ตอนที่ 2</label>
                 <label for="">แบบสอบถามความคิดเห็น</label> <br>
                 <label class="form-label mt-2">คำชี้แจง</label>
                 <label for="">โปรดบันทึกความคิดเห็นของท่านลงในช่องว่างในแต่ละข้อ</label> <br>
                 <!-- Start table -->
-                <label class="form-label mt-2">ด้านที่ 1 <?php echo $row1["Input_name"]; ?></label>
+                 <?php foreach($form_topic as $index => $value){ ?>
+                <label class="form-label mt-2">ด้านที่ <?php echo ($index+1)." ".$value; ?></label>
                 <div  id="widthfix">
                 <table class="table table-bordered table-striped text-center mt-3">
                     <thead>
@@ -197,12 +168,12 @@ if (isset($_GET['class'])) {
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach($input_feature as $key => $value){ 
-                            if(!($value == null)) {?>
+                        <?php for ($b = 0; $b < count($feature_ex[$index]); $b++){ 
+                            if(!($feature_ex[$index][$b] == null) && !($setfeature_ex[$index][$b] == null)) {?>
                         <tr>
-                            <th scope="row"><?php echo $key+1 ?></th>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $value; ?></div></td>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $Input_setfeature[$key]; ?></div></td>
+                            <th scope="row"><?php echo $b+1 ?></th>
+                            <td><div class="form-control1" id="format" rows="3"><?php echo $feature_ex[$index][$b]; ?></div></td>
+                            <td><div class="form-control1" id="format" rows="3"><?php echo $setfeature_ex[$index][$b]; ?></div></td>
                             <td><div class="form-control1" id="format" rows="3"></div></td>
                             <td><div class="form-control1" id="format" rows="3"></div></td>
                         </tr>
@@ -210,85 +181,8 @@ if (isset($_GET['class'])) {
                     </tbody>
                 </table>
                 </div>
+                <?php } ?>
                 
-                <label class="form-label">ด้านที่ 2 <?php echo $row2['process_name']; ?></label>
-                <div  id="widthfix">
-                <table class="table table-bordered table-striped text-center mt-3">
-                    <thead>
-                        <tr>
-                            <th scope="col">ที่</th>
-                            <th scope="col">คุณสมบัติด้านเทคนิค</th>
-                            <th scope="col">คุณสมบัติที่ตั้งไว้</th>
-                            <th scope="col">คุณสมบัติที่ทำได้</th>
-                            <th scope="col">ผลการเปรียบเทียบ</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <?php foreach($process_feature as $key => $value){ 
-                            if(!($value == null)) {?>
-                        <tr>
-                            <th scope="row"><?php echo $key+1 ?></th>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $value; ?></div></td>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $process_setfeature[$key]; ?></div></td>
-                            <td><div class="form-control1" id="format" rows="3"></div></td>
-                            <td><div class="form-control1" id="format" rows="3"></div></td>
-                        </tr>
-                        <?php } } ?>
-                    </tbody>
-                </table>
-                </div>
-                <label class="form-label">ด้านที่ 3 <?php echo $row3['report_name']; ?></label>
-                <div  id="widthfix">
-                <table class="table table-bordered table-striped text-center mt-3">
-                    <thead>
-                        <tr>
-                            <th scope="col">ที่</th>
-                            <th scope="col">คุณสมบัติด้านเทคนิค</th>
-                            <th scope="col">คุณสมบัติที่ตั้งไว้</th>
-                            <th scope="col">คุณสมบัติที่ทำได้</th>
-                            <th scope="col">ผลการเปรียบเทียบ</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <?php foreach($report_feature as $key => $value){ 
-                            if(!($value == null)) {?>
-                        <tr>
-                            <th scope="row"><?php echo $key+1 ?></th>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $value; ?></div></td>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $report_setfeature[$key]; ?></div></td>
-                            <td><div class="form-control1" id="format" rows="3"></div></td>
-                            <td><div class="form-control1" id="format" rows="3"></div></td>
-                        </tr>
-                        <?php } } ?>
-                    </tbody>
-                </table>
-                </div>
-                <label class="form-label">ด้านที่ 4 <?php echo $row4['senrity_name']; ?></label>
-                <div  id="widthfix">
-                <table class="table table-bordered table-striped text-center mt-3">
-                    <thead>
-                        <tr>
-                            <th scope="col">ที่</th>
-                            <th scope="col">คุณสมบัติด้านเทคนิค</th>
-                            <th scope="col">คุณสมบัติที่ตั้งไว้</th>
-                            <th scope="col">คุณสมบัติที่ทำได้</th>
-                            <th scope="col">ผลการเปรียบเทียบ</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <?php foreach($senrity_feature as $key => $value){ 
-                            if(!($value == null)) {?>
-                        <tr>
-                            <th scope="row"><?php echo $key+1 ?></th>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $value; ?></div></td>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $senrity_setfeature[$key]; ?></div></td>
-                            <td><div class="form-control1" id="format" rows="3"></div></td>
-                            <td><div class="form-control1" id="format" rows="3"></div></td>
-                        </tr>
-                        <?php } } ?>
-                    </tbody>
-                </table>
-                </div>
             </div>
         </form>
         <button type="button" class="btn btn-primary w-100 mt-2 mb-4" onclick="isClass('<?php echo $class; ?>')">กลับหน้าแรก</button>

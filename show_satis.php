@@ -9,41 +9,33 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-    $result = $conn->query("SELECT * FROM tb_satisfied  WHERE sati_id = '$id'"); 
-    $result->execute();
-    $row = $result->fetch(PDO::FETCH_ASSOC);
-    // echo "<script>";
-    // echo "alert('$row');";
-    // echo "</script>";
-    $genders = preg_split("/,/", $row["sati_gender"]);
-    $form_type = preg_split("/,/", $row["sati_type"]);
-    $form_education = preg_split("/,/", $row["sati_level"]);
-    // print_r($genders);
-    $ur = $row['ur_id'];
-    $fun = $row['fun_id'];
-    $uf = $row['uf_id'];
-    $ss = $row['ss_id'];
-    
-    $result1 = $conn->query("SELECT * FROM tb_user_req  WHERE ur_id = '$ur'"); 
-    $result1->execute();
-    $row1 = $result1->fetch(PDO::FETCH_ASSOC);
-    $ur_topic = preg_split("/@/", $row1["ur_topic"]);
-    
-    $result2 = $conn->query("SELECT * FROM tb_function WHERE fun_id = '$fun'"); 
-    $result2->execute();
-    $row2 = $result2->fetch(PDO::FETCH_ASSOC);
-    $fun_topic = preg_split("/@/", $row2["fun_topic"]);
-    
-    $result3 = $conn->query("SELECT * FROM tb_uesful WHERE uf_id = '$uf'"); 
-    $result3->execute();
-    $row3 = $result3->fetch(PDO::FETCH_ASSOC);
-    $uf_topic = preg_split("/@/", $row3["uf_topic"]);
-    
-    $result4 = $conn->query("SELECT * FROM tb_seurity WHERE ss_id = '$ss'"); 
-    $result4->execute();
-    $row4 = $result4->fetch(PDO::FETCH_ASSOC);
-    $ss_topic = preg_split("/@/", $row4["ss_topic"]);
+    $sati_id = $_GET['id'];
+
+    $query = $conn->prepare("SELECT * FROM tb_satisfied WHERE sati_id = :sati_id");
+    $query->bindParam(":sati_id", $sati_id);
+    $query->execute();
+    $row = $query->fetch();
+
+    $sati_ep2 = $row['sati_ep2'];
+    $sati_info_un = $row['sati_info'];
+    $sub_info_un = $row['sub_info'];
+    $sati_topic_un = $row['sati_topic'];
+    $sub_topic_un = $row['sub_topic'];
+
+    $sati_info = preg_split("/Ϫ/", $sati_info_un);
+    $sub_info = preg_split("/ꓘ/", $sub_info_un);
+    $sati_topic = preg_split("/Ϫ/", $sati_topic_un);
+    $sub_topic = preg_split("/ꓘ/", $sub_topic_un);
+
+    $sub_info_ex = [];
+    foreach ($sub_info as $index => $info) {
+        $sub_info_ex[$index] = preg_split("/Ϫ/", $info);
+    }
+
+    $sub_topic_ex = [];
+    foreach ($sub_topic as $index => $topic) {
+        $sub_topic_ex[$index] = preg_split("/Ϫ/", $topic);
+    }
 
 }
 
@@ -135,13 +127,13 @@ if (isset($_GET['class'])) {
                 <label class="font-bold" for="">ตอนที่ 1</label> <br>
                 <label class="font-bold" for="">เป็นข้อมูลพื้นฐานของผู้กรอกแบบสอบถาม</label> <br>
                 <label class="font-bold" for="">ตอนที่ 2 เป็นแบบสอบถามความคิดเห็นของ
-                <?php for($i=0;$i < count($form_type);$i++){ ?>
-                    <?php if(!($form_type[$i] == null)){ ?>
-                    <span class="ms-2"><?php echo $form_type[$i]; ?></span>
+                <?php for($i=0;$i < count($sati_info);$i++){ ?>
+                    <?php if(!($sati_info[$i] == null)){ ?>
+                    <span class="ms-2"><?php echo $sati_info[$i]; ?></span>
                     <?php } ?>
                     <?php } ?> 
                 </label><br>
-                <span class="rad form-control text-break mb-2" style="width: 100%;"><?php echo $row['sati_ep2']; ?></span>
+                <span class="rad form-control text-break mb-2" style="width: 100%;"><?php echo $sati_ep2; ?></span>
                 <div class="d-flex flex-column w-50 align-items-center">
                     <label class="font-bold d-flex justify-content-start w-100">โดยแบ่งการประเมินเป็น 4 ด้าน คือ</label>
                     <ul class="">
@@ -157,40 +149,28 @@ if (isset($_GET['class'])) {
             <div class="body_content mt-5">
                 <label class="form-label font-bold">ตอนที่ 1</label>
                 <label for="">ข้อมูลพื้นฐานของผู้กรอกแบบสอบถาม</label><br>
+
+                <?php for($b=0;$b < count($sati_info);$b++){ ?>
                 <div class="w-100">
-                    <label class="col-3 col-form-label w-100">1.เพศ 
-                    <?php for($i=0;$i < count($genders);$i++){ ?>
-                    <?php if(!($genders[$i] == null)){ ?>
+                    <label class="col-3 col-form-label w-100"><?= ($b+1).".".$sati_info[$b]; ?>
+                    <?php for($i=0;$i < count($sub_info_ex[$b]);$i++){ ?>
+                    <?php if(!($sub_info_ex[$b][$i] == null)){ ?>
                     <input class="rad form-check-input ms-4" type="radio" value="" disabled name="" >
-                    <?php echo $genders[$i]; ?>
+                    <?php echo $sub_info_ex[$b][$i]; ?>
                     <?php } ?>
                     <?php } ?>
                     </label><br>
-                    <label class="col-3 col-form-label w-100">2.สถานะของผู้สอบถาม 
-                    <?php for($i=0;$i < count($form_type);$i++){ ?>
-                    <?php if(!($form_type[$i] == null)){ ?>
-                    <input class="rad form-check-input ms-4" type="radio" value="" disabled name="" >
-                    <?php echo $form_type[$i]; ?>
-                    <?php } ?>
-                    <?php } ?>
-                    </label><br>
-                    <label class="col-3 col-form-label w-100">3.ระดับการศึกษา 
-                    <?php for($i=0;$i < count($form_education);$i++){ ?>
-                    <?php if(!($form_education[$i] == null)){ ?>
-                    <input class="rad form-check-input ms-4" type="radio" value="" disabled name="" >
-                    <?php echo $form_education[$i]; ?>
-                    <?php } ?>
-                    <?php } ?>
                 </div>
-                </label><br>
+                <?php } ?>
 
                 <label class="form-label">ตอนที่ 2</label>
                 <label for="">แบบสอบถามความคิดเห็น</label> <br>
                 <label class="form-label mt-2">คำชี้แจง</label>
                 <label for="">โปรดบันทึกความคิดเห็นของท่านลงในช่องว่างในแต่ละข้อ</label> <br>
                 <!-- Start table -->
-                <label class="form-label mt-2">ด้านที่ 1</label>
-                <label class="form-label mb-2" id="format">ด้านการนำเข้าข้อมูลระบบ</label>
+                <?php for($b=0;$b < count($sati_topic);$b++){ ?>
+                <label class="form-label mt-2">ด้านที่ <?= $b+1; ?></label>
+                <label class="form-label mb-2" id="format"><?= $sati_topic[$b];?></label>
                 <div  id="widthfix">
                 <table class="table table-bordered table-striped text-center mt-3">
                     <thead>
@@ -208,11 +188,11 @@ if (isset($_GET['class'])) {
                         </tr>
                     </thead>
                     <tbody>
-                        <?php for($i = 0;$i < count($ur_topic);$i++){ ?>
-                            <?php if(!($ur_topic[$i] == null)){ ?>
+                        <?php for($i = 0;$i < count($sub_topic_ex[$b]);$i++){ ?>
+                            <?php if(!($sub_topic_ex[$b][$i] == null)){ ?>
                         <tr>
                             <th scope="row"><?php echo $i+1; ?></th>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $ur_topic[$i]; ?></div></td>	
+                            <td><div class="form-control1" id="format" rows="3"><?php echo $sub_topic_ex[$b][$i]; ?></div></td>	
                             <td><div class="form-control1" id="format" rows="3"></div></td>
                             <td><div class="form-control1" id="format" rows="3"></div></td>
                             <td><div class="form-control1" id="format" rows="3"></div></td>
@@ -224,118 +204,10 @@ if (isset($_GET['class'])) {
                     </tbody>
                 </table>
                 </div>
-                <label class="form-label mt-2">ด้านที่ 2</label>
-                <label class="form-label mb-2" id="format">ด้านการประมวลผล</label>
-                <div  id="widthfix">
-                <table class="table table-bordered table-striped text-center mt-3">
-                    <thead>
-                        <tr>
-                            <th scope="col" rowspan="2">ที่</th>
-                            <th scope="col" rowspan="2">หัวข้อ</th>
-                            <th scope="col" colspan="6">ระดับความคิดเห็น</th>
-                        </tr>
-                        <tr>
-                            <th scope="col">5</th>
-                            <th scope="col">4</th>
-                            <th scope="col">3</th>
-                            <th scope="col">2</th>
-                            <th scope="col">1</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <?php for($i = 0;$i < count($fun_topic);$i++){ ?>
-                        <?php if(!($fun_topic[$i] == null)){ ?>
-                        <tr>
-                            <th scope="row"><?php echo $i+1; ?></th>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $fun_topic[$i]; ?></div></td>	
-                            <td><div class="form-control1" id="format" rows="3"></div></td>
-                            <td><div class="form-control1" id="format" rows="3"></div></td>
-                            <td><div class="form-control1" id="format" rows="3"></div></td>
-                            <td><div class="form-control1" id="format" rows="3"></div></td>
-                            <td><div class="form-control1" id="format" rows="3"></div></td>
-                        </tr>
-                    <?php } ?>   
-                    <?php } ?>   
-                    </tbody>
-                </table>
-                </div>
-                <label class="form-label mt-2">ด้านที่ 3</label>
-                <label class="form-label mb-2" id="format">ด้านการรายงานข้อมูล</label>
-                <div  id="widthfix">
-                <table class="table table-bordered table-striped text-center mt-3">
-                    <thead>
-                        <tr>
-                            <th scope="col" rowspan="2">ที่</th>
-                            <th scope="col" rowspan="2">หัวข้อ</th>
-                            <th scope="col" colspan="6">ระดับความคิดเห็น</th>
-                        </tr>
-                        <tr>
-                            <th scope="col">5</th>
-                            <th scope="col">4</th>
-                            <th scope="col">3</th>
-                            <th scope="col">2</th>
-                            <th scope="col">1</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <?php for($i = 0;$i < count($uf_topic);$i++){ ?>
-                        <?php if(!($uf_topic[$i] == null)){ ?>
-                        <tr>
-                            <th scope="row"><?php echo $i+1; ?></th>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $uf_topic[$i]; ?></div></td>	
-                            <td><div class="form-control1" id="format" rows="3"></div></td>
-                            <td><div class="form-control1" id="format" rows="3"></div></td>
-                            <td><div class="form-control1" id="format" rows="3"></div></td>
-                            <td><div class="form-control1" id="format" rows="3"></div></td>
-                            <td><div class="form-control1" id="format" rows="3"></div></td>
-                        </tr>
-                    <?php } ?>   
-                    <?php } ?>   
-                    </tbody>
-                </table>
-                </div>
-                <label class="form-label mt-2">ด้านที่ 4</label>
-                <label class="form-label mb-2" id="format">ด้านความปลอดภัย</label>
-                <div  id="widthfix">
-                <table class="table table-bordered table-striped text-center mt-3">
-                    <thead>
-                        <tr>
-                            <th scope="col" rowspan="2">ที่</th>
-                            <th scope="col" rowspan="2">หัวข้อ</th>
-                            <th scope="col" colspan="6">ระดับความคิดเห็น</th>
-                        </tr>
-                        <tr>
-                            <th scope="col">5</th>
-                            <th scope="col">4</th>
-                            <th scope="col">3</th>
-                            <th scope="col">2</th>
-                            <th scope="col">1</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <?php for($i = 0;$i < count($ss_topic);$i++){ ?>
-                        <?php if(!($ss_topic[$i] == null)){ ?>
-                        <tr>
-                            <th scope="row"><?php echo $i+1; ?></th>
-                            <td><div class="form-control1" id="format" rows="3"><?php echo $ss_topic[$i]; ?></div></td>	
-                            <td><div class="form-control1" id="format" rows="3"></div></td>
-                            <td><div class="form-control1" id="format" rows="3"></div></td>
-                            <td><div class="form-control1" id="format" rows="3"></div></td>
-                            <td><div class="form-control1" id="format" rows="3"></div></td>
-                            <td><div class="form-control1" id="format" rows="3"></div></td>
-                        </tr>
-                    <?php } ?>  
-                    <?php } ?>  
-                    </tbody>
-                </table>
-                </div>
+                <?php } ?>
                 <label class="form-label mt-2">ตอนที่3 ข้อเสนอแนะอื่นๆ</label>
                 <div class="rad form-control" id="format">
-                    <?php if($row['sati_comment'] != null) { ?>
-                        <?php echo $row['sati_comment']; ?>
-                    <?php }else { ?>
                         ----เสนอแนะ----
-                    <?php } ?>
                 </div>
                 
             </div>
