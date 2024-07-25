@@ -94,7 +94,6 @@ if (isset($_GET['class'])) {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            width: 50;
         }
         ul > li {
             list-style: none;
