@@ -494,7 +494,7 @@ $projectedit->execute();
     <script src="script/script_add_dataes.js"></script>
     <script src="script/scriptSelector.js"></script>
     <script src="script/datepicker1.js"></script>
-    <script src="script/thaidatepicker.js"></script>
+    <script src="script/thaidatepicker1.js"></script>
     <script>
         let date = []
         document.querySelectorAll("#pd").forEach(element => {
