@@ -130,13 +130,12 @@ if (isset($_GET['class'])) {
                 <label class="font-bold" for="">ตอนที่ 2 เป็นแบบสอบถามความคิดเห็นของ ครู อาจารย์ นักเรียน นักศึกษา และบุคคลภายนอก
                 </label><br>
                 <span class="rad form-control text-break mb-2" style="width: 100%;"><?php echo $sati_ep2; ?></span>
-                <div class="d-flex flex-column w-50 align-items-center">
+                <div class="d-flex flex-column w-50 align-items-center text-break">
                     <label class="font-bold d-flex justify-content-start w-100">โดยแบ่งการประเมินเป็น <?= count($sati_topic); ?> ด้าน คือ</label>
-                    <div>
+                    <div class="w-50">
                         <ul class="w-100">
                         <?php for($b=0;$b < count($sati_topic);$b++){ ?>
                             <li class="" for="">ด้านที่ <?= ($b+1)." ".$sati_topic[$b]; ?></li> <br>
-                            <li class="" for="">ด้านที่ ccccccccccccccccccccccccccccccccccccc</li> <br>
                         <?php } ?>
                         </ul>
                     </div>
