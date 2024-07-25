@@ -13,21 +13,12 @@ if (isset($_GET['class'])) {
     $class = 'nohave';
 }
 
-$pj_id = isset($_SESSION['pj_id']) && $_SESSION['pj_id'] ? $_SESSION['pj_id'] : $_POST['project_id'];
-unset($_SESSION['pj_id']);
-
-// echo $pj_id;
-
-$project_id = $pj_id;
-
-$query = $conn->prepare("SELECT * FROM project WHERE project_id = :project_id");
-$query->bindParam(":project_id", $project_id);
-$query->execute();
-$row = $query->fetch();
-
-$project_name = $row['project_name'];
-
-// echo $project_name;
+if(isset($_GET['pro_name'])){
+    $projectName = $_GET['pro_name'];
+}
+if(isset($_GET['pro_id'])){
+    $_SESSION['projectId'] = $_GET['pro_id'];
+}
 
 ?>
 
@@ -79,8 +70,7 @@ $project_name = $row['project_name'];
             <!-- Title_Content -->
             <div class="mb-4">
                 <label class="block text-lg font-bold mb-2">ชื่อแบบฟอร์ม</label>
-                <input type="text" readonly name="formname" id="formname" class="block w-full border border-gray-300 rounded px-3 py-2 mb-3" value="<?= $project_name ?>" required>
-                <input type="hidden" readonly name="pj_id" value="<?= $pj_id ?>">
+                <input type="text" name="formname" id="formname" value="<?= $projectName; ?>" class="block w-full border border-gray-300 rounded px-3 py-2 mb-3" readonly>
 
                 <label class="block text-lg font-bold mb-2">คำชี้แจง</label>
                 <textarea name="ad" class="block w-full border border-gray-300 rounded px-3 py-2" rows="5" required></textarea>

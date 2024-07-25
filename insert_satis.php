@@ -99,10 +99,8 @@ if (empty($sati_ep2)) {
     try {
         if (!isset($_SESSION['error'])) {
 
-            $tb_satisfied = $conn->prepare("INSERT INTO tb_satisfied(sati_ep2, sati_info, sub_info, sati_topic, sub_topic, member_id, project_id) VALUES (?, ?, ?, ?, ?, ?, ?)");
-            $tb_satisfied->execute([$sati_ep2, $sati_info, $sub_info, $sati_topic, $sub_topic, $user_id, $_SESSION['pj_id']]);
-
-            unset($_SESSION['pj_id']);
+            $tb_satisfied = $conn->prepare("INSERT INTO tb_satisfied(sati_ep2, sati_info, sub_info, sati_topic, sub_topic, member_id, project_id) VALUES (?, ?, ?, ?, ?, ?,?)");
+            $tb_satisfied->execute([$sati_ep2, $sati_info, $sub_info, $sati_topic, $sub_topic, $user_id,$projectId]);
 
             unset($_SESSION['projectId']);
             header("location: form.php");
