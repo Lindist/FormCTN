@@ -492,7 +492,7 @@ $projectedit->execute();
     <script src="script/dropdown1.js"></script>
     <script src="script/dropdownforreponsive.js"></script>
     <script src="script/script_add_dataes.js"></script>
-    <script src="script/scriptSelector.js"></script>
+    <script src="script/scriptSelector1.js"></script>
     <script src="script/datepicker1.js"></script>
     <script src="script/thaidatepicker1.js"></script>
     <script>
@@ -541,7 +541,7 @@ $projectedit->execute();
             })
         })
     </script>
-    <script src="script/editproject.js"></script>
+    <script src="script/editproject1.js"></script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script> -->
     <script>
         logout = (event, url) => {
