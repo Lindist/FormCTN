@@ -5,6 +5,7 @@ require 'session/config.php';
 
 if (!isset($_SESSION['user_id'])) {
     header("Location: index.php");
+    exit();
 }
 
 if (isset($_GET['id'])) {
@@ -74,6 +75,7 @@ if (isset($_GET['id'])) {
 
 } else {
     header("Location: index.php");
+    exit();
 }
 
 ?>

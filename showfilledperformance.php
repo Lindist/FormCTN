@@ -6,6 +6,7 @@ require 'session/config.php';
 
 if (!isset($_SESSION['user_id'])) {
     header("Location: index.php");
+    exit();
 }
 
 if (isset($_GET['user_id'])) {
