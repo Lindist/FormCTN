@@ -4,7 +4,7 @@ session_start();
 require 'session/config.php';
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: index.php");
+    // header("Location: index.php");
 }
 
 
@@ -23,6 +23,28 @@ try{
     $result->bindParam(":yearedu", $year_edu);
     $result->bindParam(":project_id", $pro_id);
     $result->execute();
+
+    $sql = "SELECT * FROM tb_efficiercy_form WHERE project_id = :project_id";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':project_id', $pro_id, PDO::PARAM_INT);
+    $stmt->execute();
+
+    $sql1 = "SELECT * FROM tb_satisfied WHERE project_id = :project_id";
+    $stmt1 = $conn->prepare($sql1);
+    $stmt1->bindParam(':project_id', $pro_id, PDO::PARAM_INT);
+    $stmt1->execute();
+
+    if ($stmt->rowCount() > 0) {
+        // echo "Record with project_id exists.";
+        $tb_efficiercy_form = $conn->prepare("UPDATE tb_efficiercy_form SET form_name = ? WHERE project_id = ?");
+        $tb_efficiercy_form->execute([$project_name, $pro_id]);
+    }
+
+    if ($stmt1->rowCount() > 0) {
+        // echo "Record with project_id exists.";
+        $tb_satisfied = $conn->prepare("UPDATE tb_satisfied SET sati_ep2 = ? WHERE project_id = ?");
+        $tb_satisfied->execute([$project_name, $pro_id]);
+    }
 
     if($result){
         $_SESSION['addproject'] = "แก้ไขข้อมูลโครงการเรียบร้อย";

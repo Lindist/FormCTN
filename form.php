@@ -68,7 +68,7 @@ $projectedit->execute();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/formstyles.css">
+    <link rel="stylesheet" href="style/formstyle.css">
     <link rel="stylesheet" href="style/tabstyle1.css">
     <link rel="stylesheet" href="style/inputsearchstyle.css">
     <link rel="stylesheet" href="style/addProjectname1_2.css">
