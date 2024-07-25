@@ -19,6 +19,10 @@ if(isset($_POST['class'])){
         $class = $_POST['class'];
     }
 }
+if(isset($_SESSION['projectId'])){
+    $projectId = $_SESSION['projectId'];
+}
+
 if (isset($_POST['save'])) {
     $formname = $_POST['formname'];
     $ad = $_POST['ad'];
@@ -92,9 +96,10 @@ if (empty($formname)) {
     try {
         if (!isset($_SESSION['error'])) {
 
-            $tb_efficiercy_form = $conn->prepare("INSERT INTO tb_efficiercy_form(form_name, form_ad, member_id, form_info, sub_info, form_topic, feature, setfeature) VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
-            $tb_efficiercy_form->execute([$formname, $ad, $user_id, $form_info, $sub_info, $form_topic, $feature, $setfeature]);
-
+            $tb_efficiercy_form = $conn->prepare("INSERT INTO tb_efficiercy_form(form_name, form_ad, member_id, form_info, sub_info, form_topic, feature, setfeature,project_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $tb_efficiercy_form->execute([$formname, $ad, $user_id, $form_info, $sub_info, $form_topic, $feature, $setfeature,$projectId]);
+            
+            unset($_SESSION['projectId']);
             header("location: form.php?class=".$class);
 
         }

@@ -19,6 +19,13 @@ if (isset($_GET['class1'])) {
     $class1 = 'nohave';
 }
 
+if(isset($_GET['pro_name'])){
+    $projectName = $_GET['pro_name'];
+}
+if(isset($_GET['pro_id'])){
+    $_SESSION['projectId'] = $_GET['pro_id'];
+}
+
 $keys = [];
 
 for ($i = 0; $i < 10; $i++) { // Replace 10 with any large number or condition
@@ -78,7 +85,7 @@ for ($i = 0; $i < 10; $i++) { // Replace 10 with any large number or condition
                 <label class="text-lg"><label class="text-lg font-bold mb-2">คำชี้แจง </label>ในแบบประเมินความพึงพอใจการใช้งานระบบ แบ่งออกเป็น 3 ตอนดังนี้</label><br><br>
                 <label class="text-lg"><label class="text-lg font-bold mb-2">ตอนที่ 1 </label>เป็นข้อมูลพื้นฐานของผู้กรอกแบบสอบถาม</label><br><br>
                 <label class="text-lg"><label class="text-lg font-bold mb-2">ตอนที่ 2 </label><br>เป็นแบบสอบถามความคิดเห็น<br>ที่มีต่อ
-                    <input type="text" id="" name="sati_ep2" class="p-1 text-lg text-gray-900 border border-gray-300 rounded bg-gray-50 w-86 sm:w-96" required placeholder="ชื่อโปรเจค . . . . .">
+                    <input type="text" id="" name="sati_ep2" value="<?= $projectName; ?>" class="p-1 text-lg text-gray-900 border border-gray-300 rounded bg-gray-50 w-86 sm:w-96" readonly placeholder="ชื่อโปรเจค . . . . .">
                     โดยแบ่งการประเมินเป็น 4 ด้าน คือ</label><br>
                 <label class="text-lg ml-8">ด้านที่ 1 ด้านความต้องการของผู้ใช้งานระบบ</label><br>
                 <label class="text-lg ml-8">ด้านที่ 2 ด้านการทำงานตามฟังค์ชันของระบบ</label><br>

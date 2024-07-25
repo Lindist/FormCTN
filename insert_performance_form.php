@@ -13,6 +13,13 @@ if (isset($_GET['class'])) {
     $class = 'nohave';
 }
 
+if(isset($_GET['pro_name'])){
+    $projectName = $_GET['pro_name'];
+}
+if(isset($_GET['pro_id'])){
+    $_SESSION['projectId'] = $_GET['pro_id'];
+}
+
 ?>
 
 <!doctype html>
@@ -63,7 +70,7 @@ if (isset($_GET['class'])) {
             <!-- Title_Content -->
             <div class="mb-4">
                 <label class="block text-lg font-bold mb-2">ชื่อแบบฟอร์ม</label>
-                <input type="text" name="formname" id="formname" class="block w-full border border-gray-300 rounded px-3 py-2 mb-3" required>
+                <input type="text" name="formname" id="formname" value="<?= $projectName; ?>" class="block w-full border border-gray-300 rounded px-3 py-2 mb-3" readonly>
 
                 <label class="block text-lg font-bold mb-2">คำชี้แจง</label>
                 <textarea name="ad" class="block w-full border border-gray-300 rounded px-3 py-2" rows="5" required></textarea>

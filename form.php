@@ -68,7 +68,7 @@ $projectedit->execute();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/formstyle.css">
+    <link rel="stylesheet" href="style/formstyles.css">
     <link rel="stylesheet" href="style/tabstyle1.css">
     <link rel="stylesheet" href="style/inputsearchstyle.css">
     <link rel="stylesheet" href="style/addProjectname1_2.css">
@@ -147,8 +147,8 @@ $projectedit->execute();
                             <label for=""><b>ชื่อโครงการ</b></label>
                             <input type="text" id="p1" value="<?= $rowproject['project_name']; ?>" readonly>
                             <div>
-                                <button type="button" class="confirmbtn" id="addper_" onclick="nextToper()">เพิ่มแบบฟอร์มประเมินประสิทธิภาพ</button>
-                                <button type="button" class="confirmbtn" id="addsta_" onclick="nextTosta()">เพิ่มแบบฟอร์มประเมินความพึงพอใจ</button>
+                                <button type="button" class="confirmbtn" id="addper_" onclick="nextToper('<?= $rowproject['project_name']; ?>','<?= $rowproject['project_id']; ?>')">เพิ่มแบบฟอร์มประเมินประสิทธิภาพ</button>
+                                <button type="button" class="confirmbtn" id="addsta_" onclick="nextTosta('<?= $rowproject['project_name']; ?>','<?= $rowproject['project_id']; ?>')">เพิ่มแบบฟอร์มประเมินความพึงพอใจ</button>
                             </div>
                             <label for=""><b>วันหมดอายุ</b></label><br>
                             <input type="hidden" name="" id="p1" value="<?= $rowproject['project_expired']; ?>">
@@ -490,7 +490,7 @@ $projectedit->execute();
     <script src="script/active.js" type="module"></script>
     <script src="script/searchscipt.js"></script>
     <script src="script/dropdown1.js"></script>
-    <script src="script/dropdownforreponsives.js"></script>
+    <script src="script/dropdownforreponsive.js"></script>
     <script src="script/script_add_dataes.js"></script>
     <script src="script/scriptSelector.js"></script>
     <script src="script/datepicker1.js"></script>
@@ -559,11 +559,11 @@ $projectedit->execute();
                 }
             });
         };
-        nextToper = () =>{
-            window.location.href = "insert_performance_form.php";
+        nextToper = (name,id) =>{
+            window.location.href = "insert_performance_form.php?pro_name="+name.toString() + "&pro_id="+id.toString();
         }
-        nextTosta = () =>{
-            window.location.href = "insert_satis_form.php";
+        nextTosta = (name,id) =>{
+            window.location.href = "insert_satis_form.php?pro_name="+name.toString() + "&pro_id="+id.toString();
         }
     </script>
 </body>

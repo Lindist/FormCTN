@@ -11,6 +11,10 @@ if (isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
 }
 
+if(isset($_SESSION['projectId'])){
+    $projectId = $_SESSION['projectId'];
+}
+
 if(isset($_POST['class'])){
     if($_POST['class'] == "have"){
         $class = 'columnData';
@@ -89,9 +93,10 @@ if (empty($sati_ep2)) {
     try {
         if (!isset($_SESSION['error'])) {
 
-            $tb_satisfied = $conn->prepare("INSERT INTO tb_satisfied(sati_ep2, sati_info, sub_info, sati_topic, sub_topic, member_id) VALUES (?, ?, ?, ?, ?, ?)");
-            $tb_satisfied->execute([$sati_ep2, $sati_info, $sub_info, $sati_topic, $sub_topic, $user_id]);
+            $tb_satisfied = $conn->prepare("INSERT INTO tb_satisfied(sati_ep2, sati_info, sub_info, sati_topic, sub_topic, member_id, project_id) VALUES (?, ?, ?, ?, ?, ?,?)");
+            $tb_satisfied->execute([$sati_ep2, $sati_info, $sub_info, $sati_topic, $sub_topic, $user_id,$projectId]);
 
+            unset($_SESSION['projectId']);
             header("location: form.php");
 
         }
