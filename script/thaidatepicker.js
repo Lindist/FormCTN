@@ -8,5 +8,6 @@ function thaiDatepicker(el) {
         lang: 'th',
         yearOffset : 543,
         validateOnBlur: false,
+        minDate: new Date(),
     })
 }
