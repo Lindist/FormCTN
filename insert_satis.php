@@ -5,6 +5,7 @@ require 'session/config.php';
 
 if (!isset($_SESSION['user_id'])) {
     header("Location: index.php");
+    exit();
 }
 
 if (isset($_SESSION['user_id'])) {
@@ -77,6 +78,8 @@ if (isset($_POST['save'])) {
 
 }
 
+$_SESSION['pj_id'] = $_POST['pj_id'];
+
 if (empty($sati_ep2)) {
     $_SESSION['error'] = "กรุณากรอกชื่อ โปรเจค";
     header("location: insert_satis_form.php");
@@ -88,6 +91,10 @@ if (empty($sati_ep2)) {
 } else if (empty($sati_topic)) {
     $_SESSION['error'] = "กรุณากรอก ด้าน อย่างน้อย 1 ด้าน";
     header("location: insert_satis_form.php");
+    exit;
+} else if (empty($combined_subinfo)) {
+    $_SESSION['error'] = "กรุณากรอก ตัวเลือก ข้อมูลพื้นฐาน อย่างน้อย 1 ประเภท";
+    header("location: insert_performance_form.php");
     exit;
 } else {
     try {

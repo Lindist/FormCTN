@@ -5,6 +5,9 @@ require 'session/config.php';
 
 if (!isset($_SESSION['user_id'])) {
     header("Location: index.php");
+    exit();
+} else if (isset($_SESSION['user_id'])) {
+    $member_id = $_SESSION['user_id'];
 }
 
 if (isset($_GET['id'])) {
@@ -14,6 +17,11 @@ if (isset($_GET['id'])) {
     $query->bindParam(":form_id", $form_id);
     $query->execute();
     $row = $query->fetch();
+
+    if ($row['member_id'] != $member_id) {
+        header("Location: index.php");
+        exit();
+    }
 
     $formname = $row['form_name'];
     $ad = $row['form_ad'];
@@ -44,6 +52,13 @@ if (isset($_GET['id'])) {
         $setfeature_ex[$index] = preg_split("/Ϫ/", $topic);
     }
 
+    $query = $conn->prepare("SELECT * FROM project WHERE project_id = :project_id");
+    $query->bindParam(":project_id", $row['project_id']);
+    $query->execute();
+    $rowp = $query->fetch();
+
+    $project_name = $rowp['project_name'];
+
     // echo $formname;
     // echo "<br>";
     // echo $ad;
@@ -68,6 +83,7 @@ if (isset($_GET['id'])) {
 
 } else {
     header("Location: index.php");
+    exit();
 }
 
 ?>
@@ -114,7 +130,7 @@ if (isset($_GET['id'])) {
             <!-- Title_Content -->
             <div class="mb-4">
                 <label class="block text-lg font-bold mb-2">ชื่อแบบฟอร์ม</label>
-                <input type="text" value="<?= $row['form_name'] ?>" name="formname" id="formname" class="block w-full border border-gray-300 rounded px-3 py-2 mb-3" required>
+                <input type="text" readonly value="<?= $project_name ?>" name="formname" id="formname" class="block w-full border border-gray-300 rounded px-3 py-2 mb-3" required>
 
                 <input type="hidden" name="id" class="block border" value="<?= $row['form_id'] ?>">
 

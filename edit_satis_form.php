@@ -5,6 +5,9 @@ require 'session/config.php';
 
 if (!isset($_SESSION['user_id'])) {
     header("Location: index.php");
+    exit();
+} else if (isset($_SESSION['user_id'])) {
+    $member_id = $_SESSION['user_id'];
 }
 
 if (isset($_GET['class'])) {
@@ -27,6 +30,11 @@ if (isset($_GET['id'])) {
     $query->execute();
     $row = $query->fetch();
 
+    if ($row['member_id'] != $member_id) {
+        header("Location: index.php");
+        exit();
+    }
+
     $sati_ep2 = $row['sati_ep2'];
     $sati_info_un = $row['sati_info'];
     $sub_info_un = $row['sub_info'];
@@ -47,6 +55,13 @@ if (isset($_GET['id'])) {
     foreach ($sub_topic as $index => $topic) {
         $sub_topic_ex[$index] = preg_split("/Ϫ/", $topic);
     }
+
+    $query = $conn->prepare("SELECT * FROM project WHERE project_id = :project_id");
+    $query->bindParam(":project_id", $row['project_id']);
+    $query->execute();
+    $rowp = $query->fetch();
+
+    $project_name = $rowp['project_name'];
 
     // echo "sub_topic_ex = ";
     // print_r($sub_topic_ex[0]);
@@ -84,6 +99,7 @@ if (isset($_GET['id'])) {
 
 } else {
     header("Location: index.php");
+    exit();
 }
 
 ?>
@@ -135,7 +151,7 @@ if (isset($_GET['id'])) {
                 <label class="text-lg"><label class="text-lg font-bold mb-2">คำชี้แจง </label>ในแบบประเมินความพึงพอใจการใช้งานระบบ แบ่งออกเป็น 3 ตอนดังนี้</label><br><br>
                 <label class="text-lg"><label class="text-lg font-bold mb-2">ตอนที่ 1 </label>เป็นข้อมูลพื้นฐานของผู้กรอกแบบสอบถาม</label><br><br>
                 <label class="text-lg"><label class="text-lg font-bold mb-2">ตอนที่ 2 </label><br>เป็นแบบสอบถามความคิดเห็น<br>ที่มีต่อ
-                    <input type="text" id="" name="sati_ep2" class="p-1 text-lg text-gray-900 border border-gray-300 rounded bg-gray-50 w-86 sm:w-96" value="<?= $row['sati_ep2'] ?>" required>
+                    <input type="text" id="" name="sati_ep2" class="p-1 text-lg text-gray-900 border border-gray-300 rounded bg-gray-50 w-86 sm:w-96" value="<?= $project_name ?>" required>
                     โดยแบ่งการประเมินเป็น 4 ด้าน คือ</label><br>
                 <label class="text-lg ml-8">ด้านที่ 1 ด้านความต้องการของผู้ใช้งานระบบ</label><br>
                 <label class="text-lg ml-8">ด้านที่ 2 ด้านการทำงานตามฟังค์ชันของระบบ</label><br>

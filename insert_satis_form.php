@@ -5,6 +5,7 @@ require 'session/config.php';
 
 if (!isset($_SESSION['user_id'])) {
     header("Location: index.php");
+    exit();
 }
 
 if (isset($_GET['class'])) {
@@ -28,9 +29,18 @@ if(isset($_GET['pro_id'])){
 
 $keys = [];
 
-for ($i = 0; $i < 10; $i++) { // Replace 10 with any large number or condition
-    $keys[$i] = null;
-}
+// echo $pj_id;
+
+$project_id = $pj_id;
+
+$query = $conn->prepare("SELECT * FROM project WHERE project_id = :project_id");
+$query->bindParam(":project_id", $project_id);
+$query->execute();
+$row = $query->fetch();
+
+$project_name = $row['project_name'];
+
+// echo $project_name;
 
 ?>
 
@@ -91,6 +101,7 @@ for ($i = 0; $i < 10; $i++) { // Replace 10 with any large number or condition
                 <label class="text-lg ml-8">ด้านที่ 2 ด้านการทำงานตามฟังค์ชันของระบบ</label><br>
                 <label class="text-lg ml-8">ด้านที่ 3 ด้านความง่ายต่อการใช้งานระบบ</label><br>
                 <label class="text-lg ml-8">ด้านที่ 4 ด้านการใช้งานรักษาความปลอดภัยของข้อมูลในระบบ</label><br>
+                <input type="hidden" readonly name="pj_id" value="<?= $pj_id ?>">
 
             </div>
 
