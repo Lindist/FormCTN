@@ -6,6 +6,8 @@ require 'session/config.php';
 if (!isset($_SESSION['user_id'])) {
     header("Location: index.php");
     exit();
+} else if (isset($_SESSION['user_id'])) {
+    $member_id = $_SESSION['user_id'];
 }
 
 if (isset($_GET['id'])) {
@@ -15,6 +17,11 @@ if (isset($_GET['id'])) {
     $query->bindParam(":form_id", $form_id);
     $query->execute();
     $row = $query->fetch();
+
+    if ($row['member_id'] != $member_id) {
+        header("Location: index.php");
+        exit();
+    }
 
     $formname = $row['form_name'];
     $ad = $row['form_ad'];
