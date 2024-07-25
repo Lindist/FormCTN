@@ -68,7 +68,7 @@ $projectedit->execute();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/formstyle.css">
+    <link rel="stylesheet" href="style/formstyles.css">
     <link rel="stylesheet" href="style/tabstyle1.css">
     <link rel="stylesheet" href="style/inputsearchstyle.css">
     <link rel="stylesheet" href="style/addProjectname1_2.css">
@@ -548,7 +548,7 @@ $projectedit->execute();
     <script src="script/active.js" type="module"></script>
     <script src="script/searchscipt.js"></script>
     <script src="script/dropdown1.js"></script>
-    <script src="script/dropdownforreponsives.js"></script>
+    <script src="script/dropdownforreponsive.js"></script>
     <script src="script/script_add_dataes.js"></script>
     <script src="script/scriptSelector.js"></script>
     <script src="script/datepicker1.js"></script>
@@ -617,11 +617,11 @@ $projectedit->execute();
                 }
             });
         };
-        nextToper = () => {
-            window.location.href = "insert_performance_form.php?pj=<?= $rowproject['project_id']; ?>";
+        nextToper = (name,id) =>{
+            window.location.href = "insert_performance_form.php?pro_name="+name.toString() + "&pro_id="+id.toString();
         }
-        nextTosta = () => {
-            window.location.href = "insert_satis_form.php?pj=<?= $rowproject['project_id']; ?>";
+        nextTosta = (name,id) =>{
+            window.location.href = "insert_satis_form.php?pro_name="+name.toString() + "&pro_id="+id.toString();
         }
     </script>
 </body>

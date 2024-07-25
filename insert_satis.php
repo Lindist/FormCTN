@@ -11,6 +11,10 @@ if (isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
 }
 
+if(isset($_SESSION['projectId'])){
+    $projectId = $_SESSION['projectId'];
+}
+
 if(isset($_POST['class'])){
     if($_POST['class'] == "have"){
         $class = 'columnData';
@@ -100,6 +104,7 @@ if (empty($sati_ep2)) {
 
             unset($_SESSION['pj_id']);
 
+            unset($_SESSION['projectId']);
             header("location: form.php");
 
         }

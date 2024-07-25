@@ -19,6 +19,10 @@ if(isset($_POST['class'])){
         $class = $_POST['class'];
     }
 }
+if(isset($_SESSION['projectId'])){
+    $projectId = $_SESSION['projectId'];
+}
+
 if (isset($_POST['save'])) {
     $formname = $_POST['formname'];
     $ad = $_POST['ad'];
