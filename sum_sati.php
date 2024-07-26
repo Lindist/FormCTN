@@ -70,8 +70,8 @@ $scores_ex = [];
 foreach ($rows as $row) {
     // Get the score value
     $score = $row['score'];
-    // Split the score by 'Ϫ'
-    $split_scores = preg_split("/Ϫ/", $score);
+    // Split the score by 'ꓘ'
+    $split_scores = preg_split("/ꓘ/", $score);
     // Add only the split results to the array
     $scores_ex[] = $split_scores;
 }
@@ -80,15 +80,33 @@ $scores_split = [];
 foreach ($scores_ex as $score_group) {
     $group_split = [];
     foreach ($score_group as $score) {
-        $group_split[] = preg_split("/ꓘ/", $score);
+        $group_split[] = preg_split("/Ϫ/", $score);
     }
     $scores_split[] = $group_split;
 }
 
-// header('Content-Type: application/json; charset=utf-8');
+// ฟังก์ชันแปลงข้อความเป็นตัวเลข
+function convert_satisfaction_to_number($text) {
+    $map = [
+        "พึงพอใจมากที่สุด" => 5,
+        "พึงพอใจมาก" => 4,
+        "พึงพอใจปานกลาง" => 3,
+        "พึงพอใจน้อย" => 2,
+        "พึงพอใจน้อยที่สุด" => 1
+    ];
+    return isset($map[$text]) ? $map[$text] : 0;
+}
 
-// echo json_encode($scores, JSON_UNESCAPED_UNICODE);
-// print_r($scores_ex);
+// แปลงคะแนนในอาร์เรย์
+foreach ($scores_split as &$score_group) {
+    foreach ($score_group as &$score) {
+        foreach ($score as &$part) {
+            $part = convert_satisfaction_to_number($part);
+        }
+    }
+}
+unset($score_group, $score, $part);
+
 echo "หัวข้อ<br>";
 print_r($sati_info);
 echo "<br>คำตอบแต่ละหัวข้อ<br>";
@@ -194,7 +212,7 @@ print_r($scores_split);
             <?php
             $s = 0;
             ?>
-            <?php for ($i = 0; $i < count($scores_split); $i++) { ?>
+            <?php for ($i = 0; $i < count($sati_topic); $i++) { ?>
                 <p class="text-lg font-medium mb-2 mt-4">ด้านที่ <?= $i + 1 ?> ด้าน<?= $sati_topic[$i] ?></p>
                 <table class="w-full border border-gray-300 text-center my-3">
                     <thead>
@@ -210,10 +228,10 @@ print_r($scores_split);
                     </thead>
                     <tbody>
                         <tr class="odd:bg-white even:bg-gray-100">
-                            <td class="border border-gray-300 text-center">1</td>
-                            <td class="border border-gray-300 text-center">1</td>
-                            <td class="border border-gray-300 text-center">1</td>
-                            <td class="border border-gray-300 text-center">1</td>
+                            <td class="border border-gray-300 text-center">test</td>
+                            <td class="border border-gray-300 text-center">test</td>
+                            <td class="border border-gray-300 text-center">test</td>
+                            <td class="border border-gray-300 text-center">test</td>
                         </tr>
                         <!-- Add more rows as needed -->
                     </tbody>
