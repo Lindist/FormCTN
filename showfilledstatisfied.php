@@ -149,13 +149,14 @@ if (isset($_GET['class'])) {
                 </label><br>
                 <span class="rad form-control text-break mb-2" style="width: 100%;"><?php echo $row['sati_ep2']; ?></span>
                 <div class="d-flex flex-column w-50 align-items-center">
-                    <label class="font-bold d-flex justify-content-start w-100">โดยแบ่งการประเมินเป็น 4 ด้าน คือ</label>
-                    <ul class="">
-                        <li class="" for="">ด้านที่ 1 ความต้องการของผู้ใช้งานระบบ</li> <br>
-                        <li class="" for="">ด้านที่ 2 ด้านการทำงานของฟั่งชั่นระบบ</li> <br>
-                        <li class="" for="">ด้านที่ 3 ด้านความง่ายต่อการใช้ระบบ</li> <br>
-                        <li class="" for="">ด้านที่ 4 ด้านการใช้งานรักษาความปลอดภัยของข้อมูลในระบบ</li> <br>
-                    </ul>
+                <label class="font-bold d-flex justify-content-start w-100">โดยแบ่งการประเมินเป็น <?= count($sati_topic); ?> ด้าน คือ</label>
+                    <div class="w-50">
+                        <ul class="w-100">
+                        <?php for($b=0;$b < count($sati_topic);$b++){ ?>
+                            <li class="" for="">ด้านที่ <?= ($b+1)." ".$sati_topic[$b]; ?></li> <br>
+                        <?php } ?>
+                        </ul>
+                    </div>
                 </div>
                 <label class="font-bold" for="">ตอนที่ 3 เป็นข้อคิดเห็นและเสนอแนะอื่นๆ</label> <br>
             </div>

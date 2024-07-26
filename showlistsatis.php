@@ -167,7 +167,9 @@
                 <?php $row = $result->fetch(PDO::FETCH_ASSOC); ?>
                     <span>
                     <!-- <div>ลำดับที่ <?php echo $c; ?></div> -->
-                    <div class='text1'><i class='bx bxs-user-circle'></i><?php echo $row['member_title']." ".$row['member_firstname']." ".$row['member_lastname']." ".$row['member_code']." "."(ผู้สร้าง)"; ?></div>
+                    <div class='text1'><i class='bx bxs-user-circle'></i><?php echo $row['member_title']." ".$row['member_firstname']." ".$row['member_lastname']." ".$row['member_code']." "."(ผู้สร้าง)"; ?>
+                    <a id='btnresult' href="resultstatisfield.php?form_id=<?= $id; ?>" >ผลสรุป</a>
+                    </div>
                     <!-- <div class="btns">
                     <a id='btn' href="showfilled.php?id=<?php echo $row['member_id']; ?>&issta=1" >ดูข้อมูล</a>
                     </div> -->
@@ -180,6 +182,7 @@
                             <div class='text'><?php echo $filler[$i]['member_title']." ".$filler[$i]['member_firstname']." ".$filler[$i]['member_lastname']." ".$filler[$i]['member_code']; ?></div>
                             <div class="btns">
                             <a id='btn' href="showfilledstatisfied.php?user_id=<?php echo $filler[$i]['member_id']; ?>&form_id=<?= $id; ?>" >ดูข้อมูล</a>
+                            <!-- <a id='btnresult' href="resultstatisfield.php?user_id=<?php echo $filler[$i]['member_id']; ?>&form_id=<?= $id; ?>" >ผลสรุป</a> -->
                             </div>
                             </div>
                     <?php } ?>
@@ -212,6 +215,23 @@
         }
         .btns > a:hover{
             background-color: rgb(3, 3, 159);
+        }
+        #btnresult{
+            background-color: #088395;
+            font-size: 19px;
+            margin-left: 5px;
+            display: inline-block;
+            text-align: center;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            color: #fff;
+            transition: all .2s ease-in-out;
+        }
+        #btnresult:hover{
+            background-color: #37B7C3;
         }
     </style>
 </body>
