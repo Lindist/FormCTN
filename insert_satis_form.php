@@ -25,9 +25,8 @@ if(isset($_GET['pro_name'])){
 }
 if(isset($_GET['pro_id'])){
     $_SESSION['projectId'] = $_GET['pro_id'];
+    $pj_id = $_GET['pro_id'];
 }
-
-$keys = [];
 
 // echo $pj_id;
 
