@@ -130,31 +130,34 @@ $collect_sub = [];
 $count_collect_sub = [];
 $n = [];
 
-$xBar_overlap_Array = [];
-$xBar_overlap_count = [];
+// $xBar_overlap_Array = [];
+// $xBar_overlap_count = [];
 // $collect_sub_interupt_count = 0;
 for($j = 0;$j < count($main_sub_topic); $j++){
-    $counttoxbar = 0;
+    // $counttoxbar = 0;
+    $collect_sub[] = [];
+    $count_collect_sub[] = [];
+    $n[] = [];
     for ($i = 0; $i < count($main_sub_topic[$j]); $i++) {
-        $collect_sub[] = 0;
-        $count_collect_sub[] = 0;
-        $n[] = [];
-        $counttoxbar++;
+        $collect_sub[$j][] = 0;
+        $count_collect_sub[$j][] = 0;
+        $n[$j][] = 0;
+        // $counttoxbar++;
     }
-    $xBar_overlap_Array[] = [];
-    $xBar_overlap_count[] = $counttoxbar;
+    // $xBar_overlap_Array[] = [];
+    // $xBar_overlap_count[] = $counttoxbar;
 }
 
 $index_sum_sub =0;
 for($j = 0;$j < count($scores_split); $j++){
     for ($i = 0; $i < count($scores_split[$j]); $i++) {       
         foreach($scores_split[$j][$i] as $key => $value){
-            if($index_sum_sub === count($collect_sub)){
+            if($index_sum_sub === count($collect_sub[$i])){
                 $index_sum_sub=0;
             }
-            $collect_sub[$index_sum_sub] = $collect_sub[$index_sum_sub] + $value;
-            $count_collect_sub[$index_sum_sub] += 1;
-            $n[$index_sum_sub][] = $value;
+            $collect_sub[$i][$index_sum_sub] = $collect_sub[$i][$index_sum_sub] + $value;
+            $count_collect_sub[$i][$index_sum_sub] += 1;
+            $n[$i][$index_sum_sub] = $value;
             $index_sum_sub++;
         }
     }
@@ -167,15 +170,9 @@ for($j = 0;$j < count($scores_split); $j++){
 $xBar = [];
 
 foreach($collect_sub as $index => $value){
-    $xBar[] =  $value/$count_collect_sub[$index];
-}
-for($i = 0; $i < (count($xBar_overlap_Array)-1);$i++){
-    foreach($xBar as $index0 => $value0){
-        if($index0+1 > $xBar_overlap_count[$i]){
-            $xBar_overlap_Array[$i+1][] = $value0;
-        }else{
-            $xBar_overlap_Array[$i][] = $value0;
-        }
+    $xBar[] = [];
+    foreach($collect_sub[$index] as $index0 => $value0){
+        $xBar[$index][] =  $value0/$count_collect_sub[$index][$index0];
     }
 }
 // print_r($xBar);
@@ -183,17 +180,27 @@ for($i = 0; $i < (count($xBar_overlap_Array)-1);$i++){
 // print_r($xBar_overlap_count);
 
 $SD = [];
+$sum_number = [];
 foreach($collect_sub as $index => $value){
-    $sum = [];
-    foreach($n[$index] as $index0 => $value0){
-        $sum[] =  pow($value0-$xBar[$index],2);
-    }
-    $SD[] =  sqrt(array_sum($sum)/($count_collect_sub[$index]-1));
-    
+        $SD[] = [];
+        $sum = [];
+        foreach($n[$index] as $index0 => $value0){
+            $sum[] =  pow($value0-$xBar[$index][$index0],2);
+        }
+        // print_r($sum);
+        $sum_number[] = array_sum($sum);
 }
+foreach($count_collect_sub as $index1 => $value1){
+    foreach($count_collect_sub[$index1] as $index2 => $value2){
+        $SD[$index1][] =  sqrt($sum_number[$index1]/($value2-1));      
+    }
+}
+
+
+// print_r($sum_number);
 // print_r($SD);
 
-$xBar_Array = json_encode($xBar_overlap_Array);
+$xBar_Array = json_encode($xBar);
 ?>
 
 <!DOCTYPE html>
@@ -303,15 +310,15 @@ $xBar_Array = json_encode($xBar_overlap_Array);
                         <?php foreach($main_sub_topic[$i] as $key => $value){ ?>
                         <tr class="odd:bg-white even:bg-gray-100">
                             <td class="border border-gray-300 text-center"><?= $value; ?></td>
-                            <td class="border border-gray-300 text-center"><?php echo $xBar[$key]; ?></td>
-                            <td class="border border-gray-300 text-center"><?=  round($SD[$key],2); ?></td>
+                            <td class="border border-gray-300 text-center"><?php echo round($xBar[$i][$key],2); ?></td>
+                            <td class="border border-gray-300 text-center"><?=  round($SD[$i][$key],2); ?></td>
                             <td class="border border-gray-300 text-center">test</td>
                         </tr>
                         <?php } ?>
                         <!-- Add more rows as needed -->
                     </tbody>
                 </table>
-                <div style="width:600px; height:auto;">
+                <div style="width:65vw; height:auto; position: relative; left: 50%; transform: translateX(-50%); ">
                     <canvas id="myChart"></canvas>
                 </div>
       
