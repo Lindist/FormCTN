@@ -122,7 +122,78 @@ echo "<br>คำตอบแต่ละหัวข้อ<br>";
 print_r($main_sub_topic);
 echo "<br>คำตอบที่ user ตอบ<br>";
 print_r($scores_split);
+echo "<br>----------<br>";
 
+$main_sub_topic_Array = json_encode($main_sub_topic);
+
+$collect_sub = [];
+$count_collect_sub = [];
+$n = [];
+
+$xBar_overlap_Array = [];
+$xBar_overlap_count = [];
+// $collect_sub_interupt_count = 0;
+for($j = 0;$j < count($main_sub_topic); $j++){
+    $counttoxbar = 0;
+    for ($i = 0; $i < count($main_sub_topic[$j]); $i++) {
+        $collect_sub[] = 0;
+        $count_collect_sub[] = 0;
+        $n[] = [];
+        $counttoxbar++;
+    }
+    $xBar_overlap_Array[] = [];
+    $xBar_overlap_count[] = $counttoxbar;
+}
+
+$index_sum_sub =0;
+for($j = 0;$j < count($scores_split); $j++){
+    for ($i = 0; $i < count($scores_split[$j]); $i++) {       
+        foreach($scores_split[$j][$i] as $key => $value){
+            if($index_sum_sub === count($collect_sub)){
+                $index_sum_sub=0;
+            }
+            $collect_sub[$index_sum_sub] = $collect_sub[$index_sum_sub] + $value;
+            $count_collect_sub[$index_sum_sub] += 1;
+            $n[$index_sum_sub][] = $value;
+            $index_sum_sub++;
+        }
+    }
+}
+
+// print_r($count_collect_sub);
+// print_r($collect_sub);
+// print_r($n);
+
+$xBar = [];
+
+foreach($collect_sub as $index => $value){
+    $xBar[] =  $value/$count_collect_sub[$index];
+}
+for($i = 0; $i < (count($xBar_overlap_Array)-1);$i++){
+    foreach($xBar as $index0 => $value0){
+        if($index0+1 > $xBar_overlap_count[$i]){
+            $xBar_overlap_Array[$i+1][] = $value0;
+        }else{
+            $xBar_overlap_Array[$i][] = $value0;
+        }
+    }
+}
+// print_r($xBar);
+// print_r($xBar_overlap_Array);
+// print_r($xBar_overlap_count);
+
+$SD = [];
+foreach($collect_sub as $index => $value){
+    $sum = [];
+    foreach($n[$index] as $index0 => $value0){
+        $sum[] =  pow($value0-$xBar[$index],2);
+    }
+    $SD[] =  sqrt(array_sum($sum)/($count_collect_sub[$index]-1));
+    
+}
+// print_r($SD);
+
+$xBar_Array = json_encode($xBar_overlap_Array);
 ?>
 
 <!DOCTYPE html>
@@ -131,6 +202,8 @@ print_r($scores_split);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js" integrity="sha512-L0Shl7nXXzIlBSUUPpxrokqq4ojqgZFQczTYlGjzONGTDAcLremjwaWv5A+EDLnxhQzY5xUZPWLOLqYRkY0Cbw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Document</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
@@ -227,20 +300,70 @@ print_r($scores_split);
                         </tr>
                     </thead>
                     <tbody>
+                        <?php foreach($main_sub_topic[$i] as $key => $value){ ?>
                         <tr class="odd:bg-white even:bg-gray-100">
-                            <td class="border border-gray-300 text-center">test</td>
-                            <td class="border border-gray-300 text-center">test</td>
-                            <td class="border border-gray-300 text-center">test</td>
+                            <td class="border border-gray-300 text-center"><?= $value; ?></td>
+                            <td class="border border-gray-300 text-center"><?php echo $xBar[$key]; ?></td>
+                            <td class="border border-gray-300 text-center"><?=  round($SD[$key],2); ?></td>
                             <td class="border border-gray-300 text-center">test</td>
                         </tr>
+                        <?php } ?>
                         <!-- Add more rows as needed -->
                     </tbody>
                 </table>
+                <div style="width:600px; height:auto;">
+                    <canvas id="myChart"></canvas>
+                </div>
+      
+            
             <?php } ?>
 
         </div>
 
     </div>
+            <script>
+                    const ctx = document.querySelectorAll('#myChart');
+                    var $main_sub_topic = <?php echo $main_sub_topic_Array; ?>;
+                    var $xBar = <?php echo $xBar_Array; ?>;
+                    const topic = [...$main_sub_topic];
+                    const topic_data = $xBar;
+                    let xBarindex = 0;
+
+                    ctx.forEach((element,i) => {
+                        new Chart(element, {
+                        type: 'bar',
+                        data: {
+                            labels: topic[i],
+                            datasets: [{
+                            label: '',
+                            data: topic_data[i],
+                            backgroundColor: [
+                                'rgba(255,99,132,1)',
+                                'rgba(175,88,202,1)',
+                            ],
+                            borderColor: [
+                                'rgba(255,20,132,1)',
+                                'rgba(175,878,20,1)',
+                            ],
+                            borderWidth: 1
+                            }
+                        ]},
+                        options: {
+                            plugins: {
+                                legend: {
+                                    display: false
+                                }
+                            },
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                        });
+                });
+                    
+            </script>
 </body>
 
 </html>
