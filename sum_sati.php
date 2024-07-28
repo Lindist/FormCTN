@@ -96,6 +96,35 @@ function convert_satisfaction_to_number($text) {
     ];
     return isset($map[$text]) ? $map[$text] : 0;
 }
+function convert_number_to_satisfaction($number) {
+    $Z_Scores_to_convert = [];
+    $map = [
+        5 => "พึงพอใจมากที่สุด",
+        4 => "พึงพอใจมาก",
+        3 => "พึงพอใจปานกลาง",
+        2 => "พึงพอใจน้อย",
+        1 => "พึงพอใจน้อยที่สุด"
+    ];
+    foreach($number as $index => $value){
+        $Z_Scores_to_convert[] = [];
+        foreach($number[$index] as $value0){
+            if($value0 <= 1){
+                $Z_Scores_to_convert[$index][] = $map[1];
+            }else if($value0 <= 2){
+                $Z_Scores_to_convert[$index][] = $map[2];
+            }else if($value0 <= 3){
+                $Z_Scores_to_convert[$index][] = $map[3];
+            }else if($value0 <= 4){
+                $Z_Scores_to_convert[$index][] = $map[4];
+            }else if($value0 <= 5){
+                $Z_Scores_to_convert[$index][] = $map[5];
+            }else{
+                $Z_Scores_to_convert[$index][] = "พึงพอใจระดับปรับปรุง";
+            }
+        }
+    }
+    return $Z_Scores_to_convert;
+}
 
 // แปลงคะแนนในอาร์เรย์
 foreach ($scores_split as &$score_group) {
@@ -107,22 +136,22 @@ foreach ($scores_split as &$score_group) {
 }
 unset($score_group, $score, $part);
 
-echo "หัวข้อ<br>";
-print_r($sati_info);
-echo "<br>คำตอบแต่ละหัวข้อ<br>";
-print_r($main_sub_info);
-echo "<br>คำตอบที่ user ตอบ<br>";
-print_r($sub_info_ex);
-echo "<br>";
-echo "<-----score----->";
-echo "<br>";
-echo "หัวข้อ<br>";
-print_r($sati_topic);
-echo "<br>คำตอบแต่ละหัวข้อ<br>";
-print_r($main_sub_topic);
-echo "<br>คำตอบที่ user ตอบ<br>";
-print_r($scores_split);
-echo "<br>----------<br>";
+// echo "หัวข้อ<br>";
+// print_r($sati_info);
+// echo "<br>คำตอบแต่ละหัวข้อ<br>";
+// print_r($main_sub_info);
+// echo "<br>คำตอบที่ user ตอบ<br>";
+// print_r($sub_info_ex);
+// echo "<br>";
+// echo "<-----score----->";
+// echo "<br>";
+// echo "หัวข้อ<br>";
+// print_r($sati_topic);
+// echo "<br>คำตอบแต่ละหัวข้อ<br>";
+// print_r($main_sub_topic);
+// echo "<br>คำตอบที่ user ตอบ<br>";
+// print_r($scores_split);
+// echo "<br>----------<br>";
 
 $main_sub_topic_Array = json_encode($main_sub_topic);
 
@@ -200,7 +229,24 @@ foreach($count_collect_sub as $index1 => $value1){
 // print_r($sum_number);
 // print_r($SD);
 
+$Z_Scores = [];
+foreach($n as $index => $value){
+    $Z_Scores[] = [];
+    foreach($n[$index] as $index0 => $value0){
+        $Z_Scores[$index][] =  ($value0-$xBar[$index][$index0])/$SD[$index][$index0];
+    }
+}
+
+// print_r($Z_Scores);
+$Z_Scores_to_convert = convert_number_to_satisfaction($Z_Scores);
+// print_r($Z_Scores_to_convert);
 $xBar_Array = json_encode($xBar);
+
+if (isset($_GET['class'])) {
+    $class = $_GET['class'];
+}else{
+    $class = 'nohave';
+}
 ?>
 
 <!DOCTYPE html>
@@ -227,7 +273,14 @@ $xBar_Array = json_encode($xBar);
 
 <body>
     <div class="mx-2 sm:mx-16 bg-white p-4 my-2 sm:my-4 rounded shadow">
-
+        <aside class="my-5" style="display: flex; width: 170px; justify-content: space-between; flex-wrap: wrap;">
+            <button type="button" onclick="isClass('<?php echo $class; ?>')" style="display:flex; background-color:#1a75ff; color:#fff; font-weight:bold; border-style: none; border-radius:10px; padding: 10px; border-color: #444; transition:all .3s ease-in-out;" onmouseover="this.style.backgroundColor='#00f';" onmouseout="this.style.backgroundColor='#1a75ff';">
+                กลับหน้าแรก
+            </button>
+            <button type="button" onclick="history.back()" style="display:flex; background-color:#111; color:#fff; font-weight:bold; border-style: none; border-radius:10px; padding: 10px; border-color: #444; transition:all .3s ease-in-out;" onmouseover="this.style.backgroundColor='#333';" onmouseout="this.style.backgroundColor='#111';">
+                กลับ
+            </button>
+        </aside>
         <div>
             <p class="text-2xl font-medium mb-2">ตอนที่ 1 ผลการวิเคราะห์ข้อมูลพื้นฐานของผู้ตอบแบบสอบถาม</p>
 
@@ -312,7 +365,7 @@ $xBar_Array = json_encode($xBar);
                             <td class="border border-gray-300 text-center"><?= $value; ?></td>
                             <td class="border border-gray-300 text-center"><?php echo round($xBar[$i][$key],2); ?></td>
                             <td class="border border-gray-300 text-center"><?=  round($SD[$i][$key],2); ?></td>
-                            <td class="border border-gray-300 text-center">test</td>
+                            <td class="border border-gray-300 text-center"><?= $Z_Scores_to_convert[$i][$key]; ?></td>
                         </tr>
                         <?php } ?>
                         <!-- Add more rows as needed -->
@@ -329,13 +382,27 @@ $xBar_Array = json_encode($xBar);
 
     </div>
             <script>
+                    function getRandomNumber(min, max) {
+                        return Math.floor(Math.random() * (max - min + 1)) + min;
+                    }
+
                     const ctx = document.querySelectorAll('#myChart');
                     var $main_sub_topic = <?php echo $main_sub_topic_Array; ?>;
                     var $xBar = <?php echo $xBar_Array; ?>;
                     const topic = [...$main_sub_topic];
                     const topic_data = $xBar;
                     let xBarindex = 0;
-
+                    const colours = ['#7C00FE','#F9E400','#FFAF00','#F5004F','#522258','#8C3061','#C63C51','#D95F59','#C9DABF','#5F6F65','#180161','#021526',
+                        '#FF8225','#6EACDA','#E3A5C7','#399918','#FFDE4D','#EB5B00','#36C2CE','#77E4C8'
+                    ];
+                    let barcolour = [];
+                    topic.forEach((top,itop) => {
+                        barcolour.push([]);
+                        topic[itop].forEach((subtop,subitop) => {
+                            let randomNumber = getRandomNumber(0, colours.length);
+                            barcolour[itop].push(colours[randomNumber]);
+                        });
+                    });
                     ctx.forEach((element,i) => {
                         new Chart(element, {
                         type: 'bar',
@@ -344,14 +411,8 @@ $xBar_Array = json_encode($xBar);
                             datasets: [{
                             label: '',
                             data: topic_data[i],
-                            backgroundColor: [
-                                'rgba(255,99,132,1)',
-                                'rgba(175,88,202,1)',
-                            ],
-                            borderColor: [
-                                'rgba(255,20,132,1)',
-                                'rgba(175,878,20,1)',
-                            ],
+                            backgroundColor: barcolour[i],
+                            borderColor: barcolour[i],
                             borderWidth: 1
                             }
                         ]},
@@ -371,6 +432,7 @@ $xBar_Array = json_encode($xBar);
                 });
                     
             </script>
+            <script src="script/changeclass.js"></script>
 </body>
 
 </html>
