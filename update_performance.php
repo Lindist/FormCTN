@@ -90,6 +90,9 @@ if (empty($formname)) {
             $tb_efficiercy_form = $conn->prepare("UPDATE tb_efficiercy_form SET form_name = ?, form_ad = ?, member_id = ?, form_info = ?, sub_info = ?, form_topic = ?, feature = ?, setfeature = ? WHERE form_id = ?");
             $tb_efficiercy_form->execute([$formname, $ad, $user_id, $form_info, $sub_info, $form_topic, $feature, $setfeature, $form_id]);
 
+            $tb_efficiercy_fill = $conn->prepare("UPDATE tb_fill_efficiercy SET form_name = ?, form_ad = ?, member_id = ?, sub_info = ?, form_topic = ?, feature = ?, setfeature = ? WHERE form_id = ?");
+            $tb_efficiercy_fill->execute([$formname, $ad, $user_id, $form_info, $form_topic, $feature, $setfeature, $form_id]);
+
             header("location: form.php?class=".$class);
 
         }
