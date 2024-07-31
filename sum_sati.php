@@ -162,22 +162,24 @@ foreach ($scores_split as &$score_group) {
 }
 unset($score_group, $score, $part);
 
-// echo "หัวข้อ<br>";
-// print_r($sati_info);
-// echo "<br>คำตอบแต่ละหัวข้อ<br>";
-// print_r($main_sub_info);
-// echo "<br>คำตอบที่ user ตอบ<br>";
-// print_r($sub_info_ex);
-// echo "<br>";
-// echo "<-----score----->";
-// echo "<br>";
-// echo "หัวข้อ<br>";
-// print_r($sati_topic);
-// echo "<br>คำตอบแต่ละหัวข้อ<br>";
-// print_r($main_sub_topic);
-// echo "<br>คำตอบที่ user ตอบ<br>";
-// print_r($scores_split);
-// echo "<br>----------<br>";
+echo "หัวข้อ<br>";
+print_r($sati_info);
+echo "<br>คำตอบแต่ละหัวข้อ<br>";
+print_r($main_sub_info);
+echo "<br>คำตอบที่ user ตอบ<br>";
+print_r($sub_info_ex);
+echo "<br>";
+echo "<-----score----->";
+echo "<br>";
+echo "หัวข้อ<br>";
+print_r($sati_topic);
+echo "<br>คำตอบแต่ละหัวข้อ<br>";
+print_r($main_sub_topic);
+echo "<br>คำตอบที่ user ตอบ<br>";
+print_r($scores_split);
+echo "<br>----------<br>";
+
+print_r($sub_info_ex);
 
 $main_sub_topic_Array = json_encode($main_sub_topic);
 
@@ -454,9 +456,9 @@ if (isset($_GET['class'])) {
                             $match_counts = array_fill(0, count($main_sub_info[$i]), 0);
 
                             for ($b = 0; $b < count($main_sub_info[$i]); $b++) {
-                                // นับจำนวนการจับคู่สำหรับแต่ละ sub_info_ex
+                                // Count matches for each $sub_info_ex
                                 foreach ($sub_info_ex as $sub_info) {
-                                    if ($sub_info[$i] == $main_sub_info[$i][$b]) {
+                                    if (isset($sub_info[$i]) && $sub_info[$i] == $main_sub_info[$i][$b]) {
                                         $match_counts[$b]++;
                                         $total_count++;
                                     }

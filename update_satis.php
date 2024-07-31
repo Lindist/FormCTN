@@ -74,8 +74,8 @@ if (empty($sati_ep2)) {
             $tb_satisfied = $conn->prepare("UPDATE tb_satisfied SET sati_ep2 = ?, sati_info = ?, sub_info = ?, sati_topic = ?, sub_topic = ? WHERE sati_id = ?",);
             $tb_satisfied->execute([$sati_ep2, $sati_info, $sub_info, $sati_topic, $sub_topic, $sati_id]);
 
-            $tb_fill = $conn->prepare("UPDATE tb_fill_satisfied SET sati_ep2 = ?, sati_info = ?, sati_topic = ?, sub_topic = ? WHERE sati_id = ?",);
-            $tb_fill->execute([$sati_ep2, $sati_info, $sati_topic, $sub_topic, $sati_id]);
+            // $tb_fill = $conn->prepare("UPDATE tb_fill_satisfied SET sati_ep2 = ?, sati_info = ?, sati_topic = ?, sub_topic = ? WHERE sati_id = ?",);
+            // $tb_fill->execute([$sati_ep2, $sati_info, $sati_topic, $sub_topic, $sati_id]);
 
             header("location: form.php");
 
