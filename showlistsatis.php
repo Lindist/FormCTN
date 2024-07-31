@@ -168,7 +168,9 @@
                     <span>
                     <!-- <div>ลำดับที่ <?php echo $c; ?></div> -->
                     <div class='text1'><i class='bx bxs-user-circle'></i><?php echo $row['member_title']." ".$row['member_firstname']." ".$row['member_lastname']." ".$row['member_code']." "."(ผู้สร้าง)"; ?>
+                    <?php if(count($nofiller) > 0){ ?>
                     <a id='btnresult' href="sum_sati.php?sati_id=<?= $id; ?>" >ผลสรุป</a>
+                    <?php } ?>
                     </div>
                     <!-- <div class="btns">
                     <a id='btn' href="showfilled.php?id=<?php echo $row['member_id']; ?>&issta=1" >ดูข้อมูล</a>
