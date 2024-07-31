@@ -46,6 +46,12 @@ foreach ($rows as $row) {
     $sub_info_ex[] = $split_sub_info;
 }
 
+if (isset($_GET['class'])) {
+    $class = $_GET['class'];
+}else{
+    $class = 'nohave';
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -71,6 +77,7 @@ foreach ($rows as $row) {
 </head>
 
 <body>
+
     <div class="mx-2 sm:mx-16 bg-white p-4 my-2 sm:my-4 rounded shadow">
         <aside class="my-5" style="display: flex; width: 170px; justify-content: space-between; flex-wrap: wrap;">
             <button type="button" onclick="isClass('<?php echo $class; ?>')" style="display:flex; background-color:#1a75ff; color:#fff; font-weight:bold; border-style: none; border-radius:10px; padding: 10px; border-color: #444; transition:all .3s ease-in-out;" onmouseover="this.style.backgroundColor='#00f';" onmouseout="this.style.backgroundColor='#1a75ff';">
@@ -107,7 +114,7 @@ foreach ($rows as $row) {
                             for ($b = 0; $b < count($main_sub_info[$i]); $b++) {
                                 // นับจำนวนการจับคู่สำหรับแต่ละ sub_info_ex
                                 foreach ($sub_info_ex as $sub_info) {
-                                    if ($sub_info[$i] == $main_sub_info[$i][$b]) {
+                                    if (isset($sub_info[$i]) && $sub_info[$i] == $main_sub_info[$i][$b]) {
                                         $match_counts[$b]++;
                                         $total_count++;
                                     }
@@ -137,3 +144,6 @@ foreach ($rows as $row) {
             <?php } ?>
         </div>
     </div>
+    <script src="script/changeclass.js"></script>
+</body>
+</html>
