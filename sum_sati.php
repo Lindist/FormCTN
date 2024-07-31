@@ -162,24 +162,24 @@ foreach ($scores_split as &$score_group) {
 }
 unset($score_group, $score, $part);
 
-echo "หัวข้อ<br>";
-print_r($sati_info);
-echo "<br>คำตอบแต่ละหัวข้อ<br>";
-print_r($main_sub_info);
-echo "<br>คำตอบที่ user ตอบ<br>";
-print_r($sub_info_ex);
-echo "<br>";
-echo "<-----score----->";
-echo "<br>";
-echo "หัวข้อ<br>";
-print_r($sati_topic);
-echo "<br>คำตอบแต่ละหัวข้อ<br>";
-print_r($main_sub_topic);
-echo "<br>คำตอบที่ user ตอบ<br>";
-print_r($scores_split);
-echo "<br>----------<br>";
+// echo "หัวข้อ<br>";
+// print_r($sati_info);
+// echo "<br>คำตอบแต่ละหัวข้อ<br>";
+// print_r($main_sub_info);
+// echo "<br>คำตอบที่ user ตอบ<br>";
+// print_r($sub_info_ex);
+// echo "<br>";
+// echo "<-----score----->";
+// echo "<br>";
+// echo "หัวข้อ<br>";
+// print_r($sati_topic);
+// echo "<br>คำตอบแต่ละหัวข้อ<br>";
+// print_r($main_sub_topic);
+// echo "<br>คำตอบที่ user ตอบ<br>";
+// print_r($scores_split);
+// echo "<br>----------<br>";
 
-print_r($sub_info_ex);
+// print_r($sub_info_ex);
 
 $main_sub_topic_Array = json_encode($main_sub_topic);
 
@@ -206,14 +206,17 @@ for($j = 0;$j < count($scores_split); $j++){
         $N[$j][$i][] = 0;
     }
 }
+// print_r($scores_split);
+// print_r($main_sub_topic);
+// print_r($collect_sub);
 
-$index_sum_sub =0;
 $ispersoncount = 0;
 $countdontback = 0;
 for($j = 0;$j < count($scores_split); $j++){
     for ($i = 0; $i < count($scores_split[$j]); $i++) {       
+        $index_sum_sub =0; 
         foreach($scores_split[$j][$i] as $key => $value){
-            if($index_sum_sub === count($collect_sub[$i])){
+            if($index_sum_sub === count($scores_split[$j][$i])){
                 $index_sum_sub=0;
             }
             $collect_sub[$i][$index_sum_sub] = $collect_sub[$i][$index_sum_sub] + $value;
@@ -246,23 +249,34 @@ foreach($N as $index0 => $value0){
         }
     }
 }
-// print_r($n);
+// print_r($sumjamphen1);
 // foreach($sumn as $index0 => $value0){
 //     foreach($value0 as $index1 => $value1){
 //         $sumn2[$index1][] = $value1;
 //     }
 // }
 
+$isoneperson = false;
 
+if($ispersoncount == 1){
+    $isoneperson = true;
+}
 
 
 
 $xBar = [];
 $sumxBar = [];
+
+$checktopic = 0;
 foreach($collect_sub as $index => $value){
     $xBar[] = [];
     foreach($collect_sub[$index] as $index0 => $value0){
-        $xBar[$index][] =  $value0/$count_collect_sub[$index][$index0];
+        if(!($value0 == 0)){
+            $xBar[$index][] =  $value0/$count_collect_sub[$index][$index0];
+        }
+        else{
+            $checktopic++;
+        }
     }
 }
 
@@ -282,11 +296,7 @@ foreach($xBar as $index => $value){
 // print_r($xBar);
 // print_r($xBar_overlap_Array);
 // print_r($xBar_overlap_count);
-$isoneperson = false;
 
-if($ispersoncount == 1){
-    $isoneperson = true;
-}
 $sumN = [];
 
 // print_r($collect_sub);
@@ -299,7 +309,7 @@ foreach($N as $index0 => $value0){
         }
     }
 }
-// print_r($sumN);
+// print_r($N);
 $SD = [];
 $sumSD = [];
 $sum = [];
@@ -318,16 +328,19 @@ foreach($sumN as $index => $value){
         }
     }
 }
+
+// print_r($N);
 // print_r($sum);
 
-// print_r($count_collect_sub);
 foreach($sum as $index0 => $value0){
     foreach($count_collect_sub[$index0] as $index1 => $value1){
         if($isoneperson){
             $SD[$index0][] =  sqrt($sum[$index0][$index1]/$value1); 
         }
-        else{
-            $SD[$index0][] =  sqrt($sum[$index0][$index1]/($value1-1));      
+        else if($sum[$index0][$index1] === 0){
+            $SD[$index0][] =  sqrt($sum[$index0][$index1]/$value1);      
+        }else{
+            $SD[$index0][] =  sqrt($sum[$index0][$index1]/($value1-1));
         }
     }
 }
@@ -344,7 +357,6 @@ foreach($SD as $index => $value){
     $sumSD[] = $sum;
 }
 // print_r($sumSD);
-// print_r($sum_number);
 // print_r($SD);
 
 $Z_Scores = [];
@@ -364,7 +376,7 @@ foreach($sumjamphen1 as $index0 => $value0){
         }
     }
 }
-
+// print_r($Z_Scores);
 
 
 foreach($Z_Scores as $index => $value){
@@ -495,7 +507,7 @@ if (isset($_GET['class'])) {
             <?php
             $s = 0;
             ?>
-            <?php for ($i = 0; $i < count($sati_topic); $i++) { ?>
+            <?php for ($i = 0; $i < count($sati_topic)-$checktopic; $i++) { ?>
                 <p class="text-lg font-medium mb-2 mt-4">ด้านที่ <?= $i + 1 ?> ด้าน<?= $sati_topic[$i] ?></p>
                 <table class="w-full border border-gray-300 text-center my-3">
                     <thead>
