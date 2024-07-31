@@ -43,7 +43,6 @@ if(isset($_GET['pro_id'])){
             background-color: rgb(180, 180, 180);
         }
     </style>
-    <!-- <script src="script/add_remove_performance_insert.js"></script> -->
 </head>
 
 <body>

@@ -63,7 +63,6 @@ $project_name = $row['project_name'];
             background-color: rgb(180, 180, 180);
         }
     </style>
-    <!-- <script src="script/add_remove_satis_insert.js"></script> -->
 </head>
 
 <body>
