@@ -210,6 +210,7 @@ for($j = 0;$j < count($scores_split); $j++){
 // print_r($scores_split);
 // print_r($main_sub_topic);
 // print_r($collect_sub);
+// print_r($sati_topic);
 
 $ispersoncount = 0;
 $countdontback = 0;
@@ -268,15 +269,11 @@ if($ispersoncount == 1){
 $xBar = [];
 $sumxBar = [];
 
-$checktopic = 0;
 foreach($collect_sub as $index => $value){
     $xBar[] = [];
     foreach($collect_sub[$index] as $index0 => $value0){
         if(!($value0 == 0)){
             $xBar[$index][] =  $value0/$count_collect_sub[$index][$index0];
-        }
-        else{
-            $checktopic++;
         }
     }
 }
@@ -508,7 +505,7 @@ if (isset($_GET['class'])) {
             <?php
             $s = 0;
             ?>
-            <?php for ($i = 0; $i < count($sati_topic)-$checktopic; $i++) { ?>
+            <?php for ($i = 0; $i < count($sati_topic); $i++) { ?>
                 <p class="text-lg font-medium mb-2 mt-4">ด้านที่ <?= $i + 1 ?> ด้าน<?= $sati_topic[$i] ?></p>
                 <table class="w-full border border-gray-300 text-center my-3">
                     <thead>
@@ -524,13 +521,31 @@ if (isset($_GET['class'])) {
                     </thead>
                     <tbody>
                         <?php foreach($main_sub_topic[$i] as $key => $value){ ?>
-                        <tr class="odd:bg-white even:bg-gray-100">
-                            <td class="border border-gray-300 text-center"><?= $value; ?></td>
-                            <td class="border border-gray-300 text-center"><?php echo round($xBar[$i][$key],2); ?></td>
-                            <td class="border border-gray-300 text-center"><?=  round($SD[$i][$key],2); ?></td>
-                            <td class="border border-gray-300 text-center"><?= $Z_Scores_to_convert[$i][$key]; ?></td>
+                            <?php if(isset($xBar[$i][$key]) || isset($SD[$i][$key])){ ?>
+                            <tr class="odd:bg-white even:bg-gray-100">
+                                <td class="border border-gray-300 text-center"><?= $value; ?></td>
+                                <td class="border border-gray-300 text-center"><?php echo round($xBar[$i][$key],2); ?></td>
+                                <td class="border border-gray-300 text-center"><?=  round($SD[$i][$key],2); ?></td>
+                                <td class="border border-gray-300 text-center"><?= $Z_Scores_to_convert[$i][$key]; ?></td>
+                            </tr>
+                            <?php }else{ ?>
+                            <tr class="odd:bg-white even:bg-gray-100">
+                                <td class="border border-gray-300 text-center"><?= $value; ?></td>
+                                <td class="border border-gray-300 text-center"><?php echo "ไม่การกรอกข้อมูล"; ?></td>
+                                <td class="border border-gray-300 text-center"><?=  "ไม่การกรอกข้อมูล"; ?></td>
+                                <td class="border border-gray-300 text-center"><?= "ไม่การกรอกข้อมูล"; ?></td>
+                            </tr>
+                            <?php } ?>
+                        <?php } ?>
+                        <?php if(!isset($sumxBar[$i]) || !isset($sumSD[$i])){ ?>
+                        <tr>
+                            <td class="border border-gray-300 text-center">รวม</td>
+                            <td class="border border-gray-300 text-center"><?= "ไม่การกรอกข้อมูล"; ?></td>
+                            <td class="border border-gray-300 text-center"><?= "ไม่การกรอกข้อมูล"; ?></td>
+                            <td class="border border-gray-300 text-center"><?= "ไม่การกรอกข้อมูล"; ?></td>
                         </tr>
                         <?php } ?>
+                        <?php if(isset($sumxBar[$i]) || isset($sumSD[$i])){ ?>
                         <tr>
                             <td class="border border-gray-300 text-center">รวม</td>
                             <td class="border border-gray-300 text-center"><?= round($sumxBar[$i],2); ?></td>
@@ -545,9 +560,10 @@ if (isset($_GET['class'])) {
                     <?php foreach($main_sub_topic[$i] as $key => $value){ ?>
                         มีความพึงพอใจ <?= $value; ?> โดยมีความพึงพอใจในระดับ มากที่สุด (x̄ = <?php echo round($xBar[$i][$key],2); ?>)
                     <?php } ?>
-                <div style="width:65vw; height:auto; position: relative; left: 50%; transform: translateX(-50%); ">
-                    <canvas id="myChart"></canvas>
-                </div>
+                    <div style="width:65vw; height:auto; position: relative; left: 50%; transform: translateX(-50%); ">
+                        <canvas id="myChart"></canvas>
+                    </div>
+                <?php } ?>
       
             
             <?php } ?>
