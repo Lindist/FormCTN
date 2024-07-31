@@ -189,13 +189,14 @@ $N = [];
 
 
 
-
-for($j = 0;$j < count($main_sub_topic); $j++){
-    $collect_sub[] = [];
-    $count_collect_sub[] = [];
-    for ($i = 0; $i < count($main_sub_topic[$j]); $i++) {
-        $collect_sub[$j][] = 0;
-        $count_collect_sub[$j][] = 0;
+for($b = 0;$b < count($scores_split); $b++){
+    for($j = 0;$j < count($scores_split[$b]); $j++){
+        $collect_sub[$j] = [];
+        $count_collect_sub[$j] = [];
+        for ($i = 0; $i < count($scores_split[$b][$j]); $i++) {
+            $collect_sub[$j][] = 0;
+            $count_collect_sub[$j][] = 0;
+        }
     }
 }
 
@@ -227,7 +228,7 @@ for($j = 0;$j < count($scores_split); $j++){
     }
     $ispersoncount++;
 }
-// print_r($collect_sub);
+// print_r($scores_split);
 
 // print_r($count_collect_sub);
 // print_r($collect_sub);
