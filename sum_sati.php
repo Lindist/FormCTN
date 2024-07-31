@@ -505,6 +505,7 @@ if (isset($_GET['class'])) {
             <?php
             $s = 0;
             ?>
+            
             <?php for ($i = 0; $i < count($sati_topic); $i++) { ?>
                 <p class="text-lg font-medium mb-2 mt-4">ด้านที่ <?= $i + 1 ?> ด้าน<?= $sati_topic[$i] ?></p>
                 <table class="w-full border border-gray-300 text-center my-3">
@@ -531,41 +532,41 @@ if (isset($_GET['class'])) {
                             <?php }else{ ?>
                             <tr class="odd:bg-white even:bg-gray-100">
                                 <td class="border border-gray-300 text-center"><?= $value; ?></td>
-                                <td class="border border-gray-300 text-center"><?php echo "ไม่การกรอกข้อมูล"; ?></td>
-                                <td class="border border-gray-300 text-center"><?=  "ไม่การกรอกข้อมูล"; ?></td>
-                                <td class="border border-gray-300 text-center"><?= "ไม่การกรอกข้อมูล"; ?></td>
-                            </tr>
+                                <td class="border border-gray-300 text-center">ไม่มีการกรอกข้อมูล</td>
+                                <td class="border border-gray-300 text-center">ไม่มีการกรอกข้อมูล</td>
+                                <td class="border border-gray-300 text-center">ไม่มีการกรอกข้อมูล</td>
+                            </tr> 
                             <?php } ?>
                         <?php } ?>
-                        <?php if(!isset($sumxBar[$i]) || !isset($sumSD[$i])){ ?>
-                        <tr>
-                            <td class="border border-gray-300 text-center">รวม</td>
-                            <td class="border border-gray-300 text-center"><?= "ไม่การกรอกข้อมูล"; ?></td>
-                            <td class="border border-gray-300 text-center"><?= "ไม่การกรอกข้อมูล"; ?></td>
-                            <td class="border border-gray-300 text-center"><?= "ไม่การกรอกข้อมูล"; ?></td>
-                        </tr>
-                        <?php } ?>
                         <?php if(isset($sumxBar[$i]) || isset($sumSD[$i])){ ?>
-                        <tr>
-                            <td class="border border-gray-300 text-center">รวม</td>
-                            <td class="border border-gray-300 text-center"><?= round($sumxBar[$i],2); ?></td>
-                            <td class="border border-gray-300 text-center"><?= round($sumSD[$i],2); ?></td>
-                            <td class="border border-gray-300 text-center"><?= $Z_Scores_to_convert_sum[$i]; ?></td>
-                        </tr>
-                        <!-- Add more rows as needed -->
+                            <tr>
+                                <td class="border border-gray-300 text-center">รวม</td>
+                                <td class="border border-gray-300 text-center"><?= round($sumxBar[$i],2); ?></td>
+                                <td class="border border-gray-300 text-center"><?= round($sumSD[$i],2); ?></td>
+                                <td class="border border-gray-300 text-center"><?= $Z_Scores_to_convert_sum[$i]; ?></td>
+                            </tr>
+                        <?php }else{ ?>
+                            <tr class="odd:bg-white even:bg-gray-100">
+                                <td class="border border-gray-300 text-center">รวม</td>
+                                <td class="border border-gray-300 text-center">ไม่มีการกรอกข้อมูล</td>
+                                <td class="border border-gray-300 text-center">ไม่มีการกรอกข้อมูล</td>
+                                <td class="border border-gray-300 text-center">ไม่มีการกรอกข้อมูล</td>
+                            </tr> 
+                        <?php } ?>
                     </tbody>
                 </table>
-                <p>จากตารางด้านที่<?= $sati_topic[$i] ?>  ความพึงพอใจภาพรวมมีความพึงพอใจในระดับ <?= $Z_Scores_to_convert_sum[$i]; ?> (x̄ = <?= round($sumxBar[$i],2); ?> ) </p>
-                เมื่อพิจารณารายข้อ พบว่า ด้านที่<?= $sati_topic[$i] ?> 
-                    <?php foreach($main_sub_topic[$i] as $key => $value){ ?>
-                        มีความพึงพอใจ <?= $value; ?> โดยมีความพึงพอใจในระดับ มากที่สุด (x̄ = <?php echo round($xBar[$i][$key],2); ?>)
-                    <?php } ?>
-                    <div style="width:65vw; height:auto; position: relative; left: 50%; transform: translateX(-50%); ">
-                        <canvas id="myChart"></canvas>
-                    </div>
+                <?php if(isset($sumxBar[$i]) || isset($sumSD[$i])){ ?>
+                    <p>จากตารางด้านที่<?= $sati_topic[$i] ?>  ความพึงพอใจภาพรวมมีความพึงพอใจในระดับ <?= $Z_Scores_to_convert_sum[$i]; ?> (x̄ = <?= round($sumxBar[$i],2); ?> ) </p>
+                    เมื่อพิจารณารายข้อ พบว่า ด้านที่<?= $sati_topic[$i] ?>
+                        <?php for($key=0;$key < count($main_sub_topic[$i]);$key++){ ?>
+                            <?php if(isset($xBar[$i][$key]) || isset($SD[$i][$key])){ ?> 
+                            มีความพึงพอใจ <?= $main_sub_topic[$i][$key]; ?> โดยมีความพึงพอใจในระดับ มากที่สุด (x̄ = <?php echo round($xBar[$i][$key],2); ?>)
+                            <?php } ?>
+                        <?php } ?>
+                        <div style="width:65vw; height:auto; position: relative; left: 50%; transform: translateX(-50%); ">
+                            <canvas id="myChart"></canvas>
+                        </div>
                 <?php } ?>
-      
-            
             <?php } ?>
 
         </div>
