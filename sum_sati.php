@@ -357,7 +357,7 @@ foreach($sumjamphen1 as $index0 => $value0){
             if($isoneperson){
                 $Z_Scores[$index0][] = $xBar[$index0][$index1];
             }else{
-                $Z_Scores[$index0][] =  $xBar[$index0][$index1]-$SD[$index0][$index1]/2;
+                $Z_Scores[$index0][] =  $xBar[$index0][$index1];
             }
         }
     }
@@ -371,12 +371,13 @@ foreach($Z_Scores as $index => $value){
     if($isoneperson){
         $sum += $sumxBar[$index];
     }else{
-        $sum += $sumxBar[$index]-$sumSD[$index]/2;
+        // $sum += $sumxBar[$index]-$sumSD[$index]/2;
+        $sum += $sumxBar[$index];
     }
 
-    // if($index0 == array_key_last($sumjamphen1[$index])){
-    //     $sum = $sum/($index0+1);
-    // }
+    if($index0 == array_key_last($sumjamphen1[$index])){
+        $sum = $sum/($index0+1);
+    }
     $sumZ_Scores[] = $sum;
 }
 
