@@ -108,19 +108,45 @@ function convert_number_to_satisfaction($number) {
     foreach($number as $index => $value){
         $Z_Scores_to_convert[] = [];
         foreach($number[$index] as $value0){
-            if($value0 <= 1){
+            if($value0 <= 1 && $value0 < 2){
                 $Z_Scores_to_convert[$index][] = $map[1];
-            }else if($value0 <= 2){
+            }else if($value0 >= 2 && $value0 < 3){
                 $Z_Scores_to_convert[$index][] = $map[2];
-            }else if($value0 <= 3){
+            }else if($value0 >= 3 && $value0 < 4){
                 $Z_Scores_to_convert[$index][] = $map[3];
-            }else if($value0 <= 4){
+            }else if($value0 >= 4 && $value0 < 5){
                 $Z_Scores_to_convert[$index][] = $map[4];
-            }else if($value0 <= 5){
+            }else if($value0 >= 5){
                 $Z_Scores_to_convert[$index][] = $map[5];
             }else{
                 $Z_Scores_to_convert[$index][] = "พึงพอใจระดับปรับปรุง";
             }
+        }
+    }
+    return $Z_Scores_to_convert;
+}
+function convert_number_to_satisfaction_sum($number) {
+    $Z_Scores_to_convert = [];
+    $map = [
+        5 => "พึงพอใจมากที่สุด",
+        4 => "พึงพอใจมาก",
+        3 => "พึงพอใจปานกลาง",
+        2 => "พึงพอใจน้อย",
+        1 => "พึงพอใจน้อยที่สุด"
+    ];
+    foreach($number as $index => $value){
+        if($value <= 1 && $value < 2){
+            $Z_Scores_to_convert[] = $map[1];
+        }else if($value >= 2 && $value < 3){
+            $Z_Scores_to_convert[] = $map[2];
+        }else if($value >= 3 && $value < 4){
+            $Z_Scores_to_convert[] = $map[3];
+        }else if($value >= 4 && $value < 5){
+            $Z_Scores_to_convert[] = $map[4];
+        }else if($value >= 5){
+            $Z_Scores_to_convert[] = $map[5];
+        }else{
+            $Z_Scores_to_convert[] = "พึงพอใจระดับปรับปรุง";
         }
     }
     return $Z_Scores_to_convert;
@@ -157,27 +183,31 @@ $main_sub_topic_Array = json_encode($main_sub_topic);
 
 $collect_sub = [];
 $count_collect_sub = [];
-$n = [];
+$N = [];
 
-// $xBar_overlap_Array = [];
-// $xBar_overlap_count = [];
-// $collect_sub_interupt_count = 0;
+
+
+
 for($j = 0;$j < count($main_sub_topic); $j++){
-    // $counttoxbar = 0;
     $collect_sub[] = [];
     $count_collect_sub[] = [];
-    $n[] = [];
     for ($i = 0; $i < count($main_sub_topic[$j]); $i++) {
         $collect_sub[$j][] = 0;
         $count_collect_sub[$j][] = 0;
-        $n[$j][] = 0;
-        // $counttoxbar++;
     }
-    // $xBar_overlap_Array[] = [];
-    // $xBar_overlap_count[] = $counttoxbar;
+}
+
+for($j = 0;$j < count($scores_split); $j++){
+    $N[] = [];
+    $N[$j][] = [];
+    for ($i = 0; $i < count($scores_split[$j]); $i++) {
+        $N[$j][$i][] = 0;
+    }
 }
 
 $index_sum_sub =0;
+$ispersoncount = 0;
+$countdontback = 0;
 for($j = 0;$j < count($scores_split); $j++){
     for ($i = 0; $i < count($scores_split[$j]); $i++) {       
         foreach($scores_split[$j][$i] as $key => $value){
@@ -185,60 +215,177 @@ for($j = 0;$j < count($scores_split); $j++){
                 $index_sum_sub=0;
             }
             $collect_sub[$i][$index_sum_sub] = $collect_sub[$i][$index_sum_sub] + $value;
-            $count_collect_sub[$i][$index_sum_sub] += 1;
-            $n[$i][$index_sum_sub] = $value;
+            $count_collect_sub[$i][$index_sum_sub]++;
+            $N[$j][$i][$index_sum_sub] = $value;
             $index_sum_sub++;
         }
     }
+    $ispersoncount++;
 }
+// print_r($collect_sub);
 
 // print_r($count_collect_sub);
 // print_r($collect_sub);
 // print_r($n);
+// print_r($N);
+$sumjamphen1 = [];
+
+foreach($N as $index0 => $value0){
+    foreach($value0 as $index1 => $value1){
+        foreach($value1 as $value2){
+            $sumjamphen1[$index1][] = 0;
+        }
+    }
+}
+foreach($N as $index0 => $value0){
+    foreach($value0 as $index1 => $value1){
+        foreach($value1 as $index2 => $value2){
+            $sumjamphen1[$index1][$index2] += $value2;
+        }
+    }
+}
+// print_r($n);
+// foreach($sumn as $index0 => $value0){
+//     foreach($value0 as $index1 => $value1){
+//         $sumn2[$index1][] = $value1;
+//     }
+// }
+
+
+
+
 
 $xBar = [];
-
+$sumxBar = [];
 foreach($collect_sub as $index => $value){
     $xBar[] = [];
     foreach($collect_sub[$index] as $index0 => $value0){
         $xBar[$index][] =  $value0/$count_collect_sub[$index][$index0];
     }
 }
+
+
+foreach($xBar as $index => $value){
+    $sum = 0;
+    foreach($xBar[$index] as $index0 => $value0){
+        $sum += $value0;
+        if($index0 == array_key_last($xBar[$index])){
+            $sum = $sum/($index0+1);
+        }
+    }
+    $sumxBar[] = $sum;
+}
+
+// print_r($sumxBar);
 // print_r($xBar);
 // print_r($xBar_overlap_Array);
 // print_r($xBar_overlap_count);
+$isoneperson = false;
 
-$SD = [];
-$sum_number = [];
-foreach($collect_sub as $index => $value){
-        $SD[] = [];
-        $sum = [];
-        foreach($n[$index] as $index0 => $value0){
-            $sum[] =  pow($value0-$xBar[$index][$index0],2);
-        }
-        // print_r($sum);
-        $sum_number[] = array_sum($sum);
+if($ispersoncount == 1){
+    $isoneperson = true;
 }
-foreach($count_collect_sub as $index1 => $value1){
-    foreach($count_collect_sub[$index1] as $index2 => $value2){
-        $SD[$index1][] =  sqrt($sum_number[$index1]/($value2-1));      
+$sumN = [];
+
+// print_r($collect_sub);
+// print_r($xBar);
+foreach($N as $index0 => $value0){
+    $sumN[]=[];
+    foreach($value0 as $index1 => $value1){
+        foreach($value1 as $value2){
+            $sumN[$index0][] = $value2;
+        }
     }
 }
+// print_r($sumN);
+$SD = [];
+$sumSD = [];
+$sum = [];
+foreach($collect_sub as $index => $value){
+    $sum[] = [];
+    foreach($collect_sub[$index] as $value0){
+        $sum[$index][] =  0;
+    }
+}
+// print_r($sum);
+foreach($sumN as $index => $value){
+    $SD[] = [];
+    foreach($N[$index] as $index0 => $value0){
+        foreach($N[$index][$index0] as $index1 => $value1){
+            $sum[$index0][$index1] +=  pow($value1-$xBar[$index0][$index1],2);
+        }
+    }
+}
+// print_r($sum);
 
+// print_r($count_collect_sub);
+foreach($sum as $index0 => $value0){
+    foreach($count_collect_sub[$index0] as $index1 => $value1){
+        if($isoneperson){
+            $SD[$index0][] =  sqrt($sum[$index0][$index1]/$value1); 
+        }
+        else{
+            $SD[$index0][] =  sqrt($sum[$index0][$index1]/($value1-1));      
+        }
+    }
+}
+// print_r($SD);
 
+foreach($SD as $index => $value){
+    $sum = 0;
+    foreach($SD[$index] as $index0 => $value0){
+        $sum += $value0;
+        if($index0 == array_key_last($SD[$index])){
+            $sum = $sum/($index0+1);
+        }
+    }
+    $sumSD[] = $sum;
+}
+// print_r($sumSD);
 // print_r($sum_number);
 // print_r($SD);
 
 $Z_Scores = [];
-foreach($n as $index => $value){
+$sumZ_Scores = [];
+
+foreach($sumjamphen1 as $index0 => $value0){
     $Z_Scores[] = [];
-    foreach($n[$index] as $index0 => $value0){
-        $Z_Scores[$index][] =  ($value0-$xBar[$index][$index0])/$SD[$index][$index0];
+    foreach($value0 as $index1 => $value1){
+        if(!($value1==0)){
+            // echo round($xBar[$index0][$index1],2).",";
+            // echo $xBar[$index0][$index1]-round($SD[$index0][$index1],1).",";
+            if($isoneperson){
+                $Z_Scores[$index0][] = $xBar[$index0][$index1];
+            }else{
+                $Z_Scores[$index0][] =  $xBar[$index0][$index1]-$SD[$index0][$index1]/2;
+            }
+        }
     }
 }
 
+
+
+foreach($Z_Scores as $index => $value){
+    $sum = 0;
+
+    if($isoneperson){
+        $sum += $sumxBar[$index];
+    }else{
+        $sum += $sumxBar[$index]-$sumSD[$index]/2;
+    }
+
+    // if($index0 == array_key_last($sumjamphen1[$index])){
+    //     $sum = $sum/($index0+1);
+    // }
+    $sumZ_Scores[] = $sum;
+}
+
+// print_r($sumZ_Scores);
 // print_r($Z_Scores);
 $Z_Scores_to_convert = convert_number_to_satisfaction($Z_Scores);
+// print_r($Z_Scores_to_convert);
+$Z_Scores_to_convert_sum = convert_number_to_satisfaction_sum($sumZ_Scores);
+// print_r($Z_Scores_to_convert_sum);
 // print_r($Z_Scores_to_convert);
 $xBar_Array = json_encode($xBar);
 
@@ -368,9 +515,20 @@ if (isset($_GET['class'])) {
                             <td class="border border-gray-300 text-center"><?= $Z_Scores_to_convert[$i][$key]; ?></td>
                         </tr>
                         <?php } ?>
+                        <tr>
+                            <td class="border border-gray-300 text-center">รวม</td>
+                            <td class="border border-gray-300 text-center"><?= round($sumxBar[$i],2); ?></td>
+                            <td class="border border-gray-300 text-center"><?= round($sumSD[$i],2); ?></td>
+                            <td class="border border-gray-300 text-center"><?= $Z_Scores_to_convert_sum[$i]; ?></td>
+                        </tr>
                         <!-- Add more rows as needed -->
                     </tbody>
                 </table>
+                <p>จากตารางด้านที่<?= $sati_topic[$i] ?>  ความพึงพอใจภาพรวมมีความพึงพอใจในระดับ <?= $Z_Scores_to_convert_sum[$i]; ?> (x̄ = <?= round($sumxBar[$i],2); ?> ) </p>
+                เมื่อพิจารณารายข้อ พบว่า ด้านที่<?= $sati_topic[$i] ?> 
+                    <?php foreach($main_sub_topic[$i] as $key => $value){ ?>
+                        มีความพึงพอใจ <?= $value; ?> โดยมีความพึงพอใจในระดับ มากที่สุด (x̄ = <?php echo round($xBar[$i][$key],2); ?>)
+                    <?php } ?>
                 <div style="width:65vw; height:auto; position: relative; left: 50%; transform: translateX(-50%); ">
                     <canvas id="myChart"></canvas>
                 </div>
