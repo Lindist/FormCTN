@@ -69,7 +69,7 @@ $projectedit->execute();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/formstyle.css">
+    <link rel="stylesheet" href="style/formstyle1.css">
     <link rel="stylesheet" href="style/tabstyle1.css">
     <link rel="stylesheet" href="style/inputsearchstyle.css">
     <link rel="stylesheet" href="style/addProjectname1_2.css">
@@ -312,6 +312,7 @@ $projectedit->execute();
                 <!-- <label for="search">Search Project</label> -->
                 <input type="search" placeholder="ชื่อแบบฟอร์มทีต้องการค้นหา..." name="" id="search" data-search>
             </div>
+            <div class="padding">
             <div class="form-box" id="adddata" without-data0>
                 <?php if ($count > 0) { ?>
                     <script type="text/javascript">
@@ -340,6 +341,7 @@ $projectedit->execute();
                     <h3 class='disimg0'>ไม่มีข้อมูลแบบสอบถาม</h3>
                 <?php } ?>
             </div>
+            </div>
         </div>
 
     </div>
@@ -354,6 +356,7 @@ $projectedit->execute();
                 <!-- <label for="search">Search Project</label> -->
                 <input type="search" placeholder="ชื่อแบบฟอร์มทีต้องการค้นหา..." name="" id="search" data-search>
             </div>
+            <div class="padding">
             <div class="form-box" id="adddata" without-data1>
                 <?php if ($count1 > 0) { ?>
                     <script type="text/javascript">
@@ -382,6 +385,7 @@ $projectedit->execute();
                     <h3 class='disimg1'>ไม่มีข้อมูลแบบสอบถาม</h3>
                 <?php } ?>
             </div>
+            </div>
         </div>
 
     </div>
@@ -392,6 +396,7 @@ $projectedit->execute();
                 <!-- <label for="search">Search Project</label> -->
                 <input type="search" placeholder="ชื่อแบบฟอร์มทีต้องการค้นหา..." name="" id="search" data-search>
             </div>
+            <div class="padding">
             <div class="form-box" id="adddata" without-data2>
                 <?php if ($countdropbox[0] > 0) { ?>
                     <script type="text/javascript">
@@ -417,6 +422,7 @@ $projectedit->execute();
                     <h3 class='disimg2'>ไม่มีข้อมูลแบบสอบถาม</h3>
                 <?php } ?>
             </div>
+            </div>
         </div>
 
     </div>
@@ -427,6 +433,7 @@ $projectedit->execute();
                 <!-- <label for="search">Search Project</label> -->
                 <input type="search" placeholder="ชื่อแบบฟอร์มทีต้องการค้นหา..." name="" id="search" data-search>
             </div>
+            <div class="padding">
             <div class="form-box" id="adddata" without-data3>
                 <?php if ($countdropbox[1] > 0) { ?>
                     <script type="text/javascript">
@@ -451,6 +458,7 @@ $projectedit->execute();
                     <img class='disimg3' src="picture/empty-folder.png">
                     <h3 class='disimg3'>ไม่มีข้อมูลแบบสอบถาม</h3>
                 <?php } ?>
+            </div>
             </div>
         </div>
 

@@ -14,7 +14,6 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 100vh;
     margin: 0 3rem;
 }
 
@@ -182,48 +181,44 @@ header .logout img{
 }
 .form-box{
     background-color: #FFF;
-    height: 100vh;
-    border-radius: 15px;
-    margin-bottom: 3rem;
-    border-bottom-style: solid;
-    border-bottom-color: rgba(181, 173, 173, 0.7);
+    height: 70vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
 }
+.padding{
+    padding: 1em;
+    background-color: #FFF;
+    margin-bottom: 3rem;
+    border-radius: 15px;
+    border-bottom-style: solid;
+    border-bottom-color: rgba(181, 173, 173, 0.7);
+}
 .grid{
     padding: 2em 0;
     background-color: #FFF;
-    height: 100vh;
-    border-radius: 15px;
-    margin-bottom: 3rem;
-    border-bottom-style: solid;
-    border-bottom-color: rgba(181, 173, 173, 0.7);
+    height: 70vh;
     overflow-y: scroll;
     overflow-x: scroll;
     display: grid;
     grid-template-columns: repeat(3,1fr);
     grid-column-gap: 10px;
     grid-row-gap: 10px;
-    /* /* grid-template-rows: repeat(3,1fr);   */
+    /* grid-template-rows: repeat(3,1fr);   */
 }
 
 .grid.columnData{
     padding: 3em 0;
     background-color: #FFF;
-    height: 100vh;
-    border-radius: 15px;
-    margin-bottom: 3rem;
-    border-bottom-style: solid;
-    border-bottom-color: rgba(181, 173, 173, 0.7);
+    height: 70vh;
     overflow-y: scroll;
     overflow-x: scroll;
     display: grid;
     grid-template-columns: 1fr;
     grid-column-gap: 10px;
-    grid-row-gap: 10px;
+    grid-row-gap: 10px; 
     /* grid-template-rows: repeat(3,1fr); */
 }
 
@@ -297,7 +292,7 @@ header .logout img{
     flex-direction: row;
     justify-content: space-between;
     flex: 1;
-    width: 90vw;
+    width: 85vw;
     background-color: #DDDDDD;
     border-radius: 10px;
     padding: 2rem;
@@ -387,7 +382,6 @@ header .logout img{
         display: flex;
         flex-direction: column;
         justify-content: center;
-        height: 100vh;
         margin: 0 1rem;
     }
     
@@ -398,8 +392,8 @@ header .logout img{
         flex-direction: column;
         align-items: center;
         padding: 0.5rem 2rem;
-        position: sticky;
         padding-top: 2rem;
+        position: fixed;
         top: 0;
     }
     header h1{
@@ -599,6 +593,7 @@ header .logout img{
         margin-left: 0.5rem;
     }
     .container > .btnshow{
+        margin-top: 120px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -628,11 +623,7 @@ header .logout img{
     
     .form-box{
         background-color: #FFF;
-        height: 100vh;
-        border-radius: 15px;
-        margin-bottom: 1rem;
-        border-bottom-style: solid;
-        border-bottom-color: rgba(181, 173, 173, 0.7);
+        height: 80vh;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -640,21 +631,25 @@ header .logout img{
     
     }
 
+    .padding{
+        padding: 1em;
+        background-color: #FFF;
+        margin-bottom: 3rem;
+        border-radius: 15px;
+        border-bottom-style: solid;
+        border-bottom-color: rgba(181, 173, 173, 0.7);
+    }
+
     .grid{
         padding: 1em 0;
         background-color: #FFF;
-        height: 100vh;
-        border-radius: 15px;
-        margin-bottom: 3rem;
-        border-bottom-style: solid;
-        border-bottom-color: rgba(181, 173, 173, 0.7);
+        height: 80vh;
         overflow-y: scroll;
         overflow-x: scroll;
         display: grid;
         grid-template-columns: 1fr;
         grid-column-gap: 10px;
         grid-row-gap: 10px;
-        /* /* grid-template-rows: repeat(3,1fr);   */
     }
     
     .form-box > img{
