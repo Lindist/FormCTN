@@ -499,7 +499,7 @@ $projectedit->execute();
     <script src="script/active.js" type="module"></script>
     <script src="script/searchscipt.js"></script>
     <script src="script/dropdown1.js"></script>
-    <script src="script/dropdownforreponsive.js"></script>
+    <script src="script/dropdownforreponsive1.js"></script>
     <script src="script/script_add_update.js"></script>
     <script src="script/scriptSelector1.js"></script>
     <script src="script/datepicker1.js"></script>
