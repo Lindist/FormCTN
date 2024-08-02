@@ -108,7 +108,7 @@ function convert_number_to_satisfaction($number) {
     foreach($number as $index => $value){
         $Z_Scores_to_convert[] = [];
         foreach($number[$index] as $value0){
-            if($value0 <= 1 && $value0 < 2){
+            if($value0 < 2){
                 $Z_Scores_to_convert[$index][] = $map[1];
             }else if($value0 >= 2 && $value0 < 3){
                 $Z_Scores_to_convert[$index][] = $map[2];
@@ -135,7 +135,7 @@ function convert_number_to_satisfaction_sum($number) {
         1 => "พึงพอใจน้อยที่สุด"
     ];
     foreach($number as $index => $value){
-        if($value <= 1 && $value < 2){
+        if($value < 2){
             $Z_Scores_to_convert[] = $map[1];
         }else if($value >= 2 && $value < 3){
             $Z_Scores_to_convert[] = $map[2];
@@ -387,9 +387,13 @@ foreach($Z_Scores as $index => $value){
         $sum += $sumxBar[$index];
     }
 
-    if($index0 == array_key_last($sumjamphen1[$index])){
-        $sum = $sum/($index0+1);
+    if(!$isoneperson){
+        if($index0 == array_key_last($Z_Scores[$index])){
+            $sum = $sum/($index0+1);
+        }
     }
+    
+    
     $sumZ_Scores[] = $sum;
 }
 
