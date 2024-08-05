@@ -137,7 +137,7 @@
                 border-bottom-color: rgba(88, 88, 88, 0.685);
             }
             .text1,i{
-            font-size: 25px;
+            font-size: 16px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -234,6 +234,48 @@
         }
         #btnresult:hover{
             background-color: #37B7C3;
+        }
+        @media all and (max-width:800px) {
+            #btnresult{
+            background-color: #088395;
+            font-size: 16px;
+            margin-left: 5px;
+            display: inline-block;
+            text-align: center;
+            text-decoration: none;
+            padding: 0.2rem 0.5rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            color: #fff;
+            transition: all .2s ease-in-out;
+            font-weight: 100;
+            }
+            #btnresult:hover{
+                background-color: #37B7C3;
+            }
+            .btns > a{
+            margin: 0;
+            font-size: 16px;
+            display: inline-block;
+            text-align: center;
+            text-decoration: none;
+            width: 100px;
+            padding: 0.3rem;
+            background-color: #00f;
+            border-radius: 5px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            color: #fff;
+            transition: all .2s ease-in-out;
+
+            }
+            .btns > a:hover{
+                background-color: rgb(3, 3, 159);
+            }
+            .text{
+                font-size: 16px;
+            }
         }
     </style>
 </body>
