@@ -26,8 +26,8 @@ $sub_info_un = $row['sub_info'];
 $form_topic_un = $row['form_topic'];
 $feature_un = $row['feature'];
 $setfeature_un = $row['setfeature'];
-$result_un = $row['feature'];
-$compare_un = $row['setfeature'];
+$result_un = $row['result'];
+$compare_un = $row['compare'];
 
 $form_info = preg_split("/Ϫ/", $form_info_un);
 $sub_info = preg_split("/ꓘ/", $sub_info_un);
@@ -161,7 +161,7 @@ if (isset($_GET['class'])) {
                             <div class="col mt-2">
                                 <?php for ($b = 0; $b < count($sub_info_ex[$index]); $b++) { ?>
                                 <?php if(!($sub_info_ex[$index][$b] == null)){ ?>
-                                <input class="rad form-check-input" type="radio" value="" disabled name="" >
+                                <input class="rad form-check-input" type="radio" value="" checked name="" >
                                 <label>
                                 <?php echo $sub_info_ex[$index][$b]; ?>
                                 </label><br>
