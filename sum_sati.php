@@ -1,6 +1,29 @@
 <?php
+
+// phpinfo();
+
 session_start();
 require('session/config.php');
+
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
+// error_reporting(E_ALL);
+
+if ($_SERVER['HTTP_HOST'] === 'localhost') {
+    // Code for localhost
+    // echo "You are on localhost";
+} else {
+    // Code for production server
+    // function array_key_last(array $array) {
+    //     if (empty($array)) {
+    //         return null;
+    //     }
+        
+    //     $keys = array_keys($array);
+    //     return end($keys);
+    // }    
+    // echo "You are on a production server";
+}
 
 $sati_id = $_GET['sati_id'];
 
@@ -421,7 +444,8 @@ if (isset($_GET['class'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js" integrity="sha512-L0Shl7nXXzIlBSUUPpxrokqq4ojqgZFQczTYlGjzONGTDAcLremjwaWv5A+EDLnxhQzY5xUZPWLOLqYRkY0Cbw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <title>Document</title>
+    <link rel="icon" type="icon" href="https://i.imgur.com/m0H7jcN.png">
+    <title>ผลสรุปแบบประเมิณความพึงพอใจ</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
 
