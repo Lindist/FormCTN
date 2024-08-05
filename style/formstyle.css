@@ -1,0 +1,799 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Kanit", sans-serif;
+}
+
+body{
+    background-color: #DDDDDD;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 3rem;
+}
+
+header{
+    background-color: #FFF;
+    display: flex;
+    flex-direction: row;
+    padding: 0.5rem 2rem;
+    position: sticky;
+    top: 0;
+}
+
+header h1{
+    width: 15vw;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+header div >a{
+    text-decoration: none;
+    color: #333;
+}
+
+header .tab_box > button{
+    width: 20vw;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    border-style: none;
+    background-color: #FFF;
+    
+}
+header .tab_box > button > h3{
+    color: #000;
+
+}
+
+header .dropdown{
+    width: 20vw;
+    height: 100%;
+    position: relative;
+}
+
+header .dropdown .select{
+    display: flex;
+    color: #000;
+    justify-content: center;
+    align-items:center;
+    cursor: pointer;
+    width: 100%;
+}
+header .dropdown .caret{
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid #333;
+    margin-left: 0.3em;
+    transition: .3s;
+}
+header .dropdown .caret-rotate{
+    transform: rotate(180deg);
+}
+header .dropdown .menunavbar{
+    list-style: none;
+    padding: 0.2rem 0.5rem;
+    margin: 0.2rem auto;
+    background-color: #323741;
+    color: #9fa5b5;
+    border: 1px #363a43 solid;
+    box-shadow: 0 0.5em 1em rgba(0,0,0,0.2);
+    border-radius: 0.5em;
+    position: absolute;
+    top: 3em;
+    left: 50%;
+    width: 100%;
+    transform: translateX(-50%);
+    opacity: 0;
+    display: none;
+    transition: 0.2s;
+    z-index: 1;
+}
+header .dropdown .menunavbar li{
+    margin: 0.3em 0;
+    border-radius: 0.5em;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+header .dropdown .menunavbar li button{
+    padding: 0.7em 0.5em;
+    border-style: none;
+    background: transparent;
+    color: #9fa5b5;
+    width: 100%;
+    height: 100%;
+}
+header .dropdown .menunavbar li:hover{
+    background-color: #2a2b35;
+}
+.activefordropdown{
+    background-color: #23242a;
+}
+header .dropdown .menunavbar.menu-open{
+    display: block;
+    opacity: 1;
+}
+
+
+header div{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+header .logout{
+    width: 20vw;
+    padding: 0 0.5rem 0 1rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+header .logout a{
+    padding: 0 0.5rem 0 1rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    cursor: pointer;
+}
+header .logout img{
+    width: 25px;
+    height: 25px;
+}
+.container > .btnshow{
+    margin-top: 0px;
+    display: flex;
+    justify-content: space-between;
+}
+.container > .btnshow > a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0;
+    text-decoration: none;
+    width: 15vw;
+    background-color: #050C9C;
+    border-radius: 5px;
+    text-align: center;
+    color: #fff;
+    padding: 0.5rem;
+    box-shadow: 1px 1px 2px 1px #333;
+    transition: background-color .3s ease-in;
+}
+.container > .btnshow > #check-edit{
+    background-color: #FC4100;
+    transition: background-color .3s ease-in;
+}
+.container > .btnshow > #check-edit:hover{
+    background-color: #982600;
+}
+
+.container a:hover {
+    background-color: #01085b;
+}
+.form-box{
+    background-color: #FFF;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.padding{
+    padding: 1em;
+    background-color: #FFF;
+    margin-bottom: 3rem;
+    border-radius: 15px;
+    border-bottom-style: solid;
+    border-bottom-color: rgba(181, 173, 173, 0.7);
+}
+.grid{
+    padding: 2em 0;
+    background-color: #FFF;
+    height: 70vh;
+    overflow-y: scroll;
+    overflow-x: scroll;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    /* grid-template-rows: repeat(3,1fr);   */
+}
+
+.grid.columnData{
+    padding: 3em 0;
+    background-color: #FFF;
+    height: 70vh;
+    overflow-y: scroll;
+    overflow-x: scroll;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px; 
+    /* grid-template-rows: repeat(3,1fr); */
+}
+
+.form-box > img{
+    width: 10rem;
+    height: 10rem;
+}
+
+.form-box > h3{
+    font-weight: 500;
+}
+.container120{
+    place-self: center;
+}
+.subform{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex: 1;
+    width: 20em;
+    background-color: #DDDDDD;
+    border-radius: 10px;
+    padding: 1rem;
+    padding-bottom: 3rem;
+    border-bottom-width: 3px;
+    border-bottom-style: solid;
+    border-bottom-color: rgba(88, 88, 88, 0.685);
+}
+
+.subform > h2{
+    margin-bottom: 1rem;
+}
+.subform > h2{
+    align-self: center;
+}
+
+.subform > .btns{
+    margin-top: 2rem;
+    align-self: center;
+    display:flex;
+    justify-content: center;
+}
+.subform > .btns > a{
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    width: 100px;
+    color: #fff;
+    padding: 0.5rem;
+    background-color: #00f;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    transition: all .2s ease-in-out;
+    cursor: pointer;
+}
+.subform .btns #btnshow,
+.subform .btns #btnedit,
+.subform .btns #btndelete{
+    display: none;
+
+}
+.subform .btns #btn{
+    display: inline-block;
+}
+.subform > .btns > a:hover{
+    background-color: rgb(3, 3, 159);
+}
+
+.subform.columnData{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex: 1;
+    width: 85vw;
+    background-color: #DDDDDD;
+    border-radius: 10px;
+    padding: 2rem;
+    border-bottom-width: 3px;
+    border-bottom-style: solid;
+    border-bottom-color: rgba(88, 88, 88, 0.685);
+}
+
+
+.subform.columnData > h2{
+    align-self: center;
+    margin: 0;
+}
+.subform.columnData > .text{
+    margin: 0;
+    align-self: center;
+    width: 30rem;
+    text-align: center;
+}
+.subform.columnData > .btns{
+    margin: 0;
+    align-self: center;
+    display:flex;
+    justify-content: center;
+}
+.subform.columnData > .btns > a{
+    margin: 0;
+    margin-left: 1rem;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    width: 100px;
+    color: #fff;
+    padding: 0.5rem;
+    background-color: #00f;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    transition: all .2s ease-in-out;
+    cursor: pointer;
+}
+.subform.columnData > .btns > a:hover{
+    background-color: rgb(3, 3, 159);
+}
+.subform.columnData .btns #btnshow,
+.subform.columnData .btns #btnedit,
+.subform.columnData .btns #btndelete{
+    display: inline-block;
+}
+.subform.columnData .btns #btn{
+    display: none;
+}
+.subform.columnData .btns #btnedit{
+    background-color: #FFDB00;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    transition: all .2s ease-in-out;
+}
+.subform.columnData .btns #btnedit:hover{
+    background-color: #9d8800;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+.subform.columnData .btns #btndelete{
+    background-color: #FF0000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    transition: all .2s ease-in-out;
+}
+.subform.columnData .btns #btndelete:hover{
+    background-color: #a60000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+
+@media all and (max-width:800px) {
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Kanit", sans-serif;
+    }
+
+    body{
+        height: 100vh;
+        background-color: #DDDDDD;
+        font-size: 16px;
+    }
+
+    .container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 0 1rem;
+    }
+    
+    header{
+        background-color: #FFF;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0.5rem 2rem;
+        padding-top: 2rem;
+        position: fixed;
+        top: 0;
+    }
+    header h1{
+        width: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    header .responsive{
+        background-color: #FFF;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 1.5rem;
+    }
+    
+    header> div >a{
+        text-decoration: none;
+        color: #333;
+    }
+    header .tab_box{
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        top: -350px;
+        height: 0px;
+        opacity: 0;
+        z-index: -10;
+        transition: all .3s ease-in-out;
+    }
+    
+    header .tab_box.active{
+        top: 20px;
+        height: auto;
+        opacity: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    header .responsive .toggle-btn{
+        position: relative;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+    }
+    header .responsive .toggle-btn span{
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        border: 3.5px solid #111;
+        border-radius: 2px;
+        background-color: #111;
+        transform: translateY(-50%);
+        transition: all 200ms ease-in-out;
+    }
+    header .responsive .toggle-btn span:nth-child(1){
+        top: 10%;
+    
+    }
+    header .responsive .toggle-btn span:nth-child(2){
+        top: 50%;
+        
+    }
+    header .responsive .toggle-btn span:nth-child(3){
+        top: 90%;
+        
+    }
+
+    header .responsive .toggle-btn .spanactive:nth-child(1){
+        top: 50%;
+        transform: translateY(-50%) rotate(45deg);
+    }
+    header .responsive .toggle-btn .spanactive:nth-child(2){
+        display: none;
+    }
+    header .responsive .toggle-btn .spanactive:nth-child(3){
+        top: 50%;
+        transform: translateY(-50%) rotate(-45deg);
+    }
+
+    header > .tab_box > button{
+        width: 95vw;
+        font-size: 16px;
+        padding: 10px 0;
+        border: 2px solid #000;
+        box-shadow: 2px 2px 0 0 #fff,4px 4px 0 0 #000;
+        background-color: #FFF;
+        margin-bottom: 1em;
+        transition-duration: 200ms;
+    }
+    header > .tab_box > button:active{
+        box-shadow: 0px 0px 0 0 #fff,4px 4px 0 0 #000;
+        transform: translate(2px, 2px);
+    }
+    header > .tab_box > button > h3{
+        color: #000;
+    
+    }
+
+
+    header .dropdown{
+        width: 95vw;
+        padding: 0.5rem 2rem;
+        position: relative;
+        font-size: 16px;
+        padding: 10px 0;
+        border: 2px solid #000;
+        box-shadow: 2px 2px 0 0 #fff,4px 4px 0 0 #000;
+        background-color: #FFF;
+        margin-bottom: 1em;
+        transition-duration: 200ms;
+    }
+
+    header .dropdown:active{
+        box-shadow: 0px 0px 0 0 #fff,4px 4px 0 0 #000;
+        transform: translate(2px, 2px);
+    }
+
+    header .dropdown .select{
+        display: flex;
+        color: #000;
+        justify-content: center;
+        align-items:center;
+        cursor: pointer;
+        width: 100%;
+    }
+    header .dropdown .caret{
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 6px solid #333;
+        margin-left: 5px;
+        transition: .3s;
+    }
+    .caret-rotate{
+        transform: rotate(180deg);
+    }
+    header .dropdown .menunavbar{
+        list-style: none;
+        padding: 0.2rem 0.5rem;
+        margin: 0.2rem auto;
+        background-color: #323741;
+        color: #9fa5b5;
+        border: 1px #363a43 solid;
+        box-shadow: 0 0.5em 1em rgba(0,0,0,0.2);
+        border-radius: 0.5em;
+        position: absolute;
+        top: 3em;
+        left: 50%;
+        width: 100%;
+        transform: translateX(-50%);
+        opacity: 0;
+        display: none;
+        transition: 0.2s;
+        z-index: 1;
+    }
+    header .dropdown .menunavbar li{
+        padding: 0.7em 0.5em;
+        margin: 0.3em 0;
+        border-radius: 0.5em;
+        text-align: center;
+        cursor: pointer;
+    }
+    header .dropdown .menunavbar li:hover{
+        background-color: #2a2b35;
+    }
+    .activefordropdown{
+        background-color: #23242a;
+    }
+    header .dropdown .menunavbar.menu-open{
+        display: block;
+        opacity: 1;
+    }
+    
+    header .logout{
+        z-index: -11;
+        width: 100%;
+        margin-top: 0.5rem;
+        padding: 0.5rem 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    header .logout a{
+        padding: 0 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+    header .logout img{
+        width: 25px;
+        height: 25px;
+        margin-left: 0.5rem;
+    }
+    .container > .btnshow{
+        margin-top: 105px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .container > .btnshow > a {
+        width: 100%;
+        margin: 1rem 0;
+        text-decoration: none;
+        background-color: #050C9C;
+        border-radius: 5px;
+        text-align: center;
+        color: #fff;
+        padding: 0.5rem;
+        box-shadow: 1px 1px 2px 1px #333;
+        transition: background-color .3s ease-in;
+    }
+    .container a:active {
+        background-color: #01085b;
+    }
+    .container > .btnshow > #check-edit{
+        background-color: #FFC100;
+        transition: background-color .3s ease-in;
+    }
+    .container > .btnshow > #check-edit:hover{
+        background-color: #d09c00;
+    }
+    
+    .form-box{
+        background-color: #FFF;
+        height: 80vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    
+    }
+
+    .padding{
+        padding: 1em;
+        background-color: #FFF;
+        margin-bottom: 3rem;
+        border-radius: 15px;
+        border-bottom-style: solid;
+        border-bottom-color: rgba(181, 173, 173, 0.7);
+    }
+
+    .grid{
+        padding: 1em 0;
+        background-color: #FFF;
+        height: 80vh;
+        overflow-y: scroll;
+        overflow-x: scroll;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-column-gap: 10px;
+        grid-row-gap: 10px;
+    }
+    
+    .form-box > img{
+        width: 10rem;
+        height: 10rem;
+    }
+    
+    .form-box > h3{
+        font-weight: 500;
+    }
+    
+    .container120{
+        place-self: center;
+    }
+    .subform{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        flex: 1;
+        width: 20em;
+        background-color: #DDDDDD;
+        border-radius: 10px;
+        padding: 1rem;
+        padding-bottom: 3rem;
+        border-bottom-width: 3px;
+        border-bottom-style: solid;
+        border-bottom-color: rgba(88, 88, 88, 0.685);
+    }
+    
+    .subform > h2{
+        margin-bottom: 1rem;
+    }
+    .subform > h2{
+        align-self: center;
+    }
+    .subform > .btns{
+        margin-top: 2rem;
+        align-self: center;
+        display:flex;
+        justify-content: center;
+    }
+    .subform > .btns > a{
+        display: inline-block;
+        text-align: center;
+        text-decoration: none;
+        width: 100px;
+        color: #fff;
+        padding: 0.5rem;
+        background-color: #00f;
+        border-radius: 5px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+        transition: all .2s ease-in-out;
+    }
+    .subform > .btns > a:hover{
+        background-color: rgb(3, 3, 159);
+    }
+    .subform .btns #btnshow,
+    .subform .btns #btnedit,
+    .subform .btns #btndelete{
+        display: none;
+    }
+    .subform .btns #btn{
+        display: inline-block;
+    }
+
+    .subform.columnData{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        flex: 1;
+        width: 20em;
+        background-color: #DDDDDD;
+        border-radius: 10px;
+        padding: 1rem;
+        border-bottom-width: 3px;
+        border-bottom-style: solid;
+        border-bottom-color: rgba(88, 88, 88, 0.685);
+    }
+    
+    .subform.columnData > h2{
+        margin-bottom: 1rem;
+    }
+    .subform.columnData > h2{
+        align-self: center;
+    }
+    .subform.columnData > .text{
+        margin: 0;
+        align-self: center;
+        width: 20rem;
+        text-align: center;
+    }
+    .subform.columnData > .btns{
+        margin-top: 2rem;
+        align-self: center;
+        display:flex;
+        justify-content: center;
+    }
+    .subform.columnData > .btns > a{
+        margin-left: 0.2rem;
+        display: inline-block;
+        text-align: center;
+        text-decoration: none;
+        width: 100px;
+        color: #fff;
+        padding: 0.5rem;
+        background-color: #00f;
+        border-radius: 5px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+        transition: all .2s ease-in-out;
+    }
+
+    .subform.columnData > .btns > a:active{
+        background-color: rgb(3, 3, 159);
+    }
+    .subform.columnData .btns #btnshow,
+    .subform.columnData .btns #btnedit,
+    .subform.columnData .btns #btndelete{
+        display: inline-block;
+    }
+    .subform.columnData .btns #btn{
+        display: none;
+    }
+    .subform.columnData .btns #btnedit{
+        background-color: #FFDB00;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+        transition: all .2s ease-in-out;
+    }
+    .subform.columnData .btns #btnedit:active{
+        background-color: #9d8800;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    }
+    .subform.columnData .btns #btndelete{
+        background-color: #FF0000;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+        transition: all .2s ease-in-out;
+    }
+    .subform.columnData .btns #btndelete:active{
+        background-color: #a60000;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    .seachmargin{
+        margin-top: 97px;
+    }
+
+}
