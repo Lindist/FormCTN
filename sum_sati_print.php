@@ -484,29 +484,12 @@ if (isset($_GET['class'])) {
             font-family: "Kanit", sans-serif;
             font-weight: 500;
             font-style: normal;
-            background-color: rgb(180, 180, 180);
         }
     </style>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
-    <div id="needprint" class="mx-2 sm:mx-16 bg-white p-4 my-2 sm:my-4 rounded shadow">
-        <aside class="my-5" style="display: flex; width: 100%; justify-content: space-between; flex-wrap: wrap;">
-            <span style="display: flex; justify-content: flex-start; flex-wrap: wrap;">
-                <button type="button" onclick="isClass('<?php echo $class; ?>')" style="display:flex; background-color:#1a75ff; color:#fff; margin-right: 5px; font-weight:bold; border-style: none; border-radius:10px; padding: 10px; border-color: #444; transition:all .3s ease-in-out;" onmouseover="this.style.backgroundColor='#00f';" onmouseout="this.style.backgroundColor='#1a75ff';">
-                        กลับหน้าแรก
-                    </button>
-                    <button type="button" onclick="history.back()" style="display:flex; background-color:#111; color:#fff; font-weight:bold; border-style: none; border-radius:10px; padding: 10px; border-color: #444; transition:all .3s ease-in-out;" onmouseover="this.style.backgroundColor='#333';" onmouseout="this.style.backgroundColor='#111';">
-                        กลับ
-                    </button>
-            </span>    
-            <span style="display: flex; justify-content: flex-end; flex-wrap: wrap;">
-                <button type="button" onclick="Printsum(<?= $sati_id; ?>)" style="display:flex; background-color:#F5004F; color:#fff; font-weight:bold; border-style: none; border-radius:10px; padding: 10px; border-color: #444; transition:all .3s ease-in-out;" onmouseover="this.style.backgroundColor='#C5004F';" onmouseout="this.style.backgroundColor='#F5004F';">
-                    พิมพ์
-                </button>
-            </span>
-        </aside>
         <div id="print">
             <p class="text-2xl font-medium mb-2">ตอนที่ 1 ผลการวิเคราะห์ข้อมูลพื้นฐานของผู้ตอบแบบสอบถาม</p>
 
@@ -687,8 +670,7 @@ if (isset($_GET['class'])) {
             </div>
 
         </div>
-
-    </div>
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
             <script>
                     function getRandomNumber(min, max) {
                         return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -777,9 +759,31 @@ if (isset($_GET['class'])) {
                     }
                     });
             });
-            Printsum = (sati_id) =>{
-                window.location.href = "sum_sati_print.php?sati_id=" + sati_id.toString();
-            }
+            window.print();
+            setTimeout(() => {
+                Swal.fire({
+                    title: "กลับหน้าเดิม?",
+                    text: "ยืนยันการกลับหน้าเดิม",
+                    icon: "info",
+                    showCancelButton: false,
+                    confirmButtonColor: "#3085d6",
+                    confirmButtonText: "ยืนยัน"
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            position: "center",
+                            icon: "success",
+                            title: "กำลังกลับ",
+                            showConfirmButton: false,
+                            timer: 3000
+                            });
+                        setTimeout(() => {
+                            history.back();
+                        }, 1000);
+                        
+                    }
+                });
+            }, 5000);
             </script>
             <script src="script/changeclass.js"></script>
 </body>
