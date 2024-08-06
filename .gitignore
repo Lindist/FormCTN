@@ -4,7 +4,7 @@ test.html
 submit_test.php
 test_check.php
 session/dashboard.php
-testtable.html
+post.html
 testpopup.html
 searchtest.php
 livesearch.php
@@ -16,3 +16,5 @@ chart2.html
 chart3.html
 Chart.html
 test.js
+submit.php
+swal.html

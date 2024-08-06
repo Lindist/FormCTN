@@ -96,6 +96,17 @@ $projectedit->execute();
             });
         </script>
         <?php unset($_SESSION['login_success']); ?>
+    <?php } else if (isset($_SESSION['save_form'])) { ?>
+        <script>
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "<?= $_SESSION['save_form'] ?>",
+                showConfirmButton: false,
+                timer: 2000
+            });
+        </script>
+        <?php unset($_SESSION['save_form']); ?>
     <?php } ?>
     <?php if (isset($_SESSION['delete'])) { ?>
         <script>
@@ -178,14 +189,12 @@ $projectedit->execute();
                 </div>
             </div>
             <div id="btnform" class="moreaddproject d-none">
-                <form id="myForm" action="/your-endpoint" method="POST">
-                    <!-- ฟิลด์ฟอร์มของคุณจะอยู่ที่นี่ -->
-                    <button type="button" class="confirmbtn" id="submit_pj">ยืนยัน</button>
-                    <button type="button" class="cancelbtn" id="cancelbtn">ยกเลิก</button>
-                </form>
+                <!-- ฟิลด์ฟอร์มของคุณจะอยู่ที่นี่ -->
+                <button type="submit" class="confirmbtn" id="submit_pj">ยืนยัน</button>
+                <button type="button" class="cancelbtn" id="cancelbtn">ยกเลิก</button>
 
                 <script>
-                    document.getElementById("submit_pj").addEventListener("click", (event) => {
+                    document.getElementById("myform").addEventListener("submit", (event) => {
                         event.preventDefault(); // ป้องกันไม่ให้ฟอร์มถูกส่งโดยทันที
 
                         Swal.fire({

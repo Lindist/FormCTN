@@ -25,6 +25,7 @@ if(isset($_SESSION['projectId'])){
 }
 
 if (isset($_POST['save'])) {
+    // echo "save";
     $formname = $_POST['formname'];
     $ad = $_POST['ad'];
 
@@ -77,8 +78,6 @@ if (isset($_POST['save'])) {
 
 }
 
-$_SESSION['pj_id'] = $_POST['pj_id'];
-
 if (empty($formname)) {
     $_SESSION['error'] = "กรุณากรอกชื่อ โปรเจค";
     header("location: insert_performance_form.php?pro_name=$formname&pro_id=$projectId");
@@ -107,6 +106,7 @@ if (empty($formname)) {
             $tb_efficiercy_form->execute([$formname, $ad, $user_id, $form_info, $sub_info, $form_topic, $feature, $setfeature,$projectId]);
             
             unset($_SESSION['projectId']);
+            $_SESSION['save_form'] = "บึนทึก แบบฟอร์มประเมินประสิทธิภาพ เรียบร้อย";
             header("location: form.php?class=".$class);
 
         }
