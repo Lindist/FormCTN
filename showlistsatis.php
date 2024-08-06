@@ -107,7 +107,7 @@
             }
             body > div #form{
                 width: 100%;
-                padding: 1rem;
+                padding: 0;
                 height: 100%;
                 overflow-y: scroll;
             }
@@ -116,7 +116,7 @@
                 display: grid;
                 grid-template-columns: 1fr;
                 grid-row-gap: 10px;
-                padding: 0 2rem;
+                padding: 0;
                 width: 100%;
             }
             main > div{
