@@ -81,23 +81,23 @@ $_SESSION['pj_id'] = $_POST['pj_id'];
 
 if (empty($formname)) {
     $_SESSION['error'] = "กรุณากรอกชื่อ โปรเจค";
-    header("location: insert_performance_form.php");
+    header("location: insert_performance_form.php?pro_name=$formname&pro_id=$projectId");
     exit;
 } else if (empty($ad)) {
     $_SESSION['error'] = "กรุณากรอกคำชี้แจง";
-    header("location: insert_performance_form.php");
+    header("location: insert_performance_form.php?pro_name=$formname&pro_id=$projectId");
     exit;
 } else if (empty($form_info)) {
     $_SESSION['error'] = "กรุณากรอก ข้อมูลพื้นฐาน อย่างน้อย 1 ประเภท";
-    header("location: insert_performance_form.php");
+    header("location: insert_performance_form.php?pro_name=$formname&pro_id=$projectId");
     exit;
 } else if (empty($form_topic)) {
     $_SESSION['error'] = "กรุณากรอก ด้าน อย่างน้อย 1 ด้าน";
-    header("location: insert_performance_form.php");
+    header("location: insert_performance_form.php?pro_name=$formname&pro_id=$projectId");
     exit;
 } else if (empty($combined_subinfo)) {
     $_SESSION['error'] = "กรุณากรอก ตัวเลือก ข้อมูลพื้นฐาน อย่างน้อย 1 ประเภท";
-    header("location: insert_performance_form.php");
+    header("location: insert_performance_form.php?pro_name=$formname&pro_id=$projectId");
     exit;
 } else {
     try {
