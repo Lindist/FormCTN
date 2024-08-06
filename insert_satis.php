@@ -82,19 +82,19 @@ $_SESSION['pj_id'] = $_POST['pj_id'];
 
 if (empty($sati_ep2)) {
     $_SESSION['error'] = "กรุณากรอกชื่อ โปรเจค";
-    header("location: insert_satis_form.php");
+    header("location: insert_satis_form.php?pro_name=$projectId&pro_id=$projectId");
     exit;
 } else if (empty($sati_info)) {
     $_SESSION['error'] = "กรุณากรอก ข้อมูลพื้นฐาน อย่างน้อย 1 ประเภท";
-    header("location: insert_satis_form.php");
+    header("location: insert_satis_form.php?pro_name=$projectId&pro_id=$projectId");
     exit;
 } else if (empty($sati_topic)) {
     $_SESSION['error'] = "กรุณากรอก ด้าน อย่างน้อย 1 ด้าน";
-    header("location: insert_satis_form.php");
+    header("location: insert_satis_form.php?pro_name=$projectId&pro_id=$projectId");
     exit;
 } else if (empty($combined_subinfo)) {
     $_SESSION['error'] = "กรุณากรอก ตัวเลือก ข้อมูลพื้นฐาน อย่างน้อย 1 ประเภท";
-    header("location: insert_performance_form.php");
+    header("location: insert_performance_form.php?pro_name=$projectId&pro_id=$projectId");
     exit;
 } else {
     try {
