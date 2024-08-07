@@ -15,7 +15,7 @@ if (isset($_POST['save'])) {
     $form_id = $_POST['form_id'];
     $form_name = $_POST['form_name'];
     $ad = $_POST['form_ad'];
-    $pj_id = $_POST['project_id'];
+    $pj_id = $_POST['pj_id'];
 
     $sub_info_ex = [];
     for ($i = 1; $i <= count($_POST['form_info']); $i++) {
