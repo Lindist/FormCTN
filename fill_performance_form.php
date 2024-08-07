@@ -84,7 +84,7 @@ if (isset($_GET['id'])) {
         <button type="button" onclick="window.location.href='form.php';" class="flex bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             กลับหน้าแรก
         </button>
-        <form action="fill_performance.php" method="POST">
+        <form action="fill_performance.php" method="POST" id="myform">
             <input type="hidden" name="pj_id" value="<?= $pj_id ?>">
             <h1 class="text-center text-3xl mb-5">กรอกแบบฟอร์มประเมินประสิทธิภาพ</h1>
 
@@ -188,7 +188,30 @@ if (isset($_GET['id'])) {
 
             </div>
             <div class="text-center mt-5">
-                <button type="submit" name="save" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">บันทึกข้อมูล</button>
+                <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">บันทึกข้อมูล</button>
+                <input type="hidden" name="save" value="save" readonly>
+
+                <script>
+                    document.getElementById("myform").addEventListener("submit", (event) => {
+                        event.preventDefault(); // ป้องกันไม่ให้ฟอร์มถูกส่งโดยทันที
+
+                        Swal.fire({
+                            title: "ยืนยันการบันทึกหรือไม่?",
+                            text: "ตรวจสอบให้แน่ใจว่าคุณกรอกข้อมูลถูกต้อง!",
+                            icon: "info",
+                            showCancelButton: true,
+                            confirmButtonColor: "#16a34a",
+                            cancelButtonColor: "#d33",
+                            confirmButtonText: "บันทึก",
+                            cancelButtonText: "ยกเลิก",
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                // ส่งฟอร์ม
+                                document.getElementById("myform").submit();
+                            }
+                        });
+                    });
+                </script>
             </div>
     </div>
 
