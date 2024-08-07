@@ -14,6 +14,7 @@ if (isset($_POST['update'])) {
     $formname = $_POST['formname'];
     $ad = $_POST['ad'];
     $form_id = $_POST['id'];
+    $pj_id = $_POST['pj_id'];
 
     $combined_subinfo = [];
     for ($i = 1; $i <= count($_POST['form_info']); $i++) {
@@ -40,31 +41,6 @@ if (isset($_POST['update'])) {
 
     $setfeature = implode("ꓘ", $combined_setfeature);
 
-    // $sub_info_ex = preg_split("/ꓘ/", $sub_info);
-    
-    // echo $formname;
-    // echo "<br>";
-    // echo $ad;
-    // echo "<br>";
-    // echo "// ข้อมูลพื้นฐาน //";
-    // echo $form_info; // ข้อมูลพื้นฐาน
-    // echo "<br>";
-    // echo count($_POST['form_info']);
-    // echo "<br>";
-    // echo "// ข้อมูลพื้นฐานย่อย //";
-    // print_r($sub_info); // ข้อมูลพื้นฐานย่อย
-    // echo "<br>";
-    // echo "// หัวข้อด้าน //";
-    // print_r($form_topic); // หัวข้อด้าน
-    // echo "<br>";
-    // echo count($_POST['form_topic']);
-    // echo "<br>";
-    // echo "// คุณสมบัติด้านเทคนิค //";
-    // print_r($feature); // คุณสมบัติด้านเทคนิค
-    // echo "<br>";
-    // echo "// คุณสมบัติที่ตั้งไว้ //";
-    // print_r($setfeature); // คุณสมบัติที่ตั้งไว้
-
 }
 
 if (empty($formname)) {
@@ -90,9 +66,7 @@ if (empty($formname)) {
             $tb_efficiercy_form = $conn->prepare("UPDATE tb_efficiercy_form SET form_name = ?, form_ad = ?, member_id = ?, form_info = ?, sub_info = ?, form_topic = ?, feature = ?, setfeature = ? WHERE form_id = ?");
             $tb_efficiercy_form->execute([$formname, $ad, $user_id, $form_info, $sub_info, $form_topic, $feature, $setfeature, $form_id]);
 
-            // $tb_efficiercy_fill = $conn->prepare("UPDATE tb_fill_efficiercy SET form_name = ?, form_ad = ?, member_id = ?, sub_info = ?, form_topic = ?, feature = ?, setfeature = ? WHERE form_id = ?");
-            // $tb_efficiercy_fill->execute([$formname, $ad, $user_id, $form_info, $form_topic, $feature, $setfeature, $form_id]);
-
+            $_SESSION['save_form'] = "บึนทึก แบบฟอร์มประเมินประสิทธิภาพ เรียบร้อย";
             header("location: form.php?class=".$class);
 
         }

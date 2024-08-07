@@ -35,6 +35,16 @@ try{
     $stmt1->bindParam(':project_id', $pro_id, PDO::PARAM_INT);
     $stmt1->execute();
 
+    $sql2 = "SELECT * FROM tb_fill_efficiercy WHERE project_id = :project_id";
+    $stmt2 = $conn->prepare($sql2);
+    $stmt2->bindParam(':project_id', $pro_id, PDO::PARAM_INT);
+    $stmt2->execute();
+
+    $sql3 = "SELECT * FROM tb_fill_satisfied WHERE project_id = :project_id";
+    $stmt3 = $conn->prepare($sql3);
+    $stmt3->bindParam(':project_id', $pro_id, PDO::PARAM_INT);
+    $stmt3->execute();
+
     if ($stmt->rowCount() > 0) {
         // echo "Record with project_id exists.";
         $tb_efficiercy_form = $conn->prepare("UPDATE tb_efficiercy_form SET form_name = ? WHERE project_id = ?");
@@ -45,6 +55,18 @@ try{
         // echo "Record with project_id exists.";
         $tb_satisfied = $conn->prepare("UPDATE tb_satisfied SET sati_ep2 = ? WHERE project_id = ?");
         $tb_satisfied->execute([$project_name, $pro_id]);
+    }
+
+    if ($stmt2->rowCount() > 0) {
+        // echo "Record with project_id exists.";
+        $tb_fill_efficiercy = $conn->prepare("UPDATE tb_fill_efficiercy SET form_name = ? WHERE project_id = ?");
+        $tb_fill_efficiercy->execute([$project_name, $pro_id]);
+    }
+
+    if ($stmt3->rowCount() > 0) {
+        // echo "Record with project_id exists.";
+        $tb_fill_satisfied = $conn->prepare("UPDATE tb_fill_satisfied SET sati_ep2 = ? WHERE project_id = ?");
+        $tb_fill_satisfied->execute([$project_name, $pro_id]);
     }
 
     if($result){

@@ -137,30 +137,6 @@ if (isset($_GET['pro_id'])) {
                             });
                         });
 
-                        // // Add event listener for the "เพิ่มข้อมูลพื้นฐานที่" button
-                        // document.getElementById(`addsubinfo_${currentBlocks + 1}`).addEventListener('click', function() {
-                        //     var containerId = this.id.replace('addsubinfo_', '');
-                        //     var subInfoSection = document.getElementById(`sub-info_${containerId}`);
-                        //     var newInput = document.createElement('input');
-                        //     newInput.required = true;
-                        //     newInput.type = 'text';
-                        //     newInput.className = 'border border-gray-300 rounded px-3 py-2 my-1 w-full sm:w-10/12';
-                        //     newInput.name = `sub_info${containerId}[]`;
-
-                        //     var newButton = document.createElement('button');
-                        //     newButton.type = 'button';
-                        //     newButton.className = 'bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 mx-2';
-                        //     newButton.textContent = 'ลบ';
-
-                        //     newButton.addEventListener('click', function() {
-                        //         newInput.remove();
-                        //         newButton.remove();
-                        //     });
-
-                        //     subInfoSection.appendChild(newInput);
-                        //     subInfoSection.appendChild(newButton);
-                        // });
-
                         // Add event listener for the "ลบ" button to remove the block
                         document.getElementById(`removeinfo_${currentBlocks + 1}`).addEventListener('click', function() {
                             newBlock.remove();
@@ -337,7 +313,7 @@ if (isset($_GET['pro_id'])) {
 
                                 Swal.fire({
                                     title: "ยืนยันการบันทึกหรือไม่?",
-                                    text: "ตรวจสอบให้แน่ใจว่าคุณกรอกข้อมูลถูกกต้อง!",
+                                    text: "ตรวจสอบให้แน่ใจว่าคุณกรอกข้อมูลถูกต้อง!",
                                     icon: "info",
                                     showCancelButton: true,
                                     confirmButtonColor: "#16a34a",

@@ -23,6 +23,7 @@ if (isset($_GET['id'])) {
         exit();
     }
 
+    $pj_id = $row['project_id'];
     $formname = $row['form_name'];
     $ad = $row['form_ad'];
     $form_info_un = $row['form_info'];
@@ -58,29 +59,6 @@ if (isset($_GET['id'])) {
     $rowp = $query->fetch();
 
     $project_name = $rowp['project_name'];
-
-    // echo $formname;
-    // echo "<br>";
-    // echo $ad;
-    // echo "<br>";
-    // echo "// ข้อมูลพื้นฐาน //";
-    // print_r($form_info); // ข้อมูลพื้นฐาน
-    // echo "<br>";
-    // echo count($form_info);
-    // echo "// ข้อมูลพื้นฐานย่อย //";
-    // print_r($sub_info_ex); // ข้อมูลพื้นฐานย่อย
-    // echo "<br>";
-    // echo "// หัวข้อด้าน //";
-    // print_r($form_topic); // หัวข้อด้าน
-    // echo "<br>";
-    // echo count($form_topic);
-    // echo "<br>";
-    // echo "// คุณสมบัติด้านเทคนิค //";
-    // print_r($feature_ex); // คุณสมบัติด้านเทคนิค
-    // echo "<br>";
-    // echo "// คุณสมบัติที่ตั้งไว้ //";
-    // print_r($setfeature_ex); // คุณสมบัติที่ตั้งไว้
-
 } else {
     header("Location: index.php");
     exit();
@@ -97,6 +75,7 @@ if (isset($_GET['id'])) {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
 
@@ -114,7 +93,8 @@ if (isset($_GET['id'])) {
         <button type="button" onclick="window.location.href='form.php?class=columnData';" class="flex bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             กลับหน้าแรก
         </button>
-        <form action="update_performance.php" method="POST">
+        <form action="update_performance.php" method="POST" id="myform">
+            <input type="hidden" name="pj_id" value="<?= $pj_id ?>">
             <h1 class="text-center text-2xl mb-5">แก้ไขแบบฟอร์มประเมินประสิทธิภาพ</h1>
 
             <?php if (isset($_SESSION['error'])) { ?>
@@ -131,7 +111,7 @@ if (isset($_GET['id'])) {
                 <label class="block text-lg font-bold mb-2">ชื่อแบบฟอร์ม</label>
                 <input type="text" readonly value="<?= $project_name ?>" name="formname" id="formname" class="block w-full border border-gray-300 rounded px-3 py-2 mb-3" required>
 
-                <input type="hidden" name="id" class="block border" value="<?= $row['form_id'] ?>">
+                <input type="hidden" name="id" class="block border" value="<?= $form_id ?>">
 
                 <label class="block text-lg font-bold mb-2">คำชี้แจง</label>
                 <textarea name="ad" class="block w-full border border-gray-300 rounded px-3 py-2" rows="5" required><?= $row['form_ad'] ?></textarea>
@@ -434,7 +414,30 @@ if (isset($_GET['id'])) {
 
                 </div>
                 <div class="text-center mt-5">
-                    <button type="submit" name="update" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">บันทึกข้อมูล</button>
+                    <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">บันทึกข้อมูล</button>
+                    <input type="hidden" name="update" value="update" readonly>
+
+                    <script>
+                        document.getElementById("myform").addEventListener("submit", (event) => {
+                            event.preventDefault(); // ป้องกันไม่ให้ฟอร์มถูกส่งโดยทันที
+
+                            Swal.fire({
+                                title: "ยืนยันการบันทึกหรือไม่?",
+                                text: "ตรวจสอบให้แน่ใจว่าคุณกรอกข้อมูลถูกต้อง!",
+                                icon: "info",
+                                showCancelButton: true,
+                                confirmButtonColor: "#16a34a",
+                                cancelButtonColor: "#d33",
+                                confirmButtonText: "บันทึก",
+                                cancelButtonText: "ยกเลิก",
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    // ส่งฟอร์ม
+                                    document.getElementById("myform").submit();
+                                }
+                            });
+                        });
+                    </script>
                 </div>
 
             </div>
