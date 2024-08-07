@@ -73,8 +73,8 @@ if (isset($_GET['id'])) {
         <button type="button" onclick="window.location.href='form.php';" class="flex bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             กลับหน้าแรก
         </button>
-        <input type="hidden" name="pj_id" value="<?= $pj_id ?>">
         <form action="fill_satis.php" method="POST">
+            <input type="hidden" name="pj_id" value="<?= $pj_id ?>">
             <h1 class="text-center text-3xl mb-5">กรอกแบบฟอร์มประเมินความพึงพอใจ</h1>
 
             <input type="text" name="sati_id" class="hidden" value="<?= $_GET['id'] ?>">
