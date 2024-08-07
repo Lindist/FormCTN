@@ -69,6 +69,7 @@ if (empty($sub_info)) {
             $tb_fill_satisfied = $conn->prepare("INSERT INTO tb_fill_satisfied (sati_id, sati_ep2, sati_comment, member_id, sati_info, sub_info, sati_topic, sub_topic, score, project_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             $tb_fill_satisfied->execute([$sati_id, $sati_name, $sati_comment, $user_id, $sati_info, $sub_info, $sati_topic, $sub_topic, $ur_score, $pj_id]);
 
+            $_SESSION['save_form'] = "กรอก แบบฟอร์มประเมินประสิทธิภาพ เรียบร้อย";
             header("location: form.php");
 
         }

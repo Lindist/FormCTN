@@ -35,6 +35,7 @@ if (isset($_GET['id'])) {
         exit();
     }
 
+    $pj_id = $row['project_id'];
     $sati_ep2 = $row['sati_ep2'];
     $sati_info_un = $row['sati_info'];
     $sub_info_un = $row['sub_info'];
@@ -62,41 +63,6 @@ if (isset($_GET['id'])) {
     $rowp = $query->fetch();
 
     $project_name = $rowp['project_name'];
-
-    // echo "sub_topic_ex = ";
-    // print_r($sub_topic_ex[0]);
-    // echo "<br>";
-    // echo "sub_info_ex = ";
-    // print_r($sub_info_ex[0]);
-    // echo "<br>";
-    // echo $sati_ep2;
-    // echo "<br>";
-    // echo "// ข้อมูลพื้นฐาน //";
-    // print_r($sati_info); // ข้อมูลพื้นฐาน
-    // echo "<br>";
-    // echo "// ข้อมูลพื้นฐานย่อย //";
-    // print_r($sub_info); // ข้อมูลพื้นฐานย่อย
-    // echo "<br>";
-    // echo "// หัวข้อด้าน //";
-    // print_r($sati_topic); // หัวข้อด้าน
-    // echo "<br>";
-    // echo "// ข้อมูลแต่ละด้าน //";
-    // print_r($sub_topic); // ข้อมูลแต่ละด้าน
-
-    // echo "<br>";
-    // echo "<br>";
-    // echo "// ข้อมูลพื้นฐาน //";
-    // echo $sati_info_un; // ข้อมูลพื้นฐาน
-    // echo "<br>";
-    // echo "// ข้อมูลพื้นฐานย่อย //";
-    // print_r($sub_info_un); // ข้อมูลพื้นฐานย่อย
-    // echo "<br>";
-    // echo "// หัวข้อด้าน //";
-    // print_r($sati_topic_un); // หัวข้อด้าน
-    // echo "<br>";
-    // echo "// ข้อมูลแต่ละด้าน //";
-    // print_r($sub_topic_un); // ข้อมูลแต่ละด้าน
-
 } else {
     header("Location: index.php");
     exit();
@@ -113,6 +79,7 @@ if (isset($_GET['id'])) {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
 
@@ -130,8 +97,9 @@ if (isset($_GET['id'])) {
         <button type="button" onclick="isClass('<?php echo $class; ?>','<?php echo $class1; ?>')" class="flex bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             กลับหน้าแรก
         </button>
-        <form action="update_satis.php" method="POST">
-            <input type="hidden" name="sati_id" value="<?= $_GET['id'] ?>">
+        <form action="update_satis.php" method="POST" id="myform">
+            <input type="hidden" name="pj_id" value="<?= $pj_id ?>">
+            <input type="hidden" name="sati_id" value="<?= $sati_id ?>">
             <h1 class="text-center text-3xl mb-5">แก้ไขแบบฟอร์มประเมินความพึงพอใจ</h1>
 
             <?php if (isset($_SESSION['error'])) { ?>
@@ -494,7 +462,30 @@ if (isset($_GET['id'])) {
                     </script>
 
                     <div class="text-center mt-5">
-                        <button type="submit" name="update" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">บันทึกข้อมูล</button>
+                        <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">บันทึกข้อมูล</button>
+                        <input type="hidden" name="update" value="update" readonly>
+
+                        <script>
+                            document.getElementById("myform").addEventListener("submit", (event) => {
+                                event.preventDefault(); // ป้องกันไม่ให้ฟอร์มถูกส่งโดยทันที
+
+                                Swal.fire({
+                                    title: "ยืนยันการบันทึกหรือไม่?",
+                                    text: "ตรวจสอบให้แน่ใจว่าคุณกรอกข้อมูลถูกต้อง!",
+                                    icon: "info",
+                                    showCancelButton: true,
+                                    confirmButtonColor: "#16a34b",
+                                    cancelButtonColor: "#d33",
+                                    confirmButtonText: "บันทึก",
+                                    cancelButtonText: "ยกเลิก",
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        // ส่งฟอร์ม
+                                        document.getElementById("myform").submit();
+                                    }
+                                });
+                            });
+                        </script>
                     </div>
 
                 </div>
