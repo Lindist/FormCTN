@@ -208,12 +208,20 @@ document.getElementById("delete_topic").addEventListener("click", () => {
     const topic_index = document.getElementById("topic_index");
     const value = topic_index.textContent.trim();
 
-    Swal.fire({
+    const Toast = Swal.mixin({
+        toast: true,
         position: "top-end",
-        width: "25em",
-        icon: "success",
-        title: `เพิ่มแล้ว ${value} หัวข้อ`,
         showConfirmButton: false,
         timer: 1500,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+        }
     });
+    Toast.fire({
+        icon: "info",
+        title: `เพิ่มแล้ว ${value} หัวข้อ`
+    });
+
 });

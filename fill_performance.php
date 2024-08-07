@@ -80,6 +80,7 @@ if (check_empty($sub_info)) {
             $tb_fill_efficiercy = $conn->prepare("INSERT INTO tb_fill_efficiercy(form_id, form_name, form_ad, member_id, form_info, sub_info, form_topic, feature, setfeature, result, compare, project_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             $tb_fill_efficiercy->execute([$form_id, $form_name, $ad, $user_id, $form_info, $sub_info, $form_topic, $feature, $setfeature, $result, $compare, $pj_id]);
 
+            $_SESSION['save_form'] = "กรอก แบบฟอร์มประเมินประสิทธิภาพ เรียบร้อย";
             header("location: form.php");
        }
     } catch (PDOException $e) {
