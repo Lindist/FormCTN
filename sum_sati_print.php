@@ -612,7 +612,7 @@ if (isset($_GET['class'])) {
                             มีความพึงพอใจ <?= $main_sub_topic[$i][$key]; ?> โดยมีความพึงพอใจในระดับ มากที่สุด (x̄ = <?php echo round($xBar[$i][$key],2); ?>)
                             <?php } ?>
                         <?php } ?>
-                        <div style="width:65vw; height:auto; position: relative; left: 50%; transform: translateX(-50%); ">
+                        <div style="width:65vw; height:auto;">
                             <canvas id="myChart"></canvas>
                         </div>
                 <?php } ?>
@@ -665,7 +665,7 @@ if (isset($_GET['class'])) {
                                 มีความพึงพอใจ <?= $sati_topic[$key]; ?> โดยมีความพึงพอใจในระดับ มากที่สุด (x̄ = <?php echo round($sumxBar[$key],2); ?>)
                             <?php } ?>
                         <?php } ?>
-            <div style="width:65vw; height:auto; position: relative; left: 50%; transform: translateX(-50%); ">
+            <div style="width:65vw; height:auto;">
                 <canvas id="myChart2"></canvas>
             </div>
 
@@ -759,7 +759,9 @@ if (isset($_GET['class'])) {
                     }
                     });
             });
-            window.print();
+            setTimeout(() => {
+                window.print();
+            }, 1500);
             setTimeout(() => {
                 Swal.fire({
                     title: "กลับหน้าเดิม?",
