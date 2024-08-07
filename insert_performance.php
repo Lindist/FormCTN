@@ -53,29 +53,6 @@ if (isset($_POST['save'])) {
 
     $setfeature = implode("ꓘ", $combined_setfeature);
 
-    // $sub_info_ex = preg_split("/ꓘ/", $sub_info);
-    
-    // echo $formname;
-    // echo "<br>";
-    // echo $ad;
-    // echo "<br>";
-    // echo "// ข้อมูลพื้นฐาน //";
-    // echo $form_info; // ข้อมูลพื้นฐาน
-    // echo "<br>";
-    // echo count($_POST['form_info']);
-    // echo "// ข้อมูลพื้นฐานย่อย //";
-    // print_r($combined_subinfo); // ข้อมูลพื้นฐานย่อย
-    // echo "<br>";
-    // echo "// หัวข้อด้าน //";
-    // print_r($form_topic); // หัวข้อด้าน
-    // echo "<br>";
-    // echo count($_POST['form_topic']);
-    // echo "// คุณสมบัติด้านเทคนิค //";
-    // print_r($combined_feature); // คุณสมบัติด้านเทคนิค
-    // echo "<br>";
-    // echo "// คุณสมบัติที่ตั้งไว้ //";
-    // print_r($combined_setfeature); // คุณสมบัติที่ตั้งไว้
-
 }
 
 if (empty($formname)) {
@@ -102,8 +79,8 @@ if (empty($formname)) {
     try {
         if (!isset($_SESSION['error'])) {
 
-            $tb_efficiercy_form = $conn->prepare("INSERT INTO tb_efficiercy_form(form_name, form_ad, member_id, form_info, sub_info, form_topic, feature, setfeature,project_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            $tb_efficiercy_form->execute([$formname, $ad, $user_id, $form_info, $sub_info, $form_topic, $feature, $setfeature,$projectId]);
+            $tb_efficiercy_form = $conn->prepare("INSERT INTO tb_efficiercy_form(form_name, form_ad, member_id, form_info, sub_info, form_topic, feature, setfeature, project_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $tb_efficiercy_form->execute([$formname, $ad, $user_id, $form_info, $sub_info, $form_topic, $feature, $setfeature, $projectId]);
             
             unset($_SESSION['projectId']);
             $_SESSION['save_form'] = "บึนทึก แบบฟอร์มประเมินประสิทธิภาพ เรียบร้อย";
