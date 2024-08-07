@@ -80,7 +80,12 @@ $projectedit->execute();
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <title>From</title>
     <link rel="icon" type="icon" href="https://i.imgur.com/m0H7jcN.png">
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" /> -->
+    <style>
+        .custom-swal-title {
+            font-size: 20px;
+            /* Add any other styles you need */
+        }
+    </style>
 </head>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -103,7 +108,10 @@ $projectedit->execute();
                 icon: "success",
                 title: "<?= $_SESSION['save_form'] ?>",
                 showConfirmButton: false,
-                timer: 2000
+                timer: 2000,
+                customClass: {
+                    title: 'custom-swal-title'
+                }
             });
         </script>
         <?php unset($_SESSION['save_form']); ?>
@@ -371,7 +379,7 @@ $projectedit->execute();
                         <a id='btn' href='showlistperformance.php?id=<?php echo $row['form_id']; ?>'>ดูรายชื่อ</a>
                         <a id='btnshow' onclick="isaddClass('<?php echo $row['form_id']; ?>')" >ดูข้อมูล</a>
                         <a href='edit_performance_form.php?id=<?php echo $row['form_id']; ?>' id='btnedit'>แก้ไข</a>
-                        <a id='btndelete' onclick="confirmdel(['<?php echo $c; ?>','<?php echo $row['form_id']; ?>'])" >ลบ</a>
+                        <a id='btndelete' onclick="confirmdel(['<?php echo $c; ?>', '<?php echo $row['form_name']; ?>', '<?php echo $row['form_id']; ?>'])" >ลบ</a>
                         </div>
                         </div>
                         </div>
@@ -415,7 +423,7 @@ $projectedit->execute();
                         <a id='btn' href='showlistsatis.php?id=<?php echo $row5['sati_id']; ?>'>ดูรายชื่อ</a>
                         <a id='btnshow' onclick="isaddClass('<?php echo $row5['sati_id']; ?>','true')" >ดูข้อมูล</a>
                         <a href='edit_satis_form.php?id=<?php echo $row5['sati_id']; ?>' id='btnedit'>แก้ไข</a>
-                        <a id='btndelete' onclick="confirmdel(['<?php echo $c1; ?>','<?php echo $row5['sati_id']; ?>'],'true')" >ลบ</a>
+                        <a id='btndelete' onclick="confirmdel(['<?php echo $c1; ?>', '<?php echo $row5['sati_ep2']; ?>', '<?php echo $row5['sati_id']; ?>'], 'true')" >ลบ</a>
                         </div>
                         </div>
                         </div>
@@ -544,7 +552,7 @@ $projectedit->execute();
     <script src="script/searchscipt.js"></script>
     <script src="script/dropdown1.js"></script>
     <script src="script/dropdownforreponsive.js"></script>
-    <script src="script/script_add_updatef.js"></script>
+    <script src="script/script_add_update.js"></script>
     <script src="script/scriptSelector1.js"></script>
     <script src="script/datepicker1.js"></script>
     <script src="script/thaidatepicker1.js"></script>

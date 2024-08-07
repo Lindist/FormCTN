@@ -55,7 +55,7 @@ Delproject = (id, pj_name) => {
 function confirmdel(ids, tab2 = 'false') {
     Swal.fire({
         title: "ลบฟอร์มข้อมูล",
-        text: `ยืนยันที่จะลบ ฟอร์มที่ ${ids[0]} หรือไม่`,
+        text: `ยืนยันที่จะลบ ฟอร์มที่ ${ids[0]} "${ids[1]}" หรือไม่`,
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#d33",
@@ -65,9 +65,11 @@ function confirmdel(ids, tab2 = 'false') {
     }).then((result) => {
         if (result.isConfirmed) {
             if (tab2 == 'false') {
-                window.location.href = `delete_performacne_form.php?id=${ids[1]}`;
+                // console.log("false")
+                window.location.href = `delete_performacne_form.php?id=${ids[2]}`;
             } else if (tab2 == 'true') {
-                window.location.href = `delete_satis_form.php?id=${ids[1]}`;
+                // console.log("true")
+                window.location.href = `delete_satis_form.php?id=${ids[2]}`;
             }
         }
     });
