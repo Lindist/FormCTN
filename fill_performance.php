@@ -15,6 +15,7 @@ if (isset($_POST['save'])) {
     $form_id = $_POST['form_id'];
     $form_name = $_POST['form_name'];
     $ad = $_POST['form_ad'];
+    $pj_id = $_POST['project_id'];
 
     $sub_info_ex = [];
     for ($i = 1; $i <= count($_POST['form_info']); $i++) {
@@ -40,36 +41,6 @@ if (isset($_POST['save'])) {
     $setfeature = implode("ꓘ", $combined_setfeature);
     $result = implode("ꓘ", $combined_result);
     $compare = implode("ꓘ", $combined_compare);
-
-    // echo $form_id." ";
-    // echo $form_name;
-    // echo "<br>";
-    // echo $ad;
-    // echo "<br>";
-    // echo "// ข้อมูลพื้นฐาน //";
-    // print_r($form_info); // ข้อมูลพื้นฐาน
-    // echo "<br>";
-    // echo count($_POST['form_info']);
-    // echo "<br>";
-    // echo "// ข้อมูลพื้นฐานย่อย //";
-    // print_r($sub_info); // ข้อมูลพื้นฐานย่อย
-    // echo "<br>";
-    // echo "// หัวข้อด้าน //";
-    // print_r($form_topic); // หัวข้อด้าน
-    // echo "<br>";
-    // echo count($_POST['form_topic']);
-    // echo "<br>";
-    // echo "// คุณสมบัติด้านเทคนิค //";
-    // print_r($feature); // คุณสมบัติด้านเทคนิค
-    // echo "<br>";
-    // echo "// คุณสมบัติที่ตั้งไว้ //";
-    // print_r($setfeature); // คุณสมบัติที่ตั้งไว้
-    // echo "<br>";
-    // echo "// คุณสมบัติที่ทำได้ //";
-    // print_r($result); // คุณสมบัติที่ทำได้
-    // echo "<br>";
-    // echo "// ผลการเปรียบเทียบ //";
-    // print_r($compare); // ผลการเปรียบเทียบ
 
 }
 
@@ -106,8 +77,8 @@ if (check_empty($sub_info)) {
     try {
         if (!isset($_SESSION['error'])) {
 
-            $tb_fill_efficiercy = $conn->prepare("INSERT INTO tb_fill_efficiercy(form_id, form_name, form_ad, member_id, form_info, sub_info, form_topic, feature, setfeature, result, compare) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            $tb_fill_efficiercy->execute([$form_id, $form_name, $ad, $user_id, $form_info, $sub_info, $form_topic, $feature, $setfeature, $result, $compare]);
+            $tb_fill_efficiercy = $conn->prepare("INSERT INTO tb_fill_efficiercy(form_id, form_name, form_ad, member_id, form_info, sub_info, form_topic, feature, setfeature, result, compare, project_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $tb_fill_efficiercy->execute([$form_id, $form_name, $ad, $user_id, $form_info, $sub_info, $form_topic, $feature, $setfeature, $result, $compare, $project_id]);
 
             header("location: form.php");
        }

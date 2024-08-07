@@ -17,6 +17,7 @@ if (isset($_GET['id'])) {
     $row = $query->fetch();
 
     $member_id = $row['member_id'];
+    $pj_id = $row['project_id'];
     $sati_name = $row['sati_ep2'];
     $sati_info_un = $row['sati_info'];
     $sub_info_un = $row['sub_info'];
@@ -37,41 +38,6 @@ if (isset($_GET['id'])) {
     foreach ($sub_topic as $index => $topic) {
         $sub_topic_ex[$index] = preg_split("/Ϫ/", $topic);
     }
-
-    // echo "sub_topic_ex = ";
-    // print_r($sub_topic_ex);
-    // echo "<br>";
-    // echo "sub_info_ex = ";
-    // print_r($sub_info_ex);
-    // echo "<br>";
-    // echo $sati_name;
-    // echo "<br>";
-    // echo "// ข้อมูลพื้นฐาน // ";
-    // print_r($sati_info); // ข้อมูลพื้นฐาน
-    // echo "<br>";
-    // echo "// ข้อมูลพื้นฐานย่อย // ";
-    // print_r($sub_info_ex); // ข้อมูลพื้นฐานย่อย
-    // echo "<br>";
-    // echo "// หัวข้อด้าน // ";
-    // print_r($sati_topic); // หัวข้อด้าน
-    // echo "<br>";
-    // echo "// ข้อมูลแต่ละด้าน // ";
-    // print_r($sub_topic_ex); // ข้อมูลแต่ละด้าน
-
-    // echo "<br>";
-    // echo $sati_ep2;
-    // echo "<br>";
-    // echo "// ข้อมูลพื้นฐาน // ";
-    // echo $sati_info_un; // ข้อมูลพื้นฐาน
-    // echo "<br>";
-    // echo "// ข้อมูลพื้นฐานย่อย // ";
-    // print_r($sub_info_un); // ข้อมูลพื้นฐานย่อย
-    // echo "<br>";
-    // echo "// หัวข้อด้าน // ";
-    // print_r($sati_topic_un); // หัวข้อด้าน
-    // echo "<br>";
-    // echo "// ข้อมูลแต่ละด้าน // ";
-    // print_r($sub_topic_un); // ข้อมูลแต่ละด้าน
 
 } else {
     header("Location: index.php");
@@ -108,6 +74,7 @@ if (isset($_GET['id'])) {
             กลับหน้าแรก
         </button>
         <form action="fill_satis.php" method="POST">
+            <input type="hidden" name="pj_id" value="<?= $pj_id ?>">
             <h1 class="text-center text-3xl mb-5">กรอกแบบฟอร์มประเมินความพึงพอใจ</h1>
 
             <input type="text" name="sati_id" class="hidden" value="<?= $_GET['id'] ?>">

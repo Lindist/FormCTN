@@ -199,7 +199,7 @@ $projectedit->execute();
 
                         Swal.fire({
                             title: "ยืนยันการบันทึกหรือไม่?",
-                            text: "ตรวจสอบให้แน่ใจว่าคุณกรอกข้อมูลถูกกต้อง!",
+                            text: "ตรวจสอบให้แน่ใจว่าคุณกรอกข้อมูลถูกต้อง!",
                             icon: "info",
                             showCancelButton: true,
                             confirmButtonColor: "#16a34a",

@@ -17,6 +17,7 @@ if (isset($_GET['id'])) {
     $row = $query->fetch();
 
     $member_id = $row['member_id'];
+    $pj_id = $row['project_id'];
     $form_name = $row['form_name'];
     $ad = $row['form_ad'];
     $form_info_un = $row['form_info'];
@@ -45,28 +46,6 @@ if (isset($_GET['id'])) {
     foreach ($setfeature as $index => $topic) {
         $setfeature_ex[$index] = preg_split("/Ϫ/", $topic);
     }
-
-    // echo $form_name;
-    // echo "<br>";
-    // echo $ad;
-    // echo "<br>";
-    // echo "// ข้อมูลพื้นฐาน //";
-    // print_r($form_info); // ข้อมูลพื้นฐาน
-    // echo "<br>";
-    // echo count($form_info);
-    // echo "// ข้อมูลพื้นฐานย่อย //";
-    // print_r($sub_info_ex); // ข้อมูลพื้นฐานย่อย
-    // echo "<br>";
-    // echo "// หัวข้อด้าน //";
-    // print_r($form_topic); // หัวข้อด้าน
-    // echo "<br>";
-    // echo count($form_topic);
-    // echo "<br>";
-    // echo "// คุณสมบัติด้านเทคนิค //";
-    // print_r($feature_ex); // คุณสมบัติด้านเทคนิค
-    // echo "<br>";
-    // echo "// คุณสมบัติที่ตั้งไว้ //";
-    // print_r($setfeature_ex); // คุณสมบัติที่ตั้งไว้
 
     if ($_SESSION['user_id'] == $member_id) {
         header("Location: index.php");
@@ -106,6 +85,7 @@ if (isset($_GET['id'])) {
             กลับหน้าแรก
         </button>
         <form action="fill_performance.php" method="POST">
+            <input type="hidden" name="pj_id" value="<?= $pj_id ?>">
             <h1 class="text-center text-3xl mb-5">กรอกแบบฟอร์มประเมินประสิทธิภาพ</h1>
 
             <input type="hidden" name="form_id" value="<?= $_GET['id'] ?>">
