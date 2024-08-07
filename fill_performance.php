@@ -15,7 +15,7 @@ if (isset($_POST['save'])) {
     $form_id = $_POST['form_id'];
     $form_name = $_POST['form_name'];
     $ad = $_POST['form_ad'];
-    $pj_id = $_POST['project_id'];
+    $pj_id = $_POST['pj_id'];
 
     $sub_info_ex = [];
     for ($i = 1; $i <= count($_POST['form_info']); $i++) {
@@ -78,7 +78,7 @@ if (check_empty($sub_info)) {
         if (!isset($_SESSION['error'])) {
 
             $tb_fill_efficiercy = $conn->prepare("INSERT INTO tb_fill_efficiercy(form_id, form_name, form_ad, member_id, form_info, sub_info, form_topic, feature, setfeature, result, compare, project_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            $tb_fill_efficiercy->execute([$form_id, $form_name, $ad, $user_id, $form_info, $sub_info, $form_topic, $feature, $setfeature, $result, $compare, $project_id]);
+            $tb_fill_efficiercy->execute([$form_id, $form_name, $ad, $user_id, $form_info, $sub_info, $form_topic, $feature, $setfeature, $result, $compare, $pj_id]);
 
             header("location: form.php");
        }
