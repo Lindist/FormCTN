@@ -69,7 +69,7 @@ $projectedit->execute();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/formstyle.css">
+    <link rel="stylesheet" href="style/formstyle1.css">
     <link rel="stylesheet" href="style/tabstyle.css">
     <link rel="stylesheet" href="style/inputsearchstyle.css">
     <link rel="stylesheet" href="style/addProjectname1_2.css">
@@ -551,7 +551,7 @@ $projectedit->execute();
     <script src="script/active.js" type="module"></script>
     <script src="script/searchscipt.js"></script>
     <script src="script/dropdown1.js"></script>
-    <script src="script/dropdownforreponsive.js"></script>
+    <script src="script/dropdownforreponsive1.js"></script>
     <script src="script/script_add_update.js"></script>
     <script src="script/scriptSelector1.js"></script>
     <script src="script/datepicker1.js"></script>

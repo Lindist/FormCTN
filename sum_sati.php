@@ -651,14 +651,14 @@ if (isset($_GET['class'])) {
                 <?php for ($i = 0; $i < count($sati_topic); $i++) { ?>
                     <?php if(isset($sumxBar[$i]) || isset($sumSD[$i])){ ?>
                     <tr class="odd:bg-white even:bg-gray-100">
-                        <td class="border border-gray-300"><?= $sati_topic[$i]; ?></td>
+                        <td class="border border-gray-300">ด้าน <?= $sati_topic[$i]; ?></td>
                         <td class="border border-gray-300 text-center"><?= round($sumxBar[$i],2); ?></td>
                         <td class="border border-gray-300 text-center"><?= round($sumSD[$i],2); ?></td>
                         <td class="border border-gray-300 text-center"><?= $Z_Scores_to_convert_sum[$i]; ?></td>
                     </tr>
                     <?php }else{ ?>
                     <tr class="odd:bg-white even:bg-gray-100">
-                        <td class="border border-gray-300"><?= $sati_topic[$i]; ?></td>
+                        <td class="border border-gray-300">ด้าน <?= $sati_topic[$i]; ?></td>
                         <td class="border border-gray-300 text-center">ไม่มีการกรอกข้อมูล</td>
                         <td class="border border-gray-300 text-center">ไม่มีการกรอกข้อมูล</td>
                         <td class="border border-gray-300 text-center">ไม่มีการกรอกข้อมูล</td>

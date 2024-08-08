@@ -149,6 +149,11 @@ header .logout img{
     width: 25px;
     height: 25px;
 }
+
+header .responsive .toggle-btn{
+    display: none;
+}
+
 .container > .btnshow{
     margin-top: 0px;
     display: flex;
@@ -437,6 +442,7 @@ header .logout img{
     }
 
     header .responsive .toggle-btn{
+        display: block;
         position: relative;
         width: 30px;
         height: 30px;

@@ -1,4 +1,4 @@
-const dropdown = document.querySelector('.responsive');
+const dropdown = document.querySelector('.toggle-btn');
 const headerfordivide = document.querySelector('header'); 
 const seachmargin = document.querySelectorAll('.seachmargin');
 const marforbtnshow = document.querySelectorAll('.container > .btnshow');
