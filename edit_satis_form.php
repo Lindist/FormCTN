@@ -102,15 +102,6 @@ if (isset($_GET['id'])) {
             <input type="hidden" name="sati_id" value="<?= $sati_id ?>">
             <h1 class="text-center text-3xl mb-5">แก้ไขแบบฟอร์มประเมินความพึงพอใจ</h1>
 
-            <?php if (isset($_SESSION['error'])) { ?>
-                <div class="text-center mb-4 p-3 mt-10 bg-yellow-100 text-yellow-800 border border-yellow-300 rounded">
-                    <?php
-                    echo $_SESSION['error'];
-                    unset($_SESSION['error']);
-                    ?>
-                </div>
-            <?php } ?>
-
             <input type="hidden" name="id" class="block border" value="<?= $row['sati_id'] ?>">
 
             <!-- Title_Content -->

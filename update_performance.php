@@ -8,8 +8,6 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-$user_id = $_SESSION['user_id'];
-
 if (isset($_POST['update'])) {
     $formname = $_POST['formname'];
     $ad = $_POST['ad'];

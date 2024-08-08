@@ -5,11 +5,6 @@ session_start();
 if (isset($_SESSION['user_id'])) {
     header("Location: form.php");
     exit();
-} elseif (isset($_COOKIE['std_id']) && isset($_COOKIE['password'])) {
-    $_SESSION['std_id'] = $_COOKIE['std_id'];
-    $_SESSION['password'] = $_COOKIE['password'];
-    header("Location: session/login_db.php");
-    exit();
 }
 
 $registerClass = isset($_SESSION['show_register']) && $_SESSION['show_register'] ? '' : 'hidden';
