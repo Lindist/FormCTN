@@ -58,52 +58,34 @@ if (isset($_POST['save'])) {
 
     $sub_topic = implode("ꓘ", $combined_subtopic);
 
-    // $sub_info_ex = preg_split("/ꓘ/", $sub_info);
-    
-    // echo $sati_ep2;
-    // echo "<br>";
-    // echo "// ข้อมูลพื้นฐาน //";
-    // echo $sati_info; // ข้อมูลพื้นฐาน
-    // echo "<br>";
-    // echo count($_POST['sati_info']);
-    // echo "// ข้อมูลพื้นฐานย่อย //";
-    // print_r($sub_info); // ข้อมูลพื้นฐานย่อย
-    // echo "<br>";
-    // echo "// หัวข้อด้าน //";
-    // print_r($sati_topic); // หัวข้อด้าน
-    // echo "<br>";
-    // echo count($_POST['sati_topic']);
-    // echo "// ข้อมูลแต่ละด้าน //";
-    // print_r($sub_topic); // ข้อมูลแต่ละด้าน
-
 }
 
-$_SESSION['pj_id'] = $_POST['pj_id'];
 
 if (empty($sati_ep2)) {
     $_SESSION['error'] = "กรุณากรอกชื่อ โปรเจค";
-    header("location: insert_satis_form.php?pro_name=$projectId&pro_id=$projectId");
+    header("location: insert_satis_form.php?pro_name=$sati_ep2&pro_id=$projectId");
     exit;
 } else if (empty($sati_info)) {
     $_SESSION['error'] = "กรุณากรอก ข้อมูลพื้นฐาน อย่างน้อย 1 ประเภท";
-    header("location: insert_satis_form.php?pro_name=$projectId&pro_id=$projectId");
+    header("location: insert_satis_form.php?pro_name=$sati_ep2&pro_id=$projectId");
     exit;
 } else if (empty($sati_topic)) {
     $_SESSION['error'] = "กรุณากรอก ด้าน อย่างน้อย 1 ด้าน";
-    header("location: insert_satis_form.php?pro_name=$projectId&pro_id=$projectId");
+    header("location: insert_satis_form.php?pro_name=$sati_ep2&pro_id=$projectId");
     exit;
 } else if (empty($combined_subinfo)) {
     $_SESSION['error'] = "กรุณากรอก ตัวเลือก ข้อมูลพื้นฐาน อย่างน้อย 1 ประเภท";
-    header("location: insert_performance_form.php?pro_name=$projectId&pro_id=$projectId");
+    header("location: insert_performance_form.php?pro_name=$sati_ep2&pro_id=$projectId");
     exit;
 } else {
     try {
         if (!isset($_SESSION['error'])) {
 
             $tb_satisfied = $conn->prepare("INSERT INTO tb_satisfied(sati_ep2, sati_info, sub_info, sati_topic, sub_topic, member_id, project_id) VALUES (?, ?, ?, ?, ?, ?,?)");
-            $tb_satisfied->execute([$sati_ep2, $sati_info, $sub_info, $sati_topic, $sub_topic, $user_id,$projectId]);
+            $tb_satisfied->execute([$sati_ep2, $sati_info, $sub_info, $sati_topic, $sub_topic, $user_id, $projectId]);
 
             unset($_SESSION['projectId']);
+            $_SESSION['save_form'] = "บึนทึก แบบฟอร์มประเมินความพึงพอใจ เรียบร้อย";
             header("location: form.php");
 
         }

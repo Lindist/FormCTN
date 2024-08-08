@@ -26,9 +26,6 @@ if (isset($_POST['update'])) {
         }
     }
 
-    // echo $sati_id;
-    // echo "<br>";
-
     $sati_info = implode("Ϫ", $_POST['sati_info']);
 
     $sub_info = implode("ꓘ", $combined_subinfo);
@@ -36,22 +33,6 @@ if (isset($_POST['update'])) {
     $sati_topic = implode("Ϫ", $_POST['sati_topic']);
 
     $sub_topic = implode("ꓘ", $combined_subtopic);
-    
-    // echo $sati_ep2;
-    // echo "<br>";
-    // echo "// ข้อมูลพื้นฐาน //";
-    // echo $sati_info; // ข้อมูลพื้นฐาน
-    // echo "<br>";
-    // echo count($_POST['sati_info']);
-    // echo "// ข้อมูลพื้นฐานย่อย //";
-    // print_r($sub_info); // ข้อมูลพื้นฐานย่อย
-    // echo "<br>";
-    // echo "// หัวข้อด้าน //";
-    // print_r($sati_topic); // หัวข้อด้าน
-    // echo "<br>";
-    // echo count($_POST['sati_topic']);
-    // echo "// ข้อมูลแต่ละด้าน //";
-    // print_r($sub_topic); // ข้อมูลแต่ละด้าน
 
 }
 
@@ -74,9 +55,7 @@ if (empty($sati_ep2)) {
             $tb_satisfied = $conn->prepare("UPDATE tb_satisfied SET sati_ep2 = ?, sati_info = ?, sub_info = ?, sati_topic = ?, sub_topic = ? WHERE sati_id = ?",);
             $tb_satisfied->execute([$sati_ep2, $sati_info, $sub_info, $sati_topic, $sub_topic, $sati_id]);
 
-            // $tb_fill = $conn->prepare("UPDATE tb_fill_satisfied SET sati_ep2 = ?, sati_info = ?, sati_topic = ?, sub_topic = ? WHERE sati_id = ?",);
-            // $tb_fill->execute([$sati_ep2, $sati_info, $sati_topic, $sub_topic, $sati_id]);
-
+            $_SESSION['save_form'] = "บึนทึก แบบฟอร์มประเมินความพึงพอใจ เรียบร้อย";
             header("location: form.php");
 
         }
@@ -85,6 +64,4 @@ if (empty($sati_ep2)) {
     }
 }
 
-// $tb_satisfied = $conn->prepare("UPDATE tb_satisfied SET sati_ep2 = ?, sati_gender = ?, sati_level = ?, sati_type = ? WHERE sati_id = ?");
-// $tb_satisfied->execute([$sati_ep2, $sati_gender, $sati_level, $sati_type, $sati_id]);
 ?>

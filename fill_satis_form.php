@@ -38,7 +38,6 @@ if (isset($_GET['id'])) {
     foreach ($sub_topic as $index => $topic) {
         $sub_topic_ex[$index] = preg_split("/Ϫ/", $topic);
     }
-
 } else {
     header("Location: index.php");
     exit();
@@ -73,7 +72,7 @@ if (isset($_GET['id'])) {
         <button type="button" onclick="window.location.href='form.php';" class="flex bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             กลับหน้าแรก
         </button>
-        <form action="fill_satis.php" method="POST">
+        <form action="fill_satis.php" method="POST" id="myform">
             <input type="hidden" name="pj_id" value="<?= $pj_id ?>">
             <h1 class="text-center text-3xl mb-5">กรอกแบบฟอร์มประเมินความพึงพอใจ</h1>
 
@@ -205,7 +204,30 @@ if (isset($_GET['id'])) {
                     <textarea class="p-2 text-lg text-gray-900 border border-gray-300 rounded bg-gray-50 w-full" name="sati_comment" id="" cols="30" rows="10" placeholder="ไม่จำเป็นต้องกรอก . . . . ."></textarea>
 
                     <div class="text-center mt-5">
-                        <button type="submit" name="save" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">บันทึกข้อมูล</button>
+                        <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">บันทึกข้อมูล</button>
+                        <input type="hidden" name="save" value="save" readonly>
+
+                        <script>
+                            document.getElementById("myform").addEventListener("submit", (event) => {
+                                event.preventDefault(); // ป้องกันไม่ให้ฟอร์มถูกส่งโดยทันที
+
+                                Swal.fire({
+                                    title: "ยืนยันการบันทึกหรือไม่?",
+                                    text: "ตรวจสอบให้แน่ใจว่าคุณกรอกข้อมูลถูกต้อง!",
+                                    icon: "info",
+                                    showCancelButton: true,
+                                    confirmButtonColor: "#16a34a",
+                                    cancelButtonColor: "#d33",
+                                    confirmButtonText: "บันทึก",
+                                    cancelButtonText: "ยกเลิก",
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        // ส่งฟอร์ม
+                                        document.getElementById("myform").submit();
+                                    }
+                                });
+                            });
+                        </script>
                     </div>
                 </div>
         </form>

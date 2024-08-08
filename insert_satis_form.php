@@ -25,21 +25,7 @@ if(isset($_GET['pro_name'])){
 }
 if(isset($_GET['pro_id'])){
     $_SESSION['projectId'] = $_GET['pro_id'];
-    $pj_id = $_GET['pro_id'];
 }
-
-// echo $pj_id;
-
-$project_id = $pj_id;
-
-$query = $conn->prepare("SELECT * FROM project WHERE project_id = :project_id");
-$query->bindParam(":project_id", $project_id);
-$query->execute();
-$row = $query->fetch();
-
-$project_name = $row['project_name'];
-
-// echo $project_name;
 
 ?>
 
@@ -70,7 +56,7 @@ $project_name = $row['project_name'];
         <button type="button" onclick="isClass('<?php echo $class; ?>','<?php echo $class1; ?>')" class="flex bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             กลับหน้าแรก
         </button>
-        <form action="insert_satis.php" method="POST">
+        <form action="insert_satis.php" method="POST" id="myform">
             <h1 class="text-center text-3xl mb-5">แบบฟอร์มประเมินความพึงพอใจ</h1>
             <input type="hidden" name="class" id="class" value="<?php echo $class; ?>">
             <input type="hidden" name="class1" id="class1" value="<?php echo $class1; ?>">
@@ -165,34 +151,6 @@ $project_name = $row['project_name'];
                             newSubInfoField.remove();
                         });
                         });
-
-
-                        // // Add event listener for the "เพิ่มข้อมูลพื้นฐานที่" button
-                        // document.getElementById(`addsubinfo_${currentBlocks + 1}`).addEventListener('click', function() {
-
-                        //     var containerId = this.id.replace('addsubinfo_', '');
-                        //     var subInfoSection = document.getElementById(`sub-info_${containerId}`);
-                        //     var newInput = document.createElement('input');
-                        //     newInput.required = true;
-                        //     newInput.type = 'text';
-                        //     newInput.className = 'border border-gray-300 rounded px-3 py-2 my-1 w-full';
-                        //     newInput.name = `sub_info${containerId}[]`;
-
-                        //     var newButton = document.createElement('button');
-                        //     newButton.type = 'button';
-                        //     newButton.className = 'bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 ml-2';
-                        //     newButton.textContent = 'ลบ';
-
-                        //     newButton.addEventListener('click', function() {
-                        //         newInput.remove();
-                        //         newButton.remove();
-                        //     });
-
-                        //     subInfoSection.appendChild(newInput);
-                        //     subInfoSection.appendChild(newButton);
-                        // });
-
-                        // Add event listener for the "ลบ" button to remove the block
 
                         document.getElementById(`removeinfo_${currentBlocks + 1}`).addEventListener('click', function() {
                             newBlock.remove();
@@ -375,7 +333,30 @@ $project_name = $row['project_name'];
                     </script>
 
                     <div class="text-center mt-5">
-                        <button type="submit" name="save" id="save" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">บันทึกข้อมูล</button>
+                        <button type="submit" id="save" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">บันทึกข้อมูล</button>
+                        <input type="hidden" name="save" value="save" readonly>
+
+                        <script>
+                            document.getElementById("myform").addEventListener("submit", (event) => {
+                                event.preventDefault(); // ป้องกันไม่ให้ฟอร์มถูกส่งโดยทันที
+
+                                Swal.fire({
+                                    title: "ยืนยันการบันทึกหรือไม่?",
+                                    text: "ตรวจสอบให้แน่ใจว่าคุณกรอกข้อมูลถูกต้อง!",
+                                    icon: "info",
+                                    showCancelButton: true,
+                                    confirmButtonColor: "#16a34a",
+                                    cancelButtonColor: "#d33",
+                                    confirmButtonText: "บันทึก",
+                                    cancelButtonText: "ยกเลิก",
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        // ส่งฟอร์ม
+                                        document.getElementById("myform").submit();
+                                    }
+                                });
+                            });
+                        </script>
                     </div>
                     
                 </div>
