@@ -97,15 +97,6 @@ if (isset($_GET['id'])) {
             <input type="hidden" name="pj_id" value="<?= $pj_id ?>">
             <h1 class="text-center text-2xl mb-5">แก้ไขแบบฟอร์มประเมินประสิทธิภาพ</h1>
 
-            <?php if (isset($_SESSION['error'])) { ?>
-                <div class="text-center mb-4 p-3 mt-10 bg-yellow-100 text-yellow-800 border border-yellow-300 rounded">
-                    <?php
-                    echo $_SESSION['error'];
-                    unset($_SESSION['error']);
-                    ?>
-                </div>
-            <?php } ?>
-
             <!-- Title_Content -->
             <div class="mb-4">
                 <label class="block text-lg font-bold mb-2">ชื่อแบบฟอร์ม</label>

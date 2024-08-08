@@ -52,7 +52,7 @@ if (empty($sati_ep2)) {
     try {
         if (!isset($_SESSION['error'])) {
 
-            $tb_satisfied = $conn->prepare("UPDATE tb_satisfied SET sati_ep2 = ?, sati_info = ?, sub_info = ?, sati_topic = ?, sub_topic = ? WHERE sati_id = ?",);
+            $tb_satisfied = $conn->prepare("UPDATE tb_satisfied SET sati_ep2 = ?, sati_info = ?, sub_info = ?, sati_topic = ?, sub_topic = ? WHERE sati_id = ?");
             $tb_satisfied->execute([$sati_ep2, $sati_info, $sub_info, $sati_topic, $sub_topic, $sati_id]);
 
             $_SESSION['save_form'] = "บึนทึก แบบฟอร์มประเมินความพึงพอใจ เรียบร้อย";
