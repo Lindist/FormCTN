@@ -3,11 +3,6 @@
 session_start();
 require 'session/config.php';
 
-if (!isset($_SESSION['user_id'])) {
-    header("Location: index.php");
-    exit();
-}
-
 if (isset($_GET['id'])) {
     $form_id = $_GET['id'];
 
@@ -47,9 +42,13 @@ if (isset($_GET['id'])) {
         $setfeature_ex[$index] = preg_split("/Ϫ/", $topic);
     }
 
-    if ($_SESSION['user_id'] == $member_id) {
-        header("Location: index.php");
-    }
+    if (isset($_SESSION['user_id'])) {
+        if ($_SESSION['user_id'] == $member_id) {
+            header("Location: index.php");
+            exit();
+        }
+    }    
+
 } else {
     header("Location: index.php");
     exit();
@@ -81,11 +80,37 @@ if (isset($_GET['id'])) {
 
 <body>
     <div class="mx-2 sm:mx-16 bg-white p-4 my-2 sm:my-4 rounded shadow">
-        <button type="button" onclick="window.location.href='form.php';" class="flex bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            กลับหน้าแรก
-        </button>
+
+        <?php if (isset($_SESSION['user_id'])) { ?>
+            <button type="button" onclick="window.location.href='form.php';" class="flex bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                กลับหน้าแรก
+            </button>
+        <?php } ?>
+
         <form action="fill_performance.php" method="POST" id="myform">
             <input type="hidden" name="pj_id" value="<?= $pj_id ?>">
+
+            <?php if (!isset($_SESSION['user_id'])) { ?>
+
+                <div class="flex justify-center mt-2 mb-6">
+                    <div class="w-80 sm:w-96">
+                        <p>คำนำหน้า :</p>
+                        <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4" name="title">
+                            <option value="นาย">นาย</option>
+                            <option value="นาง">นาง</option>
+                            <option value="นางสาว">นางสาว</option>
+                            <option value="เด็กชาย">เด็กชาย</option>
+                            <option value="เด็กหญิง">เด็กหญิง</option>
+                        </select>
+                        <p>ชื่อ :</p>
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4" name="fname" type="text" required>
+                        <p>นามสกุล :</p>
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4" name="lname" type="text" required>
+                    </div>
+                </div>
+
+            <?php } ?>
+
             <h1 class="text-center text-3xl mb-5">กรอกแบบฟอร์มประเมินประสิทธิภาพ</h1>
 
             <input type="hidden" name="form_id" value="<?= $_GET['id'] ?>">

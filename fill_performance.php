@@ -4,8 +4,15 @@ session_start();
 require 'session/config.php';
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: index.php");
-    exit();
+
+    $title = $_POST['title'];
+    $fname = $_POST['fname'];
+    $lname = $_POST['lname'];
+
+    $stmt = $conn -> prepare("INSERT INTO tb_member(member_title, member_firstname, member_lastname) VALUES(?, ?, ?)");
+    $stmt -> execute([$title, $fname, $lname]);
+    $user_id = $conn->lastInsertId();
+
 } else {
     $user_id = $_SESSION['user_id'];
 }
