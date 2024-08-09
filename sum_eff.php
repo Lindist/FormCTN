@@ -2,6 +2,11 @@
 session_start();
 require('session/config.php');
 
+if (!isset($_SESSION['user_id'])) {
+    header("Location: index.php");
+    exit();
+}
+
 $form_id = $_GET['form_id'];
 
 $stmt = $conn->prepare("SELECT * FROM tb_efficiercy_form WHERE form_id = :form_id");
