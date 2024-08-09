@@ -78,6 +78,7 @@ $projectedit->execute();
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <script src="https://unpkg.com/qr-code-styling/lib/qr-code-styling.js"></script>
     <title>From</title>
     <link rel="icon" type="icon" href="https://i.imgur.com/m0H7jcN.png">
     <style>
@@ -377,6 +378,9 @@ $projectedit->execute();
                         <div class='text'><?php echo $row['form_name']; ?></div>
                         <div class="btns">
                         <a id='btn' href='showlistperformance.php?id=<?php echo $row['form_id']; ?>'>ดูรายชื่อ</a>
+                                <button id='btn' onclick="download_btn_fillperfor(<?php echo $row['form_id']; ?>)" class="qr_btn">
+                                    Download QR Code
+                                </button>
                         <a id='btnshow' onclick="isaddClass('<?php echo $row['form_id']; ?>')" >ดูข้อมูล</a>
                         <a href='edit_performance_form.php?id=<?php echo $row['form_id']; ?>' id='btnedit'>แก้ไข</a>
                         <a id='btndelete' onclick="confirmdel(['<?php echo $c; ?>', '<?php echo $row['form_name']; ?>', '<?php echo $row['form_id']; ?>'])" >ลบ</a>
@@ -421,6 +425,9 @@ $projectedit->execute();
                         <div class='text'><?php echo $row5['sati_ep2']; ?></div>
                         <div class="btns">
                         <a id='btn' href='showlistsatis.php?id=<?php echo $row5['sati_id']; ?>'>ดูรายชื่อ</a>
+                        <button id='btn' onclick="download_btn_sati(<?php echo $row5['sati_id']; ?>)" class="qr_btn">
+                            Download QR Code
+                        </button>
                         <a id='btnshow' onclick="isaddClass('<?php echo $row5['sati_id']; ?>','true')" >ดูข้อมูล</a>
                         <a href='edit_satis_form.php?id=<?php echo $row5['sati_id']; ?>' id='btnedit'>แก้ไข</a>
                         <a id='btndelete' onclick="confirmdel(['<?php echo $c1; ?>', '<?php echo $row5['sati_ep2']; ?>', '<?php echo $row5['sati_id']; ?>'], 'true')" >ลบ</a>
@@ -547,6 +554,24 @@ $projectedit->execute();
         .tab_content_for_project.active {
             display: block;
         }
+        .qr_btn{
+            margin-left: 8px;
+            border-style: none;
+            display: inline-block;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+            padding: 0.5rem;
+            background-color: #F5004F;
+            border-radius: 5px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            transition: all .2s ease-in-out;
+        }
+
+        .qr_btn:hover{
+            background-color: #D5004F;
+        }
     </style>
     <script src="script/active.js" type="module"></script>
     <script src="script/searchscipt.js"></script>
@@ -626,6 +651,57 @@ $projectedit->execute();
         nextTosta = (name, id) => {
             window.location.href = "insert_satis_form.php?pro_name=" + name.toString() + "&pro_id=" + id.toString();
         }
+
+        download_btn_fillperfor = (index) => {
+            let qrCode = new QRCodeStyling({
+                width: 300,
+                height: 300,
+                data: `http://form.ctnphrae.com/FormCTN/fill_performance_form.php?id=${index}`,
+                dotsOptions: {
+                    color: "#000000",
+                },
+                backgroundOptions: {
+                    color: "#ffffff",
+                },
+                imageOptions: {
+                    crossOrigin: "anonymous",
+                    margin: 20
+                }
+            });
+
+            qrCode.download({
+                name: "qr-code",
+                extension: "png"
+            }).then(() => {
+                // หลังจากการดาวน์โหลดเสร็จสมบูรณ์ ให้กลับมายังหน้าที่ต้องการ
+                window.location.href = `http://form.ctnphrae.com/FormCTN/form.php`;
+            });
+        };
+        download_btn_sati = (index) => {
+            let qrCode = new QRCodeStyling({
+                width: 300,
+                height: 300,
+                data: `http://form.ctnphrae.com/FormCTN/fill_satis_form.php?id=${index}`,
+                dotsOptions: {
+                    color: "#000000",
+                },
+                backgroundOptions: {
+                    color: "#ffffff",
+                },
+                imageOptions: {
+                    crossOrigin: "anonymous",
+                    margin: 20
+                }
+            });
+
+            qrCode.download({
+                name: "qr-code",
+                extension: "png"
+            }).then(() => {
+                // หลังจากการดาวน์โหลดเสร็จสมบูรณ์ ให้กลับมายังหน้าที่ต้องการ
+                window.location.href = `http://form.ctnphrae.com/FormCTN/form.php`;
+            });
+        };
     </script>
 </body>
 
