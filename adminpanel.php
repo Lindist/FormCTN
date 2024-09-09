@@ -20,8 +20,10 @@ if (!isset($_SESSION['admin_id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
+    <link rel="icon" type="icon" href="https://i.imgur.com/m0H7jcN.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@3.1.7/dist/full.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
 
@@ -43,7 +45,7 @@ if (!isset($_SESSION['admin_id'])) {
         <aside class="w-64 bg-gray-800 text-gray-100 hidden md:block fixed h-full">
             <div class="p-4 flex justify-center">
                 <!-- Logo -->
-                <img src="path_to_logo" alt="Logo" class="w-24 h-24 rounded-full">
+                <img src="https://i.imgur.com/m0H7jcN.png" alt="Logo" class="w-24 h-24 rounded-full">
             </div>
             <div class="text-center mt-4">
                 <h1 class="text-xl font-bold">COMPUTER TECHNIQUE</h1>
@@ -51,16 +53,21 @@ if (!isset($_SESSION['admin_id'])) {
             </div>
             <nav class="mt-5">
                 <ul>
-                    <li><a href="#" class="flex items-center py-2 px-4 hover:bg-gray-700">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path d="M4 4h16v16H4z" />
-                            </svg>หน้าแรก</a></li>
-                    <li><a href="#" class="flex items-center py-2 px-4 hover:bg-gray-700">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path d="M16 12l-4-4-4 4" />
-                            </svg>ออกจากระบบ</a></li>
+                    <li>
+                        <a href="#" class="flex items-center py-2 px-4 hover:bg-gray-700 text-white">
+                            <i class="flex items-center fa-solid fa-house h-6 w-6 mr-2"></i>
+                            หน้าแรก
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center py-2 px-4 hover:bg-gray-700 text-white">
+                            <i class="flex items-center fa-solid fa-right-from-bracket h-6 w-6 mr-2"></i>
+                            ออกจากระบบ
+                        </a>
+                    </li>
                 </ul>
             </nav>
+
         </aside>
 
         <!-- Main Content -->
@@ -83,37 +90,60 @@ if (!isset($_SESSION['admin_id'])) {
             <!-- Content Section -->
             <main class="p-6">
                 <!-- Statistics Section -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
                     <!-- Card 1: จำนวนแบบประเมิน -->
                     <div class="bg-blue-400 p-6 rounded-lg shadow-md text-center">
                         <div class="text-white">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" fill="none" stroke="currentColor">
-                                <path d="M8 14l-4 4h16l-4-4m-6-4l-4 4h16l-4-4m-6-4l-4 4h16l-4-4" />
-                            </svg>
-                            <h3 class="text-lg font-semibold mt-4">จำนวนแบบประเมินประสิทธิภาพ</h3>
-                            <p class="text-4xl font-bold">4 เรื่อง</p>
+                            <i class="fa-solid fa-file text-5xl mx-auto"></i>
+                            <h3 class="text-lg font-semibold mt-4">จำนวนโครงการ</h3>
+                            <?php
+                            $sqlp = "SELECT * FROM project";
+                            $resultp = $conn->query($sqlp);
+
+                            echo '<p class="text-4xl font-bold">' . $resultp->rowCount() . '</p>'
+                            ?>
                         </div>
                     </div>
 
-                    <!-- Card 2: จำนวนสมาชิก -->
+                    <!-- Card 2: จำนวนแบบประเมิน -->
                     <div class="bg-blue-400 p-6 rounded-lg shadow-md text-center">
                         <div class="text-white">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" fill="none" stroke="currentColor">
-                                <path d="M8 14l-4 4h16l-4-4m-6-4l-4 4h16l-4-4m-6-4l-4 4h16l-4-4" />
-                            </svg>
-                            <h3 class="text-lg font-semibold mt-4">จำนวนแบบประเมินความพึงพอใจ</h3>
-                            <p class="text-4xl font-bold">4 เรื่อง</p>
+                            <i class="fa-solid fa-file text-5xl mx-auto"></i>
+                            <h3 class="text-lg font-semibold mt-4">จำนวนแบบประเมินประสิทธิภาพ</h3>
+                            <?php
+                            $sqle = "SELECT * FROM tb_efficiercy_form";
+                            $resulte = $conn->query($sqle);
+
+                            echo '<p class="text-4xl font-bold">' . $resulte->rowCount() . '</p>'
+                            ?>
                         </div>
                     </div>
 
                     <!-- Card 3: จำนวนสมาชิก -->
+                    <div class="bg-blue-400 p-6 rounded-lg shadow-md text-center">
+                        <div class="text-white">
+                            <i class="fa-solid fa-file text-5xl mx-auto"></i>
+                            <h3 class="text-lg font-semibold mt-4">จำนวนแบบประเมินความพึงพอใจ</h3>
+                            <?php
+                            $sqls = "SELECT * FROM tb_satisfied";
+                            $results = $conn->query($sqls);
+
+                            echo '<p class="text-4xl font-bold">' . $results->rowCount() . '</p>'
+                            ?>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: จำนวนสมาชิก -->
                     <div class="bg-yellow-400 p-6 rounded-lg shadow-md text-center">
                         <div class="text-gray-800">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" fill="none" stroke="currentColor">
-                                <path d="M5 12h14m-7-7l-7 7 7 7" />
-                            </svg>
+                            <i class="fa-solid fa-user text-5xl mx-auto"></i>
                             <h3 class="text-lg font-semibold mt-4">จำนวนสมาชิกในระบบทั้งหมด</h3>
-                            <p class="text-4xl font-bold">1692</p>
+                            <?php
+                            $sqla = "SELECT * FROM tb_member";
+                            $resulta = $conn->query($sqla);
+
+                            echo '<p class="text-4xl font-bold">' . $resulta->rowCount() . '</p>'
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -129,7 +159,7 @@ if (!isset($_SESSION['admin_id'])) {
                     $count = 0;
                     if ($result->rowCount() > 0) {  // Use rowCount() instead of num_rows
                         while ($row = $result->fetch(PDO::FETCH_ASSOC)) {  // Fetch results as an associative array
-                            $count++;?>
+                            $count++; ?>
 
                             <div class="border-t border-gray-300 pt-4 pb-2">
                                 <p class="text-gray-900"><strong>ชื่อหัวข้อโครงการ:</strong> <a href="#" class="text-blue-500"><?= $row['project_name'] ?></a></p>
