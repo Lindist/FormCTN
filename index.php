@@ -112,7 +112,7 @@ unset($_SESSION['show_login']); // Clear the session flag after use
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="std_id">
                         รหัสนักศึกษา หรือ เบอร์โทรศัพท์
                     </label>
-                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="std_id" type="number" placeholder="รหัสนักศึกษา หรือ เบอร์โทรศัพท์">
+                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="std_id" type="text" placeholder="รหัสนักศึกษา หรือ เบอร์โทรศัพท์">
                 </div>
                 <div class="mb-4">
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
