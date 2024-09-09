@@ -164,8 +164,34 @@ if (!isset($_SESSION['admin_id'])) {
                             <div class="border-t border-gray-300 pt-4 pb-2">
                                 <p class="text-gray-900"><strong>ชื่อหัวข้อโครงการ:</strong> <a href="#" class="text-blue-500"><?= $row['project_name'] ?></a></p>
                                 <p class="text-gray-900">วันหมดอายุ : <?= $row['project_expired'] ?></p>
-                                <p class="text-gray-900">รายละเอียด แบบประเมินประสิทธิภาพ : <a href="#" class="text-blue-500"><?= $row['project_name'] ?></a></p>
-                                <p class="text-gray-900">รายละเอียด แบบประเมินความพึงพอใจ : <a href="#" class="text-blue-500"><?= $row['project_name'] ?></a></p>
+
+                                <?php
+
+                                $pj_id = $row['project_id'];
+
+                                $sqlef = "SELECT * FROM tb_efficiercy_form WHERE project_id = $pj_id";
+                                $resultef = $conn->query($sqlef);
+                                $rowef = $resultef->fetch(PDO::FETCH_ASSOC);
+
+                                if ($resultef->rowCount() > 0) {
+                                    $form_id = $rowef['form_id'];
+                                    echo '<p class="text-gray-900">รายละเอียด แบบประเมินประสิทธิภาพ : <a href="showlistperformance.php?id=' . $form_id . '" class="text-blue-500">' . $row['project_name'] . '</a></p>';
+                                } else {
+                                    echo '<p class="text-gray-900">ยังไม่ได้สร้าง แบบประเมินประสิทธิภาพ</p>';
+                                }
+
+                                $sqlsa = "SELECT * FROM tb_satisfied WHERE project_id = $pj_id";
+                                $resultsa = $conn->query($sqlsa);
+                                $rowsa = $resultsa->fetch(PDO::FETCH_ASSOC);
+
+                                if ($resultsa->rowCount() > 0) {
+                                    $sati_id = $rowsa['sati_id'];
+                                    echo '<p class="text-gray-900">รายละเอียด แบบประเมินความพึงพอใจ : <a href="showlistsatis.php?id=' . $sati_id . '" class="text-blue-500">' . $row['project_name'] . '</a></p>';
+                                } else {
+                                    echo '<p class="text-gray-900">ยังไม่ได้สร้าง แบบประเมินความพึงพอใจ</p>';
+                                }
+
+                                ?>
                             </div>
 
                     <?php }
