@@ -5,10 +5,10 @@
 session_start();
 require('session/config.php');
 
-if (!isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['user_id']) && !isset($_SESSION['admin_id'])) {
     header("Location: index.php");
     exit();
-} 
+}
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -23,7 +23,7 @@ if ($_SERVER['HTTP_HOST'] === 'localhost') {
     //     if (empty($array)) {
     //         return null;
     //     }
-        
+
     //     $keys = array_keys($array);
     //     return end($keys);
     // }    
@@ -114,7 +114,8 @@ foreach ($scores_ex as $score_group) {
 }
 
 // ฟังก์ชันแปลงข้อความเป็นตัวเลข
-function convert_satisfaction_to_number($text) {
+function convert_satisfaction_to_number($text)
+{
     $map = [
         "พึงพอใจมากที่สุด" => 5,
         "พึงพอใจมาก" => 4,
@@ -124,7 +125,8 @@ function convert_satisfaction_to_number($text) {
     ];
     return isset($map[$text]) ? $map[$text] : 0;
 }
-function convert_number_to_satisfaction_noneArray($num) {
+function convert_number_to_satisfaction_noneArray($num)
+{
     $Z_Scores_to_convert = null;
     $map = [
         5 => "พึงพอใจมากที่สุด",
@@ -133,22 +135,23 @@ function convert_number_to_satisfaction_noneArray($num) {
         2 => "พึงพอใจน้อย",
         1 => "พึงพอใจน้อยที่สุด"
     ];
-    if($num < 2){
+    if ($num < 2) {
         $Z_Scores_to_convert = $map[1];
-    }else if($num >= 2 && $num < 3){
+    } else if ($num >= 2 && $num < 3) {
         $Z_Scores_to_convert = $map[2];
-    }else if($num>= 3 && $num < 4){
+    } else if ($num >= 3 && $num < 4) {
         $Z_Scores_to_convert = $map[3];
-    }else if($num >= 4 && $num < 5){
+    } else if ($num >= 4 && $num < 5) {
         $Z_Scores_to_convert = $map[4];
-    }else if($num >= 5){
+    } else if ($num >= 5) {
         $Z_Scores_to_convert = $map[5];
-    }else{
+    } else {
         $Z_Scores_to_convert = "พึงพอใจระดับปรับปรุง";
     }
     return $Z_Scores_to_convert;
 }
-function convert_number_to_satisfaction($number) {
+function convert_number_to_satisfaction($number)
+{
     $Z_Scores_to_convert = [];
     $map = [
         5 => "พึงพอใจมากที่สุด",
@@ -157,27 +160,28 @@ function convert_number_to_satisfaction($number) {
         2 => "พึงพอใจน้อย",
         1 => "พึงพอใจน้อยที่สุด"
     ];
-    foreach($number as $index => $value){
+    foreach ($number as $index => $value) {
         $Z_Scores_to_convert[] = [];
-        foreach($number[$index] as $value0){
-            if($value0 < 2){
+        foreach ($number[$index] as $value0) {
+            if ($value0 < 2) {
                 $Z_Scores_to_convert[$index][] = $map[1];
-            }else if($value0 >= 2 && $value0 < 3){
+            } else if ($value0 >= 2 && $value0 < 3) {
                 $Z_Scores_to_convert[$index][] = $map[2];
-            }else if($value0 >= 3 && $value0 < 4){
+            } else if ($value0 >= 3 && $value0 < 4) {
                 $Z_Scores_to_convert[$index][] = $map[3];
-            }else if($value0 >= 4 && $value0 < 5){
+            } else if ($value0 >= 4 && $value0 < 5) {
                 $Z_Scores_to_convert[$index][] = $map[4];
-            }else if($value0 >= 5){
+            } else if ($value0 >= 5) {
                 $Z_Scores_to_convert[$index][] = $map[5];
-            }else{
+            } else {
                 $Z_Scores_to_convert[$index][] = "พึงพอใจระดับปรับปรุง";
             }
         }
     }
     return $Z_Scores_to_convert;
 }
-function convert_number_to_satisfaction_sum($number) {
+function convert_number_to_satisfaction_sum($number)
+{
     $Z_Scores_to_convert = [];
     $map = [
         5 => "พึงพอใจมากที่สุด",
@@ -186,18 +190,18 @@ function convert_number_to_satisfaction_sum($number) {
         2 => "พึงพอใจน้อย",
         1 => "พึงพอใจน้อยที่สุด"
     ];
-    foreach($number as $index => $value){
-        if($value < 2){
+    foreach ($number as $index => $value) {
+        if ($value < 2) {
             $Z_Scores_to_convert[] = $map[1];
-        }else if($value >= 2 && $value < 3){
+        } else if ($value >= 2 && $value < 3) {
             $Z_Scores_to_convert[] = $map[2];
-        }else if($value >= 3 && $value < 4){
+        } else if ($value >= 3 && $value < 4) {
             $Z_Scores_to_convert[] = $map[3];
-        }else if($value >= 4 && $value < 5){
+        } else if ($value >= 4 && $value < 5) {
             $Z_Scores_to_convert[] = $map[4];
-        }else if($value >= 5){
+        } else if ($value >= 5) {
             $Z_Scores_to_convert[] = $map[5];
-        }else{
+        } else {
             $Z_Scores_to_convert[] = "พึงพอใจระดับปรับปรุง";
         }
     }
@@ -241,8 +245,8 @@ $N = [];
 
 
 
-for($b = 0;$b < count($scores_split); $b++){
-    for($j = 0;$j < count($scores_split[$b]); $j++){
+for ($b = 0; $b < count($scores_split); $b++) {
+    for ($j = 0; $j < count($scores_split[$b]); $j++) {
         $collect_sub[$j] = [];
         $count_collect_sub[$j] = [];
         for ($i = 0; $i < count($scores_split[$b][$j]); $i++) {
@@ -252,7 +256,7 @@ for($b = 0;$b < count($scores_split); $b++){
     }
 }
 
-for($j = 0;$j < count($scores_split); $j++){
+for ($j = 0; $j < count($scores_split); $j++) {
     $N[] = [];
     $N[$j][] = [];
     for ($i = 0; $i < count($scores_split[$j]); $i++) {
@@ -266,12 +270,12 @@ for($j = 0;$j < count($scores_split); $j++){
 
 $ispersoncount = 0;
 $countdontback = 0;
-for($j = 0;$j < count($scores_split); $j++){
-    for ($i = 0; $i < count($scores_split[$j]); $i++) {       
-        $index_sum_sub =0; 
-        foreach($scores_split[$j][$i] as $key => $value){
-            if($index_sum_sub === count($scores_split[$j][$i])){
-                $index_sum_sub=0;
+for ($j = 0; $j < count($scores_split); $j++) {
+    for ($i = 0; $i < count($scores_split[$j]); $i++) {
+        $index_sum_sub = 0;
+        foreach ($scores_split[$j][$i] as $key => $value) {
+            if ($index_sum_sub === count($scores_split[$j][$i])) {
+                $index_sum_sub = 0;
             }
             $collect_sub[$i][$index_sum_sub] = $collect_sub[$i][$index_sum_sub] + $value;
             $count_collect_sub[$i][$index_sum_sub]++;
@@ -289,16 +293,16 @@ for($j = 0;$j < count($scores_split); $j++){
 // print_r($N);
 $sumjamphen1 = [];
 
-foreach($N as $index0 => $value0){
-    foreach($value0 as $index1 => $value1){
-        foreach($value1 as $value2){
+foreach ($N as $index0 => $value0) {
+    foreach ($value0 as $index1 => $value1) {
+        foreach ($value1 as $value2) {
             $sumjamphen1[$index1][] = 0;
         }
     }
 }
-foreach($N as $index0 => $value0){
-    foreach($value0 as $index1 => $value1){
-        foreach($value1 as $index2 => $value2){
+foreach ($N as $index0 => $value0) {
+    foreach ($value0 as $index1 => $value1) {
+        foreach ($value1 as $index2 => $value2) {
             $sumjamphen1[$index1][$index2] += $value2;
         }
     }
@@ -312,7 +316,7 @@ foreach($N as $index0 => $value0){
 
 $isoneperson = false;
 
-if($ispersoncount == 1){
+if ($ispersoncount == 1) {
     $isoneperson = true;
 }
 
@@ -320,22 +324,22 @@ if($ispersoncount == 1){
 
 $xBar = [];
 $sumxBar = [];
-foreach($collect_sub as $index => $value){
+foreach ($collect_sub as $index => $value) {
     $xBar[] = [];
-    foreach($collect_sub[$index] as $index0 => $value0){
-        if(!($value0 == 0)){
-            $xBar[$index][] =  $value0/$count_collect_sub[$index][$index0];
+    foreach ($collect_sub[$index] as $index0 => $value0) {
+        if (!($value0 == 0)) {
+            $xBar[$index][] =  $value0 / $count_collect_sub[$index][$index0];
         }
     }
 }
 
 
-foreach($xBar as $index => $value){
+foreach ($xBar as $index => $value) {
     $sum = 0;
-    foreach($xBar[$index] as $index0 => $value0){
+    foreach ($xBar[$index] as $index0 => $value0) {
         $sum += $value0;
-        if($index0 == array_key_last($xBar[$index])){
-            $sum = $sum/($index0+1);
+        if ($index0 == array_key_last($xBar[$index])) {
+            $sum = $sum / ($index0 + 1);
         }
     }
     $sumxBar[] = $sum;
@@ -343,7 +347,7 @@ foreach($xBar as $index => $value){
 
 // print_r($sumxBar);
 // print_r(count($sumxBar));
-$sumxBarAll = array_sum($sumxBar)/count($sumxBar);
+$sumxBarAll = array_sum($sumxBar) / count($sumxBar);
 // print_r($xBar);
 // print_r($xBar_overlap_Array);
 // print_r($xBar_overlap_count);
@@ -352,10 +356,10 @@ $sumN = [];
 
 // print_r($collect_sub);
 // print_r($xBar);
-foreach($N as $index0 => $value0){
-    $sumN[]=[];
-    foreach($value0 as $index1 => $value1){
-        foreach($value1 as $value2){
+foreach ($N as $index0 => $value0) {
+    $sumN[] = [];
+    foreach ($value0 as $index1 => $value1) {
+        foreach ($value1 as $value2) {
             $sumN[$index0][] = $value2;
         }
     }
@@ -364,18 +368,18 @@ foreach($N as $index0 => $value0){
 $SD = [];
 $sumSD = [];
 $sum = [];
-foreach($collect_sub as $index => $value){
+foreach ($collect_sub as $index => $value) {
     $sum[] = [];
-    foreach($collect_sub[$index] as $value0){
+    foreach ($collect_sub[$index] as $value0) {
         $sum[$index][] =  0;
     }
 }
 // print_r($sum);
-foreach($sumN as $index => $value){
+foreach ($sumN as $index => $value) {
     $SD[] = [];
-    foreach($N[$index] as $index0 => $value0){
-        foreach($N[$index][$index0] as $index1 => $value1){
-            $sum[$index0][$index1] +=  pow($value1-$xBar[$index0][$index1],2);
+    foreach ($N[$index] as $index0 => $value0) {
+        foreach ($N[$index][$index0] as $index1 => $value1) {
+            $sum[$index0][$index1] +=  pow($value1 - $xBar[$index0][$index1], 2);
         }
     }
 }
@@ -383,46 +387,45 @@ foreach($sumN as $index => $value){
 // print_r($N);
 // print_r($sum);
 
-foreach($sum as $index0 => $value0){
-    foreach($count_collect_sub[$index0] as $index1 => $value1){
-        if($isoneperson){
-            $SD[$index0][] =  sqrt($sum[$index0][$index1]/$value1); 
-        }
-        else if($sum[$index0][$index1] === 0){
-            $SD[$index0][] =  sqrt($sum[$index0][$index1]/$value1);      
-        }else{
-            $SD[$index0][] =  sqrt($sum[$index0][$index1]/($value1-1));
+foreach ($sum as $index0 => $value0) {
+    foreach ($count_collect_sub[$index0] as $index1 => $value1) {
+        if ($isoneperson) {
+            $SD[$index0][] =  sqrt($sum[$index0][$index1] / $value1);
+        } else if ($sum[$index0][$index1] === 0) {
+            $SD[$index0][] =  sqrt($sum[$index0][$index1] / $value1);
+        } else {
+            $SD[$index0][] =  sqrt($sum[$index0][$index1] / ($value1 - 1));
         }
     }
 }
 // print_r($SD);
 
-foreach($SD as $index => $value){
+foreach ($SD as $index => $value) {
     $sum = 0;
-    foreach($SD[$index] as $index0 => $value0){
+    foreach ($SD[$index] as $index0 => $value0) {
         $sum += $value0;
-        if($index0 == array_key_last($SD[$index])){
-            $sum = $sum/($index0+1);
+        if ($index0 == array_key_last($SD[$index])) {
+            $sum = $sum / ($index0 + 1);
         }
     }
     $sumSD[] = $sum;
 }
 // print_r($sumSD);
 // print_r($SD);
-$sumSDAll = array_sum($sumSD)/count($sumSD);
+$sumSDAll = array_sum($sumSD) / count($sumSD);
 
 $Z_Scores = [];
 $sumZ_Scores = [];
 
-foreach($sumjamphen1 as $index0 => $value0){
+foreach ($sumjamphen1 as $index0 => $value0) {
     $Z_Scores[] = [];
-    foreach($value0 as $index1 => $value1){
-        if(!($value1==0)){
+    foreach ($value0 as $index1 => $value1) {
+        if (!($value1 == 0)) {
             // echo round($xBar[$index0][$index1],2).",";
             // echo $xBar[$index0][$index1]-round($SD[$index0][$index1],1).",";
-            if($isoneperson){
+            if ($isoneperson) {
                 $Z_Scores[$index0][] = $xBar[$index0][$index1];
-            }else{
+            } else {
                 $Z_Scores[$index0][] =  $xBar[$index0][$index1];
             }
         }
@@ -431,18 +434,18 @@ foreach($sumjamphen1 as $index0 => $value0){
 // print_r($Z_Scores);
 
 
-foreach($Z_Scores as $index => $value){
+foreach ($Z_Scores as $index => $value) {
     $sum = 0;
-    foreach($value as $index0 => $value0){
-        if($isoneperson){
+    foreach ($value as $index0 => $value0) {
+        if ($isoneperson) {
             $sum += $sumxBar[$index];
-        }else{
+        } else {
             // $sum += $sumxBar[$index]-$sumSD[$index]/2;
             $sum += $sumxBar[$index];
         }
-        if(!$isoneperson){
-            if($index0 == array_key_last($value)){
-                $sum = $sum/($index0+1);
+        if (!$isoneperson) {
+            if ($index0 == array_key_last($value)) {
+                $sum = $sum / ($index0 + 1);
             }
         }
     }
@@ -450,7 +453,7 @@ foreach($Z_Scores as $index => $value){
 }
 
 
-$sumZ_ScoresAll = array_sum($sumZ_Scores)/count($sumZ_Scores);
+$sumZ_ScoresAll = array_sum($sumZ_Scores) / count($sumZ_Scores);
 // print_r($sumZ_Scores);
 // print_r($Z_Scores);
 $Z_Scores_to_convert = convert_number_to_satisfaction($Z_Scores);
@@ -467,7 +470,7 @@ $sumxBar_Array = json_encode($sumxBar);
 
 if (isset($_GET['class'])) {
     $class = $_GET['class'];
-}else{
+} else {
     $class = 'nohave';
 }
 ?>
@@ -499,13 +502,19 @@ if (isset($_GET['class'])) {
     <div id="needprint" class="mx-2 sm:mx-16 bg-white p-4 my-2 sm:my-4 rounded shadow">
         <aside class="my-5" style="display: flex; width: 100%; justify-content: space-between; flex-wrap: wrap;">
             <span style="display: flex; justify-content: flex-start; flex-wrap: wrap;">
-                <button type="button" onclick="isClass('<?php echo $class; ?>')" style="display:flex; background-color:#1a75ff; color:#fff; margin-right: 5px; font-weight:bold; border-style: none; border-radius:10px; padding: 10px; border-color: #444; transition:all .3s ease-in-out;" onmouseover="this.style.backgroundColor='#00f';" onmouseout="this.style.backgroundColor='#1a75ff';">
+                <?php if (isset($_SESSION['user_id'])) { ?>
+                    <button type="button" onclick="isClass('<?php echo $class; ?>')" style="display:flex; background-color:#1a75ff; color:#fff; margin-right: 5px; font-weight:bold; border-style: none; border-radius:10px; padding: 10px; border-color: #444; transition:all .3s ease-in-out;" onmouseover="this.style.backgroundColor='#00f';" onmouseout="this.style.backgroundColor='#1a75ff';">
                         กลับหน้าแรก
                     </button>
-                    <button type="button" onclick="history.back()" style="display:flex; background-color:#111; color:#fff; font-weight:bold; border-style: none; border-radius:10px; padding: 10px; border-color: #444; transition:all .3s ease-in-out;" onmouseover="this.style.backgroundColor='#333';" onmouseout="this.style.backgroundColor='#111';">
-                        กลับ
+                <?php } else if (isset($_SESSION['admin_id'])) { ?>
+                    <button type="button" class="mr-2" onclick="window.location.href = 'adminpanel.php'" style="display:flex; background-color:#1a75ff; color:#fff; font-weight:bold; border-style: none; border-radius:10px; padding: 10px; border-color: #444; transition:all .3s ease-in-out;" onmouseover="this.style.backgroundColor='#00f';" onmouseout="this.style.backgroundColor='#1a75ff';">
+                        กลับหน้าแรก
                     </button>
-            </span>    
+                <?php } ?>
+                <button type="button" onclick="history.back()" style="display:flex; background-color:#111; color:#fff; font-weight:bold; border-style: none; border-radius:10px; padding: 10px; border-color: #444; transition:all .3s ease-in-out;" onmouseover="this.style.backgroundColor='#333';" onmouseout="this.style.backgroundColor='#111';">
+                    กลับ
+                </button>
+            </span>
             <span style="display: flex; justify-content: flex-end; flex-wrap: wrap;">
                 <button type="button" onclick="Printsum(<?= $sati_id; ?>)" style="display:flex; background-color:#F5004F; color:#fff; font-weight:bold; border-style: none; border-radius:10px; padding: 10px; border-color: #444; transition:all .3s ease-in-out;" onmouseover="this.style.backgroundColor='#C5004F';" onmouseout="this.style.backgroundColor='#F5004F';">
                     พิมพ์
@@ -576,7 +585,7 @@ if (isset($_GET['class'])) {
             <?php
             $s = 0;
             ?>
-            
+
             <?php for ($i = 0; $i < count($sati_topic); $i++) { ?>
                 <p class="text-lg font-medium mb-2 mt-4">ด้านที่ <?= $i + 1 ?> ด้าน<?= $sati_topic[$i] ?></p>
                 <table class="w-full border border-gray-300 my-3">
@@ -592,51 +601,51 @@ if (isset($_GET['class'])) {
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach($main_sub_topic[$i] as $key => $value){ ?>
-                            <?php if(isset($xBar[$i][$key]) || isset($SD[$i][$key])){ ?>
-                            <tr class="odd:bg-white even:bg-gray-100">
-                                <td class="border border-gray-300"><?= $value; ?></td>
-                                <td class="border border-gray-300 text-center"><?php echo round($xBar[$i][$key],2); ?></td>
-                                <td class="border border-gray-300 text-center"><?=  round($SD[$i][$key],2); ?></td>
-                                <td class="border border-gray-300 text-center"><?= $Z_Scores_to_convert[$i][$key]; ?></td>
-                            </tr>
-                            <?php }else{ ?>
-                            <tr class="odd:bg-white even:bg-gray-100">
-                                <td class="border border-gray-300"><?= $value; ?></td>
-                                <td class="border border-gray-300 text-center">ไม่มีการกรอกข้อมูล</td>
-                                <td class="border border-gray-300 text-center">ไม่มีการกรอกข้อมูล</td>
-                                <td class="border border-gray-300 text-center">ไม่มีการกรอกข้อมูล</td>
-                            </tr> 
+                        <?php foreach ($main_sub_topic[$i] as $key => $value) { ?>
+                            <?php if (isset($xBar[$i][$key]) || isset($SD[$i][$key])) { ?>
+                                <tr class="odd:bg-white even:bg-gray-100">
+                                    <td class="border border-gray-300"><?= $value; ?></td>
+                                    <td class="border border-gray-300 text-center"><?php echo round($xBar[$i][$key], 2); ?></td>
+                                    <td class="border border-gray-300 text-center"><?= round($SD[$i][$key], 2); ?></td>
+                                    <td class="border border-gray-300 text-center"><?= $Z_Scores_to_convert[$i][$key]; ?></td>
+                                </tr>
+                            <?php } else { ?>
+                                <tr class="odd:bg-white even:bg-gray-100">
+                                    <td class="border border-gray-300"><?= $value; ?></td>
+                                    <td class="border border-gray-300 text-center">ไม่มีการกรอกข้อมูล</td>
+                                    <td class="border border-gray-300 text-center">ไม่มีการกรอกข้อมูล</td>
+                                    <td class="border border-gray-300 text-center">ไม่มีการกรอกข้อมูล</td>
+                                </tr>
                             <?php } ?>
                         <?php } ?>
-                        <?php if(isset($sumxBar[$i]) || isset($sumSD[$i])){ ?>
+                        <?php if (isset($sumxBar[$i]) || isset($sumSD[$i])) { ?>
                             <tr class="odd:bg-white even:bg-gray-100">
                                 <td class="border border-gray-300 text-center p-2">รวม</td>
-                                <td class="border border-gray-300 text-center p-2"><?= round($sumxBar[$i],2); ?></td>
-                                <td class="border border-gray-300 text-center p-2"><?= round($sumSD[$i],2); ?></td>
+                                <td class="border border-gray-300 text-center p-2"><?= round($sumxBar[$i], 2); ?></td>
+                                <td class="border border-gray-300 text-center p-2"><?= round($sumSD[$i], 2); ?></td>
                                 <td class="border border-gray-300 text-center p-2"><?= $Z_Scores_to_convert_sum[$i]; ?></td>
                             </tr>
-                        <?php }else{ ?>
+                        <?php } else { ?>
                             <tr class="odd:bg-white even:bg-gray-100">
                                 <td class="border border-gray-300 text-center p-2">รวม</td>
                                 <td class="border border-gray-300 text-center p-2">ไม่มีการกรอกข้อมูล</td>
                                 <td class="border border-gray-300 text-center p-2">ไม่มีการกรอกข้อมูล</td>
                                 <td class="border border-gray-300 text-center p-2">ไม่มีการกรอกข้อมูล</td>
-                            </tr> 
+                            </tr>
                         <?php } ?>
                     </tbody>
                 </table>
-                <?php if(isset($sumxBar[$i]) || isset($sumSD[$i])){ ?>
-                    <p>จากตารางด้านที่<?= ($i+1)." ".$sati_topic[$i] ?>  ความพึงพอใจภาพรวมมีความพึงพอใจในระดับ <?= $Z_Scores_to_convert_sum[$i]; ?> (x̄ = <?= round($sumxBar[$i],2); ?> ) </p>
-                    เมื่อพิจารณารายข้อ พบว่า ด้านที่<?= ($i+1)." ".$sati_topic[$i] ?>
-                        <?php for($key=0;$key < count($main_sub_topic[$i]);$key++){ ?>
-                            <?php if(isset($xBar[$i][$key]) || isset($SD[$i][$key])){ ?> 
-                            มีความพึงพอใจ <?= $main_sub_topic[$i][$key]; ?> โดยมีความพึงพอใจในระดับ มากที่สุด (x̄ = <?php echo round($xBar[$i][$key],2); ?>)
-                            <?php } ?>
+                <?php if (isset($sumxBar[$i]) || isset($sumSD[$i])) { ?>
+                    <p>จากตารางด้านที่<?= ($i + 1) . " " . $sati_topic[$i] ?> ความพึงพอใจภาพรวมมีความพึงพอใจในระดับ <?= $Z_Scores_to_convert_sum[$i]; ?> (x̄ = <?= round($sumxBar[$i], 2); ?> ) </p>
+                    เมื่อพิจารณารายข้อ พบว่า ด้านที่<?= ($i + 1) . " " . $sati_topic[$i] ?>
+                    <?php for ($key = 0; $key < count($main_sub_topic[$i]); $key++) { ?>
+                        <?php if (isset($xBar[$i][$key]) || isset($SD[$i][$key])) { ?>
+                            มีความพึงพอใจ <?= $main_sub_topic[$i][$key]; ?> โดยมีความพึงพอใจในระดับ มากที่สุด (x̄ = <?php echo round($xBar[$i][$key], 2); ?>)
                         <?php } ?>
-                        <div style="width:65vw; height:auto; position: relative; left: 50%; transform: translateX(-50%); ">
-                            <canvas id="myChart"></canvas>
-                        </div>
+                    <?php } ?>
+                    <div style="width:65vw; height:auto; position: relative; left: 50%; transform: translateX(-50%); ">
+                        <canvas id="myChart"></canvas>
+                    </div>
                 <?php } ?>
             <?php } ?>
             <p class="text-lg font-medium mb-2 mt-4">ผลสรุปด้านทั้งหมด</p>
@@ -653,40 +662,40 @@ if (isset($_GET['class'])) {
                     </tr>
                 </thead>
                 <tbody>
-                <?php for ($i = 0; $i < count($sati_topic); $i++) { ?>
-                    <?php if(isset($sumxBar[$i]) || isset($sumSD[$i])){ ?>
-                    <tr class="odd:bg-white even:bg-gray-100">
-                        <td class="border border-gray-300">ด้าน <?= $sati_topic[$i]; ?></td>
-                        <td class="border border-gray-300 text-center"><?= round($sumxBar[$i],2); ?></td>
-                        <td class="border border-gray-300 text-center"><?= round($sumSD[$i],2); ?></td>
-                        <td class="border border-gray-300 text-center"><?= $Z_Scores_to_convert_sum[$i]; ?></td>
-                    </tr>
-                    <?php }else{ ?>
-                    <tr class="odd:bg-white even:bg-gray-100">
-                        <td class="border border-gray-300">ด้าน <?= $sati_topic[$i]; ?></td>
-                        <td class="border border-gray-300 text-center">ไม่มีการกรอกข้อมูล</td>
-                        <td class="border border-gray-300 text-center">ไม่มีการกรอกข้อมูล</td>
-                        <td class="border border-gray-300 text-center">ไม่มีการกรอกข้อมูล</td>
-                    </tr>
+                    <?php for ($i = 0; $i < count($sati_topic); $i++) { ?>
+                        <?php if (isset($sumxBar[$i]) || isset($sumSD[$i])) { ?>
+                            <tr class="odd:bg-white even:bg-gray-100">
+                                <td class="border border-gray-300">ด้าน <?= $sati_topic[$i]; ?></td>
+                                <td class="border border-gray-300 text-center"><?= round($sumxBar[$i], 2); ?></td>
+                                <td class="border border-gray-300 text-center"><?= round($sumSD[$i], 2); ?></td>
+                                <td class="border border-gray-300 text-center"><?= $Z_Scores_to_convert_sum[$i]; ?></td>
+                            </tr>
+                        <?php } else { ?>
+                            <tr class="odd:bg-white even:bg-gray-100">
+                                <td class="border border-gray-300">ด้าน <?= $sati_topic[$i]; ?></td>
+                                <td class="border border-gray-300 text-center">ไม่มีการกรอกข้อมูล</td>
+                                <td class="border border-gray-300 text-center">ไม่มีการกรอกข้อมูล</td>
+                                <td class="border border-gray-300 text-center">ไม่มีการกรอกข้อมูล</td>
+                            </tr>
+                        <?php } ?>
                     <?php } ?>
-                <?php } ?>
                     <tr class="odd:bg-white even:bg-gray-100">
                         <td class="border border-gray-300 text-center p-2">รวม</td>
-                        <td class="border border-gray-300 text-center p-2"><?= round($sumxBarAll,2); ?></td>
-                        <td class="border border-gray-300 text-center p-2"><?= round($sumSDAll,2); ?></td>
+                        <td class="border border-gray-300 text-center p-2"><?= round($sumxBarAll, 2); ?></td>
+                        <td class="border border-gray-300 text-center p-2"><?= round($sumSDAll, 2); ?></td>
                         <td class="border border-gray-300 text-center p-2"><?= $sumZ_ScoresAll_to_convert_sum; ?></td>
                     </tr>
                 </tbody>
 
             </table>
 
-            <p>จากตารางผลสรุปด้านทั้งหมด ความพึงพอใจภาพรวมมีความพึงพอใจในระดับ <?= $sumZ_ScoresAll_to_convert_sum; ?> (x̄ = <?= round($sumxBarAll,2); ?> ) </p>
-                    เมื่อพิจารณารายข้อ พบว่า ผลสรุปด้านทั้งหมด
-                        <?php for($key=0;$key < count($sati_topic);$key++){ ?>
-                            <?php if(isset($sumxBar[$key]) || isset($sumSD[$key])){ ?>
-                                มีความพึงพอใจ <?= $sati_topic[$key]; ?> โดยมีความพึงพอใจในระดับ มากที่สุด (x̄ = <?php echo round($sumxBar[$key],2); ?>)
-                            <?php } ?>
-                        <?php } ?>
+            <p>จากตารางผลสรุปด้านทั้งหมด ความพึงพอใจภาพรวมมีความพึงพอใจในระดับ <?= $sumZ_ScoresAll_to_convert_sum; ?> (x̄ = <?= round($sumxBarAll, 2); ?> ) </p>
+            เมื่อพิจารณารายข้อ พบว่า ผลสรุปด้านทั้งหมด
+            <?php for ($key = 0; $key < count($sati_topic); $key++) { ?>
+                <?php if (isset($sumxBar[$key]) || isset($sumSD[$key])) { ?>
+                    มีความพึงพอใจ <?= $sati_topic[$key]; ?> โดยมีความพึงพอใจในระดับ มากที่สุด (x̄ = <?php echo round($sumxBar[$key], 2); ?>)
+                <?php } ?>
+            <?php } ?>
             <div style="width:65vw; height:auto; position: relative; left: 50%; transform: translateX(-50%); ">
                 <canvas id="myChart2"></canvas>
             </div>
@@ -694,99 +703,99 @@ if (isset($_GET['class'])) {
         </div>
 
     </div>
-            <script>
-                    function getRandomNumber(min, max) {
-                        return Math.floor(Math.random() * (max - min + 1)) + min;
-                    }
+    <script>
+        function getRandomNumber(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
 
-                    const ctx = document.querySelectorAll('#myChart');
-                    const ctx2 = document.querySelectorAll('#myChart2');
-                    var $main_sub_topic = <?php echo $main_sub_topic_Array; ?>;
-                    var $xBar = <?php echo $xBar_Array; ?>;
-                    var $sati_topic = <?php echo $sati_topic_chart; ?>;
-                    var $sumxBar = <?php echo $sumxBar_Array; ?>;
+        const ctx = document.querySelectorAll('#myChart');
+        const ctx2 = document.querySelectorAll('#myChart2');
+        var $main_sub_topic = <?php echo $main_sub_topic_Array; ?>;
+        var $xBar = <?php echo $xBar_Array; ?>;
+        var $sati_topic = <?php echo $sati_topic_chart; ?>;
+        var $sumxBar = <?php echo $sumxBar_Array; ?>;
 
-                    const topic = [...$main_sub_topic];
-                    const topic_data = $xBar;
-                    let xBarindex = 0;
-                    const colours = ['#7C00FE','#F9E400','#FFAF00','#F5004F','#522258','#8C3061','#C63C51','#D95F59','#C9DABF','#5F6F65','#180161','#021526',
-                        '#FF8225','#6EACDA','#E3A5C7','#399918','#FFDE4D','#EB5B00','#36C2CE','#77E4C8','#1B262C','#0F4C75','#3282B8','#BBE1FA','#99F5F6','#88E8EE','#FDCEDF',
-                        '#C5AED1','#F38181','#08D9D6','#252A34','#FF2E63','#E44','#8D7B68','#B4846C','#E5B299','#00f','#F67280','#C06C84','#6C5B7B','#355C7D','#DCD7C9','#E84545','#903749','#212121','#387F39','#A2CA71','#F6E96B','#FF8343','#BEDC74','#888'
-                    ];
-                    let barcolour = [];
-                    topic.forEach((top,itop) => {
-                        barcolour.push([]);
-                        topic[itop].forEach((subtop,subitop) => {
-                            let randomNumber = getRandomNumber(0, colours.length);
-                            barcolour[itop].push(colours[randomNumber]);
-                        });
-                    });
-                    ctx.forEach((element,i) => {
-                        new Chart(element, {
-                        type: 'bar',
-                        data: {
-                            labels: topic[i],
-                            datasets: [{
-                            label: '',
-                            data: topic_data[i],
-                            backgroundColor: barcolour[i],
-                            borderColor: barcolour[i],
-                            borderWidth: 1
-                            }
-                        ]},
-                        options: {
-                            plugins: {
-                                legend: {
-                                    display: false
-                                }
-                            },
-                            scales: {
-                                y: {
-                                    beginAtZero: true
-                                }
-                            }
+        const topic = [...$main_sub_topic];
+        const topic_data = $xBar;
+        let xBarindex = 0;
+        const colours = ['#7C00FE', '#F9E400', '#FFAF00', '#F5004F', '#522258', '#8C3061', '#C63C51', '#D95F59', '#C9DABF', '#5F6F65', '#180161', '#021526',
+            '#FF8225', '#6EACDA', '#E3A5C7', '#399918', '#FFDE4D', '#EB5B00', '#36C2CE', '#77E4C8', '#1B262C', '#0F4C75', '#3282B8', '#BBE1FA', '#99F5F6', '#88E8EE', '#FDCEDF',
+            '#C5AED1', '#F38181', '#08D9D6', '#252A34', '#FF2E63', '#E44', '#8D7B68', '#B4846C', '#E5B299', '#00f', '#F67280', '#C06C84', '#6C5B7B', '#355C7D', '#DCD7C9', '#E84545', '#903749', '#212121', '#387F39', '#A2CA71', '#F6E96B', '#FF8343', '#BEDC74', '#888'
+        ];
+        let barcolour = [];
+        topic.forEach((top, itop) => {
+            barcolour.push([]);
+            topic[itop].forEach((subtop, subitop) => {
+                let randomNumber = getRandomNumber(0, colours.length);
+                barcolour[itop].push(colours[randomNumber]);
+            });
+        });
+        ctx.forEach((element, i) => {
+            new Chart(element, {
+                type: 'bar',
+                data: {
+                    labels: topic[i],
+                    datasets: [{
+                        label: '',
+                        data: topic_data[i],
+                        backgroundColor: barcolour[i],
+                        borderColor: barcolour[i],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    plugins: {
+                        legend: {
+                            display: false
                         }
-                        });
-                });
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        });
 
-                barcolour = [];
-                $sati_topic.forEach((top,itop) => {
-                    let randomNumber = getRandomNumber(0, colours.length);
-                    barcolour.push(colours[randomNumber]);
-                });
-                
-                ctx2.forEach((element,i) => {
-                    new Chart(element, {
-                    type: 'bar',
-                    data: {
-                        labels: $sati_topic,
-                        datasets: [{
+        barcolour = [];
+        $sati_topic.forEach((top, itop) => {
+            let randomNumber = getRandomNumber(0, colours.length);
+            barcolour.push(colours[randomNumber]);
+        });
+
+        ctx2.forEach((element, i) => {
+            new Chart(element, {
+                type: 'bar',
+                data: {
+                    labels: $sati_topic,
+                    datasets: [{
                         label: '',
                         data: $sumxBar,
                         backgroundColor: barcolour,
                         borderColor: barcolour,
                         borderWidth: 1
+                    }]
+                },
+                options: {
+                    plugins: {
+                        legend: {
+                            display: false
                         }
-                    ]},
-                    options: {
-                        plugins: {
-                            legend: {
-                                display: false
-                            }
-                        },
-                        scales: {
-                            y: {
-                                beginAtZero: true
-                            }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
                         }
                     }
-                    });
+                }
             });
-            Printsum = (sati_id) =>{
-                window.location.href = "sum_sati_print.php?sati_id=" + sati_id.toString();
-            }
-            </script>
-            <script src="script/changeclass.js"></script>
+        });
+        Printsum = (sati_id) => {
+            window.location.href = "sum_sati_print.php?sati_id=" + sati_id.toString();
+        }
+    </script>
+    <script src="script/changeclass.js"></script>
 </body>
 
 </html>

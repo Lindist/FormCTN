@@ -2,7 +2,7 @@
 session_start();
 require('session/config.php');
 
-if (!isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['user_id']) && !isset($_SESSION['admin_id'])) {
     header("Location: index.php");
     exit();
 }
@@ -86,9 +86,15 @@ if (isset($_GET['class'])) {
 
     <div class="mx-2 sm:mx-16 bg-white p-4 my-2 sm:my-4 rounded shadow">
         <aside class="my-5" style="display: flex; width: 170px; justify-content: space-between; flex-wrap: wrap;">
-            <button type="button" onclick="isClass('<?php echo $class; ?>')" style="display:flex; background-color:#1a75ff; color:#fff; font-weight:bold; border-style: none; border-radius:10px; padding: 10px; border-color: #444; transition:all .3s ease-in-out;" onmouseover="this.style.backgroundColor='#00f';" onmouseout="this.style.backgroundColor='#1a75ff';">
-                กลับหน้าแรก
-            </button>
+            <?php if (isset($_SESSION['user_id'])) { ?>
+                <button type="button" onclick="isClass('<?php echo $class; ?>')" style="display:flex; background-color:#1a75ff; color:#fff; font-weight:bold; border-style: none; border-radius:10px; padding: 10px; border-color: #444; transition:all .3s ease-in-out;" onmouseover="this.style.backgroundColor='#00f';" onmouseout="this.style.backgroundColor='#1a75ff';">
+                    กลับหน้าแรก
+                </button>
+            <?php } else if (isset($_SESSION['admin_id'])) { ?>
+                <button type="button" onclick="window.location.href = 'adminpanel.php'" style="display:flex; background-color:#1a75ff; color:#fff; font-weight:bold; border-style: none; border-radius:10px; padding: 10px; border-color: #444; transition:all .3s ease-in-out;" onmouseover="this.style.backgroundColor='#00f';" onmouseout="this.style.backgroundColor='#1a75ff';">
+                    กลับหน้าแรก
+                </button>
+            <?php } ?>
             <button type="button" onclick="history.back()" style="display:flex; background-color:#111; color:#fff; font-weight:bold; border-style: none; border-radius:10px; padding: 10px; border-color: #444; transition:all .3s ease-in-out;" onmouseover="this.style.backgroundColor='#333';" onmouseout="this.style.backgroundColor='#111';">
                 กลับ
             </button>

@@ -5,6 +5,9 @@ session_start();
 if (isset($_SESSION['user_id'])) {
     header("Location: form.php");
     exit();
+} else if (isset($_SESSION['admin_id'])) {
+    header("Location: adminpanel.php");
+    exit();
 }
 
 $registerClass = isset($_SESSION['show_register']) && $_SESSION['show_register'] ? '' : 'hidden';
