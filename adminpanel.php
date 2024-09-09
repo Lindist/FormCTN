@@ -23,6 +23,7 @@ if (!isset($_SESSION['admin_id'])) {
     <link rel="icon" type="icon" href="https://i.imgur.com/m0H7jcN.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@3.1.7/dist/full.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
@@ -60,7 +61,7 @@ if (!isset($_SESSION['admin_id'])) {
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center py-2 px-4 hover:bg-gray-700 text-white">
+                        <a onclick="logout(event, 'session/logout.php')" class="flex items-center py-2 px-4 hover:bg-gray-700 text-white">
                             <i class="flex items-center fa-solid fa-right-from-bracket h-6 w-6 mr-2"></i>
                             ออกจากระบบ
                         </a>
@@ -82,7 +83,7 @@ if (!isset($_SESSION['admin_id'])) {
                 <div id="mobileMenu" class="hidden mt-4">
                     <ul>
                         <li><a href="#" class="block py-2 px-4 hover:bg-gray-700">หน้าแรก</a></li>
-                        <li><a href="#" class="block py-2 px-4 hover:bg-gray-700">ออกจากระบบ</a></li>
+                        <li><a onclick="logout(event, 'session/logout.php')" class="block py-2 px-4 hover:bg-gray-700">ออกจากระบบ</a></li>
                     </ul>
                 </div>
             </nav>
@@ -212,6 +213,22 @@ if (!isset($_SESSION['admin_id'])) {
         mobileMenuToggle.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
+
+        logout = (event, url) => {
+            Swal.fire({
+                title: 'คุณต้องการออกจากระบบหรือไม่?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'ใช่',
+                cancelButtonText: 'ไม่',
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = url;
+                }
+            });
+        };
     </script>
 </body>
 
