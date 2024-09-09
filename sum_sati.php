@@ -730,18 +730,26 @@ if (isset($_GET['class'])) {
                             }
                         ]},
                         options: {
-                            plugins: {
-                                legend: {
-                                    display: false
-                                }
-                            },
                             scales: {
+                                x: {
+                                    ticks: {
+                                        callback: function(value, index, values) {
+                                            // Split the label into multiple lines
+                                            return value.match(/.{1,10}/g).join('\n');
+                                        }
+                                    }
+                                },
                                 y: {
                                     beginAtZero: true
                                 }
+                            },
+                            plugins: {
+                                legend: {
+                                    display: false // Adjust based on your preference
+                                }
                             }
                         }
-                        });
+                    });
                 });
 
                 barcolour = [];
