@@ -4,57 +4,58 @@ session_start();
 require 'session/config.php';
 
 
-if (!isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['user_id']) && !isset($_SESSION['admin_id'])) {
     header("Location: index.php");
     exit();
 }
+
 if (isset($_GET['user_id'])) {
-    $user_id = $_GET['user_id']; 
+    $user_id = $_GET['user_id'];
 }
 if (isset($_GET['form_id'])) {
-    $form_id = $_GET['form_id']; 
+    $form_id = $_GET['form_id'];
 }
 
-    $result = $conn->query("SELECT * FROM tb_fill_satisfied  WHERE sati_id = '$form_id' AND member_id = '$user_id'"); 
-    $result->execute();
-    $row = $result->fetch(PDO::FETCH_ASSOC);
-    
-    $sati_ep2 = $row['sati_ep2'];
-    $sati_info_un = $row['sati_info'];
-    $sub_info_un = $row['sub_info'];
-    $sati_topic_un = $row['sati_topic'];
-    $sub_topic_un = $row['sub_topic'];
+$result = $conn->query("SELECT * FROM tb_fill_satisfied  WHERE sati_id = '$form_id' AND member_id = '$user_id'");
+$result->execute();
+$row = $result->fetch(PDO::FETCH_ASSOC);
 
-    $score_un = $row['score'];
+$sati_ep2 = $row['sati_ep2'];
+$sati_info_un = $row['sati_info'];
+$sub_info_un = $row['sub_info'];
+$sati_topic_un = $row['sati_topic'];
+$sub_topic_un = $row['sub_topic'];
 
-    $sati_info = preg_split("/Ϫ/", $sati_info_un);
-    $sub_info = preg_split("/ꓘ/", $sub_info_un);
-    $sati_topic = preg_split("/Ϫ/", $sati_topic_un);
-    $sub_topic = preg_split("/ꓘ/", $sub_topic_un);
+$score_un = $row['score'];
 
-    $score = preg_split("/ꓘ/", $score_un);
+$sati_info = preg_split("/Ϫ/", $sati_info_un);
+$sub_info = preg_split("/ꓘ/", $sub_info_un);
+$sati_topic = preg_split("/Ϫ/", $sati_topic_un);
+$sub_topic = preg_split("/ꓘ/", $sub_topic_un);
 
-    $sub_info_ex = [];
-    foreach ($sub_info as $index => $info) {
-        $sub_info_ex[$index] = preg_split("/Ϫ/", $info);
-    }
+$score = preg_split("/ꓘ/", $score_un);
 
-    $sub_topic_ex = [];
-    foreach ($sub_topic as $index => $topic) {
-        $sub_topic_ex[$index] = preg_split("/Ϫ/", $topic);
-    }
+$sub_info_ex = [];
+foreach ($sub_info as $index => $info) {
+    $sub_info_ex[$index] = preg_split("/Ϫ/", $info);
+}
 
-    $score_ex = [];
-    foreach ($score as $index => $topic) {
-        $score_ex[$index] = preg_split("/Ϫ/", $topic);
-    }
-    // print_r($score_ex);
+$sub_topic_ex = [];
+foreach ($sub_topic as $index => $topic) {
+    $sub_topic_ex[$index] = preg_split("/Ϫ/", $topic);
+}
+
+$score_ex = [];
+foreach ($score as $index => $topic) {
+    $score_ex[$index] = preg_split("/Ϫ/", $topic);
+}
+// print_r($score_ex);
 
 
-    
+
 if (isset($_GET['class'])) {
     $class = $_GET['class'];
-}else{
+} else {
     $class = 'nohave';
 }
 
@@ -91,6 +92,7 @@ if (isset($_GET['class'])) {
         h1 {
             font-weight: bold;
         }
+
         .table,
         .rad {
             border: 1px solid #000;
@@ -99,16 +101,20 @@ if (isset($_GET['class'])) {
         .table {
             width: 100%;
         }
-        th,td{
+
+        th,
+        td {
             vertical-align: middle;
         }
-        ul{
+
+        ul {
             display: flex;
             flex-direction: column;
             justify-content: center;
             width: 50;
         }
-        ul > li {
+
+        ul>li {
             list-style: none;
 
         }
@@ -126,16 +132,22 @@ if (isset($_GET['class'])) {
     </style>
 </head>
 
-<body onload="putradio()" >
+<body onload="putradio()">
     <div class="main overflow-x-hidden container-fluid col-11 bg-white py-1 my-3 rounded">
-    <aside style="display: flex; width: 170px; justify-content: space-between; flex-wrap: wrap;">
-        <button type="button" onclick="isClass('<?php echo $class; ?>')" style="display:flex; background-color:#1a75ff; color:#fff; font-weight:bold; border-style: none; border-radius:10px; padding: 10px; border-color: #444; transition:all .3s ease-in-out;" onmouseover="this.style.backgroundColor='#00f';" onmouseout="this.style.backgroundColor='#1a75ff';">
-            กลับหน้าแรก
-        </button>
-        <button type="button" onclick="history.back()" style="display:flex; background-color:#111; color:#fff; font-weight:bold; border-style: none; border-radius:10px; padding: 10px; border-color: #444; transition:all .3s ease-in-out;" onmouseover="this.style.backgroundColor='#333';" onmouseout="this.style.backgroundColor='#111';">
-            กลับ
-        </button>
-    </aside>
+        <aside style="display: flex; width: 170px; justify-content: space-between; flex-wrap: wrap;">
+            <?php if (isset($_SESSION['user_id'])) { ?>
+                <button type="button" onclick="isClass('<?php echo $class; ?>')" style="display:flex; background-color:#1a75ff; color:#fff; font-weight:bold; border-style: none; border-radius:10px; padding: 10px; border-color: #444; transition:all .3s ease-in-out;" onmouseover="this.style.backgroundColor='#00f';" onmouseout="this.style.backgroundColor='#1a75ff';">
+                    กลับหน้าแรก
+                </button>
+            <?php } else if (isset($_SESSION['admin_id'])) { ?>
+                <button type="button" onclick="window.location.href = 'adminpanel.php'" style="display:flex; background-color:#1a75ff; color:#fff; font-weight:bold; border-style: none; border-radius:10px; padding: 10px; border-color: #444; transition:all .3s ease-in-out;" onmouseover="this.style.backgroundColor='#00f';" onmouseout="this.style.backgroundColor='#1a75ff';">
+                    กลับหน้าแรก
+                </button>
+            <?php } ?>
+            <button type="button" onclick="history.back()" style="display:flex; background-color:#111; color:#fff; font-weight:bold; border-style: none; border-radius:10px; padding: 10px; border-color: #444; transition:all .3s ease-in-out;" onmouseover="this.style.backgroundColor='#333';" onmouseout="this.style.backgroundColor='#111';">
+                กลับ
+            </button>
+        </aside>
         <form>
             <h1 class="text-center my-5">แบบฟอร์มประเมินความพึงพอใจ</h1>
 
@@ -149,12 +161,12 @@ if (isset($_GET['class'])) {
                 </label><br>
                 <span class="rad form-control text-break mb-2" style="width: 100%;"><?php echo $row['sati_ep2']; ?></span>
                 <div class="d-flex flex-column w-50 align-items-center">
-                <label class="font-bold d-flex justify-content-start w-100">โดยแบ่งการประเมินเป็น <?= count($sati_topic); ?> ด้าน คือ</label>
+                    <label class="font-bold d-flex justify-content-start w-100">โดยแบ่งการประเมินเป็น <?= count($sati_topic); ?> ด้าน คือ</label>
                     <div class="w-50">
                         <ul class="w-100">
-                        <?php for($b=0;$b < count($sati_topic);$b++){ ?>
-                            <li class="" for="">ด้านที่ <?= ($b+1)." ".$sati_topic[$b]; ?></li> <br>
-                        <?php } ?>
+                            <?php for ($b = 0; $b < count($sati_topic); $b++) { ?>
+                                <li class="" for="">ด้านที่ <?= ($b + 1) . " " . $sati_topic[$b]; ?></li> <br>
+                            <?php } ?>
                         </ul>
                     </div>
                 </div>
@@ -164,17 +176,17 @@ if (isset($_GET['class'])) {
             <div class="body_content mt-5">
                 <label class="form-label font-bold">ตอนที่ 1</label>
                 <label for="">ข้อมูลพื้นฐานของผู้กรอกแบบสอบถาม</label><br>
-                <?php for($b=0;$b < count($sati_info);$b++){ ?>
-                <div class="w-100">
-                    <label class="col-3 col-form-label w-100"><?= ($b+1).".".$sati_info[$b]; ?>
-                    <?php for($i=0;$i < count($sub_info_ex[$b]);$i++){ ?>
-                    <?php if(!($sub_info_ex[$b][$i] == null)){ ?>
-                    <input class="rad form-check-input ms-4" type="radio" value="" checked name="" >
-                    <?php echo $sub_info_ex[$b][$i]; ?>
-                    <?php } ?>
-                    <?php } ?>
-                    </label><br>
-                </div>
+                <?php for ($b = 0; $b < count($sati_info); $b++) { ?>
+                    <div class="w-100">
+                        <label class="col-3 col-form-label w-100"><?= ($b + 1) . "." . $sati_info[$b]; ?>
+                            <?php for ($i = 0; $i < count($sub_info_ex[$b]); $i++) { ?>
+                                <?php if (!($sub_info_ex[$b][$i] == null)) { ?>
+                                    <input class="rad form-check-input ms-4" type="radio" value="" checked name="">
+                                    <?php echo $sub_info_ex[$b][$i]; ?>
+                                <?php } ?>
+                            <?php } ?>
+                        </label><br>
+                    </div>
                 <?php } ?>
 
                 <label class="form-label">ตอนที่ 2</label>
@@ -208,106 +220,129 @@ if (isset($_GET['class'])) {
                             <th scope="row"><?php echo $i+1; ?></th>
                             <td><div class="form-control1" id="format" rows="3"><?php echo $sub_topic_ex[$b][$i]; ?></div></td>	
 
-                                <?php  if($score_ex[$b][$i] == "พึงพอใจมากที่สุด"){ ?>
-                                    <td><div class="form-control1" id="format" rows="3"><input type="radio" name="" checked id="r5"></div></td>
-                                <?php  }else{ ?>
-                                    <td><div class="form-control1" id="format" rows="3"><input type="radio" name="" id="r5"></div></td>
-                                <?php  } ?>
+                                            <?php if ($score_ex[$b][$i] == "พึงพอใจมากที่สุด") { ?>
+                                                <td>
+                                                    <div class="form-control1" id="format" rows="3"><input type="radio" name="" checked id="r5"></div>
+                                                </td>
+                                            <?php  } else { ?>
+                                                <td>
+                                                    <div class="form-control1" id="format" rows="3"><input type="radio" name="" id="r5"></div>
+                                                </td>
+                                            <?php  } ?>
 
-                                <?php if($score_ex[$b][$i] == "พึงพอใจมาก"){ ?>
-                                    <td><div class="form-control1" id="format" rows="3"><input type="radio" name="" checked id="r4"></div></td>
-                                <?php  }else{ ?>
-                                    <td><div class="form-control1" id="format" rows="3"><input type="radio" name="" id="r4"></div></td>
-                                <?php  } ?>
+                                            <?php if ($score_ex[$b][$i] == "พึงพอใจมาก") { ?>
+                                                <td>
+                                                    <div class="form-control1" id="format" rows="3"><input type="radio" name="" checked id="r4"></div>
+                                                </td>
+                                            <?php  } else { ?>
+                                                <td>
+                                                    <div class="form-control1" id="format" rows="3"><input type="radio" name="" id="r4"></div>
+                                                </td>
+                                            <?php  } ?>
 
-                                <?php if($score_ex[$b][$i] == "พึงพอใจปานกลาง"){ ?>
-                                    <td><div class="form-control1" id="format" rows="3"><input type="radio" name="" checked id="r3"></div></td>
-                                <?php  }else{ ?>
-                                    <td><div class="form-control1" id="format" rows="3"><input type="radio" name="" id="r3"></div></td>
-                                <?php  } ?>
+                                            <?php if ($score_ex[$b][$i] == "พึงพอใจปานกลาง") { ?>
+                                                <td>
+                                                    <div class="form-control1" id="format" rows="3"><input type="radio" name="" checked id="r3"></div>
+                                                </td>
+                                            <?php  } else { ?>
+                                                <td>
+                                                    <div class="form-control1" id="format" rows="3"><input type="radio" name="" id="r3"></div>
+                                                </td>
+                                            <?php  } ?>
 
-                                <?php if($score_ex[$b][$i] == "พึงพอใจน้อย"){ ?>
-                                    <td><div class="form-control1" id="format" rows="3"><input type="radio" name="" checked id="r2"></div></td>
-                                <?php  }else{ ?>
-                                    <td><div class="form-control1" id="format" rows="3"><input type="radio" name="" id="r2"></div></td>
-                                <?php  } ?>
+                                            <?php if ($score_ex[$b][$i] == "พึงพอใจน้อย") { ?>
+                                                <td>
+                                                    <div class="form-control1" id="format" rows="3"><input type="radio" name="" checked id="r2"></div>
+                                                </td>
+                                            <?php  } else { ?>
+                                                <td>
+                                                    <div class="form-control1" id="format" rows="3"><input type="radio" name="" id="r2"></div>
+                                                </td>
+                                            <?php  } ?>
 
-                                <?php if($score_ex[$b][$i] == "พึงพอใจน้อยที่สุด"){ ?>
-                                    <td><div class="form-control1" id="format" rows="3"><input type="radio" name="" checked id="r1"></div></td>
-                                <?php  }else{ ?>
-                                    <td><div class="form-control1" id="format" rows="3"><input type="radio" name="" id="r1"></div></td>
-                                <?php  } ?>
+                                            <?php if ($score_ex[$b][$i] == "พึงพอใจน้อยที่สุด") { ?>
+                                                <td>
+                                                    <div class="form-control1" id="format" rows="3"><input type="radio" name="" checked id="r1"></div>
+                                                </td>
+                                            <?php  } else { ?>
+                                                <td>
+                                                    <div class="form-control1" id="format" rows="3"><input type="radio" name="" id="r1"></div>
+                                                </td>
+                                            <?php  } ?>
 
-                        </tr>
-                        <?php } ?>
-                        <?php } ?>
-                    </tbody>
-                </table>
-                </div>
+                                        </tr>
+                                    <?php } ?>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
                 <?php } ?>
                 <label class="form-label mt-2">ตอนที่3 ข้อเสนอแนะอื่นๆ</label>
                 <div class="rad form-control" id="format">
-                    <?php if($row['sati_comment'] != null) { ?>
+                    <?php if ($row['sati_comment'] != null) { ?>
                         <?php echo $row['sati_comment']; ?>
-                    <?php }else { ?>
+                    <?php } else { ?>
                         ----เสนอแนะ----
                     <?php } ?>
                 </div>
-                
+
             </div>
         </form>
         <button type="button" class="btn btn-primary w-100 mt-2 mb-4" onclick="isClass('<?php echo $class; ?>')">กลับหน้าแรก</button>
     </div>
     <style>
-        #format{
+        #format {
             overflow-wrap: break-word;
-            display:inline-block; 
+            display: inline-block;
             position: relative;
             top: 0;
             text-align: justify;
         }
-        .form-control1{
+
+        .form-control1 {
             position: relative;
-            
+
         }
+
         input[type="radio"]:where(#r1, #r2, #r3, #r4, #r5) {
-            height:35px; 
-            width:35px; 
+            height: 35px;
+            width: 35px;
             vertical-align: middle;
         }
-        #widthfix{
+
+        #widthfix {
             overflow-x: scroll;
         }
     </style>
     <script type="text/javascript">
-        putradio = () =>{
+        putradio = () => {
             document.querySelectorAll(`#r5`).forEach(e => {
-                if(!e.checked){
+                if (!e.checked) {
                     e.disabled = true;
                 }
             });
             document.querySelectorAll(`#r4`).forEach(e => {
-                if(!e.checked){
+                if (!e.checked) {
                     e.disabled = true;
                 }
             });
             document.querySelectorAll(`#r3`).forEach(e => {
-                if(!e.checked){
+                if (!e.checked) {
                     e.disabled = true;
                 }
             });
             document.querySelectorAll(`#r2`).forEach(e => {
-                if(!e.checked){
+                if (!e.checked) {
                     e.disabled = true;
                 }
             });
             document.querySelectorAll(`#r1`).forEach(e => {
-                if(!e.checked){
+                if (!e.checked) {
                     e.disabled = true;
                 }
             });
-        
-            
+
+
         }
     </script>
     <script src="script/changeclass.js"></script>

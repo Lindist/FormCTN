@@ -1,3 +1,4 @@
+let canceloldeditManager = null;
 Editproject = (idp) => {
     const checkid = "editpro" + idp.toString();
     const editManager = document.querySelectorAll(".editManager");
@@ -7,6 +8,7 @@ Editproject = (idp) => {
             let pname = e.querySelectorAll("#p1");
             checkvalue.push(pname[2].value);
             checkvalue.push(pname[3].value);
+            canceloldeditManager = editManager[index].firstElementChild.innerHTML;
             editManager[index].classList.add("editColor");
             e.innerHTML = `
             <div for="" style="text-align: center; width: 100%;"><h3>หน้าแก้ไข</h3></div>
@@ -149,37 +151,37 @@ Editproject = (idp) => {
 
 
 }
-cancelEditproject = (idp,name,expired,leveledu,yearedu) => {
+cancelEditproject = (idp) => {
     const checkid = "editpro" + idp.toString();
     const editManager = document.querySelectorAll(".editManager");
     document.querySelectorAll(".isEdit").forEach((e,index) => {
         if(e.id === checkid){
             editManager[index].classList.remove("editColor");
-            e.innerHTML = `
-            <label for=""><b>ชื่อโครงการ</b></label>
-            <input type="text" id="p1" value="${name}" readonly>
-            <div>
-                <button type="button" class="confirmbtn" id="addper_" onclick="nextToper()">เพิ่มแบบฟอร์มประเมินประสิทธิภาพ</button>
-                <button type="button" class="confirmbtn" id="addsta_" onclick="nextTosta()">เพิ่มแบบฟอร์มประเมินความพึงพอใจ</button>
-            </div>
-            <label for=""><b>วันหมดอายุ</b></label><br>
-            <input type="hidden" name="" id="p1" value="${expired}">
-            <input type="text" id="" value="${expired}" readonly>
-            <label for=""><b>ระดับการศึกษา</b></label><br>
-            <input type="text" id="p1" value="${leveledu}" readonly>
-            <label for=""><b>ปีการศึกษา</b></label><br>
-            <input type="text" id="p1" value="${yearedu}" readonly>
-            `;
+            e.innerHTML = canceloldeditManager;
+            
         }
     });
 }
 
-Editformcomfirm = (idp) =>{
-    let pname = document.querySelectorAll(".p1");
-    let str = "update_project.php?pro_id=" + idp.toString();
-    let arr = ["&name=","&expired=","&leveledu=","&yearedu="]
-    pname.forEach((e,i) => {
-        str += arr[i] + e.value.toString()
-    })
-    window.location.href = str;
+Editformcomfirm = (idp,pj_name) =>{
+    Swal.fire({
+        title: "แก้ไขข้อมูลโครงการ",
+        text: `ยืนยันที่จะแก้ไข โครงการ ${pj_name} หรือไม่`,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#D5C104",
+        cancelButtonColor: "#333",
+        confirmButtonText: "แก้ไข",
+        cancelButtonText: "ยกเลิก"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            let pname = document.querySelectorAll(".p1");
+            let str = "update_project.php?pro_id=" + idp.toString();
+            let arr = ["&name=","&expired=","&leveledu=","&yearedu="]
+            pname.forEach((e,i) => {
+                str += arr[i] + e.value.toString()
+            })
+            window.location.href = str;
+        }
+    });
 }

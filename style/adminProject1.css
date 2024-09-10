@@ -1,0 +1,261 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-color: #888;
+}
+
+.modal2 {
+    display: block;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto;
+    border: 1px solid #888;
+    width: 80%; 
+    height: auto;
+    border: 1px solid #0000003d;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+}
+.containerformodal ,.moreaddproject{
+    position: relative;
+    padding: 16px;
+}
+
+input[type=text],input[type=date]{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 2mm;
+    box-sizing: border-box;
+}
+
+/* input[type=text]::before,input[type=date]::before{
+  content: "";
+  outline: 0.7mm solid #000;
+} */
+
+.confirmbtn{
+    background-color: #04AA6D;
+    color: #fff;
+    padding: 10px 18px;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    width: auto;
+}
+  
+.cancelbtn{
+    width: auto;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 10px 18px;
+    background-color: #f44336;
+    border: none;
+}
+
+.editbtn{
+    width: auto;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 10px 18px;
+    background-color: #FFB200;
+    border: none;
+}
+
+button:hover{
+  opacity: 0.8;
+}
+
+.animate{
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+  
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)} 
+    to {-webkit-transform: scale(1)}
+}
+    
+@keyframes animatezoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+}
+.editColor{
+  background-color: #F6FB7A;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  border: 2px solid #FFDE4D;
+}
+.alertedit{
+  font-weight: 400;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 2px solid #FFC700;
+  background-color: #F4CE14;
+}
+
+.close {
+    position: absolute;
+    top: 0;
+    right: 16px;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+  
+.close:hover,
+.close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+  .dropdownforaddintro{
+    width: 100%;
+    height: fit-content;
+    box-sizing: border-box;
+    position: relative;
+    margin: 8px 0;
+  }
+  .dropdownforaddproject{
+    width: 50%;
+    height: fit-content;
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    margin: 8px 0;
+  }
+  .input-box,.input-editbox {
+    width: 100%;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    outline: 0.3mm solid rgba(0, 0, 0, 0.15);
+    border-radius: 2mm;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+  }
+  .input-box::before,
+  .input-editbox::before {
+    content: "เปิด";
+    position: absolute;
+    font-size: 18px;
+    top: 50%;
+    right: 15px;
+    transform: translate(0, -50%);
+    width: fit-content;
+    height: fit-content;
+  }
+  .input-box.open::before,
+  .input-editbox.open::before {
+    content: "ปิด";
+  }
+  .input-box:empty::after,
+  .input-editbox:empty::after {
+    content: "เลือกตัวเลือกที่ต้องการ...";
+    color: rgba(0, 0, 0, 0.5);
+  }
+  .list,.list1 {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: fit-content;
+    background: white;
+    margin-top: 10px;
+    border-radius: 2mm;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    max-height: 0;
+    z-index: 10;
+    transition: 0.25s ease-out;
+  }
+  .list input,
+  .list1 input {
+    display: none;
+  }
+  .list label,
+  .list1 label {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 14px;
+    padding: 10px 15px;
+    box-sizing: border-box;
+    cursor: pointer;
+    position: relative;
+  }
+  .list label .material-symbols-outlined,
+  .list1 label .material-symbols-outlined,
+  .input-box .material-symbols-outlined,
+  .input-editbox .material-symbols-outlined{
+    margin-right: 5px;
+    font-size: 22px;
+  }
+  .list label:hover,
+  .list1 label:hover {
+    background: rgba(0, 0, 0, 0.08);
+  }
+  input:checked + label {
+    color: rgb(20, 117, 213);
+    background: rgb(238, 245, 252);
+  }
+  input:checked + label::before {
+    content: "done";
+    font-family: "Material Icons";
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translate(0, -50%);
+    font-size: 18px;
+  }
+  .open {
+    outline: 0.5mm solid #000;
+  }
+  @media all and (max-width:800px) {
+    .dropdownforaddproject{
+      width: 100%;
+      height: fit-content;
+      box-sizing: border-box;
+      position: relative;
+      display: flex;
+      margin: 8px 0;
+    }
+
+    #addper_{
+      margin-bottom: 15px;
+      width: 100%;
+    }
+    #addsta_ ,.cancelbtn ,.editbtn, .confirmbtn {
+      width: 100%;
+    }
+    .cancelbtn{
+      margin-top: 15px;
+    }
+  }
+  

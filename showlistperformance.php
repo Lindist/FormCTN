@@ -2,18 +2,25 @@
 session_start();
 require 'session/config.php';
 
-if (!isset($_SESSION['user_id'])) {
-    header("Location: index.php");
-} else if (isset($_SESSION['user_id'])) {
-    $user_id = $_SESSION['user_id'];
-}
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
-$result = $conn->query("SELECT * FROM tb_member WHERE member_id = '$user_id'");
-$count = count($result->fetchAll());
-$result->execute();
 
+if (!isset($_SESSION['user_id']) && !isset($_SESSION['admin_id'])) {
+    header("Location: index.php");
+    exit();
+} else if (isset($_SESSION['user_id'])) {
+    $user_id = $_SESSION['user_id'];
+
+    $result = $conn->query("SELECT * FROM tb_member WHERE member_id = '$user_id'");
+    $count = count($result->fetchAll());
+    $result->execute();
+} else if (isset($_SESSION['admin_id'])) {
+
+    $result = $conn->query("SELECT m.* FROM tb_member m JOIN project p ON m.member_id = p.member_id JOIN tb_efficiercy_form ef ON p.project_id = ef.project_id WHERE ef.form_id = $id");
+    $count = count($result->fetchAll());
+    $result->execute();
+}
 
 $tb_fill_efficiercy = $conn->query("SELECT * FROM tb_fill_efficiercy WHERE form_id = '$id'");
 $tb_fill_efficiercy->execute();
@@ -167,9 +174,15 @@ for ($i = 0; $i < count($nofiller); $i++) {
 <body>
     <div class="main container-fluid col-11 bg-white py-1 my-3 rounded">
         <form action="" id="form">
-            <button type="button" onclick="backtoindex()" style="display:flex; background-color:#1a75ff; color:#fff; font-weight:bold; border-style: none; border-radius:10px; padding: 10px; border-color: #444; transition:all .3s ease-in-out;" onmouseover="this.style.backgroundColor='#00f';" onmouseout="this.style.backgroundColor='#1a75ff';">
-                กลับหน้าแรก
-            </button>
+            <?php if (isset($_SESSION['user_id'])) { ?>
+                <button type="button" onclick="backtoindex()" style="display:flex; background-color:#1a75ff; color:#fff; font-weight:bold; border-style: none; border-radius:10px; padding: 10px; border-color: #444; transition:all .3s ease-in-out;" onmouseover="this.style.backgroundColor='#00f';" onmouseout="this.style.backgroundColor='#1a75ff';">
+                    กลับหน้าแรก
+                </button>
+            <?php } else if (isset($_SESSION['admin_id'])) { ?>
+                <button type="button" onclick="window.location.href = 'adminpanel.php'" style="display:flex; background-color:#1a75ff; color:#fff; font-weight:bold; border-style: none; border-radius:10px; padding: 10px; border-color: #444; transition:all .3s ease-in-out;" onmouseover="this.style.backgroundColor='#00f';" onmouseout="this.style.backgroundColor='#1a75ff';">
+                    กลับหน้าแรก
+                </button>
+            <?php } ?>
             <h1 class="header text-center my-5 text-break">รายชื่อผู้กรอกและผู้สร้างฟอร์ม</h1>
             <main>
 
@@ -186,13 +199,6 @@ for ($i = 0; $i < count($nofiller); $i++) {
                     <div class='text1'><i class='bx bxs-user-circle'></i><?php echo $row['member_title'] . " " . $row['member_firstname'] . " " . $row['member_lastname'] . " " . $row['member_code'] . " " . "(ผู้สร้าง)"; ?>
                         <?php if (count($nofiller) > 0) { ?>
                             <a id='btnresult' href="sum_eff.php?form_id=<?= $id; ?>" >ผลสรุป</a>
-
-                            <div class="">
-                                <button onclick="download_btn(<?= $id; ?>)" class="">
-                                    Download QR Code
-                                </button>
-                            </div>
-
                         <?php } ?>
                     </div>
                     <!-- <div class="btns">
@@ -309,33 +315,6 @@ for ($i = 0; $i < count($nofiller); $i++) {
         }
     </style>
 
-    <script>
-        download_btn = (index) => {
-            let qrCode = new QRCodeStyling({
-                width: 300,
-                height: 300,
-                data: `http://localhost/FormCTN/fill_performance_form.php?id=${index}`,
-                dotsOptions: {
-                    color: "#000000",
-                },
-                backgroundOptions: {
-                    color: "#ffffff",
-                },
-                imageOptions: {
-                    crossOrigin: "anonymous",
-                    margin: 20
-                }
-            });
-
-            qrCode.download({
-                name: "qr-code",
-                extension: "png"
-            }).then(() => {
-                // หลังจากการดาวน์โหลดเสร็จสมบูรณ์ ให้กลับมายังหน้าที่ต้องการ
-                window.location.href = `http://localhost/FormCTN/showlistperformance.php?id=${index}`;
-            });
-        };
-    </script>
-
 </body>
+
 </html>

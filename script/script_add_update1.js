@@ -37,7 +37,7 @@ document.getElementById('addFormsatisfy').addEventListener('click', () => {
 /*------------- */
 Delproject = (id, pj_name) => {
     Swal.fire({
-        title: "ลบฟอร์มข้อมูล",
+        title: "ลบข้อมูลโครงการ",
         text: `ยืนยันที่จะลบ โครงการ ${pj_name} หรือไม่  หากลบข้อมูลที่สร้างไว้และข้อมูลที่ถูกกรอกจะหายไปทั้งหมด`,
         icon: "warning",
         showCancelButton: true,

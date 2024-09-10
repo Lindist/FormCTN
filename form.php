@@ -79,7 +79,7 @@ $projectedit->execute();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <script src="https://unpkg.com/qr-code-styling/lib/qr-code-styling.js"></script>
-    <title>From</title>
+    <title>Form</title>
     <link rel="icon" type="icon" href="https://i.imgur.com/m0H7jcN.png">
     <style>
         .custom-swal-title {
@@ -180,7 +180,7 @@ $projectedit->execute();
 
                                 </div>
                                 <div id="cancelproject<?= $rowproject['project_id']; ?>" class="ispressedit d-none">
-                                    <button type="button" class="confirmbtn" onclick="Editformcomfirm(<?= $rowproject['project_id']; ?>)">ยืนยันการแก้ไข</button>
+                                    <button type="button" class="confirmbtn" onclick="Editformcomfirm(<?= $rowproject['project_id']; ?> , '<?= $rowproject['project_name']; ?>')">ยืนยันการแก้ไข</button>
                                     <button type="button" class="cancelbtn cancelproject" id="cancelproject<?= $rowproject['project_id']; ?>" onclick="cancelEditproject('<?= $rowproject['project_id']; ?>','<?= $rowproject['project_name']; ?>','<?= $rowproject['project_expired']; ?>','<?= $rowproject['project_leveledu']; ?>','<?= $rowproject['project_yearedu']; ?>')">ยกเลิกการแก้ไข</button>
                                 </div>
                                 <div id="editproject<?= $rowproject['project_id']; ?>" class="preedit">
@@ -577,7 +577,7 @@ $projectedit->execute();
     <script src="script/searchscipt.js"></script>
     <script src="script/dropdown1.js"></script>
     <script src="script/dropdownforreponsive1.js"></script>
-    <script src="script/script_add_update.js"></script>
+    <script src="script/script_add_update1.js"></script>
     <script src="script/scriptSelector1.js"></script>
     <script src="script/datepicker1.js"></script>
     <script src="script/thaidatepicker1.js"></script>
@@ -627,7 +627,7 @@ $projectedit->execute();
             })
         })
     </script>
-    <script src="script/editproject1.js"></script>
+    <script src="script/editproject.js"></script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script> -->
     <script>
         logout = (event, url) => {

@@ -3,14 +3,60 @@
 session_start();
 require 'session/config.php';
 
-if (!isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['user_id']) && !isset($_SESSION['admin_id'])) {
     header("Location: index.php");
     exit();
 } else if (isset($_SESSION['user_id'])) {
     $member_id = $_SESSION['user_id'];
 }
 
-if (isset($_GET['id'])) {
+if(isset($_GET['idpj'])){
+    $form_id_pj = $_GET['idpj'];
+
+    $query = $conn->prepare("SELECT * FROM tb_efficiercy_form WHERE project_id  = :form_id_pj");
+    $query->bindParam(":form_id_pj",  $form_id_pj);
+    $query->execute();
+    $row = $query->fetch();
+
+    $form_id = $row['form_id'];
+    $pj_id = $row['project_id'];
+    $formname = $row['form_name'];
+    $ad = $row['form_ad'];
+    $form_info_un = $row['form_info'];
+    $sub_info_un = $row['sub_info'];
+    $form_topic_un = $row['form_topic'];
+    $feature_un = $row['feature'];
+    $setfeature_un = $row['setfeature'];
+
+    $form_info = preg_split("/Ϫ/", $form_info_un);
+    $sub_info = preg_split("/ꓘ/", $sub_info_un);
+    $form_topic = preg_split("/Ϫ/", $form_topic_un);
+    $feature = preg_split("/ꓘ/", $feature_un);
+    $setfeature = preg_split("/ꓘ/", $setfeature_un);
+
+    $sub_info_ex = [];
+    foreach ($sub_info as $index => $info) {
+        $sub_info_ex[$index] = preg_split("/Ϫ/", $info);
+    }
+
+    $feature_ex = [];
+    foreach ($feature as $index => $topic) {
+        $feature_ex[$index] = preg_split("/Ϫ/", $topic);
+    }
+
+    $setfeature_ex = [];
+    foreach ($setfeature as $index => $topic) {
+        $setfeature_ex[$index] = preg_split("/Ϫ/", $topic);
+    }
+
+    $query = $conn->prepare("SELECT * FROM project WHERE project_id = :project_id");
+    $query->bindParam(":project_id", $row['project_id']);
+    $query->execute();
+    $rowp = $query->fetch();
+
+    $project_name = $rowp['project_name'];
+
+}else if (isset($_GET['id'])) {
     $form_id = $_GET['id'];
 
     $query = $conn->prepare("SELECT * FROM tb_efficiercy_form WHERE form_id = :form_id");
@@ -22,7 +68,7 @@ if (isset($_GET['id'])) {
         header("Location: index.php");
         exit();
     }
-
+    $form_id = $row['form_id'];
     $pj_id = $row['project_id'];
     $formname = $row['form_name'];
     $ad = $row['form_ad'];
@@ -90,9 +136,15 @@ if (isset($_GET['id'])) {
 
 <body>
     <div class="mx-2 sm:mx-16 bg-white p-4 my-2 sm:my-4 rounded shadow">
+        <?php if(isset($_SESSION['user_id'])){ ?>
         <button type="button" onclick="window.location.href='form.php?class=columnData';" class="flex bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             กลับหน้าแรก
         </button>
+        <?php }else if(isset($_SESSION['admin_id'])){ ?>
+        <button type="button" onclick="window.location.href='adminshowcheckEdit.php?id=<?php echo  $form_id_pj; ?>'" class="flex bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            กลับหน้าแรก
+        </button>
+        <?php } ?>
         <form action="update_performance.php" method="POST" id="myform">
             <input type="hidden" name="pj_id" value="<?= $pj_id ?>">
             <h1 class="text-center text-2xl mb-5">แก้ไขแบบฟอร์มประเมินประสิทธิภาพ</h1>

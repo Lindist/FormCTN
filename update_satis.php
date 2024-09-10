@@ -3,7 +3,7 @@
 session_start();
 require 'session/config.php';
 
-if (!isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['user_id']) && !isset($_SESSION['admin_id'])) {
     header("Location: index.php");
     exit();
 }
@@ -56,7 +56,11 @@ if (empty($sati_ep2)) {
             $tb_satisfied->execute([$sati_ep2, $sati_info, $sub_info, $sati_topic, $sub_topic, $sati_id]);
 
             $_SESSION['save_form'] = "บึนทึก แบบฟอร์มประเมินความพึงพอใจ เรียบร้อย";
-            header("location: form.php");
+            if(isset($_SESSION['admin_id'])){
+                header("location: adminshowcheckEdit.php");
+            }else{
+                header("location: form.php");
+            }
 
         }
     } catch (PDOException $e) {

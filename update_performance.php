@@ -3,7 +3,7 @@
 session_start();
 require 'session/config.php';
 
-if (!isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['user_id']) && !isset($_SESSION['admin_id'])) {
     header("Location: index.php");
     exit();
 }
@@ -60,13 +60,15 @@ if (empty($formname)) {
 } else {
     try {
         if (!isset($_SESSION['error'])) {
-
-            $tb_efficiercy_form = $conn->prepare("UPDATE tb_efficiercy_form SET form_name = ?, form_ad = ?, member_id = ?, form_info = ?, sub_info = ?, form_topic = ?, feature = ?, setfeature = ? WHERE form_id = ?");
-            $tb_efficiercy_form->execute([$formname, $ad, $user_id, $form_info, $sub_info, $form_topic, $feature, $setfeature, $form_id]);
+            $tb_efficiercy_form = $conn->prepare("UPDATE tb_efficiercy_form SET form_name = ?, form_ad = ?, form_info = ?, sub_info = ?, form_topic = ?, feature = ?, setfeature = ? WHERE form_id = ?");
+            $tb_efficiercy_form->execute([$formname, $ad, $form_info, $sub_info, $form_topic, $feature, $setfeature, $form_id]);
 
             $_SESSION['save_form'] = "บึนทึก แบบฟอร์มประเมินประสิทธิภาพ เรียบร้อย";
-            header("location: form.php?class=".$class);
-
+            if(isset($_SESSION['admin_id'])){
+                header("location: adminshowcheckEdit.php");
+            }else{
+                header("location: form.php?class=".$class);
+            }
         }
     } catch (PDOException $e) {
         echo "Registrati3on failed: " . $e->getMessage();
