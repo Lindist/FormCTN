@@ -198,7 +198,7 @@ if (isset($_GET['class'])) {
                 <label class="form-label mt-2">ด้านที่ <?= $b+1; ?></label>
                 <label class="form-label mb-2" id="format"><?= $sati_topic[$b];?></label>
                 <div  id="widthfix">
-                <table class= "tabletable-bordered table-striped text-center mt-3">
+                <table class="table table-bordered table-striped text-center mt-3">
                     <thead>
                         <tr>
                             <th scope="col" rowspan="2">ที่</th>
