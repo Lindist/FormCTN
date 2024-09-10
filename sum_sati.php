@@ -19,14 +19,14 @@ if ($_SERVER['HTTP_HOST'] === 'localhost') {
     // echo "You are on localhost";
 } else {
     // Code for production server
-    // function array_key_last(array $array) {
-    //     if (empty($array)) {
-    //         return null;
-    //     }
+    function array_key_last(array $array) {
+        if (empty($array)) {
+            return null;
+        }
 
-    //     $keys = array_keys($array);
-    //     return end($keys);
-    // }    
+        $keys = array_keys($array);
+        return end($keys);
+    }    
     // echo "You are on a production server";
 }
 
