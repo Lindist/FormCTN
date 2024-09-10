@@ -39,7 +39,18 @@ if (!isset($_SESSION['admin_id'])) {
 </head>
 
 <body class="bg-gray-100">
-
+<?php if (isset($_SESSION['deleteproject'])) { ?>
+        <script>
+            Swal.fire({
+                position: "center",
+                title: "ลบข้อมูลโครงการเรียบร้อย",
+                icon: "success",
+                showConfirmButton: false,
+                timer: 1000
+            });
+        </script>
+        <?php unset($_SESSION['deleteproject']); ?>
+    <?php } ?>
     <!-- Sidebar for Desktop & Navbar for Mobile -->
     <div class="flex min-h-screen">
 

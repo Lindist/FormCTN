@@ -19,7 +19,11 @@ if (isset($_GET['id'])) {
 
     if($result1 || $result2 || $result3 || $result4 || $result5){
         $_SESSION['deleteproject'] = "ลบข้อมูลเรียบร้อย";
-        header("location: form.php");
+        if (isset($_SESSION['user_id'])) {
+            header("location: form.php");
+        }else{
+            header("location: adminpanel.php");
+        }
     }else{
         echo "something wrong";
     }

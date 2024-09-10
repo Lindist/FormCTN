@@ -80,6 +80,7 @@ if(isset($_GET["id"])){
         </script>
         <?php unset($_SESSION['addproject']); ?>
     <?php } ?>
+
 <div class="modal2" style="display: block;">
         <form class="modal-content animate" action="" id="myform" method="post">
         <div class="containerformodal">
