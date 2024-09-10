@@ -49,14 +49,14 @@ if (!isset($_SESSION['admin_id'])) {
                 <!-- Logo -->
                 <img src="https://i.imgur.com/m0H7jcN.png" alt="Logo" class="w-24 h-24 rounded-full">
             </div>
-            <div class="text-center mt-4">
+            <!-- <div class="text-center mt-4">
                 <h1 class="text-xl font-bold">COMPUTER TECHNIQUE</h1>
                 <h2 class="text-sm">PRAE TECHNICAL COLLEGE</h2>
-            </div>
+            </div> -->
             <nav class="mt-5">
                 <ul>
                     <li>
-                        <a href="#" class="flex items-center py-2 px-4 hover:bg-gray-700 text-white">
+                        <a id="backToTop" class="flex items-center py-2 px-4 hover:bg-gray-700 text-white">
                             <i class="flex items-center fa-solid fa-house h-6 w-6 mr-2"></i>
                             หน้าแรก
                         </a>
@@ -83,7 +83,7 @@ if (!isset($_SESSION['admin_id'])) {
                 <!-- Mobile Menu (Initially Hidden) -->
                 <div id="mobileMenu" class="hidden mt-4">
                     <ul>
-                        <li><a href="#" class="block py-2 px-4 hover:bg-gray-700">หน้าแรก</a></li>
+                        <li><a id="backToTop" class="block py-2 px-4 hover:bg-gray-700">หน้าแรก</a></li>
                         <li><a onclick="logout(event, 'session/logout.php')" class="block py-2 px-4 hover:bg-gray-700">ออกจากระบบ</a></li>
                     </ul>
                 </div>
@@ -222,14 +222,21 @@ if (!isset($_SESSION['admin_id'])) {
                 showCancelButton: true,
                 confirmButtonText: 'ใช่',
                 cancelButtonText: 'ไม่',
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
+                cancelButtonColor: "#3085d6",
+                confirmButtonColor: "#d33",
             }).then((result) => {
                 if (result.isConfirmed) {
                     window.location.href = url;
                 }
             });
         };
+
+        document.getElementById('backToTop').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
     </script>
 </body>
 
